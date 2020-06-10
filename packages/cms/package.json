@@ -1,0 +1,18 @@
+{
+  "name": "@co/cms",
+  "version": "0.0.0-PLACEHOLDER",
+  "author": "cityocean<it@cityocean.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ng-alain/delon.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ng-alain/ng-alain/issues"
+  },
+  "homepage": "https://doc.cityocean.com",
+  "keywords": [
+    "cms"
+  ],
+  "sideEffects": false
+}

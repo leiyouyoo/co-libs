@@ -1,0 +1,12 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/@co/cache",
+  "deleteDestPath": true,
+  "lib": {
+    "flatModuleFile": "cache",
+    "entryFile": "public_api.ts",
+    "umdModuleIds": {
+      "@co/core": "co.core"
+    }
+  }
+}

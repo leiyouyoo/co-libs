@@ -1,0 +1,14 @@
+{
+  "ngPackage": {
+    "lib": {
+      "flatModuleFile": "footerToolbar",
+      "entryFile": "public_api.ts",
+      "umdModuleIds": {
+        "ng-zorro-antd/core/outlet": "ng-zorro-antd/core/outlet",
+        "@co/cbc/error-collect": "co.theme.errorCollect",
+        "@co/theme": "co.theme",
+        "@co/core": "co.core"
+      }
+    }
+  }
+}

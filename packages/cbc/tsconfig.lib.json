@@ -1,0 +1,17 @@
+{
+  "extends": "../tsconfig.lib.prod.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": ".",
+    "paths": {
+      "@co/cbc/*": ["../../dist/@co/cbc/*"],
+      "@co/*": ["../../dist/@co/*"]
+    }
+  },
+  "files": ["public_api.ts", "../typings.d.ts"],
+  "angularCompilerOptions": {
+    "annotateForClosureCompiler": true,
+    "strictMetadataEmit": false,
+    "skipTemplateCodegen": true
+  }
+}

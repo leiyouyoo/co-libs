@@ -1,0 +1,15 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/@co/acl",
+  "deleteDestPath": true,
+  "lib": {
+    "flatModuleFile": "acl",
+    "entryFile": "public_api.ts",
+    "umdModuleIds": {
+      "@co/core": "co.core"
+    }
+  },
+  "whitelistedNonPeerDependencies": [
+    "tslib", "angular", "@co/core"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "ngPackage": {
+    "lib": {
+      "flatModuleFile": "grid",
+      "entryFile": "public_api.ts",
+      "umdModuleIds": {
+        "@co/cbc/error-collect": "co.theme.errorCollect",
+        "@co/theme": "co.theme",
+        "@co/core": "co.core"
+      }
+    }
+  }
+}

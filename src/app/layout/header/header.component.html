@@ -1,0 +1,76 @@
+<ng-container *ngIf="isMobile">
+  <i nz-icon nzType="menu" class="header-menu-icon" nz-popover [(nzVisible)]="menuVisible" [nzPopoverTitle]="null"
+    nzPopoverTrigger="click" nzPopoverPlacement="bottomRight" [nzPopoverContent]="mobileMenu"></i>
+  <ng-template #mobileMenu>
+    <div class="header-menu">
+      <ul nz-menu nzMode="inline" class="text-center menu-site">
+        <li nz-menu-item (click)="toViaMobile('/docs/getting-started')">
+          {{ 'app.header.menu.docs' | translate }}
+        </li>
+        <li nz-menu-item (click)="toViaMobile('/components/view')">
+          {{ 'app.header.menu.components' | translate }}
+        </li>
+        <li nz-menu-item (click)="toViaMobile('/cli/getting-started')">
+          {{ 'app.header.menu.cli' | translate }}
+        </li>
+        <li nz-submenu>
+          <span title>{{ 'app.header.menu.delon' | translate }}</span>
+          <ul>
+            <li *ngFor="let i of delon" nz-menu-item (click)="toViaMobile(i)">
+              {{ 'app.header.menu.' + i | translate }}
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </ng-template>
+</ng-container>
+<div nz-row>
+  <div nz-col nzXs="24" nzSm="24" nzMd="6" nzLg="5" nzXl="5" nzXXl="4">
+    <a routerLink="/{{ i18n.zone }}" id="logo">
+      <img src="./assets/img/logo-color.svg" style="max-height: 32px; font-size: 24px;" />
+      CO-LIBS
+    </a>
+  </div>
+  <div nz-col nz-col nzXs="0" nzSm="0" nzMd="18" nzLg="19" nzXl="19" nzXXl="20">
+    <div class="header-menu-container">
+      <div id="search-box">
+        <i nz-icon nzType="search"></i>
+        <input *ngIf="useDocsearch" nz-input #searchInput [placeholder]="'app.header.search' | translate" />
+        <nz-select *ngIf="!useDocsearch" style="width: 200px;" [ngModel]="q" (ngModelChange)="to($event)" nzAllowClear
+          nzShowSearch [nzServerSearch]="true" (nzOnSearch)="changeQ($event)"
+          [nzPlaceHolder]="'app.header.search' | translate">
+          <nz-option-group *ngFor="let group of list" [nzLabel]="group.title">
+            <nz-option *ngFor="let option of group.children" [nzValue]="option" [nzLabel]="option.title"></nz-option>
+          </nz-option-group>
+        </nz-select>
+      </div>
+      <div *ngIf="!isMobile" class="header-menu">
+        <ul nz-menu nzMode="horizontal" class="menu-site" id="nav">
+          <li nz-menu-item routerLink="/docs/getting-started/{{ i18n.zone }}">
+            {{ 'app.header.menu.docs' | translate }}
+          </li>
+          <li nz-menu-item routerLink="/cli/getting-started/{{ i18n.zone }}">
+            {{ 'app.header.menu.cli' | translate }}
+          </li>
+          <li nz-menu-item class="menu-site__more">
+            <div nz-dropdown nzPlacement="bottomRight" [nzDropdownMenu]="delonMenu">
+              {{ 'app.header.menu.delon' | translate }}
+              <i nz-icon nzType="down"></i>
+            </div>
+            <nz-dropdown-menu #delonMenu="nzDropdownMenu">
+              <ul nz-menu>
+                <li nz-menu-item routerLink="/components/sv/{{ i18n.zone }}">
+                  {{ 'app.header.menu.components' | translate }}
+                </li>
+                <li *ngFor="let i of delon" nz-menu-item routerLink="/{{ i }}/getting-started/{{ i18n.zone }}">
+                  {{ 'app.header.menu.' + i | translate }}
+                </li>
+              </ul>
+            </nz-dropdown-menu>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

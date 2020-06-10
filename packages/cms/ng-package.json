@@ -1,0 +1,9 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/@co/cms",
+  "deleteDestPath": true,
+  "lib": {
+    "flatModuleFile": "cms",
+    "entryFile": "public_api.ts"
+  }
+}

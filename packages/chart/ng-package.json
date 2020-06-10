@@ -1,0 +1,21 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/@co/chart",
+  "deleteDestPath": true,
+  "lib": {
+    "flatModuleFile": "chart",
+    "entryFile": "public_api.ts",
+    "umdModuleIds": {
+      "ng-zorro-antd": "ng-zorro-antd",
+      "@co/theme": "co.theme",
+      "@co/core": "co.core",
+      "@antv/g2": "G2"
+    }
+  },
+  "whitelistedNonPeerDependencies": [
+    "tslib",
+    "@co/theme",
+    "@co/core",
+    "@antv/g2"
+  ]
+}
