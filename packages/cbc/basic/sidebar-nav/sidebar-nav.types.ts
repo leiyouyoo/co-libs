@@ -1,4 +1,4 @@
-import { Menu } from '@co/theme';
+import { Menu } from '@co/common';
 
 export interface Nav extends Menu {
   _needIcon?: boolean;

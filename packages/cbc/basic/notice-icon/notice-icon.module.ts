@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { DelonLocaleModule } from '@co/theme';
+import { CoLocaleModule } from '@co/common';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzIconModule } from 'ng-zorro-antd/icon';
@@ -16,7 +16,7 @@ const COMPONENTS = [NoticeIconComponent];
 @NgModule({
   imports: [
     CommonModule,
-    DelonLocaleModule,
+    CoLocaleModule,
     NzBadgeModule,
     NzDropDownModule,
     NzIconModule,
@@ -28,4 +28,4 @@ const COMPONENTS = [NoticeIconComponent];
   declarations: [...COMPONENTS, NoticeIconTabComponent],
   exports: [...COMPONENTS],
 })
-export class NoticeIconModule { }
+export class NoticeIconModule {}

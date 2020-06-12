@@ -1,6 +1,6 @@
 import { Component, HostBinding, Inject, OnInit } from '@angular/core';
 // import { Router } from '@angular/router';
-import { ALAIN_I18N_TOKEN, Menu, MenuService, SettingsService } from '@co/theme';
+import { CO_I18N_TOKEN, Menu, MenuService, SettingsService } from '@co/common';
 import { NzIconService } from 'ng-zorro-antd/icon';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
@@ -143,7 +143,7 @@ export class DevLayoutComponent implements OnInit {
     public settings: SettingsService,
     public msgSrv: NzMessageService,
     // private router: Router,
-    @Inject(ALAIN_I18N_TOKEN) private i18n: I18NService,
+    @Inject(CO_I18N_TOKEN) private i18n: I18NService,
   ) {
     iconSrv.addIcon(...ICONS);
     // this.testReuse();

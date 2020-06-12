@@ -1,7 +1,7 @@
 import { Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { ALAIN_I18N_TOKEN } from '@co/theme';
+import { CO_I18N_TOKEN } from '@co/common';
 import { deepCopy } from '@co/core';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
@@ -24,14 +24,12 @@ export class DocsComponent implements OnInit, OnDestroy {
 
   constructor(
     public meta: MetaService,
-    @Inject(ALAIN_I18N_TOKEN) private i18n: I18NService,
+    @Inject(CO_I18N_TOKEN) private i18n: I18NService,
     private router: Router,
     private sanitizer: DomSanitizer,
   ) {
-    debugger
-    this.i18NChange$ = this.i18n.change.pipe(filter(() =>
-      !!this.item
-    )).subscribe(() => {
+    debugger;
+    this.i18NChange$ = this.i18n.change.pipe(filter(() => !!this.item)).subscribe(() => {
       this.init();
     });
   }
@@ -118,7 +116,7 @@ export class DocsComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       const elements = document.querySelectorAll('[class*="language-"], [class*="lang-"]');
       // tslint:disable-next-line:no-conditional-assignment
-      for (let i = 0, element; (element = elements[i++]);) {
+      for (let i = 0, element; (element = elements[i++]); ) {
         hljs.highlightBlock(element);
       }
     }, 250);

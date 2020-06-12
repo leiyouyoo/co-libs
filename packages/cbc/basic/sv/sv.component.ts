@@ -12,7 +12,7 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { ResponsiveService } from '@co/theme';
+import { ResponsiveService } from '@co/common';
 import { InputBoolean, InputNumber, isEmpty } from '@co/core';
 import { SVContainerComponent } from './sv-container.component';
 

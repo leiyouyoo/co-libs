@@ -4,7 +4,7 @@ import { FormBuilder, FormControlName, FormGroup, FormsModule, NgModel, Reactive
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { createTestContext } from '@co/testing';
-import { REP_MAX } from '@co/theme';
+import { REP_MAX } from '@co/common';
 import { SEContainerComponent } from './se-container.component';
 import { SEComponent } from './se.component';
 import { SEModule } from './se.module';

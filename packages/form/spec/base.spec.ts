@@ -4,7 +4,7 @@ import { ComponentFixture, discardPeriodicTasks, TestBed, tick } from '@angular/
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { dispatchFakeEvent, typeInElement } from '@co/testing';
-import { AlainThemeModule } from '@co/theme';
+import { CoCommonModule } from '@co/common';
 import { deepCopy, deepGet } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { SF_SEQ } from '../src/const';
@@ -35,7 +35,7 @@ let context: TestFormComponent;
 export function builder(options?: { detectChanges?: boolean; template?: string; ingoreAntd?: boolean; imports?: any[] }) {
   options = { detectChanges: true, ...options };
   TestBed.configureTestingModule({
-    imports: [NoopAnimationsModule, AlainThemeModule.forRoot(), DelonFormModule.forRoot()].concat(options.imports || []),
+    imports: [NoopAnimationsModule, CoCommonModule.forRoot(), DelonFormModule.forRoot()].concat(options.imports || []),
     declarations: [TestFormComponent],
   });
   if (options.template) {
@@ -63,14 +63,14 @@ export function builder(options?: { detectChanges?: boolean; template?: string; 
 export function configureSFTestSuite() {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NoopAnimationsModule, AlainThemeModule.forRoot(), DelonFormModule.forRoot(), HttpClientTestingModule],
+      imports: [NoopAnimationsModule, CoCommonModule.forRoot(), DelonFormModule.forRoot(), HttpClientTestingModule],
       declarations: [TestFormComponent],
     });
   });
 }
 
 export class SFPage {
-  constructor(private comp: SFComponent) { }
+  constructor(private comp: SFComponent) {}
 
   prop(_dl: DebugElement, _context: TestFormComponent, _fixture: ComponentFixture<TestFormComponent>) {
     dl = _dl;
@@ -366,8 +366,8 @@ export class TestFormComponent {
   noColon = false;
   cleanValue = false;
 
-  formChange() { }
-  formSubmit() { }
-  formReset() { }
-  formError() { }
+  formChange() {}
+  formSubmit() {}
+  formReset() {}
+  formError() {}
 }

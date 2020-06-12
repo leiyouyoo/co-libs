@@ -13,7 +13,7 @@ type: Documents
 只需要在根模块重新对 `DELON_LOCALE` 注入目标语言即可全局生效。
 
 ```ts
-import { DELON_LOCALE, en_US } from '@co/theme';
+import { DELON_LOCALE, en_US } from '@co/common';
 @NgModule({
   ...
   providers   : [ { provide: DELON_LOCALE, useValue: en_US } ]
@@ -26,7 +26,7 @@ export class AppModule { }
 `@co` 提供了一个服务 `DelonLocaleService` 用于动态修改国际化文案。
 
 ```ts
-import { en_US, DelonLocaleService } from '@co/theme';
+import { en_US, DelonLocaleService } from '@co/common';
 ...
 constructor(private delonLocaleService: DelonLocaleService) {
 }

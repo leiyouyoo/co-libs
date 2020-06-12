@@ -1,5 +1,5 @@
 import { Component, OnInit<% if (!!viewEncapsulation) { %>, ViewEncapsulation <% }%> <% if (changeDetection !== 'Default') { %>, ChangeDetectionStrategy <% }%> } from '@angular/core';
-import { _HttpClient } from '@co/theme';
+import { _HttpClient } from '@co/common';
 
 @Component({
   selector: '<%= selector %>',

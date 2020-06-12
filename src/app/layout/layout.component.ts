@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { NavigationEnd, NavigationError, RouteConfigLoadStart, Router } from '@angular/router';
-import { ScrollService } from '@co/theme';
+import { ScrollService } from '@co/common';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';

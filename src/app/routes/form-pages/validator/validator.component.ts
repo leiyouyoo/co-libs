@@ -1,7 +1,7 @@
 import { Component, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { AppService } from '@core/app.service';
 import { SFSchema } from '@co/form';
-import { ALAIN_I18N_TOKEN, _HttpClient } from '@co/theme';
+import { CO_I18N_TOKEN, _HttpClient } from '@co/common';
 import { copy } from '@co/core';
 import { NuMonacoEditorComponent } from '@ng-util/monaco-editor';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
@@ -78,7 +78,7 @@ export class FormValidatorComponent implements OnInit, OnDestroy {
   editorOptions = { language: 'json', theme: 'vs' };
 
   constructor(
-    @Inject(ALAIN_I18N_TOKEN) private i18n: I18NService,
+    @Inject(CO_I18N_TOKEN) private i18n: I18NService,
     private codeSrv: CodeService,
     private http: _HttpClient,
     private msg: NzMessageService,

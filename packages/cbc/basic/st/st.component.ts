@@ -21,16 +21,16 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import {
-  AlainI18NService,
-  ALAIN_I18N_TOKEN,
+  CoI18NService,
+  CO_I18N_TOKEN,
   CNCurrencyPipe,
   DatePipe,
-  DelonLocaleService,
+  CoLocaleService,
   DrawerHelper,
   LocaleData,
   ModalHelper,
   YNPipe,
-} from '@co/theme';
+} from '@co/common';
 import { CoConfigService, CoSTConfig, deepMergeKey, InputBoolean, InputNumber, toBoolean } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzTableComponent, NzTableData } from 'ng-zorro-antd/table';
@@ -205,7 +205,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   constructor(
-    @Optional() @Inject(ALAIN_I18N_TOKEN) i18nSrv: AlainI18NService,
+    @Optional() @Inject(CO_I18N_TOKEN) i18nSrv: CoI18NService,
     private cdr: ChangeDetectorRef,
     private router: Router,
     private el: ElementRef,
@@ -215,7 +215,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     @Inject(DOCUMENT) private doc: any,
     private columnSource: STColumnSource,
     private dataSource: STDataSource,
-    private delonI18n: DelonLocaleService,
+    private delonI18n: CoLocaleService,
     configSrv: CoConfigService,
   ) {
     this.setCog(configSrv.merge<CoSTConfig, 'st'>('st', ST_DEFULAT_CONFIG));

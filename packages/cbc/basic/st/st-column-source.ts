@@ -1,8 +1,8 @@
 import { Host, Inject, Injectable, Optional } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ACLService } from '@co/acl';
-import { AlainI18NService, ALAIN_I18N_TOKEN } from '@co/theme';
-import { CoSTConfig, deepCopy, warn } from '@co/core';
+import { CoI18NService, CO_I18N_TOKEN } from '@co/common';
+import { CoSTConfig, deepCopy } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { STRowSource } from './st-row.directive';
 import { STWidgetRegistry } from './st-widget';
@@ -16,9 +16,9 @@ export class STColumnSource {
     private dom: DomSanitizer,
     @Host() private rowSource: STRowSource,
     @Optional() private acl: ACLService,
-    @Optional() @Inject(ALAIN_I18N_TOKEN) private i18nSrv: AlainI18NService,
+    @Optional() @Inject(CO_I18N_TOKEN) private i18nSrv: CoI18NService,
     private stWidgetRegistry: STWidgetRegistry,
-  ) { }
+  ) {}
 
   setCog(val: CoSTConfig): void {
     this.cog = val;
@@ -226,7 +226,7 @@ export class STColumnSource {
     if (item.type !== 'widget') return;
     if (item.widget == null || !this.stWidgetRegistry.has(item.widget.type)) {
       delete item.type;
-      warn(`st: No widget for type "${item.widget?.type}"`);
+      console.warn(`st: No widget for type "${item.widget?.type}"`);
     }
   }
 

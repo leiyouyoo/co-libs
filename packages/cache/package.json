@@ -24,5 +24,8 @@
     "angular",
     "component"
   ],
+  "dependencies": {
+    "@co/core": "PEER-0.0.0-PLACEHOLDER"
+  },
   "sideEffects": false
 }

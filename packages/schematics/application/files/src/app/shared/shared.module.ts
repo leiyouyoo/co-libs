@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { AlainThemeModule } from '@co/theme';
+import { AlainThemeModule } from '@co/common';
 import { DelonACLModule } from '@co/acl';
 <% if (form) { %>import { DelonFormModule } from '@co/form'; <% } %> <% if (i18n) { %>
 import { TranslateModule } from '@ngx-translate/core'; <% } %>

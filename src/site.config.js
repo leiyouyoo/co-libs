@@ -6,11 +6,13 @@ module.exports = {
     examples: './src/templates/examples.ts',
     examples_index: './src/templates/examples_index.ts',
   },
-  modules: [{
+  modules: [
+    {
       name: 'docs',
       github: 'https://github.com/co-libs/delon',
       dist: './src/app/routes/gen/docs',
-      types: [{
+      types: [
+        {
           'zh-CN': '入门',
           'en-US': 'Basic',
         },
@@ -37,19 +39,22 @@ module.exports = {
         meta: './src/templates/meta.ts',
         module: './src/templates/module.ts',
       },
-      dir: [{
-        src: ['./docs'],
-        template: {
-          content: './src/templates/content.ts',
+      dir: [
+        {
+          src: ['./docs'],
+          template: {
+            content: './src/templates/content.ts',
+          },
+          hasSubDir: false,
         },
-        hasSubDir: false,
-      }],
+      ],
     },
     {
       name: 'components',
       github: 'https://github.com/co-libs/delon',
       dist: './src/app/routes/gen/components',
-      types: [{
+      types: [
+        {
           'zh-CN': 'CURD',
           'en-US': 'CURD',
         },
@@ -70,7 +75,8 @@ module.exports = {
           'en-US': 'Business',
         },
       ],
-      extraRouteMeta: [{
+      extraRouteMeta: [
+        {
           name: 'form',
           route: '/form/getting-started',
           order: 4,
@@ -277,7 +283,7 @@ module.exports = {
               title: 'Micro Service',
             },
           },
-        }
+        },
       ],
       module: '@co/cbc',
       defaultRoute: 'sv',
@@ -286,23 +292,27 @@ module.exports = {
         meta: './src/templates/meta.ts',
         module: './src/templates/module.ts',
       },
-      dir: [{
-        src: ['./packages/cbc'],
-        ignores: ['README.md'],
-        template: {
-          content: './src/templates/content.ts',
+      dir: [
+        {
+          src: ['./packages/cbc'],
+          ignores: ['README.md'],
+          template: {
+            content: './src/templates/content.ts',
+          },
+          hasSubDir: true,
         },
-        hasSubDir: true,
-      }],
+      ],
     },
     {
       name: 'auth',
       github: 'https://github.com/co-libs/delon',
       dist: './src/app/routes/gen/auth',
-      types: [{
-        'zh-CN': '文档',
-        'en-US': 'Documents',
-      }, ],
+      types: [
+        {
+          'zh-CN': '文档',
+          'en-US': 'Documents',
+        },
+      ],
       module: '@co/auth',
       defaultRoute: 'getting-started',
       extraRouteMeta: [],
@@ -311,22 +321,26 @@ module.exports = {
         meta: './src/templates/meta.ts',
         module: './src/templates/module.ts',
       },
-      dir: [{
-        src: ['./packages/auth/docs'],
-        template: {
-          content: './src/templates/content.ts',
+      dir: [
+        {
+          src: ['./packages/auth/docs'],
+          template: {
+            content: './src/templates/content.ts',
+          },
+          hasSubDir: false,
         },
-        hasSubDir: false,
-      }, ],
+      ],
     },
     {
       name: 'acl',
       github: 'https://github.com/co-libs/delon',
       dist: './src/app/routes/gen/acl',
-      types: [{
-        'zh-CN': '文档',
-        'en-US': 'Documents',
-      }],
+      types: [
+        {
+          'zh-CN': '文档',
+          'en-US': 'Documents',
+        },
+      ],
       module: '@co/acl',
       defaultRoute: 'getting-started',
       extraRouteMeta: [],
@@ -335,22 +349,26 @@ module.exports = {
         meta: './src/templates/meta.ts',
         module: './src/templates/module.ts',
       },
-      dir: [{
-        src: ['./packages/acl/docs'],
-        template: {
-          content: './src/templates/content.ts',
+      dir: [
+        {
+          src: ['./packages/acl/docs'],
+          template: {
+            content: './src/templates/content.ts',
+          },
+          hasSubDir: false,
         },
-        hasSubDir: false,
-      }, ],
+      ],
     },
     {
       name: 'cache',
       github: 'https://github.com/co-libs/delon',
       dist: './src/app/routes/gen/cache',
-      types: [{
-        'zh-CN': '文档',
-        'en-US': 'Documents',
-      }, ],
+      types: [
+        {
+          'zh-CN': '文档',
+          'en-US': 'Documents',
+        },
+      ],
       module: '@co/cache',
       defaultRoute: 'getting-started',
       extraRouteMeta: [],
@@ -359,22 +377,26 @@ module.exports = {
         meta: './src/templates/meta.ts',
         module: './src/templates/module.ts',
       },
-      dir: [{
-        src: ['./packages/cache/docs'],
-        template: {
-          content: './src/templates/content.ts',
+      dir: [
+        {
+          src: ['./packages/cache/docs'],
+          template: {
+            content: './src/templates/content.ts',
+          },
+          hasSubDir: false,
         },
-        hasSubDir: false,
-      }, ],
+      ],
     },
     {
       name: 'mock',
       github: 'https://github.com/co-libs/delon',
       dist: './src/app/routes/gen/mock',
-      types: [{
-        'zh-CN': '文档',
-        'en-US': 'Documents',
-      }, ],
+      types: [
+        {
+          'zh-CN': '文档',
+          'en-US': 'Documents',
+        },
+      ],
       module: '@co/mock',
       defaultRoute: 'getting-started',
       extraRouteMeta: [],
@@ -383,19 +405,22 @@ module.exports = {
         meta: './src/templates/meta.ts',
         module: './src/templates/module.ts',
       },
-      dir: [{
-        src: ['./packages/mock/docs'],
-        template: {
-          content: './src/templates/content.ts',
+      dir: [
+        {
+          src: ['./packages/mock/docs'],
+          template: {
+            content: './src/templates/content.ts',
+          },
+          hasSubDir: false,
         },
-        hasSubDir: false,
-      }, ],
+      ],
     },
     {
       name: 'core',
       github: 'https://github.com/co-libs/delon',
       dist: './src/app/routes/gen/core',
-      types: [{
+      types: [
+        {
           'zh-CN': '文档',
           'en-US': 'Documents',
         },
@@ -416,7 +441,8 @@ module.exports = {
         meta: './src/templates/meta.ts',
         module: './src/templates/module.ts',
       },
-      dir: [{
+      dir: [
+        {
           src: ['./packages/core/docs'],
           template: {
             content: './src/templates/content.ts',
@@ -437,7 +463,8 @@ module.exports = {
       name: 'form',
       github: 'https://github.com/co-libs/delon',
       dist: './src/app/routes/gen/form',
-      types: [{
+      types: [
+        {
           'zh-CN': '文档',
           'en-US': 'Documents',
         },
@@ -456,23 +483,26 @@ module.exports = {
       ],
       module: '@co/form',
       defaultRoute: 'getting-started',
-      extraRouteMeta: [{
-        name: 'validator',
-        route: '/form-pages/validator',
-        i18n: false,
-        meta: {
-          'zh-CN': {
-            type: 'Examples',
-            title: '在线校验器'
-          }
+      extraRouteMeta: [
+        {
+          name: 'validator',
+          route: '/form-pages/validator',
+          i18n: false,
+          meta: {
+            'zh-CN': {
+              type: 'Examples',
+              title: '在线校验器',
+            },
+          },
         },
-      }, ],
+      ],
       metaIncludeAttributes: ['name', 'types', 'github', 'module'],
       template: {
         meta: './src/templates/meta.ts',
         module: './src/templates/module.ts',
       },
-      dir: [{
+      dir: [
+        {
           src: ['./packages/form/docs'],
           template: {
             content: './src/templates/content.ts',
@@ -506,7 +536,8 @@ module.exports = {
       name: 'chart',
       github: 'https://github.com/co-libs/delon',
       dist: './src/app/routes/gen/chart',
-      types: [{
+      types: [
+        {
           'zh-CN': '文档',
           'en-US': 'Documents',
         },
@@ -523,7 +554,8 @@ module.exports = {
         meta: './src/templates/meta.ts',
         module: './src/templates/module.ts',
       },
-      dir: [{
+      dir: [
+        {
           src: ['./packages/chart/docs'],
           template: {
             content: './src/templates/content.ts',
@@ -544,10 +576,12 @@ module.exports = {
       name: 'cli',
       github: 'https://github.com/co-libs/delon',
       dist: './src/app/routes/gen/cli',
-      types: [{
-        'zh-CN': '文档',
-        'en-US': 'Documents',
-      }, ],
+      types: [
+        {
+          'zh-CN': '文档',
+          'en-US': 'Documents',
+        },
+      ],
       module: 'co-libs',
       defaultRoute: 'getting-started',
       extraRouteMeta: [],
@@ -556,19 +590,22 @@ module.exports = {
         meta: './src/templates/meta.ts',
         module: './src/templates/module.ts',
       },
-      dir: [{
-        src: ['./packages/schematics/docs'],
-        template: {
-          content: './src/templates/content.ts',
+      dir: [
+        {
+          src: ['./packages/schematics/docs'],
+          template: {
+            content: './src/templates/content.ts',
+          },
+          hasSubDir: false,
         },
-        hasSubDir: false,
-      }, ],
+      ],
     },
     {
       name: 'theme',
       github: 'https://github.com/co-libs/delon',
       dist: './src/app/routes/gen/theme',
-      types: [{
+      types: [
+        {
           'zh-CN': '文档',
           'en-US': 'Documents',
         },
@@ -593,7 +630,8 @@ module.exports = {
         meta: './src/templates/meta.ts',
         module: './src/templates/module.ts',
       },
-      dir: [{
+      dir: [
+        {
           src: ['./packages/theme/docs'],
           template: {
             content: './src/templates/content.ts',
@@ -607,15 +645,54 @@ module.exports = {
           },
           hasSubDir: true,
         },
+        // {
+        //   src: ['./packages/theme/src/pipes'],
+        //   template: {
+        //     content: './src/templates/content.ts',
+        //   },
+        //   hasSubDir: true,
+        // },
+        // {
+        //   src: ['./packages/theme/src/services'],
+        //   template: {
+        //     content: './src/templates/content.ts',
+        //   },
+        //   hasSubDir: true,
+        // },
+      ],
+    },
+    {
+      name: 'common',
+      github: 'https://github.com/co-libs/delon',
+      dist: './src/app/routes/gen/common',
+      types: [
         {
-          src: ['./packages/theme/src/pipes'],
+          'zh-CN': '服务',
+          'en-US': 'Service',
+        },
+        {
+          'zh-CN': '管道',
+          'en-US': 'Pipe',
+        },
+      ],
+      module: 'co-libs',
+      defaultRoute: 'getting-started',
+      extraRouteMeta: [],
+      metaIncludeAttributes: ['name', 'types', 'github', 'module'],
+      template: {
+        meta: './src/templates/meta.ts',
+        module: './src/templates/module.ts',
+      },
+      dir: [
+        {
+          src: ['./packages/common/src/pipes'],
           template: {
             content: './src/templates/content.ts',
           },
           hasSubDir: true,
         },
         {
-          src: ['./packages/theme/src/services'],
+          src: ['./packages/common/src/services'],
           template: {
             content: './src/templates/content.ts',
           },
@@ -627,10 +704,12 @@ module.exports = {
       name: 'im',
       github: 'https://github.com/co-libs/delon',
       dist: './src/app/routes/gen/im',
-      types: [{
-        'zh-CN': '文档',
-        'en-US': 'Documents',
-      }],
+      types: [
+        {
+          'zh-CN': '文档',
+          'en-US': 'Documents',
+        },
+      ],
       module: '@co/im',
       defaultRoute: 'getting-started',
       extraRouteMeta: [],
@@ -639,22 +718,26 @@ module.exports = {
         meta: './src/templates/meta.ts',
         module: './src/templates/module.ts',
       },
-      dir: [{
-        src: ['./packages/im/docs'],
-        template: {
-          content: './src/templates/content.ts',
+      dir: [
+        {
+          src: ['./packages/im/docs'],
+          template: {
+            content: './src/templates/content.ts',
+          },
+          hasSubDir: false,
         },
-        hasSubDir: false,
-      }],
+      ],
     },
     {
       name: 'cds',
       github: 'https://github.com/co-libs/delon',
       dist: './src/app/routes/gen/cds',
-      types: [{
-        'zh-CN': '文档',
-        'en-US': 'Documents',
-      }],
+      types: [
+        {
+          'zh-CN': '文档',
+          'en-US': 'Documents',
+        },
+      ],
       module: '@co/cds',
       defaultRoute: 'getting-started',
       extraRouteMeta: [],
@@ -663,22 +746,26 @@ module.exports = {
         meta: './src/templates/meta.ts',
         module: './src/templates/module.ts',
       },
-      dir: [{
-        src: ['./packages/cds/docs'],
-        template: {
-          content: './src/templates/content.ts',
+      dir: [
+        {
+          src: ['./packages/cds/docs'],
+          template: {
+            content: './src/templates/content.ts',
+          },
+          hasSubDir: false,
         },
-        hasSubDir: false,
-      }],
+      ],
     },
     {
       name: 'map',
       github: 'https://github.com/co-libs/delon',
       dist: './src/app/routes/gen/map',
-      types: [{
-        'zh-CN': '文档',
-        'en-US': 'Documents',
-      }],
+      types: [
+        {
+          'zh-CN': '文档',
+          'en-US': 'Documents',
+        },
+      ],
       module: '@co/map',
       defaultRoute: 'getting-started',
       extraRouteMeta: [],
@@ -687,7 +774,8 @@ module.exports = {
         meta: './src/templates/meta.ts',
         module: './src/templates/module.ts',
       },
-      dir: [{
+      dir: [
+        {
           src: ['./packages/map/docs'],
           template: {
             content: './src/templates/content.ts',
@@ -708,10 +796,12 @@ module.exports = {
       name: 'apm',
       github: 'https://github.com/co-libs/delon',
       dist: './src/app/routes/gen/apm',
-      types: [{
-        'zh-CN': '文档',
-        'en-US': 'Documents',
-      }],
+      types: [
+        {
+          'zh-CN': '文档',
+          'en-US': 'Documents',
+        },
+      ],
       module: '@co/apm',
       defaultRoute: 'getting-started',
       extraRouteMeta: [],
@@ -720,7 +810,8 @@ module.exports = {
         meta: './src/templates/meta.ts',
         module: './src/templates/module.ts',
       },
-      dir: [{
+      dir: [
+        {
           src: ['./packages/apm/docs'],
           template: {
             content: './src/templates/content.ts',
@@ -741,10 +832,12 @@ module.exports = {
       name: 'cms',
       github: 'https://github.com/co-libs/delon',
       dist: './src/app/routes/gen/cms',
-      types: [{
-        'zh-CN': '文档',
-        'en-US': 'Documents',
-      }],
+      types: [
+        {
+          'zh-CN': '文档',
+          'en-US': 'Documents',
+        },
+      ],
       module: '@co/cms',
       defaultRoute: 'getting-started',
       extraRouteMeta: [],
@@ -753,7 +846,8 @@ module.exports = {
         meta: './src/templates/meta.ts',
         module: './src/templates/module.ts',
       },
-      dir: [{
+      dir: [
+        {
           src: ['./packages/cms/docs'],
           template: {
             content: './src/templates/content.ts',
@@ -769,6 +863,6 @@ module.exports = {
           hasSubDir: true,
         },
       ],
-    }
+    },
   ],
 };

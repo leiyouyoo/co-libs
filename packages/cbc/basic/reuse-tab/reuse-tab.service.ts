@@ -8,7 +8,7 @@ import {
   Router,
   ROUTER_CONFIGURATION,
 } from '@angular/router';
-import { MenuService, ScrollService } from '@co/theme';
+import { MenuService, ScrollService } from '@co/common';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { BehaviorSubject, Observable, Unsubscribable } from 'rxjs';
 import { ReuseComponentRef, ReuseHookTypes, ReuseTabCached, ReuseTabMatchMode, ReuseTabNotify, ReuseTitle } from './reuse-tab.interfaces';
@@ -346,7 +346,7 @@ export class ReuseTabService implements OnDestroy {
 
   // #endregion
 
-  constructor(private injector: Injector, private menuService: MenuService) { }
+  constructor(private injector: Injector, private menuService: MenuService) {}
 
   init() {
     this.initScroll();

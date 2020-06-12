@@ -6,10 +6,9 @@
     "flatModuleFile": "apm",
     "entryFile": "public_api.ts",
     "umdModuleIds": {
-      "ng-zorro-antd/core": "ng-zorro-antd/core"
+      "ng-zorro-antd/core": "ng-zorro-antd/core",
+      "@co/core": "co.core"
     }
   },
-  "whitelistedNonPeerDependencies": [
-    "."
-  ]
+  "whitelistedNonPeerDependencies": ["."]
 }

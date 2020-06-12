@@ -2,7 +2,7 @@ import { Component, DebugElement, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { createTestContext } from '@co/testing';
-import { DelonLocaleModule, DelonLocaleService, en_US } from '@co/theme';
+import { CoLocaleModule, CoLocaleService, en_US } from '@co/common';
 import { ExceptionComponent, ExceptionType } from './exception.component';
 import { ExceptionModule } from './exception.module';
 
@@ -13,7 +13,7 @@ describe('abc: exception', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ExceptionModule, DelonLocaleModule],
+      imports: [ExceptionModule, CoLocaleModule],
       declarations: [TestComponent],
     });
     ({ fixture, dl, context } = createTestContext(TestComponent));
@@ -45,7 +45,7 @@ describe('abc: exception', () => {
   });
 
   it('#i18n', () => {
-    TestBed.inject<DelonLocaleService>(DelonLocaleService).setLocale(en_US);
+    TestBed.inject<CoLocaleService>(CoLocaleService).setLocale(en_US);
     context.type = 403;
     fixture.detectChanges();
     expect((dl.query(By.css('.exception__cont-desc')).nativeElement as HTMLElement).innerText).toBe(en_US.exception['403']);

@@ -3,7 +3,7 @@ import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testin
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ACLService, DelonACLModule } from '@co/acl';
 import { createTestContext } from '@co/testing';
-import { AlainI18NService, AlainThemeModule, ALAIN_I18N_TOKEN, DelonLocaleService, en_US } from '@co/theme';
+import { CoI18NService, CoCommonModule, CO_I18N_TOKEN, CoLocaleService, en_US } from '@co/common';
 import { deepCopy } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzIconService } from 'ng-zorro-antd/icon';
@@ -24,7 +24,7 @@ describe('form: component', () => {
     options = { acl: false, i18n: false, ...options };
     const imports = [NoopAnimationsModule, DelonFormModule.forRoot()];
     if (options.i18n) {
-      imports.push(AlainThemeModule.forRoot());
+      imports.push(CoCommonModule.forRoot());
     }
     if (options.acl) {
       imports.push(DelonACLModule.forRoot());
@@ -248,7 +248,7 @@ describe('form: component', () => {
       });
       it('should be update button text when i18n changed', () => {
         page.checkElText('.ant-btn-primary', '提交');
-        const i18n = TestBed.inject<DelonLocaleService>(DelonLocaleService) as DelonLocaleService;
+        const i18n = TestBed.inject<CoLocaleService>(CoLocaleService) as CoLocaleService;
         i18n.setLocale(en_US);
         fixture.detectChanges();
         page.checkElText('.ant-btn-primary', 'Submit');
@@ -664,7 +664,7 @@ describe('form: component', () => {
         };
         page.newSchema(s, undefined, { a: '', arr: [{ name: '' }] });
         expect(page.getProperty('/a').errors![0].message).toBe(context.comp.locale.error.required);
-        const i18n = TestBed.inject(DelonLocaleService);
+        const i18n = TestBed.inject(CoLocaleService);
         i18n.setLocale(en_US);
         fixture.detectChanges();
         expect(page.getProperty('/a').errors![0].message).toBe(context.comp.locale.error.required);
@@ -755,7 +755,7 @@ describe('form: component', () => {
     it('should working', fakeAsync(() => {
       ({ fixture, dl, context } = createTestContext(TestFormComponent));
       createComp();
-      const i18n = TestBed.inject(ALAIN_I18N_TOKEN) as AlainI18NService;
+      const i18n = TestBed.inject(CO_I18N_TOKEN) as CoI18NService;
       let lang = 'en';
       spyOn(i18n, 'fanyi').and.callFake(((key: string) => {
         if (key === 'null') return null;
@@ -803,4 +803,4 @@ describe('form: component', () => {
 @Component({
   template: ` <sf [layout]="layout" #comp [schema]="schema" [ui]="ui" [button]="button" [mode]="mode" [loading]="loading"></sf> `,
 })
-class TestModeComponent extends TestFormComponent { }
+class TestModeComponent extends TestFormComponent {}

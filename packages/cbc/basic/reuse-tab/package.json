@@ -9,7 +9,7 @@
         "ng-zorro-antd/icon": "ng-zorro-antd/icon",
         "ng-zorro-antd/menu": "ng-zorro-antd/menu",
         "ng-zorro-antd/tabs": "ng-zorro-antd/tabs",
-        "@co/theme": "co.theme",
+        "@co/common": "co.common",
         "@co/core": "co.core"
       }
     }

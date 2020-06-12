@@ -15,7 +15,7 @@ Simplest of usage.
 
 ```ts
 import { Component } from '@angular/core';
-import { Menu, MenuService, SettingsService } from '@co/theme';
+import { Menu, MenuService, SettingsService } from '@co/common';
 import { NzIconService } from 'ng-zorro-antd/icon';
 
 @Component({

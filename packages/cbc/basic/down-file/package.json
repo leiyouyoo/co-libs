@@ -6,7 +6,7 @@
       "umdModuleIds": {
         "file-saver": "saveAs",
         "ng-zorro-antd": "ng-zorro-antd",
-        "@co/theme": "co.theme"
+        "@co/common": "co.common"
       }
     }
   }

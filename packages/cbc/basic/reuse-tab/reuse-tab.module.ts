@@ -2,7 +2,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { DelonLocaleModule } from '@co/theme';
+import { CoLocaleModule } from '@co/common';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
@@ -15,8 +15,8 @@ const COMPONENTS = [ReuseTabComponent];
 const NOEXPORTS = [ReuseTabContextMenuComponent, ReuseTabContextComponent, ReuseTabContextDirective];
 
 @NgModule({
-  imports: [CommonModule, RouterModule, DelonLocaleModule, NzMenuModule, NzTabsModule, NzIconModule, OverlayModule],
+  imports: [CommonModule, RouterModule, CoLocaleModule, NzMenuModule, NzTabsModule, NzIconModule, OverlayModule],
   declarations: [...COMPONENTS, ...NOEXPORTS],
   exports: [...COMPONENTS],
 })
-export class ReuseTabModule { }
+export class ReuseTabModule {}

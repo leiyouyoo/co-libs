@@ -1,5 +1,5 @@
 import { HttpHeaders, HttpParams } from '@angular/common/http';
-import { DrawerHelperOptions, ModalHelperOptions, YNMode } from '@co/theme';
+import { DrawerHelperOptions, ModalHelperOptions, YNMode } from '@co/common';
 import { NzDrawerOptions } from 'ng-zorro-antd/drawer';
 import { ModalOptions } from 'ng-zorro-antd/modal';
 import { STComponent } from './st.component';
@@ -69,15 +69,15 @@ export interface STReq {
 export interface STRequestOptions {
   body?: any;
   headers?:
-  | HttpHeaders
-  | {
-    [header: string]: string | string[];
-  };
+    | HttpHeaders
+    | {
+        [header: string]: string | string[];
+      };
   params?:
-  | HttpParams
-  | {
-    [param: string]: string | string[];
-  };
+    | HttpParams
+    | {
+        [param: string]: string | string[];
+      };
   observe?: 'body' | 'events' | 'response';
   reportProgress?: boolean;
   responseType?: 'arraybuffer' | 'blob' | 'json' | 'text';
@@ -337,7 +337,7 @@ export interface STColumn {
 
   widget?: STWidgetColumn;
 
-  enum?: { [key: string]: string;[key: number]: string };
+  enum?: { [key: string]: string; [key: number]: string };
 
   /**
    * 分组表头
@@ -739,18 +739,18 @@ export interface STColumnButtonPop {
    * The position of the popover relative to the target, default: `top`
    */
   placement?:
-  | 'top'
-  | 'left'
-  | 'right'
-  | 'bottom'
-  | 'topLeft'
-  | 'topRight'
-  | 'bottomLeft'
-  | 'bottomRight'
-  | 'leftTop'
-  | 'leftBottom'
-  | 'rightTop'
-  | 'rightBottom';
+    | 'top'
+    | 'left'
+    | 'right'
+    | 'bottom'
+    | 'topLeft'
+    | 'topRight'
+    | 'bottomLeft'
+    | 'bottomRight'
+    | 'leftTop'
+    | 'leftBottom'
+    | 'rightTop'
+    | 'rightBottom';
 
   /**
    * Class name of the popover card

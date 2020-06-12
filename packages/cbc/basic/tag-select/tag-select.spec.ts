@@ -2,7 +2,7 @@ import { Component, DebugElement, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { createTestContext } from '@co/testing';
-import { DelonLocaleModule, DelonLocaleService, en_US, zh_CN } from '@co/theme';
+import { CoLocaleModule, CoLocaleService, en_US, zh_CN } from '@co/common';
 import { TagSelectComponent } from './tag-select.component';
 import { TagSelectModule } from './tag-select.module';
 
@@ -13,7 +13,7 @@ describe('abc: tag-select', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TagSelectModule, DelonLocaleModule],
+      imports: [TagSelectModule, CoLocaleModule],
       declarations: [TestComponent],
     });
     ({ fixture, dl, context } = createTestContext(TestComponent));
@@ -51,7 +51,7 @@ describe('abc: tag-select', () => {
   it('#i18n', () => {
     const triEl = dl.query(By.css('.tag-select__trigger')).nativeElement as HTMLElement;
     expect(triEl.innerText).toContain(zh_CN.tagSelect.expand);
-    TestBed.inject<DelonLocaleService>(DelonLocaleService).setLocale(en_US);
+    TestBed.inject<CoLocaleService>(CoLocaleService).setLocale(en_US);
     fixture.detectChanges();
     expect(triEl.innerText).toBe(en_US.tagSelect.expand);
   });
@@ -83,5 +83,5 @@ class TestComponent {
     { id: 12, text: '类目十二', value: false },
   ];
   expandable = true;
-  change() { }
+  change() {}
 }

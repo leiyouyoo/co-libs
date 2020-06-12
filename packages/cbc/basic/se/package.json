@@ -7,7 +7,7 @@
         "ng-zorro-antd/core/outlet": "ng-zorro-antd/core/outlet",
         "ng-zorro-antd/tooltip": "ng-zorro-antd/tooltip",
         "ng-zorro-antd/icon": "ng-zorro-antd/icon",
-        "@co/theme": "co.theme",
+        "@co/common": "co.common",
         "@co/core": "co.core"
       }
     }

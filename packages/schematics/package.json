@@ -1,19 +1,19 @@
 {
-  "name": "ng-alain",
+  "name": "co-cli",
   "version": "0.0.0-PLACEHOLDER",
-  "description": "Schematics specific to ng-alain",
+  "description": "Schematics specific to co-cli",
   "author": "cipchk<cipchk@qq.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ng-alain/ng-alain.git"
+    "url": "git+https://github.com/co-cli/co-cli.git"
   },
   "bugs": {
-    "url": "https://github.com/ng-alain/ng-alain/issues"
+    "url": "https://github.com/co-cli/co-cli/issues"
   },
-  "homepage": "https://ng-alain.com/",
+  "homepage": "https://co-cli.com/",
   "keywords": [
-    "ng-alain",
+    "co-cli",
     "ng-zorro-antd",
     "antd",
     "blueprints",
@@ -24,7 +24,7 @@
   "ng-update": {
     "migrations": "./migration.json",
     "packageGroup": [
-      "ng-alain"
+      "co-cli"
     ]
   },
   "sideEffects": false

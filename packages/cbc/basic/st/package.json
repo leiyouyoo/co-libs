@@ -17,7 +17,7 @@
         "ng-zorro-antd/input": "ng-zorro-antd/input",
         "ng-zorro-antd/tooltip": "ng-zorro-antd/tooltip",
         "@co/cbc/basic/xlsx": "co.abc.xlsx",
-        "@co/theme": "co.theme",
+        "@co/common": "co.common",
         "@co/acl": "co.acl",
         "@co/core": "co.core"
       }

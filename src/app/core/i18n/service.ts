@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { AlainI18NService, DelonLocaleService, en_US as delonEnUS, zh_CN as delonZhCn } from '@co/theme';
+import { CoI18NService, CoLocaleService, en_US as delonEnUS, zh_CN as delonZhCn } from '@co/common';
 import { TranslateService } from '@ngx-translate/core';
 import { en_US, NzI18nService, zh_CN } from 'ng-zorro-antd/i18n';
 import { Subject } from 'rxjs';
@@ -10,7 +10,7 @@ import { ZHCN } from './zh-CN';
 export type LangType = 'en-US' | 'zh-CN';
 
 @Injectable({ providedIn: 'root' })
-export class I18NService implements AlainI18NService {
+export class I18NService implements CoI18NService {
   private change$: Subject<LangType> = new Subject<LangType>();
 
   private _langs = [
@@ -20,7 +20,7 @@ export class I18NService implements AlainI18NService {
 
   constructor(
     private zorroI18n: NzI18nService,
-    private delonI18n: DelonLocaleService,
+    private delonI18n: CoLocaleService,
     private translate: TranslateService,
     private dom: DomSanitizer,
   ) {

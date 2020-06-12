@@ -1,7 +1,7 @@
 import { DecimalPipe } from '@angular/common';
 import { Host, Injectable } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { CNCurrencyPipe, DatePipe, YNPipe, _HttpClient } from '@co/theme';
+import { CNCurrencyPipe, DatePipe, YNPipe, _HttpClient } from '@co/common';
 import { deepCopy, deepGet } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { Observable, of } from 'rxjs';
@@ -66,7 +66,7 @@ export class STDataSource {
     @Host() private ynPipe: YNPipe,
     @Host() private numberPipe: DecimalPipe,
     private dom: DomSanitizer,
-  ) { }
+  ) {}
 
   process(options: STDataSourceOptions): Observable<STDataSourceResult> {
     let data$: Observable<STData[]>;

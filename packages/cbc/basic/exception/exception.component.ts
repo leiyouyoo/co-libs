@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer, SafeHtml, SafeUrl } from '@angular/platform-browser';
-import { DelonLocaleService, LocaleData } from '@co/theme';
+import { CoLocaleService, LocaleData } from '@co/common';
 import { isEmpty } from '@co/core';
 import { Subscription } from 'rxjs';
 
@@ -75,7 +75,7 @@ export class ExceptionComponent implements OnInit, OnDestroy {
     this.hasCon = !isEmpty(this.conTpl.nativeElement);
   }
 
-  constructor(private i18n: DelonLocaleService, private dom: DomSanitizer) { }
+  constructor(private i18n: CoLocaleService, private dom: DomSanitizer) {}
 
   ngOnInit() {
     this.i18n$ = this.i18n.change.subscribe(() => (this.locale = this.i18n.getData('exception')));

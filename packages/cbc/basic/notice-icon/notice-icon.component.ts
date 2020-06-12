@@ -10,7 +10,7 @@ import {
   Output,
   ViewEncapsulation,
 } from '@angular/core';
-import { DelonLocaleService, LocaleData } from '@co/theme';
+import { CoLocaleService, LocaleData } from '@co/common';
 import { InputBoolean, InputNumber } from '@co/core';
 import { Subscription } from 'rxjs';
 import { NoticeIconSelect, NoticeItem } from './notice-icon.types';
@@ -39,7 +39,7 @@ export class NoticeIconComponent implements OnInit, OnChanges, OnDestroy {
   @Output() readonly clear = new EventEmitter<string>();
   @Output() readonly popoverVisibleChange = new EventEmitter<boolean>();
 
-  constructor(private i18n: DelonLocaleService, private cdr: ChangeDetectorRef) { }
+  constructor(private i18n: CoLocaleService, private cdr: ChangeDetectorRef) {}
 
   onVisibleChange(result: boolean) {
     this.popoverVisibleChange.emit(result);

@@ -1,6 +1,6 @@
 import { AfterViewInit, ChangeDetectorRef, HostBinding, Inject, Injector } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { LocaleData } from '@co/theme';
+import { LocaleData } from '@co/common';
 import { takeUntil } from 'rxjs/operators';
 import { ErrorData } from './errors';
 import { SFValue } from './interface';
@@ -53,7 +53,7 @@ export abstract class Widget<T extends FormProperty, UIT extends SFUISchemaItem>
     @Inject(Injector) protected readonly injector: Injector,
     @Inject(SFItemComponent) protected readonly sfItemComp?: SFItemComponent,
     @Inject(SFComponent) protected readonly sfComp?: SFComponent,
-  ) { }
+  ) {}
 
   ngAfterViewInit(): void {
     this.formProperty.errorsChanges.pipe(takeUntil(this.sfItemComp!.unsubscribe$)).subscribe((errors: ErrorData[] | null) => {
@@ -95,18 +95,18 @@ export abstract class Widget<T extends FormProperty, UIT extends SFUISchemaItem>
 }
 
 export class ControlWidget extends Widget<FormProperty, SFUISchemaItem> {
-  reset(_value: SFValue) { }
-  afterViewInit() { }
+  reset(_value: SFValue) {}
+  afterViewInit() {}
 }
 
 export class ControlUIWidget<UIT extends SFUISchemaItem> extends Widget<FormProperty, UIT> {
-  reset(_value: SFValue) { }
-  afterViewInit() { }
+  reset(_value: SFValue) {}
+  afterViewInit() {}
 }
 
 export class ArrayLayoutWidget extends Widget<ArrayProperty, SFArrayWidgetSchema> implements AfterViewInit {
-  reset(_value: SFValue) { }
-  afterViewInit() { }
+  reset(_value: SFValue) {}
+  afterViewInit() {}
 
   ngAfterViewInit() {
     this.formProperty.errorsChanges.pipe(takeUntil(this.sfItemComp!.unsubscribe$)).subscribe(() => this.cd.detectChanges());
@@ -114,8 +114,8 @@ export class ArrayLayoutWidget extends Widget<ArrayProperty, SFArrayWidgetSchema
 }
 
 export class ObjectLayoutWidget extends Widget<ObjectProperty, SFObjectWidgetSchema> implements AfterViewInit {
-  reset(_value: SFValue) { }
-  afterViewInit() { }
+  reset(_value: SFValue) {}
+  afterViewInit() {}
 
   ngAfterViewInit() {
     this.formProperty.errorsChanges.pipe(takeUntil(this.sfItemComp!.unsubscribe$)).subscribe(() => this.cd.detectChanges());

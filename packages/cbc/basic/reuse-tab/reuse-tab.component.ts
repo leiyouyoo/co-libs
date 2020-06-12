@@ -17,7 +17,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlainI18NService, ALAIN_I18N_TOKEN } from '@co/theme';
+import { CoI18NService, CO_I18N_TOKEN } from '@co/common';
 import { InputBoolean, InputNumber } from '@co/core';
 import { Subject } from 'rxjs';
 import { debounceTime, filter, takeUntil } from 'rxjs/operators';
@@ -87,9 +87,9 @@ export class ReuseTabComponent implements OnInit, OnChanges, OnDestroy {
     private cdr: ChangeDetectorRef,
     private router: Router,
     private route: ActivatedRoute,
-    @Optional() @Inject(ALAIN_I18N_TOKEN) private i18nSrv: AlainI18NService,
+    @Optional() @Inject(CO_I18N_TOKEN) private i18nSrv: CoI18NService,
     @Inject(DOCUMENT) private doc: any,
-  ) { }
+  ) {}
 
   private genTit(title: ReuseTitle): string {
     return title.i18n && this.i18nSrv ? this.i18nSrv.fanyi(title.i18n) : title.text!;

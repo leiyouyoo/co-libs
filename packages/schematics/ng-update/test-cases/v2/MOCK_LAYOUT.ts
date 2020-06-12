@@ -27,7 +27,7 @@ import {
   NavigationCancel,
 } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { ScrollService, MenuService, SettingsService } from '@co/theme';
+import { ScrollService, MenuService, SettingsService } from '@co/common';
 
 @Component({
   selector: 'layout-default',

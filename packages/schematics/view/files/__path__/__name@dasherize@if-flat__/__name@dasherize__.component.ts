@@ -2,7 +2,7 @@ import { Component, OnInit<% if (!!viewEncapsulation) { %>, ViewEncapsulation <%
 import { ActivatedRoute } from '@angular/router'; <% } %>
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { _HttpClient } from '@co/theme';
+import { _HttpClient } from '@co/common';
 
 @Component({
   selector: '<%= selector %>',<% if (inlineTemplate) { %>

@@ -6,7 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { CoAuthConfig, CO_CONFIG } from '@co/core';
 import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { DelonAuthModule } from '../../auth.module';
+import { CoAuthModule } from '../../auth.module';
 import { DA_SERVICE_TOKEN } from '../interface';
 import { JWTInterceptor } from './jwt.interceptor';
 import { JWTTokenModel } from './jwt.model';
@@ -37,7 +37,7 @@ describe('auth: jwt.interceptor', () => {
             component: MockComponent,
           },
         ]),
-        DelonAuthModule,
+        CoAuthModule,
       ],
       providers: [
         { provide: CO_CONFIG, useValue: { auth: options } },
@@ -76,4 +76,4 @@ describe('auth: jwt.interceptor', () => {
 });
 
 @Component({ template: '' })
-class MockComponent { }
+class MockComponent {}

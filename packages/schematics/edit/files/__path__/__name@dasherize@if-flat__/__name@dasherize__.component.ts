@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
   import { Location } from '@angular/common'; <% } %> <% if (modal) { %>
 import { NzModalRef } from 'ng-zorro-antd/modal'; <% } %>
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { _HttpClient } from '@co/theme';
+import { _HttpClient } from '@co/common';
 import { SFSchema, SFUISchema } from '@co/form';
 
 @Component({

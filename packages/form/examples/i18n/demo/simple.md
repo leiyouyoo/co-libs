@@ -17,7 +17,7 @@ The `name` element uses built-in i18n method; `password` uses external i18n meth
 import { Component, Inject, ViewChild } from '@angular/core';
 import { SFSchema, SFComponent } from '@co/form';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { ALAIN_I18N_TOKEN } from '@co/theme';
+import { CO_I18N_TOKEN } from '@co/common';
 import { I18NService } from '@core/i18n/service';
 
 @Component({
@@ -58,7 +58,7 @@ export class DemoComponent {
     };
   }
 
-  constructor(public msg: NzMessageService, @Inject(ALAIN_I18N_TOKEN) private i18n: I18NService) {}
+  constructor(public msg: NzMessageService, @Inject(CO_I18N_TOKEN) private i18n: I18NService) {}
 
   changeLang(type: 'srv' | 'ref') {
     this.i18n.use(this.i18n.zone === 'zh' ? 'en-US' : 'zh-CN');

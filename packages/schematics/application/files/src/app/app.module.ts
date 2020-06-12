@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // #region default language
 // Reference: https://ng-alain.com/docs/i18n
 import { default as ngLang } from '@angular/common/locales/zh';
-import { DELON_LOCALE, zh_CN as delonLang } from '@co/theme';
+import { CO_LOCALE, zh_CN as delonLang } from '@co/common';
 import { zhCN as dateLang } from 'date-fns/locale';
 import { NZ_DATE_LOCALE, NZ_I18N, zh_CN as zorroLang } from 'ng-zorro-antd/i18n';
 const LANG = {
@@ -24,13 +24,13 @@ const LANG_PROVIDES = [
   { provide: LOCALE_ID, useValue: LANG.abbr },
   { provide: NZ_I18N, useValue: LANG.zorro },
   { provide: NZ_DATE_LOCALE, useValue: LANG.date },
-  { provide: DELON_LOCALE, useValue: LANG.delon },
+  { provide: CO_LOCALE, useValue: LANG.delon },
 ];
 // #endregion
 <% if (i18n) { %>// #region i18n services
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
   import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-  import { ALAIN_I18N_TOKEN } from '@co/theme';
+  import { CO_I18N_TOKEN } from '@co/common';
   import { I18NService } from '@core';
 
   export function I18nHttpLoaderFactory(http: HttpClient) {
@@ -48,7 +48,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
   ];
 
   const I18NSERVICE_PROVIDES = [
-    { provide: ALAIN_I18N_TOKEN, useClass: I18NService, multi: false }
+    { provide: CO_I18N_TOKEN, useClass: I18NService, multi: false }
   ];
   // #region
   <% } %>

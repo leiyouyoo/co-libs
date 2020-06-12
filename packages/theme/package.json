@@ -21,9 +21,6 @@
     "component"
   ],
   "dependencies": {
-    "ng-zorro-antd": "ZORRO-0.0.0-PLACEHOLDER",
-    "@co/acl": "PEER-0.0.0-PLACEHOLDER",
-    "@co/core": "PEER-0.0.0-PLACEHOLDER"
   },
   "sideEffects": false
 }

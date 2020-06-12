@@ -32,15 +32,10 @@
       "ng-zorro-antd/tree-select": "ng-zorro-antd/tree-select",
       "ng-zorro-antd/upload": "ng-zorro-antd/upload",
       "ng-zorro-antd/i18n": "ng-zorro-antd/i18n",
-      "@co/theme": "co.theme",
+      "@co/common": "co.common",
       "@co/acl": "co.acl",
       "@co/core": "co.core"
     }
   },
-  "whitelistedNonPeerDependencies": [
-    "tslib",
-    "@co/theme",
-    "@co/core",
-    "@co/acl"
-  ]
+  "whitelistedNonPeerDependencies": ["tslib", "@co/common", "@co/core", "@co/acl"]
 }

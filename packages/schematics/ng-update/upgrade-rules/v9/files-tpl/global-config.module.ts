@@ -1,7 +1,7 @@
 export default `import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { throwIfAlreadyLoaded } from '@core';
 import { DelonMockModule } from '@co/mock';
-import { AlainThemeModule } from '@co/theme';
+import { AlainThemeModule } from '@co/common';
 import { AlainConfig, ALAIN_CONFIG } from '@co/core';
 
 // Please refer to: https://ng-alain.com/docs/global-config

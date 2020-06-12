@@ -14,7 +14,7 @@ registerLocaleData(localeZh);
 import { RoutesModule } from './routes/routes.module';
 import { SharedModule } from './shared/shared.module';
 
-import { ALAIN_I18N_TOKEN } from '@co/theme';
+import { CO_I18N_TOKEN } from '@co/common';
 import { I18NService } from './core/i18n/service';
 import { StartupService } from './core/startup.service';
 
@@ -66,7 +66,7 @@ export function StartupServiceFactory(startupService: StartupService) {
     }),
   ],
   providers: [
-    { provide: ALAIN_I18N_TOKEN, useClass: I18NService, multi: false },
+    { provide: CO_I18N_TOKEN, useClass: I18NService, multi: false },
     StartupService,
     {
       provide: APP_INITIALIZER,

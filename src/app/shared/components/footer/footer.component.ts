@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Input, NgZone, OnInit } from '@angular/core';
-import { ALAIN_I18N_TOKEN } from '@co/theme';
+import { CO_I18N_TOKEN } from '@co/common';
 import { copy, InputBoolean, LazyService } from '@co/core';
 import { NzIconService } from 'ng-zorro-antd/icon';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -22,13 +22,13 @@ export class FooterComponent implements OnInit {
   @Input() @InputBoolean() small = false;
 
   constructor(
-    @Inject(ALAIN_I18N_TOKEN) public i18n: I18NService,
+    @Inject(CO_I18N_TOKEN) public i18n: I18NService,
     private msg: NzMessageService,
     private lazy: LazyService,
     private iconSrv: NzIconService,
     private ngZone: NgZone,
     private cdr: ChangeDetectorRef,
-  ) { }
+  ) {}
 
   onCopy(value: string) {
     copy(value).then(() => this.msg.success(this.i18n.fanyi('app.demo.copied')));

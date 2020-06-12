@@ -4,13 +4,13 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { WINDOW } from '@co/theme';
+import { WINDOW } from '@co/core';
 import { GlobalFooterModule } from './global-footer.module';
 import { GlobalFooterLink } from './global-footer.types';
 
 class MockWindow {
   location = new MockLocation();
-  open() { }
+  open() {}
 }
 class MockLocation {
   private url: string;

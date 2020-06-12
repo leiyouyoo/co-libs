@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild<% if (!!viewEncapsulation) { %>, ViewEncapsulation <% }%> <% if (changeDetection !== 'Default') { %>, ChangeDetectionStrategy <% }%> } from '@angular/core';
-import { _HttpClient, ModalHelper } from '@co/theme';
+import { _HttpClient, ModalHelper } from '@co/common';
 import { STColumn, STComponent } from '@co/cbc/basic/st';
 import { SFSchema } from '@co/form';
 

@@ -53,6 +53,11 @@ export class CodeService {
       '@co/mock': NGALAIN_VERSION,
       '@co/form': NGALAIN_VERSION,
       '@co/core': NGALAIN_VERSION,
+      '@co/common': NGALAIN_VERSION,
+      '@co/im': NGALAIN_VERSION,
+      '@co/map': NGALAIN_VERSION,
+      '@co/cms': NGALAIN_VERSION,
+      '@co/cds': NGALAIN_VERSION,
       extend: '*',
       qrious: '*',
     };

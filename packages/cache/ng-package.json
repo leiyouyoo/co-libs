@@ -8,5 +8,6 @@
     "umdModuleIds": {
       "@co/core": "co.core"
     }
-  }
+  },
+  "whitelistedNonPeerDependencies": ["tslib", "angular", "@co/core"]
 }

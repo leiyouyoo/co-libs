@@ -1,5 +1,5 @@
 import { ACLService } from '@co/acl';
-import { AlainI18NService, AlainI18NServiceFake } from '@co/theme';
+import { CoI18NService, CoI18NServiceFake } from '@co/common';
 import { deepGet } from '@co/core';
 import { STColumnSource } from '../st-column-source';
 import { STRowSource } from '../st-row.directive';
@@ -8,7 +8,7 @@ import { ST_DEFULAT_CONFIG } from '../st.config';
 import { STColumn, STColumnButtonPop, STIcon } from '../st.interfaces';
 
 const i18nResult = 'zh';
-class MockI18NServiceFake extends AlainI18NServiceFake {
+class MockI18NServiceFake extends CoI18NServiceFake {
   fanyi(_key: string) {
     return i18nResult;
   }
@@ -22,7 +22,7 @@ class MockDomSanitizer {
 
 describe('st: column-source', () => {
   let aclSrv: ACLService | null;
-  let i18nSrv: AlainI18NService | null;
+  let i18nSrv: CoI18NService | null;
   let srv: STColumnSource;
   let rowSrv: STRowSource;
   let stWidgetRegistry: STWidgetRegistry;
@@ -533,7 +533,7 @@ describe('st: column-source', () => {
             {
               title: '',
               index: 'id',
-              selections: [{ text: '1', select: () => { } }],
+              selections: [{ text: '1', select: () => {} }],
             },
           ],
           1,
@@ -544,7 +544,7 @@ describe('st: column-source', () => {
             {
               title: '',
               index: 'id',
-              selections: [{ text: '1', select: () => { }, acl: 'admin' }],
+              selections: [{ text: '1', select: () => {}, acl: 'admin' }],
             },
           ],
           0,

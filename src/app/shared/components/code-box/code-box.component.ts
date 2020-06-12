@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Input, OnDestroy } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AppService } from '@core/app.service';
-import { ALAIN_I18N_TOKEN } from '@co/theme';
+import { CO_I18N_TOKEN } from '@co/common';
 import { copy, deepCopy } from '@co/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Subject } from 'rxjs';
@@ -49,7 +49,7 @@ export class CodeBoxComponent implements OnDestroy {
 
   constructor(
     private appService: AppService,
-    @Inject(ALAIN_I18N_TOKEN) private i18n: I18NService,
+    @Inject(CO_I18N_TOKEN) private i18n: I18NService,
     private msg: NzMessageService,
     private codeSrv: CodeService,
     private sanitizer: DomSanitizer,

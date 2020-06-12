@@ -5,7 +5,7 @@ import { TestBed } from '@angular/core/testing';
 import { DefaultUrlSerializer, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CoAuthConfig, CO_CONFIG } from '@co/core';
-import { DelonAuthModule } from '../../auth.module';
+import { CoAuthModule } from '../../auth.module';
 import { DA_SERVICE_TOKEN, ITokenModel, ITokenService } from '../interface';
 import { SimpleInterceptor } from './simple.interceptor';
 import { SimpleTokenModel } from './simple.model';
@@ -51,7 +51,7 @@ describe('auth: simple.interceptor', () => {
 
   function genModule(options: CoAuthConfig, tokenData?: SimpleTokenModel) {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([]), DelonAuthModule],
+      imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([]), CoAuthModule],
       providers: [
         { provide: CO_CONFIG, useValue: { auth: options } },
         { provide: Router, useValue: mockRouter },

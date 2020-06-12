@@ -16,7 +16,8 @@
     "co-libs"
   ],
   "dependencies": {
-    "extend": "^3.0.0"
+    "@co/core": "PEER-0.0.0-PLACEHOLDER",
+    "@co/common": "PEER-0.0.0-PLACEHOLDER"
   },
   "sideEffects": false
 }

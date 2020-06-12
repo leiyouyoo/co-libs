@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { createTestContext } from '@co/testing';
-import { REP_MAX } from '@co/theme/src/services/responsive/responsive';
+import { REP_MAX } from '@co/common/src/services/responsive/responsive';
 import { SGContainerComponent } from './sg-container.component';
 import { SGComponent } from './sg.component';
 import { SGModule } from './sg.module';

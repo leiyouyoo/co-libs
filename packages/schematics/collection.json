@@ -14,7 +14,7 @@
     "plugin": {
       "factory": "./plugin",
       "schema": "./plugin/schema.json",
-      "description": "Enable or disable ng-alain plugin."
+      "description": "Enable or disable co-libs plugin."
     },
     "module": {
       "factory": "./module",

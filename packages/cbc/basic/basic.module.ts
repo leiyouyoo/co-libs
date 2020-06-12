@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { warnDeprecation } from '@co/core';
 
 // #region all modules
 import { AvatarListModule } from '@co/cbc/basic/avatar-list';
@@ -70,7 +69,7 @@ const MODULES = [
 @NgModule({ exports: MODULES })
 export class CoBasicCompoentsModule {
   constructor() {
-    warnDeprecation(
+    console.warn(
       "The `DeloncbcModule` has been deprecated and will be removed in 10.0.0. Please use secondary entry instead.\ne.g. `import { STModule } from 'ng-zorro-antd/st';`",
     );
   }

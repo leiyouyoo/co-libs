@@ -8,14 +8,14 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { dispatchDropDown } from '@co/testing';
-import { ALAIN_I18N_TOKEN, DatePipe, DelonLocaleModule, DelonLocaleService, DrawerHelper, en_US, ModalHelper } from '@co/theme';
+import { CO_I18N_TOKEN, DatePipe, CoLocaleModule, CoLocaleService, DrawerHelper, en_US, ModalHelper } from '@co/common';
 import { CoConfig, CO_CONFIG, deepCopy, deepGet } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzPaginationComponent } from 'ng-zorro-antd/pagination';
 import { Observable, of, Subject } from 'rxjs';
-import { AlainI18NService, AlainI18NServiceFake } from '../../../../theme/src/services/i18n/i18n';
+import { CoI18NService, CoI18NServiceFake } from '../../../../common/src/services/i18n/i18n';
 import { STDataSource } from '../st-data-source';
 import { STExport } from '../st-export';
 import { STComponent } from '../st.component';
@@ -69,7 +69,7 @@ const USERS: any[] = genData(DEFAULTCOUNT);
 
 const i18nResult = 'zh';
 @Injectable()
-class MockI18NServiceFake extends AlainI18NServiceFake {
+class MockI18NServiceFake extends CoI18NServiceFake {
   fanyi(_key: string) {
     return i18nResult;
   }
@@ -87,7 +87,7 @@ describe('abc: table', () => {
   let dl: DebugElement;
   let page: PageObject;
   let comp: STComponent;
-  let i18nSrv: AlainI18NService;
+  let i18nSrv: CoI18NService;
   let registerWidget: STWidgetRegistry;
 
   function genModule(other: { template?: string; i18n?: boolean; minColumn?: boolean; providers?: any[]; createComp?: boolean }) {
@@ -108,11 +108,11 @@ describe('abc: table', () => {
       NzModalModule,
       NzDrawerModule,
       STModule,
-      DelonLocaleModule,
+      CoLocaleModule,
     ];
     const providers = [
       {
-        provide: ALAIN_I18N_TOKEN,
+        provide: CO_I18N_TOKEN,
         useClass: MockI18NServiceFake,
       },
     ];
@@ -127,8 +127,8 @@ describe('abc: table', () => {
     if (other.template) TestBed.overrideTemplate(TestComponent, other.template);
     registerWidget = TestBed.inject(STWidgetRegistry);
     registerWidget.register('test', TestWidgetComponent);
-    // ALAIN_I18N_TOKEN 默认为 root 会导致永远都会存在
-    i18nSrv = TestBed.inject(ALAIN_I18N_TOKEN);
+    // CO_I18N_TOKEN 默认为 root 会导致永远都会存在
+    i18nSrv = TestBed.inject(CO_I18N_TOKEN);
     if (other.createComp) {
       createComp(other.minColumn, TestComponent);
     }
@@ -877,7 +877,7 @@ describe('abc: table', () => {
             httpBed.expectOne(req => req.url === '/mock2').flush([{}]);
             httpBed.expectOne(req => req.url === '/mock1').flush([{}, {}]);
             expect(true).toBe(false);
-          } catch { }
+          } catch {}
 
           fixture.whenStable().then(() => {
             expect(comp._data.length).toBe(1);
@@ -1775,7 +1775,7 @@ describe('abc: table', () => {
       page.updateColumn([{ title: { i18n: curLang }, index: 'id' }]);
       const el = page.getEl('.ant-pagination-total-text');
       expect(el.textContent!.trim()).toContain(`共`);
-      TestBed.inject<DelonLocaleService>(DelonLocaleService).setLocale(en_US);
+      TestBed.inject<CoLocaleService>(CoLocaleService).setLocale(en_US);
       page.cd();
       expect(el.textContent!.trim()).toContain(`of`);
       page.asyncEnd();
@@ -2042,8 +2042,8 @@ class TestComponent {
   widthMode: STWidthMode = {};
   virtualScroll = false;
 
-  error() { }
-  change() { }
+  error() {}
+  change() {}
 }
 
 @Component({
@@ -2063,7 +2063,7 @@ class TestComponent {
     </st>
   `,
 })
-class TestExpandComponent extends TestComponent { }
+class TestExpandComponent extends TestComponent {}
 
 @Component({
   template: ` <div class="widget-id-value">{{ id }}</div>

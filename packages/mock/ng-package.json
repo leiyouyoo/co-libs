@@ -6,7 +6,9 @@
     "flatModuleFile": "mock",
     "entryFile": "public_api.ts",
     "umdModuleIds": {
+      "ng-zorro-antd": "ng-zorro-antd",
       "@co/core": "co.core"
     }
-  }
+  },
+  "whitelistedNonPeerDependencies": ["tslib", "@co/core"]
 }

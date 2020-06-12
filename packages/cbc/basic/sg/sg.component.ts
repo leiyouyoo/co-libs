@@ -10,7 +10,7 @@ import {
   Renderer2,
   ViewEncapsulation,
 } from '@angular/core';
-import { ResponsiveService } from '@co/theme';
+import { ResponsiveService } from '@co/common';
 import { InputNumber } from '@co/core';
 import { SGContainerComponent } from './sg-container.component';
 

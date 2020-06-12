@@ -9,7 +9,7 @@ import {
   Output,
   ViewEncapsulation,
 } from '@angular/core';
-import { DelonLocaleService, LocaleData } from '@co/theme';
+import { CoLocaleService, LocaleData } from '@co/common';
 import { InputBoolean } from '@co/core';
 import { Subscription } from 'rxjs';
 
@@ -36,7 +36,7 @@ export class TagSelectComponent implements OnInit, OnDestroy {
   // tslint:disable-next-line:no-output-native
   @Output() readonly change = new EventEmitter<boolean>();
 
-  constructor(private i18n: DelonLocaleService, private cdr: ChangeDetectorRef) { }
+  constructor(private i18n: CoLocaleService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.i18n$ = this.i18n.change.subscribe(() => {

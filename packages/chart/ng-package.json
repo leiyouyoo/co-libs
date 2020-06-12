@@ -7,15 +7,10 @@
     "entryFile": "public_api.ts",
     "umdModuleIds": {
       "ng-zorro-antd": "ng-zorro-antd",
-      "@co/theme": "co.theme",
+      "@co/common": "co.common",
       "@co/core": "co.core",
       "@antv/g2": "G2"
     }
   },
-  "whitelistedNonPeerDependencies": [
-    "tslib",
-    "@co/theme",
-    "@co/core",
-    "@antv/g2"
-  ]
+  "whitelistedNonPeerDependencies": ["tslib", "@co/common", "@co/core", "@antv/g2"]
 }

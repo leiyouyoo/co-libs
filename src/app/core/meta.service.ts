@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { ALAIN_I18N_TOKEN } from '@co/theme';
+import { CO_I18N_TOKEN } from '@co/common';
 import { I18NService } from '../core/i18n/service';
 import { Meta, MetaList, MetaSearchGroup, MetaSearchGroupItem } from '../interfaces';
 import { META as ACLMeta } from '../routes/gen/acl/meta';
@@ -35,7 +35,7 @@ const FULLMETAS: Meta[] = [
   MapMeta,
   MicroserviceMeta,
   BasicDataMeta,
-  CoreMeta
+  CoreMeta,
 ] as any;
 
 @Injectable({ providedIn: 'root' })
@@ -46,7 +46,7 @@ export class MetaService {
   next: any;
   prev: any;
 
-  constructor(@Inject(ALAIN_I18N_TOKEN) private i18n: I18NService) {
+  constructor(@Inject(CO_I18N_TOKEN) private i18n: I18NService) {
     // plat titles
     for (const g of FULLMETAS) {
       for (const item of g.list!) {
@@ -54,8 +54,8 @@ export class MetaService {
         item._t =
           typeof curTitle !== 'string'
             ? Object.values(curTitle!)
-              .map(v => v)
-              .join('-')
+                .map(v => v)
+                .join('-')
             : curTitle;
       }
     }
@@ -84,7 +84,6 @@ export class MetaService {
     const path = JSON.stringify(filePath);
     return JSON.parse(path.replace(/\\/g, `/`).replace(/\/\//g, `/`));
   }
-
 
   private getPageName(url: string) {
     return url.split('?')[0].split('/')[2].toLowerCase().trim();
@@ -162,7 +161,7 @@ export class MetaService {
   }
 
   genMenus(url: string): void {
-    debugger
+    debugger;
     const category = this.getCatgory(url);
     if (!category) return;
 
@@ -188,7 +187,7 @@ export class MetaService {
         group.push(groupItem);
       }
       const entry: any = {
-        url: this.convertUrl((meta.url || item.route || `/${category.name}/${item.name}/zh`)),
+        url: this.convertUrl(meta.url || item.route || `/${category.name}/${item.name}/zh`),
         title: this.i18n.get(meta.title),
         subtitle: meta.subtitle,
         order: item.order,

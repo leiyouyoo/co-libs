@@ -2,7 +2,7 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { Type } from '@angular/core';
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
-import { AlainThemeModule, _HttpClient } from '@co/theme';
+import { AlainThemeModule, _HttpClient } from '@co/common';
 import { CoCacheConfig, CO_CONFIG } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { Observable, of } from 'rxjs';

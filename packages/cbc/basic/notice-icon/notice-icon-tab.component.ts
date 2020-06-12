@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
-import { LocaleData } from '@co/theme';
+import { LocaleData } from '@co/common';
 import { NoticeIconSelect, NoticeItem } from './notice-icon.types';
 
 @Component({

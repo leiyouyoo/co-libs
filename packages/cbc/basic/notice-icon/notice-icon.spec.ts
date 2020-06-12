@@ -4,7 +4,7 @@ import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testin
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { createTestContext } from '@co/testing';
-import { DelonLocaleModule, DelonLocaleService, en_US, zh_CN } from '@co/theme';
+import { CoLocaleModule, CoLocaleService, en_US, zh_CN } from '@co/common';
 import { NoticeIconComponent } from './notice-icon.component';
 import { NoticeIconModule } from './notice-icon.module';
 import { NoticeItem } from './notice-icon.types';
@@ -16,7 +16,7 @@ describe('abc: notice-icon', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NoopAnimationsModule, NoticeIconModule, HttpClientTestingModule, DelonLocaleModule],
+      imports: [NoopAnimationsModule, NoticeIconModule, HttpClientTestingModule, CoLocaleModule],
       declarations: [TestComponent],
     });
     ({ fixture, dl, context } = createTestContext(TestComponent));
@@ -106,7 +106,7 @@ describe('abc: notice-icon', () => {
     fixture.whenStable().then(() => {
       const a = document.querySelector('.notice-icon__notfound')! as HTMLElement;
       expect(a.innerText).toBe(zh_CN.noticeIcon.emptyText);
-      const srv = TestBed.inject<DelonLocaleService>(DelonLocaleService) as DelonLocaleService;
+      const srv = TestBed.inject<CoLocaleService>(CoLocaleService) as CoLocaleService;
       srv.setLocale(en_US);
       fixture.detectChanges();
       expect(a.innerText).toBe(en_US.noticeIcon.emptyText);
@@ -178,7 +178,7 @@ class TestComponent {
   count = 10;
   loading = false;
   popoverVisible: boolean;
-  select() { }
-  clear() { }
-  popupVisibleChange() { }
+  select() {}
+  clear() {}
+  popupVisibleChange() {}
 }

@@ -2,7 +2,7 @@ import { Component, NgModule, NgModuleFactoryLoader } from '@angular/core';
 import { fakeAsync, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule, SpyNgModuleFactoryLoader } from '@angular/router/testing';
-import { DelonAuthModule } from '../../auth.module';
+import { CoAuthModule } from '../../auth.module';
 import { DA_SERVICE_TOKEN, ITokenService } from '../interface';
 import { JWTGuard } from './jwt.guard';
 
@@ -35,7 +35,7 @@ describe('auth: JWTGuard', () => {
             component: MockComponent,
           },
         ]),
-        DelonAuthModule,
+        CoAuthModule,
       ],
     });
     srv = TestBed.inject(DA_SERVICE_TOKEN);

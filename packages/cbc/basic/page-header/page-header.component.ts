@@ -17,7 +17,7 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { ReuseTabService } from '@co/cbc/basic/reuse-tab';
-import { AlainI18NService, ALAIN_I18N_TOKEN, MenuService, SettingsService, TitleService } from '@co/theme';
+import { CoI18NService, CO_I18N_TOKEN, MenuService, SettingsService, TitleService } from '@co/common';
 import { CoConfigService, CoPageHeaderConfig, InputBoolean, InputNumber, isEmpty } from '@co/core';
 import { NzAffixComponent } from 'ng-zorro-antd/affix';
 import { merge, Subject } from 'rxjs';
@@ -90,7 +90,7 @@ export class PageHeaderComponent implements OnInit, OnChanges, AfterViewInit, On
     private renderer: Renderer2,
     private router: Router,
     private menuSrv: MenuService,
-    @Optional() @Inject(ALAIN_I18N_TOKEN) private i18nSrv: AlainI18NService,
+    @Optional() @Inject(CO_I18N_TOKEN) private i18nSrv: CoI18NService,
     @Optional() @Inject(TitleService) private titleSrv: TitleService,
     @Optional() @Inject(ReuseTabService) private reuseSrv: ReuseTabService,
     private cdr: ChangeDetectorRef,

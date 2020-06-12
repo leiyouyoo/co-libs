@@ -9,6 +9,7 @@ DEBUG=false
 PACKAGES=(core
   testing
   acl
+  common
   theme
   cbc
   auth

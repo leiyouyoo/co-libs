@@ -6,7 +6,8 @@ import { By } from '@angular/platform-browser';
 import { Router, RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ACLService } from '@co/acl';
-import { AlainThemeModule, MenuIcon, MenuService, SettingsService, WINDOW } from '@co/theme';
+import { WINDOW } from '@co/core';
+import { CoCommonModule, MenuIcon, MenuService, SettingsService } from '@co/common';
 import { deepCopy } from '@co/core';
 import { SidebarNavComponent } from './sidebar-nav.component';
 import { SidebarNavModule } from './sidebar-nav.module';
@@ -69,7 +70,7 @@ class MockACLService {
 
 class MockWindow {
   location = new MockLocation();
-  open() { }
+  open() {}
 }
 class MockLocation {
   private url: string;
@@ -93,7 +94,7 @@ describe('abc: sidebar-nav', () => {
 
   function createModule() {
     TestBed.configureTestingModule({
-      imports: [RouterModule.forRoot([]), AlainThemeModule, HttpClientTestingModule, SidebarNavModule],
+      imports: [RouterModule.forRoot([]), CoCommonModule, HttpClientTestingModule, SidebarNavModule],
       declarations: [TestComponent],
       providers: [
         { provide: ACLService, useClass: MockACLService },
@@ -462,7 +463,7 @@ describe('abc: sidebar-nav', () => {
       TestBed.configureTestingModule({
         imports: [
           RouterModule.forRoot([]),
-          AlainThemeModule,
+          CoCommonModule,
           SidebarNavModule,
           RouterTestingModule.withRoutes([
             { path: 'user', component: TestRouteComponent },
@@ -585,8 +586,8 @@ class TestComponent {
   autoCloseUnderPad = false;
   recursivePath = false;
   openStrictly = false;
-  select() { }
+  select() {}
 }
 
 @Component({ template: `` })
-class TestRouteComponent { }
+class TestRouteComponent {}

@@ -1,0 +1,16 @@
+{
+  "extends": "../tsconfig.lib.prod.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": ".",
+    "paths": {
+      "@co/acl": ["../../dist/@co/acl"],
+      "@co/core": ["../../dist/@co/core"]
+    }
+  },
+  "angularCompilerOptions": {
+    "annotateForClosureCompiler": true,
+    "strictMetadataEmit": false,
+    "skipTemplateCodegen": true
+  }
+}

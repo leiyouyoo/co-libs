@@ -2,7 +2,7 @@ import { Component, DebugElement, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { createTestContext } from '@co/testing';
-import { REP_MAX } from '@co/theme';
+import { REP_MAX } from '@co/common';
 import { SVContainerComponent } from './sv-container.component';
 import { SVComponent } from './sv.component';
 import { SVModule } from './sv.module';

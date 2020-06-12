@@ -6,10 +6,9 @@
     "flatModuleFile": "cds",
     "entryFile": "public_api.ts",
     "umdModuleIds": {
-      "ng-zorro-antd/core": "ng-zorro-antd/core"
+      "@co/core": "co.core",
+      "@co/common": "co.common"
     }
   },
-  "whitelistedNonPeerDependencies": [
-    "."
-  ]
+  "whitelistedNonPeerDependencies": ["tslib", "angular", "@co/core", "@co/common"]
 }

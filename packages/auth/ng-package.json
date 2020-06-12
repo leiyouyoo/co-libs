@@ -4,6 +4,10 @@
   "deleteDestPath": true,
   "lib": {
     "flatModuleFile": "auth",
-    "entryFile": "public_api.ts"
-  }
+    "entryFile": "public_api.ts",
+    "umdModuleIds": {
+      "@co/core": "co.core"
+    }
+  },
+  "whitelistedNonPeerDependencies": ["tslib", "angular", "@co/core"]
 }

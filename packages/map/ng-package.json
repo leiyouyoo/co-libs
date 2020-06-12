@@ -6,10 +6,10 @@
     "flatModuleFile": "map",
     "entryFile": "public_api.ts",
     "umdModuleIds": {
-      "ng-zorro-antd/core": "ng-zorro-antd/core"
+      "ng-zorro-antd": "ng-zorro-antd",
+      "@co/common": "co.common",
+      "@co/core": "co.core"
     }
   },
-  "whitelistedNonPeerDependencies": [
-    "."
-  ]
+  "whitelistedNonPeerDependencies": ["tslib", "@co/common", "@co/core"]
 }

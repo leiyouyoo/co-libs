@@ -17,7 +17,7 @@ import {
 } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ACLService } from '@co/acl';
-import { AlainI18NService, ALAIN_I18N_TOKEN, DelonLocaleService, LocaleData } from '@co/theme';
+import { CoI18NService, CO_I18N_TOKEN, CoLocaleService, LocaleData } from '@co/common';
 import { CoConfigService, CoSFConfig, deepCopy, InputBoolean } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { merge, Observable, Subject } from 'rxjs';
@@ -207,9 +207,9 @@ export class SFComponent implements OnInit, OnChanges, OnDestroy {
     private terminator: TerminatorService,
     private dom: DomSanitizer,
     private cdr: ChangeDetectorRef,
-    private localeSrv: DelonLocaleService,
+    private localeSrv: CoLocaleService,
     @Optional() private aclSrv: ACLService,
-    @Optional() @Inject(ALAIN_I18N_TOKEN) private i18nSrv: AlainI18NService,
+    @Optional() @Inject(CO_I18N_TOKEN) private i18nSrv: CoI18NService,
     cogSrv: CoConfigService,
   ) {
     this.options = mergeConfig(cogSrv);

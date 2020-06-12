@@ -5,13 +5,13 @@ import { By } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { createTestContext } from '@co/testing';
-import { AlainI18NService, AlainI18NServiceFake, ALAIN_I18N_TOKEN, MenuService, SettingsService, TitleService } from '@co/theme';
+import { CoI18NService, CoI18NServiceFake, CO_I18N_TOKEN, MenuService, SettingsService, TitleService } from '@co/common';
 import { NzAffixComponent } from 'ng-zorro-antd/affix';
 import { ReuseTabService } from '../reuse-tab/reuse-tab.service';
 import { PageHeaderComponent } from './page-header.component';
 import { PageHeaderModule } from './page-header.module';
 
-class MockI18NServiceFake extends AlainI18NServiceFake {
+class MockI18NServiceFake extends CoI18NServiceFake {
   fanyi(key: string) {
     return key;
   }
@@ -213,13 +213,13 @@ describe('abc: page-header', () => {
     });
 
     describe('[i18n]', () => {
-      let i18n: AlainI18NService;
+      let i18n: CoI18NService;
       beforeEach(() => {
-        TestBed.overrideProvider(ALAIN_I18N_TOKEN, {
+        TestBed.overrideProvider(CO_I18N_TOKEN, {
           useFactory: () => new MockI18NServiceFake(),
         });
         ({ fixture, dl, context } = createTestContext(TestI18nComponent));
-        i18n = TestBed.inject(ALAIN_I18N_TOKEN);
+        i18n = TestBed.inject(CO_I18N_TOKEN);
         menuSrv = TestBed.inject<MenuService>(MenuService);
         router = TestBed.inject<Router>(Router);
         fixture.detectChanges();
@@ -359,7 +359,7 @@ describe('abc: page-header', () => {
         setTitle = jasmine.createSpy();
       }
       class MockReuse {
-        set title(_val: string) { }
+        set title(_val: string) {}
         get title(): string {
           return '';
         }
@@ -440,12 +440,12 @@ class TestBaseComponent {
     </page-header>
   `,
 })
-class TestComponent extends TestBaseComponent { }
+class TestComponent extends TestBaseComponent {}
 
 @Component({
   template: ` <page-header #comp [title]="title" [home]="home" [homeI18n]="homeI18n" [autoBreadcrumb]="autoBreadcrumb"></page-header> `,
 })
-class TestAutoBreadcrumbComponent extends TestBaseComponent { }
+class TestAutoBreadcrumbComponent extends TestBaseComponent {}
 
 @Component({
   template: `
@@ -459,4 +459,4 @@ class TestAutoBreadcrumbComponent extends TestBaseComponent { }
     ></page-header>
   `,
 })
-class TestI18nComponent extends TestBaseComponent { }
+class TestI18nComponent extends TestBaseComponent {}

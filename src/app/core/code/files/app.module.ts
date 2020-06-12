@@ -15,7 +15,7 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 registerLocaleData(en);
 
-import { AlainThemeModule } from '@co/theme';
+import { AlainThemeModule } from '@co/common';
 import { DemoDelonABCModule } from './delon-abc.module';
 import { DemoDelonChartModule } from './delon-chart.module';
 import { DelonFormModule } from '@co/form';
@@ -31,7 +31,7 @@ const antDesignIcons = AllIcons as {
 };
 const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key]);
 
-import { VERSION as VERSION_ALAIN } from '@co/theme';
+import { VERSION as VERSION_ALAIN } from '@co/common';
 import { VERSION as VERSION_ZORRO } from 'ng-zorro-antd/version';
 import { ${componentName} } from './app.component';
 

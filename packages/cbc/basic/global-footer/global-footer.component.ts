@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, ContentChildren, Inject, Input, QueryList, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { WINDOW } from '@co/theme';
+import { WINDOW } from '@co/core';
 import { GlobalFooterItemComponent } from './global-footer-item.component';
 import { GlobalFooterLink } from './global-footer.types';
 
@@ -28,7 +28,7 @@ export class GlobalFooterComponent {
 
   @ContentChildren(GlobalFooterItemComponent) items!: QueryList<GlobalFooterItemComponent>;
 
-  constructor(private router: Router, @Inject(WINDOW) private win: Window, private dom: DomSanitizer) { }
+  constructor(private router: Router, @Inject(WINDOW) private win: Window, private dom: DomSanitizer) {}
 
   to(item: GlobalFooterLink) {
     if (!item.href) {

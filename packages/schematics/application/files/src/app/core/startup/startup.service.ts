@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { zip } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { MenuService, SettingsService, TitleService, ALAIN_I18N_TOKEN } from '@co/theme';
+import { MenuService, SettingsService, TitleService, CO_I18N_TOKEN } from '@co/common';
 import { DA_SERVICE_TOKEN, ITokenService } from '@co/auth';
 import { ACLService } from '@co/acl'; <% if (i18n) { %>
 import { TranslateService } from '@ngx-translate/core';
@@ -23,7 +23,7 @@ export class StartupService {
     iconSrv: NzIconService,
     private menuService: MenuService,<% if (i18n) { %>
       private translate: TranslateService,
-    @Inject(ALAIN_I18N_TOKEN) private i18n: I18NService, <% } %>
+    @Inject(CO_I18N_TOKEN) private i18n: I18NService, <% } %>
   private settingService: SettingsService,
     private aclService: ACLService,
       private titleService: TitleService,
@@ -45,10 +45,10 @@ export class StartupService {
           return [];
         })
       ).subscribe(([<% if (i18n) { %> langData, <% } %> appData]) => {
-      <% if (i18n) { %>
-        // Setting language data
-        this.translate.setTranslation(this.i18n.defaultLang, langData);
-        this.translate.setDefaultLang(this.i18n.defaultLang); <% } %>
+    <% if (i18n) { %>
+      // Setting language data
+      this.translate.setTranslation(this.i18n.defaultLang, langData);
+      this.translate.setDefaultLang(this.i18n.defaultLang); <% } %>
 
       // Application data
       const res: any = appData;

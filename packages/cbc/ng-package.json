@@ -5,14 +5,5 @@
     "flatModuleFile": "cbc",
     "entryFile": "public_api.ts"
   },
-  "whitelistedNonPeerDependencies": [
-    "tslib",
-    "file-saver",
-    "date-fns",
-    "qrious",
-    "ngx-countdown",
-    "@co/theme",
-    "@co/core",
-    "@co/acl"
-  ]
+  "whitelistedNonPeerDependencies": ["tslib", "file-saver", "date-fns", "qrious", "ngx-countdown", "@co/common", "@co/core", "@co/acl"]
 }

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, TemplateRef, ViewEncapsulation } from '@angular/core';
-import { REP_TYPE } from '@co/theme';
+import { REP_TYPE } from '@co/common';
 import { CoConfigService, CoSEConfig, InputBoolean, InputNumber, toNumber } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types/any';
 import { BehaviorSubject, Observable } from 'rxjs';

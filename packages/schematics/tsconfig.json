@@ -3,7 +3,7 @@
     "lib": ["es2017", "dom"],
     "module": "commonjs",
     "moduleResolution": "node",
-    "outDir": "../../dist/ng-alain",
+    "outDir": "../../dist/co-cli",
     "noEmitOnError": false,
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
@@ -12,11 +12,5 @@
     "target": "es6",
     "types": ["jasmine", "node"]
   },
-  "exclude": [
-    "test.ts",
-    "*/files/**/*",
-    "test-setup/**/*",
-    "**/*.spec.ts",
-    "ng-update/test-cases/**/*"
-  ]
+  "exclude": ["test.ts", "*/files/**/*", "test-setup/**/*", "**/*.spec.ts", "ng-update/test-cases/**/*"]
 }

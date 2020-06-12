@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { DelonACLModule } from '@co/acl';
 import { DelonCacheModule } from '@co/cache';
 import { DelonFormModule } from '@co/form';
-import { AlainThemeModule } from '@co/theme';
+import { CoCommonModule } from '@co/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { GithubButtonModule } from 'ng-github-button';
 import { ColorSketchModule } from 'ngx-color/sketch';
@@ -59,7 +59,7 @@ const THIRDS = [
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-    AlainThemeModule.forChild(),
+    CoCommonModule.forChild(),
     DelonACLModule,
     DelonFormModule,
     DelonCacheModule,
@@ -74,7 +74,7 @@ const THIRDS = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    AlainThemeModule,
+    CoCommonModule,
     DelonACLModule,
     DelonFormModule,
     DelonCacheModule,
@@ -84,4 +84,4 @@ const THIRDS = [
     ...COMPONENTS,
   ],
 })
-export class SharedModule { }
+export class SharedModule {}

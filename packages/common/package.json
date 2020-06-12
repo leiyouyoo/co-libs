@@ -1,0 +1,26 @@
+{
+  "name": "@co/common",
+  "version": "0.0.0-PLACEHOLDER",
+  "author": "cipchk<cipchk@qq.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ng-alain/delon.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ng-alain/ng-alain/issues"
+  },
+  "homepage": "https://ng-alain.com",
+  "keywords": [
+    "co",
+    "utility",
+    "utils",
+    "angular"
+  ],
+  "dependencies": {
+    "ng-zorro-antd": "ZORRO-0.0.0-PLACEHOLDER",
+    "@co/acl": "PEER-0.0.0-PLACEHOLDER",
+    "@co/core": "PEER-0.0.0-PLACEHOLDER"
+  },
+  "sideEffects": false
+}

@@ -17,7 +17,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { FormControlName, NgModel, RequiredValidator, Validator } from '@angular/forms';
-import { ResponsiveService } from '@co/theme';
+import { ResponsiveService } from '@co/common';
 import { InputBoolean, InputNumber, isEmpty } from '@co/core';
 import { helpMotion } from 'ng-zorro-antd/core/animation';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';

@@ -25,7 +25,7 @@
   "dependencies": {
     "@antv/g2": "^4.0.8",
     "@co/core": "PEER-0.0.0-PLACEHOLDER",
-    "@co/theme": "PEER-0.0.0-PLACEHOLDER"
+    "@co/common": "PEER-0.0.0-PLACEHOLDER"
   },
   "sideEffects": false
 }

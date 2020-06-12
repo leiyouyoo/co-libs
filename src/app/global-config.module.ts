@@ -1,6 +1,6 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { DelonMockModule } from '@co/mock';
-import { AlainThemeModule } from '@co/theme';
+import { CoCommonModule } from '@co/common';
 import { CoConfig, CO_CONFIG } from '@co/core';
 
 // Please refer to: https://ng-alain.com/docs/global-config
@@ -18,7 +18,7 @@ const alainConfig: CoConfig = {
   mock: { data: MOCKDATA },
 };
 
-const alainModules = [AlainThemeModule.forRoot(), DelonACLModule.forRoot(), DelonMockModule.forRoot()];
+const alainModules = [CoCommonModule.forRoot(), DelonACLModule.forRoot(), DelonMockModule.forRoot()];
 const alainProvides = [{ provide: CO_CONFIG, useValue: alainConfig }];
 
 /**

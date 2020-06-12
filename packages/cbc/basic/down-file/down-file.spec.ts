@@ -3,7 +3,7 @@ import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@an
 import { Component, DebugElement, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { _HttpClient } from '@co/theme';
+import { _HttpClient } from '@co/common';
 import * as fs from 'file-saver';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { DownFileDirective } from './down-file.directive';
@@ -195,7 +195,7 @@ class TestComponent {
 
   fileName: string | ((rep: HttpResponse<Blob>) => string) | null = 'demo中文';
 
-  success() { }
+  success() {}
 
-  error() { }
+  error() {}
 }

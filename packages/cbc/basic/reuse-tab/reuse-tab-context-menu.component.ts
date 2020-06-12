@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
-import { DelonLocaleService } from '@co/theme';
+import { CoLocaleService } from '@co/common';
 import { CloseType, ReuseContextCloseEvent, ReuseContextI18n, ReuseCustomContextMenu, ReuseItem } from './reuse-tab.interfaces';
 
 @Component({
@@ -35,7 +35,7 @@ export class ReuseTabContextMenuComponent implements OnInit {
     return this.event.ctrlKey;
   }
 
-  constructor(private i18nSrv: DelonLocaleService) { }
+  constructor(private i18nSrv: CoLocaleService) {}
 
   private notify(type: CloseType) {
     this.close.next({

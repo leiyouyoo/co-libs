@@ -1,6 +1,6 @@
 import { HttpResponse } from '@angular/common/http';
 import { Directive, ElementRef, EventEmitter, Input, Output } from '@angular/core';
-import { _HttpClient } from '@co/theme';
+import { _HttpClient } from '@co/common';
 import { saveAs } from 'file-saver';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 
@@ -48,7 +48,7 @@ export class DownFileDirective {
     let isFileSaverSupported = false;
     try {
       isFileSaverSupported = !!new Blob();
-    } catch { }
+    } catch {}
     this.isFileSaverSupported = isFileSaverSupported;
     if (!isFileSaverSupported) {
       el.nativeElement.classList.add(`down-file__not-support`);

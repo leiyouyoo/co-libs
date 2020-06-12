@@ -270,7 +270,7 @@ function addCliTpl() {
   const TPLS = {
     '__name@dasherize__.component.html': `<page-header></page-header>`,
     '__name@dasherize__.component.ts': `import { Component, OnInit<% if(!!viewEncapsulation) { %>, ViewEncapsulation<% }%><% if(changeDetection !== 'Default') { %>, ChangeDetectionStrategy<% }%> } from '@angular/core';
-import { _HttpClient } from '@co/theme';
+import { _HttpClient } from '@co/common';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({

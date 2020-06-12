@@ -9,7 +9,7 @@
         "ng-zorro-antd/breadcrumb": "ng-zorro-antd/breadcrumb",
         "ng-zorro-antd/skeleton": "ng-zorro-antd/skeleton",
         "@co/cbc/reuse-tab": "co.abc.reuseTab",
-        "@co/theme": "co.theme",
+        "@co/common": "co.common",
         "@co/core": "co.core"
       }
     }

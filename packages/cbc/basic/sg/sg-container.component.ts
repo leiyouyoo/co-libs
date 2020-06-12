@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
-import { REP_TYPE } from '@co/theme';
+import { REP_TYPE } from '@co/common';
 import { CoConfigService, CoSGConfig, InputNumber } from '@co/core';
 
 @Component({

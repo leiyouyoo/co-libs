@@ -11,7 +11,7 @@
         "ng-zorro-antd/spin": "ng-zorro-antd/spin",
         "ng-zorro-antd/tabs": "ng-zorro-antd/tabs",
         "ng-zorro-antd/tag": "ng-zorro-antd/tag",
-        "@co/theme": "co.theme",
+        "@co/common": "co.common",
         "@co/core": "co.core"
       }
     }

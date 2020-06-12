@@ -3,10 +3,11 @@ import { ComponentFixture, discardPeriodicTasks, fakeAsync, flush, TestBed, tick
 import { By } from '@angular/platform-browser';
 import { ExtraOptions, Router, RouteReuseStrategy, ROUTER_CONFIGURATION } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ALAIN_I18N_TOKEN, DelonLocaleModule, DelonLocaleService, en_US, MenuService, ScrollService, WINDOW, zh_CN } from '@co/theme';
+import { CO_I18N_TOKEN, CoLocaleModule, CoLocaleService, en_US, MenuService, ScrollService, zh_CN } from '@co/common';
+import { WINDOW } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { Observable } from 'rxjs';
-import { AlainI18NServiceFake } from '../../../theme/src/services/i18n/i18n';
+import { CoI18NServiceFake } from '../../../common/src/services/i18n/i18n';
 import { ReuseTabComponent } from './reuse-tab.component';
 import { ReuseCustomContextMenu, ReuseTabMatchMode } from './reuse-tab.interfaces';
 import { ReuseTabModule } from './reuse-tab.module';
@@ -15,7 +16,7 @@ import { ReuseTabStrategy } from './reuse-tab.strategy';
 
 let i18nResult = 'zh';
 @Injectable()
-class MockI18NServiceFake extends AlainI18NServiceFake {
+class MockI18NServiceFake extends CoI18NServiceFake {
   fanyi(_key: string) {
     return i18nResult;
   }
@@ -33,7 +34,7 @@ describe('abc: reuse-tab', () => {
     TestBed.configureTestingModule({
       declarations: [AppComponent, LayoutComponent, AComponent, BComponent, CComponent, DComponent, EComponent],
       imports: [
-        DelonLocaleModule,
+        CoLocaleModule,
         ReuseTabModule,
         RouterTestingModule.withRoutes(
           [
@@ -76,11 +77,11 @@ describe('abc: reuse-tab', () => {
         !needI18n
           ? []
           : [
-            {
-              provide: ALAIN_I18N_TOKEN,
-              useClass: MockI18NServiceFake,
-            } as any,
-          ],
+              {
+                provide: CO_I18N_TOKEN,
+                useClass: MockI18NServiceFake,
+              } as any,
+            ],
       ),
     });
   }
@@ -600,7 +601,7 @@ describe('abc: reuse-tab', () => {
       createComp();
       page.to('#e').expectAttr(1, 'title', 'zh');
       i18nResult = 'en';
-      TestBed.inject(ALAIN_I18N_TOKEN).use('en');
+      TestBed.inject(CO_I18N_TOKEN).use('en');
       page.cd().expectAttr(1, 'title', 'en').end();
     }));
     it('#context-menu-text', fakeAsync(() => {
@@ -608,7 +609,7 @@ describe('abc: reuse-tab', () => {
       createComp();
       page.to('#b').openContextMenu(1);
       expect(document.querySelector('[data-type="close"]')!.textContent).toBe(zh_CN.reuseTab.close);
-      TestBed.inject<DelonLocaleService>(DelonLocaleService).setLocale(en_US);
+      TestBed.inject<CoLocaleService>(CoLocaleService).setLocale(en_US);
       fixture.detectChanges();
       page.to('#a').openContextMenu(1);
       expect(document.querySelector('[data-type="close"]')!.textContent).toBe(en_US.reuseTab.close);
@@ -725,7 +726,7 @@ describe('abc: reuse-tab', () => {
     <router-outlet></router-outlet>
   `,
 })
-class AppComponent { }
+class AppComponent {}
 
 @Component({
   template: `
@@ -762,8 +763,8 @@ class LayoutComponent {
   customContextMenu: ReuseCustomContextMenu[] = [];
   tabType: 'line' | 'card' = 'line';
   tabMaxWidth: number;
-  change() { }
-  close() { }
+  change() {}
+  close() {}
 }
 
 @Component({
@@ -775,8 +776,8 @@ class LayoutComponent {
 })
 class AComponent {
   time = +new Date();
-  _onReuseInit() { }
-  _onReuseDestroy() { }
+  _onReuseInit() {}
+  _onReuseDestroy() {}
 }
 
 @Component({
@@ -790,8 +791,8 @@ class AComponent {
 })
 class BComponent {
   time = +new Date();
-  _onReuseInit() { }
-  _onReuseDestroy() { }
+  _onReuseInit() {}
+  _onReuseDestroy() {}
 }
 
 @Component({
@@ -807,8 +808,8 @@ class CComponent {
   constructor(private srv: ReuseTabService) {
     this.srv.title = 'new c title';
   }
-  _onReuseInit() { }
-  _onReuseDestroy() { }
+  _onReuseInit() {}
+  _onReuseDestroy() {}
 }
 
 @Component({
@@ -821,8 +822,8 @@ class CComponent {
 })
 class DComponent {
   time = +new Date();
-  _onReuseInit() { }
-  _onReuseDestroy() { }
+  _onReuseInit() {}
+  _onReuseDestroy() {}
 }
 
 @Component({
@@ -837,6 +838,6 @@ class EComponent {
   constructor(reuse: ReuseTabService) {
     reuse.closable = false;
   }
-  _onReuseInit() { }
-  _onReuseDestroy() { }
+  _onReuseInit() {}
+  _onReuseDestroy() {}
 }

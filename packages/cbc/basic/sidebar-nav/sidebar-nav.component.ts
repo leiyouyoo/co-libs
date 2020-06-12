@@ -15,8 +15,8 @@ import {
 } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NavigationEnd, Router } from '@angular/router';
-import { Menu, MenuService, SettingsService, WINDOW } from '@co/theme';
-import { InputBoolean, InputNumber } from '@co/core';
+import { Menu, MenuService, SettingsService } from '@co/common';
+import { InputBoolean, InputNumber, WINDOW } from '@co/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Nav } from './sidebar-nav.types';
@@ -64,7 +64,7 @@ export class SidebarNavComponent implements OnInit, OnDestroy {
     private sanitizer: DomSanitizer,
     @Inject(DOCUMENT) private doc: any,
     @Inject(WINDOW) private win: Window,
-  ) { }
+  ) {}
 
   private getLinkNode(node: HTMLElement): HTMLElement | null {
     node = node.nodeName === 'A' ? node : (node.parentNode as HTMLElement);

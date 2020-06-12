@@ -1,6 +1,6 @@
 export default `import { ModuleWithProviders, NgModule } from '@angular/core';
 import { DelonMockModule } from '@co/mock';
-import { AlainThemeModule } from '@co/theme';
+import { AlainThemeModule } from '@co/common';
 import { AlainConfig, ALAIN_CONFIG, AlainConfigService } from '@co/core';
 
 // Please refer to: https://ng-alain.com/docs/global-config

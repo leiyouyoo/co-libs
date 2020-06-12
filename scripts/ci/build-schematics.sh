@@ -78,9 +78,12 @@ echo "=====BUILDING: Version ${VERSION}, Zorro Version ${ZORROVERSION}"
 TSC=${PWD}/node_modules/.bin/tsc
 JASMINE=${PWD}/node_modules/.bin/jasmine
 
-SOURCE=${PWD}/packages/schematics
-DIST=${PWD}/dist/ng-alain/
+SOURCE=./packages/schematics
+DIST=./dist/co-cli/
+# SOURCE=${PWD}/packages/schematics
+# DIST=${PWD}/dist/co-cli/
 tsconfigFile=${SOURCE}/tsconfig.json
+
 
 updateVersionReferences() {
   NPM_DIR="$1"
@@ -93,7 +96,7 @@ updateVersionReferences() {
     do
       IFS=$'|' read -r lib version <<< "$dependencie"
       # echo ">>>> update ${lib}: ${version}"
-      perl -p -i -e "s/${lib}\@DEP\-0\.0\.0\-PLACEHOLDER/${lib}\@${version}/g" $(grep -ril ${lib}\@DEP\-0\.0\.0\-PLACEHOLDER .) < /dev/null 2> /dev/null
+      perl -i -p -e "s/${lib}\@DEP\-0\.0\.0\-PLACEHOLDER/${lib}\@${version}/g" $(grep -ril ${lib}\@DEP\-0\.0\.0\-PLACEHOLDER .) < /dev/null 2> /dev/null
     done
 
     FIX_VERSION="${VERSION}"
@@ -101,9 +104,9 @@ updateVersionReferences() {
       FIX_VERSION="^${FIX_VERSION}"
     fi
     echo ">>> VERSION: Updating version references in ${NPM_DIR}"
-    perl -p -i -e "s/ZORRO\-0\.0\.0\-PLACEHOLDER/${ZORROVERSION}/g" $(grep -ril ZORRO\-0\.0\.0\-PLACEHOLDER .) < /dev/null 2> /dev/null
-    perl -p -i -e "s/PEER\-0\.0\.0\-PLACEHOLDER/${FIX_VERSION}/g" $(grep -ril PEER\-0\.0\.0\-PLACEHOLDER .) < /dev/null 2> /dev/null
-    perl -p -i -e "s/0\.0\.0\-PLACEHOLDER/${VERSION}/g" $(grep -ril 0\.0\.0\-PLACEHOLDER .) < /dev/null 2> /dev/null
+    perl -p -i -e  "s/ZORRO\-0\.0\.0\-PLACEHOLDER/${ZORROVERSION}/g" $(grep -ril ZORRO\-0\.0\.0\-PLACEHOLDER .) < /dev/null 2> /dev/null
+    perl -p -i -e  "s/PEER\-0\.0\.0\-PLACEHOLDER/${FIX_VERSION}/g" $(grep -ril PEER\-0\.0\.0\-PLACEHOLDER .) < /dev/null 2> /dev/null
+    perl -p -i -e  "s/0\.0\.0\-PLACEHOLDER/${VERSION}/g" $(grep -ril 0\.0\.0\-PLACEHOLDER .) < /dev/null 2> /dev/null
   )
 }
 
@@ -206,25 +209,26 @@ cloneScaffold() {
 buildCLI() {
   rm -rf ${DIST}
 
-  echo "Building...${tsconfigFile}"
+  echo "Building...${tsconfigFile}----- rsync -am --include="*.json" --include="*/" --exclude=* ${SOURCE}/ ${DIST}/"
   $TSC -p ${tsconfigFile}
-  rsync -am --include="*.json" --include="*/" --exclude=* ${SOURCE}/ ${DIST}/
-  rsync -am --include="*.d.ts" --include="*/" --exclude=* ${SOURCE}/ ${DIST}/
-  rsync -am --include="/files" ${SOURCE}/ ${DIST}/
+
+  rsync -am --include="*.json" --include="*/" --exclude=*  ${SOURCE}/ ${DIST}/
+  rsync -am --include="*.d.ts" --include="*/" --exclude=*  ${SOURCE}/ ${DIST}/
+  rsync -am --include="/files" --delete ${SOURCE}/ ${DIST}/
   rm ${DIST}/test.ts ${DIST}/tsconfig.json ${DIST}/tsconfig.spec.json
 
-  if [[ ${COPY} == true ]]; then
-    if [[ ${CLONE} == true ]]; then
-      cloneScaffold
-      echo ">>> copy delon/ng-alain files via travis mode"
-      copyFiles 'ng-alain/' ${DIST}/
-    else
-      echo ">>> copy work/ng-alain files via dev mode"
-      copyFiles '../ng-alain/' ${DIST}/
-    fi
-  else
-    echo ">>> can't copy files!"
-  fi
+  # if [[ ${COPY} == true ]]; then
+  #   if [[ ${CLONE} == true ]]; then
+  #     cloneScaffold
+  #     echo ">>> copy delon/ng-alain files via travis mode"
+  #     copyFiles 'ng-alain/' ${DIST}/
+  #   else
+  #     echo ">>> copy work/ng-alain files via dev mode"
+  #     copyFiles '../ng-alain/' ${DIST}/
+  #   fi
+  # else
+  #   echo ">>> can't copy files!"
+  # fi
 
   cp ${SOURCE}/README.md ${DIST}/README.md
   cp ${SOURCE}/.npmignore ${DIST}/.npmignore
@@ -252,16 +256,16 @@ integrationCli() {
   cd ${INTEGRATION_SOURCE}
 
   echo ">>> Copy ng-alain, Current dir: ${PWD}"
-  rsync -a ${DIST} ${INTEGRATION_SOURCE}/node_modules/ng-alain
+  rsync -a ${DIST} ${INTEGRATION_SOURCE}/node_modules/co-cli
 
   echo ">>> Running ng g ng-alain:ng-add"
-  ng g ng-alain:ng-add --defaultLanguage=en --hmr=true --codeStyle=true --form=true --mock=true --i18n=true
+  ng g co-cli:ng-add --defaultLanguage=en --hmr=true --codeStyle=true --form=true --mock=true --i18n=true
 
   echo ">>> Install dependencies"
   npm i
 
   echo ">>> Copy again ng-alain"
-  rsync -a ${DIST} ${INTEGRATION_SOURCE}/node_modules/ng-alain
+  rsync -a ${DIST} ${INTEGRATION_SOURCE}/node_modules/co-cli
 
   echo ">>> Copy @co/*"
   echo ">>>>>> Clone delon & cli dist..."
@@ -280,20 +284,20 @@ integrationCli() {
 
 if [[ ${BUILD} == true ]]; then
   tsconfigFile=${SOURCE}/tsconfig.json
-  DIST=${PWD}/dist/co-plugin/
+  DIST=./dist/co-cli/
   buildCLI
 fi
 
 if [[ ${TEST} == true ]]; then
   tsconfigFile=${SOURCE}/tsconfig.spec.json
-  DIST=${PWD}/dist/schematics-test/
+  DIST=./dist/schematics-test/
   buildCLI
   $JASMINE "${DIST}/**/*.spec.js"
 fi
 
 if [[ ${INTEGRATION} == true ]]; then
   tsconfigFile=${SOURCE}/tsconfig.json
-  DIST=${PWD}/dist/co-plugin/
+  DIST=./dist/co-cli/
   COPY=true
   buildCLI
   integrationCli
@@ -307,8 +311,8 @@ echo "Finished!!"
 # clear | bash ./scripts/ci/build-schematics.sh -b -copy -debug
 if [[ ${DEBUG} == true ]]; then
   cd ../../
-  DEBUG_FROM=${PWD}/dist/co-plugin/*
-  DEBUG_TO=${PWD}/node_modules/co-plugin/
+  DEBUG_FROM=./dist/co-cli/*
+  DEBUG_TO=./node_modules/co-cli/
   echo "DEBUG_FROM:${DEBUG_FROM}"
   echo "DEBUG_TO:${DEBUG_TO}"
   rm -rf ${DEBUG_TO}

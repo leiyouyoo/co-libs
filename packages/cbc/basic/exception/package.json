@@ -5,7 +5,7 @@
       "entryFile": "public_api.ts",
       "umdModuleIds": {
         "ng-zorro-antd/button": "ng-zorro-antd/button",
-        "@co/theme": "co.theme",
+        "@co/common": "co.common",
         "@co/core": "co.core"
       }
     }

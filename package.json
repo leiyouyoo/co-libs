@@ -25,7 +25,7 @@
     "build": "bash scripts/ci/build.sh -n apm",
     "build:libs": "bash scripts/ci/build-libs.sh",
     "build:libs:chart": "bash scripts/ci/build-libs.sh -n chart",
-    "build:schematics": "bash scripts/ci/build-schematics.sh -b -copy -clone",
+    "build:schematics": "bash scripts/ci/build-schematics.sh -b -copy",
     "build:site": "npm run site:gen && node scripts/ci/build-no-lvy && node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod",
     "build:artifacts": "bash scripts/ci/build-artifacts.sh",
    

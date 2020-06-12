@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router, RouteReuseStrategy } from '@angular/router';
-import { MenuService } from '@co/theme';
+import { MenuService } from '@co/common';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { filter } from 'rxjs/operators';
 import { ReuseTabMatchMode, ReuseTitle } from './reuse-tab.interfaces';
@@ -17,7 +17,7 @@ class MockRouter {
   get events() {
     return {
       subscribe: () => {
-        return { unsubscribe: () => { } };
+        return { unsubscribe: () => {} };
       },
     };
   }
