@@ -1,0 +1,32 @@
+<nz-select
+  style="width: 300px;"
+  nzShowSearch
+  nzAllowClear
+  ngModel
+  [compareWith]="compareWith"
+  (ngModelChange)="onChange($event)"
+  [nzDisabled]="disabled"
+  [nzPlaceHolder]="placeHolder"
+  (nzOnSearch)="search.emit($event)"
+  (nzScrollToBottom)="scrollToBottom.emit($event)"
+  (nzOpenChange)="openChange.emit($event)"
+  (nzBlur)="blur.emit($event)"
+  (nzFocus)="focus.emit($event)"
+  [nzDropdownClassName]="dropdownClassName"
+  [nzMaxTagCount]="maxTagCount"
+  [nzMode]="mode"
+  [nzCustomTemplate]="customTemplate"
+  [nzMaxTagPlaceholder]="maxTagPlaceholder"
+  [nzNotFoundContent]="notFoundContent"
+>
+  <!--  <nz-option-group nzLabel="Recently used">-->
+  <nz-option nzCustomContent [nzValue]="optionValue(customer)" [nzLabel]="optionLabel(customer)" *ngFor="let customer of customerList; let i = index">
+    <ng-container>
+      <ng-container *ngTemplateOutlet="customOption ? customOption : template; context: { $implicit: customer }"></ng-container>
+    </ng-container>
+  </nz-option>
+  <ng-template #template let-customer>
+    {{ optionLabel(customer) }}
+  </ng-template>
+  <!--  </nz-option-group>-->
+</nz-select>
