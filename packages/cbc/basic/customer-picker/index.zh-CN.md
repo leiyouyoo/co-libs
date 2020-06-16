@@ -23,12 +23,12 @@ module: import { CustomerPickerModule } from '@co/cbc/customer-picker';
 | `[notFoundContent]` | 当下拉列表为空时显示的内容	 | `string | TemplateRef<void>` | - |
 | `[maxTagPlaceholder]` | 隐藏 tag 时显示的内容 | `TemplateRef<{ $implicit: any[] }>` | - |
 | `[dropdownClassName]` | 下拉菜单的 className 属性 | `string` | - |
-| `(search)` | 文本框值变化时回调 | `EventEmitter<string>` | - |
-| `(scrollToBottom)` | 下拉列表滚动到底部的回调 | `EventEmitter<any>` | - |
-| `(openChange)` | 下拉菜单打开状态变化回调 | `EventEmitter<boolean>` | - |
-| `(blur)` | blur时回调 | `EventEmitter<any>` | - |
-| `(focus)` | focus时回调 | `EventEmitter<any>` | - |
-| `[mode]` | 设置模式 | `boolean` | `false` |
+| `(coOnSearch)` | 文本框值变化时回调 | `EventEmitter<string>` | - |
+| `(coScrollToBottom)` | 下拉列表滚动到底部的回调 | `EventEmitter<any>` | - |
+| `(coOpenChange)` | 下拉菜单打开状态变化回调 | `EventEmitter<boolean>` | - |
+| `(coBlur)` | blur时回调 | `EventEmitter<any>` | - |
+| `(coFocus)` | focus时回调 | `EventEmitter<any>` | - |
+| `[coMode]` | 设置模式 | `boolean` | `false` |
 | `[disabled]` | 是否禁用 | `'multiple' | 'tags' | 'default'` | `default` |
 | `[maxTagCount]` | 最多显示多少个 tag | `number` | `Infinity` |
 | `[maxMultipleCount]` | 最多选中多少个标签 | `number` | `Infinity` |

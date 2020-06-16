@@ -5,28 +5,25 @@
   ngModel
   [compareWith]="compareWith"
   (ngModelChange)="onChange($event)"
-  [nzDisabled]="disabled"
-  [nzPlaceHolder]="placeHolder"
-  (nzOnSearch)="search.emit($event)"
-  (nzScrollToBottom)="scrollToBottom.emit($event)"
-  (nzOpenChange)="openChange.emit($event)"
-  (nzBlur)="blur.emit($event)"
-  (nzFocus)="focus.emit($event)"
-  [nzDropdownClassName]="dropdownClassName"
-  [nzMaxTagCount]="maxTagCount"
-  [nzMode]="mode"
-  [nzCustomTemplate]="customTemplate"
-  [nzMaxTagPlaceholder]="maxTagPlaceholder"
-  [nzNotFoundContent]="notFoundContent"
+  [nzDisabled]="coDisabled"
+  [nzPlaceHolder]="coPlaceHolder"
+  (nzOnSearch)="coOnSearch.emit($event)"
+  (nzScrollToBottom)="coScrollToBottom.emit($event)"
+  (nzOpenChange)="coOpenChange.emit($event)"
+  (nzBlur)="coBlur.emit($event)"
+  (nzFocus)="coFocus.emit($event)"
+  [nzDropdownClassName]="coDropdownClassName"
+  [nzMaxTagCount]="coMaxTagCount"
+  [nzMaxMultipleCount]="coMaxMultipleCount"
+  [nzMode]="coMode"
+  [nzCustomTemplate]="coCustomTemplate"
+  [nzMaxTagPlaceholder]="coMaxTagPlaceholder"
+  [nzNotFoundContent]="coNotFoundContent"
 >
-  <!--  <nz-option-group nzLabel="Recently used">-->
-  <nz-option nzCustomContent [nzValue]="optionValue(customer)" [nzLabel]="optionLabel(customer)" *ngFor="let customer of customerList; let i = index">
-    <ng-container>
-      <ng-container *ngTemplateOutlet="customOption ? customOption : template; context: { $implicit: customer }"></ng-container>
-    </ng-container>
+  <nz-option nzCustomContent [nzValue]="optionValue(item)" [nzLabel]="optionLabel(item)" *ngFor="let item of data; let i = index">
+    <ng-container *ngTemplateOutlet="coCustomOption ? coCustomOption : template; context: { $implicit: item }"></ng-container>
   </nz-option>
-  <ng-template #template let-customer>
-    {{ optionLabel(customer) }}
+  <ng-template #template let-context>
+    {{ optionLabel(context) }}
   </ng-template>
-  <!--  </nz-option-group>-->
 </nz-select>

@@ -30,28 +30,27 @@ import { NzSelectComponent, NzSelectItemInterface } from 'ng-zorro-antd';
   templateUrl: './customer-picker.component.html',
 })
 export class CustomerPickerComponent implements OnInit, OnChanges, ControlValueAccessor {
-  @Input() @InputBoolean() disabled = false;
-
-  @Input() customerList: any[] = [];
+  @Input() data: any[] = [];
+  @Input() @InputBoolean() coDisabled = false;
   @Input() optionLabel: (item: any) => string = item => item.name;
   @Input() optionValue: (item: any) => string = item => item.id;
   @Input() compareWith: (o1: any, o2: any) => boolean = (o1: any, o2: any) => o1 === o2;
-  @Input() placeHolder: string | TemplateRef<any> | null = null;
-  @Input() dropdownClassName: string | null = null;
-  @Input() maxTagCount = Infinity;
-  @Input() nzMaxMultipleCount = Infinity;
-  @Input() mode: 'default' | 'multiple' | 'tags' = 'default';
+  @Input() coPlaceHolder: string | TemplateRef<any> | null = null;
+  @Input() coDropdownClassName: string | null = null;
+  @Input() coMaxTagCount = Infinity;
+  @Input() coMaxMultipleCount = Infinity;
+  @Input() coMode: 'default' | 'multiple' | 'tags' = 'default';
 
-  @Input() customTemplate: TemplateRef<{ $implicit: NzSelectItemInterface }> | null = null;
-  @Input() customOption: TemplateRef<{ $implicit: any }> | null = null;
-  @Input() maxTagPlaceholder: TemplateRef<{ $implicit: any[] }> | null = null;
-  @Input() notFoundContent: string | TemplateRef<any> | undefined = undefined;
+  @Input() coCustomTemplate: TemplateRef<{ $implicit: NzSelectItemInterface }> | null = null;
+  @Input() coCustomOption: TemplateRef<{ $implicit: any }> | null = null;
+  @Input() coMaxTagPlaceholder: TemplateRef<{ $implicit: any[] }> | null = null;
+  @Input() coNotFoundContent: string | TemplateRef<any> | undefined = undefined;
 
-  @Output() readonly search = new EventEmitter<string>();
-  @Output() readonly scrollToBottom = new EventEmitter<void>();
-  @Output() readonly openChange = new EventEmitter<boolean>();
-  @Output() readonly blur = new EventEmitter<void>();
-  @Output() readonly focus = new EventEmitter<void>();
+  @Output() readonly coOnSearch = new EventEmitter<string>();
+  @Output() readonly coScrollToBottom = new EventEmitter<void>();
+  @Output() readonly coOpenChange = new EventEmitter<boolean>();
+  @Output() readonly coBlur = new EventEmitter<void>();
+  @Output() readonly coFocus = new EventEmitter<void>();
 
   @ViewChild(NzSelectComponent, { static: true }) nzSelectComponent!: NzSelectComponent;
 
@@ -77,7 +76,7 @@ export class CustomerPickerComponent implements OnInit, OnChanges, ControlValueA
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
+    this.coDisabled = isDisabled;
     this.cdr.markForCheck();
   }
 

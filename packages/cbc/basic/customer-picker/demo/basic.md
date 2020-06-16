@@ -1,17 +1,10 @@
 ---
 order: 1
-title:
-  zh-CN: 基本
-  en-US: Basic
+title: 基本用法
 ---
-
-## zh-CN
 
 基本示例。
 
-## en-US
-
-The simplest usage.
 
 ```ts
 import { Component, OnInit } from '@angular/core';
@@ -21,7 +14,7 @@ import { HttpClient } from '@angular/common/http';
   selector: 'customer-picker-demo',
   template: `
       <h4 nz-typography>已选option的值：{{value|json}}</h4>
-      <customer-picker [disabled]="disabled" [mode]="mode" [customerList]="customerList" [(ngModel)]="value"></customer-picker>
+      <customer-picker [coDisabled]="disabled" [coMode]="mode" [data]="customerList" [(ngModel)]="value"></customer-picker>
       <br/>
       <br/>
     <nz-card nzTitle="配置项" style="width:500px;">
@@ -45,6 +38,9 @@ import { HttpClient } from '@angular/common/http';
             </nz-form-control>
         </nz-form-item>
     </nz-card>
+  <nz-option nzCustomContent *ngFor="let customer of customerList" [nzLabel]="customer.name" nzValue="customer.id">
+    {{ customer.name }}
+  </nz-option>
 `,
 })
 export class CustomerPickerDemo implements OnInit {
