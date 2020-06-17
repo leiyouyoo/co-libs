@@ -35,6 +35,14 @@ publishToMaster() {
   npm publish --access public
 }
 
+publishCliToMaster() {
+echo "Version11111111111111 ${VERSION}"
+
+  (cd ${ROOT}/co-cli; for p in `ls .`; do npm publish --access public $p; done)
+  cd ${ROOT}/co-cli
+  npm publish --access public
+}
+
 publishToNext() {
   (cd ${ROOT}/@co; for p in `ls .`; do npm publish $p --access public --tag next; done)
   cd ${ROOT}/@co
@@ -47,9 +55,13 @@ syncTaobao() {
 }
 
 # clone
-if [[ ${NEXT} == true ]]; then
-  publishToNext
-else
-  publishToMaster
-fi
+# if [[ ${NEXT} == true ]]; then
+#   publishToNext
+# else
+#   publishCliToMaster
+#   # publishToMaster
+# fi
+
+  publishCliToMaster
+
 # syncTaobao

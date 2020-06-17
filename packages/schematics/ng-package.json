@@ -1,0 +1,15 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/@co/schematics",
+  "deleteDestPath": true,
+  "lib": {
+    "flatModuleFile": "map",
+    "entryFile": "public_api.ts",
+    "umdModuleIds": {
+      "ng-zorro-antd": "ng-zorro-antd",
+      "@co/common": "co.common",
+      "@co/core": "co.core"
+    }
+  },
+  "whitelistedNonPeerDependencies": ["tslib", "@co/common", "@co/core"]
+}
