@@ -9,13 +9,11 @@ title: 演示
 
 ```ts
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'customer-picker-demo',
   template: `
 <customer-picker 
-    [data]="customerList" 
     [optionLabel]="optionLabel" 
     [optionValue]="optionValue" 
     [coCustomTemplate]="selectedTemplate"
@@ -44,14 +42,10 @@ export class CustomerPickerDemo implements OnInit {
   optionLabel = (v: any) => `${v.name} ${v.phone}`;
   optionValue = (v: any) => v.id;
 
-  constructor(private http: HttpClient) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.http.get<any>('/customers', { params: { total: '50' } }).subscribe(value => {
-      console.log(value);
-      this.customerList = value.list
-    });
   }
 
 }

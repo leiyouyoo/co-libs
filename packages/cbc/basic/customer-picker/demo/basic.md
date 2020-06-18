@@ -8,13 +8,12 @@ title: 基本用法
 
 ```ts
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'customer-picker-demo',
   template: `
       <h4 nz-typography>已选option的值：{{value|json}}</h4>
-      <customer-picker [coDisabled]="disabled" [coMode]="mode" [data]="customerList" [(ngModel)]="value"></customer-picker>
+      <customer-picker [coDisabled]="disabled" [coMode]="mode" [(ngModel)]="value"></customer-picker>
       <br/>
       <br/>
     <nz-card nzTitle="配置项" style="width:500px;">
@@ -38,9 +37,6 @@ import { HttpClient } from '@angular/common/http';
             </nz-form-control>
         </nz-form-item>
     </nz-card>
-  <nz-option nzCustomContent *ngFor="let customer of customerList" [nzLabel]="customer.name" nzValue="customer.id">
-    {{ customer.name }}
-  </nz-option>
 `,
 })
 export class CustomerPickerDemo implements OnInit {
@@ -48,16 +44,12 @@ export class CustomerPickerDemo implements OnInit {
   value: any;
   disabled = false;
   mode = "default";
-  customerList = [];
+  data = [];
 
-  constructor(private http: HttpClient) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.http.get<any>('/customers', { params: { total: '50' } }).subscribe(value => {
-      console.log(value);
-      this.customerList = value.list
-    });
   }
 
 }

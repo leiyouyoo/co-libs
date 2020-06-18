@@ -31,6 +31,7 @@ import { TagSelectModule } from '@co/cbc/basic/tag-select';
 import { XlsxModule } from '@co/cbc/basic/xlsx';
 import { ZipModule } from '@co/cbc/basic/zip';
 import { CustomerPickerModule } from '@co/cbc/basic/customer-picker';
+import { ContainerPickerModule } from '@co/cbc/basic/container-picker';
 
 const MODULES = [
   ErrorCollectModule,
@@ -63,6 +64,7 @@ const MODULES = [
   LoadingModule,
   MediaModule,
   CustomerPickerModule,
+  ContainerPickerModule,
 ];
 
 /**

@@ -5,16 +5,16 @@ import {
   EventEmitter,
   forwardRef,
   Input,
-  OnChanges,
   OnInit,
   Output,
-  SimpleChanges,
   TemplateRef,
-  ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { InputBoolean } from '@co/core';
-import { NzSelectComponent, NzSelectItemInterface } from 'ng-zorro-antd';
+import { NzSelectItemInterface } from 'ng-zorro-antd';
+import { HttpClient } from '@angular/common/http';
+import { debounceTime, map, switchMap, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'customer-picker',
@@ -28,18 +28,26 @@ import { NzSelectComponent, NzSelectItemInterface } from 'ng-zorro-antd';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './customer-picker.component.html',
+  host: {
+    '[class.co-customer-picker]': 'true',
+  },
 })
-export class CustomerPickerComponent implements OnInit, OnChanges, ControlValueAccessor {
-  @Input() data: any[] = [];
+export class CustomerPickerComponent implements OnInit, ControlValueAccessor {
+  data: any[];
+  value: any | any[];
+  isLoading = false;
+
   @Input() @InputBoolean() coDisabled = false;
   @Input() optionLabel: (item: any) => string = item => item.name;
   @Input() optionValue: (item: any) => string = item => item.id;
   @Input() compareWith: (o1: any, o2: any) => boolean = (o1: any, o2: any) => o1 === o2;
   @Input() coPlaceHolder: string | TemplateRef<any> | null = null;
   @Input() coDropdownClassName: string | null = null;
-  @Input() coMaxTagCount = Infinity;
-  @Input() coMaxMultipleCount = Infinity;
+  @Input() coMaxTagCount = 3;
+  @Input() coMaxMultipleCount = 3;
   @Input() coMode: 'default' | 'multiple' | 'tags' = 'default';
+
+  @Input() debounceTime: number = 500; // 防抖阀值(毫秒)，当用户输入时，在这个阀值时间内用户不再有输入操作，则触发搜索(coOnSearch)
 
   @Input() coCustomTemplate: TemplateRef<{ $implicit: NzSelectItemInterface }> | null = null;
   @Input() coCustomOption: TemplateRef<{ $implicit: any }> | null = null;
@@ -52,15 +60,33 @@ export class CustomerPickerComponent implements OnInit, OnChanges, ControlValueA
   @Output() readonly coBlur = new EventEmitter<void>();
   @Output() readonly coFocus = new EventEmitter<void>();
 
-  @ViewChild(NzSelectComponent, { static: true }) nzSelectComponent!: NzSelectComponent;
+  constructor(private cdr: ChangeDetectorRef, private http: HttpClient) {}
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  ngOnInit(): void {
+    this.coOnSearch
+      .asObservable()
+      .pipe(
+        tap(() => (this.isLoading = true)),
+        debounceTime(this.debounceTime),
+        switchMap(this.getCustomerList),
+      )
+      .subscribe(items => {
+        this.data = items;
+        this.isLoading = false;
+        this.cdr.markForCheck();
+      });
+  }
 
-  ngOnInit(): void {}
+  getCustomerList = (name: string = ''): Observable<any> =>
+    this.http
+      .get<any>('/GetAllBySearch', { params: { name: name } })
+      .pipe(map(value => value.items));
 
-  ngOnChanges(changes: SimpleChanges): void {
-    // const { customerList } = changes;
-    console.log(changes);
+  updateData() {
+    this.getCustomerList(this.value).subscribe(items => {
+      this.data = items;
+      this.cdr.markForCheck();
+    });
   }
 
   // ControlValueAccessor
@@ -81,7 +107,10 @@ export class CustomerPickerComponent implements OnInit, OnChanges, ControlValueA
   }
 
   writeValue(value: any): void {
-    this.nzSelectComponent.writeValue(value);
+    if (this.value !== value) {
+      this.value = value;
+      this.updateData();
+    }
     this.cdr.markForCheck();
   }
 }

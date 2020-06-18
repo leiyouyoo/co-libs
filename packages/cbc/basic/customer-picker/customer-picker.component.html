@@ -2,10 +2,11 @@
   style="width: 300px;"
   nzShowSearch
   nzAllowClear
-  ngModel
+  [(ngModel)]="value"
   [compareWith]="compareWith"
   (ngModelChange)="onChange($event)"
   [nzDisabled]="coDisabled"
+  [nzLoading]="isLoading"
   [nzPlaceHolder]="coPlaceHolder"
   (nzOnSearch)="coOnSearch.emit($event)"
   (nzScrollToBottom)="coScrollToBottom.emit($event)"
