@@ -16,7 +16,6 @@
             "main": "src/main.ts",
             "tsConfig": "src/tsconfig.json",
             "polyfills": "src/polyfills.ts",
-            // "deployUrl": "//192.168.1.5:8010/frontend/",
             "assets": ["src/assets"],
             "styles": [
               "node_modules/ngx-simplemde/lib/index.less",
@@ -102,5 +101,8 @@
       }
     }
   },
-  "defaultProject": "site"
+  "defaultProject": "site",
+  "cli": {
+    "analytics": "17b09289-36ce-43d7-bc7b-5951ba311e99"
+  }
 }
