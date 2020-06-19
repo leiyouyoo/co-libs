@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 // #region all modules
 import { AvatarListModule } from '@co/cbc/basic/avatar-list';
 import { CountDownModule } from '@co/cbc/basic/count-down';
@@ -31,6 +30,7 @@ import { TagSelectModule } from '@co/cbc/basic/tag-select';
 import { XlsxModule } from '@co/cbc/basic/xlsx';
 import { ZipModule } from '@co/cbc/basic/zip';
 import { CustomerPickerModule } from '@co/cbc/basic/customer-picker';
+import { VesselPickerComponent } from './vessel-picker/vessel-picker.component';
 import { ContainerPickerModule } from '@co/cbc/basic/container-picker';
 import { DataDictionaryPickerModule } from '@co/cbc/basic/data-dictionary-picker';
 
@@ -65,6 +65,7 @@ const MODULES = [
   LoadingModule,
   MediaModule,
   CustomerPickerModule,
+  VesselPickerComponent,
   ContainerPickerModule,
   DataDictionaryPickerModule,
 ];
