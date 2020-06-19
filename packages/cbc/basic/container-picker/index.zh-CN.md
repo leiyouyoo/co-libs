@@ -1,17 +1,17 @@
 ---
 type: Business
-title: customer-picker
-subtitle: 客户选择器
+title: container-picker
+subtitle: 箱选择器
 cols: 1
-module: import { CustomerPickerModule } from '@co/cbc/customer-picker';
+module: import { ContainerPickerComponent } from '@co/cbc/container-picker';
 ---
 
-客户选择器。
+箱选择器。
 基于ng-zorro的select封装
 
 ## API
 
-### customer-picker
+### container-picker
 
 | 成员 | 说明 | 类型 | 默认值 |
 |----|----|----|-----|
@@ -35,4 +35,4 @@ module: import { CustomerPickerModule } from '@co/cbc/customer-picker';
 | `[coCustomTemplate]` | 自定义选择框的Template内容 | `TemplateRef<{ $implicit: NzOptionComponent }>` | - |
 | `[coCustomOption]` | 自定义在下拉菜单中的Template内容 | `TemplateRef<{ $implicit: any }>` | - |
 | `[compareWith]` | 与 SelectControlValueAccessor 相同 | `(o1: any, o2: any) => boolean` | `(o1: any, o2: any) => o1===o2` |
-| `[debounceTime]` | 防抖阀值(毫秒)，当用户输入时，在这个阀值时间内用户不再有输入操作，则请求服务端数据 | `number` | `500` |
+

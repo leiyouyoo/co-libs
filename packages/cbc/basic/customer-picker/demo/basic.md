@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'customer-picker-demo',
   template: `
-      <h4 nz-typography>已选option的值：{{value|json}}</h4>
+      <h4 nz-typography>value：{{value|json}}</h4>
       <customer-picker [coDisabled]="disabled" [coMode]="mode" [(ngModel)]="value"></customer-picker>
       <br/>
       <br/>

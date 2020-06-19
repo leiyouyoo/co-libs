@@ -9,33 +9,31 @@ import {
   Output,
   TemplateRef,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { InputBoolean } from '@co/core';
 import { NzSelectItemInterface } from 'ng-zorro-antd';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { debounceTime, map, switchMap, tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'customer-picker',
-  exportAs: 'customerPicker',
+  selector: 'container-picker',
+  exportAs: 'containerPicker',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CustomerPickerComponent),
+      useExisting: forwardRef(() => ContainerPickerComponent),
       multi: true,
     },
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './customer-picker.component.html',
+  templateUrl: './container-picker.component.html',
   host: {
-    '[class.co-customer-picker]': 'true',
+    '[class.co-container-picker]': 'true',
   },
 })
-export class CustomerPickerComponent implements OnInit, ControlValueAccessor {
+export class ContainerPickerComponent implements OnInit, ControlValueAccessor {
   data: any[];
   value: any | any[];
-  isLoading = false;
 
   @Input() @InputBoolean() coDisabled = false;
   @Input() optionLabel: (item: any) => string = item => item.name;
@@ -45,9 +43,7 @@ export class CustomerPickerComponent implements OnInit, ControlValueAccessor {
   @Input() coDropdownClassName: string | null = null;
   @Input() coMaxTagCount = Infinity;
   @Input() coMaxMultipleCount = Infinity;
-  @Input() coMode: 'default' | 'multiple' | 'tags' = 'default';
-
-  @Input() debounceTime: number = 500; // 防抖阀值(毫秒)，当用户输入时，在这个阀值时间内用户不再有输入操作，则请求服务端数据
+  @Input() coMode: 'default' | 'multiple' | 'tags' = 'multiple';
 
   @Input() coCustomTemplate: TemplateRef<{ $implicit: NzSelectItemInterface }> | null = null;
   @Input() coCustomOption: TemplateRef<{ $implicit: any }> | null = null;
@@ -63,30 +59,17 @@ export class CustomerPickerComponent implements OnInit, ControlValueAccessor {
   constructor(private cdr: ChangeDetectorRef, private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.coOnSearch
-      .asObservable()
-      .pipe(
-        tap(() => (this.isLoading = true)),
-        debounceTime(this.debounceTime),
-        switchMap(this.getData),
-      )
-      .subscribe(items => {
-        this.data = items;
-        this.isLoading = false;
-        this.cdr.markForCheck();
-      });
+    this.getData();
   }
 
-  getData = (name: string = ''): Observable<any> =>
+  getData(name: string = ''): void {
     this.http
-      .get<any>('/GetAllBySearch', { params: { name: name } })
-      .pipe(map(value => value.items));
-
-  updateData() {
-    this.getData(this.value).subscribe(items => {
-      this.data = items;
-      this.cdr.markForCheck();
-    });
+      .get<any>('/customers', { params: { name: name } })
+      .pipe(map(value => value.items))
+      .subscribe(items => {
+        this.data = items;
+        this.cdr.markForCheck();
+      });
   }
 
   // ControlValueAccessor
@@ -109,7 +92,6 @@ export class CustomerPickerComponent implements OnInit, ControlValueAccessor {
   writeValue(value: any): void {
     if (this.value !== value) {
       this.value = value;
-      this.updateData();
     }
     this.cdr.markForCheck();
   }

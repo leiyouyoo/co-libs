@@ -15,13 +15,13 @@ import { Component, OnInit } from '@angular/core';
   template: `
 <customer-picker 
     [optionLabel]="optionLabel" 
-    [optionValue]="optionValue" 
+    [optionValue]="optionValue" [(ngModel)]="value"
     [coCustomTemplate]="selectedTemplate"
     [coCustomOption]="optionTemplate"
 >
 </customer-picker>
 <ng-template #selectedTemplate let-selected>
-    <i nz-icon [nzType]="selected.nzValue"></i> {{ selected.nzLabel }} 
+    <div class="ant-select-selection-item-content"><i nz-icon nzType="Apple"></i> {{ selected.nzLabel }}</div>
 </ng-template>
 <ng-template #optionTemplate let-item>
     <div style="color: red">{{ optionLabel(item) }}</div>
@@ -36,9 +36,8 @@ import { Component, OnInit } from '@angular/core';
 `,
 })
 export class CustomerPickerDemo implements OnInit {
-
-  customerList = [];
-
+  
+  value: any = 2;
   optionLabel = (v: any) => `${v.name} ${v.phone}`;
   optionValue = (v: any) => v.id;
 

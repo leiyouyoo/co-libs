@@ -38,6 +38,8 @@ import { G2TimelineModule } from '@co/chart/timeline';
 import { TrendModule } from '@co/chart/trend';
 import { G2WaterWaveModule } from '@co/chart/water-wave';
 import { CustomerPickerModule } from '@co/cbc/basic/customer-picker';
+import { ContainerPickerModule } from '@co/cbc/basic/container-picker';
+import { DataDictionaryPickerModule } from '@co/cbc/basic/data-dictionary-picker';
 
 export const SHARED_DELON_MODULES = [
   AvatarListModule,
@@ -81,4 +83,6 @@ export const SHARED_DELON_MODULES = [
   ReuseTabModule,
   MediaModule,
   CustomerPickerModule,
+  ContainerPickerModule,
+  DataDictionaryPickerModule,
 ];

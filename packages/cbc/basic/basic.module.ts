@@ -32,6 +32,7 @@ import { XlsxModule } from '@co/cbc/basic/xlsx';
 import { ZipModule } from '@co/cbc/basic/zip';
 import { CustomerPickerModule } from '@co/cbc/basic/customer-picker';
 import { ContainerPickerModule } from '@co/cbc/basic/container-picker';
+import { DataDictionaryPickerModule } from '@co/cbc/basic/data-dictionary-picker';
 
 const MODULES = [
   ErrorCollectModule,
@@ -65,6 +66,7 @@ const MODULES = [
   MediaModule,
   CustomerPickerModule,
   ContainerPickerModule,
+  DataDictionaryPickerModule,
 ];
 
 /**

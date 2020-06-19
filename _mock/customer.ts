@@ -36,7 +36,7 @@ export const CUSTOMERS = {
     const count = +(req.queryString.maxResultCount || 10);
     const skipCount = +(req.queryString.skipCount || 0);
     const res: any = {
-      items: list.slice(skipCount, count),
+      items: list.filter(item => item.name.includes('name') || item.id.includes('name')).slice(skipCount, count),
       totalCount,
     };
     return res;
