@@ -1,10 +1,5 @@
 {
   "schematics": {
-    "swagger": {
-      "description": "build co-service schematic",
-      "factory": "./swagger/index#buildCOSwagger",
-      "schema": "./swagger/schema.json"
-    },
     "ng-add": {
       "factory": "./ng-add",
       "description": "Create an Alain workspace.",

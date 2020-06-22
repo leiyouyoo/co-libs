@@ -91,7 +91,7 @@ describe('abc: notice-icon', () => {
       fixture.detectChanges();
       fixture.whenStable().then(() => {
         expect(context.clear).not.toHaveBeenCalled();
-        (document.querySelector('.notice-icon__clear')! as HTMLElement).click();
+        (document.querySelector('.co-notice-icon__clear')! as HTMLElement).click();
         fixture.detectChanges();
         expect(context.clear).toHaveBeenCalled();
         done();
@@ -104,7 +104,7 @@ describe('abc: notice-icon', () => {
     context.data = [{ title: 'a1', list: [] }];
     fixture.detectChanges();
     fixture.whenStable().then(() => {
-      const a = document.querySelector('.notice-icon__notfound')! as HTMLElement;
+      const a = document.querySelector('.co-notice-icon__notfound')! as HTMLElement;
       expect(a.innerText).toBe(zh_CN.noticeIcon.emptyText);
       const srv = TestBed.inject<CoLocaleService>(CoLocaleService) as CoLocaleService;
       srv.setLocale(en_US);
@@ -117,7 +117,7 @@ describe('abc: notice-icon', () => {
 
 @Component({
   template: `
-    <notice-icon
+    <co-notice-icon
       #comp
       [data]="data"
       [count]="count"
@@ -126,7 +126,7 @@ describe('abc: notice-icon', () => {
       (clear)="clear($event)"
       [(popoverVisible)]="popoverVisible"
       (popoverVisibleChange)="popupVisibleChange($event)"
-    ></notice-icon>
+    ></co-notice-icon>
   `,
 })
 class TestComponent {

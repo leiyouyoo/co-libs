@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 const MODULES: any[] = [];
 
 /**
- * @deprecated Use secondary entry eg: `import { STModule } from 'ng-zorro-antd/st';`.
+ * 移动端组件模块
  */
 @NgModule({ exports: MODULES })
 export class CbcMobileComponentsModule {

@@ -18,7 +18,7 @@ import * as Mock from 'mockjs';
 import { Observable } from 'rxjs';
 import { mapTo } from 'rxjs/operators';
 import { MockRequest } from './interface';
-import { DelonMockModule } from './mock.module';
+import { CoMockModule } from './mock.module';
 import { MockStatusError } from './status.error';
 
 const USER_LIST = { users: [1, 2], a: 0 };
@@ -64,7 +64,7 @@ describe('mock: interceptor', () => {
             loadChildren: 'expected',
           },
         ]),
-        DelonMockModule.forRoot(),
+        CoMockModule.forRoot(),
       ].concat(imports),
       providers: ([{ provide: CO_CONFIG, useValue: { mock: options } }] as any[]).concat(providers || []),
     });
@@ -225,7 +225,7 @@ describe('mock: interceptor', () => {
         selector: 'lazy',
         template: '<router-outlet></router-outlet>',
       })
-      class LayoutComponent { }
+      class LayoutComponent {}
 
       @Component({
         selector: 'child',
@@ -240,9 +240,9 @@ describe('mock: interceptor', () => {
 
       @NgModule({
         declarations: [LayoutComponent, ChildComponent],
-        imports: [DelonMockModule.forChild(), RouterModule.forChild([{ path: 'child', component: ChildComponent }])],
+        imports: [CoMockModule.forChild(), RouterModule.forChild([{ path: 'child', component: ChildComponent }])],
       })
-      class LazyModule { }
+      class LazyModule {}
 
       loader.stubbedModules = { expected: LazyModule };
       const fixture = TestBed.createComponent(RootComponent);
@@ -276,4 +276,4 @@ describe('mock: interceptor', () => {
   selector: 'root-cmp',
   template: ` <router-outlet></router-outlet> `,
 })
-class RootComponent { }
+class RootComponent {}

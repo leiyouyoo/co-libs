@@ -7,7 +7,7 @@ export const ZHCN = {
   'app.home.feature': '特征',
   'app.home.feature.antd': '符合 Ant Design 设计价值观',
   'app.home.feature.zorro': '丰富的几十种基础组件',
-  'app.home.feature.delon': '一组更高阶的业务组件、图表、认证、授权、缓存、Mock、测试等',
+  'app.home.feature.co': '一组更高阶的业务组件、图表、认证、授权、缓存、Mock、测试等',
   'app.home.feature.out-of-box': '开箱即用',
   'app.home.feature.out-of-box.desc': '一个完整、可直接用于生产环境的Angular脚手架',
   'app.home.feature.less': '简单定制',

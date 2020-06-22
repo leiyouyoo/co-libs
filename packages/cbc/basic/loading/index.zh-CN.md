@@ -1,6 +1,6 @@
 ---
 type: Basic
-order: 2
+order: 3
 title: loading
 subtitle: 加载指示符
 cols: 2

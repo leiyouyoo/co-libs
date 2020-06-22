@@ -17,7 +17,6 @@ function copyLess(name) {
 
   // modules less
   fs.readdirSync(targetPath).forEach(name => {
-
     if (fs.existsSync(`${sourcePath}/${name}/style/index.less`)) {
       fse.copySync(`${sourcePath}/${name}/style`, `${targetPath}/${name}/style`);
     }
@@ -29,9 +28,15 @@ function copyLess(name) {
           fse.copySync(`${sourcePath}/basic/${cname}/style`, `${targetPath}/basic/${cname}/style`);
         }
       });
-      fs.readdirSync(`${targetPath}/web`).forEach(cname => {
-        if (fs.existsSync(`${sourcePath}/web/${cname}/style/index.less`)) {
-          fse.copySync(`${sourcePath}/web/${cname}/style`, `${targetPath}/web/${cname}/style`);
+      fs.readdirSync(`${targetPath}/layout`).forEach(cname => {
+        if (fs.existsSync(`${sourcePath}/layout/${cname}/style/index.less`)) {
+          fse.copySync(`${sourcePath}/layout/${cname}/style`, `${targetPath}/layout/${cname}/style`);
+        }
+      });
+      fs.readdirSync(`${targetPath}/business`).forEach(cname => {
+        console.log(`${sourcePath}/business/${cname}/style/index.less`);
+        if (fs.existsSync(`${sourcePath}/business/${cname}/style/index.less`)) {
+          fse.copySync(`${sourcePath}/business/${cname}/style`, `${targetPath}/business/${cname}/style`);
         }
       });
       fs.readdirSync(`${targetPath}/mobile`).forEach(cname => {
@@ -40,7 +45,6 @@ function copyLess(name) {
         }
       });
     }
-
   });
 }
 
@@ -62,6 +66,5 @@ function copyTheme() {
 }
 
 ['cbc', 'chart', 'im', 'map'].forEach(name => copyLess(name));
-
 
 copyTheme();

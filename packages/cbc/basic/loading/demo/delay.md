@@ -9,9 +9,6 @@ title:
 
 延迟显示 loading 效果。当调用 `open()` 后 `delay` 时间内调用 `close()`，则不显示 loading 状态。
 
-## en-US
-
-Specifies a delay for loading state. If call `open()` ends during delay, loading status won't appear.
 
 ```ts
 import { Component } from '@angular/core';

@@ -16,8 +16,8 @@ import { Subscription } from 'rxjs';
 import { NoticeIconSelect, NoticeItem } from './notice-icon.types';
 
 @Component({
-  selector: 'notice-icon',
-  exportAs: 'noticeIcon',
+  selector: 'co-notice-icon',
+  exportAs: 'coNoticeIcon',
   templateUrl: './notice-icon.component.html',
   host: { '[class.notice-icon__btn]': 'true' },
   preserveWhitespaces: false,
@@ -34,24 +34,11 @@ export class NoticeIconComponent implements OnInit, OnChanges, OnDestroy {
   @Input() @InputBoolean() popoverVisible = false;
   @Input() btnClass = '';
   @Input() btnIconClass = '';
-  // tslint:disable-next-line:no-output-native
   @Output() readonly select = new EventEmitter<NoticeIconSelect>();
   @Output() readonly clear = new EventEmitter<string>();
   @Output() readonly popoverVisibleChange = new EventEmitter<boolean>();
 
   constructor(private i18n: CoLocaleService, private cdr: ChangeDetectorRef) {}
-
-  onVisibleChange(result: boolean) {
-    this.popoverVisibleChange.emit(result);
-  }
-
-  onSelect(i: NoticeIconSelect) {
-    this.select.emit(i);
-  }
-
-  onClear(title: string) {
-    this.clear.emit(title);
-  }
 
   ngOnInit() {
     this.i18n$ = this.i18n.change.subscribe(() => {
@@ -66,5 +53,17 @@ export class NoticeIconComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnDestroy() {
     this.i18n$.unsubscribe();
+  }
+
+  onVisibleChange(result: boolean) {
+    this.popoverVisibleChange.emit(result);
+  }
+
+  onSelect(i: NoticeIconSelect) {
+    this.select.emit(i);
+  }
+
+  onClear(title: string) {
+    this.clear.emit(title);
   }
 }

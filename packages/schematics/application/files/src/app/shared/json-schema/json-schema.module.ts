@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { DelonFormModule, WidgetRegistry } from '@co/form';
+import { CoFormModule, WidgetRegistry } from '@co/form';
 import { SharedModule } from '../shared.module';
 
 // import { TinymceWidget } from './widgets/tinymce/tinymce.widget';
@@ -14,7 +14,7 @@ export const SCHEMA_THIRDS_COMPONENTS = [
   declarations: SCHEMA_THIRDS_COMPONENTS,
   imports: [
     SharedModule,
-    DelonFormModule.forRoot()
+    CoFormModule.forRoot()
   ],
   exports: [
     ...SCHEMA_THIRDS_COMPONENTS

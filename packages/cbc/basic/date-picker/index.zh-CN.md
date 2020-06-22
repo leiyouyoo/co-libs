@@ -1,5 +1,5 @@
 ---
-type: Form
+type: Basic
 title: range-picker
 subtitle: 日期范围
 cols: 1

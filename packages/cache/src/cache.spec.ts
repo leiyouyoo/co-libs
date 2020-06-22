@@ -7,7 +7,7 @@ import { CoCacheConfig, CO_CONFIG } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { Observable, of } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { DelonCacheModule } from './cache.module';
+import { CoCacheModule } from './cache.module';
 import { CacheService } from './cache.service';
 import { ICache } from './interface';
 
@@ -42,7 +42,7 @@ describe('cache: service', () => {
       providers.push({ provide: CO_CONFIG, useValue: { cache: options } });
     }
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, AlainThemeModule.forRoot(), DelonCacheModule],
+      imports: [HttpClientTestingModule, AlainThemeModule.forRoot(), CoCacheModule],
       providers,
     });
 

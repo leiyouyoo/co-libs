@@ -4,6 +4,9 @@
     "baseUrl": ".",
     "rootDir": ".",
     "paths": {
+      // "@co/core": ["../../dist/@co/core"],
+      // "@co/common": ["../../dist/@co/common"],
+      // "@co/cds": ["../../dist/@co/cds"],
       "@co/cbc/*": ["../../dist/@co/cbc/*"],
       "@co/*": ["../../dist/@co/*"]
     }

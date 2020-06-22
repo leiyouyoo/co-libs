@@ -11,11 +11,6 @@ title:
 
 并且注意在这种模式下，外容器需要有指定的宽度（或设置自身宽度）。
 
-## en-US
-
-`lines` attribute specifies the maximum number of rows where the text will automatically be truncated when exceeded. In this mode, all `ng-content` will be converted to plain text.
-
-Also note that, in this mode, the outer container needs to have a specified width (or set its own width).
 
 ```ts
 import { Component } from '@angular/core';
@@ -23,9 +18,9 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-demo',
   template: `
-  <ellipsis lines="3" tooltip style="width: 200px">
+  <co-ellipsis lines="3" tooltip style="width: 200px">
     <p>There were injuries alleged in three <a href="#cover">cases in 2015</a>, and a fourth incident in September, according to the safety recall report. After meeting with US regulators in October, the firm decided to issue a voluntary recall.</p>
-  </ellipsis>
+  </co-ellipsis>
   `,
 })
 export class DemoComponent {

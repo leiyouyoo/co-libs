@@ -2,10 +2,10 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/
 import { LoadingShowOptions } from './loading.types';
 
 @Component({
-  selector: 'loading-default',
+  selector: 'co-loading-default',
   templateUrl: './loading.component.html',
   host: {
-    '[class.loading-default]': 'true',
+    '[class.co-loading-default]': 'true',
   },
   preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.OnPush,

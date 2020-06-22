@@ -8,21 +8,31 @@ import { CoConfigService, CoImageConfig, InputNumber } from '@co/core';
  * + 支持增加onerror事件
  */
 @Directive({
-  selector: '[_src]',
-  exportAs: '_src',
+  selector: '[co_image]',
+  exportAs: 'co_image',
 })
 export class ImageDirective implements OnChanges, OnInit {
-  @Input('_src') src: string;
+  //#region 输入输出参数
+
+  @Input('co_image') src: string;
   @Input() @InputNumber() size: number;
   @Input() error: string;
 
+  //#endregion
+
+  //#region 私有变量
+
   private inited = false;
   private imgEl: HTMLImageElement;
+
+  //#endregion
 
   constructor(el: ElementRef<HTMLImageElement>, configSrv: CoConfigService) {
     configSrv.attach<CoImageConfig, 'image'>(this, 'image', { size: 64, error: `./assets/img/logo.svg` });
     this.imgEl = el.nativeElement;
   }
+
+  //#region 生命周期钩子
 
   ngOnInit(): void {
     this.update();
@@ -37,6 +47,10 @@ export class ImageDirective implements OnChanges, OnInit {
     }
     this.update();
   }
+
+  //#endregion
+
+  //#region 私有方法
 
   private update() {
     let newSrc = this.src;
@@ -64,4 +78,6 @@ export class ImageDirective implements OnChanges, OnInit {
       this.src = error;
     };
   }
+
+  //#endregion
 }

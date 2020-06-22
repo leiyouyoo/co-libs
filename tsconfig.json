@@ -28,7 +28,7 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noFallthroughCasesInSwitch": true,
-    "types": ["jasmine"]
+    "types": ["jasmine", "lodash"]
   },
   "exclude": ["node_modules", "tmp"]
 }

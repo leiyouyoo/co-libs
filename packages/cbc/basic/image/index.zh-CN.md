@@ -1,7 +1,7 @@
 ---
 type: Basic
 order: 2
-title: _src
+title: 图片
 subtitle: 显示图像
 cols: 1
 module: import { ImageModule } from '@co/cbc/image';

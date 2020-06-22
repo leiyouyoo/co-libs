@@ -52,7 +52,7 @@ function generateModule(config: ModuleConfig) {
       }
 
       if (componentName.startsWith('Components')) {
-        let routeName = name.replace(/^(basic|web|mobile)\//g, "");
+        let routeName = name.replace(/^(basic|layout|business|mobile)\//g, '');
         modules.routes.push(`{ path: '${routeName}', redirectTo: '${routeName}/zh', pathMatch: 'full' }`);
         modules.routes.push(`{ path: '${routeName}/:lang', component: ${componentName} }`);
       } else {
@@ -134,7 +134,7 @@ function generateModule(config: ModuleConfig) {
       });
 
       // push meta
-      item.key = item.key.replace(/^(basic|web|mobile)(\\|\/)/g, "");
+      item.key = item.key.replace(/^(basic|layout|business|mobile)(\\|\/)/g, '');
       const meta: Meta = {
         name: item.key,
         i18n,

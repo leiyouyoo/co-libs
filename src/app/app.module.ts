@@ -15,6 +15,7 @@ import { RoutesModule } from './routes/routes.module';
 import { SharedModule } from './shared/shared.module';
 
 import { CO_I18N_TOKEN } from '@co/common';
+import { CoBusinessComponentsModule } from '@co/cbc';
 import { I18NService } from './core/i18n/service';
 import { StartupService } from './core/startup.service';
 
@@ -28,7 +29,6 @@ import { SimplemdeModule } from 'ngx-simplemde';
 import { NgxTinymceModule } from 'ngx-tinymce';
 import { UEditorModule } from 'ngx-ueditor';
 import { JsonSchemaModule } from './shared/json-schema/json-schema.module';
-import { STWidgetModule } from './shared/st-widget/st-widget.module';
 
 import { ExampleModule, EXAMPLE_COMPONENTS } from './routes/gen/examples';
 import { IconComponent } from './shared/components/icon/icon.component';
@@ -40,13 +40,13 @@ export function StartupServiceFactory(startupService: StartupService) {
 @NgModule({
   imports: [
     BrowserModule,
+    CoBusinessComponentsModule,
     BrowserAnimationsModule,
     HttpClientModule,
     GlobalConfigModule.forRoot(),
     LayoutModule,
     SharedModule,
     JsonSchemaModule,
-    STWidgetModule,
     RoutesModule,
     ExampleModule,
     // i18n

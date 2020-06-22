@@ -7,7 +7,7 @@ export const ENUS = {
   'app.home.feature': 'Feature',
   'app.home.feature.antd': 'Built on the design principles developed by Ant Design',
   'app.home.feature.zorro': 'Basic component based on NG-ZORRO',
-  'app.home.feature.delon': 'A set of higher-order components, chart, authentication, ACL, cache, mock, testing, etc.',
+  'app.home.feature.co': 'A set of higher-order components, chart, authentication, ACL, cache, mock, testing, etc.',
   'app.home.feature.out-of-box': 'Out of box',
   'app.home.feature.out-of-box.desc': 'A complete Angular scaffold for production environments',
   'app.home.feature.less': 'Simple customization',

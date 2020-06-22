@@ -1,7 +1,7 @@
 <nz-range-picker
   #comp
   [ngModel]="value"
-  (ngModelChange)="valueChange($event)"
+  (ngModelChange)="onModelChange($event)"
   [nzAllowClear]="nzAllowClear"
   [nzAutoFocus]="nzAutoFocus"
   [ngClass]="nzClassName"
@@ -13,7 +13,6 @@
   [nzDropdownClassName]="nzDropdownClassName"
   [ngStyle]="nzStyle"
   [nzPlaceHolder]="nzPlaceHolder"
-  (nzOnOpenChange)="_nzOnOpenChange($event)"
   [nzDateRender]="nzDateRender"
   [nzDisabledTime]="nzDisabledTime"
   [nzFormat]="nzFormat"
@@ -22,9 +21,10 @@
   [nzShowToday]="nzShowToday"
   [nzMode]="nzMode"
   [nzRanges]="nzRanges"
-  (nzOnPanelChange)="_nzOnPanelChange($event)"
-  (nzOnOk)="_nzOnOk($event)"
+  (nzOnOpenChange)="onOpenChange($event)"
+  (nzOnPanelChange)="onPanelChange($event)"
+  (nzOnOk)="onOk($event)"
 ></nz-range-picker>
 <ng-template #shortcutTpl>
-  <a *ngFor="let i of shortcut?.list; let first = first" (click)="clickShortcut(i)" [innerHTML]="i._text" [ngClass]="{ 'ml-sm': !first }"></a>
+  <a *ngFor="let i of shortcut?.list; let first = first" (click)="onShortcutClick(i)" [innerHTML]="i._text" [ngClass]="{ 'ml-sm': !first }"></a>
 </ng-template>

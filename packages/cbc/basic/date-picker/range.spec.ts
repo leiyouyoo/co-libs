@@ -25,14 +25,14 @@ describe('abc: date-picker: range', () => {
     });
     ({ fixture, dl, context } = createTestContext(TestComponent));
     fixture.detectChanges();
-    spyOn(context, '_nzOnOpenChange');
-    spyOn(context, '_nzOnPanelChange');
-    spyOn(context, '_nzOnOk');
+    spyOn(context, 'onOpenChange');
+    spyOn(context, 'onPanelChange');
+    spyOn(context, 'onOk');
   });
 
   describe('#ngModel', () => {
     it('should be get values via nz-range-picker', () => {
-      context.comp.valueChange([new Date(), new Date()]);
+      context.comp.onModelChange([new Date(), new Date()]);
       fixture.detectChanges();
       expect(context.i.start != null).toBe(true);
       expect(context.i.end != null).toBe(true);
@@ -71,19 +71,19 @@ describe('abc: date-picker: range', () => {
 
   describe('#events', () => {
     it('#nzOnOpenChange', () => {
-      context.comp._nzOnOpenChange(true);
+      context.comp.onOpenChange(true);
       fixture.detectChanges();
-      expect(context._nzOnOpenChange).toHaveBeenCalled();
+      expect(context.onOpenChange).toHaveBeenCalled();
     });
     it('#nzOnPanelChange', () => {
-      context.comp._nzOnPanelChange(true);
+      context.comp.onPanelChange(true);
       fixture.detectChanges();
-      expect(context._nzOnPanelChange).toHaveBeenCalled();
+      expect(context.onPanelChange).toHaveBeenCalled();
     });
     it('#nzOnOk', () => {
-      context.comp._nzOnOk(true);
+      context.comp.onOk(true);
       fixture.detectChanges();
-      expect(context._nzOnOk).toHaveBeenCalled();
+      expect(context.onOk).toHaveBeenCalled();
     });
   });
 
@@ -146,7 +146,7 @@ describe('abc: date-picker: range', () => {
 
 @Component({
   template: `
-    <range-picker
+    <co-range-picker
       #comp
       [(ngModel)]="i.start"
       [(ngModelEnd)]="i.end"
@@ -154,14 +154,14 @@ describe('abc: date-picker: range', () => {
       (nzOnPanelChange)="_nzOnPanelChange()"
       (nzOnOk)="_nzOnOk()"
       [shortcut]="shortcut"
-    ></range-picker>
+    ></co-range-picker>
   `,
 })
 class TestComponent {
   @ViewChild('comp', { static: true }) comp: RangePickerComponent;
   i: any = {};
   shortcut: boolean | CoDateRangePickerShortcut | null = false;
-  _nzOnOpenChange() { }
-  _nzOnPanelChange() { }
-  _nzOnOk() { }
+  onOpenChange() {}
+  onPanelChange() {}
+  onOk() {}
 }

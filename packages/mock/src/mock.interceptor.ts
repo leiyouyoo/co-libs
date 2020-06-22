@@ -18,7 +18,7 @@ import { MockService } from './mock.service';
 import { MockStatusError } from './status.error';
 
 class HttpMockInterceptorHandler implements HttpHandler {
-  constructor(private next: HttpHandler, private interceptor: HttpInterceptor) { }
+  constructor(private next: HttpHandler, private interceptor: HttpInterceptor) {}
 
   handle(req: HttpRequest<any>): Observable<HttpEvent<any>> {
     return this.interceptor.intercept(req, this.next);
@@ -27,7 +27,7 @@ class HttpMockInterceptorHandler implements HttpHandler {
 
 @Injectable()
 export class MockInterceptor implements HttpInterceptor {
-  constructor(private injector: Injector) { }
+  constructor(private injector: Injector) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const src = this.injector.get(MockService);
@@ -64,7 +64,7 @@ export class MockInterceptor implements HttpInterceptor {
             }
           });
         }
-        req.params.keys().forEach(key => (mockRequest.queryString[key] = req.params.get(key)));
+        req.params.keys().forEach(key => (mockRequest.queryString[key] = req.params.getAll(key)));
         req.headers.keys().forEach(key => (mockRequest.headers[key] = req.headers.get(key)));
 
         try {

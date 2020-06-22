@@ -3,17 +3,17 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { MockInterceptor } from './mock.interceptor';
 
 @NgModule({})
-export class DelonMockModule {
+export class CoMockModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: DelonMockModule,
+      ngModule: CoMockModule,
       providers: [{ provide: HTTP_INTERCEPTORS, useClass: MockInterceptor, multi: true }],
     };
   }
 
   static forChild(): ModuleWithProviders {
     return {
-      ngModule: DelonMockModule,
+      ngModule: CoMockModule,
       providers: [{ provide: HTTP_INTERCEPTORS, useClass: MockInterceptor, multi: true }],
     };
   }

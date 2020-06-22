@@ -26,6 +26,7 @@
     "qrious": "^4.0.2",
     "@co/common": "PEER-0.0.0-PLACEHOLDER",
     "@co/core": "PEER-0.0.0-PLACEHOLDER",
+    "@co/cds": "PEER-0.0.0-PLACEHOLDER",
     "@co/acl": "PEER-0.0.0-PLACEHOLDER"
   },
   "sideEffects": false

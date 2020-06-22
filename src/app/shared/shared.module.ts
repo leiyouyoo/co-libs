@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { DelonACLModule } from '@co/acl';
-import { DelonCacheModule } from '@co/cache';
-import { DelonFormModule } from '@co/form';
+import { CoACLModule } from '@co/acl';
+import { CoCacheModule } from '@co/cache';
+import { CoFormModule } from '@co/form';
 import { CoCommonModule } from '@co/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { GithubButtonModule } from 'ng-github-button';
@@ -60,9 +60,9 @@ const THIRDS = [
     RouterModule,
     ReactiveFormsModule,
     CoCommonModule.forChild(),
-    DelonACLModule,
-    DelonFormModule,
-    DelonCacheModule,
+    CoACLModule,
+    CoFormModule,
+    CoCacheModule,
     ...SHARED_DELON_MODULES,
     ...SHARED_ZORRO_MODULES,
     ...THIRDS,
@@ -75,9 +75,9 @@ const THIRDS = [
     ReactiveFormsModule,
     RouterModule,
     CoCommonModule,
-    DelonACLModule,
-    DelonFormModule,
-    DelonCacheModule,
+    CoACLModule,
+    CoFormModule,
+    CoCacheModule,
     ...SHARED_DELON_MODULES,
     ...SHARED_ZORRO_MODULES,
     ...THIRDS,

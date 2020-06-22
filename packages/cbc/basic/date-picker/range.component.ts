@@ -14,9 +14,12 @@ import {
 import { FunctionProp, NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzRangePickerComponent } from 'ng-zorro-antd/date-picker';
 
+/**
+ * 日期范围选择组件
+ */
 @Component({
-  selector: 'range-picker',
-  exportAs: 'rangePicker',
+  selector: 'co-range-picker',
+  exportAs: 'coRangePicker',
   templateUrl: './range.component.html',
   providers: [
     {
@@ -27,12 +30,6 @@ import { NzRangePickerComponent } from 'ng-zorro-antd/date-picker';
   ],
 })
 export class RangePickerComponent implements ControlValueAccessor {
-  private onChangeFn: (val: Date) => void;
-  private _shortcut: CoDateRangePickerShortcut;
-  private defaultShortcuts: CoDateRangePickerShortcut;
-  @ViewChild('comp', { static: false }) private comp: NzRangePickerComponent;
-  value: Date[] = [];
-
   @Input() ngModelEnd: Date;
   @Input()
   set shortcut(val: CoDateRangePickerShortcut | null) {
@@ -50,7 +47,7 @@ export class RangePickerComponent implements ControlValueAccessor {
   }
   @Output() readonly ngModelEndChange = new EventEmitter<Date>();
 
-  // #region Native properties
+  // #region 输入输出参数
 
   @Input() nzAllowClear = true;
   @Input() nzAutoFocus = false;
@@ -78,6 +75,16 @@ export class RangePickerComponent implements ControlValueAccessor {
   @Output() readonly nzOnOk = new EventEmitter<any>();
 
   // #endregion
+
+  //#region 私有变量
+
+  private onChangeFn: (val: Date) => void;
+  private _shortcut: CoDateRangePickerShortcut;
+  private defaultShortcuts: CoDateRangePickerShortcut;
+  @ViewChild('comp', { static: false }) private comp: NzRangePickerComponent;
+  value: Date[] = [];
+
+  //#endregion
 
   constructor(private dom: DomSanitizer, configSrv: CoConfigService) {
     const cog = configSrv.merge<CoDateRangePickerConfig, 'dataRange'>('dataRange', {
@@ -125,24 +132,7 @@ export class RangePickerComponent implements ControlValueAccessor {
     Object.assign(this, cog);
   }
 
-  _nzOnOpenChange(e: any) {
-    this.nzOnOpenChange.emit(e);
-  }
-
-  _nzOnPanelChange(e: any) {
-    this.nzOnPanelChange.emit(e);
-  }
-
-  _nzOnOk(e: any) {
-    this.nzOnOk.emit(e);
-  }
-
-  valueChange(e: [Date, Date]) {
-    e = fixEndTimeOfRange(e);
-    this.onChangeFn(e[0]);
-    this.ngModelEnd = e[1];
-    this.ngModelEndChange.emit(e[1]);
-  }
+  //#region ngModel实现
 
   writeValue(value: Date): void {
     this.value = value && this.ngModelEnd ? [value, this.ngModelEnd] : [];
@@ -156,16 +146,45 @@ export class RangePickerComponent implements ControlValueAccessor {
     // this.onTouchedFn = fn;
   }
 
-  setDisabledState(disabled: boolean): void {
+  //#endregion
+
+  //#region 公共方法
+
+  setDisabledState(disabled: boolean) {
     this.nzDisabled = disabled;
   }
 
-  clickShortcut(item: CoDateRangePickerShortcutItem) {
+  //#endregion
+
+  //#region 事件处理
+
+  onModelChange(e: [Date, Date]) {
+    e = fixEndTimeOfRange(e);
+    this.onChangeFn(e[0]);
+    this.ngModelEnd = e[1];
+    this.ngModelEndChange.emit(e[1]);
+  }
+
+  onOpenChange(e: any) {
+    this.nzOnOpenChange.emit(e);
+  }
+
+  onPanelChange(e: any) {
+    this.nzOnPanelChange.emit(e);
+  }
+
+  onOk(e: any) {
+    this.nzOnOk.emit(e);
+  }
+
+  onShortcutClick(item: CoDateRangePickerShortcutItem) {
     this.value = item.fn(this.value as any);
-    this.valueChange(this.value as [Date, Date]);
+    this.onModelChange(this.value as [Date, Date]);
     if (this._shortcut.closed) {
       // tslint:disable-next-line:no-string-literal
       (this.comp as NzSafeAny)['picker'].hideOverlay();
     }
   }
+
+  //#endregion
 }

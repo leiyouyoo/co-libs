@@ -2,7 +2,11 @@
   "extends": "../tsconfig.lib.prod.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "rootDir": "."
+    "rootDir": ".",
+    "paths": {
+      "@co/common": ["../../dist/@co/common"],
+      "@co/core": ["../../dist/@co/core"]
+    }
   },
   "angularCompilerOptions": {
     "annotateForClosureCompiler": true,

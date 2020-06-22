@@ -3,8 +3,8 @@ import { LocaleData } from '@co/common';
 import { NoticeIconSelect, NoticeItem } from './notice-icon.types';
 
 @Component({
-  selector: 'notice-icon-tab',
-  exportAs: 'noticeIconTab',
+  selector: 'co-notice-icon-tab',
+  exportAs: 'coNoticeIconTab',
   templateUrl: './notice-icon-tab.component.html',
   preserveWhitespaces: false,
   encapsulation: ViewEncapsulation.None,
@@ -12,7 +12,6 @@ import { NoticeIconSelect, NoticeItem } from './notice-icon.types';
 export class NoticeIconTabComponent {
   @Input() locale: LocaleData = {};
   @Input() data: NoticeItem;
-  // tslint:disable-next-line:no-output-native
   @Output() readonly select = new EventEmitter<NoticeIconSelect>();
   @Output() readonly clear = new EventEmitter<string>();
 

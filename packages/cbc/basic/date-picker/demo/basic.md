@@ -9,9 +9,6 @@ title:
 
 使用 `ngModel`、`ngModelEnd` 来表示开始与结束值。
 
-## en-US
-
-Start and end values with `ngModel`, `ngModelEnd`.
 
 ```ts
 import { Component } from '@angular/core';
@@ -20,10 +17,10 @@ import { Component } from '@angular/core';
   selector: 'app-demo',
   template: `
   result: {{i | json}}<br>
-  <range-picker [(ngModel)]="i.start" [(ngModelEnd)]="i.end"></range-picker>
+  <co-range-picker [(ngModel)]="i.start" [(ngModelEnd)]="i.end"></co-range-picker>
   `,
 })
-export class DemoComponent {
+export class DatePickerBasicComponent {
   i: any = {};
 }
 ```

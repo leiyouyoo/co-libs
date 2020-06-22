@@ -13,18 +13,24 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { InputBoolean, InputNumber } from '@co/core';
 import { take } from 'rxjs/operators';
 
+import { InputBoolean, InputNumber } from '@co/core';
+
+/**
+ * 文本过长自动处理省略号组件
+ */
 @Component({
-  selector: 'ellipsis',
-  exportAs: 'ellipsis',
+  selector: 'co-ellipsis',
+  exportAs: 'coEllipsis',
   templateUrl: './ellipsis.component.html',
   preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
 export class EllipsisComponent implements AfterViewInit, OnChanges {
+  //#region 私有变量
+
   // tslint:disable-next-line:no-string-literal
   private isSupportLineClamp = this.doc.body.style['webkitLineClamp'] !== undefined;
   @ViewChild('orgEl', { static: false }) private orgEl: ElementRef;
@@ -37,7 +43,9 @@ export class EllipsisComponent implements AfterViewInit, OnChanges {
   text = '';
   targetCount = 0;
 
-  // #region fields
+  //#endregion
+
+  // #region 输入输出参数
 
   @Input() @InputBoolean() tooltip = false;
   @Input() @InputNumber(null) length: number;
@@ -47,18 +55,56 @@ export class EllipsisComponent implements AfterViewInit, OnChanges {
 
   // #endregion
 
-  get linsWord(): string {
-    const { targetCount, text, tail } = this;
-    return (targetCount > 0 ? text.substring(0, targetCount) : '') + (targetCount > 0 && targetCount < text.length ? tail : '');
-  }
-
   constructor(
     private el: ElementRef,
     private ngZone: NgZone,
     private dom: DomSanitizer,
     @Inject(DOCUMENT) private doc: Document,
     private cdr: ChangeDetectorRef,
-  ) { }
+  ) {}
+
+  //#region 生命周期钩子
+
+  ngAfterViewInit(): void {
+    this.inited = true;
+    this.refresh();
+  }
+
+  ngOnChanges(): void {
+    if (this.inited) {
+      this.refresh();
+    }
+  }
+
+  //#endregion
+
+  //#region 公共属性方法
+
+  get linsWord(): string {
+    const { targetCount, text, tail } = this;
+    return (targetCount > 0 ? text.substring(0, targetCount) : '') + (targetCount > 0 && targetCount < text.length ? tail : '');
+  }
+
+  refresh(): void {
+    this.genType();
+    const { type, dom, orgEl, cdr } = this;
+    const html = orgEl.nativeElement.innerHTML;
+    this.orgHtml = dom.bypassSecurityTrustHtml(html);
+    cdr.detectChanges();
+    this.executeOnStable(() => {
+      this.gen();
+      if (type !== 'line') {
+        const el = this.getEl('.co-ellipsis');
+        if (el) {
+          el.innerHTML = html;
+        }
+      }
+    });
+  }
+
+  //#endregion
+
+  //#region 私有方法
 
   private getStrFullLength(str: string): number {
     return str.split('').reduce((pre, cur) => {
@@ -119,7 +165,7 @@ export class EllipsisComponent implements AfterViewInit, OnChanges {
     this.cls = {
       ellipsis: true,
       ellipsis__lines: lines && !isSupportLineClamp,
-      'ellipsis__line-clamp': lines && isSupportLineClamp,
+      'co-ellipsis__line-clamp': lines && isSupportLineClamp,
     };
     if (!lines && !length) {
       this.type = 'default';
@@ -157,9 +203,9 @@ export class EllipsisComponent implements AfterViewInit, OnChanges {
       const { shadowOrgEl, shadowTextEl } = this;
       const orgNode = shadowOrgEl.nativeElement as HTMLElement;
       const lineText = orgNode.innerText || orgNode.textContent!;
-      const lineHeight = parseInt(getComputedStyle(this.getEl('.ellipsis')).lineHeight!, 10);
+      const lineHeight = parseInt(getComputedStyle(this.getEl('.co-ellipsis')).lineHeight!, 10);
       const targetHeight = lines * lineHeight;
-      this.getEl('.ellipsis__handle').style.height = `${targetHeight}px`;
+      this.getEl('.co-ellipsis__handle').style.height = `${targetHeight}px`;
 
       if (orgNode.offsetHeight <= targetHeight) {
         this.text = lineText;
@@ -189,31 +235,5 @@ export class EllipsisComponent implements AfterViewInit, OnChanges {
     }
   }
 
-  refresh(): void {
-    this.genType();
-    const { type, dom, orgEl, cdr } = this;
-    const html = orgEl.nativeElement.innerHTML;
-    this.orgHtml = dom.bypassSecurityTrustHtml(html);
-    cdr.detectChanges();
-    this.executeOnStable(() => {
-      this.gen();
-      if (type !== 'line') {
-        const el = this.getEl('.ellipsis');
-        if (el) {
-          el.innerHTML = html;
-        }
-      }
-    });
-  }
-
-  ngAfterViewInit(): void {
-    this.inited = true;
-    this.refresh();
-  }
-
-  ngOnChanges(): void {
-    if (this.inited) {
-      this.refresh();
-    }
-  }
+  //#endregion
 }

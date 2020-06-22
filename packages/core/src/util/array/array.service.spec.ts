@@ -3,7 +3,7 @@ import { NzTreeBaseService, NzTreeNode } from 'ng-zorro-antd/core/tree';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { CoConfig, CO_CONFIG } from '../../config';
 import { deepCopy } from '../other/other';
-import { DelonUtilModule } from '../../core.module';
+import { CoUtilModule } from '../../core.module';
 import { ArrayService } from './array.service';
 
 const MOCK_ARR: NzSafeAny[] = [
@@ -21,7 +21,7 @@ describe('core: array', () => {
   describe('#treeToArr', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [DelonUtilModule],
+        imports: [CoUtilModule],
       });
       srv = TestBed.inject<ArrayService>(ArrayService);
     });
@@ -71,7 +71,7 @@ describe('core: array', () => {
   describe('#arrToTree', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [DelonUtilModule],
+        imports: [CoUtilModule],
       });
       srv = TestBed.inject<ArrayService>(ArrayService);
     });
@@ -103,7 +103,7 @@ describe('core: array', () => {
   describe('[NzTreeNode]', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [DelonUtilModule],
+        imports: [CoUtilModule],
       });
       srv = TestBed.inject<ArrayService>(ArrayService);
       page = new PageTreeNode();
@@ -191,7 +191,7 @@ describe('core: array', () => {
   describe('[config]', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [DelonUtilModule],
+        imports: [CoUtilModule],
         providers: [
           {
             provide: CO_CONFIG,

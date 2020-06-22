@@ -6,6 +6,9 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { LoadingDefaultComponent } from './loading.component';
 
+/**
+ * 加载中指示器模块
+ */
 @NgModule({
   imports: [CommonModule, OverlayModule, PortalModule, NzIconModule, NzSpinModule],
   declarations: [LoadingDefaultComponent],

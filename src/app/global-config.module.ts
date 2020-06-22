@@ -1,15 +1,15 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { DelonMockModule } from '@co/mock';
+import { CoMockModule } from '@co/mock';
 import { CoCommonModule } from '@co/common';
 import { CoConfig, CO_CONFIG } from '@co/core';
 
 // Please refer to: https://ng-alain.com/docs/global-config
 // #region NG-ALAIN Config
 
-import { DelonACLModule } from '@co/acl';
+import { CoACLModule } from '@co/acl';
 import * as MOCKDATA from '../../_mock';
 
-const alainConfig: CoConfig = {
+const coConfig: CoConfig = {
   st: { ps: 3 },
   lodop: {
     license: `A59B099A586B3851E0F0D7FDBF37B603`,
@@ -18,8 +18,8 @@ const alainConfig: CoConfig = {
   mock: { data: MOCKDATA },
 };
 
-const alainModules = [CoCommonModule.forRoot(), DelonACLModule.forRoot(), DelonMockModule.forRoot()];
-const alainProvides = [{ provide: CO_CONFIG, useValue: alainConfig }];
+const coModules = [CoCommonModule.forRoot(), CoACLModule.forRoot(), CoMockModule.forRoot()];
+const coProvides = [{ provide: CO_CONFIG, useValue: coConfig }];
 
 /**
  * 若需要[路由复用](https://ng-alain.com/components/reuse-tab)需要：
@@ -54,13 +54,13 @@ const zorroProvides = [{ provide: NZ_CONFIG, useValue: ngZorroConfig }];
 // #endregion
 
 @NgModule({
-  imports: [...alainModules],
+  imports: [...coModules],
 })
 export class GlobalConfigModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: GlobalConfigModule,
-      providers: [...alainProvides, ...zorroProvides],
+      providers: [...coProvides, ...zorroProvides],
     };
   }
 }

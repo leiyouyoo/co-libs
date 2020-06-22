@@ -2,15 +2,13 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "rootDir": "..",
+    "rootDir": ".",
     "baseUrl": ".",
     "paths": {
-      "@co/cbc/*": ["./*"],
-      "@co/*": [ "../*" ]
+      "@co/*": ["../*"],
+      "@co/cbc/*": ["./*"]
     }
   },
-  "files": [
-    "public_api.ts"
-  ],
+  "files": ["public_api.ts"],
   "include": ["./**/*.ts"]
 }

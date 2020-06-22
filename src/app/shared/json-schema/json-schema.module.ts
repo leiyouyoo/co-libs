@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { DelonFormModule, WidgetRegistry } from '@co/form';
+import { CoFormModule, WidgetRegistry } from '@co/form';
 import { MarkdownWidget } from '../../../../packages/form/widgets-third/markdown/markdown.widget';
 import { TinymceWidget } from '../../../../packages/form/widgets-third/tinymce/tinymce.widget';
 import { UeditorWidget } from '../../../../packages/form/widgets-third/ueditor/ueditor.widget';
@@ -10,7 +10,7 @@ export const SCHEMA_THIRDS_COMPONENTS = [TinymceWidget, UeditorWidget, MarkdownW
 @NgModule({
   declarations: SCHEMA_THIRDS_COMPONENTS,
   entryComponents: SCHEMA_THIRDS_COMPONENTS,
-  imports: [SharedModule, DelonFormModule.forRoot()],
+  imports: [SharedModule, CoFormModule.forRoot()],
   exports: [...SCHEMA_THIRDS_COMPONENTS],
 })
 export class JsonSchemaModule {

@@ -66,7 +66,7 @@ describe('abc: loading', () => {
   describe('#type', () => {
     it('with text', fakeAsync(() => {
       srv.open({ type: 'text' });
-      check('.loading-default__icon', 0);
+      check('.co-loading-default__icon', 0);
     }));
     it('with icon', fakeAsync(() => {
       srv.open({ type: 'icon', icon: { type: 'loading' } });

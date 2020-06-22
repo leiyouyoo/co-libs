@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CoLocaleModule } from '@co/common';
-import { CoConfigService, DelonUtilModule } from '@co/core';
+import { CoConfigService, CoUtilModule } from '@co/core';
 import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCardModule } from 'ng-zorro-antd/card';
@@ -119,15 +119,15 @@ const WIDGETS = [
 // #endregion
 
 @NgModule({
-  imports: [CommonModule, FormsModule, DelonUtilModule, CoLocaleModule, ...ZORROS],
+  imports: [CommonModule, FormsModule, CoUtilModule, CoLocaleModule, ...ZORROS],
   declarations: [...COMPONENTS, ...WIDGETS],
   entryComponents: [...WIDGETS],
   exports: [...COMPONENTS],
 })
-export class DelonFormModule {
+export class CoFormModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: DelonFormModule,
+      ngModule: CoFormModule,
       providers: [
         {
           provide: SchemaValidatorFactory,

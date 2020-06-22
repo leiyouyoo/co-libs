@@ -24,7 +24,7 @@ import {
   SettingOutline,
   UserOutline,
 } from '@ant-design/icons-angular/icons';
-import { ReuseCustomContextMenu } from '@co/cbc/basic/reuse-tab';
+import { ReuseCustomContextMenu } from '@co/cbc/layout/reuse-tab';
 import { I18NService, LangType } from 'app/core/i18n/service';
 
 const ICONS = [

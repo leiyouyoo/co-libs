@@ -2,9 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   template: `
-<sv-container size="large" title="title" layout="vertical">
-  <sv detailClass="text-danger" label="Firefox">1</sv>
-</sv-container>
 <form shf-wrap>
   <se label="App Key">1</se>
 </form>
@@ -30,4 +27,4 @@ import { Component } from '@angular/core';
 <g2-custom (render)="render($event)"></g2-custom>
 `,
 })
-class A {}
+class A { }

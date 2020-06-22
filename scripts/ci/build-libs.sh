@@ -10,6 +10,7 @@ PACKAGES=(core
   testing
   acl
   common
+  cds
   theme
   cbc
   auth
@@ -18,7 +19,6 @@ PACKAGES=(core
   mock
   form
   apm
-  cds
   im
   map
   cms)
@@ -98,6 +98,8 @@ build() {
     LICENSE_BANNER=${SOURCE}/license-banner.txt
 
     if ! containsElement "${NAME}" "${NODE_PACKAGES[@]}"; then
+echo " node --max_old_space_size=4096 ${PWD}/scripts/build/packing ${NAME}"
+
       # packaging
       node --max_old_space_size=4096 ${PWD}/scripts/build/packing ${NAME}
       # license banner

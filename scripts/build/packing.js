@@ -5,9 +5,8 @@ const ngPackage = require('ng-packagr');
 
 const name = process.argv[2];
 const target = path.resolve(__dirname, `../../packages/${name}`);
-
 console.time(`${name}:time`);
-
+console.log(`${path.resolve(target, 'tsconfig.lib.json')}:1111111111111111111111111111111111111`);
 ngPackage
   .ngPackagr()
   .forProject(path.resolve(target, `ng-package.json`))

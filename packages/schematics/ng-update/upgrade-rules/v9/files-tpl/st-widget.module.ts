@@ -1,5 +1,4 @@
 export default `import { NgModule } from '@angular/core';
-// import { STWidgetRegistry } from '@co/cbc/basic/st';
 import { SharedModule } from '../shared.module';
 
 export const STWIDGET_COMPONENTS = [];

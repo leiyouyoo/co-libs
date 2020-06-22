@@ -9,9 +9,6 @@ title:
 
 通过设置 `length` 属性指定文本最长长度，如果超过这个长度会自动截取。
 
-## en-US
-
-`length` attribute specifies the maximum length where the text will automatically be truncated when exceeded.
 
 ```ts
 import { Component } from '@angular/core';
@@ -19,9 +16,9 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-demo',
   template: `
-  <ellipsis length="100">{{ article }}</ellipsis>
+  <co-ellipsis length="100">{{ article }}</co-ellipsis>
   <h4 class="mt-lg">Show Tooltip</h4>
-  <ellipsis length="100" tooltip>{{ article }}</ellipsis>
+  <co-ellipsis length="100" tooltip>{{ article }}</co-ellipsis>
   `,
 })
 export class DemoComponent {

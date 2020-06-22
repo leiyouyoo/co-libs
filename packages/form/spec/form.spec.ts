@@ -9,7 +9,7 @@ import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzIconService } from 'ng-zorro-antd/icon';
 import { of } from 'rxjs';
 import { FormPropertyFactory } from '../src/model/form.property.factory';
-import { DelonFormModule } from '../src/module';
+import { CoFormModule } from '../src/module';
 import { SFSchema } from '../src/schema/index';
 import { WidgetRegistry } from '../src/widget.factory';
 import { SCHEMA, SFPage, TestFormComponent } from './base.spec';
@@ -22,7 +22,7 @@ describe('form: component', () => {
 
   function genModule(options: { acl?: boolean; i18n?: boolean } = {}) {
     options = { acl: false, i18n: false, ...options };
-    const imports = [NoopAnimationsModule, DelonFormModule.forRoot()];
+    const imports = [NoopAnimationsModule, CoFormModule.forRoot()];
     if (options.i18n) {
       imports.push(CoCommonModule.forRoot());
     }

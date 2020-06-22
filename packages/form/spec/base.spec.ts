@@ -10,7 +10,7 @@ import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { SF_SEQ } from '../src/const';
 import { SFButton } from '../src/interface';
 import { FormProperty } from '../src/model/form.property';
-import { DelonFormModule } from '../src/module';
+import { CoFormModule } from '../src/module';
 import { SFSchema } from '../src/schema';
 import { SFUISchema } from '../src/schema/ui';
 import { SFComponent } from '../src/sf.component';
@@ -35,7 +35,7 @@ let context: TestFormComponent;
 export function builder(options?: { detectChanges?: boolean; template?: string; ingoreAntd?: boolean; imports?: any[] }) {
   options = { detectChanges: true, ...options };
   TestBed.configureTestingModule({
-    imports: [NoopAnimationsModule, CoCommonModule.forRoot(), DelonFormModule.forRoot()].concat(options.imports || []),
+    imports: [NoopAnimationsModule, CoCommonModule.forRoot(), CoFormModule.forRoot()].concat(options.imports || []),
     declarations: [TestFormComponent],
   });
   if (options.template) {
@@ -63,7 +63,7 @@ export function builder(options?: { detectChanges?: boolean; template?: string; 
 export function configureSFTestSuite() {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NoopAnimationsModule, CoCommonModule.forRoot(), DelonFormModule.forRoot(), HttpClientTestingModule],
+      imports: [NoopAnimationsModule, CoCommonModule.forRoot(), CoFormModule.forRoot(), HttpClientTestingModule],
       declarations: [TestFormComponent],
     });
   });

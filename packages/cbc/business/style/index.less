@@ -1,0 +1,35 @@
+@import '../../../theme/theme-default.less';
+@import './vars.less';
+@import './zorro.less';
+
+@{co-picker-prefix} {
+  position: relative !important;
+  display: inline-block;
+  min-width: 200px;
+
+  &__loading {
+    height: @gutter*5;
+    margin-right: @gutter;
+
+    line-height: 40px;
+  }
+
+  &__drowpdown--table {
+    .header,
+    .row {
+      width: 100%;
+
+      > li {
+        display: inline-block;
+      }
+    }
+
+    .header {
+      border-bottom: dashed 1px @grey-4;
+    }
+
+    .row {
+      border-bottom: dashed 1px @grey-3;
+    }
+  }
+}

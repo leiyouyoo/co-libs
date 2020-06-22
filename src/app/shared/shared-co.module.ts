@@ -1,27 +1,10 @@
-import { AvatarListModule } from '@co/cbc/basic/avatar-list';
-import { CountDownModule } from '@co/cbc/basic/count-down';
 import { DatePickerModule } from '@co/cbc/basic/date-picker';
-import { DownFileModule } from '@co/cbc/basic/down-file';
 import { EllipsisModule } from '@co/cbc/basic/ellipsis';
-import { ErrorCollectModule } from '@co/cbc/basic/error-collect';
-import { ExceptionModule } from '@co/cbc/basic/exception';
-import { FooterToolbarModule } from '@co/cbc/basic/footer-toolbar';
-import { GlobalFooterModule } from '@co/cbc/basic/global-footer';
 import { ImageModule } from '@co/cbc/basic/image';
-import { MediaModule } from '@co/cbc/basic/media';
 import { NoticeIconModule } from '@co/cbc/basic/notice-icon';
-import { NumberToChineseModule } from '@co/cbc/basic/number-to-chinese';
-import { PageHeaderModule } from '@co/cbc/basic/page-header';
-import { QRModule } from '@co/cbc/basic/qr';
-import { QuickMenuModule } from '@co/cbc/basic/quick-menu';
-import { ResultModule } from '@co/cbc/basic/result';
-import { ReuseTabModule } from '@co/cbc/basic/reuse-tab';
-import { SEModule } from '@co/cbc/basic/se';
-import { SGModule } from '@co/cbc/basic/sg';
-import { SidebarNavModule } from '@co/cbc/basic/sidebar-nav';
-import { STModule } from '@co/cbc/basic/st';
-import { SVModule } from '@co/cbc/basic/sv';
-import { TagSelectModule } from '@co/cbc/basic/tag-select';
+import { PageHeaderModule } from '@co/cbc/layout/page-header';
+import { ReuseTabModule } from '@co/cbc/layout/reuse-tab';
+import { SidebarNavModule } from '@co/cbc/layout/sidebar-nav';
 import { G2BarModule } from '@co/chart/bar';
 import { G2CardModule } from '@co/chart/card';
 import { G2CustomModule } from '@co/chart/custom';
@@ -37,33 +20,16 @@ import { G2TagCloudModule } from '@co/chart/tag-cloud';
 import { G2TimelineModule } from '@co/chart/timeline';
 import { TrendModule } from '@co/chart/trend';
 import { G2WaterWaveModule } from '@co/chart/water-wave';
-import { CustomerPickerModule } from '@co/cbc/basic/customer-picker';
-import { ContainerPickerModule } from '@co/cbc/basic/container-picker';
-import { DataDictionaryPickerModule } from '@co/cbc/basic/data-dictionary-picker';
+
+import { CoBasicCompoentsModule, CoBusinessComponentsModule } from '@co/cbc';
+import { CdsModule } from '@co/cds';
 
 export const SHARED_DELON_MODULES = [
-  AvatarListModule,
-  CountDownModule,
   DatePickerModule,
-  DownFileModule,
   EllipsisModule,
-  STModule,
-  SVModule,
-  SEModule,
-  SGModule,
   ImageModule,
-  QRModule,
-  NumberToChineseModule,
-  ErrorCollectModule,
-  ExceptionModule,
-  FooterToolbarModule,
-  GlobalFooterModule,
-  GlobalFooterModule,
   PageHeaderModule,
-  ResultModule,
-  TagSelectModule,
   NoticeIconModule,
-  QuickMenuModule,
   SidebarNavModule,
   G2BarModule,
   G2CardModule,
@@ -81,8 +47,7 @@ export const SHARED_DELON_MODULES = [
   NumberInfoModule,
   TrendModule,
   ReuseTabModule,
-  MediaModule,
-  CustomerPickerModule,
-  ContainerPickerModule,
-  DataDictionaryPickerModule,
+  CoBasicCompoentsModule,
+  CoBusinessComponentsModule,
+  CdsModule,
 ];

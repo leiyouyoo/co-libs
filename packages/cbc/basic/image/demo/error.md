@@ -9,9 +9,6 @@ title:
 
 自动替换加载失败图像。
 
-## en-US
-
-Automatically replaces the failed image.
 
 ```ts
 import { Component } from '@angular/core';
@@ -21,7 +18,7 @@ import { Component } from '@angular/core';
   template: `
   <button nz-button (click)="src='//a.com/1.png'">Load an error image</button>
   <div style="margin-top: 8px;">
-    <img [_src]="src" error="./assets/img/logo-color.svg">
+    <img [co_image]="src" error="./assets/img/logo-color.svg">
   </div>
   `
 })
