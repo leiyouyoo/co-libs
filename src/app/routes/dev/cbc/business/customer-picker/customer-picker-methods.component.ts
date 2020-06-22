@@ -19,15 +19,15 @@ export class CustomerPickerMethodsComponent {
 
   selectedValue: number = 2;
 
-  onFocus() {
+  onFocus(_e: any) {
     this.coCustomerPickerComponent.focus();
   }
 
-  onBlur() {
+  onBlur(_e: any) {
     this.coCustomerPickerComponent.blur();
   }
 
-  onClear() {
+  onClear(_e: any) {
     this.coCustomerPickerComponent.clear();
   }
 }
