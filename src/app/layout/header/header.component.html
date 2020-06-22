@@ -1,15 +1,6 @@
 <ng-container *ngIf="isMobile">
-  <i
-    nz-icon
-    nzType="menu"
-    class="header-menu-icon"
-    nz-popover
-    [(nzVisible)]="menuVisible"
-    [nzPopoverTitle]="null"
-    nzPopoverTrigger="click"
-    nzPopoverPlacement="bottomRight"
-    [nzPopoverContent]="mobileMenu"
-  ></i>
+  <i nz-icon nzType="menu" class="header-menu-icon" nz-popover [(nzVisible)]="menuVisible" [nzPopoverTitle]="null"
+    nzPopoverTrigger="click" nzPopoverPlacement="bottomRight" [nzPopoverContent]="mobileMenu"></i>
   <ng-template #mobileMenu>
     <div class="header-menu">
       <ul nz-menu nzMode="inline" class="text-center menu-site">
@@ -37,7 +28,7 @@
 <div nz-row>
   <div nz-col nzXs="24" nzSm="24" nzMd="6" nzLg="5" nzXl="5" nzXXl="4">
     <a routerLink="/{{ i18n.zone }}" id="logo">
-      <img src="./assets/img/logo-color.svg" style="max-height: 32px; font-size: 24px;" />
+      <img src="./assets/img/logo-color.svg" alt="" style="max-height: 32px; font-size: 24px;" />
       CO-LIBS
     </a>
   </div>
@@ -46,17 +37,9 @@
       <div id="search-box">
         <i nz-icon nzType="search"></i>
         <input *ngIf="useDocsearch" nz-input #searchInput [placeholder]="'app.header.search' | translate" />
-        <nz-select
-          *ngIf="!useDocsearch"
-          style="width: 200px;"
-          [ngModel]="q"
-          (ngModelChange)="to($event)"
-          nzAllowClear
-          nzShowSearch
-          [nzServerSearch]="true"
-          (nzOnSearch)="changeQ($event)"
-          [nzPlaceHolder]="'app.header.search' | translate"
-        >
+        <nz-select *ngIf="!useDocsearch" style="width: 200px;" [ngModel]="q" (ngModelChange)="to($event)" nzAllowClear
+          nzShowSearch [nzServerSearch]="true" (nzOnSearch)="changeQ($event)"
+          [nzPlaceHolder]="'app.header.search' | translate">
           <nz-option-group *ngFor="let group of list" [nzLabel]="group.title">
             <nz-option *ngFor="let option of group.children" [nzValue]="option" [nzLabel]="option.title"></nz-option>
           </nz-option-group>

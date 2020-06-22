@@ -1,38 +1,24 @@
-<nz-select
-  nzServerSearch
-  nzShowSearch
-  [nzMaxTagCount]="coMaxMultipleCount"
-  [nzDropdownRender]="renderTemplate"
-  nzDropdownMatchSelectWidth="false"
-  [nzNotFoundContent]="coNotFoundContent"
-  [nzMaxTagPlaceholder]="tagPlaceHolder"
-  [nzMode]="coMode"
-  [nzOpen]="coOpen"
-  [nzSize]="coSize"
-  [nzAutoFocus]="coAutoFocus"
-  [nzPlaceHolder]="coPlaceHolder"
-  [nzAllowClear]="coAllowClear"
-  [(ngModel)]="value"
-  [nzFilterOption]="coFilterOption"
-  (nzOnSearch)="onSearch($event)"
-  (nzScrollToBottom)="onLoadMore()"
-  (nzOpenChange)="onOpenChanged($event)"
+<nz-select nzServerSearch nzShowSearch [nzMaxTagCount]="coMaxMultipleCount" [nzDropdownRender]="renderTemplate"
+  nzDropdownMatchSelectWidth="false" [nzNotFoundContent]="coNotFoundContent" [nzMaxTagPlaceholder]="tagPlaceHolder"
+  [nzMode]="coMode" [nzOpen]="coOpen" [nzSize]="coSize" [nzAutoFocus]="coAutoFocus" [nzPlaceHolder]="coPlaceHolder"
+  [nzAllowClear]="coAllowClear" [(ngModel)]="value" [nzFilterOption]="coFilterOption" (nzOnSearch)="onSearch($event)"
+  (nzScrollToBottom)="onLoadMore()" (nzOpenChange)="onOpenChanged($event)"
   [nzDropdownClassName]="coDropdownMode === 'table' ? 'co-picker__drowpdown--table' : ''"
-  [nzDropdownStyle]="coDropdownStyle"
-  (nzBlur)="onBlur($event)"
-  (nzFocus)="onFocus($event)"
-  (ngModelChange)="onChanged($event)"
->
+  [nzDropdownStyle]="coDropdownStyle" (nzBlur)="onBlur($event)" (nzFocus)="onFocus($event)"
+  (ngModelChange)="onChanged($event)">
   <div *ngIf="coDropdownMode === 'default'">
-    <nz-option *ngFor="let item of optionList" [nzLabel]="item[coLabelMember]" [nzValue]="item[coValueMember]"> </nz-option>
+    <nz-option *ngFor="let item of optionList" [nzLabel]="item[coLabelMember]" [nzValue]="item[coValueMember]">
+    </nz-option>
   </div>
   <div *ngIf="coDropdownMode === 'custom'">
-    <nz-option *ngFor="let item of optionList" [nzLabel]="item[coLabelMember]" [nzValue]="item[coValueMember]" nzCustomContent>
+    <nz-option *ngFor="let item of optionList" [nzLabel]="item[coLabelMember]" [nzValue]="item[coValueMember]"
+      nzCustomContent>
       <ng-template [ngTemplateOutlet]="coItemRender" [ngTemplateOutletContext]="{ $implicit: item }"></ng-template>
     </nz-option>
   </div>
   <div *ngIf="coDropdownMode === 'table'">
-    <nz-option [nzLabel]="" nzDisabled nzCustomContent style="position: absolute; top: 0px; right: 0px; left: 0px; height: 40px;">
+    <nz-option [nzLabel]="" nzDisabled nzCustomContent
+      style="position: absolute; top: 0px; right: 0px; left: 0px; height: 40px;">
       <ul class="header">
         <li *ngFor="let col of coDropdownColumns" [ngStyle]="{ width: col.width + 'px' }">
           {{ col.label }}
@@ -40,7 +26,8 @@
       </ul>
     </nz-option>
 
-    <nz-option *ngFor="let item of optionList" [nzLabel]="item[coLabelMember]" [nzValue]="item[coValueMember]" nzCustomContent>
+    <nz-option *ngFor="let item of optionList" [nzLabel]="item[coLabelMember]" [nzValue]="item[coValueMember]"
+      nzCustomContent>
       <ul class="row">
         <li *ngFor="let col of coDropdownColumns" [ngStyle]="{ width: col.width + 'px' }">
           {{ item[col.name] }}
@@ -50,7 +37,7 @@
   </div>
 </nz-select>
 
-<nz-select-arrow [search]="coOpen" [suffixIcon]="nzSuffixIcon"></nz-select-arrow>
+<nz-select-arrow [search]="coOpen"></nz-select-arrow>
 
 <ng-template #renderTemplate>
   <div *ngIf="isLoading && hasMore" class="co-picker__loading">
