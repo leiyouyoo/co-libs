@@ -5,7 +5,7 @@ import * as _ from 'lodash';
 
 import { Observable } from 'rxjs';
 
-import { CustomerService } from '@co/cds';
+import { ChargingCodeService } from '@co/cds';
 import { PickerComponentBase } from '@co/cbc/core';
 
 /**
@@ -30,15 +30,15 @@ import { PickerComponentBase } from '@co/cbc/core';
 export class ChargingCodePickerComponent extends PickerComponentBase {
   //#region  构造函数
 
-  constructor(cdr: ChangeDetectorRef, private customerService: CustomerService) {
+  constructor(cdr: ChangeDetectorRef, private chargingCodeService: ChargingCodeService) {
     super(cdr);
-
-    this.coLabelMember = 'fax';
+    //显示列的key
+    this.coLabelMember = 'name';
   }
 
   //#endregion
 
   fetchRemoteData(_condition: any): Observable<any> {
-    return this.customerService.getAllBySearch(_condition);
+    return this.chargingCodeService.getAllBySearch(_condition);
   }
 }
