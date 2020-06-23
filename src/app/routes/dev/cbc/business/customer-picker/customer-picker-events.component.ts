@@ -19,14 +19,14 @@ export class CustomerPickerEventsComponent {
   selectedValue: number = 2;
   msg: string;
 
-  onFocus() {
+  onFocus(_e: any) {
     this.msg = '触发Focus事件';
   }
 
-  onBlur() {
+  onBlur(_e: any) {
     this.msg = '触发Blur事件';
   }
-  onOpenChange() {
+  onOpenChange(_e: any) {
     this.msg = '触发OpenChange事件';
   }
 }

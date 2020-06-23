@@ -28,7 +28,6 @@ export class DocsComponent implements OnInit, OnDestroy {
     private router: Router,
     private sanitizer: DomSanitizer,
   ) {
-    debugger;
     this.i18NChange$ = this.i18n.change.pipe(filter(() => !!this.item)).subscribe(() => {
       this.init();
     });
@@ -116,7 +115,7 @@ export class DocsComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       const elements = document.querySelectorAll('[class*="language-"], [class*="lang-"]');
       // tslint:disable-next-line:no-conditional-assignment
-      for (let i = 0, element; (element = elements[i++]); ) {
+      for (let i = 0, element; (element = elements[i++]);) {
         hljs.highlightBlock(element);
       }
     }, 250);

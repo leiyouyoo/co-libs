@@ -54,8 +54,8 @@ export class MetaService {
         item._t =
           typeof curTitle !== 'string'
             ? Object.values(curTitle!)
-                .map(v => v)
-                .join('-')
+              .map(v => v)
+              .join('-')
             : curTitle;
       }
     }
@@ -161,7 +161,7 @@ export class MetaService {
   }
 
   genMenus(url: string): void {
-    debugger;
+
     const category = this.getCatgory(url);
     if (!category) return;
 
