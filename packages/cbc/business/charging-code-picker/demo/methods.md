@@ -12,7 +12,7 @@ order: 6
 
 ```ts
 import { Component, ViewChild } from '@angular/core';
-import { CustomerPickerComponent } from '@co/cbc';
+import { ChargingCodePickerComponent } from '@co/cbc';
 
 @Component({
   selector: 'app-demo',
@@ -28,21 +28,21 @@ import { CustomerPickerComponent } from '@co/cbc';
   </div>
   `,
 })
-export class CustomerPickerMethodsComponent {
-  @ViewChild(CustomerPickerComponent, { static: true }) coCustomerPickerComponent!: CustomerPickerComponent;
+export class ChargingCodePickerMethodsComponent {
+  @ViewChild(ChargingCodePickerComponent, { static: true }) coChargingCodePickerComponent!: ChargingCodePickerComponent;
 
   selectedValue: number = 2;
 
   onFocus() {
-    this.coCustomerPickerComponent.focus();
+    this.coChargingCodePickerComponent.focus();
   }
 
   onBlur() {
-    this.coCustomerPickerComponent.blur();
+    this.coChargingCodePickerComponent.blur();
   }
 
   onClear() {
-    this.coCustomerPickerComponent.clear();
+    this.coChargingCodePickerComponent.clear();
   }
 }
 

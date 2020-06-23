@@ -4,23 +4,27 @@ import { Observable } from 'rxjs';
 import { PagedResult } from '@co/core';
 import { BaseUrl, BaseApi, GET, Payload } from '@co/common';
 
-import { ChargingCodeDto } from './chargingCode.type';
+import { CurrencyDto } from './currency.type';
 
 /**
  * 客户服务
  */
-@BaseUrl('/crm/chargingCode')
+@BaseUrl('/crm/Currency')
 @Injectable({ providedIn: 'root' })
-export class ChargingCodeService extends BaseApi {
+export class CurrencyService extends BaseApi {
   @GET('GetAll')
   getAllBySearch(
     @Payload
-      _req: {
-      GroupId?: string;
-      Text?: string;
+    _req: {
+      Code?: string;
+      Name?: string;
+      RegionId?: string;
       IsValid?: boolean;
+      Sorting?: string;
+      MaxResultCount?: number;
+      SkipCount?: number;
     },
-  ): Observable<PagedResult<ChargingCodeDto>> {
+  ): Observable<PagedResult<CurrencyDto>> {
     return null as any;
   }
 }

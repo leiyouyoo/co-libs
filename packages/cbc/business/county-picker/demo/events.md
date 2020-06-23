@@ -23,7 +23,7 @@ import { Component } from '@angular/core';
   </div>
   `,
 })
-export class CustomerPickerEventsComponent {
+export class CountyPickerEventsComponent {
   selectedValue: number = 2;
   msg: string;
 

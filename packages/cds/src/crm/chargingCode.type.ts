@@ -11,4 +11,3 @@ export class ChargingCodeDto {
   name: string;
   type: number;
 }
-

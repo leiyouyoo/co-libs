@@ -18,9 +18,9 @@ function setupData(num: number): any[] {
   return items;
 }
 
-const CHARGINGCODE_DATA = setupData(100);
+const COUNTY_DATA = setupData(100);
 
-export const CHARGINGCODE = {
+export const COUNTY = {
   // 支持值为 Object 和 Array
   'GET /crm/chargingCode/GetAll': (req: MockRequest) => {
 
@@ -28,7 +28,7 @@ export const CHARGINGCODE = {
       items: [],
       total: 0,
     };
-    const items: any[] = CHARGINGCODE_DATA;
+    const items: any[] = COUNTY_DATA;
     if (req.queryString.ids) {
       res.items = items.filter(item => {
         return req.queryString.ids.includes(item.id);

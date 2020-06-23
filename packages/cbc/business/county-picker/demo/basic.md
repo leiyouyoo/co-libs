@@ -22,7 +22,7 @@ import { Component } from '@angular/core';
   </div>
   `
 })
-export class CustomerPickerBasicComponent {
+export class CountyPickerBasicComponent {
   selectedValue: number = 2;
 }
 

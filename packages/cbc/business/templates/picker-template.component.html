@@ -1,4 +1,4 @@
-<nz-select nzServerSearch nzShowSearch [nzMaxTagCount]="coMaxMultipleCount" [nzDropdownRender]="renderTemplate"
+<nz-select nzServerSearch [nzShowSearch]="coShowSearch" [nzMaxTagCount]="coMaxMultipleCount" [nzDropdownRender]="renderTemplate"
   nzDropdownMatchSelectWidth="false" [nzNotFoundContent]="coNotFoundContent" [nzMaxTagPlaceholder]="tagPlaceHolder"
   [nzMode]="coMode" [nzOpen]="coOpen" [nzSize]="coSize" [nzAutoFocus]="coAutoFocus" [nzPlaceHolder]="coPlaceHolder"
   [nzAllowClear]="coAllowClear" [(ngModel)]="value" [nzFilterOption]="coFilterOption" (nzOnSearch)="onSearch($event)"

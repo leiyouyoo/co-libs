@@ -5,30 +5,32 @@ function setupData(num: number): any[] {
   const items: any[] = [];
   for (let i = 0; i < num; i++) {
     items.push({
-      code: `VGMSF-${i + 1}`,
-      groupId: `fd7fdfd7-ac1c-e011-b1cd-001321cc6d9f-${i + 1}`,
+      code: `EUR-${i + 1}`,
+      creationTime: "2012-06-30T15:51:28.39Z",
+      creatorUserName: `think-${i + 1}`,
       id: i + 1,
-      isCommission: false,
       isValid: true,
-      name: `VGM sending fees-${i + 1}`,
-      type: 0,
+      name: `EUR-${i + 1}`,
+      nameLocalization: `EUR-${i + 1}`,
+      regionId: "b074b530-e888-4d71-8833-ee78005ac229",
+      regionName: "Germany",
     });
   }
 
   return items;
 }
 
-const CHARGINGCODE_DATA = setupData(100);
+const CURRENCY_DATA = setupData(100);
 
-export const CHARGINGCODE = {
+export const CURRENCY = {
   // 支持值为 Object 和 Array
-  'GET /crm/chargingCode/GetAll': (req: MockRequest) => {
+  'GET /crm/Currency/GetAll': (req: MockRequest) => {
 
     const res: any = {
       items: [],
       total: 0,
     };
-    const items: any[] = CHARGINGCODE_DATA;
+    const items: any[] = CURRENCY_DATA;
     if (req.queryString.ids) {
       res.items = items.filter(item => {
         return req.queryString.ids.includes(item.id);

@@ -22,6 +22,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   @Input() coDropdownMode: DropdownMode = 'default';
   @Input() coDropdownStyle: { [key: string]: string } | null = null;
   @Input() coDropdownColumns: DropdownColumn[] | null = null;
+  @Input() coShowSearch:boolean = true;
 
   @Input() @InputBoolean() coAllowClear = true;
   @Input() @InputBoolean() coAutoFocus = false;

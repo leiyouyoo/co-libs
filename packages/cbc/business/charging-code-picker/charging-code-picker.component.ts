@@ -34,11 +34,13 @@ export class ChargingCodePickerComponent extends PickerComponentBase {
     super(cdr);
     //显示列的key
     this.coLabelMember = 'name';
+    this.coValueMember = 'id';
   }
 
   //#endregion
 
   fetchRemoteData(_condition: any): Observable<any> {
+    console.log(_condition);
     return this.chargingCodeService.getAllBySearch(_condition);
   }
 }

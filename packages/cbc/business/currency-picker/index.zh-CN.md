@@ -1,7 +1,7 @@
 ---
 type: Business
 title: Currency-picker
-order: 1
+order: 3
 subtitle: 币种选择器
 cols: 2
 module: import { CurrencyPickerModule } from '@co/cbc';
@@ -24,6 +24,7 @@ module: import { CurrencyPickerModule } from '@co/cbc';
 | `[coDropdownColumns]` | 下拉框是表格模式时，针对表格的列定义 | `DropdownColumn[] | null` | - |
 | `[coAllowClear]` | 是否允许清除 | `boolean` | `true`|
 | `[coAutoFocus]` | 是否自动聚焦 | `boolean` | `false` |
+| `[coShowSearch]` | 单选时是否打开搜索 | `boolean` | `true` |
 | `[coAutoClearSearchValue]` | 是否自动清除搜索值 | `boolean` | `true` |
 | `[coDisabled]` | 是否禁用 | `boolean` | `false` |
 | `[coOpen]` | 是否打开下拉框 | `boolean` | `false` |
@@ -39,7 +40,7 @@ module: import { CurrencyPickerModule } from '@co/cbc';
 
 ## 方法
 
-### customer-picker
+### Currency-picker
 
 | 名称 | 说明 |
 | --- | --- |
@@ -50,7 +51,7 @@ module: import { CurrencyPickerModule } from '@co/cbc';
 
 ## 事件
 
-### customer-picker
+### Currency-picker
 
 | 名称 | 说明 |
 | --- | --- |

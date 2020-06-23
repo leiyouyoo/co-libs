@@ -1,7 +1,7 @@
 ---
 type: Business
 title: charging-code-picker
-order: 1
+order: 2
 subtitle: 费用代码选择器
 cols: 2
 module: import { ChargingCodePickerModule } from '@co/cbc';
@@ -39,7 +39,7 @@ module: import { ChargingCodePickerModule } from '@co/cbc';
 
 ## 方法
 
-### customer-picker
+### charging-code-picker
 
 | 名称 | 说明 |
 | --- | --- |
@@ -50,7 +50,7 @@ module: import { ChargingCodePickerModule } from '@co/cbc';
 
 ## 事件
 
-### customer-picker
+### charging-code-picker
 
 | 名称 | 说明 |
 | --- | --- |

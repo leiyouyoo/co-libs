@@ -1,4 +1,6 @@
 export * from './customer.service';
 export * from './customer.types';
 export * from './chargingCode.service';
-export * from './customer.types';
+export * from './chargingCode.type';
+export * from './currency.service';
+export * from './currency.type';
