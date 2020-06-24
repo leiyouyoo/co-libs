@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BaseApi, BaseUrl, Payload, GET } from '@co/common';
+import { BaseApi, BaseUrl, GET, Payload } from '@co/common';
+import { PagedResultDto } from '@co/core';
 import { Observable } from 'rxjs';
-import { PagedResult } from '@co/core';
-import { CustomerType, CustomerDto } from '../crm/public_api';
+import { CustomerDto, CustomerType } from '../crm/public_api';
 
 // 船名服务
 @BaseUrl('/shipname/shipname')
@@ -21,7 +21,7 @@ export class ShipnameService extends BaseApi {
       maxResultCount?: number;
       skipCount?: number;
     },
-  ): Observable<PagedResult<CustomerDto>> {
+  ): Observable<PagedResultDto<CustomerDto>> {
     return null as any;
   }
 }
