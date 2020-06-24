@@ -210,12 +210,12 @@ buildCLI() {
   rm -rf ${DIST}
 
   echo "Building...${tsconfigFile}----- rsync -am --include="*.json" --include="*/" --exclude=* ${SOURCE}/ ${DIST}/"
-  $TSC -p ${tsconfigFile}
-  cp -r ${SOURCE}/*.json ${DIST}/
-  # rsync -am --include="*.json" --include="*/" --exclude=*  ${SOURCE}/ ${DIST}/
-  # rsync -am --include="*.d.ts" --include="*/" --exclude=*  ${SOURCE}/ ${DIST}/
-  # rsync -am --include="/files" --delete ${SOURCE}/ ${DIST}/
-  # rm ${DIST}/test.ts ${DIST}/tsconfig.json ${DIST}/tsconfig.spec.json
+  tsc -p ${tsconfigFile}
+
+  rsync -am --include="*.json" --include="*/" --exclude=*  ${SOURCE}/ ${DIST}/
+  rsync -am --include="*.d.ts" --include="*/" --exclude=*  ${SOURCE}/ ${DIST}/
+  rsync -am --include="/files" --delete ${SOURCE}/ ${DIST}/
+  rm -f ${PWD}/dist/co-cli/test.ts,${PWD}/dist/co-cli/tsconfig.json,${PWD}/dist/co-cli/tsconfig.spec.json
 
   # if [[ ${COPY} == true ]]; then
   #   if [[ ${CLONE} == true ]]; then
@@ -234,7 +234,7 @@ buildCLI() {
   cp ${SOURCE}/.npmignore ${DIST}/.npmignore
   cp ./LICENSE ${DIST}/LICENSE
 
-  updateVersionReferences ${DIST}
+  # updateVersionReferences ${DIST}
   echo "Build Success!"
 }
 
