@@ -7,19 +7,46 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "启动程序",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/node_modules/@angular-devkit/schematics-cli/bin/schematics.js",
+      "args": [
+        ".:swagger",
+        "--name=csp",
+        "--url=http://192.168.1.5:8002/swagger/CSP/swagger.json"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/**/*.js"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "debug build",
       "sourceMaps": false,
       "program": "${workspaceFolder}/scripts/build/packing.js",
-      "args": ["chart"]
+      "args": [
+        "chart"
+      ]
     },
     {
       "type": "node",
       "request": "launch",
       "name": "site generate",
-      "runtimeArgs": ["-r", "ts-node/register", "-r", "tsconfig-paths/register"],
+      "runtimeArgs": [
+        "-r",
+        "ts-node/register",
+        "-r",
+        "tsconfig-paths/register"
+      ],
       "protocol": "inspector",
       "internalConsoleOptions": "openOnSessionStart",
-      "args": ["${workspaceFolder}/scripts/site/generate.ts", "fullscreen"],
+      "args": [
+        "${workspaceFolder}/scripts/site/generate.ts",
+        "fullscreen"
+      ],
       "env": {
         "TS_NODE_PROJECT": "${workspaceFolder}/scripts/site/tsconfig.json",
         "TS_NODE_TRANSPILE_ONLY": "true"
@@ -29,7 +56,10 @@
       "type": "node",
       "request": "launch",
       "name": "schematics test",
-      "runtimeArgs": ["-r", "ts-node/register"],
+      "runtimeArgs": [
+        "-r",
+        "ts-node/register"
+      ],
       "cwd": "${workspaceRoot}",
       "protocol": "inspector",
       "sourceMaps": true,
@@ -37,7 +67,9 @@
       "env": {
         "TS_NODE_PROJECT": "${workspaceFolder}/packages/schematics/tsconfig.json"
       },
-      "args": ["${workspaceFolder}/packages/schematics/test.ts"]
+      "args": [
+        "${workspaceFolder}/packages/schematics/test.ts"
+      ]
     }
   ]
 }
