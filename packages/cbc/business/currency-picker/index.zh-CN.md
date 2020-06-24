@@ -1,6 +1,6 @@
 ---
 type: Business
-title: Currency-picker
+title: currency-picker
 order: 3
 subtitle: 币种选择器
 cols: 2
@@ -11,7 +11,7 @@ module: import { CurrencyPickerModule } from '@co/cbc';
 
 ## API
 
-### customer-picker 
+### currency-picker 
 
 | 成员 | 说明 | 类型 | 默认值 |
 |----|----|----|-----|
@@ -40,7 +40,7 @@ module: import { CurrencyPickerModule } from '@co/cbc';
 
 ## 方法
 
-### Currency-picker
+### currency-picker
 
 | 名称 | 说明 |
 | --- | --- |
@@ -51,7 +51,7 @@ module: import { CurrencyPickerModule } from '@co/cbc';
 
 ## 事件
 
-### Currency-picker
+### currency-picker
 
 | 名称 | 说明 |
 | --- | --- |

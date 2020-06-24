@@ -1,6 +1,6 @@
 ---
 type: Business
-title: County-picker
+title: county-picker
 order: 3
 subtitle: 区县选择器
 cols: 2
@@ -11,7 +11,7 @@ module: import { CountyPickerModule } from '@co/cbc';
 
 ## API
 
-### customer-picker 
+### county-picker 
 
 | 成员 | 说明 | 类型 | 默认值 |
 |----|----|----|-----|
@@ -39,7 +39,7 @@ module: import { CountyPickerModule } from '@co/cbc';
 
 ## 方法
 
-### County-picker
+### county-picker
 
 | 名称 | 说明 |
 | --- | --- |
@@ -50,7 +50,7 @@ module: import { CountyPickerModule } from '@co/cbc';
 
 ## 事件
 
-### County-picker
+### county-picker
 
 | 名称 | 说明 |
 | --- | --- |
