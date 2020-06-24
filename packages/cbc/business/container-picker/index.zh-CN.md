@@ -1,17 +1,17 @@
 ---
 type: Business
-title: customer-picker
-order: 1
-subtitle: 客户选择器
+title: container-picker
+order: 2
+subtitle: 箱选择器
 cols: 2
-module: import { CustomerPickerModule } from '@co/cbc';
+module: import { ContainerPickerModule } from '@co/cbc';
 ---
 
-客户选择器。
+箱选择器。
 
 ## API
 
-### customer-picker 
+### container-picker 
 
 | 成员 | 说明 | 类型 | 默认值 |
 |----|----|----|-----|
@@ -34,12 +34,12 @@ module: import { CustomerPickerModule } from '@co/cbc';
 | `[coDebounceInputCharCount]` | 防抖输入字符数 | `number` | `3` |
 | `[coDebounceTime]` | 防抖时间(毫秒) | `number` | `500` |
 | `[coPageSize]` | 服务请求页大小 | `number` | `20` |
-| `[coFilter]` | 服务请求默认规律条件 | `CustomerFilter` | - |
+| `[coFilter]` | 服务请求默认规律条件 | `any` | - |
 
 
 ## 方法
 
-### customer-picker
+### container-picker
 
 | 名称 | 说明 |
 | --- | --- |
@@ -50,7 +50,7 @@ module: import { CustomerPickerModule } from '@co/cbc';
 
 ## 事件
 
-### customer-picker
+### container-picker
 
 | 名称 | 说明 |
 | --- | --- |
