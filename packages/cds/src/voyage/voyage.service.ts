@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BaseApi, BaseUrl, Payload, GET } from '@co/common';
 import { Observable } from 'rxjs';
-import { PagedResult } from '@co/core';
 import { VoyageDto } from './voyage.type';
+import { PagedResultDto } from '@co/core';
 
 //航次服务
 @BaseUrl('/PUB/Voyage')
@@ -18,7 +18,7 @@ export class VoyageService extends BaseApi {
       maxResultCount?: number;
       skipCount?: number;
     },
-  ): Observable<PagedResult<VoyageDto>> {
+  ): Observable<PagedResultDto<VoyageDto>> {
     return null as any;
   }
 }

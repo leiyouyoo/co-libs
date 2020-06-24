@@ -35,7 +35,6 @@ export const DATADICTIONARIES = {
       .slice(req.queryString.skipCount, req.queryString.skipCount + req.queryString.maxResultCount);
 
     res.total = res.items.length;
-    debugger
     return res;
   },
 };
