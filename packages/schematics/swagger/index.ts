@@ -212,15 +212,17 @@ function setResponseName(ref) {
       zname: string = '';
     if (entityValue) {
       zname = entityValue.substring(0, entityValue.indexOf(','));
-      name = zname.substring(zname.lastIndexOf('.') + 1);
+      name = zname.includes('+') ? zname.substring(zname.lastIndexOf('+') + 1) : zname.substring(zname.lastIndexOf('.') + 1);
       bindEntity(zname.substring(zname.lastIndexOf('[') + 1));
     }
 
-    entityName = entityName.substring(entityName.lastIndexOf('.') + 1);
+    entityName = entityName.includes('+')
+      ? entityName.substring(entityName.lastIndexOf('+') + 1)
+      : entityName.substring(entityName.lastIndexOf('.') + 1);
     return `${entityName}<${name ? name : 'T'}>`;
   } else {
     bindEntity(ref);
-    entityName = ref.substring(ref.lastIndexOf('.') + 1);
+    entityName = ref.includes('+') ? ref.substring(ref.lastIndexOf('+') + 1) : ref.substring(ref.lastIndexOf('.') + 1);
     return entityName;
   }
 }
@@ -299,11 +301,13 @@ function setEntityName(ref, isEntity = false) {
       zname: string = '';
     if (entityValue) {
       zname = entityValue.substring(0, entityValue.indexOf(','));
-      name = zname.substring(zname.lastIndexOf('.') + 1);
+      name = zname.includes('+') ? zname.substring(zname.lastIndexOf('+') + 1) : zname.substring(zname.lastIndexOf('.') + 1);
     }
     const hasEntity = zname.substring(zname.lastIndexOf('[') + 1);
     const entity = serveEntityList[hasEntity.replace('#/definitions/', '')];
-    entityName = entityName.substring(entityName.lastIndexOf('.') + 1);
+    entityName = entityName.includes('+')
+      ? entityName.substring(entityName.lastIndexOf('+') + 1)
+      : entityName.substring(entityName.lastIndexOf('.') + 1);
 
     if (!entity && ref.includes('[')) {
       // 该请求来自实体
@@ -315,7 +319,7 @@ function setEntityName(ref, isEntity = false) {
       return `${entityName}<${name ? name : 'T'}>`;
     }
   } else {
-    entityName = ref.substring(ref.lastIndexOf('.') + 1);
+    entityName = ref.includes('+') ? ref.substring(ref.lastIndexOf('+') + 1) : ref.substring(ref.lastIndexOf('.') + 1);
     return entityName;
   }
 }
