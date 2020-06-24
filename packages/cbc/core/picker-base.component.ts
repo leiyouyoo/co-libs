@@ -50,8 +50,8 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   dropdownStyle: { [key: string]: string } | null = null;
   value: NzSafeAny | NzSafeAny[];
   destroy$ = new Subject();
-  onChange: OnChangeType = () => { };
-  onTouched: OnTouchedType = () => { };
+  onChange: OnChangeType = () => {};
+  onTouched: OnTouchedType = () => {};
   coFilterOption = () => true;
   optionList: Array<{ value: string; text: string }> = [];
   searchChange$: any = new BehaviorSubject('');
@@ -65,7 +65,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
 
   //#region  构造函数
 
-  constructor(private cdr: ChangeDetectorRef) { }
+  constructor(private cdr: ChangeDetectorRef) {}
 
   //#endregion
 
@@ -167,6 +167,10 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
     this.value = null;
     this.nzSelectComponent.clearInput();
   }
+  // onModelChange():void{
+  //   this.nzSelectComponent.;
+
+  // }
 
   //#endregion
 

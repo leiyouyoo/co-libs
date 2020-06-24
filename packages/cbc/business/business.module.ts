@@ -4,12 +4,14 @@ import { CountyPickerModule } from './county-picker';
 import { CurrencyPickerModule } from './currency-picker';
 import { CustomerPickerModule } from './customer-picker';
 import { CdsModule } from '@co/cds';
+import { ShipnamePickerModule } from './shipname-picker';
 
 const EXPORT_MODULES: any[] = [
   ChargingCodePickerModule,
   CountyPickerModule,
   CurrencyPickerModule,
   CustomerPickerModule,
+  ShipnamePickerModule,
 ];
 const IMPORT_MODULES: any[] = [CdsModule];
 

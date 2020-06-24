@@ -158,5 +158,4 @@
     "webpack-bundle-analyzer": "^3.6.1",
     "xlsx": "^0.16.1"
   }
-  
 }
