@@ -24,7 +24,7 @@
     "strictNullChecks": true,
     "skipLibCheck": true,
     "importHelpers": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noFallthroughCasesInSwitch": true,

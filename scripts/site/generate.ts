@@ -134,7 +134,7 @@ function generateModule(config: ModuleConfig) {
       });
 
       // push meta
-      item.key = item.key.replace(/^(basic|layout|business|mobile)(\\|\/)/g, '');
+      item.key = item.key.replace(/^(basic|layout|business|mobile|web)(\\|\/)/g, '');
       const meta: Meta = {
         name: item.key,
         i18n,

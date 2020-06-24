@@ -114,6 +114,6 @@
   },
   "defaultProject": "site",
   "cli": {
-    "analytics": false
+    "analytics": "d8d0c19e-fbb1-40c7-b12f-9b37dd640bb6"
   }
 }
