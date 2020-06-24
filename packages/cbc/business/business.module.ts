@@ -7,6 +7,7 @@ import { CdsModule } from '@co/cds';
 import { ShipnamePickerModule } from './shipname-picker';
 import { ContainerPickerModule } from '@co/cbc/business/container-picker';
 import { DataDictionaryPickerModule } from '@co/cbc/business/data-dictionary-picker';
+import { YoyagePickerModule } from './voyage-picker';
 
 const EXPORT_MODULES: any[] = [
   CustomerPickerModule,
@@ -17,6 +18,7 @@ const EXPORT_MODULES: any[] = [
   CurrencyPickerModule,
   CustomerPickerModule,
   ShipnamePickerModule,
+  YoyagePickerModule,
 ];
 const IMPORT_MODULES: any[] = [CdsModule];
 
