@@ -1,4 +1,4 @@
-import { strings } from "@angular-devkit/core";
+import { strings } from '@angular-devkit/core';
 import {
   apply,
   chain,
@@ -11,48 +11,48 @@ import {
   template,
   Tree,
   url,
-} from "@angular-devkit/schematics";
-import { addProviderToModule } from "@schematics/angular/utility/ast-utils";
-import { InsertChange } from "@schematics/angular/utility/change";
-import { getWorkspace } from "@schematics/angular/utility/config";
-import { buildRelativePath } from "@schematics/angular/utility/find-module";
-import axios from "axios";
-import { groupBy } from "lodash";
-import * as ts from "typescript";
+} from '@angular-devkit/schematics';
+import { addProviderToModule } from '@schematics/angular/utility/ast-utils';
+import { InsertChange } from '@schematics/angular/utility/change';
+import { getWorkspace } from '@schematics/angular/utility/config';
+import { buildRelativePath } from '@schematics/angular/utility/find-module';
+import axios from 'axios';
+import { groupBy } from 'lodash';
+import * as ts from 'typescript';
 
 // You don't have to export the function as default. You can also have more than one rule factory
 // per file.
 
 let serveEntityList: any = [];
-let selectedEntityList: any = [];
+const selectedEntityList: any = [];
 let serviceList: any = [];
 let serveSelectedEntityList: any = [];
 export function buildCOSwagger(options: any): Rule {
   return async (tree: Tree, context: SchematicContext) => {
     // cconst data = await getSwaggerData(options)();
-    console.log("loading....");
+    console.log('loading....');
     const workspace = getWorkspace(tree);
     if (!options.project) {
-      throw new SchematicsException("Option (project) is required.");
+      throw new SchematicsException('Option (project) is required.');
     }
     const projectName = options.project as string;
     const project = workspace.projects[projectName];
     options.path = `${project.sourceRoot}/app/service/${options.name}`;
 
     const data = await getSwaggerData(options)();
-    let response = [addToNgModuleProviders(options), ...data];
+    const response = [addToNgModuleProviders(options), ...data];
     // 导出模板
-    var html = "";
-    for (var msg of serviceList) {
+    let html = '';
+    for (let msg of serviceList) {
       msg = strings.dasherize(msg);
-      msg += ".service";
+      msg += '.service';
       html += `export * from './${msg}';\r\n`;
     }
-    var index_ts = mergeWith(
-      apply(url("./index_files"), [
+    const index_ts = mergeWith(
+      apply(url('./index_files'), [
         template({
           ...strings,
-          "if-flat": (s: string) => (options.flat ? "" : s),
+          'if-flat': (s: string) => (options.flat ? '' : s),
           ...{
             name: options.name,
             serviceList: html,
@@ -61,7 +61,7 @@ export function buildCOSwagger(options: any): Rule {
         }),
         move(options.path as string),
       ]),
-      MergeStrategy.Default
+      MergeStrategy.Default,
     );
     response.push(index_ts);
     return chain(response);
@@ -89,10 +89,7 @@ function getSwaggerData(options): () => Promise<any[]> {
     }
 
     // 根据服务位置来分组
-    const group: any = groupBy(
-      arr,
-      (item) => item.api[Object.keys(item.api)[0]].tags[0]
-    );
+    const group: any = groupBy(arr, item => item.api[Object.keys(item.api)[0]].tags[0]);
 
     // 定义生成Tree函数
     const chainArr: any[] = [];
@@ -100,6 +97,7 @@ function getSwaggerData(options): () => Promise<any[]> {
     // 循环分组处理数据
     // tslint:disable-next-line: forin
     let i = 0;
+    // tslint:disable-next-line: forin
     for (const na in group) {
       serveSelectedEntityList = [];
       i++;
@@ -108,29 +106,23 @@ function getSwaggerData(options): () => Promise<any[]> {
       group[na] = {};
       group[na].arr = groupArr;
       serviceList.push(`${na}`);
-      let newServeSelectedEntityList: any = [];
-      groupArr.forEach((e) => {
-        if (
-          serveSelectedEntityList.includes(e.reqEntity) &&
-          !newServeSelectedEntityList.includes(e.reqEntity)
-        ) {
+      const newServeSelectedEntityList: any = [];
+      groupArr.forEach(e => {
+        if (serveSelectedEntityList.includes(e.reqEntity) && !newServeSelectedEntityList.includes(e.reqEntity)) {
           newServeSelectedEntityList.push(e.reqEntity);
         }
 
-        if (
-          serveSelectedEntityList.includes(e.resEntity) &&
-          !newServeSelectedEntityList.includes(e.resEntity)
-        ) {
+        if (serveSelectedEntityList.includes(e.resEntity) && !newServeSelectedEntityList.includes(e.resEntity)) {
           newServeSelectedEntityList.push(e.resEntity);
         }
       });
 
       chainArr.push(
         mergeWith(
-          apply(url("./files"), [
+          apply(url('./files'), [
             template({
               ...strings,
-              "if-flat": (s: string) => (options.flat ? "" : s),
+              'if-flat': (s: string) => (options.flat ? '' : s),
               ...{
                 name: na,
                 pageName: options.name,
@@ -140,8 +132,8 @@ function getSwaggerData(options): () => Promise<any[]> {
             }),
             move(options.path as string),
           ]),
-          MergeStrategy.Default
-        )
+          MergeStrategy.Default,
+        ),
       );
     }
     // 导出服务
@@ -160,16 +152,16 @@ function setSwaggerRequest(reqList: any) {
     // 配置参数位置
     for (const parmDetail of reqDetail.parameters) {
       // 先处理类型
-      if (parmDetail?.type === "integer") {
-        parmDetail.type = "number";
-      } else if (parmDetail?.type === "array") {
+      if (parmDetail?.type === 'integer') {
+        parmDetail.type = 'number';
+      } else if (parmDetail?.type === 'array') {
         if (parmDetail.items?.schema?.$ref) {
           // 设置方法内部实体名称
           const name = setEntityName(parmDetail.items?.schema?.$ref);
           bindEntity(parmDetail.items?.schema?.$ref);
-          parmDetail.type = name + "[]";
+          parmDetail.type = name + '[]';
         } else {
-          parmDetail.type = "any[]";
+          parmDetail.type = 'any[]';
         }
       }
 
@@ -183,28 +175,23 @@ function setSwaggerRequest(reqList: any) {
       }
 
       // 首字母小写
-      parmDetail.name = parmDetail.name.replace(/^\S/, (s) => s.toLowerCase());
+      parmDetail.name = parmDetail.name.replace(/^\S/, s => s.toLowerCase());
 
       // 处理非必填
       if (!parmDetail.required) {
-        parmDetail.name += "?";
+        parmDetail.name += '?';
       }
       detail.reqJson[parmDetail.name] = parmDetail.type;
     }
 
     // 获取返回实体
-    detail.resEntity = "any";
+    detail.resEntity = 'any';
     if (reqDetail.responses[200].schema?.$ref) {
       // 如果实体存在就处理
-      const entity_name = reqDetail.responses[200].schema.$ref.replace(
-        "#/definitions/",
-        ""
-      );
+      const entity_name = reqDetail.responses[200].schema.$ref.replace('#/definitions/', '');
       if (serveEntityList[entity_name]) {
         // set entity
-        const entityName = setResponseName(
-          reqDetail.responses[200].schema.$ref
-        );
+        const entityName = setResponseName(reqDetail.responses[200].schema.$ref);
         detail.resEntity = entityName;
       }
     }
@@ -216,46 +203,46 @@ function setSwaggerRequest(reqList: any) {
 function setResponseName(ref) {
   // tslint:disable-next-line: one-variable-per-declaration
   let entityName: string, entityValue: string;
-  if (ref.includes("`")) {
+  if (ref.includes('`')) {
     // 生成实体xxx<xxx>
-    entityName = ref.split("`")[0];
-    entityValue = ref.split("`")[1];
+    entityName = ref.split('`')[0];
+    entityValue = ref.split('`')[1];
     // tslint:disable-next-line: one-variable-per-declaration
-    let name: string = "",
-      zname: string = "";
+    let name: string = '',
+      zname: string = '';
     if (entityValue) {
-      zname = entityValue.substring(0, entityValue.indexOf(","));
-      name = zname.substring(zname.lastIndexOf(".") + 1);
-      bindEntity(zname.substring(zname.lastIndexOf("[") + 1));
+      zname = entityValue.substring(0, entityValue.indexOf(','));
+      name = zname.substring(zname.lastIndexOf('.') + 1);
+      bindEntity(zname.substring(zname.lastIndexOf('[') + 1));
     }
 
-    entityName = entityName.substring(entityName.lastIndexOf(".") + 1);
-    return `${entityName}<${name ? name : "T"}>`;
+    entityName = entityName.substring(entityName.lastIndexOf('.') + 1);
+    return `${entityName}<${name ? name : 'T'}>`;
   } else {
     bindEntity(ref);
-    entityName = ref.substring(ref.lastIndexOf(".") + 1);
+    entityName = ref.substring(ref.lastIndexOf('.') + 1);
     return entityName;
   }
 }
 
 function bindEntity(ref) {
-  const entity = serveEntityList[ref.replace("#/definitions/", "")];
+  const entity = serveEntityList[ref.replace('#/definitions/', '')];
   const entityName = setEntityName(ref, true);
 
   if (entity) {
     // tslint:disable-next-line: forin
     for (const key in entity.properties) {
       const parmDetail = entity.properties[key];
-      if (parmDetail?.type === "integer") {
-        parmDetail.type = "number";
-      } else if (parmDetail?.type === "array") {
+      if (parmDetail?.type === 'integer') {
+        parmDetail.type = 'number';
+      } else if (parmDetail?.type === 'array') {
         if (parmDetail.items?.schema?.$ref) {
           // 设置方法内部实体名称
           const name = setEntityName(parmDetail.items?.schema?.$ref);
           bindEntity(parmDetail.items?.schema?.$ref);
-          parmDetail.type = name + "[]";
+          parmDetail.type = name + '[]';
         } else {
-          parmDetail.type = "any[]";
+          parmDetail.type = 'any[]';
         }
       }
 
@@ -276,26 +263,26 @@ function bindEntity(ref) {
 
       // 处理非必填
       if (!parmDetail.required) {
-        parmDetail.name += "?";
+        parmDetail.name += '?';
       }
 
       // set required
-      if (entity.required?.includes(key) && !key.includes("?")) {
+      if (entity.required?.includes(key) && !key.includes('?')) {
         const keyValue = entity.properties[key];
         delete entity.properties[key];
-        entity.properties[key + "?"] = keyValue;
+        entity.properties[key + '?'] = keyValue;
       }
     }
   }
 
-  if (!selectedEntityList.some((e) => e.name === entityName)) {
+  if (!selectedEntityList.some(e => e.name === entityName)) {
     selectedEntityList.push({
       name: entityName,
       value: entity,
     });
   }
 
-  if (!serveSelectedEntityList.some((e) => e === entityName)) {
+  if (!serveSelectedEntityList.some(e => e === entityName)) {
     serveSelectedEntityList.push(entityName);
   }
 }
@@ -303,32 +290,32 @@ function bindEntity(ref) {
 function setEntityName(ref, isEntity = false) {
   // tslint:disable-next-line: one-variable-per-declaration
   let entityName: string, entityValue: string;
-  if (ref.includes("`")) {
+  if (ref.includes('`')) {
     // 生成实体xxx<xxx>
-    entityName = ref.split("`")[0];
-    entityValue = ref.split("`")[1];
+    entityName = ref.split('`')[0];
+    entityValue = ref.split('`')[1];
     // tslint:disable-next-line: one-variable-per-declaration
-    let name: string = "",
-      zname: string = "";
+    let name: string = '',
+      zname: string = '';
     if (entityValue) {
-      zname = entityValue.substring(0, entityValue.indexOf(","));
-      name = zname.substring(zname.lastIndexOf(".") + 1);
+      zname = entityValue.substring(0, entityValue.indexOf(','));
+      name = zname.substring(zname.lastIndexOf('.') + 1);
     }
-    const hasEntity = zname.substring(zname.lastIndexOf("[") + 1);
-    const entity = serveEntityList[hasEntity.replace("#/definitions/", "")];
-    entityName = entityName.substring(entityName.lastIndexOf(".") + 1);
+    const hasEntity = zname.substring(zname.lastIndexOf('[') + 1);
+    const entity = serveEntityList[hasEntity.replace('#/definitions/', '')];
+    entityName = entityName.substring(entityName.lastIndexOf('.') + 1);
 
-    if (!entity && ref.includes("[")) {
+    if (!entity && ref.includes('[')) {
       // 该请求来自实体
       if (isEntity) {
         return `${entityName}`;
       }
       return `${entityName}[]`;
     } else {
-      return `${entityName}<${name ? name : "T"}>`;
+      return `${entityName}<${name ? name : 'T'}>`;
     }
   } else {
-    entityName = ref.substring(ref.lastIndexOf(".") + 1);
+    entityName = ref.substring(ref.lastIndexOf('.') + 1);
     return entityName;
   }
 }
@@ -343,19 +330,11 @@ function addToNgModuleProviders(options: any): Rule {
     const moduleSource = readIntoSourceFile(host, modulePath);
 
     const servicePath =
-      `${options.path}/` +
-      (options.flat ? "" : strings.dasherize(options.name) + "/") +
-      strings.dasherize(options.name) +
-      ".service";
+      `${options.path}/` + (options.flat ? '' : strings.dasherize(options.name) + '/') + strings.dasherize(options.name) + '.service';
 
     const relativePath = buildRelativePath(modulePath, servicePath);
     const classifiedName = strings.classify(`${options.name}Service`);
-    const providersChanges = addProviderToModule(
-      moduleSource,
-      modulePath,
-      classifiedName,
-      relativePath
-    );
+    const providersChanges = addProviderToModule(moduleSource, modulePath, classifiedName, relativePath);
 
     const providersRecorder = host.beginUpdate(modulePath);
     for (const change of providersChanges) {
@@ -374,12 +353,7 @@ function readIntoSourceFile(host: Tree, modulePath: string): ts.SourceFile {
   if (text === null) {
     throw new SchematicsException(`File ${modulePath} does not exist.`);
   }
-  const sourceText = text.toString("utf-8");
+  const sourceText = text.toString('utf-8');
 
-  return ts.createSourceFile(
-    modulePath,
-    sourceText,
-    ts.ScriptTarget.Latest,
-    true
-  );
+  return ts.createSourceFile(modulePath, sourceText, ts.ScriptTarget.Latest, true);
 }
