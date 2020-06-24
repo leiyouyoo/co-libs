@@ -1,18 +1,21 @@
 import { Component, forwardRef, ChangeDetectionStrategy, ViewEncapsulation, ChangeDetectorRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { PickerComponentBase } from '@co/cbc/core';
-import { ShipnameService } from '@co/cds';
 import { Observable } from 'rxjs';
+import { VoyageService } from '@co/cds';
 
+/**
+ * 航次选择器控件
+ */
 @Component({
-  selector: 'co-shipname-picker',
-  exportAs: 'coShipnamePicker',
+  selector: 'co-voyage-picker',
+  exportAs: 'coVoyagePicker',
   templateUrl: '../templates/picker-template.component.html',
   host: { '[class.co-picker]': 'true' },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => ShipnamePickerComponent),
+      useExisting: forwardRef(() => VoyagePickerComponent),
       multi: true,
     },
   ],
@@ -20,13 +23,11 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class ShipnamePickerComponent extends PickerComponentBase {
-  constructor(cdr: ChangeDetectorRef, private shipnameService: ShipnameService) {
+export class VoyagePickerComponent extends PickerComponentBase {
+  constructor(cdr: ChangeDetectorRef, private voyageService: VoyageService) {
     super(cdr);
-    this.coLabelMember = 'name';
   }
-
   fetchRemoteData(_condition: any): Observable<any> {
-    return this.shipnameService.GetAllVessel(_condition);
+    return this.voyageService.GetAll(_condition);
   }
 }

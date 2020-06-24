@@ -41,6 +41,7 @@ export class ContainerPickerComponent extends PickerComponentBase {
 
 
   fetchRemoteData(_condition: any): Observable<any> {
+    debugger
     return this.containerService.getAll(_condition);
   }
 }

@@ -73,6 +73,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   //#region 组件生命周期钩子
 
   ngOnInit() {
+    debugger;
     const optionList$: Observable<string[]> = this.searchChange$.asObservable().pipe(
       filter(
         (condition: any) =>
@@ -214,6 +215,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   //#region 私有方法
 
   private loadByIds(value: any): void {
+    debugger
     this.loadingMode = 'search';
     this.skipCount = 0;
 

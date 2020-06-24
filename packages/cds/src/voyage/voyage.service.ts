@@ -2,26 +2,23 @@ import { Injectable } from '@angular/core';
 import { BaseApi, BaseUrl, Payload, GET } from '@co/common';
 import { Observable } from 'rxjs';
 import { PagedResult } from '@co/core';
-import { VesselDto } from '.';
+import { VoyageDto } from './voyage.type';
 
-// 船名服务
-@BaseUrl('/shipname/shipname')
-@Injectable({
-  providedIn: 'root',
-})
-export class ShipnameService extends BaseApi {
-  @GET('GetAllVessel')
-  GetAllVessel(
+//航次服务
+@BaseUrl('/PUB/Voyage')
+@Injectable({ providedIn: 'root' })
+export class VoyageService extends BaseApi {
+  @GET('GetAll')
+  GetAll(
     @Payload
     _req: {
-      Code?: string;
-      Name?: string;
-      CarrierId?: string;
+      No?: string;
+      VesselId?: string;
       IsValid?: boolean;
       maxResultCount?: number;
       skipCount?: number;
     },
-  ): Observable<PagedResult<VesselDto>> {
+  ): Observable<PagedResult<VoyageDto>> {
     return null as any;
   }
 }
