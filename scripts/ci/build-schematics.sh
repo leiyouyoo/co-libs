@@ -211,11 +211,11 @@ buildCLI() {
 
   echo "Building...${tsconfigFile}----- rsync -am --include="*.json" --include="*/" --exclude=* ${SOURCE}/ ${DIST}/"
   $TSC -p ${tsconfigFile}
-
-  rsync -am --include="*.json" --include="*/" --exclude=*  ${SOURCE}/ ${DIST}/
-  rsync -am --include="*.d.ts" --include="*/" --exclude=*  ${SOURCE}/ ${DIST}/
-  rsync -am --include="/files" --delete ${SOURCE}/ ${DIST}/
-  rm ${DIST}/test.ts ${DIST}/tsconfig.json ${DIST}/tsconfig.spec.json
+  cp -r ${SOURCE}/*.json ${DIST}/
+  # rsync -am --include="*.json" --include="*/" --exclude=*  ${SOURCE}/ ${DIST}/
+  # rsync -am --include="*.d.ts" --include="*/" --exclude=*  ${SOURCE}/ ${DIST}/
+  # rsync -am --include="/files" --delete ${SOURCE}/ ${DIST}/
+  # rm ${DIST}/test.ts ${DIST}/tsconfig.json ${DIST}/tsconfig.spec.json
 
   # if [[ ${COPY} == true ]]; then
   #   if [[ ${CLONE} == true ]]; then

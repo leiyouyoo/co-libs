@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { PagedResult } from '@co/core';
 import { BaseApi, BaseUrl, GET, Payload } from '@co/common';
+import { PagedResultDto } from '@co/core';
 
 import { ContainerDto } from './container.types';
 
@@ -12,7 +12,7 @@ export class ContainerService extends BaseApi {
   @GET('GetAll')
   getAll(
     @Payload
-      _req: {
+    _req: {
       ids?: string[];
       searchText?: string;
       IsValid?: boolean;
@@ -20,7 +20,7 @@ export class ContainerService extends BaseApi {
       maxResultCount?: number;
       skipCount?: number;
     },
-  ): Observable<PagedResult<ContainerDto>> {
+  ): Observable<PagedResultDto<ContainerDto>> {
     return null as any;
   }
 }

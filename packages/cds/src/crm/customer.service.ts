@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, GET, Payload, POST, PUT } from '@co/common';
 import { EntityDto, ListResultDto, NameValueDto, PagedResultDto } from '@co/core';
+import { CustomerDto, CustomerType } from './public_api';
 
 /**
  * 客户服务
@@ -21,7 +22,7 @@ export class CustomerService extends BaseApi {
       maxResultCount?: number;
       skipCount?: number;
     },
-  ): Observable<PagedResult<CustomerDto>> {
+  ): Observable<PagedResultDto<CustomerDto>> {
     return null as any;
   }
 }
