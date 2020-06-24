@@ -15,8 +15,8 @@ module: import { CustomerPickerModule } from '@co/cbc';
 
 | 成员 | 说明 | 类型 | 默认值 |
 |----|----|----|-----|
-| `[coSize]` | 头像大小 | `'large','small','default'` | `'default'` |
-| `[coPlaceHolder]` | 占位符 | `string` | - |
+| `[coSize]` | 选择框大小 | `'large','small','default'` | `'default'` |
+| `[coPlaceHolder]` | 选择框默认文字 | `string` | - |
 | `[coMaxMultipleCount]` | 多选模式最大显示项数，其它以更多方式呈现. | `number` | `2` |
 | `[coMode]` | 模式 | `'default' | 'multiple' | 'tags'` | `'default'` |
 | `[coDropdownMode]` | 下拉框模式 | `'default' | 'table' | 'custom'` | `'default'` |

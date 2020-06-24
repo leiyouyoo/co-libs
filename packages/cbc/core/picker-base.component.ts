@@ -23,6 +23,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   @Input() coDropdownStyle: { [key: string]: string } | null = null;
   @Input() coDropdownColumns: DropdownColumn[] | null = null;
 
+  @Input() @InputBoolean() nzServerSearch = true;
   @Input() @InputBoolean() coAllowClear = true;
   @Input() @InputBoolean() coAutoFocus = false;
   @Input() @InputBoolean() coAutoClearSearchValue = true;
@@ -112,7 +113,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
       if (this.loadingMode === 'more') {
         this.skipCount += this.coPageSize;
 
-        if (response.total < this.coPageSize) {
+        if (response.total <= this.coPageSize) {
           this.hasMore = false;
         }
       }
@@ -167,6 +168,10 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
     this.value = null;
     this.nzSelectComponent.clearInput();
   }
+  // onModelChange():void{
+  //   this.nzSelectComponent.;
+
+  // }
 
   //#endregion
 
@@ -244,7 +249,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
     this.searchChange$.next({ ...this.coFilter, searchText: value, skipCount: this.skipCount, maxResultCount: this.coPageSize });
   }
 
-  private sortByDownList(items: any[]) {
+  protected sortByDownList(items: any[]) {
     return _.sortBy(items, (item: any) => {
       if (this.value) {
         let values: any[] = this.value;
@@ -262,7 +267,6 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   }
 
   private loadDownList() {
-    debugger;
     if (this.optionList.length === 0) {
       if (this.value) {
         this.loadByIds(this.value);

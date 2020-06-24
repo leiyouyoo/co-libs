@@ -17,15 +17,14 @@ import { CustomerPickerComponent } from '@co/cbc';
 @Component({
   selector: 'app-demo',
   template: `
-  <div>
     <div>
-      <button nz-button nzType="default" (click)='onFocus($event)'>设置焦点</button>
-      <button nz-button nzType="default" (click)='onBlur($event)'>失去焦点</button>
-      <button nz-button nzType="default" (click)='onClear($event)'>清除所有值</button>
+      <div>
+        <button nz-button nzType="default" (click)="onFocus($event)">设置焦点</button>
+        <button nz-button nzType="default" (click)="onBlur($event)">失去焦点</button>
+        <button nz-button nzType="default" (click)="onClear($event)">清除所有值</button>
+      </div>
+      <co-customer-picker [(ngModel)]="selectedValue"> </co-customer-picker>
     </div>
-    <co-customer-picker  [(ngModel)]="selectedValue">
-    </co-customer-picker>
-  </div>
   `,
 })
 export class CustomerPickerMethodsComponent {
@@ -33,17 +32,18 @@ export class CustomerPickerMethodsComponent {
 
   selectedValue: number = 2;
 
-  onFocus() {
+  onFocus(_e: any) {
     this.coCustomerPickerComponent.focus();
   }
 
-  onBlur() {
+  onBlur(_e: any) {
     this.coCustomerPickerComponent.blur();
   }
 
-  onClear() {
+  onClear(_e: any) {
     this.coCustomerPickerComponent.clear();
   }
 }
+
 
 ```

@@ -1,5 +1,5 @@
 <nz-select
-  nzServerSearch
+  [nzServerSearch]="nzServerSearch"
   nzShowSearch
   [nzMaxTagCount]="coMaxMultipleCount"
   [nzDropdownRender]="renderTemplate"
@@ -50,7 +50,7 @@
   </div>
 </nz-select>
 
-<nz-select-arrow [search]="coOpen" [suffixIcon]="nzSuffixIcon"></nz-select-arrow>
+<nz-select-arrow [search]="coOpen"></nz-select-arrow>
 
 <ng-template #renderTemplate>
   <div *ngIf="isLoading && hasMore" class="co-picker__loading">

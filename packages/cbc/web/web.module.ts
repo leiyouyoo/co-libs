@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
+import { STModule } from '@co/cbc/web/st';
 
-const MODULES: any[] = [];
+const MODULES: any[] = [
+  STModule,
+];
 
 /**@co/cbc/basic/down-file
- * @deprecated Use secondary entry eg: `import { STModule } from 'ng-zorro-antd/st';`.
  */
 @NgModule({ exports: MODULES })
 export class CbcWebComponentsModule {
   constructor() {
-    console.warn(
-      "The `CbcWebComponentsModule` has been deprecated and will be removed in 10.0.0. Please use secondary entry instead.\ne.g. `import { STModule } from 'ng-zorro-antd/st';`",
-    );
   }
 }

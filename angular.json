@@ -16,8 +16,9 @@
             "main": "src/main.ts",
             "tsConfig": "src/tsconfig.json",
             "polyfills": "src/polyfills.ts",
-            // "deployUrl": "//192.168.1.5:8010/frontend/",
-            "assets": ["src/assets"],
+            "assets": [
+              "src/assets"
+            ],
             "styles": [
               "node_modules/ngx-simplemde/lib/index.less",
               "node_modules/aos/dist/aos.css",
@@ -77,8 +78,12 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["src/tsconfig.json"],
-            "exclude": ["**/node_modules/**"]
+            "tsConfig": [
+              "src/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -95,12 +100,20 @@
             "karmaConfig": "packages/karma.conf.js",
             "polyfills": "packages/polyfills.ts",
             "tsConfig": "packages/tsconfig.spec.json",
-            "scripts": ["node_modules/ajv/dist/ajv.bundle.js"],
-            "codeCoverageExclude": ["packages/schematics/**", "packages/testing/**"]
+            "scripts": [
+              "node_modules/ajv/dist/ajv.bundle.js"
+            ],
+            "codeCoverageExclude": [
+              "packages/schematics/**",
+              "packages/testing/**"
+            ]
           }
         }
       }
     }
   },
-  "defaultProject": "site"
+  "defaultProject": "site",
+  "cli": {
+    "analytics": "d8d0c19e-fbb1-40c7-b12f-9b37dd640bb6"
+  }
 }
