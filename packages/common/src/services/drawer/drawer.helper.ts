@@ -48,7 +48,7 @@ export interface DrawerHelperOptions {
  */
 @Injectable({ providedIn: 'root' })
 export class DrawerHelper {
-  constructor(private srv: NzDrawerService) {}
+  constructor(private srv: NzDrawerService) { }
 
   /**
    * 构建一个抽屉
