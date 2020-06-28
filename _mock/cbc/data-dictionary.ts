@@ -23,7 +23,7 @@ function setupData(num: number): any[] {
 
 const MOCK_DATA = setupData(100);
 
-export const DATADICTIONARIES = {
+export const DATA_DICTIONARIES = {
   // 支持值为 Object 和 Array
   'GET /PUB/DataDictionary/GetAll': (req: MockRequest) => {
     const res: any = {

@@ -1,0 +1,16 @@
+<div class="co-page-layout">
+  <div class="co-page-layout__toolbar" *ngIf="coToolbar">
+    <ng-container *ngTemplateOutlet="coToolbar"></ng-container>
+  </div>
+  <div class="co-page-layout__searchArea" *ngIf="coSearchArea">
+    <ng-template #coSearchAreaOutlet></ng-template>
+    <ng-container *ngTemplateOutlet="coSearchArea"></ng-container>
+  </div>
+  <div class="co-page-layout__content">
+    <ng-content></ng-content>
+    <div class="side"></div>
+  </div>
+  <div class="co-page-layout__footer" *ngIf="coFooter">
+
+  </div>
+</div>

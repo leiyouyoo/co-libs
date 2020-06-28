@@ -1,0 +1,41 @@
+@import '../../../../theme/theme-default.less';
+
+@search-area-prefix: ~'.co-search-area';
+@search-area-item-margin-bottom: 8px;
+@search-area-item-margin-right: 12px;
+
+@{search-area-prefix} {
+  &-layout {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    &&__alignRight {
+      justify-content: flex-end;
+    }
+  }
+
+  &-item {
+    position: relative;
+    flex: 0 0 auto;
+    width: auto;
+    height: auto;
+    max-width: none;
+    min-height: 0;
+    overflow: hidden;
+    margin-bottom: @search-area-item-margin-bottom;
+    //margin-right: @search-area-item-margin-right;
+
+    .ant-form-item {
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+@flex-row-breaker-prefix: ~'.co-flex-row-breaker';
+
+@{flex-row-breaker-prefix} {
+  flex: 1 0 9999px;
+}

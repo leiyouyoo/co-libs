@@ -1,0 +1,28 @@
+@import '../../../../theme/theme-default.less';
+
+@page-layout-prefix: ~'.co-page-layout';
+@page-layout-padding: 24px;
+@page-layout-content-min-height: 500px;
+
+@{page-layout-prefix} {
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  min-height: 0;
+  width: 100%;
+  background-color: #ffffff;
+  padding: @page-layout-padding @page-layout-padding 0;
+
+  &__toolbar, &__searchArea {
+    flex: auto;
+    width: 100%;
+    min-height: 0;
+    margin-bottom: 24px;
+  }
+  &__content {
+    display: flex;
+    flex: auto;
+    width: 100%;
+    //min-height: @page-layout-content-min-height;
+  }
+}
