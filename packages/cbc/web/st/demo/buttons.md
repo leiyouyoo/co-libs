@@ -50,6 +50,9 @@ export class DemoComponent {
     { title: '年龄', index: 'age' },
     {
       title: '操作区',
+      type: 'action',
+      fixed: 'right',
+      width: '100',
       buttons: [
         {
           text: 'Edit',

@@ -18,9 +18,13 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { STRowDirective } from './st-row.directive';
 import { STWidgetHostDirective } from './st-widget-host.directive';
 import { STComponent } from './st.component';
+import { NzSelectModule } from 'ng-zorro-antd';
+import { TranslateModule } from '@ngx-translate/core';
+import { SettingOutline } from '@ant-design/icons-angular/icons';
 
 const COMPONENTS = [STComponent];
 const DIRECTIVES = [STRowDirective, STWidgetHostDirective];
+const icons = [ SettingOutline ];
 
 @NgModule({
   imports: [
@@ -30,7 +34,6 @@ const DIRECTIVES = [STRowDirective, STWidgetHostDirective];
     CoACLModule,
     NzPopconfirmModule,
     NzTableModule,
-    NzIconModule,
     NzBadgeModule,
     NzCheckboxModule,
     NzDividerModule,
@@ -40,6 +43,9 @@ const DIRECTIVES = [STRowDirective, STWidgetHostDirective];
     NzTagModule,
     NzInputModule,
     NzToolTipModule,
+    NzSelectModule,
+    TranslateModule,
+    NzIconModule.forChild(icons),
   ],
   declarations: [...COMPONENTS, ...DIRECTIVES],
   exports: [...COMPONENTS, ...DIRECTIVES],

@@ -100,6 +100,8 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   _indeterminate = false;
   _headers: STColumn[][] = [];
   _columns: STColumn[] = [];
+  _showFilters = false;
+  _filterRow: STColumn[] = [];
   @ViewChild('table', { static: false }) readonly orgTable: NzTableComponent;
 
   @Input()
@@ -163,6 +165,16 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   get widthMode() {
     return this._widthMode;
   }
+  @Input()
+  set showFilters(val: boolean) {
+    this._showFilters = val;
+    if (this.columnSource.cog) {
+      this.columnSource.cog.showFilters = val;
+    }
+  }
+  get showFilters(): boolean {
+    return this._showFilters;
+  }
   @Input() header: string | TemplateRef<void>;
   @Input() footer: string | TemplateRef<void>;
   @Input() bodyHeader: TemplateRef<STStatisticalResults>;
@@ -184,6 +196,8 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() @InputNumber() virtualMaxBufferPx = 200;
   @Input() @InputNumber() virtualMinBufferPx = 100;
   @Input() virtualForTrackBy: TrackByFunction<NzTableData> = index => index;
+  @Input() @InputBoolean() showCheckbox = true;
+  @Input() checkboxSelections = [];
 
   /**
    * Get the number of the current page
@@ -786,6 +800,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     const res = this.columnSource.process(this.columns);
     this._columns = res.columns;
     this._headers = res.headers;
+    this._filterRow = res.filterRow;
     return this;
   }
 
