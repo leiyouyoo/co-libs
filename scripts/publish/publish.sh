@@ -2,19 +2,26 @@
 
 # set -u -e -o pipefail
 
-readonly thisDir=$(cd $(dirname $0); pwd)
+readonly thisDir=$(
+  cd $(dirname $0)
+  pwd
+)
 
 cd $(dirname $0)/../..
 
 DIST="$(pwd)/dist"
 ROOT=${DIST}
 
+SCHEMATICS=false
 NEXT=false
 for ARG in "$@"; do
   case "$ARG" in
-    -next)
-      NEXT=true
-      ;;
+  -next)
+    NEXT=true
+    ;;
+  -schematics)
+    SCHEMATICS=true
+    ;;
   esac
 done
 
@@ -30,25 +37,40 @@ clone() {
 }
 
 publishToMaster() {
-  (cd ${ROOT}/@co; for p in `ls .`; do npm publish --access public $p; done)
+  (
+    cd ${ROOT}/@co
+    for p in $(ls .); do npm publish --access public $p; done
+  )
   cd ${ROOT}/@co
   npm publish --access public
 }
 
 publishToNext() {
-  (cd ${ROOT}/@co; for p in `ls .`; do npm publish $p --access public --tag next; done)
+  (
+    cd ${ROOT}/@co
+    for p in $(ls .); do npm publish $p --access public --tag next; done
+  )
   cd ${ROOT}/@co
   npm publish --access public --tag next
 }
 
+publishSchematics() {
+  cd ${ROOT}/co-cli
+  npm publish --access public
+}
+
 syncTaobao() {
-  (cd ${ROOT}/@co; for p in `ls .`; do curl -X PUT https://npm.taobao.org/sync/@co@conc_upstream=true; done)
+  (
+    cd ${ROOT}/@co
+    for p in $(ls .); do curl -X PUT https://npm.taobao.org/sync/@co@conc_upstream=true; done
+  )
   curl -X PUT https://npm.taobao.org/sync/ng-alain?sync_upstream=true
 }
 
 # clone
-if [[ ${NEXT} == true ]]; then
-  publishToNext
+
+if [[ ${SCHEMATICS} == true ]]; then
+  publishSchematics
 else
   publishToMaster
 fi

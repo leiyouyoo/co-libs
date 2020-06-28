@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { NzTreeBaseService, NzTreeNode } from 'ng-zorro-antd/core/tree';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
-import { CoConfig, CO_CONFIG } from '../../config';
+import { CoConfig, CO_CONFIG } from '@co/core';
 import { deepCopy } from '../other/other';
-import { CoUtilModule } from '../../core.module';
+import { CoreModule } from '../../core.module';
 import { ArrayService } from './array.service';
 
 const MOCK_ARR: NzSafeAny[] = [
@@ -21,7 +21,7 @@ describe('core: array', () => {
   describe('#treeToArr', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [CoUtilModule],
+        imports: [CoreModule],
       });
       srv = TestBed.inject<ArrayService>(ArrayService);
     });
@@ -222,9 +222,9 @@ describe('core: array', () => {
       this.data = data
         ? data
         : srv.arrToTreeNode(deepCopy(MOCK_ARR), {
-            parentIdMapName: 'pid',
-            titleMapName: 'name',
-          });
+          parentIdMapName: 'pid',
+          titleMapName: 'name',
+        });
     }
     check(path: string, field: string, value: NzSafeAny): this {
       const pathArr = path.split('/');

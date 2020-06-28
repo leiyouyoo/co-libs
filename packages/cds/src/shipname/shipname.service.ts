@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BaseApi, BaseUrl, Payload, GET } from '@co/common';
+import { BaseApi, BaseUrl, GET, Payload } from '@co/common';
+import { PagedResultDto } from '@co/core';
 import { Observable } from 'rxjs';
-import { PagedResult } from '@co/core';
-import { CustomerType, CustomerDto } from '../crm/public_api';
+import { VesselDto } from '.';
 
 // 船名服务
 @BaseUrl('/shipname/shipname')
@@ -10,18 +10,18 @@ import { CustomerType, CustomerDto } from '../crm/public_api';
   providedIn: 'root',
 })
 export class ShipnameService extends BaseApi {
-  @GET('GetCustomerByType')
-  GetCustomerByType(
+  @GET('GetAllVessel')
+  GetAllVessel(
     @Payload
     _req: {
-      ids?: string[];
-      searchText?: string;
-      isDeleted?: boolean;
-      type?: CustomerType;
+      Code?: string;
+      Name?: string;
+      CarrierId?: string;
+      IsValid?: boolean;
       maxResultCount?: number;
       skipCount?: number;
     },
-  ): Observable<PagedResult<CustomerDto>> {
+  ): Observable<PagedResultDto<VesselDto>> {
     return null as any;
   }
 }

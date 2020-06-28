@@ -5,6 +5,7 @@ export * from './cbc/customer';
 export * from './cbc/shipname';
 export * from './cbc/container';
 export * from './cbc/data-dictionary';
+export * from './cbc/voyage';
 export * from './cbc/chargingCode';
 export * from './cbc/county';
 export * from './cbc/currency';

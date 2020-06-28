@@ -1,9 +1,9 @@
-import { Component, forwardRef, ChangeDetectionStrategy, ViewEncapsulation, ChangeDetectorRef } from '@angular/core';
+import { Component, forwardRef, ChangeDetectionStrategy, ViewEncapsulation, ChangeDetectorRef, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { PickerComponentBase } from '@co/cbc/core';
 import { ShipnameService } from '@co/cds';
 import { Observable } from 'rxjs';
-
+import * as _ from 'lodash';
 @Component({
   selector: 'co-shipname-picker',
   exportAs: 'coShipnamePicker',
@@ -21,12 +21,15 @@ import { Observable } from 'rxjs';
   encapsulation: ViewEncapsulation.None,
 })
 export class ShipnamePickerComponent extends PickerComponentBase {
+  @Input() No: string;
+
   constructor(cdr: ChangeDetectorRef, private shipnameService: ShipnameService) {
     super(cdr);
     this.coLabelMember = 'name';
   }
 
   fetchRemoteData(_condition: any): Observable<any> {
-    return this.shipnameService.GetCustomerByType(_condition);
+    _.defaults(_condition, { No: this.No });
+    return this.shipnameService.GetAllVessel(_condition);
   }
 }
