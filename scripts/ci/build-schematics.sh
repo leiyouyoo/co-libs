@@ -95,7 +95,7 @@ updateVersionReferences() {
     for dependencie in ${DEPENDENCIES[@]}
     do
       IFS=$'|' read -r lib version <<< "$dependencie"
-      # echo ">>>> update ${lib}: ${version}"
+     echo ">>>>  perl -i -p -e "s/${lib}\@DEP\-0\.0\.0\-PLACEHOLDER/${lib}\@${version}/g" $(grep -ril ${lib}\@DEP\-0\.0\.0\-PLACEHOLDER .) < /dev/null 2> /dev/null"
       perl -i -p -e "s/${lib}\@DEP\-0\.0\.0\-PLACEHOLDER/${lib}\@${version}/g" $(grep -ril ${lib}\@DEP\-0\.0\.0\-PLACEHOLDER .) < /dev/null 2> /dev/null
     done
 
@@ -209,13 +209,16 @@ cloneScaffold() {
 buildCLI() {
   rm -rf ${DIST}
 
-  echo "Building...${tsconfigFile}----- rsync -am --include="*.json" --include="*/" --exclude=* ${SOURCE}/ ${DIST}/"
-  $TSC -p ${tsconfigFile}
+  echo "Building... tsc -p ${PWD}/packages/schematics/tsconfig.json"
+  tsc -p ${PWD}/packages/schematics/tsconfig.json
 
   rsync -am --include="*.json" --include="*/" --exclude=*  ${SOURCE}/ ${DIST}/
   rsync -am --include="*.d.ts" --include="*/" --exclude=*  ${SOURCE}/ ${DIST}/
-  rsync -am --include="/files" --delete ${SOURCE}/ ${DIST}/
-  rm ${DIST}/test.ts ${DIST}/tsconfig.json ${DIST}/tsconfig.spec.json
+  # rsync -am --include="/files" --delete ${SOURCE}/ ${DIST}/
+  rsync -am --include="/files" ${SOURCE}/ ${DIST}/
+
+
+  rm -f ${PWD}/dist/co-cli/test.ts,${PWD}/dist/co-cli/tsconfig.json,${PWD}/dist/co-cli/tsconfig.spec.json
 
   # if [[ ${COPY} == true ]]; then
   #   if [[ ${CLONE} == true ]]; then

@@ -1,8 +1,7 @@
 import { Inject, Injectable, Optional } from '@angular/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
-import { deepMergeKey } from '../util/other/other';
 import { CoConfig, CoConfigKey, CO_CONFIG } from './config.types';
-
+import _ from 'lodash'
 @Injectable({ providedIn: 'root' })
 export class CoConfigService {
   private config: CoConfig;
@@ -21,7 +20,7 @@ export class CoConfigService {
   }
 
   merge<R, T extends CoConfigKey>(componentName: T, ...defaultValues: R[]): R {
-    return deepMergeKey({}, true, ...defaultValues, this.get(componentName));
+    return _.extend({}, ...defaultValues, this.get(componentName));
   }
 
   attach<R, T extends CoConfigKey>(componentThis: NzSafeAny, componentName: T, defaultValues: R) {

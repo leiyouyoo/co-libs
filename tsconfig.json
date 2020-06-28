@@ -11,15 +11,24 @@
     "module": "esnext",
     "moduleResolution": "node",
     "target": "es2015",
-    "typeRoots": ["node_modules/@types/!(node)"],
-    "lib": ["es2018", "dom"],
+    "typeRoots": [
+      "node_modules/@types/!(node)"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
     "baseUrl": "./",
     "paths": {
-      "@co/*": ["./packages/*"],
-      "@core/*": ["./src/app/core/*"]
+      "@co/*": [
+        "./packages/*"
+      ],
+      "@core/*": [
+        "./src/app/core/*"
+      ]
     },
     "noUnusedParameters": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "strictFunctionTypes": true,
     "strictNullChecks": true,
     "skipLibCheck": true,
@@ -28,7 +37,13 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noFallthroughCasesInSwitch": true,
-    "types": ["jasmine", "lodash"]
+    "types": [
+      "jasmine",
+      "lodash"
+    ]
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }
