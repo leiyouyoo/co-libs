@@ -134,6 +134,10 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
     return null as any;
   }
 
+  getCdrTo(){
+    this.cdr.detectChanges();
+  }
+
   //#region ngModel实现
 
   writeValue(modelValue: NzSafeAny | NzSafeAny[]): void {

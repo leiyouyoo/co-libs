@@ -1,13 +1,13 @@
 ---
 title:
-  zh-CN: 客户选择器方法使用样例
+  zh-CN: 币种选择器方法使用样例
   en-US: Methods Usage
 order: 6
 ---
 
 ## zh-CN
 
-客户选择器方法(focus,blur,clear)使用样例.
+币种选择器方法(focus,blur,clear)使用样例.
 
 
 ```ts

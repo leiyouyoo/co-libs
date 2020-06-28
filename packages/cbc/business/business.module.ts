@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
+import { CdsModule } from '@co/cds';
+import { ShipnamePickerModule } from './shipname-picker';
 import { ChargingCodePickerModule } from './charging-code-picker';
 import { CountyPickerModule } from './county-picker';
 import { CurrencyPickerModule } from './currency-picker';
-import { CustomerPickerModule } from './customer-picker';
-import { CdsModule } from '@co/cds';
-import { ShipnamePickerModule } from './shipname-picker';
+import { CustomerPickerModule } from './customer-picker'
 import { ContainerPickerModule } from '@co/cbc/business/container-picker';
 import { DataDictionaryPickerModule } from '@co/cbc/business/data-dictionary-picker';
+import { AreaPickerModule } from './area-picker';
+import { RegionPickerModule } from './region-picker';
+import { PortPickerModule } from './port-picker';
 
 const EXPORT_MODULES: any[] = [
   CustomerPickerModule,
@@ -17,6 +20,9 @@ const EXPORT_MODULES: any[] = [
   CurrencyPickerModule,
   CustomerPickerModule,
   ShipnamePickerModule,
+  AreaPickerModule,
+  RegionPickerModule,
+  PortPickerModule,
 ];
 const IMPORT_MODULES: any[] = [CdsModule];
 

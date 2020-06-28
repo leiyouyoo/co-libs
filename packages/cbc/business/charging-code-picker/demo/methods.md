@@ -7,7 +7,7 @@ order: 6
 
 ## zh-CN
 
-客户选择器方法(focus,blur,clear)使用样例.
+费用代码选择器方法(focus,blur,clear)使用样例.
 
 
 ```ts

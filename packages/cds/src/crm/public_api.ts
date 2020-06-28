@@ -6,3 +6,6 @@ export * from './chargingCode.service';
 export * from './chargingCode.type';
 export * from './currency.service';
 export * from './currency.type';
+export * from './area';
+export * from './region';
+export * from './port';

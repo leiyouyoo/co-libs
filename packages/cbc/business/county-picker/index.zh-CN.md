@@ -25,6 +25,7 @@ module: import { CountyPickerModule } from '@co/cbc';
 | `[coAllowClear]` | 是否允许清除 | `boolean` | `true`|
 | `[coAutoFocus]` | 是否自动聚焦 | `boolean` | `false` |
 | `[coAutoClearSearchValue]` | 是否自动清除搜索值 | `boolean` | `true` |
+| `[coShowSearch]` | 单选框是否启用搜索 | `boolean` | `true` |
 | `[coDisabled]` | 是否禁用 | `boolean` | `false` |
 | `[coOpen]` | 是否打开下拉框 | `boolean` | `false` |
 | `[coLabelMember]` | 显示成员 | `string` | `name` |
