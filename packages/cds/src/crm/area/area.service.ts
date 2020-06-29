@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { PagedResult } from '@co/core';
+import { PagedResultDto } from '@co/core';
 import { BaseApi, BaseUrl, GET, Payload } from '@co/common';
 
 import { AreaDto } from './area.types';
@@ -16,7 +16,7 @@ export class AreaService extends BaseApi {
       name?: string,
       isValid?: string,
     },
-  ): Observable<PagedResult<AreaDto>> {
+  ): Observable<PagedResultDto<AreaDto>> {
     return null as any;
   }
 }

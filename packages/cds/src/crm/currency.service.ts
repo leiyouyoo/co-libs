@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { PagedResult } from '@co/core';
+import { PagedResultDto } from '@co/core';
 import { BaseUrl, BaseApi, GET, Payload } from '@co/common';
 
 import { CurrencyDto } from './currency.type';
@@ -24,7 +24,7 @@ export class CurrencyService extends BaseApi {
       MaxResultCount?: number;
       SkipCount?: number;
     },
-  ): Observable<PagedResult<CurrencyDto>> {
+  ): Observable<PagedResultDto<CurrencyDto>> {
     return null as any;
   }
 }

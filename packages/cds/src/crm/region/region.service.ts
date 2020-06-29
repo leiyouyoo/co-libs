@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { PagedResult } from '@co/core';
+import { PagedResultDto } from '@co/core';
 import { BaseApi, BaseUrl, POST, Payload } from '@co/common';
 
 import { RegionDto } from './region.types';
@@ -20,7 +20,7 @@ export class RegionService extends BaseApi {
       areaIds?: any[],
       recursive?: string,
     },
-  ): Observable<PagedResult<RegionDto>> {
+  ): Observable<PagedResultDto<RegionDto>> {
     return null as any;
   }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { PagedResult } from '@co/core';
+import { PagedResultDto } from '@co/core';
 import { BaseApi, BaseUrl, POST, Payload } from '@co/common';
 
 import { PortDto } from './port.types';
@@ -27,7 +27,7 @@ export class PortService extends BaseApi {
       maxResultCount?: number;
       skipCount?:  number;
     },
-  ): Observable<PagedResult<PortDto>> {
+  ): Observable<PagedResultDto<PortDto>> {
     return null as any;
   }
 }

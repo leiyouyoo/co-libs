@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { PagedResult } from '@co/core';
+import { PagedResultDto } from '@co/core';
 import { BaseUrl, BaseApi, GET, Payload } from '@co/common';
 
 import { CustomerDto, CustomerType } from './customer.types';
@@ -23,7 +23,7 @@ export class CustomerService extends BaseApi {
       maxResultCount?: number;
       skipCount?: number;
     },
-  ): Observable<PagedResult<CustomerDto>> {
+  ): Observable<PagedResultDto<CustomerDto>> {
     return null as any;
   }
 }

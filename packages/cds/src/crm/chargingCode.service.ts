@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { PagedResult } from '@co/core';
+import { PagedResultDto } from '@co/core';
 import { BaseUrl, BaseApi, GET, Payload } from '@co/common';
 
 import { ChargingCodeDto } from './chargingCode.type';
@@ -20,7 +20,7 @@ export class ChargingCodeService extends BaseApi {
       Text?: string;
       IsValid?: boolean;
     },
-  ): Observable<PagedResult<ChargingCodeDto>> {
+  ): Observable<PagedResultDto<ChargingCodeDto>> {
     return null as any;
   }
 }

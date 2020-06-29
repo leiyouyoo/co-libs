@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { BaseApi, BaseUrl, DELETE, GET, Payload, POST, PUT } from '@co/common';
-import { EntityDto, ListResultDto, NameValueDto, PagedResultDto } from '@co/core';
+import { BaseApi, BaseUrl, GET, Payload } from '@co/common';
+import {  PagedResultDto } from '@co/core';
 import { CustomerDto, CustomerType } from './public_api';
 
 /**

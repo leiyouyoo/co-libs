@@ -23,7 +23,7 @@ const EXPORT_MODULES: any[] = [
   CustomerPickerModule,
   ShipnamePickerModule,
   YoyagePickerModule,
-  ProductPickerModule
+  ProductPickerModule,
   AreaPickerModule,
   RegionPickerModule,
   PortPickerModule,
