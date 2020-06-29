@@ -10,7 +10,7 @@ import { ProductPickerComponent } from './product-picker.component';
 const COMPONENTS = [ProductPickerComponent];
 
 /**
- * 客户选取器模块
+ * 品名选取器模块
  */
 @NgModule({
   imports: [CommonModule, FormsModule, NzSelectModule, NzSpinModule],

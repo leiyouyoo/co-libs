@@ -9,7 +9,7 @@ import { ProductService } from '@co/cds';
 import { PickerComponentBase } from '@co/cbc/core';
 
 /**
- * 客户选择器控件
+ *品名选择器控件
  */
 @Component({
   selector: 'co-product-picker',

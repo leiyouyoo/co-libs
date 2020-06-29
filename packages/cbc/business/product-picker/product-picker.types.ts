@@ -1,6 +1,6 @@
 
 /**
- * 客户信息
+ *商品信息
  */
 
 export class ProductFilter {
