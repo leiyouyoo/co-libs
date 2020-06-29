@@ -7,7 +7,7 @@ order: 2
 
 ## zh-CN
 
-基于coModel设置multiple 多选样例.
+基于coMode设置multiple 多选样例.
 
 
 ```ts

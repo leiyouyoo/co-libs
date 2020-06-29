@@ -10,3 +10,5 @@ export interface DropdownColumn {
 }
 
 export type DropdownPosition = 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
+
+export type CoSize = 'small' | 'middle' | 'large';
