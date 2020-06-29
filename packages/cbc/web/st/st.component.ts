@@ -804,6 +804,26 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     return this;
   }
 
+  getFilterOptions(column: STColumn, index: number, input?: string): any[] {
+    const arr = Array.from(
+      new Set(this._data.map(o => o._values[index].text))
+    );
+    let result: any[];
+    switch (column.filterType) {
+      case 'autocomplete':
+        result = arr.filter(o => {
+          const str = o + '';
+          return input ? str.includes(input) : true;
+        })
+        break;
+      case 'select':
+      default:
+        result = arr.map(o => ({ label: o + '', value: o }));
+    }
+
+    return result;
+  }
+
   private optimizeData(): void {
     this._data = this.dataSource.optimizeData({ columns: this._columns, result: this._data, rowClassName: this.rowClassName });
   }

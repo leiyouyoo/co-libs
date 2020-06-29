@@ -192,14 +192,30 @@
       </th>
     </tr>
     <tr *ngIf="showFilters && _filterRow?.length">
-      <th *ngFor="let i of _filterRow">
-        <ng-container [ngSwitch]="i.column.type">
+      <th *ngFor="let i of _filterRow; index as index">
+        <ng-container [ngSwitch]="i.column.filterType">
+          <ng-container *ngSwitchCase="i.column.filterType === null ? null : 'nevermatch'"></ng-container>
           <ng-container *ngSwitchCase="'select'">
             <nz-select></nz-select>
           </ng-container>
+          <ng-container *ngSwitchCase="'autocomplete'">
+            <input type="text"
+                   [nzAutocomplete]="auto"
+                   #autocompleteInput
+                   [(ngModel)]="i.column.filter?.menus[0].value"
+                   (ngModelChange)="_filterConfirm(i.column)"
+                   nz-input>
+            <nz-autocomplete [nzDataSource]="getFilterOptions(i.column, index, autocompleteInput.value)" nzBackfill #auto></nz-autocomplete>
+          </ng-container>
+          <ng-container *ngSwitchCase="'date'">
+            <nz-date-picker class="width-100" [(ngModel)]="i.column.filter?.menus[0].value" (ngModelChange)="_filterConfirm(i.column)"></nz-date-picker>
+          </ng-container>
           <ng-container *ngSwitchDefault>
             <nz-select class="width-100"
+                       [(ngModel)]="i.column.filter?.menus[0].value"
+                       (ngModelChange)="_filterConfirm(i.column)"
                        nzShowSearch
+                       [nzOptions]="getFilterOptions(i.column, index)"
                        nzAllowClear></nz-select>
           </ng-container>
         </ng-container>
@@ -249,8 +265,13 @@
               </ng-container>
               <ng-container *ngFor="let btn of _validBtns(c.buttons, i, c); let last = last">
                 <a *ngIf="btn.children.length > 0" nz-dropdown [nzDropdownMenu]="btnMenu" nzOverlayClassName="st__btn-sub">
-                  <span [innerHTML]="_btnText(i, btn)"></span>
-                  <i nz-icon nzType="down"></i>
+                  <ng-container *ngIf="_btnText(i, btn); else ellipsisIcon">
+                    <span [innerHTML]="_btnText(i, btn)"></span>
+                    <i nz-icon nzType="down"></i>
+                  </ng-container>
+                  <ng-template #ellipsisIcon>
+                    <i nz-icon nzType="ellipsis"></i>
+                  </ng-template>
                 </a>
                 <nz-dropdown-menu #btnMenu="nzDropdownMenu">
                   <ul nz-menu>

@@ -18,13 +18,13 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { STRowDirective } from './st-row.directive';
 import { STWidgetHostDirective } from './st-widget-host.directive';
 import { STComponent } from './st.component';
-import { NzSelectModule } from 'ng-zorro-antd';
+import { NzAutocompleteModule, NzDatePickerModule, NzSelectModule } from 'ng-zorro-antd';
 import { TranslateModule } from '@ngx-translate/core';
-import { SettingOutline } from '@ant-design/icons-angular/icons';
+import { SettingOutline, DeleteOutline, EllipsisOutline } from '@ant-design/icons-angular/icons';
 
 const COMPONENTS = [STComponent];
 const DIRECTIVES = [STRowDirective, STWidgetHostDirective];
-const icons = [ SettingOutline ];
+const icons = [ SettingOutline, DeleteOutline, EllipsisOutline ];
 
 @NgModule({
   imports: [
@@ -44,8 +44,10 @@ const icons = [ SettingOutline ];
     NzInputModule,
     NzToolTipModule,
     NzSelectModule,
+    NzAutocompleteModule,
     TranslateModule,
     NzIconModule.forChild(icons),
+    NzDatePickerModule,
   ],
   declarations: [...COMPONENTS, ...DIRECTIVES],
   exports: [...COMPONENTS, ...DIRECTIVES],

@@ -261,7 +261,7 @@ export interface STColumn {
   /**
    * filter type
    */
-  filterType?: 'select';
+  filterType?: 'select' | 'autocomplete' | 'date';
   /**
    * 格式化列值
    */
@@ -450,7 +450,7 @@ export interface STColumnFilter {
    * - `defualt` 默认形式
    * - `keyword` 文本框形式
    */
-  type?: 'default' | 'keyword';
+  type?: 'default' | 'keyword' | 'codefault';
   /**
    * 表头的筛选菜单项，至少一项才会生效
    * - 当 `type='keyword'` 时可为空
@@ -513,6 +513,10 @@ export interface STColumnFilterMenu {
    * 权限，等同 [ACLCanType](https://ng-alain.com/acl/getting-started/#ACLCanType) 参数值
    */
   acl?: any;
+  /**
+   * 原始列数据
+   */
+  originColumn?: STColumn;
 
   [key: string]: any;
 }

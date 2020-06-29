@@ -10,8 +10,8 @@ import {
   STColumn,
   STColumnButton,
   STColumnButtonPop,
-  STColumnFilter,
-  STColumnGroupType,
+  STColumnFilter, STColumnFilterMenu,
+  STColumnGroupType, STData,
   STIcon,
   STSortMap,
 } from './st.interfaces';
@@ -171,9 +171,27 @@ export class STColumnSource {
   }
 
   private filterCoerce(item: STColumn): STColumnFilter | null {
-    if (item.filter == null) {
+    if (item.filter === null || item.type === 'action' || (item.filter === void 0 && !item.index)) {
       return null;
     }
+    if (item.filter === void 0) {
+      item.filter = {
+        menus: [{  value: '', originColumn: { ...item } }],
+        type: 'codefault',
+        fn: (filter: STColumnFilterMenu, record: STData) => {
+          if (!filter.value && filter.value !== 0) return  true;
+          const value = (filter.originColumn !.index as string[]) !.reduce((acc, cur) => {
+            return acc[cur]
+          }, record)
+          switch (filter.originItem) {
+
+          }
+          const v = (value + '').includes(filter.value);
+          return v;
+        },
+      }
+    }
+    item.filter?.menus?.forEach(o => o.originColumn = { ...item, filter: void 0, });
 
     let res: STColumnFilter | null = item.filter;
     res.type = res.type || 'default';
