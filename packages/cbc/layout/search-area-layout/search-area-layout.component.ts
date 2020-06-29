@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, ContentChildren, ElementRef, HostBinding, Input, QueryList, Renderer2, ViewEncapsulation } from '@angular/core';
-import { CoSize } from '@co/cbc/core';
-import { LifeCycleComponent } from '@co/cbc/core/life-cycle-component';
+import { CoSize, LifeCycleComponent } from '@co/cbc/core';
 import { SearchAreaItemComponent } from './search-area-item.component';
 import { filter, startWith, takeUntil } from 'rxjs/operators';
 

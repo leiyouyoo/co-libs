@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { InputBoolean } from 'ng-zorro-antd';
-import { LifeCycleComponent } from '@co/cbc/core/life-cycle-component';
+import { LifeCycleComponent } from '@co/cbc/core';
 import { filter, startWith, takeUntil } from 'rxjs/operators';
 
 

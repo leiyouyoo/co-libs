@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, ComponentFactoryResolver, Input, OnInit, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
-import { ToolbarComponent } from '@co/cbc/layout/toolbar/toolbar.component';
 
 @Component({
   selector: 'co-page-layout',
