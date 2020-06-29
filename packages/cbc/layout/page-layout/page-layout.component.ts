@@ -13,14 +13,10 @@ export class PageLayoutComponent implements OnInit {
   @Input() coSearchArea: TemplateRef<void> | null = null;
   @Input() coFooter: TemplateRef<void> | null = null;
 
-  @ViewChild('coSearchAreaOutlet', { read: ViewContainerRef }) coSearchAreaOutlet: ViewContainerRef;
-
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    const toolbarComponentFactory = this.componentFactoryResolver.resolveComponentFactory(ToolbarComponent);
-    this.coSearchAreaOutlet.createComponent(toolbarComponentFactory)
   }
 
 }

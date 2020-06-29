@@ -3,7 +3,6 @@ import { CoSize } from '@co/cbc/core';
 import { LifeCycleComponent } from '@co/cbc/core/life-cycle-component';
 import { SearchAreaItemComponent } from './search-area-item.component';
 import { filter, startWith, takeUntil } from 'rxjs/operators';
-import { FlexRowBreakerComponent } from './flex-row-breaker.component';
 
 @Component({
   selector: 'co-search-area-layout',
@@ -28,7 +27,6 @@ export class SearchAreaLayoutComponent extends LifeCycleComponent {
   @Input() coWidth: number = 200;
 
   @ContentChildren(SearchAreaItemComponent) searchAreaItemComponents!: QueryList<SearchAreaItemComponent>;
-  @ContentChildren(FlexRowBreakerComponent) flexRowBreakerComponents!: QueryList<FlexRowBreakerComponent>;
 
   constructor(private renderer: Renderer2, private elementRef: ElementRef) {
     super();
