@@ -7,6 +7,7 @@ export * from './shipname-picker';
 export * from './container-picker';
 export * from './data-dictionary-picker';
 export * from './voyage-picker';
+export * from './product-picker';
 export * from './area-picker';
 export * from './region-picker';
 export * from './port-picker';

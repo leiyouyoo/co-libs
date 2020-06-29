@@ -11,6 +11,7 @@ import { YoyagePickerModule } from './voyage-picker';
 import { AreaPickerModule } from './area-picker';
 import { RegionPickerModule } from './region-picker';
 import { PortPickerModule } from './port-picker';
+import { ProductPickerModule } from './product-picker';
 
 const EXPORT_MODULES: any[] = [
   CustomerPickerModule,
@@ -22,6 +23,7 @@ const EXPORT_MODULES: any[] = [
   CustomerPickerModule,
   ShipnamePickerModule,
   YoyagePickerModule,
+  ProductPickerModule
   AreaPickerModule,
   RegionPickerModule,
   PortPickerModule,

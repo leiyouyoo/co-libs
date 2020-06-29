@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
-
 // #region all modules
 import { FullContentModule } from '@co/cbc/layout/full-content';
 import { PageHeaderModule } from '@co/cbc/layout/page-header';
 import { SidebarNavModule } from '@co/cbc/layout/sidebar-nav';
 import { ReuseTabModule } from '@co/cbc/layout/reuse-tab';
+import { SearchAreaLayoutModule } from '@co/cbc/layout/search-area-layout/search-area-layout.module';
+import { PageLayoutModule } from '@co/cbc/layout/page-layout/page-layout.module';
+import { ToolbarModule } from '@co/cbc/layout/toolbar';
 
-const MODULES = [SidebarNavModule, ReuseTabModule, PageHeaderModule, FullContentModule];
+const MODULES = [SidebarNavModule, ReuseTabModule, PageHeaderModule, FullContentModule, PageLayoutModule, SearchAreaLayoutModule, ToolbarModule];
 
 /**
  * 基础组件模块
@@ -15,7 +17,7 @@ const MODULES = [SidebarNavModule, ReuseTabModule, PageHeaderModule, FullContent
 export class CoLayoutComponentsModule {
   constructor() {
     console.warn(
-      "The `DeloncbcModule` has been deprecated and will be removed in 10.0.0. Please use secondary entry instead.\ne.g. `import { STModule } from 'ng-zorro-antd/st';`",
+      'The `DeloncbcModule` has been deprecated and will be removed in 10.0.0. Please use secondary entry instead.\ne.g. `import { STModule } from \'ng-zorro-antd/st\';`',
     );
   }
 }

@@ -30,6 +30,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { NzSliderModule } from 'ng-zorro-antd';
 
 export const SHARED_ZORRO_MODULES = [
   NzButtonModule,
@@ -64,4 +65,5 @@ export const SHARED_ZORRO_MODULES = [
   NzCardModule,
   NzSpinModule,
   NzDividerModule,
+  NzSliderModule,
 ];

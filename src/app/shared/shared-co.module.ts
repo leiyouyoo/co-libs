@@ -21,7 +21,7 @@ import { G2TimelineModule } from '@co/chart/timeline';
 import { TrendModule } from '@co/chart/trend';
 import { G2WaterWaveModule } from '@co/chart/water-wave';
 
-import { CbcWebComponentsModule, CoBasicCompoentsModule, CoBusinessComponentsModule } from '@co/cbc';
+import { CbcWebComponentsModule, CoBasicCompoentsModule, CoBusinessComponentsModule, CoLayoutComponentsModule } from '@co/cbc';
 import { CdsModule } from '@co/cds';
 
 export const SHARED_DELON_MODULES = [
@@ -51,4 +51,5 @@ export const SHARED_DELON_MODULES = [
   CbcWebComponentsModule,
   CoBusinessComponentsModule,
   CdsModule,
+  CoLayoutComponentsModule,
 ];
