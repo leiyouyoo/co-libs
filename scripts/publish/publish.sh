@@ -41,8 +41,8 @@ publishToMaster() {
     cd ${ROOT}/@co
     for p in $(ls .); do npm publish --access public $p; done
   )
-  cd ${ROOT}/@co
-  npm publish --access public
+  # cd ${ROOT}/@co
+  # npm publish --access public
 }
 
 publishToNext() {
