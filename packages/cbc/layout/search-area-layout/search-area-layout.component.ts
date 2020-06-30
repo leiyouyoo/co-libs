@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, ContentChildren, ElementRef, HostBinding, Input, QueryList, Renderer2, ViewEncapsulation } from '@angular/core';
-import { CoSize } from '@co/cbc/core';
 import { LifeCycleComponent } from '@co/cbc/core/life-cycle-component';
 import { SearchAreaItemComponent } from './search-area-item.component';
 import { filter, startWith, takeUntil } from 'rxjs/operators';
+import { CoSizeType } from '@co/cbc/core';
 
 @Component({
   selector: 'co-search-area-layout',
   template: `
-    <ng-content></ng-content> `,
+    <ng-content select="co-search-area-item"></ng-content> `,
   host: { '[class.co-search-area-layout]': 'true' },
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
@@ -20,7 +20,6 @@ export class SearchAreaLayoutComponent extends LifeCycleComponent {
   };
 
   @Input() coAlign: 'left' | 'center' | 'right' = 'left';
-  @Input() coSize: number | CoSize = 'middle';
   @Input() coCols: number = Infinity;
   @Input() coMarginRight: number = 12;
   @Input() coMarginBottom: number = 8;
@@ -34,7 +33,6 @@ export class SearchAreaLayoutComponent extends LifeCycleComponent {
 
   ngAfterViewInit(): void {
     const changes = this.onChanges$.pipe(takeUntil(this.onDestroy$));
-    // const coSizeChanges = changes.pipe(filter(({ coSize }) => coSize !== undefined));
     const coColsChanges = changes.pipe(filter(({ coCols }) => coCols !== undefined));
     const styleChanges = changes.pipe(filter(({ coMarginRight, coMarginBottom, coWidth }) =>
       coMarginRight !== undefined || coMarginBottom !== undefined || coWidth !== undefined));

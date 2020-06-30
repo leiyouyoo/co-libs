@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2, TemplateRef, ViewEncapsulation } from '@angular/core';
-import { InputBoolean } from 'ng-zorro-antd';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2, ViewEncapsulation } from '@angular/core';
 import { LifeCycleComponent } from '@co/cbc/core/life-cycle-component';
 import { filter, startWith, takeUntil } from 'rxjs/operators';
 
@@ -8,12 +7,7 @@ import { filter, startWith, takeUntil } from 'rxjs/operators';
   selector: 'co-search-area-item',
   template: `
     <nz-form-item>
-      <ng-container *ngIf="coLabel">
-        <ng-container *ngTemplateOutlet="customLabel?coLabel:label"></ng-container>
-        <ng-template #label>
-          <nz-form-label [nzNoColon]="coNoColon" [nzRequired]="coRequired" [nzFor]="coFor">{{coLabel}}</nz-form-label>
-        </ng-template>
-      </ng-container>
+      <ng-content select="nz-form-label"></ng-content>
       <nz-form-control>
         <ng-content></ng-content>
       </nz-form-control>
@@ -27,15 +21,6 @@ export class SearchAreaItemComponent extends LifeCycleComponent {
 
   @Input() coWidth: number;
   @Input() coMarginRight: number;
-
-  @Input() @InputBoolean() coRequired: boolean = false;
-  @Input() @InputBoolean() coNoColon: boolean = false;
-  @Input() coFor: string;
-  @Input() coLabel: TemplateRef<void> | string | null = null;
-
-  get customLabel(): boolean {
-    return this.coLabel !== null && typeof this.coLabel !== 'string';
-  }
 
   constructor(public elementRef: ElementRef, private renderer: Renderer2) {
     super();

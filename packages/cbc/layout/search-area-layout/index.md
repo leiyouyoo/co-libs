@@ -27,8 +27,4 @@ module: import { SearchAreaLayoutModule } from '@co/cbc/search-area-layout';
 |----|----|----|-----|------|
 | `[coWidth]` | 单独指定宽度 | `number` | - |
 | `[coMarginRight]` | 单独指定间距 | `number` | - |
-| `[coLabel]` | 为输入控件增加label标示 | `string | TemplateRef<void> | null` | - |
-| `[coFor]` | label 标签的 for 属性，`coLabel`为`TemplateRef`时无效 | `string` | - |
-| `[coNoColon]` | 是否不显示 label 后面的冒号，`coLabel`为`TemplateRef`时无效 | `boolean` | `false` |
-| `[coRequired]` | 是否显示 label 的星号，`coLabel`为`TemplateRef`时无效 | `boolean` | `false` |
 

@@ -8,7 +8,9 @@ import { InputBoolean } from 'ng-zorro-antd';
   selector: 'co-toolbar',
   template: `
     <ng-content></ng-content> `,
-  host: { '[class.co-toolbar]': 'true' },
+  host: {
+    '[class.co-toolbar]': 'true'
+  },
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
