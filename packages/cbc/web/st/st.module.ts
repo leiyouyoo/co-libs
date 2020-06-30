@@ -7,7 +7,7 @@ import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
-import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzIconModule, NzIconService } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
@@ -24,7 +24,7 @@ import { SettingOutline, DeleteOutline, EllipsisOutline } from '@ant-design/icon
 
 const COMPONENTS = [STComponent];
 const DIRECTIVES = [STRowDirective, STWidgetHostDirective];
-// const icons = [SettingOutline, DeleteOutline, EllipsisOutline];
+const icons = [SettingOutline, DeleteOutline, EllipsisOutline];
 
 @NgModule({
   imports: [
@@ -46,10 +46,15 @@ const DIRECTIVES = [STRowDirective, STWidgetHostDirective];
     NzSelectModule,
     NzAutocompleteModule,
     TranslateModule,
-    // NzIconModule.forChild(icons),
+    NzIconModule,
     NzDatePickerModule,
   ],
   declarations: [...COMPONENTS, ...DIRECTIVES],
   exports: [...COMPONENTS, ...DIRECTIVES],
 })
-export class STModule { }
+export class STModule {
+  constructor(private nzIconService: NzIconService,
+              ) {
+    this.nzIconService.addIcon(...icons);
+  }
+}
