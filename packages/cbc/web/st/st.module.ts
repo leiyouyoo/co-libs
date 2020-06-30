@@ -24,7 +24,7 @@ import { SettingOutline, DeleteOutline, EllipsisOutline } from '@ant-design/icon
 
 const COMPONENTS = [STComponent];
 const DIRECTIVES = [STRowDirective, STWidgetHostDirective];
-const icons = [ SettingOutline, DeleteOutline, EllipsisOutline ];
+// const icons = [SettingOutline, DeleteOutline, EllipsisOutline];
 
 @NgModule({
   imports: [
@@ -46,10 +46,10 @@ const icons = [ SettingOutline, DeleteOutline, EllipsisOutline ];
     NzSelectModule,
     NzAutocompleteModule,
     TranslateModule,
-    NzIconModule.forChild(icons),
+    // NzIconModule.forChild(icons),
     NzDatePickerModule,
   ],
   declarations: [...COMPONENTS, ...DIRECTIVES],
   exports: [...COMPONENTS, ...DIRECTIVES],
 })
-export class STModule {}
+export class STModule { }

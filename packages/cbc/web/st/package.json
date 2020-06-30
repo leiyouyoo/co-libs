@@ -1,7 +1,7 @@
 {
   "ngPackage": {
     "lib": {
-      "flatModuleFile": "table",
+      "flatModuleFile": "coST",
       "entryFile": "public_api.ts",
       "umdModuleIds": {
         "ng-zorro-antd/badge": "ng-zorro-antd/badge",
@@ -16,10 +16,10 @@
         "ng-zorro-antd/tag": "ng-zorro-antd/tag",
         "ng-zorro-antd/input": "ng-zorro-antd/input",
         "ng-zorro-antd/tooltip": "ng-zorro-antd/tooltip",
-        "@delon/abc/xlsx": "delon.abc.xlsx",
-        "@co/common": "delon.theme",
-        "@delon/acl": "delon.acl",
-        "@co/core": "delon.util"
+        "@delon/cbc/basic/xlsx": "co.cbc.basic.xlsx",
+        "@co/common": "co.common",
+        "@co/acl": "co.acl",
+        "@co/core": "co.core"
       }
     }
   }

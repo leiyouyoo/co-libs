@@ -10,6 +10,7 @@
   "files": ["public_api.ts", "typings.d.ts"],
   "exclude": ["*.spec.ts"],
   "angularCompilerOptions": {
+    "enableIvy": false,
     "annotateForClosureCompiler": true,
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
