@@ -10,8 +10,9 @@ import { PageLayoutModule } from '@co/cbc/layout/page-layout';
 
 const MODULES = [SidebarNavModule, ReuseTabModule, PageHeaderModule, FullContentModule, PageLayoutModule, SearchAreaLayoutModule, ToolbarModule];
 
+
 /**
- * 基础组件模块
+ * 业务组件模块
  */
 @NgModule({ exports: MODULES })
 export class CoLayoutComponentsModule {

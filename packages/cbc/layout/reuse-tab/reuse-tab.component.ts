@@ -89,7 +89,7 @@ export class ReuseTabComponent implements OnInit, OnChanges, OnDestroy {
     private route: ActivatedRoute,
     @Optional() @Inject(CO_I18N_TOKEN) private i18nSrv: CoI18NService,
     @Inject(DOCUMENT) private doc: any,
-  ) {}
+  ) { }
 
   private genTit(title: ReuseTitle): string {
     return title.i18n && this.i18nSrv ? this.i18nSrv.fanyi(title.i18n) : title.text!;
@@ -108,6 +108,7 @@ export class ReuseTabComponent implements OnInit, OnChanges, OnDestroy {
       closable: this.allowClose && this.srv.count > 0 && this.srv.getClosable(url, snapshotTrue),
       active: false,
       last: false,
+      icon: '',
       index: 0,
     };
   }
