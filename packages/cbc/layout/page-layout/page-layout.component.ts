@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, ContentChild, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { ToolbarComponent } from '@co/cbc/layout/toolbar/toolbar.component';
-import { SearchAreaLayoutComponent } from '@co/cbc/layout/search-area-layout/search-area-layout.component';
-import { PageSideComponent } from '@co/cbc/layout/page-layout/page-side.component';
 import { CoSizeType } from '@co/cbc/core';
+import { PageSideComponent } from './page-side.component';
+import { SearchAreaLayoutComponent } from '@co/cbc/layout/search-area-layout';
+import { ToolbarComponent } from '@co/cbc/layout/toolbar';
 
 @Component({
   selector: 'co-page-layout',
