@@ -1,7 +1,7 @@
 {
   "ngPackage": {
     "lib": {
-      "flatModuleFile": "pageLayout",
+      "flatModuleFile": "coPageLayout",
       "entryFile": "public_api.ts",
       "umdModuleIds": {
         "@co/core": "co.core"

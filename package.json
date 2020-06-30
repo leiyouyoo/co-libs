@@ -1,6 +1,6 @@
 {
   "name": "co-libs",
-  "version": "0.0.4",
+  "version": "0.0.14",
   "description": "co-libs 是一组用于前端开发的公共模块集合",
   "keywords": [
     "co-libs",
@@ -34,7 +34,7 @@
     "test": "ng test --no-progress --browsers=ChromeHeadlessCI --code-coverage --no-watch",
     "test:cli": "bash scripts/ci/build-schematics.sh -t -clone",
     "test:integration": "bash scripts/ci/build-schematics.sh -b -t -clone -integration",
-    "publish:npm": "bash scripts/publish/publish.sh",
+    "publish:npm": "bash scripts/ci/build-libs.sh && bash scripts/publish/publish.sh",
     "publish:schematics": "bash scripts/publish/publish.sh  -schematics",
     "publish:prev": "node scripts/publish/publish.js && node scripts/publish/publish-scaffold.js && bash ../ng-alain/scripts/_ci/fix-mock.sh",
     "publish:next": "bash scripts/publish/publish.sh -next",

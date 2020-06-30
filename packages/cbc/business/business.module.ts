@@ -8,6 +8,7 @@ import { ShipnamePickerModule } from './shipname-picker';
 import { ContainerPickerModule } from '@co/cbc/business/container-picker';
 import { DataDictionaryPickerModule } from '@co/cbc/business/data-dictionary-picker';
 import { YoyagePickerModule } from './voyage-picker';
+import { ProductPickerModule } from './product-picker';
 
 const EXPORT_MODULES: any[] = [
   CustomerPickerModule,
@@ -16,9 +17,9 @@ const EXPORT_MODULES: any[] = [
   ChargingCodePickerModule,
   CountyPickerModule,
   CurrencyPickerModule,
-  CustomerPickerModule,
   ShipnamePickerModule,
   YoyagePickerModule,
+  ProductPickerModule
 ];
 const IMPORT_MODULES: any[] = [CdsModule];
 
@@ -26,4 +27,4 @@ const IMPORT_MODULES: any[] = [CdsModule];
  * 业务组件模块
  */
 @NgModule({ imports: IMPORT_MODULES, exports: EXPORT_MODULES })
-export class CoBusinessComponentsModule {}
+export class CoBusinessComponentsModule { }

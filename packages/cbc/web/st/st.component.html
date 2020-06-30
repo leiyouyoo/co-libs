@@ -87,11 +87,33 @@
 >
   <thead class="st__head">
     <tr *ngFor="let row of _headers; let rowFirst = first">
-      <th *ngIf="rowFirst && expand" nzWidth="50px" [attr.rowspan]="_headers.length"></th>
+      <th *ngIf="rowFirst && expand" nzWidth="50px" [attr.rowspan]="_headers.length + (showFilters ? 1 : 0)"></th>
+      <th *ngIf="rowFirst && showCheckbox" nzWidth="50px" [attr.rowspan]="_headers.length + (showFilters ? 1 : 0)">
+        <ng-container *ngIf="checkboxSelections.length === 0">
+          <ng-template [ngTemplateOutlet]="chkAllTpl" [ngTemplateOutletContext]="{ $implicit: false }"> </ng-template>
+        </ng-container>
+        <div *ngIf="checkboxSelections.length > 0" class="ant-table-selection">
+          <ng-template [ngTemplateOutlet]="chkAllTpl" [ngTemplateOutletContext]="{ $implicit: true }"> </ng-template>
+          <div
+            *ngIf="checkboxSelections.length"
+            nz-dropdown
+            nzPlacement="bottomLeft"
+            [nzDropdownMenu]="selectionMenu"
+            class="ant-table-selection-down st__checkall-selection"
+          >
+            <i nz-icon nzType="down"></i>
+          </div>
+          <nz-dropdown-menu #selectionMenu="nzDropdownMenu">
+            <ul nz-menu class="ant-table-selection-menu">
+              <li nz-menu-item *ngFor="let rw of checkboxSelections" (click)="_rowSelection(rw)" [innerHTML]="rw.text"></li>
+            </ul>
+          </nz-dropdown-menu>
+        </div>
+      </th>
       <th
         *ngFor="let h of row; let index = index"
         [attr.colspan]="h.colSpan"
-        [attr.rowspan]="h.rowSpan"
+        [attr.rowspan]="h.column.type === 'action' ? (_headers.length + (showFilters ? 1 : 0)) : h.rowSpan"
         [nzWidth]="h.column.width"
         [nzLeft]="!!h.column._left"
         [nzRight]="!!h.column._right"
@@ -105,26 +127,12 @@
         <ng-template #renderTitle [ngTemplateOutlet]="h.column.__renderTitle" [ngTemplateOutletContext]="{ $implicit: h.column, index: index }"></ng-template>
         <ng-container *ngIf="!h.column.__renderTitle; else renderTitle">
           <ng-container [ngSwitch]="h.column.type">
-            <ng-container *ngSwitchCase="'checkbox'">
-              <ng-container *ngIf="h.column.selections.length === 0">
-                <ng-template [ngTemplateOutlet]="chkAllTpl" [ngTemplateOutletContext]="{ $implicit: false }"> </ng-template>
-              </ng-container>
-              <div *ngIf="h.column.selections.length > 0" class="ant-table-selection">
-                <ng-template [ngTemplateOutlet]="chkAllTpl" [ngTemplateOutletContext]="{ $implicit: true }"> </ng-template>
-                <div
-                  *ngIf="h.column.selections.length"
-                  nz-dropdown
-                  nzPlacement="bottomLeft"
-                  [nzDropdownMenu]="selectionMenu"
-                  class="ant-table-selection-down st__checkall-selection"
-                >
-                  <i nz-icon nzType="down"></i>
+            <ng-container *ngSwitchCase="'action'">
+              <div class="d-flex justify-content-between">
+                <span>{{ 'Action' | translate }}</span>
+                <div>
+                  <i nz-icon nzType="setting" nzTheme="outline"></i>
                 </div>
-                <nz-dropdown-menu #selectionMenu="nzDropdownMenu">
-                  <ul nz-menu class="ant-table-selection-menu">
-                    <li nz-menu-item *ngFor="let rw of h.column.selections" (click)="_rowSelection(rw)" [innerHTML]="rw.text"></li>
-                  </ul>
-                </nz-dropdown-menu>
               </div>
             </ng-container>
             <ng-container *ngSwitchDefault>
@@ -183,6 +191,36 @@
         </div>
       </th>
     </tr>
+    <tr *ngIf="showFilters && _filterRow?.length">
+      <th *ngFor="let i of _filterRow; index as index">
+        <ng-container [ngSwitch]="i.column.filterType">
+          <ng-container *ngSwitchCase="i.column.filterType === null ? null : 'nevermatch'"></ng-container>
+          <ng-container *ngSwitchCase="'select'">
+            <nz-select></nz-select>
+          </ng-container>
+          <ng-container *ngSwitchCase="'autocomplete'">
+            <input type="text"
+                   [nzAutocomplete]="auto"
+                   #autocompleteInput
+                   [(ngModel)]="i.column.filter?.menus[0].value"
+                   (ngModelChange)="_filterConfirm(i.column)"
+                   nz-input>
+            <nz-autocomplete [nzDataSource]="getFilterOptions(i.column, index, autocompleteInput.value)" nzBackfill #auto></nz-autocomplete>
+          </ng-container>
+          <ng-container *ngSwitchCase="'date'">
+            <nz-date-picker class="width-100" [(ngModel)]="i.column.filter?.menus[0].value" (ngModelChange)="_filterConfirm(i.column)"></nz-date-picker>
+          </ng-container>
+          <ng-container *ngSwitchDefault>
+            <nz-select class="width-100"
+                       [(ngModel)]="i.column.filter?.menus[0].value"
+                       (ngModelChange)="_filterConfirm(i.column)"
+                       nzShowSearch
+                       [nzOptions]="getFilterOptions(i.column, index)"
+                       nzAllowClear></nz-select>
+          </ng-container>
+        </ng-container>
+      </th>
+    </tr>
   </thead>
   <tbody class="st__body">
     <ng-container *ngIf="!_loading">
@@ -197,6 +235,15 @@
           (nzExpandChange)="_expandChange(i, $event)"
           nzWidth="50px"
         ></td>
+        <td>
+          <label
+            *ngIf="showCheckbox"
+            nz-checkbox
+            [nzDisabled]="i.disabled"
+            [ngModel]="i.checked"
+            (ngModelChange)="_checkSelection(i, $event)"
+          ></label>
+        </td>
         <td *ngFor="let c of _columns; let cIdx = index" [nzLeft]="!!c._left" [nzRight]="!!c._right" [ngClass]="columnClass(c)" [attr.colspan]="c.colSpan">
           <span *ngIf="responsive" class="ant-table-rep__title">
             <ng-template [ngTemplateOutlet]="titleTpl" [ngTemplateOutletContext]="{ $implicit: c.title }"></ng-template>
@@ -205,13 +252,6 @@
             <ng-template #render [ngTemplateOutlet]="c.__render" [ngTemplateOutletContext]="{ $implicit: i, index: index, column: c }"></ng-template>
             <ng-container *ngIf="!c.__render; else render">
               <ng-container [ngSwitch]="c.type">
-                <label
-                  *ngSwitchCase="'checkbox'"
-                  nz-checkbox
-                  [nzDisabled]="i.disabled"
-                  [ngModel]="i.checked"
-                  (ngModelChange)="_checkSelection(i, $event)"
-                ></label>
                 <label *ngSwitchCase="'radio'" nz-radio [nzDisabled]="i.disabled" [ngModel]="i.checked" (ngModelChange)="_refRadio($event, i)"></label>
                 <a *ngSwitchCase="'link'" (click)="_click($event, i, c)" [innerHTML]="i._values[cIdx]._text"></a>
                 <ng-container *ngIf="i._values[cIdx].text">
@@ -225,8 +265,13 @@
               </ng-container>
               <ng-container *ngFor="let btn of _validBtns(c.buttons, i, c); let last = last">
                 <a *ngIf="btn.children.length > 0" nz-dropdown [nzDropdownMenu]="btnMenu" nzOverlayClassName="st__btn-sub">
-                  <span [innerHTML]="_btnText(i, btn)"></span>
-                  <i nz-icon nzType="down"></i>
+                  <ng-container *ngIf="_btnText(i, btn); else ellipsisIcon">
+                    <span [innerHTML]="_btnText(i, btn)"></span>
+                    <i nz-icon nzType="down"></i>
+                  </ng-container>
+                  <ng-template #ellipsisIcon>
+                    <i nz-icon nzType="ellipsis"></i>
+                  </ng-template>
                 </a>
                 <nz-dropdown-menu #btnMenu="nzDropdownMenu">
                   <ul nz-menu>

@@ -355,4 +355,9 @@ export interface CoSTConfig {
    * Conditional expression rendering behavior, can be set to `hide` (default) or `disabled`, Default: `hide`
    */
   iifBehavior?: 'hide' | 'disabled';
+
+  /**
+   * If show filters
+   */
+  showFilters?: boolean;
 }

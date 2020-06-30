@@ -67,6 +67,7 @@ export interface ReuseTabNotify {
 export interface ReuseItem {
   url: string;
   title: string;
+  icon: string;
   closable: boolean;
   index: number;
   active: boolean;

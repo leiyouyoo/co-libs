@@ -6,11 +6,19 @@ import { CoSTConfig, deepCopy, warn } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { STRowSource } from './st-row.directive';
 import { STWidgetRegistry } from './st-widget';
-import { STColumn, STColumnButton, STColumnButtonPop, STColumnFilter, STColumnGroupType, STIcon, STSortMap } from './st.interfaces';
+import {
+  STColumn,
+  STColumnButton,
+  STColumnButtonPop,
+  STColumnFilter, STColumnFilterMenu,
+  STColumnGroupType, STData,
+  STIcon,
+  STSortMap,
+} from './st.interfaces';
 
 @Injectable()
 export class STColumnSource {
-  private cog: CoSTConfig;
+  cog: CoSTConfig;
 
   constructor(
     private dom: DomSanitizer,
@@ -163,9 +171,27 @@ export class STColumnSource {
   }
 
   private filterCoerce(item: STColumn): STColumnFilter | null {
-    if (item.filter == null) {
+    if (item.filter === null || item.type === 'action' || (item.filter === void 0 && !item.index)) {
       return null;
     }
+    if (item.filter === void 0) {
+      item.filter = {
+        menus: [{  value: '', originColumn: { ...item } }],
+        type: 'codefault',
+        fn: (filter: STColumnFilterMenu, record: STData) => {
+          if (!filter.value && filter.value !== 0) return  true;
+          const value = (filter.originColumn !.index as string[]) !.reduce((acc, cur) => {
+            return acc[cur]
+          }, record)
+          switch (filter.originItem) {
+
+          }
+          const v = (value + '').includes(filter.value);
+          return v;
+        },
+      }
+    }
+    item.filter?.menus?.forEach(o => o.originColumn = { ...item, filter: void 0, });
 
     let res: STColumnFilter | null = item.filter;
     res.type = res.type || 'default';
@@ -286,6 +312,20 @@ export class STColumnSource {
     return rows;
   }
 
+  private genHeaderFilterRow(headerRows: STColumn[][]): STColumn[] {
+    const lastHeaderRow: STColumn[] = [];
+    headerRows.forEach((row, rowIndex) => {
+      row
+        .filter(r => r.column.type !== 'action')
+        .forEach((column, colIndex) => {
+        if (column.rowSpan + rowIndex === headerRows.length) {
+          lastHeaderRow.push(column);
+        }
+      });
+    })
+    return lastHeaderRow;
+  }
+
   private cleanCond(list: STColumn[]): STColumn[] {
     const res: STColumn[] = [];
     const copyList = deepCopy(list);
@@ -301,7 +341,7 @@ export class STColumnSource {
     return res;
   }
 
-  process(list: STColumn[]): { columns: STColumn[]; headers: STColumn[][] } {
+  process(list: STColumn[]): { columns: STColumn[]; headers: STColumn[][], filterRow: STColumn[] } {
     if (!list || list.length === 0) throw new Error(`[st]: the columns property muse be define!`);
 
     const { noIndex } = this.cog;
@@ -418,8 +458,9 @@ export class STColumnSource {
     }
 
     this.fixedCoerce(columns);
+    const headers = this.genHeaders(copyList);
 
-    return { columns: columns.filter(w => !Array.isArray(w.children)), headers: this.genHeaders(copyList) };
+    return { columns: columns.filter(w => !Array.isArray(w.children)), headers, filterRow: this.genHeaderFilterRow(headers), };
   }
 
   restoreAllRender(columns: STColumn[]) {
