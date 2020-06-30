@@ -1,6 +1,6 @@
 ---
 type: Business
-title: post-picker
+title: port-picker
 order: 8
 subtitle: 港口选择器
 cols: 2
@@ -11,7 +11,7 @@ module: import { PortPickerModule } from '@co/cbc';
 
 ## API
 
-### post-picker 
+### port-picker 
 
 | 成员 | 说明 | 类型 | 默认值 |
 |----|----|----|-----|
@@ -38,16 +38,16 @@ module: import { PortPickerModule } from '@co/cbc';
 
 ## 传入数据入参
 
-### post-picker
+### port-picker
 
 | 名称 | 说明 | 默认值 |
 | --- | --- |  --- |
-| `[postReq]` | 传入数据入参json | {areaIds:[] ,ecursive : true,} |
+| `[portReq]` | 传入数据入参json | { isOcean: boolean,  regionIds :[], isPaged:  boolean , maxResultCount: number , } |
 
 
 ## 方法
 
-### post-picker
+### port-picker
 
 | 名称 | 说明 |
 | --- | --- |
@@ -58,7 +58,7 @@ module: import { PortPickerModule } from '@co/cbc';
 
 ## 事件
 
-### post-picker
+### port-picker
 
 | 名称 | 说明 |
 | --- | --- |
