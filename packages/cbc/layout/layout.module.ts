@@ -4,9 +4,9 @@ import { FullContentModule } from '@co/cbc/layout/full-content';
 import { PageHeaderModule } from '@co/cbc/layout/page-header';
 import { SidebarNavModule } from '@co/cbc/layout/sidebar-nav';
 import { ReuseTabModule } from '@co/cbc/layout/reuse-tab';
-import { SearchAreaLayoutModule } from '@co/cbc/layout/search-area-layout/search-area-layout.module';
-import { PageLayoutModule } from '@co/cbc/layout/page-layout/page-layout.module';
+import { SearchAreaLayoutModule } from '@co/cbc/layout/search-area-layout';
 import { ToolbarModule } from '@co/cbc/layout/toolbar';
+import { PageLayoutModule } from '@co/cbc/layout/page-layout';
 
 const MODULES = [SidebarNavModule, ReuseTabModule, PageHeaderModule, FullContentModule, PageLayoutModule, SearchAreaLayoutModule, ToolbarModule];
 

@@ -11,10 +11,10 @@ import * as MOCKDATA from '../../_mock';
 
 const coConfig: CoConfig = {
   st: { ps: 3 },
-  lodop: {
-    license: `A59B099A586B3851E0F0D7FDBF37B603`,
-    licenseA: `C94CEE276DB2187AE6B65D56B3FC2848`,
-  },
+  // lodop: {
+  //   license: `A59B099A586B3851E0F0D7FDBF37B603`,
+  //   licenseA: `C94CEE276DB2187AE6B65D56B3FC2848`,
+  // },
   mock: { data: MOCKDATA },
 };
 
