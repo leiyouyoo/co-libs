@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 // #region all modules
-import { FullContentModule } from '@co/cbc/layout/full-content';
-import { PageHeaderModule } from '@co/cbc/layout/page-header';
-import { SidebarNavModule } from '@co/cbc/layout/sidebar-nav';
-import { ReuseTabModule } from '@co/cbc/layout/reuse-tab';
-import { SearchAreaLayoutModule } from '@co/cbc/layout/search-area-layout';
-import { ToolbarModule } from '@co/cbc/layout/toolbar';
-import { PageLayoutModule } from '@co/cbc/layout/page-layout';
+import { FullContentModule } from './full-content';
+import { PageHeaderModule } from './page-header';
+import { SidebarNavModule } from './sidebar-nav';
+import { ReuseTabModule } from './reuse-tab';
+import { SearchAreaLayoutModule } from './search-area-layout';
+import { ToolbarModule } from './toolbar';
+import { PageLayoutModule } from './page-layout';
 
 const MODULES = [SidebarNavModule, ReuseTabModule, PageHeaderModule, FullContentModule, PageLayoutModule, SearchAreaLayoutModule, ToolbarModule];
 
