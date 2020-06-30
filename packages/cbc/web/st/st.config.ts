@@ -62,4 +62,5 @@ export const ST_DEFULAT_CONFIG: CoSTConfig = {
   virtualMaxBufferPx: 200,
   virtualMinBufferPx: 100,
   iifBehavior: 'hide',
+  showFilters: true,
 };
