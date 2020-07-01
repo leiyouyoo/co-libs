@@ -15,6 +15,7 @@ import {
   STIcon,
   STSortMap,
 } from './st.interfaces';
+import isSameDay from 'date-fns/isSameDay'
 
 @Injectable()
 export class STColumnSource {
@@ -183,11 +184,16 @@ export class STColumnSource {
           const value = (filter.originColumn !.index as string[]) !.reduce((acc, cur) => {
             return acc[cur]
           }, record)
-          switch (filter.originItem) {
 
+          let isFiltered: boolean;
+          switch (filter.originColumn !.filterType || filter.originColumn !.type) {
+            case 'date':
+              isFiltered = isSameDay(filter.value, value as any);
+              break;
+            default:
+              isFiltered = (value + '').includes(filter.value);
           }
-          const v = (value + '').includes(filter.value);
-          return v;
+          return isFiltered;
         },
       }
     }
