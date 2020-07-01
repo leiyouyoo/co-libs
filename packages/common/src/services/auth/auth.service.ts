@@ -93,7 +93,7 @@ export class AuthService {
   }
 
   startRefreshTokenTimer() {
-    const expiredTime = localStorage.getItem(this.expiredStorageKey);
+    const expiredTime = +localStorage.getItem(this.expiredStorageKey)!;
     if (!expiredTime) {
       return;
     }
