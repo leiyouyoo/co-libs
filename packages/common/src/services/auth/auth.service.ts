@@ -45,7 +45,12 @@ export class AuthService {
         ...options,
       };
 
-      this._httpClient.post(url, obj, null, { headers: { 'Do-not-show-error': 'true' } }).subscribe(
+      const formData = new FormData();
+      Object.keys(obj).forEach(key => {
+        formData.append(key, obj[key]);
+      });
+
+      this._httpClient.post(url, formData, null, { headers: { 'Do-not-show-error': 'true' } }).subscribe(
         (res: any) => {
           // 存储token
           this.saveToken(res);
