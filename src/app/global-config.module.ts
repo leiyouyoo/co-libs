@@ -18,7 +18,7 @@ const coConfig: CoConfig = {
   mock: { data: MOCKDATA },
 };
 
-const coModules = [CoCommonModule.forRoot(), CoACLModule.forRoot(), CoMockModule.forRoot()];
+const coModules = [CoCommonModule.forRoot({ environment: { SERVER_URL: '' } }), CoACLModule.forRoot(), CoMockModule.forRoot()];
 const coProvides = [{ provide: CO_CONFIG, useValue: coConfig }];
 
 /**
