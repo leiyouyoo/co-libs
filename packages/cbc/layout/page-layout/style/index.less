@@ -2,27 +2,62 @@
 
 @page-layout-prefix: ~'.co-page-layout';
 @page-layout-padding: 24px;
-@page-layout-content-min-height: 500px;
+
+@page-main-prefix: ~'.co-page-main';
+@page-main-width: 80%;
+
+@page-side-prefix: ~'.co-page-side';
+@page-side-width: 20%;
 
 @{page-layout-prefix} {
   display: flex;
   flex: auto;
   flex-direction: column;
-  min-height: 0;
   width: 100%;
+  min-height: 0;
   background-color: #ffffff;
   padding: @page-layout-padding @page-layout-padding 0;
 
   &__toolbar, &__searchArea {
-    flex: auto;
+    flex: none;
     width: 100%;
-    min-height: 0;
     margin-bottom: 24px;
   }
+
   &__content {
     display: flex;
     flex: auto;
+    flex-direction: row;
     width: 100%;
-    //min-height: @page-layout-content-min-height;
+    min-height: 0;
+    justify-content: space-between;
+
+    &__main, &__side {
+      display: flex;
+      width: auto;
+    }
+
+    &__main {
+      flex: auto;
+    }
+
+    &__side {
+      flex: 0 0 auto;
+    }
   }
+
+}
+
+@{page-main-prefix} {
+  flex: auto;
+  width: @page-main-width;
+  min-height: 0;
+
+}
+
+@{page-side-prefix} {
+  flex: none;
+  width: @page-side-width;
+  min-height: 0;
+
 }

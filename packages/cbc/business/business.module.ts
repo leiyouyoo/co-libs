@@ -20,7 +20,6 @@ const EXPORT_MODULES: any[] = [
   ChargingCodePickerModule,
   CountyPickerModule,
   CurrencyPickerModule,
-  CustomerPickerModule,
   ShipnamePickerModule,
   YoyagePickerModule,
   ProductPickerModule,

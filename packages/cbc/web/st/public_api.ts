@@ -5,5 +5,6 @@ export * from './st-export';
 export * from './st-widget';
 export { STComponent } from './st.component';
 export { STRowDirective } from './st-row.directive';
+export { STWidgetHostDirective } from './st-widget-host.directive';
 export * from './st.config';
 export { STModule } from './st.module';

@@ -2,6 +2,7 @@
 
 @toolbar-prefix: ~'.co-toolbar';
 @toolbar-item-margin-right: 12px;
+@toolbar-row-margin: 10px;
 
 @{toolbar-prefix} {
   & {
@@ -13,6 +14,9 @@
 
     &&__alignRight {
       justify-content: flex-end;
+    }
+    & + & {
+      margin-top: @toolbar-row-margin;
     }
   }
 

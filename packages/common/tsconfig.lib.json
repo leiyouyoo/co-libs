@@ -4,6 +4,7 @@
     "baseUrl": ".",
     "rootDir": ".",
     "paths": {
+      "@co/auth": ["../../dist/@co/auth"],
       "@co/acl": ["../../dist/@co/acl"],
       "@co/core": ["../../dist/@co/core"]
     }

@@ -5,6 +5,7 @@
       <div [reuse-tab-context-menu]="i" [customContextMenu]="customContextMenu" class="reuse-tab__name"
         [attr.title]="i.title">
         <span [class.reuse-tab__name-width]="tabMaxWidth" [style.max-width.px]="tabMaxWidth">
+          <i nz-icon [nzIconfont]="i.icon || 'iconsetting'"></i>
           {{ i.title }}
         </span>
       </div>
