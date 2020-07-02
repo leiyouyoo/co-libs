@@ -1,21 +1,19 @@
 import { InjectionToken } from '@angular/core';
 import {
   CoDateRangePickerConfig,
-  CoErrorCollectConfig,
   CoImageConfig,
   CoLoadingConfig,
-  CoLodopConfig,
-  CoMediaConfig,
   CoPageHeaderConfig,
-  CoQRConfig,
   CoSEConfig,
   CoSGConfig,
+  CoXlsxConfig,
   CoSTConfig,
   CoSVConfig,
-  CoXlsxConfig,
-  CoZipConfig,
 } from './cbc/index';
 import { CoACLConfig } from './acl/acl.type';
+import { CoIMConfig } from './im/im.type';
+import { CoMapConfig } from './map/map.type';
+import { CoCdsConfig } from './cds/cds.type';
 import { CoAuthConfig } from './auth/auth.type';
 import { CoCacheConfig } from './cache/cache.type';
 import { CoChartConfig } from './chart/chart.type';
@@ -26,21 +24,19 @@ import { CoUtilArrayConfig } from './util/array.type';
 
 export interface CoConfig {
   dataRange?: CoDateRangePickerConfig;
-  errorCollect?: CoErrorCollectConfig;
   image?: CoImageConfig;
+  xlsx?: CoXlsxConfig;
   loading?: CoLoadingConfig;
-  lodop?: CoLodopConfig;
   pageHeader?: CoPageHeaderConfig;
-  qr?: CoQRConfig;
   se?: CoSEConfig;
   sg?: CoSGConfig;
   sv?: CoSVConfig;
   st?: CoSTConfig;
   sf?: CoSFConfig;
-  xlsx?: CoXlsxConfig;
-  zip?: CoZipConfig;
-  media?: CoMediaConfig;
   acl?: CoACLConfig;
+  cds?: CoCdsConfig;
+  im?: CoIMConfig;
+  map?: CoMapConfig;
   auth?: CoAuthConfig;
   cache?: CoCacheConfig;
   chart?: CoChartConfig;
@@ -52,4 +48,4 @@ export interface CoConfig {
 
 export type CoConfigKey = keyof CoConfig;
 
-export const CO_CONFIG = new InjectionToken<CoConfig>('alain-config');
+export const CO_CONFIG = new InjectionToken<CoConfig>('co-config');

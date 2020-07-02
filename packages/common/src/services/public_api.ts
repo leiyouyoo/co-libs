@@ -11,3 +11,4 @@ export * from './drawer/drawer.helper';
 export { _HttpClient } from './http/http.client';
 export * from './http/http.decorator';
 export * from './i18n/i18n';
+export * from './auth/auth.service';

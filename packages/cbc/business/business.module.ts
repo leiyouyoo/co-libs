@@ -9,6 +9,7 @@ import { ContainerPickerModule } from '@co/cbc/business/container-picker';
 import { DataDictionaryPickerModule } from '@co/cbc/business/data-dictionary-picker';
 import { YoyagePickerModule } from './voyage-picker';
 import { FlightPickerModule } from './flight-picker';
+import { ProductPickerModule } from './product-picker';
 
 const EXPORT_MODULES: any[] = [
   CustomerPickerModule,
@@ -17,10 +18,10 @@ const EXPORT_MODULES: any[] = [
   ChargingCodePickerModule,
   CountyPickerModule,
   CurrencyPickerModule,
-  CustomerPickerModule,
   ShipnamePickerModule,
   YoyagePickerModule,
   FlightPickerModule,
+  ProductPickerModule,
 ];
 const IMPORT_MODULES: any[] = [CdsModule];
 

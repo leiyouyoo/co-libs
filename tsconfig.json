@@ -27,7 +27,7 @@
         "./src/app/core/*"
       ]
     },
-    "noUnusedParameters": true,
+    "noUnusedParameters": false,
     "noUnusedLocals": false,
     "strictFunctionTypes": true,
     "strictNullChecks": true,

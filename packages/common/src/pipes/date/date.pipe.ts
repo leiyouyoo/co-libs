@@ -7,7 +7,7 @@ import { NzI18nService } from 'ng-zorro-antd/i18n';
 
 @Pipe({ name: '_date' })
 export class DatePipe implements PipeTransform {
-  constructor(private nzI18n: NzI18nService) {}
+  constructor(private nzI18n: NzI18nService) { }
 
   transform(value: Date | string | number, formatString = 'yyyy-MM-dd HH:mm'): string {
     value = toDate(value);

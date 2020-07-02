@@ -9,11 +9,11 @@ DEBUG=false
 PACKAGES=(core
   testing
   acl
+  auth
   common
   cds
   theme
   cbc
-  auth
   cache
   chart
   mock

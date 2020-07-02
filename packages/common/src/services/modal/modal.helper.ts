@@ -19,7 +19,7 @@ export interface ModalHelperOptions {
  */
 @Injectable({ providedIn: 'root' })
 export class ModalHelper {
-  constructor(private srv: NzModalService) {}
+  constructor(private srv: NzModalService) { }
 
   /**
    * 构建一个对话框

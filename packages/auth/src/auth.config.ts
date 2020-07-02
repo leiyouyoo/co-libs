@@ -9,7 +9,7 @@ export const AUTH_DEFAULT_CONFIG: CoAuthConfig = {
   token_send_template: '${token}',
   token_send_place: 'header',
   login_url: '/login',
-  ignores: [/\/login/, /assets\//, /passport\//],
+  ignores: [/sso\/connect\/token/, /assets\//, /passport\//, /login\//],
   allow_anonymous_key: `_allow_anonymous`,
   executeOtherInterceptors: true,
 };

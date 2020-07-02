@@ -1,0 +1,49 @@
+@import '../../../../theme/theme-default.less';
+
+@toolbar-prefix: ~'.co-toolbar';
+@toolbar-item-margin-right: 12px;
+@toolbar-row-margin: 10px;
+
+@{toolbar-prefix} {
+  & {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    &&__alignRight {
+      justify-content: flex-end;
+    }
+    & + & {
+      margin-top: @toolbar-row-margin;
+    }
+  }
+
+  &-item {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    flex: 0 0 auto;
+    width: auto;
+    height: auto;
+    max-width: none;
+    min-height: 0;
+    overflow: hidden;
+    margin-right: @toolbar-item-margin-right;
+
+    &&__alignRight {
+      order: 99999;
+      flex: 1 1 99999px;
+      justify-content: flex-end;
+    }
+
+    .ant-form-item {
+      margin-bottom: 0;
+    }
+  }
+}

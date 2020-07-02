@@ -215,8 +215,9 @@ export interface STColumn {
    * - `date` 日期格式且居中(若 `className` 存在则优先)，使用 `dateFormat` 自定义格式
    * - `yn` 将`boolean`类型徽章化 [document](https://ng-alain.com/docs/data-render#yn)
    * - `widget` 使用自定义小部件动态创建
+   * - `action` 操作区
    */
-  type?: 'checkbox' | 'link' | 'badge' | 'tag' | 'enum' | 'radio' | 'img' | 'currency' | 'number' | 'date' | 'yn' | 'no' | 'widget';
+  type?: 'checkbox' | 'link' | 'badge' | 'tag' | 'enum' | 'radio' | 'img' | 'currency' | 'number' | 'date' | 'yn' | 'no' | 'widget' | 'action';
   /**
    * 链接回调，若返回一个字符串表示导航URL会自动触发 `router.navigateByUrl`
    */
@@ -257,6 +258,10 @@ export interface STColumn {
    * 过滤配置项
    */
   filter?: STColumnFilter;
+  /**
+   * filter type
+   */
+  filterType?: 'select' | 'autocomplete' | 'date';
   /**
    * 格式化列值
    */
@@ -445,7 +450,7 @@ export interface STColumnFilter {
    * - `defualt` 默认形式
    * - `keyword` 文本框形式
    */
-  type?: 'default' | 'keyword';
+  type?: 'default' | 'keyword' | 'codefault';
   /**
    * 表头的筛选菜单项，至少一项才会生效
    * - 当 `type='keyword'` 时可为空
@@ -508,6 +513,10 @@ export interface STColumnFilterMenu {
    * 权限，等同 [ACLCanType](https://ng-alain.com/acl/getting-started/#ACLCanType) 参数值
    */
   acl?: any;
+  /**
+   * 原始列数据
+   */
+  originColumn?: STColumn;
 
   [key: string]: any;
 }
@@ -975,4 +984,9 @@ export interface STColumnGroupType {
   colSpan?: number;
   rowSpan?: number;
   hasSubColumns?: boolean;
+}
+
+export interface STRowOptions {
+  showFilter: boolean;
+
 }
