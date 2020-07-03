@@ -8,4 +8,5 @@ export * from './product-picker';
 export * from './shipname-picker';
 export * from './voyage-picker';
 export * from './flight-picker';
+export * from './place-picker';
 export * from './business.module';

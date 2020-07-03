@@ -23,7 +23,7 @@ import { Component } from '@angular/core';
   `
 })
 export class PlacePickerBasicComponent {
-  selectedValue: string = '2dcfe90e-c3d0-49f7-a1bb-ffea868beb19';
+  selectedValue: number = 2;
 }
 
 ```

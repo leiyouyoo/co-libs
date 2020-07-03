@@ -29,26 +29,26 @@ const PLACE_DATA = setupData(100);
 export const PLACE = {
   // 支持值为 Object 和 Array
   'GET /PUB/Place/GetByRegionIds': (req: MockRequest) => {
-    const data = [
-      {
-        code: 'ARPCO',
-        creationTime: '2007-10-27T23:19:20.9033333Z',
-        creatorUserName: 'quincy',
-        id: '2dcfe90e-c3d0-49f7-a1bb-ffea868beb19',
-        isAir: false,
-        isOcean: true,
-        isOther: false,
-        isValid: true,
-        name: 'PUNTA COLORADA',
-        nameLocalization: 'PUNTA COLORADA',
-        regionId: '1c3b42f5-aae2-4c80-832d-4346a722a72d',
-        regionName: 'Rio Negro',
-      },
-    ];
     const res: any = {
-      items: data,
-      total: data.length,
+      items: [],
+      total: 0,
     };
+
+    const items: any[] = PLACE_DATA;
+    if (req.queryString.ids) {
+      res.items = items.filter(item => {
+        return req.queryString.ids.includes(item.id);
+      });
+    } else {
+      res.items = items
+        .filter(item => {
+          return !req.queryString.searchText || item.name.includes(req.queryString.searchText);
+        })
+        .slice(req.queryString.skipCount, req.queryString.skipCount + req.queryString.maxResultCount);
+    }
+
+    res.total = res.items.length;
+
     return res;
   },
 };

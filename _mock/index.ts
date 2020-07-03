@@ -8,3 +8,4 @@ export * from './cbc/data-dictionary';
 export * from './cbc/voyage';
 export * from './cbc/flight';
 export * from './cbc/product';
+export * from './cbc/place';

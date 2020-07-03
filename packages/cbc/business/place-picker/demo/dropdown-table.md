@@ -17,8 +17,8 @@ import { Component } from '@angular/core';
   selector: 'app-demo',
   template: `
   <div>
-    <co-palce-picker coDropdownMode="table" [coDropdownStyle]="{width:'400px'}" [coDropdownColumns]="dropdownColumns"  [coMode]="mode" [coMaxMultipleCount]="maxMultipleCount"  [(ngModel)]="selectedValue" style="width:300px">
-    </co-palce-picker>
+    <co-place-picker coDropdownMode="table" [coDropdownStyle]="{width:'400px'}" [coDropdownColumns]="dropdownColumns"  [coMode]="mode" [coMaxMultipleCount]="maxMultipleCount"  [(ngModel)]="selectedValue" style="width:300px">
+    </co-place-picker>
     <p>{{selectedValue}}</p>
   </div>
   `,
@@ -26,7 +26,7 @@ import { Component } from '@angular/core';
 export class PlacePickerDropdownTableComponent {
   mode = 'multiple';
   maxMultipleCount = 2;
-  selectedValue: string[] = ['2dcfe90e-c3d0-49f7-a1bb-ffea868beb19'];
+  selectedValue: number[] = [2, 10, 23, 78, 90, 100];;
   dropdownColumns: any[] = [{
     name: 'name',
     label: '名称',

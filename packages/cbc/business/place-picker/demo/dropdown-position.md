@@ -27,7 +27,7 @@ import { Component } from '@angular/core';
 export class PlacePickerDropdownPositionComponent {
   mode = 'multiple';
   maxMultipleCount = 2;
-  selectedValue: string[] = ['2dcfe90e-c3d0-49f7-a1bb-ffea868beb19'];
+  selectedValue: number[] = [2, 10, 23, 78, 90, 100];;
   dropdownColumns: any[] = [{
     name: 'name',
     label: '名称',

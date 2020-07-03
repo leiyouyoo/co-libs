@@ -36,6 +36,6 @@ export class PlacePickerComponent extends PickerComponentBase {
 
   //#endregion
   fetchRemoteData(_condition: any): Observable<any> {
-    return this.placeService.GetByRegionIds(_condition);
+    return this.placeService.getByRegionIds(_condition);
   }
 }
