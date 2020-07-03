@@ -1,6 +1,6 @@
 export * from './src/crm';
-export * from './src/shipname';
 export * from './src/cds.module';
-export * from './src/voyage';
-export * from './src/flight';
+
 export * from './src/product';
+export * from './src/platform';
+export * from './src/pub';
