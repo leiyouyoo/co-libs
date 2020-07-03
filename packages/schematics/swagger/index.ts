@@ -106,15 +106,16 @@ function getSwaggerData(options): () => Promise<any[]> {
       group[na] = {};
       group[na].arr = groupArr;
       serviceList.push(`${na}`);
+
       const newServeSelectedEntityList: any = [];
       groupArr.forEach(e => {
-        if (serveSelectedEntityList.includes(e.reqEntity) && !newServeSelectedEntityList.includes(e.reqEntity)) {
-          newServeSelectedEntityList.push(e.reqEntity);
-        }
-
-        if (serveSelectedEntityList.includes(e.resEntity) && !newServeSelectedEntityList.includes(e.resEntity)) {
-          newServeSelectedEntityList.push(e.resEntity);
-        }
+        serveSelectedEntityList.forEach(z => {
+          if (e.reqEntity?.includes(z) || e.resEntity?.includes(z)) {
+            if (!newServeSelectedEntityList.includes(z)) {
+              newServeSelectedEntityList.push(z);
+            }
+          }
+        });
       });
 
       chainArr.push(

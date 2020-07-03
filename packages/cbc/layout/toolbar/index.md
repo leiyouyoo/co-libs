@@ -4,7 +4,7 @@ title: toolbar
 order: 7
 subtitle: 工具栏
 cols: 1
-module: import { ToolbarModule } from '@co/cbc/toolbar';
+module: import { ToolbarModule } from '@co/cbc/layout';
 ---
 
 工具栏组件

@@ -4,14 +4,14 @@ title: page-layout
 order: 5
 subtitle: 页面布局
 cols: 1
-module: import { PageLayoutModule } from '@co/cbc/page-layout';
+module: import { PageLayoutModule } from '@co/cbc/layout';
 ---
 
 页面布局组件
 
 ## 如何使用
 
-将组件投影到组件内部特定的布局位置：
+下列组件作为`<co-page-layout>`直接子组件时，会被投影到特定的布局位置：
 
 - `<co-toolbar>` 工具栏区
 - `<co-search-area-layout>` 搜索栏区

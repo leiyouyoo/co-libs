@@ -1,9 +1,10 @@
 import { HttpClient, HttpEvent, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, Optional } from '@angular/core';
 import { CoConfigService, CoThemeHttpClientConfig } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, switchMap, tap } from 'rxjs/operators';
+import { ENVIRONMENT, Environment } from './environment';
 
 export type _HttpHeaders = HttpHeaders | { [header: string]: string | string[] };
 export type HttpObserve = 'body' | 'events' | 'response';
@@ -18,7 +19,7 @@ export type HttpObserve = 'body' | 'events' | 'response';
 // tslint:disable-next-line:class-name
 export class _HttpClient {
   private cog: CoThemeHttpClientConfig;
-  constructor(private http: HttpClient, cogSrv: CoConfigService) {
+  constructor(private http: HttpClient, cogSrv: CoConfigService, @Optional() @Inject(ENVIRONMENT) public environment: Environment) {
     this.cog = cogSrv.merge<CoThemeHttpClientConfig, 'themeHttp'>('themeHttp', {
       nullValueHandling: 'include',
       dateValueHandling: 'timestamp',
@@ -924,10 +925,10 @@ export class _HttpClient {
     } = {},
   ): Observable<any> {
     this.begin();
-    if (options.params) options.params = this.parseParams(options.params);
+    if (options.params) options.params = this.buildHttpParams(options.params);
     return of(null).pipe(
       tap(() => this.begin()),
-      switchMap(() => this.http.request(method, url, options)),
+      switchMap(() => this.http.request(method, this.processUrl(url), options)),
       tap(() => this.end()),
       catchError(res => {
         this.end();
@@ -937,4 +938,35 @@ export class _HttpClient {
   }
 
   // #endregion
+
+  private buildHttpParams(_params: any): any {
+    let params = { ..._params };
+    params = params ? params : {};
+    const timestamp = Date.parse(new Date().toString());
+    params.timestamp = timestamp.toString();
+
+    for (const key of Object.keys(params)) {
+      if (params[key] instanceof Date) {
+        params[key] = (params[key] as Date).toISOString();
+      }
+      if (params[key] === null) {
+        delete params[key];
+      }
+      if (params[key] === undefined) {
+        delete params[key];
+      }
+    }
+    return this.parseParams(params);
+  }
+
+  private processUrl(url: string) {
+    if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('//')) {
+      return url;
+    } else {
+      if (!url.startsWith('/')) {
+        url = '/' + url;
+      }
+      return this.environment.SERVER_URL + url;
+    }
+  }
 }

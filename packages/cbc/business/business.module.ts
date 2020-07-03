@@ -10,6 +10,8 @@ import { PlacePickerModule } from './place-picker';
 import { ProductPickerModule } from './product-picker';
 import { ShipnamePickerModule } from './shipname-picker';
 import { YoyagePickerModule } from './voyage-picker';
+import { FlightPickerModule } from './flight-picker';
+import { ProductPickerModule } from './product-picker';
 
 const EXPORT_MODULES: any[] = [
   CustomerPickerModule,
@@ -20,8 +22,8 @@ const EXPORT_MODULES: any[] = [
   CurrencyPickerModule,
   ShipnamePickerModule,
   YoyagePickerModule,
+  FlightPickerModule,
   ProductPickerModule,
-  PlacePickerModule,
 ];
 const IMPORT_MODULES: any[] = [CdsModule];
 

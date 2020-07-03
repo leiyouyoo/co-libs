@@ -17,7 +17,7 @@ import { Component } from '@angular/core';
   selector: 'app-demo',
   template: `
   <div>
-    <co-data-dictionary-picker  [(ngModel)]="selectedValue" (coFocus)="onFocus($event)" (coBlur)="onBlur($event)"  (coOpenChange)="onOpenChange($event)">
+    <co-data-dictionary-picker  [(ngModel)]="selectedValue" (coFocus)="onFocus()" (coBlur)="onBlur()"  (coOpenChange)="onOpenChange()">
     </co-data-dictionary-picker>
     <p>{{msg}}</p>
   </div>

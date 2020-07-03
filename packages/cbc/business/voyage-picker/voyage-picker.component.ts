@@ -1,8 +1,8 @@
-import { Component, forwardRef, ChangeDetectionStrategy, ViewEncapsulation, ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, ViewEncapsulation } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { PickerComponentBase } from '@co/cbc/core';
-import { Observable } from 'rxjs';
 import { VoyageService } from '@co/cds';
+import { Observable } from 'rxjs';
 
 /**
  * 航次选择器控件
@@ -28,6 +28,6 @@ export class VoyagePickerComponent extends PickerComponentBase {
     super(cdr);
   }
   fetchRemoteData(_condition: any): Observable<any> {
-    return this.voyageService.GetAll(_condition);
+    return this.voyageService.getAll(_condition);
   }
 }

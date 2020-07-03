@@ -3,6 +3,7 @@ import { DrawerHelperOptions, ModalHelperOptions, YNMode } from '@co/common';
 import { NzDrawerOptions } from 'ng-zorro-antd/drawer';
 import { ModalOptions } from 'ng-zorro-antd/modal';
 import { STComponent } from './st.component';
+import { SafeHtml } from '@angular/platform-browser';
 
 export interface STWidthMode {
   /**
@@ -177,6 +178,18 @@ export interface STData {
    * 是否显示展开按钮
    */
   showExpand?: boolean;
+  /**
+   * 是否编辑状态
+   */
+  _editing?: boolean;
+  /**
+   * 新数据
+   */
+  _new?: boolean;
+  /**
+   * delon 用于模板显示，co 用于构造行内编辑
+   */
+  _values: STColumnViewValue[];
 
   [key: string]: any;
 }
@@ -351,6 +364,11 @@ export interface STColumn {
 
   /** @ignore internal property */
   _sort?: STSortMap;
+
+  /**
+   * 是否可编辑
+   */
+  uneditable?: boolean;
 
   [key: string]: any;
 }
@@ -595,8 +613,11 @@ export interface STColumnButton {
    * - `drawer` 抽屉，需要指定 `component` 才会生效
    * - `link` 链接，当 `click` 返回字符串时自动调用 `navigateByUrl` 导航
    * - `divider` 分割线
+   * - `edit` 编辑
+   * - `save` 保存
+   * - `cancel` 取消编辑
    */
-  type?: 'none' | 'del' | 'modal' | 'static' | 'drawer' | 'link' | 'divider';
+  type?: 'none' | 'del' | 'modal' | 'static' | 'drawer' | 'link' | 'divider' | 'edit' | 'save' | 'cancel';
   /**
    * 点击回调
    * - Function
@@ -954,6 +975,9 @@ export interface STChange {
    * `expand` 参数
    */
   expand?: STData;
+  /**
+   *
+   */
 }
 
 /** 行单击参数 */
@@ -989,4 +1013,14 @@ export interface STColumnGroupType {
 export interface STRowOptions {
   showFilter: boolean;
 
+}
+
+export interface STColumnViewValue {
+  text?: any;
+  _text?: SafeHtml;
+  org?: any;
+  value?: any;
+  color?: string;
+  index?: string[];
+  type?: string;
 }
