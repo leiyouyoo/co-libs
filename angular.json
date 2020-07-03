@@ -40,6 +40,7 @@
               "extractCss": true,
               "namedChunks": false,
               "aot": true,
+              "deployUrl": "//doc.cityocean.com:8010/frontend/",
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,

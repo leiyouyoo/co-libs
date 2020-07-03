@@ -17,7 +17,7 @@ import { Component } from '@angular/core';
   selector: 'app-demo',
   template: `
   <div>
-    <co-product-picker  [(ngModel)]="selectedValue" (coFocus)="onFocus($event)" (coBlur)="onBlur($event)"  (coOpenChange)="onOpenChange($event)">
+    <co-product-picker  [(ngModel)]="selectedValue" (coFocus)="onFocus()" (coBlur)="onBlur()"  (coOpenChange)="onOpenChange()">
     </co-product-picker>
     <p>{{msg}}</p>
   </div>

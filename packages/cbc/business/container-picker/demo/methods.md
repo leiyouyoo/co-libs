@@ -19,9 +19,9 @@ import { ContainerPickerComponent } from '@co/cbc';
   template: `
   <div>
     <div>
-      <button nz-button nzType="default" (click)='onFocus($event)'>设置焦点</button>
-      <button nz-button nzType="default" (click)='onBlur($event)'>失去焦点</button>
-      <button nz-button nzType="default" (click)='onClear($event)'>清除所有值</button>
+      <button nz-button nzType="default" (click)='onFocus()'>设置焦点</button>
+      <button nz-button nzType="default" (click)='onBlur()'>失去焦点</button>
+      <button nz-button nzType="default" (click)='onClear()'>清除所有值</button>
     </div>
     <co-container-picker  [(ngModel)]="selectedValue">
     </co-container-picker>

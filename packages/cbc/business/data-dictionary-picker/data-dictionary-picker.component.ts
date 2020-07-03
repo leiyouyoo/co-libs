@@ -97,7 +97,7 @@ export class DataDictionaryPickerComponent extends PickerComponentBase {
     this.coOpenChange && this.coOpenChange.emit(e);
   }
 
-  onSearch(): void {
+  onSearch(value: string): void {
   }
 
   //#endregion
