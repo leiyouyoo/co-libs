@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, GET, Payload, POST, PUT } from '@co/common';
-import { EntityDto, ListResultDto, NameValueDto, PagedResultDto } from '@co/core';
+import { ListResultDto, PagedResultDto } from '@co/core';
 
 import { <% for (var entityName of serveSelectedEntityList) {%><%= entityName %>,<% } %> } from './<%= pageName %>.types';
 

@@ -1,0 +1,45 @@
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { BaseApi, BaseUrl, DELETE, GET, Payload, POST, PUT } from '@co/common';
+import { ListResultDto, PagedResultDto } from '@co/core';
+
+import {  } from './storage.types';
+
+@BaseUrl('/storage/ExcelTemplate')
+@Injectable({ providedIn: 'root' })
+export class ExcelTemplateService extends BaseApi {
+
+   
+    /**
+     * @param url /Storage/ExcelTemplate/Get
+     * 根据模板名称获取excel模板
+     */
+
+    @GET('get')
+    get(
+        @Payload
+        _req: {name?:string} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+ 
+    /**
+     * @param url /Storage/ExcelTemplate/GetTemplate
+     * 
+     */
+
+    @GET('getTemplate')
+    getTemplate(
+        @Payload
+        _req: {name?:string} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+
+  }
