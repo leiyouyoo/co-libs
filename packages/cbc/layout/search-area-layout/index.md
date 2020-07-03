@@ -4,7 +4,7 @@ title: search-area-layout
 order: 6
 subtitle: 搜索栏布局
 cols: 1
-module: import { SearchAreaLayoutModule } from '@co/cbc/search-area-layout';
+module: import { SearchAreaLayoutModule } from '@co/cbc/layout';
 ---
 
 页面中搜索栏布局组件
