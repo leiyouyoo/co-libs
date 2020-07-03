@@ -6,8 +6,8 @@ import * as _ from 'lodash';
 import { Observable, Subject } from 'rxjs';
 // import { MODAL_SERVICE, ModalService } from '../ModalService.injector';
 
-import { AuthService } from '@co/common';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { AuthService } from '../auth/auth.service';
 import { ENVIRONMENT } from './environment';
 
 export interface IValidationErrorInfo {
