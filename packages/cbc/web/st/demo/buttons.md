@@ -28,7 +28,8 @@ import { DemoModalComponent, DemoDrawerComponent } from '@shared';
 @Component({
   selector: 'app-demo',
   template: `
-    <st [data]="users" [columns]="columns"></st>
+    <button nz-button (click)="stComponent.addNewRow()">Add</button>
+    <st #stComponent [data]="users" [columns]="columns"></st>
   `,
 })
 export class DemoComponent {
@@ -64,6 +65,17 @@ export class DemoComponent {
             component: DemoModalComponent,
           },
           click: (_record, modal) => this.message.success(`重新加载页面，回传值：${JSON.stringify(modal)}`),
+        },
+        {
+          text: 'Save',
+          type: 'save',
+          click: (_record, modal, s) => {
+            _record._editing = false;
+          },
+        },
+        {
+          text: 'Cancel',
+          type: 'cancel',
         },
         {
           text: 'Drawer',
