@@ -36,7 +36,7 @@ export class AreaPickerComponent extends PickerComponentBase {
   //#endregion
 
   fetchRemoteData(_condition: any): Observable<any> {
-    return this.areaService.getAllBySearch(_condition);
+    return this.areaService.getAllForUiPicker(_condition);
   }
 
 }

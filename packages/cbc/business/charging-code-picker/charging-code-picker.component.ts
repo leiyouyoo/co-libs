@@ -1,8 +1,6 @@
 import { ChangeDetectorRef, ChangeDetectionStrategy, Component, forwardRef, ViewEncapsulation } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import * as _ from 'lodash';
-
 import { Observable } from 'rxjs';
 
 import { ChargingCodeService } from '@co/cds';
@@ -41,6 +39,6 @@ export class ChargingCodePickerComponent extends PickerComponentBase {
 
   fetchRemoteData(_condition: any): Observable<any> {
     console.log(_condition);
-    return this.chargingCodeService.getAllBySearch(_condition);
+    return this.chargingCodeService.getAllForUiPicker(_condition);
   }
 }

@@ -11,7 +11,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 
-import { PortService } from '@co/cds';
+import { PlaceService } from '@co/cds';
 import { PickerComponentBase } from '@co/cbc/core';
 import * as _ from 'lodash';
 
@@ -39,7 +39,7 @@ export class PortPickerComponent extends PickerComponentBase {
   @Input() portReq:any;
   //#region  构造函数
 
-  constructor( cdr: ChangeDetectorRef, private portService: PortService) {
+  constructor( cdr: ChangeDetectorRef, private portService: PlaceService) {
     super(cdr);
 
     this.coLabelMember = 'name';
@@ -50,7 +50,7 @@ export class PortPickerComponent extends PickerComponentBase {
 
   fetchRemoteData(_condition: any): Observable<any> {
     if( this.portReq && this.portReq.regionIds.length >0 ){
-      return this.portService.getAllBySearch(_condition);
+      return this.portService.getAllForUiPacker(_condition);
     }else {
       return [] as any;
     }

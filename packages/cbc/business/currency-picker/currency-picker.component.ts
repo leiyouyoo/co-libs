@@ -1,8 +1,6 @@
 import { ChangeDetectorRef, ChangeDetectionStrategy, Component, forwardRef, ViewEncapsulation } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import * as _ from 'lodash';
-
 import { Observable } from 'rxjs';
 
 import { CurrencyService } from '@co/cds';
@@ -41,6 +39,6 @@ export class CurrencyPickerComponent extends PickerComponentBase {
 
   fetchRemoteData(_condition: any): Observable<any> {
     console.log(_condition)
-    return this.currencyService.getAllBySearch(_condition);
+    return this.currencyService.getAllForUiPicker(_condition);
   }
 }
