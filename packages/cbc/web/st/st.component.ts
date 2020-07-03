@@ -862,7 +862,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   addNewRow() {
-    this._data.unshift({ _editing: true, _new: true, })
+    this._data.unshift({ _editing: true, _new: true, _values: [] })
     this.optimizeData()
     this.cdr.markForCheck();
   }

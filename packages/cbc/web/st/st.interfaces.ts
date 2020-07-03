@@ -189,7 +189,7 @@ export interface STData {
   /**
    * delon 用于模板显示，co 用于构造行内编辑
    */
-  _values?: STColumnViewValue[];
+  _values: STColumnViewValue[];
 
   [key: string]: any;
 }
@@ -1016,8 +1016,8 @@ export interface STRowOptions {
 }
 
 export interface STColumnViewValue {
-  text: any;
-  _text: SafeHtml;
+  text?: any;
+  _text?: SafeHtml;
   org?: any;
   value?: any;
   color?: string;
