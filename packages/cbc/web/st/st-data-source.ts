@@ -8,7 +8,7 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import {
   STColumn,
-  STColumnFilter,
+  STColumnFilter, STColumnViewValue,
   STData,
   STMultiSort,
   STPage,
@@ -179,7 +179,7 @@ export class STDataSource {
     );
   }
 
-  private get(item: STData, col: STColumn, idx: number): { text: any; _text: SafeHtml; org?: any; color?: string } {
+  private get(item: STData, col: STColumn, idx: number): STColumnViewValue {
     if (col.format) {
       const formatRes = col.format(item, col, idx) || '';
       if (formatRes && ~formatRes.indexOf('</')) {
@@ -227,7 +227,15 @@ export class STDataSource {
         break;
     }
     if (text == null) text = '';
-    return { text, _text: this.dom.bypassSecurityTrustHtml(text), org: value, color };
+    return {
+      text,
+      _text: this.dom.bypassSecurityTrustHtml(text),
+      org: value,
+      value: deepCopy(value),
+      color,
+      index: col.index as string[],
+      type: col.type,
+    };
   }
 
   private getByHttp(url: string, options: STDataSourceOptions): Observable<{}> {

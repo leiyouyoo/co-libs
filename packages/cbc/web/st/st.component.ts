@@ -31,7 +31,7 @@ import {
   ModalHelper,
   YNPipe,
 } from '@co/common';
-import { CoConfigService, CoSTConfig, deepMergeKey, InputBoolean, InputNumber, toBoolean } from '@co/core';
+import { CoConfigService, CoSTConfig, deepCopy, deepMergeKey, InputBoolean, InputNumber, toBoolean } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzTableComponent, NzTableData } from 'ng-zorro-antd/table';
 import { from, Observable, of, Subject, Subscription } from 'rxjs';
@@ -62,6 +62,8 @@ import {
   STStatisticalResults,
   STWidthMode,
 } from './st.interfaces';
+import remove  from 'lodash/remove';
+import { generateModel } from './utils';
 
 @Component({
   selector: 'st',
@@ -715,6 +717,30 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
         this.router.navigateByUrl(clickRes, { state: this.routerState });
       }
       return;
+    } else if (btn.type === 'edit') {
+
+    } else if (btn.type === 'save') {
+      const model = generateModel(record);
+      if (record._new) {
+        /* new one */
+
+      } else {
+        /* edit exist */
+
+      }
+    } else if (btn.type === 'cancel') {
+      if (record._new) {
+        /* new one */
+        const _index = this._data.findIndex(o => o === record)
+        this._data.splice(_index, 1);
+        this.optimizeData();
+      } else {
+        /* edit exist */
+        record._editing = false;
+        record?._values?.forEach(o => {
+          o.value = deepCopy(o.org);
+        })
+      }
     }
     this.btnCallback(record, btn);
   }
@@ -745,7 +771,14 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
       const isRenderDisabled = btn.iifBehavior === 'disabled';
       btn._result = result;
       btn._disabled = !result && isRenderDisabled;
-      return result || isRenderDisabled;
+      /* 根据编辑状态显示按钮 */
+      let showByEdit: boolean;
+      if (item._editing) {
+        showByEdit = btn.type !== 'edit';
+      } else {
+        showByEdit = !['save', 'cancel'].includes(btn.type as string);
+      }
+      return (result || isRenderDisabled) && showByEdit;
     });
   }
 
@@ -826,6 +859,12 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
 
   private optimizeData(): void {
     this._data = this.dataSource.optimizeData({ columns: this._columns, result: this._data, rowClassName: this.rowClassName });
+  }
+
+  addNewRow() {
+    this._data.unshift({ _editing: true, _new: true, })
+    this.optimizeData()
+    this.cdr.markForCheck();
   }
 
   ngAfterViewInit() {
