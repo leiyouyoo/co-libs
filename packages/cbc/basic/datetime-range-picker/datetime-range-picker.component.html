@@ -34,7 +34,7 @@
   <ng-template #contentTemplate>
     <div class="time-BG">
       <div class="date-picker">
-        <span class="iconfont icon-left" (click)="lessTime($event)"></span>
+        <i nz-icon nzType="left" nzTheme="outline" style="padding-top: 5px;font-size: 22px;" (click)="lessTime($event)"></i>
         <div
           class="date-picker-date"
           (click)="selDate(item)"
@@ -44,7 +44,7 @@
           <p>{{ item.remark }}</p>
           <p>{{ item.date | date: 'yyyy-MM-dd' }}</p>
         </div>
-        <span class="iconfont icon-right" (click)="addTime($event)"></span>
+        <i nz-icon nzType="right" nzTheme="outline" style="padding-top: 5px;font-size: 22px;" (click)="addTime($event)"></i>
       </div>
       <div class="time-picker">
         <div *ngFor="let item of timeList">
