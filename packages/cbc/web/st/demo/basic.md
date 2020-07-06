@@ -21,7 +21,7 @@ import { STColumn, STComponent } from '@co/cbc/web/st';
   selector: 'app-demo',
   template: `
     <button nz-button nzType="primary" (click)="setRow()">setRow Method</button>
-    <st #st [widthMode]="{ type: 'strict' }" [data]="url" [req]="{ params: params }" [columns]="columns"></st>
+    <co-st #st [widthMode]="{ type: 'strict' }" [data]="url" [req]="{ params: params }" [columns]="columns"></co-st>
   `,
 })
 export class DemoComponent {

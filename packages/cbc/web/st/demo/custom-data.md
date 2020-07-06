@@ -27,7 +27,7 @@ import { delay } from 'rxjs/operators';
       <button (click)="st.reload()" nz-button>Reload Data</button>
       <button (click)="st.clearStatus(); st.reload()" nz-button>Clear Status</button>
     </div>
-    <st #st [data]="users" [columns]="columns" (change)="change($event)"></st>
+    <co-st #st [data]="users" [columns]="columns" (change)="change($event)"></co-st>
   `,
 })
 export class DemoComponent implements OnInit {

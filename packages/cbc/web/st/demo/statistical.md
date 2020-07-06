@@ -21,7 +21,7 @@ import { STColumn } from '@co/cbc/web/st';
   selector: 'app-demo',
   template: `
     <button nz-button (click)="data = []">Clean Data</button>
-    <st #st [data]="data" [columns]="columns" [body]="bodyTpl">
+    <co-st #st [data]="data" [columns]="columns" [body]="bodyTpl">
       <ng-template #bodyTpl let-s>
         <ng-container *ngIf="st.count > 0">
           <tr>
@@ -41,7 +41,7 @@ import { STColumn } from '@co/cbc/web/st';
           </tr>
         </ng-container>
       </ng-template>
-    </st>
+    </co-st>
   `,
 })
 export class DemoComponent {
