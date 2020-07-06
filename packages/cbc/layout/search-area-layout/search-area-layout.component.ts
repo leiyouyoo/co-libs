@@ -6,7 +6,8 @@ import { filter, startWith, takeUntil } from 'rxjs/operators';
 @Component({
   selector: 'co-search-area-layout',
   template: `
-    <ng-content select="co-search-area-item"></ng-content> `,
+    <ng-content select="co-search-area-item"></ng-content>
+  `,
   host: { '[class.co-search-area-layout]': 'true' },
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
