@@ -9,27 +9,37 @@ import {
   Output,
   EventEmitter,
   Inject,
-  LOCALE_ID,
+  LOCALE_ID, forwardRef, ChangeDetectorRef,
 } from '@angular/core';
 import { PositionStrategy, Overlay, ConnectionPositionPair, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { formatDate } from '@angular/common';
 import { isToday, differenceInCalendarDays } from 'date-fns';
 import { HourRangePipe } from '@co/common';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 @Component({
   selector: 'datetime-range-picker',
   templateUrl: './datetime-range-picker.component.html',
-  styleUrls: ['./datetime-range-picker.component.less']
+  styleUrls: ['./datetime-range-picker.component.less'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => DatetimeRangePickerComponent),
+      multi: true,
+    },
+  ],
 })
-export class DatetimeRangePickerComponent implements OnInit {
+export class DatetimeRangePickerComponent implements OnInit, ControlValueAccessor {
+
+  private onChange;
+  private onTouched;
 
   _outTimeStr: string;
-  @Input() set outTimeStr(val: string) {
+  set outTimeStr(val: string) {
     this._outTimeStr = val ? new HourRangePipe().transform(val) : val;
   }
   get outTimeStr(): string {
     return this._outTimeStr;
   }
-  @Output() outTimeStrChange = new EventEmitter();
   //是否显示日期控件
   isShowTime: boolean = false;
   //是否是当前日期
@@ -46,7 +56,10 @@ export class DatetimeRangePickerComponent implements OnInit {
   baseDay: number = 0;
   timeList: Array<any> = new Array<any>();
   // overlayRef: OverlayRef;
-  constructor(private overlay: Overlay, @Inject(LOCALE_ID) private locale: string) {}
+  constructor(private overlay: Overlay,
+              @Inject(LOCALE_ID) private locale: string,
+              public cdr: ChangeDetectorRef,
+              ) {}
 
   ngOnInit() {
     this.initDate(this.baseDay);
@@ -96,50 +109,6 @@ export class DatetimeRangePickerComponent implements OnInit {
     }
   }
 
-  // show() {
-  //   this.overlayRef = this.overlay.create(this.getOverlayConfig({ width: '300px', height: '400px', origin: this.origin }))
-  //   this.overlayRef.attach(new TemplatePortal(this.tempalteRef, this.container));
-  //   this.overlayRef.backdropClick().subscribe(c=>{
-  //     this.overlayRef.dispose();
-  //   })
-  // }
-
-  // private getOverlayConfig({ origin, width, height }): OverlayConfig {
-  //   return new OverlayConfig({
-  //     width,
-  //     // height,
-  //     hasBackdrop: true,
-  //     backdropClass: 'popover-backdrop',
-  //     positionStrategy: this.getOverlayPosition(origin),
-  //     scrollStrategy: this.overlay.scrollStrategies.reposition()
-  //   });
-  // }
-  // private getOverlayPosition(origin: HTMLElement): PositionStrategy {
-  //   const positionStrategy = this.overlay.position()
-  //     .flexibleConnectedTo(origin)
-  //     .withPositions(this.getPositions())
-  //     .withPush(false);
-
-  //   return positionStrategy;
-  // }
-  // private getPositions(): ConnectionPositionPair[] {
-  //   return [
-  //     {
-  //       originX: 'start',
-  //       originY: 'bottom',
-  //       overlayX: 'start',
-  //       overlayY: 'top',
-  //     },
-  //     {
-  //       originX: 'start',
-  //       originY: 'top',
-  //       overlayX: 'start',
-  //       overlayY: 'bottom'
-  //     }
-
-  //   ]
-  // }
-
   selTime(event: any) {
     let date;
     if (this.dateList.find((c) => c.select)) {
@@ -149,7 +118,8 @@ export class DatetimeRangePickerComponent implements OnInit {
     const outTimeStr = time + ' ' + event.time;
     const zeroZone = new HourRangePipe().transform(outTimeStr, true);
     this.outTimeStr = zeroZone;
-    this.outTimeStrChange.emit(zeroZone);
+    this.onChange(zeroZone);
+    this.onTouched();
     this.isShowTime = false;
   }
   ComparisonTime() {
@@ -159,5 +129,17 @@ export class DatetimeRangePickerComponent implements OnInit {
       let date = this.dateList.find((c) => c.select)!.date;
       this.isToday = isToday(date);
     }
+  }
+
+  writeValue(obj: string) {
+    this.outTimeStr = obj;
+    this.cdr.markForCheck();
+  }
+  registerOnChange(fn: any) {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
   }
 }

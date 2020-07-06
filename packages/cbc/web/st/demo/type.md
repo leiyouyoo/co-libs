@@ -37,7 +37,7 @@ const r = (min: number, max: number) => Math.floor(Math.random() * (max - min + 
   selector: 'app-demo',
   template: `
     <button nz-button (click)="reload()">Reload</button>
-    <st #st [data]="users" [columns]="columns" [page]="{ position: 'both' }"></st>
+    <co-st #st [data]="users" [columns]="columns" [page]="{ position: 'both' }"></co-st>
   `,
 })
 export class DemoComponent {

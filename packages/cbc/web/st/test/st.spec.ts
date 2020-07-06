@@ -34,7 +34,7 @@ import {
   STResReNameType,
   STWidthMode,
 } from '../st.interfaces';
-import { STModule } from '../st.module';
+import { CoSTModule } from '../co-s-t.module';
 import { STWidgetRegistry } from './../st-widget';
 
 const MOCKDATE = new Date();
@@ -107,7 +107,7 @@ describe('abc: table', () => {
       RouterTestingModule.withRoutes([]),
       NzModalModule,
       NzDrawerModule,
-      STModule,
+      CoSTModule,
       DelonLocaleModule,
     ];
     const providers = [

@@ -26,7 +26,7 @@ import { STColumn, STComponent } from '@co/cbc/web/st';
       <button (click)="st.clearStatus(); st.reload()" nz-button>Clear Status</button>
       <button (click)="changeImg()" nz-button>Change Img Data</button>
     </div>
-    <st #st [data]="url" [columns]="columns"></st>
+    <co-st #st [data]="url" [columns]="columns"></co-st>
   `,
 })
 export class DemoComponent {

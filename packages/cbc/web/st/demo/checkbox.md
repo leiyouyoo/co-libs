@@ -19,9 +19,9 @@ import { STColumn, STData, STChange } from '@co/cbc/web/st';
 
 @Component({
   selector: 'app-demo',
-  template: `<st [data]="url" [columns]="columns"
+  template: `<co-st [data]="url" [columns]="columns"
         [req]="{params: params}" [res]="{process: dataProcess}"
-        (change)="change($event)"></st>`,
+        (change)="change($event)"></co-st>`,
 })
 export class DemoComponent {
   url = `/users?total=100`;

@@ -21,7 +21,7 @@ import { STColumn } from '@co/cbc/web/st';
   selector: 'app-demo',
   template: `
     <button nz-button (click)="st.reset()">重置</button>
-    <st #st [data]="url" [req]="{ params: params }" [columns]="columns" multiSort></st>
+    <co-st #st [data]="url" [req]="{ params: params }" [columns]="columns" multiSort></co-st>
   `,
 })
 export class DemoComponent {

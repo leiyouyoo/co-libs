@@ -25,7 +25,7 @@ import { STColumn } from '@co/cbc/web/st';
     <button nz-button (click)="st.load(1)" [nzType]="'primary'">搜索</button>
     <button nz-button (click)="params = {}; st.reset()">重置</button>
   </div>
-  <st #st [data]="url" [req]="{params: params}" [columns]="columns"></st>
+  <co-st #st [data]="url" [req]="{params: params}" [columns]="columns"></co-st>
   `,
 })
 export class DemoComponent {

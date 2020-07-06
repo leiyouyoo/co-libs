@@ -66,8 +66,8 @@ import remove  from 'lodash/remove';
 import { generateModel } from './utils';
 
 @Component({
-  selector: 'st',
-  exportAs: 'st',
+  selector: 'co-st',
+  exportAs: 'coSt',
   templateUrl: './st.component.html',
   providers: [STDataSource, STRowSource, STColumnSource, STExport, CNCurrencyPipe, DatePipe, YNPipe, DecimalPipe],
   host: {
