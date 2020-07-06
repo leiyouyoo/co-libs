@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
@@ -9,7 +9,10 @@ import { <% for (var entityName of serveSelectedEntityList) {%><%= entityName %>
 @BaseUrl('/<%= pageName %>/<%= name %>')
 @Injectable({ providedIn: 'root' })
 export class <%= classify(name) %>Service extends BaseApi {
-
+  constructor(injector: Injector) {
+    super(injector);
+  }
+  
   <% for (var item of data) { %> 
     /**
      * @param url <%= item.url %>

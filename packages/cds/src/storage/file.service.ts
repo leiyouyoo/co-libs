@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
@@ -9,7 +9,10 @@ import { UploadResultDto,GetFileInfoDto,ChunkUploadResultDto, } from './storage.
 @BaseUrl('/storage/File')
 @Injectable({ providedIn: 'root' })
 export class FileService extends BaseApi {
-
+  constructor(injector: Injector) {
+    super(injector);
+  }
+  
    
     /**
      * @param url /Storage/File/Upload

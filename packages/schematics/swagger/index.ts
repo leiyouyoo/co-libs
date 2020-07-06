@@ -149,7 +149,7 @@ function setSwaggerRequest(reqList: any) {
     detail.newType = detail.type;
     const reqDetail = detail.api[detail.type];
     if (detail.type === 'post' && reqDetail.parameters) {
-      if (reqDetail.parameters[0].in && reqDetail.parameters[0].in === 'formData') {
+      if (reqDetail.parameters[0] && reqDetail.parameters[0].in && reqDetail.parameters[0].in === 'formData') {
         detail.newType = 'form';
       }
     }

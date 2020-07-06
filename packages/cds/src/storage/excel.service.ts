@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
@@ -9,7 +9,10 @@ import { FileDto, } from './storage.types';
 @BaseUrl('/storage/Excel')
 @Injectable({ providedIn: 'root' })
 export class ExcelService extends BaseApi {
-
+  constructor(injector: Injector) {
+    super(injector);
+  }
+  
    
     /**
      * @param url /Storage/Excel/ExportExcel
