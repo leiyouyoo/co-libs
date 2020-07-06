@@ -2,23 +2,23 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, GET, Payload } from '@co/common';
-import {  PagedResultDto } from '@co/core';
+import { PagedResultDto } from '@co/core';
 import { CustomerDto, CustomerType } from './public_api';
 
 /**
  * 客户服务
  */
-@BaseUrl('/crm/customer')
+@BaseUrl('/CRM/Customer')
 @Injectable({ providedIn: 'root' })
 export class CustomerService extends BaseApi {
-  @GET('GetAllBySearch')
+  @GET('GetAllForUiPicker')
   getAllBySearch(
     @Payload
     _req: {
       ids?: string[];
       searchText?: string;
-      isDeleted?: boolean;
-      type?: CustomerType;
+      includeDeleted?: boolean;
+      sorting?: string;
       maxResultCount?: number;
       skipCount?: number;
     },
