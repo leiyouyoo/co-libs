@@ -22,7 +22,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   @Input() coDropdownMode: DropdownMode = 'default';
   @Input() coDropdownStyle: { [key: string]: string } | null = null;
   @Input() coDropdownColumns: DropdownColumn[] | null = null;
-  @Input() coShowSearch:boolean = true;
+  @Input() coShowSearch: boolean = true;
 
   @Input() @InputBoolean() nzServerSearch = true;
   @Input() @InputBoolean() coAllowClear = true;
@@ -52,8 +52,8 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   dropdownStyle: { [key: string]: string } | null = null;
   value: NzSafeAny | NzSafeAny[];
   destroy$ = new Subject();
-  onChange: OnChangeType = () => {};
-  onTouched: OnTouchedType = () => {};
+  onChange: OnChangeType = () => { };
+  onTouched: OnTouchedType = () => { };
   coFilterOption = () => true;
   optionList: Array<{ value: string; text: string }> = [];
   searchChange$: any = new BehaviorSubject('');
@@ -67,13 +67,14 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
 
   //#region  构造函数
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef) { }
 
   //#endregion
 
   //#region 组件生命周期钩子
 
   ngOnInit() {
+    debugger
     const optionList$: Observable<string[]> = this.searchChange$.asObservable().pipe(
       filter(
         (condition: any) =>
@@ -93,6 +94,9 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
     );
 
     optionList$.subscribe((response: any) => {
+
+      response = response.result || response;
+
       let originalOptions: Array<{ value: string; text: string }> = [];
       if (this.loadingMode === 'more') {
         originalOptions = [...this.optionList];
@@ -134,7 +138,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
     return null as any;
   }
 
-  getCdrTo(){
+  getCdrTo() {
     this.cdr.detectChanges();
   }
 

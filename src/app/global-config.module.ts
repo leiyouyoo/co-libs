@@ -15,7 +15,7 @@ const coConfig: CoConfig = {
   //   license: `A59B099A586B3851E0F0D7FDBF37B603`,
   //   licenseA: `C94CEE276DB2187AE6B65D56B3FC2848`,
   // },
-  mock: { data: MOCKDATA },
+  // mock: { data: MOCKDATA },
 };
 
 const coModules = [CoCommonModule.forRoot({ environment: { SERVER_URL: '' } }), CoACLModule.forRoot(), CoMockModule.forRoot()];
