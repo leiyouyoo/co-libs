@@ -1,18 +1,18 @@
 ---
 title:
-  zh-CN: 客户选择器方法使用样例
+  zh-CN: 区县选择器方法使用样例
   en-US: Methods Usage
 order: 6
 ---
 
 ## zh-CN
 
-客户选择器方法(focus,blur,clear)使用样例.
+区县选择器方法(focus,blur,clear)使用样例.
 
 
 ```ts
 import { Component, ViewChild } from '@angular/core';
-import { CustomerPickerComponent } from '@co/cbc';
+import { CountyPickerComponent } from '@co/cbc';
 
 @Component({
   selector: 'app-demo',
@@ -28,21 +28,21 @@ import { CustomerPickerComponent } from '@co/cbc';
   </div>
   `,
 })
-export class CustomerPickerMethodsComponent {
-  @ViewChild(CustomerPickerComponent, { static: true }) coCustomerPickerComponent!: CustomerPickerComponent;
+export class CountyPickerMethodsComponent {
+  @ViewChild(CountyPickerComponent, { static: true }) coCountyPickerComponent!: CountyPickerComponent;
 
   selectedValue: number = 2;
 
   onFocus() {
-    this.coCustomerPickerComponent.focus();
+    this.coCountyPickerComponent.focus();
   }
 
   onBlur() {
-    this.coCustomerPickerComponent.blur();
+    this.coCountyPickerComponent.blur();
   }
 
   onClear() {
-    this.coCustomerPickerComponent.clear();
+    this.coCountyPickerComponent.clear();
   }
 }
 

@@ -23,7 +23,7 @@ import { Component } from '@angular/core';
   </div>
   `,
 })
-export class CustomerPickerDropdownTableComponent {
+export class CurrencyPickerDropdownTableComponent {
   mode = 'multiple';
   maxMultipleCount = 2;
   selectedValue: number[] = [2, 10, 23, 78, 90, 100];

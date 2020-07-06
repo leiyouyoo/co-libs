@@ -3,8 +3,8 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 
-import { CustomerService } from '@co/cds';
 import { PickerComponentBase } from '@co/cbc/core';
+import { CustomerService } from '@co/cds';
 
 /**
  * 客户选择器控件

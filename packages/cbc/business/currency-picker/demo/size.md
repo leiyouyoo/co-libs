@@ -31,7 +31,7 @@ import { Component } from '@angular/core';
   </div>
   `,
 })
-export class CustomerPickerSizeComponent {
+export class CurrencyPickerSizeComponent {
   size = 'default';
   selectedValue: number = 2;
 }

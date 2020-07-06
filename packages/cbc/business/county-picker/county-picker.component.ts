@@ -1,15 +1,13 @@
 import { ChangeDetectorRef, ChangeDetectionStrategy, Component, forwardRef, ViewEncapsulation } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import * as _ from 'lodash';
-
 import { Observable } from 'rxjs';
 
-import { CustomerService } from '@co/cds';
+import { RegionService } from '@co/cds';
 import { PickerComponentBase } from '@co/cbc/core';
 
 /**
- * 客户选择器控件
+ * 国家选择器控件
  */
 @Component({
   selector: 'co-county-picker',
@@ -30,7 +28,7 @@ import { PickerComponentBase } from '@co/cbc/core';
 export class CountyPickerComponent extends PickerComponentBase {
   //#region  构造函数
 
-  constructor(cdr: ChangeDetectorRef, private customerService: CustomerService) {
+  constructor(cdr: ChangeDetectorRef, private countyService: RegionService) {
     super(cdr);
 
     this.coLabelMember = 'fax';
@@ -39,6 +37,6 @@ export class CountyPickerComponent extends PickerComponentBase {
   //#endregion
 
   fetchRemoteData(_condition: any): Observable<any> {
-    return this.customerService.getAllBySearch(_condition);
+    return this.countyService.getAllCountryForUiPicker(_condition);
   }
 }

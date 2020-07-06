@@ -22,6 +22,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   @Input() coDropdownMode: DropdownMode = 'default';
   @Input() coDropdownStyle: { [key: string]: string } | null = null;
   @Input() coDropdownColumns: DropdownColumn[] | null = null;
+  @Input() coShowSearch:boolean = true;
 
   @Input() @InputBoolean() nzServerSearch = true;
   @Input() @InputBoolean() coAllowClear = true;
@@ -131,6 +132,10 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
 
   fetchRemoteData(_condition: any): Observable<any> {
     return null as any;
+  }
+
+  getCdrTo(){
+    this.cdr.detectChanges();
   }
 
   //#region ngModel实现

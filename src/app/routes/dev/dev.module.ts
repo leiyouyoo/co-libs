@@ -36,6 +36,10 @@ const routes: Routes = [
         path: 'customer-picker',
         loadChildren: () => import('./cbc/business/customer-picker/customer-picker.module').then(m => m.CustomerPickerDemoModule),
       },
+      {
+        path: 'place-picker',
+        loadChildren: () => import('./cbc/business/place-picker/place-picker.module').then(m => m.PlacePickerDemoModule),
+      },
     ],
   },
   {
