@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component, ElementRef, Host, OnInit, Optional,
 import { SEContainerComponent } from './se-container.component';
 
 @Component({
-  selector: 'se-title, [se-title]',
-  exportAs: 'seTitle',
+  selector: 'co-se-title, [co-se-title]',
+  exportAs: 'soSeTitle',
   template: '<ng-content></ng-content>',
   host: {
     '[class.se__title]': 'true',
@@ -22,7 +22,7 @@ export class SETitleComponent implements OnInit {
     private ren: Renderer2,
   ) {
     if (parent == null) {
-      throw new Error(`[se-title] must include 'se-container' component`);
+      throw new Error(`[co-se-title] must include 'co-se-container' component`);
     }
     this.el = el.nativeElement;
   }

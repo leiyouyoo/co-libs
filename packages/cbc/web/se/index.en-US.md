@@ -4,7 +4,7 @@ title: se
 subtitle: Edit
 cols: 1
 order: 3
-module: import { SEModule } from '@delon/abc/se';
+module: import { CoSEModule } from '@co/cbc';
 ---
 
 A higher-order components of the form HTML template. And optimized some details:

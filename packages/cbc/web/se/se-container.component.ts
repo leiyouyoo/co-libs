@@ -7,8 +7,8 @@ import { filter } from 'rxjs/operators';
 import { SEErrorRefresh, SELayout } from './se.types';
 
 @Component({
-  selector: 'se-container, [se-container]',
-  exportAs: 'seContainer',
+  selector: 'co-se-container, [co-se-container]',
+  exportAs: 'coSeContainer',
   template: `
     <div se-title *ngIf="title">
       <ng-container *nzStringTemplateOutlet="title">{{ title }}</ng-container>
@@ -31,7 +31,7 @@ import { SEErrorRefresh, SELayout } from './se.types';
 })
 export class SEContainerComponent {
   private errorNotify$ = new BehaviorSubject<SEErrorRefresh>(null as NzSafeAny);
-  @Input('se-container') @InputNumber(null) colInCon: REP_TYPE;
+  @Input('co-se-container') @InputNumber(null) colInCon: REP_TYPE;
   @Input() @InputNumber(null) col: REP_TYPE;
   @Input() @InputNumber(null) labelWidth: number;
   @Input() title: string | TemplateRef<void>;

@@ -30,8 +30,8 @@ const prefixCls = `se`;
 let nextUniqueId = 0;
 
 @Component({
-  selector: 'se',
-  exportAs: 'se',
+  selector: 'co-se',
+  exportAs: 'coSe',
   templateUrl: './se.component.html',
   host: {
     '[style.padding-left.px]': 'paddingValue',
@@ -111,7 +111,7 @@ export class SEComponent implements OnChanges, AfterContentInit, AfterViewInit, 
     private cdr: ChangeDetectorRef,
   ) {
     if (parent == null) {
-      throw new Error(`[se] must include 'se-container' component`);
+      throw new Error(`[co-se] must include 'co-se-container' component`);
     }
     this.el = el.nativeElement;
     parent.errorNotify

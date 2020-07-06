@@ -19,18 +19,18 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-demo',
   template: `
-    <form nz-form #f="ngForm" se-container size="compact" gutter="24">
-      <se-title>Title 1</se-title>
-      <se label="ID" col="1" [optionalHelp]="optionalHelpTpl">
+    <form nz-form #f="ngForm" co-se-container size="compact" gutter="24">
+      <co-se-title>Title 1</co-se-title>
+      <co-se label="ID" col="1" [optionalHelp]="optionalHelpTpl">
         1000
         <ng-template #optionalHelpTpl>
           Via by ng-template
         </ng-template>
-      </se>
-      <se label="Name" required col="3">
+      </co-se>
+      <co-se label="Name" required col="3">
         <input type="text" nz-input [(ngModel)]="i.user_name" name="user_name" required />
-      </se>
-      <se label="Age" required col="3">
+      </co-se>
+      <co-se label="Age" required col="3">
         <nz-select [(ngModel)]="i.user_age" name="user_age" nzAllowClear nzPlaceHolder="Choose">
           <nz-option [nzValue]="1" nzLabel="1"></nz-option>
           <nz-option [nzValue]="2" nzLabel="2"></nz-option>
@@ -38,17 +38,17 @@ import { Component } from '@angular/core';
           <nz-option [nzValue]="4" nzLabel="4"></nz-option>
           <nz-option [nzValue]="5" nzLabel="5"></nz-option>
         </nz-select>
-      </se>
-      <se label="Brithday" required col="3">
+      </co-se>
+      <co-se label="Brithday" required col="3">
         <nz-date-picker [(ngModel)]="i.user_birthday" name="user_birthday" nzShowTime></nz-date-picker>
-      </se>
-      <se label="App Key" required>
+      </co-se>
+      <co-se label="App Key" required>
         <input type="text" nz-input [(ngModel)]="i.ak" name="ak" required />
-      </se>
-      <se label="App Secret" required>
+      </co-se>
+      <co-se label="App Secret" required>
         <input type="text" nz-input [(ngModel)]="i.sk" name="sk" required maxlength="32" />
-      </se>
-      <se label="Phone Number" required>
+      </co-se>
+      <co-se label="Phone Number" required>
         <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
           <ng-template #addOnBeforeTemplate>
             <nz-select [(ngModel)]="i.phoneNumberPrefix" name="phoneNumberPrefix" style="width: 70px;">
@@ -58,19 +58,19 @@ import { Component } from '@angular/core';
           </ng-template>
           <input type="text" nz-input [(ngModel)]="i.phoneNumber" name="phoneNumber" required maxlength="32" />
         </nz-input-group>
-      </se>
-      <se>
+      </co-se>
+      <co-se>
         <label nz-checkbox [(ngModel)]="i.agree" name="agree">
           <span>I have read the <a>agreement</a></span>
         </label>
-      </se>
-      <se-title>Title 2</se-title>
-      <se label="Long Long Long Long Long Long Label" col="1">
+      </co-se>
+      <co-se-title>Title 2</co-se-title>
+      <co-se label="Long Long Long Long Long Long Label" col="1">
         <textarea [(ngModel)]="i.comment" name="comment" nz-input rows="2" placeholder="write any thing"></textarea>
-      </se>
-      <se col="1">
+      </co-se>
+      <co-se col="1">
         <button nz-button nzType="primary" [disabled]="f.invalid">Save</button>
-      </se>
+      </co-se>
     </form>
   `,
 })

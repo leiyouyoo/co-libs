@@ -28,17 +28,17 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-demo',
-  template: ` <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()" se-container gutter="32" ingoreDirty>
-    <se label="App Key" required [error]="{ required: 'Please input your username!', pattern: 'Incorrect format, muse be A' }">
+  template: ` <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()" co-se-container gutter="32" ingoreDirty>
+    <co-se label="App Key" required [error]="{ required: 'Please input your username!', pattern: 'Incorrect format, muse be A' }">
       <input formControlName="userName" nz-input placeholder="Username" />
-    </se>
-    <se label="App Secret" required error="Please input your Password!">
+    </co-se>
+    <co-se label="App Secret" required error="Please input your Password!">
       <input formControlName="password" nz-input type="password" placeholder="Password" />
-    </se>
-    <se>
+    </co-se>
+    <co-se>
       <button nz-button nzType="primary" [disabled]="!validateForm.valid">Log in</button>
       <button nz-button nzType="link" type="button" (click)="updateValue()">Update value via patchValue</button>
-    </se>
+    </co-se>
   </form>`,
 })
 export class DemoComponent {

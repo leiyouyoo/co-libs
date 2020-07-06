@@ -26,8 +26,8 @@ import { NzMessageService } from 'ng-zorro-antd/message';
     <div class="mb-md">
       <button nz-button (click)="resetErrors()">Reset all errors</button>
     </div>
-    <form nz-form #f="ngForm" se-container [errors]="ngModelErrors" gutter="32">
-      <se label="App Key" [error]="{ required: '请填写', pattern: '只能包含a-z, 0-9之间' }">
+    <form nz-form #f="ngForm" co-se-container [errors]="ngModelErrors" gutter="32">
+      <co-se label="App Key" [error]="{ required: '请填写', pattern: '只能包含a-z, 0-9之间' }">
         <input
           type="text"
           nz-input
@@ -37,9 +37,9 @@ import { NzMessageService } from 'ng-zorro-antd/message';
           pattern="^[a-z0-9]*$"
           placeholder="必填项，且只能包含a-z, 0-9之间"
         />
-      </se>
+      </co-se>
       <ng-template #appSecretRequired> 请填写，密钥<a (click)="msg.success('success')">生成</a>地址。 </ng-template>
-      <se label="App Secret" [error]="{ required: appSecretRequired, pattern: '只能包含0-9之间' }">
+      <co-se label="App Secret" [error]="{ required: appSecretRequired, pattern: '只能包含0-9之间' }">
         <input
           type="text"
           nz-input
@@ -50,22 +50,22 @@ import { NzMessageService } from 'ng-zorro-antd/message';
           pattern="^[0-9]*$"
           placeholder="必填项，且只能包含0-9之间"
         />
-      </se>
-      <se>
+      </co-se>
+      <co-se>
         <button nz-button nzType="primary" [disabled]="f.invalid">Save</button>
-      </se>
+      </co-se>
     </form>
     <h3>Reactive</h3>
-    <form nz-form [formGroup]="validateForm" se-container gutter="32" [errors]="reactiveErrors">
-      <se label="App Key" [error]="{ required: 'Please input your username!', pattern: 'Incorrect format, muse be A' }">
+    <form nz-form [formGroup]="validateForm" co-se-container gutter="32" [errors]="reactiveErrors">
+      <co-se label="App Key" [error]="{ required: 'Please input your username!', pattern: 'Incorrect format, muse be A' }">
         <input formControlName="userName" nz-input placeholder="Username" />
-      </se>
-      <se label="App Secret" error="Please input your Password!">
+      </co-se>
+      <co-se label="App Secret" error="Please input your Password!">
         <input formControlName="password" nz-input type="password" placeholder="Password" />
-      </se>
-      <se>
+      </co-se>
+      <co-se>
         <button nz-button nzType="primary" [disabled]="!validateForm.valid">Log in</button>
-      </se>
+      </co-se>
     </form>
   `,
 })

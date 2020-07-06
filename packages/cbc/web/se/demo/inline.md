@@ -20,16 +20,16 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-demo',
   template: `
-  <form nz-form nzLayout="inline" #f="ngForm" se-container>
-    <se label="App Key" error="请填写" optional="(选填)" optionalHelp="通过控制台-查看KEY获取" extra="额外提示信息">
+  <form nz-form nzLayout="inline" #f="ngForm" co-se-container>
+    <co-se label="App Key" error="请填写" optional="(选填)" optionalHelp="通过控制台-查看KEY获取" extra="额外提示信息">
       <input type="text" nz-input [(ngModel)]="i.ak" name="ak" required>
-    </se>
-    <se label="App Secret" error="请填写，最多32位">
+    </co-se>
+    <co-se label="App Secret" error="请填写，最多32位">
       <input type="text" nz-input [(ngModel)]="i.sk" name="sk" required maxlength="32">
-    </se>
-    <se>
+    </co-se>
+    <co-se>
       <button nz-button nzType="primary" [disabled]="f.invalid">Save</button>
-    </se>
+    </co-se>
   </form>`,
 })
 export class DemoComponent {
