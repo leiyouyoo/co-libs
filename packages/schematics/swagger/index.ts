@@ -146,7 +146,13 @@ function getSwaggerData(options): () => Promise<any[]> {
 function setSwaggerRequest(reqList: any) {
   for (const detail of reqList) {
     // api接口内容详情
+    detail.newType = detail.type;
     const reqDetail = detail.api[detail.type];
+    if (detail.type === 'post' && reqDetail.parameters) {
+      if (reqDetail.parameters[0].in && reqDetail.parameters[0].in === 'formData') {
+        detail.newType = 'form';
+      }
+    }
 
     detail.reqJson = {};
 
@@ -164,6 +170,8 @@ function setSwaggerRequest(reqList: any) {
         } else {
           parmDetail.type = 'any[]';
         }
+      } else if (parmDetail?.type === 'file') {
+        parmDetail.type = 'File';
       }
 
       // 绑定实体

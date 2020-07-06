@@ -1,6 +1,6 @@
 {
   "name": "co-libs",
-  "version": "0.0.28",
+  "version": "0.0.30",
   "description": "co-libs 是一组用于前端开发的公共模块集合",
   "keywords": [
     "co-libs",
@@ -62,7 +62,7 @@
     "@webcomponents/custom-elements": "^1.4.1",
     "ajv": "^6.12.2",
     "aos": "^3.0.0-beta.6",
-    "co-cli": "0.0.31",
+    "co-cli": "0.0.35",
     "codesandbox": "^2.1.14",
     "docsearch.js": "^2.6.3",
     "extend": "^3.0.2",
