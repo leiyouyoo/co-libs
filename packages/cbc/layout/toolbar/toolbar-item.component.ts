@@ -6,11 +6,7 @@ import { InputBoolean } from 'ng-zorro-antd';
 @Component({
   selector: 'co-toolbar-item',
   template: `
-    <!--    <nz-form-item>-->
-    <!--      <nz-form-control>-->
     <ng-content></ng-content>
-    <!--      </nz-form-control>-->
-    <!--    </nz-form-item>-->
   `,
   host: { '[class.co-toolbar-item]': 'true' },
   changeDetection: ChangeDetectionStrategy.OnPush,
