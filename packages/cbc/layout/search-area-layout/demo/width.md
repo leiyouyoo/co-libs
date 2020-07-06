@@ -53,7 +53,7 @@ import { Component } from '@angular/core';
   `,
 })
 export class DemoComponent {
-  width = 180;
+  width = 200;
   customer = 2;
   container = [3, 9];
 }

@@ -7,6 +7,7 @@ import { ToolbarComponent } from '@co/cbc/layout/toolbar';
 @Component({
   selector: 'co-page-layout',
   templateUrl: './page-layout.component.html',
+  host: { '[class.co-page-layout]': 'true' },
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
