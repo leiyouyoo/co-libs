@@ -1,24 +1,24 @@
 ---
 type: CURD
-title: st
+title: co-st
 subtitle: 表格
 cols: 1
 order: 1
-module: import { STModule } from '@co/cbc/web/st';
+module: import { CoSTModule } from '@co/cbc';
 ---
 
-`st` 并不是在创造另一个表格组件，而是在 `nz-table` 基础上以**可配置**形式渲染表格，在中后台里这种方式可以满足绝大多数场景，但又可以更易地管理表格渲染动作。
+`co-st` 并不是在创造另一个表格组件，而是在 `nz-table` 基础上以**可配置**形式渲染表格，在中后台里这种方式可以满足绝大多数场景，但又可以更易地管理表格渲染动作。
 
 ## 关于数据源
 
-`data` 支持三种不同格式数据源，整体分为：URL和静态数据两类；但可以透过参数的配置达到不同的效果，同时有非常多参数可通过 `AlainSTConfig` 重置默认值，使整个 `st` 组件模板达到极简。
+`data` 支持三种不同格式数据源，整体分为：URL和静态数据两类；但可以透过参数的配置达到不同的效果，同时有非常多参数可通过 `AlainSTConfig` 重置默认值，使整个 `co-st` 组件模板达到极简。
 
 ### URL
 
 指的是通过一个 URL 字符串来获取数据。
 
 - 通过 `req.params`、`req.method` 等参数解决请求数据格式问题
-- 通过 `res.reName` 重置数据 `key` 而无须担心后端数据格式是否满足 `st` 需求
+- 通过 `res.reName` 重置数据 `key` 而无须担心后端数据格式是否满足 `co-st` 需求
 - 通过 `res.process` 可以对表格渲染前对数据进一步优化
 - 通过 `page.zeroIndexed` 可以调整 http 请求时 `pi` 参数是否遵循 0 基索引，默认情况下为 1 基索引
 - 若返回体的值是数组类型，则强制不分页
@@ -29,7 +29,7 @@ module: import { STModule } from '@co/cbc/web/st';
 指的是通过指定值为 `STData[]` 或 `Observable<STData[]>`，二者都遵循以下规则：
 
 - `page.front` 前端分页，默认：`true`
-  - `true` 由 `st` 根据 `data` 长度受控分页，包括：排序、过滤等
+  - `true` 由 `co-st` 根据 `data` 长度受控分页，包括：排序、过滤等
   - `false` 由用户通过 `total` 和 `data` 参数受控分页，并维护 `(change)` 当分页变更时重新加载数据
 - `page.show` 是否显示分页器；当未指定时若 `ps>total` 情况下自动不显示
 
@@ -37,11 +37,11 @@ module: import { STModule } from '@co/cbc/web/st';
 
 **Cannot read property 'text' of undefined**
 
-若组件已经加载完毕，此时如果再次改变 `columns` 时可能会出现该错误，这是因为 `st` 每次只会根据 `columns` 对数据处理，当列定义发生改变后可能会因为列定义与现有数据无法配对，可能需要使用 `this.st.resetColumns({ columns: [], emitReload: true })` 来更新列定义并重新加载数据。
+若组件已经加载完毕，此时如果再次改变 `columns` 时可能会出现该错误，这是因为 `co-st` 每次只会根据 `columns` 对数据处理，当列定义发生改变后可能会因为列定义与现有数据无法配对，可能需要使用 `this.st.resetColumns({ columns: [], emitReload: true })` 来更新列定义并重新加载数据。
 
 ## API
 
-### st
+### co-st
 
 | 成员 | 说明 | 类型 | 默认值 |
 |----|----|----|-----|
@@ -58,7 +58,7 @@ module: import { STModule } from '@co/cbc/web/st';
 | `[size]` | table大小 | `'small','middle','default'` | `'default'` |
 | `[widthMode]` | 设置表格宽度模式 | `STWidthMode` | - |
 | `[rowClassName]` | 表格行的类名 | `(record: STData, index: number) => string` | - |
-| `[loading]` | 页面是否加载中，当指定 `null` 由 st 受控 | `boolean | null` | `null` |
+| `[loading]` | 页面是否加载中，当指定 `null` 由 co-st 受控 | `boolean | null` | `null` |
 | `[loadingIndicator]` | 加载指示符 | `TemplateRef<void>` | - |
 | `[loadingDelay]` | 延迟显示加载效果的时间（防止闪烁） | `number` | `0` |
 | `[scroll]` | 横向或纵向支持滚动，也可用于指定滚动区域的宽高度：`{ x: "300px", y: "300px" }` | `{ y?: string; x?: string }` | - |
@@ -113,7 +113,7 @@ module: import { STModule } from '@co/cbc/web/st';
 ```ts
 @Component({
   template: `
-    <st #st></st>
+    <co-st #st></co-st>
     <button (click)="st.load()"></button>
     <button (click)="st.reset()">重置</button>
   `
@@ -217,7 +217,7 @@ class TestComponent {
 | `[separator]` | 不同属性间分隔符 | `string` | `-` |
 | `[nameSeparator]` | 列名与状态间分隔符 | `string` | `.` |
 | `[keepEmptyKey]` | 是否保持空值的键名<br>`true` 表示不管是否有排序都会发送 `key` 键名<br>`false` 表示无排序动作时不会发送 `key` 键名 | `boolean` | `true` |
-| `[global]` | **仅限全局配置项有效**，是否全局多排序模式<br>`true` 表示所有 `st` 默认为多排序<br>`false` 表示需要为每个 `st` 添加 `multiSort` 才会视为多排序模式 | `boolean` | `true` |
+| `[global]` | **仅限全局配置项有效**，是否全局多排序模式<br>`true` 表示所有 `co-st` 默认为多排序<br>`false` 表示需要为每个 `co-st` 添加 `multiSort` 才会视为多排序模式 | `boolean` | `true` |
 
 ### STData
 

@@ -28,7 +28,7 @@ import { STColumn } from '@co/cbc/web/st';
 @Component({
   selector: 'app-demo',
   template: `
-    <st [data]="users" [columns]="columns" [scroll]="{x: '1300px'}"></st>
+    <co-st [data]="users" [columns]="columns" [scroll]="{x: '1300px'}"></co-st>
   `,
 })
 export class DemoComponent {
