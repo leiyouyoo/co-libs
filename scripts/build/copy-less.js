@@ -45,6 +45,11 @@ function copyLess(name) {
           fse.copySync(`${sourcePath}/mobile/${cname}/style`, `${targetPath}/mobile/${cname}/style`);
         }
       });
+      fs.readdirSync(`${targetPath}/web`).forEach(cname => {
+        if (fs.existsSync(`${sourcePath}/web/${cname}/style/index.less`)) {
+          fse.copySync(`${sourcePath}/web/${cname}/style`, `${targetPath}/web/${cname}/style`);
+        }
+      });
     }
   });
 }
