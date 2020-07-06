@@ -4,20 +4,20 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import { PickerComponentBase } from '@co/cbc/core';
-import { CustomerService } from '@co/cds';
+import { PlaceService } from '@co/cds';
 
 /**
- * 客户选择器控件
+ * 地址选择器控件
  */
 @Component({
-  selector: 'co-customer-picker',
-  exportAs: 'coCustomerPicker',
+  selector: 'co-place-picker',
+  exportAs: 'coPlacePicker',
   templateUrl: '../templates/picker-template.component.html',
   host: { '[class.co-picker]': 'true' },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CustomerPickerComponent),
+      useExisting: forwardRef(() => PlacePickerComponent),
       multi: true,
     },
   ],
@@ -25,18 +25,17 @@ import { CustomerService } from '@co/cds';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class CustomerPickerComponent extends PickerComponentBase {
+export class PlacePickerComponent extends PickerComponentBase {
   //#region  构造函数
 
-  constructor(cdr: ChangeDetectorRef, private customerService: CustomerService) {
+  constructor(cdr: ChangeDetectorRef, private placeService: PlaceService) {
     super(cdr);
 
     this.coLabelMember = 'fax';
   }
 
   //#endregion
-
   fetchRemoteData(_condition: any): Observable<any> {
-    return this.customerService.getAllBySearch(_condition);
+    return this.placeService.getByRegionIds(_condition);
   }
 }

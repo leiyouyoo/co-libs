@@ -1,0 +1,12 @@
+{
+  "ngPackage": {
+    "lib": {
+      "flatModuleFile": "coPlacePicker",
+      "entryFile": "public_api.ts",
+      "umdModuleIds": {
+        "@co/core": "co.core",
+        "@co/cds": "co.cds"
+      }
+    }
+  }
+}
