@@ -23,7 +23,7 @@ import { STColumn, STComponent } from '@co/cbc/web/st';
     <button nz-button (click)="st.export()">Export</button>
     <button nz-button (click)="st.export(true)">Export Filtered Data</button>
     <button nz-button (click)="st.export(data, { filename: 'via-data.xlsx', sheetname: 'user' })">Export via data</button>
-    <st #st [data]="data" [columns]="columns" class="mt-sm"></st>
+    <co-st #st [data]="data" [columns]="columns" class="mt-sm"></co-st>
   `,
 })
 export class DemoComponent {

@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { BaseApi, BaseUrl, DELETE, GET, Payload, POST, PUT } from '@co/common';
+import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 import { ListResultDto, PagedResultDto } from '@co/core';
 
 import { VesselDto,VesselCheckInputDto,GetAllVesselForUiPickerInput,VesselUiPickerDto, } from './pub.types';
@@ -9,7 +9,10 @@ import { VesselDto,VesselCheckInputDto,GetAllVesselForUiPickerInput,VesselUiPick
 @BaseUrl('/pub/Vessel')
 @Injectable({ providedIn: 'root' })
 export class VesselService extends BaseApi {
-
+  constructor(injector: Injector) {
+    super(injector);
+  }
+  
    
     /**
      * @param url /PUB/Vessel/Get

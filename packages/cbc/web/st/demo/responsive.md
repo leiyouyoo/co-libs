@@ -20,9 +20,9 @@ import { STColumn } from '@co/cbc/web/st';
 @Component({
   selector: 'app-demo',
   template: `
-  <st [data]="url" [req]="{params: params}" [columns]="columns"
+  <co-st [data]="url" [req]="{params: params}" [columns]="columns"
     header="The header" footer="The footer" responsiveHideHeaderFooter>
-  </st>`,
+  </co-st>`,
 })
 export class DemoComponent {
   url = `/users?total=100`;

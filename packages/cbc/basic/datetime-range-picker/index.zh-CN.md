@@ -14,4 +14,4 @@ module: import { DatetimeRangePickerModule } from '@co/cbc';
 
 | 成员 | 说明 | 类型 | 默认值 | 全局配置 |
 |----|----|----|-----|------|
-| `[(outTimeStr)]` | 日期和时间段 | string | - |  |
+| `[(ngModel)]` | 日期和时间段 | string | - |  |

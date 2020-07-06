@@ -20,11 +20,11 @@ import { STColumn } from '@co/cbc/web/st';
 @Component({
   selector: 'app-demo',
   template: `
-    <st [data]="users" [columns]="columns" [expand]="expand" expandRowByClick expandAccordion>
+    <co-st [data]="users" [columns]="columns" [expand]="expand" expandRowByClick expandAccordion>
       <ng-template #expand let-item let-index="index" let-column="column">
         {{ item.description }}
       </ng-template>
-    </st>
+    </co-st>
   `,
 })
 export class DemoComponent {

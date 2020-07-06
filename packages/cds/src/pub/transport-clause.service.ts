@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { BaseApi, BaseUrl, DELETE, GET, Payload, POST, PUT } from '@co/common';
+import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 import { ListResultDto, PagedResultDto } from '@co/core';
 
 import { TransportClauseDto,TransportClauseCheckDto,ChangeTransportClauseStateInput,GetAllTransportClauseForUiPickerInput,TransportClauseUiPickerDto, } from './pub.types';
@@ -9,7 +9,10 @@ import { TransportClauseDto,TransportClauseCheckDto,ChangeTransportClauseStateIn
 @BaseUrl('/pub/TransportClause')
 @Injectable({ providedIn: 'root' })
 export class TransportClauseService extends BaseApi {
-
+  constructor(injector: Injector) {
+    super(injector);
+  }
+  
    
     /**
      * @param url /PUB/TransportClause/Get
