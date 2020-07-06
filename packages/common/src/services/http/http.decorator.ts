@@ -197,7 +197,7 @@ function makeMethod(method: METHOD_TYPE) {
         }
 
         const payload = getValidArgs(data, 'payload', args);
-        const supportedBody = method === 'POST' || method === 'PUT';
+        const supportedBody = method === 'POST' || method === 'PUT' || method === 'FORM';
 
         return http.request(method, requestUrl, {
           body: supportedBody ? genBody(getValidArgs(data, 'body', args), payload) : null,
