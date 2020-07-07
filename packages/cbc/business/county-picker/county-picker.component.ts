@@ -3,7 +3,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 
-import { RegionService } from '@co/cds';
+import { CountyService } from '@co/cds';
 import { PickerComponentBase } from '@co/cbc/core';
 
 /**
@@ -28,15 +28,15 @@ import { PickerComponentBase } from '@co/cbc/core';
 export class CountyPickerComponent extends PickerComponentBase {
   //#region  构造函数
 
-  constructor(cdr: ChangeDetectorRef, private countyService: RegionService) {
+  constructor(cdr: ChangeDetectorRef, private countyService: CountyService) {
     super(cdr);
 
-    this.coLabelMember = 'fax';
+    this.coLabelMember = 'name';
   }
 
   //#endregion
 
   fetchRemoteData(_condition: any): Observable<any> {
-    return this.countyService.getAllCountryForUiPicker(_condition);
+    return this.countyService.getFlatList(_condition);
   }
 }

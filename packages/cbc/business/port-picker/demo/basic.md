@@ -33,10 +33,10 @@ export class PortPickerBasicComponent {
     maxMultipleCount = 1;
     //入参
     portReq = {
-     isOcean: true,
-     regionIds :[11],
+     IsOcean: true,
+     RegionIds :["db6af263-0305-4c78-9ebf-015ba3507b50"],
      isPaged:  false ,
-     maxResultCount: 1 ,
+     MaxResultCount: 1 ,
     };
 }
 

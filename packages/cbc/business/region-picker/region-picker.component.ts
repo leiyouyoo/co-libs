@@ -49,7 +49,7 @@ export class RegionPickerComponent extends PickerComponentBase {
   //#endregion
 
   fetchRemoteData(_condition: any): Observable<any> {
-    if( this.regionReq && this.regionReq.areaIds.length >0 ){
+    if( this.regionReq && this.regionReq.AreaIds.length >0 ){
       return this.regionService.getAllRegionForUiPicker(_condition);
     }else {
       return [] as any;
@@ -61,7 +61,7 @@ export class RegionPickerComponent extends PickerComponentBase {
     if( changes ){
 
     }
-    if( this.regionReq && this.regionReq.areaIds.length >0 ){
+    if( this.regionReq && this.regionReq.AreaIds.length >0 ){
 
       this.fetchRemoteData(this.regionReq).subscribe((response: any) => {
 
