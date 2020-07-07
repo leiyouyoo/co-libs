@@ -45,22 +45,22 @@ export class RegionPickerBasicComponent {
     maxMultipleCount = 1;
     //入参
     regionReq = {
-      areaIds:[1],
-      recursive : true,
+      AreaIds:["56c5cf93-1820-4bf5-b5da-fee418596fed"],
+      Recursive : true,
     };
     //入参
     portReq = {
-     isOcean: true,
-     regionIds :[],
+     IsOcean: true,
+     RegionIds :[],
      isPaged:  false ,
-     maxResultCount: 1 ,
+     MaxResultCount: 1 ,
     };
     regionChange( ev ){
         this.portReq = {
-         isOcean: true,
-         regionIds :ev,
+         IsOcean: true,
+         RegionIds :ev,
          isPaged:  false ,
-         maxResultCount: 1 ,
+         MaxResultCount: 1 ,
         };
     } 
 

@@ -1,5 +1,5 @@
 import { LayoutModule } from '@angular/cdk/layout';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { APP_INITIALIZER, Injector, NgModule } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,8 +14,8 @@ registerLocaleData(localeZh);
 import { RoutesModule } from './routes/routes.module';
 import { SharedModule } from './shared/shared.module';
 
-import { CO_I18N_TOKEN } from '@co/common';
 import { CoBusinessComponentsModule } from '@co/cbc';
+import { CO_I18N_TOKEN, ResponseInterceptor } from '@co/common';
 import { I18NService } from './core/i18n/service';
 import { StartupService } from './core/startup.service';
 
@@ -66,6 +66,7 @@ export function StartupServiceFactory(startupService: StartupService) {
     }),
   ],
   providers: [
+    [{ provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true }],
     { provide: CO_I18N_TOKEN, useClass: I18NService, multi: false },
     StartupService,
     {

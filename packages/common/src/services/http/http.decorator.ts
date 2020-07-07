@@ -138,6 +138,14 @@ function genBody(data?: any, payload?: any): any {
   return Object.assign({}, data, payload);
 }
 
+function setFromData(data?: any) {
+  const formData = new FormData();
+  Object.keys(data).forEach(key => {
+    formData.append(key, data[key]);
+  });
+  return formData;
+}
+
 export type METHOD_TYPE = 'OPTIONS' | 'GET' | 'POST' | 'DELETE' | 'PUT' | 'HEAD' | 'PATCH' | 'JSONP' | 'FORM';
 
 function makeMethod(method: METHOD_TYPE) {
@@ -197,10 +205,16 @@ function makeMethod(method: METHOD_TYPE) {
         }
 
         const payload = getValidArgs(data, 'payload', args);
-        const supportedBody = method === 'POST' || method === 'PUT';
-
+        const supportedBody = method === 'POST' || method === 'PUT' || method === 'FORM';
+        const isForm = method === 'FORM';
+        const body_data = isForm
+          ? setFromData(genBody(getValidArgs(data, 'body', args), payload))
+          : genBody(getValidArgs(data, 'body', args), payload);
+        if (isForm) {
+          method = 'POST';
+        }
         return http.request(method, requestUrl, {
-          body: supportedBody ? genBody(getValidArgs(data, 'body', args), payload) : null,
+          body: supportedBody ? body_data : null,
           params: !supportedBody ? { ...params, ...payload } : params,
           headers: { ...baseData.baseHeaders, ...headers },
           ...options,
