@@ -207,10 +207,14 @@ function makeMethod(method: METHOD_TYPE) {
         const payload = getValidArgs(data, 'payload', args);
         const supportedBody = method === 'POST' || method === 'PUT' || method === 'FORM';
         const isForm = method === 'FORM';
-        const body_data = genBody(getValidArgs(data, 'body', args), payload);
-
+        const body_data = isForm
+          ? setFromData(genBody(getValidArgs(data, 'body', args), payload))
+          : genBody(getValidArgs(data, 'body', args), payload);
+        if (isForm) {
+          method = 'POST';
+        }
         return http.request(method, requestUrl, {
-          body: supportedBody ? (isForm ? setFromData(body_data) : body_data) : null,
+          body: supportedBody ? body_data : null,
           params: !supportedBody ? { ...params, ...payload } : params,
           headers: { ...baseData.baseHeaders, ...headers },
           ...options,
