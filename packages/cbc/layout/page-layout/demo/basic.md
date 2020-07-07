@@ -45,10 +45,24 @@ import { Component } from '@angular/core';
           <co-search-area-item>
             <input type="text" nz-input placeholder="请输入"/>
           </co-search-area-item>
-          <co-search-area-item>
+          <co-search-area-item coWidth="auto">
             <button nz-button nzType="primary"><i nz-icon nzType="search" nzTheme="outline"></i>搜索</button>
             <button nz-button>重置</button>
           </co-search-area-item>
+            <co-search-area-extra>
+              <co-search-area-item>
+                <input type="text" nz-input placeholder="请输入"/>
+              </co-search-area-item>
+              <co-search-area-item>
+                <input type="text" nz-input placeholder="请输入"/>
+              </co-search-area-item>
+              <co-search-area-item>
+                <input type="text" nz-input placeholder="请输入"/>
+              </co-search-area-item>
+              <co-search-area-item>
+                <input type="text" nz-input placeholder="请输入"/>
+              </co-search-area-item>
+            </co-search-area-extra>
         </co-search-area-layout>
         <co-page-main>
           <div style="display: flex;justify-content: center;align-items: center;background: #9e9e9e;height: 300px;width:100%;color: white;">主内容区域</div>

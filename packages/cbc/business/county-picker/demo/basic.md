@@ -23,7 +23,6 @@ import { Component } from '@angular/core';
   `
 })
 export class CountyPickerBasicComponent {
-  selectedValue: number = 2;
 }
 
 ```

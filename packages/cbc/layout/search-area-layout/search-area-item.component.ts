@@ -19,7 +19,7 @@ import { filter, startWith, takeUntil } from 'rxjs/operators';
 })
 export class SearchAreaItemComponent extends LifeCycleComponent {
 
-  @Input() coWidth: number;
+  @Input() coWidth: number | 'auto';
   @Input() coMarginRight: number;
 
   constructor(public elementRef: ElementRef, private renderer: Renderer2) {
@@ -42,11 +42,12 @@ export class SearchAreaItemComponent extends LifeCycleComponent {
     this.setMarginBottom(marginBottom);
   }
 
-  setWidth(width) {
+  setWidth(width: number | string) {
     if (this.coWidth !== undefined) {
       width = this.coWidth;
     }
-    this.renderer.setStyle(this.elementRef.nativeElement, 'width', `${width}px`);
+    width = width === 'auto' ? width : `${width}px`;
+    this.renderer.setStyle(this.elementRef.nativeElement, 'width', width);
   }
 
   setMarginRight(marginRight) {

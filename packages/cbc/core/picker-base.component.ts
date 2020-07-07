@@ -74,7 +74,6 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   //#region 组件生命周期钩子
 
   ngOnInit() {
-
     const optionList$: Observable<string[]> = this.searchChange$.asObservable().pipe(
       filter(
         (condition: any) =>
