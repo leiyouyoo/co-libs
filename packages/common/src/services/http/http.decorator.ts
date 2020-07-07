@@ -143,10 +143,6 @@ function setFromData(data?: any) {
   Object.keys(data).forEach(key => {
     if (Array.isArray(data[key])) {
       setFormArray(key, data[key], formData);
-    } else if (typeof data[key] === 'object') {
-      Object.keys(data[key]).forEach(zkey => {
-        formData.append(zkey, data[key][zkey]);
-      });
     } else {
       formData.append(key, data[key]);
     }
@@ -219,10 +215,6 @@ function makeMethod(method: METHOD_TYPE) {
           p[i.key] = args[i.index];
           return p;
         }, {});
-
-        if (method === 'FORM') {
-          headers['content-type'] = 'application/x-www-form-urlencoded';
-        }
 
         const payload = getValidArgs(data, 'payload', args);
         const supportedBody = method === 'POST' || method === 'PUT' || method === 'FORM';
