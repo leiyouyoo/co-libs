@@ -15,7 +15,7 @@ import { InputBoolean } from 'ng-zorro-antd';
 export class ToolbarItemComponent extends LifeCycleComponent {
 
   @HostBinding('class.co-toolbar-item__alignRight') @Input() @InputBoolean() alignRight: boolean = false;
-  @Input() coWidth: number;
+  @Input() coWidth: number | 'auto';
   @Input() coMarginRight: number;
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {
@@ -25,10 +25,10 @@ export class ToolbarItemComponent extends LifeCycleComponent {
   ngOnInit(): void {
     const changes = this.onChanges$.pipe(takeUntil(this.onDestroy$));
     changes.pipe(filter(({ marginRight }) => marginRight !== undefined), startWith(null)).subscribe(() => {
-      this.setMarginRight(this.coMarginRight);
+      this.setMarginRight();
     });
     changes.pipe(filter(({ coWidth }) => coWidth !== undefined), startWith(null)).subscribe(() => {
-      this.setWidth(this.coWidth);
+      this.setWidth();
     });
   }
 
@@ -37,10 +37,8 @@ export class ToolbarItemComponent extends LifeCycleComponent {
     this.setMarginRight(marginRight);
   }
 
-  setWidth(width) {
-    if (this.coWidth !== undefined) {
-      width = this.coWidth;
-    }
+  setWidth(width?) {
+    width = this.coWidth || width;
     if (width === 'auto') {
       this.renderer.setStyle(this.elementRef.nativeElement, 'width', 'auto');
     } else {
@@ -48,10 +46,8 @@ export class ToolbarItemComponent extends LifeCycleComponent {
     }
   }
 
-  setMarginRight(marginRight) {
-    if (this.coMarginRight !== undefined) {
-      marginRight = this.coMarginRight;
-    }
+  setMarginRight(marginRight?) {
+    marginRight = this.coMarginRight || marginRight;
     this.renderer.setStyle(this.elementRef.nativeElement, 'margin-right', `${marginRight}px`);
   }
 
