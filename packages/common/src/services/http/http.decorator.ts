@@ -141,9 +141,29 @@ function genBody(data?: any, payload?: any): any {
 function setFromData(data?: any) {
   const formData = new FormData();
   Object.keys(data).forEach(key => {
-    formData.append(key, data[key]);
+    if (Array.isArray(data[key])) {
+      setFormArray(key, data[key], formData);
+    } else if (typeof data[key] === 'object') {
+      Object.keys(data[key]).forEach(zkey => {
+        formData.append(zkey, data[key][zkey]);
+      });
+    } else {
+      formData.append(key, data[key]);
+    }
   });
   return formData;
+}
+
+function setFormArray(key, arr: any, formData) {
+  for (const inx in arr) {
+    if (typeof arr[inx] === 'object') {
+      Object.keys(arr[inx]).forEach(zkey => {
+        formData.append(key + '[' + inx + ']' + '.' + zkey, arr[inx][zkey]);
+      });
+    } else {
+      formData.append(key, arr[inx]);
+    }
+  }
 }
 
 export type METHOD_TYPE = 'OPTIONS' | 'GET' | 'POST' | 'DELETE' | 'PUT' | 'HEAD' | 'PATCH' | 'JSONP' | 'FORM';
@@ -210,10 +230,8 @@ function makeMethod(method: METHOD_TYPE) {
         const body_data = isForm
           ? setFromData(genBody(getValidArgs(data, 'body', args), payload))
           : genBody(getValidArgs(data, 'body', args), payload);
-        if (isForm) {
-          method = 'POST';
-        }
-        return http.request(method, requestUrl, {
+
+        return http.request(isForm ? 'POST' : method, requestUrl, {
           body: supportedBody ? body_data : null,
           params: !supportedBody ? { ...params, ...payload } : params,
           headers: { ...baseData.baseHeaders, ...headers },
