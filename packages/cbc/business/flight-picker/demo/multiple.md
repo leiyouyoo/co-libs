@@ -26,7 +26,7 @@ import { Component } from '@angular/core';
 export class FlightPickerMultipleComponent {
   mode = 'multiple';
   maxMultipleCount = 2;
-  selectedValue: string[] = ['abbebcea-11af-41c0-aeb0-61f1c9ad0e4f', '872f95c5-0604-4fba-8b8a-db9eac27a228'];
+  selectedValue: string[] = ['72e72331-dbc5-452b-8dc3-fecddc11290e', '872f95c5-0604-4fba-8b8a-db9eac27a228'];
 }
 
 ```

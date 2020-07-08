@@ -19,7 +19,7 @@ import { Component } from '@angular/core';
   <div>
     <co-flight-picker coDropdownMode="custom" [coItemRender]="itemTemplate" [(ngModel)]="selectedValue"  >
     <ng-template #itemTemplate let-item>
-    <p> {{item.name}}(<span style='color:red;'>{{item.tel}}</span>)</p>
+    <p> {{item.no}}(<span style='color:red;'>{{item.no}}</span>)</p>
     </ng-template>
     </co-flight-picker>
     <p>{{selectedValue}}</p>
@@ -27,7 +27,7 @@ import { Component } from '@angular/core';
   `,
 })
 export class FlightPickerItemTemplateComponent {
-  selectedValue: string = 'abbebcea-11af-41c0-aeb0-61f1c9ad0e4f';
+  selectedValue: string = '72e72331-dbc5-452b-8dc3-fecddc11290e';
 }
 
 
