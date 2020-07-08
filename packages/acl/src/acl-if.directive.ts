@@ -6,8 +6,8 @@ import { ACLService } from './acl.service';
 import { ACLCanType } from './acl.type';
 
 @Directive({
-  selector: '[aclIf]',
-  exportAs: 'aclIf',
+  selector: '[co-acl-if]',
+  exportAs: 'coAclIf',
 })
 export class ACLIfDirective implements OnDestroy {
   private _value: ACLCanType;
@@ -22,27 +22,29 @@ export class ACLIfDirective implements OnDestroy {
     this._thenTemplateRef = templateRef;
   }
 
-  @Input()
+  @Input('coAclIf')
   set aclIf(value: ACLCanType) {
     this._value = value;
     this._updateView();
   }
 
-  @Input()
+  @Input('coAclIfThen')
   set aclIfThen(templateRef: TemplateRef<void> | null) {
     this._thenTemplateRef = templateRef;
     this._thenViewRef = null;
     this._updateView();
   }
 
-  @Input()
+  @Input('coAclIfElse')
   set aclIfElse(templateRef: TemplateRef<void> | null) {
     this._elseTemplateRef = templateRef;
     this._elseViewRef = null;
     this._updateView();
   }
 
-  @Input() @InputBoolean() except = false;
+  @Input('coExcept')
+  @InputBoolean()
+  except = false;
 
   protected _updateView(): void {
     const res = this.srv.can(this._value);

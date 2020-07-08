@@ -4,11 +4,27 @@ export interface ACLType {
   /**
    * 角色
    */
-  role?: string[];
+  roles?: string[];
+
+  /**
+  * 职务
+  */
+  jobs?: string[];
+
+  /**
+   * 职位
+   */
+  positions?: string[];
+
+  /**
+   * 所在部门
+   */
+  organizationUnits?: string[];
+
   /**
    * 权限点
    */
-  ability?: number[] | string[];
+  abilities?: number[] | string[];
 
   /**
    * 校验模式，默认：`oneOf`
@@ -25,4 +41,7 @@ export interface ACLType {
   [key: string]: NzSafeAny;
 }
 
-export type ACLCanType = number | number[] | string | string[] | ACLType;
+export type ACLCanType = string | string[] | ACLType;
+
+
+export type ACLControlType = "readonly" | "disabled" | "visibled";
