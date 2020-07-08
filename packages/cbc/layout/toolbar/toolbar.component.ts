@@ -7,9 +7,9 @@ import { InputBoolean } from 'ng-zorro-antd';
 @Component({
   selector: 'co-toolbar',
   template: `
-    <ng-content></ng-content> `,
+    <ng-content select="co-toolbar-item"></ng-content> `,
   host: {
-    '[class.co-toolbar]': 'true'
+    '[class.co-toolbar]': 'true',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
@@ -18,7 +18,7 @@ export class ToolbarComponent extends LifeCycleComponent {
 
   @HostBinding('class.co-toolbar__alignRight') @Input() @InputBoolean() alignRight: boolean = false;
   @Input() coMarginRight: number = 12;
-  @Input() coWidth: number | string = 'auto';
+  @Input() coWidth: number | 'auto' = 'auto';
 
   @ContentChildren(ToolbarItemComponent) toolbarItems!: QueryList<ToolbarItemComponent>;
 
@@ -28,8 +28,8 @@ export class ToolbarComponent extends LifeCycleComponent {
 
   ngAfterViewInit(): void {
     const changes = this.onChanges$.pipe(takeUntil(this.onDestroy$));
-    const styleChanges = changes.pipe(filter(({ coMarginRight, coMarginBottom, coWidth }) =>
-      coMarginRight !== undefined || coMarginBottom !== undefined || coWidth !== undefined));
+    const styleChanges = changes.pipe(filter(({ coMarginRight, coWidth }) =>
+      coMarginRight !== undefined || coWidth !== undefined));
     styleChanges.subscribe(() => {
       this.updateItems();
     });

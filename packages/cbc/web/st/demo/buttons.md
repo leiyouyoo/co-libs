@@ -29,7 +29,7 @@ import { DemoModalComponent, DemoDrawerComponent } from '@shared';
   selector: 'app-demo',
   template: `
     <button nz-button (click)="stComponent.addNewRow()">Add</button>
-    <st #stComponent [data]="users" [columns]="columns"></st>
+    <co-st #stComponent [data]="users" [columns]="columns"></co-st>
   `,
 })
 export class DemoComponent {

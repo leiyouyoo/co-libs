@@ -47,13 +47,13 @@ export class AreaPickerBasicComponent {
     maxMultipleCount = 1;   
     regionValue :any[] = [];
     regionReq = {
-      areaIds:[],
-      recursive : true,
+      AreaIds:[],
+      Recursive : true,
     };
     areaChange( ev ){
         this.regionReq = {
-          areaIds:ev,
-          recursive : true,
+          AreaIds:ev,
+          Recursive : true,
         };
     } 
 

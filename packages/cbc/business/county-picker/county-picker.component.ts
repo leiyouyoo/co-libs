@@ -31,7 +31,7 @@ export class CountyPickerComponent extends PickerComponentBase {
   constructor(cdr: ChangeDetectorRef, private countyService: RegionService) {
     super(cdr);
 
-    this.coLabelMember = 'fax';
+    this.coLabelMember = 'name';
   }
 
   //#endregion

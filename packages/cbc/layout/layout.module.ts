@@ -17,8 +17,5 @@ const MODULES = [SidebarNavModule, ReuseTabModule, PageHeaderModule, FullContent
 @NgModule({ exports: MODULES })
 export class CoLayoutComponentsModule {
   constructor() {
-    console.warn(
-      'The `DeloncbcModule` has been deprecated and will be removed in 10.0.0. Please use secondary entry instead.\ne.g. `import { STModule } from \'ng-zorro-antd/st\';`',
-    );
   }
 }

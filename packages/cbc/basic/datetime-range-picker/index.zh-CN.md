@@ -3,7 +3,7 @@ type: Basic
 title: datetime-range-picker
 subtitle: 日期时间范围（一小时）
 cols: 1
-module: import { DatatimeRangeModule } from '@co/cbc';
+module: import { DatetimeRangePickerModule } from '@co/cbc';
 ---
 
 用于配送时间
@@ -14,4 +14,4 @@ module: import { DatatimeRangeModule } from '@co/cbc';
 
 | 成员 | 说明 | 类型 | 默认值 | 全局配置 |
 |----|----|----|-----|------|
-| `[(outTimeStr)]` | 日期和时间段 | string | - |  |
+| `[(ngModel)]` | 日期和时间段 | string | - |  |

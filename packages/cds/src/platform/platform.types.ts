@@ -1339,6 +1339,21 @@
     }
  
     /**
+     *  No Remark 
+     */
+    export class OrganizationUnitPositionConfigDto {
+        
+         
+            
+            positionName: string;
+         
+            
+            organizationUnitName: string;
+        
+        
+    }
+ 
+    /**
      * 用户授权信息
      */
     export class UserAuthConfigDto {
@@ -1349,6 +1364,9 @@
          
             /* 授予的功能权限 */ 
             grantedFunctionPermissions: any[];
+         
+            
+            organizationUnitPosition: OrganizationUnitPositionConfigDto;
         
         
     }
