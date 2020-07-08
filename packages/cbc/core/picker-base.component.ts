@@ -38,7 +38,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   @Input() coDebounceInputCharCount: number = 3;
   @Input() coDebounceTime: number = 500;
   @Input() coPageSize: number = 20;
-  @Input() coFilter: any = { isDeleted: false };
+  @Input() coFilter: any = { includeDeleted: false };
 
   @Output() readonly coOpenChange = new EventEmitter<boolean>();
   @Output() readonly coBlur = new EventEmitter<void>();
