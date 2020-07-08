@@ -52,7 +52,7 @@ const icons = [SettingOutline, DeleteOutline, EllipsisOutline];
   declarations: [...COMPONENTS, ...DIRECTIVES],
   exports: [...COMPONENTS, ...DIRECTIVES],
 })
-export class STModule {
+export class CoSTModule {
   constructor(private nzIconService: NzIconService,
               ) {
     this.nzIconService.addIcon(...icons);

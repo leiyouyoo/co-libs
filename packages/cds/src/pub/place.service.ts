@@ -1,16 +1,22 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { BaseApi, BaseUrl, DELETE, GET, Payload, POST, PUT } from '@co/common';
+import { BaseApi, BaseHeaders, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 import { ListResultDto, PagedResultDto } from '@co/core';
 
 import { PlaceDto,GetPlaceListByRegionsInput,PlaceOrCountyDto,PlaceCheckDto,ChangePlaceStateInput,GetPlaceMapInput,PlaceView,FromToDto,GetByPortIdsOutput,GetPortByCityInput,GetPortByCityDto,GetAllPlaceForUiPickerInput,PlaceUiPickerDto, } from './pub.types';
 
-@BaseUrl('/pub/Place')
+//@BaseUrl('/pub/Place')
+@BaseUrl('http://192.168.1.5:8002/pub/Place')
 @Injectable({ providedIn: 'root' })
-export class PlaceService extends BaseApi {
+@BaseHeaders({"Authorization": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImVkZDg1MzI1MGYxYWY0ZjE4ODBmZTBjOTRkZWNjNTRjIiwidHlwIjoiSldUIn0.eyJuYmYiOjE1OTQwOTkzMzcsImV4cCI6MTU5NDEwMjkzNywiaXNzIjoiaHR0cDovLzE5Mi4xNjguMS41OjgwMDEvIiwiYXVkIjpbImh0dHA6Ly8xOTIuMTY4LjEuNTo4MDAxL3Jlc291cmNlcyIsImlkczQtYXBpIiwiUGxhdGZvcm1BcGkiXSwiY2xpZW50X2lkIjoiY2l0eU9jZWFuIiwic3ViIjoiNTUyIiwiYXV0aF90aW1lIjoxNTk0MDg4NjU0LCJpZHAiOiJsb2NhbCIsImh0dHA6Ly93d3cuYXNwbmV0Ym9pbGVycGxhdGUuY29tL2lkZW50aXR5L2NsYWltcy90ZW5hbnRJZCI6IjEiLCJyb2xlIjoiNCwzIiwicm9sZV9uYW1lcyI6IlN0YWZmLENvbW1lcmNpYWxBdHRhY2giLCJ0ZW5hbmN5X25hbWUiOiJDaXR5IE9jZWFuIiwibmFtZSI6ImNoZXJ5bHlhbmciLCJzdXJfbmFtZSI6IiIsInBsYXRmb3JtIjoiIiwicGFyZW50X3VzZXJpZCI6IiIsImNyZWF0b3JfdXNlcklkIjoiIiwiYXV0aG9yaXphdGlvbl90eXBlIjoiSW50ZXJuYWwiLCJjdXN0b21lcl9pZCI6IjYwYTk0NDc5LTQzNzMtNDkwNy04OTM1LTYyODBhNzliNzNmZCIsInNjb3BlIjpbImlkczQtYXBpIiwiUGxhdGZvcm1BcGkiLCJvZmZsaW5lX2FjY2VzcyJdLCJhbXIiOlsicHdkIl19.NvRuFRRsmMGnhg9_ea_dJinUXeBRahjaQu2NSIKknoTvYYw8T_CLChTI8LtfVRsx9X1C-DMxw7oiWjAkTM4gyF3Eb6Q612nM6MoPb9rySjIj5OL_GuNIVYQfBLmnxyyMCIUqzau9EamsfxM-XvoWtEEqD6dx9SX3y9N_46nJ8mRSyBS7ljUzdM1VPLCsIKKMzpaBSVl2beoL2Oiw4EOMJtdkhKQkZ7ZTiRSAaj2ExIT7EzBjiSFjv6IFp7xTs-rLGDplI2_e6oAZE320NcMovQZGhRAg4PYf7RwN10Q2rWov1dzGsP2XhpvjqCK-rnEaZl0v9gPPGoW5JZ20yAAPZQ"})
 
-   
+export class PlaceService extends BaseApi {
+  constructor(injector: Injector) {
+    super(injector);
+  }
+
+
     /**
      * @param url /PUB/Place/Get
      * 获取地点明细
@@ -19,13 +25,13 @@ export class PlaceService extends BaseApi {
     @GET('get')
     get(
         @Payload
-        _req: {id?:string} 
+        _req: {id?:string}
 
     ): Observable<PlaceDto> {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/GetAll
      * 获取地点列表
@@ -34,13 +40,13 @@ export class PlaceService extends BaseApi {
     @GET('getAll')
     getAll(
         @Payload
-        _req: {id?:string,name?:string,regionId?:string,isOcean?:boolean,isAir?:boolean,isRail?:boolean,isOther?:boolean,isCity?:boolean,isValid?:boolean,isMultiple?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
+        _req: {id?:string,name?:string,regionId?:string,isOcean?:boolean,isAir?:boolean,isRail?:boolean,isOther?:boolean,isCity?:boolean,isValid?:boolean,isMultiple?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number}
 
     ): Observable<PagedResultDto<PlaceDto>> {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/GetByRegionIds
      * 根据地区id集合查找地点
@@ -55,7 +61,7 @@ export class PlaceService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/GetByCountryIds
      * 根据国家id查找国家下的place
@@ -64,13 +70,13 @@ export class PlaceService extends BaseApi {
     @GET('getByCountryIds')
     getByCountryIds(
         @Payload
-        _req: {placeId?:string,name?:string,regionIds?:any[],isOcean?:boolean,isAir?:boolean,isAirOrOcean?:boolean,isOther?:boolean,isCity?:boolean,isValid?:boolean,isPaged?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
+        _req: {placeId?:string,name?:string,regionIds?:any[],isOcean?:boolean,isAir?:boolean,isAirOrOcean?:boolean,isOther?:boolean,isCity?:boolean,isValid?:boolean,isPaged?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number}
 
     ): Observable<PagedResultDto<PlaceDto>> {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/GetPlaceAndCounty
      * 分页获取港口或区县
@@ -79,13 +85,13 @@ export class PlaceService extends BaseApi {
     @GET('getPlaceAndCounty')
     getPlaceAndCounty(
         @Payload
-        _req: {code?:string,name?:string,type?:number,sorting?:string,maxResultCount?:number,skipCount?:number} 
+        _req: {code?:string,name?:string,type?:number,sorting?:string,maxResultCount?:number,skipCount?:number}
 
     ): Observable<PagedResultDto<PlaceOrCountyDto>> {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/Check
      * 校验重复性数据
@@ -100,7 +106,7 @@ export class PlaceService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/CreateOrUpdate
      * 创建或更新地点
@@ -115,7 +121,7 @@ export class PlaceService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/Create
      * 创建地点
@@ -130,7 +136,7 @@ export class PlaceService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/Update
      * 更新地点
@@ -145,7 +151,7 @@ export class PlaceService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/Delete
      * 删除地点
@@ -154,13 +160,13 @@ export class PlaceService extends BaseApi {
     @DELETE('delete')
     delete(
         @Payload
-        _req: {id?:string} 
+        _req: {id?:string}
 
     ): Observable<any> {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/ChangePlaceState
      * 修改地点状态
@@ -175,7 +181,7 @@ export class PlaceService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/GetByPlacesIds
      * 根据地点id集合查找地点集合
@@ -184,13 +190,13 @@ export class PlaceService extends BaseApi {
     @POST('getByPlacesIds')
     getByPlacesIds(
         @Payload
-        _req: {} 
+        _req: {}
 
     ): Observable<ListResultDto<PlaceDto>> {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/Resolve
      * 根据地图解析地址
@@ -205,7 +211,7 @@ export class PlaceService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/GetFromToList
      * 获取港口或地点列表
@@ -214,13 +220,13 @@ export class PlaceService extends BaseApi {
     @GET('getFromToList')
     getFromToList(
         @Payload
-        _req: {searchText?:string,id?:string,isPort?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
+        _req: {searchText?:string,id?:string,isPort?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number}
 
     ): Observable<PagedResultDto<FromToDto>> {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/GetByPortIds
      * 根据港口Id获取港口信息(含逆向检索省州片区)
@@ -229,13 +235,13 @@ export class PlaceService extends BaseApi {
     @POST('getByPortIds')
     getByPortIds(
         @Payload
-        _req: {} 
+        _req: {}
 
     ): Observable<GetByPortIdsOutput> {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/GetByCountyIds
      * 根据城市港口、区县镇Id数组获取详细文本
@@ -244,13 +250,13 @@ export class PlaceService extends BaseApi {
     @POST('getByCountyIds')
     getByCountyIds(
         @Payload
-        _req: {} 
+        _req: {}
 
     ): Observable<any> {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/GetPortByCity
      * 根据城市信息获取港口
@@ -265,13 +271,13 @@ export class PlaceService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/GetAllForUiPacker
      * 提供给UI地点选择器的服务接口
      */
 
-    @POST('getAllForUiPacker')
+    @POST('getAllForUiPicker')
     getAllForUiPacker(
         @Payload
         _req:GetAllPlaceForUiPickerInput

@@ -32,7 +32,7 @@ const CUSTOMERS_DATA = setupData(100);
 
 export const CUSTOMERS = {
   // 支持值为 Object 和 Array
-  'GET /crm/customer/GetAllBySearch': (req: MockRequest) => {
+  'GET /CRM/Customer/GetAllForUiPicker': (req: MockRequest) => {
     const res: any = {
       items: [],
       total: 0,

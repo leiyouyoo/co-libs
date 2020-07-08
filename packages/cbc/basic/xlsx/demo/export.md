@@ -22,7 +22,7 @@ import { XlsxService } from '@co/cbc';
   selector: 'app-demo',
   template: `
     <button nz-button (click)="download()">Export</button>
-    <st [data]="users" [ps]="3" [columns]="columns" class="mt-sm"></st>
+    <co-st [data]="users" [ps]="3" [columns]="columns" class="mt-sm"></co-st>
     `,
 })
 export class DemoComponent {

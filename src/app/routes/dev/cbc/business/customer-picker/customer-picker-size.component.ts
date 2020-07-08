@@ -12,7 +12,7 @@ import { Component } from '@angular/core';
 
       <br /><br />
 
-      <co-customer-picker [coSize]="size" [(ngModel)]="selectedValue"> </co-customer-picker>
+      <co-customer-picker [coSize]="size" coMode="tags" [coValueMember]="valueMember" [coAutoClearSearchValue]="autoClearSearchValue" [(ngModel)]="selectedValue"> </co-customer-picker>
 
       <p>{{ selectedValue }}</p>
     </div>
@@ -20,5 +20,7 @@ import { Component } from '@angular/core';
 })
 export class CustomerPickerSizeComponent {
   size = 'default';
-  selectedValue: number = 2;
+  valueMember = "name";
+  autoClearSearchValue = false;
+  selectedValue: string;
 }

@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { BaseApi, BaseUrl, DELETE, GET, Payload, POST, PUT } from '@co/common';
+import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 import { ListResultDto, PagedResultDto } from '@co/core';
 
 import { FileDto,ImportResultDto,ProductExportInput,OrderExportInput, } from './storage.types';
@@ -9,17 +9,20 @@ import { FileDto,ImportResultDto,ProductExportInput,OrderExportInput, } from './
 @BaseUrl('/storage/CSPExcel')
 @Injectable({ providedIn: 'root' })
 export class CSPExcelService extends BaseApi {
-
+  constructor(injector: Injector) {
+    super(injector);
+  }
+  
    
     /**
      * @param url /Storage/CSPExcel/AnalysisExcel
      * CSP清关发票解析
      */
 
-    @POST('analysisExcel')
+    @FORM('analysisExcel')
     analysisExcel(
         @Payload
-        _req: {file:file,headers:any[],apiParameterName?:string,isBackgroundJob?:boolean,apiTypes?:number,url:string} 
+        _req: {file:File,headers:any[],apiParameterName?:string,isBackgroundJob?:boolean,apiTypes?:number,url:string} 
 
     ): Observable<any> {
         return null as any
@@ -31,7 +34,7 @@ export class CSPExcelService extends BaseApi {
      * CSP清关发票导出excel
      */
 
-    @POST('cusClearanceInvoiceExportExcelAsync')
+    @FORM('cusClearanceInvoiceExportExcelAsync')
     cusClearanceInvoiceExportExcelAsync(
         @Payload
         _req: {sheetName?:string,templateName?:string,headers?:any[],apiTypes?:number,url:string,parametersJsonStr?:string,isBackgroundJob?:boolean} 
@@ -46,10 +49,10 @@ export class CSPExcelService extends BaseApi {
      * 导入产品
      */
 
-    @POST('productImport')
+    @FORM('productImport')
     productImport(
         @Payload
-        _req: {file?:file} 
+        _req: {file?:File} 
 
     ): Observable<ImportResultDto> {
         return null as any
@@ -76,10 +79,10 @@ export class CSPExcelService extends BaseApi {
      * 采购订单导入
      */
 
-    @POST('orderImport')
+    @FORM('orderImport')
     orderImport(
         @Payload
-        _req: {file?:file} 
+        _req: {file?:File} 
 
     ): Observable<ImportResultDto> {
         return null as any

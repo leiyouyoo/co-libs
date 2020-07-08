@@ -26,7 +26,7 @@ import { STColumn, STComponent } from '@co/cbc/web/st';
       <button (click)="st.clearStatus(); st.reload()" nz-button>Clear Status</button>
       <button (click)="changeImg()" nz-button>Change Img Data</button>
     </div>
-    <st #st [data]="url" [columns]="columns"></st>
+    <co-st #st [data]="url" [columns]="columns"></co-st>
   `,
 })
 export class DemoComponent {
@@ -44,7 +44,7 @@ export class DemoComponent {
   ];
 
   changeImg(): void {
-    this.st.setRow(0, { picture: { thumbnail: 'https://ng-alain.com/assets/img/logo-color.svg' } }, { refreshSchema: true, emitReload: false });
+    this.st.setRow(0, { picture: { thumbnail: 'https://ng-alain.com/assets/img/logo-color.svg' }, _values: [] }, { refreshSchema: true, emitReload: false });
   }
 }
 ```

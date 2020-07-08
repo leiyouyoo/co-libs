@@ -1,9 +1,9 @@
-<nz-select [nzServerSearch]="nzServerSearch" nzShowSearch [nzMaxTagCount]="coMaxMultipleCount"
+<nz-select [nzServerSearch]="nzServerSearch" [nzShowSearch]="coShowSearch" [nzMaxTagCount]="coMaxMultipleCount"
   [nzDropdownRender]="renderTemplate" nzDropdownMatchSelectWidth="false" [nzNotFoundContent]="coNotFoundContent"
   [nzMaxTagPlaceholder]="tagPlaceHolder" [nzMode]="coMode" [nzOpen]="coOpen" [nzSize]="coSize"
-  [nzAutoFocus]="coAutoFocus" [nzPlaceHolder]="coPlaceHolder" [nzAllowClear]="coAllowClear" [(ngModel)]="value"
-  [nzFilterOption]="coFilterOption" (nzOnSearch)="onSearch($event)" (nzScrollToBottom)="onLoadMore()"
-  (nzOpenChange)="onOpenChanged($event)"
+  [nzAutoClearSearchValue]="coAutoClearSearchValue" [nzAutoFocus]="coAutoFocus" [nzPlaceHolder]="coPlaceHolder"
+  [nzAllowClear]="coAllowClear" [(ngModel)]="value" [nzFilterOption]="coFilterOption" (nzOnSearch)="onSearch($event)"
+  (nzScrollToBottom)="onLoadMore()" (nzOpenChange)="onOpenChanged($event)"
   [nzDropdownClassName]="coDropdownMode === 'table' ? 'co-picker__drowpdown--table' : ''"
   [nzDropdownStyle]="coDropdownStyle" (nzBlur)="onBlur($event)" (nzFocus)="onFocus($event)"
   (ngModelChange)="onChanged($event)">
@@ -38,12 +38,12 @@
   </div>
 </nz-select>
 
-<nz-select-arrow [search]="coOpen"></nz-select-arrow>
+<nz-select-arrow *ngIf="!isSearching" [search]="coOpen"></nz-select-arrow>
 
-<ng-template #renderTemplate>
+<!-- <ng-template #renderTemplate>
   <div *ngIf="isLoading && hasMore" class="co-picker__loading">
     <nz-spin></nz-spin>
   </div>
-</ng-template>
+</ng-template> -->
 
 <ng-template #tagPlaceHolder let-selectedList> (+{{ selectedList.length }}) </ng-template>

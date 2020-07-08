@@ -1,7 +1,7 @@
 ---
 type: Business
-title: County-picker
-order: 1
+title: county-picker
+order: 3
 subtitle: 区县选择器
 cols: 2
 module: import { CountyPickerModule } from '@co/cbc';
@@ -11,7 +11,7 @@ module: import { CountyPickerModule } from '@co/cbc';
 
 ## API
 
-### customer-picker 
+### county-picker 
 
 | 成员 | 说明 | 类型 | 默认值 |
 |----|----|----|-----|
@@ -25,6 +25,7 @@ module: import { CountyPickerModule } from '@co/cbc';
 | `[coAllowClear]` | 是否允许清除 | `boolean` | `true`|
 | `[coAutoFocus]` | 是否自动聚焦 | `boolean` | `false` |
 | `[coAutoClearSearchValue]` | 是否自动清除搜索值 | `boolean` | `true` |
+| `[coShowSearch]` | 单选框是否启用搜索 | `boolean` | `true` |
 | `[coDisabled]` | 是否禁用 | `boolean` | `false` |
 | `[coOpen]` | 是否打开下拉框 | `boolean` | `false` |
 | `[coLabelMember]` | 显示成员 | `string` | `name` |
@@ -39,7 +40,7 @@ module: import { CountyPickerModule } from '@co/cbc';
 
 ## 方法
 
-### customer-picker
+### county-picker
 
 | 名称 | 说明 |
 | --- | --- |
@@ -50,7 +51,7 @@ module: import { CountyPickerModule } from '@co/cbc';
 
 ## 事件
 
-### customer-picker
+### county-picker
 
 | 名称 | 说明 |
 | --- | --- |

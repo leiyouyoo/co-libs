@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { BaseApi, BaseUrl, DELETE, GET, Payload, POST, PUT } from '@co/common';
+import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 import { ListResultDto, PagedResultDto } from '@co/core';
 
 import { UploadResultDto,GetFileInfoDto,ChunkUploadResultDto, } from './storage.types';
@@ -9,17 +9,20 @@ import { UploadResultDto,GetFileInfoDto,ChunkUploadResultDto, } from './storage.
 @BaseUrl('/storage/File')
 @Injectable({ providedIn: 'root' })
 export class FileService extends BaseApi {
-
+  constructor(injector: Injector) {
+    super(injector);
+  }
+  
    
     /**
      * @param url /Storage/File/Upload
      * 上传文件
      */
 
-    @POST('upload')
+    @FORM('upload')
     upload(
         @Payload
-        _req: {file?:file,fileName?:string} 
+        _req: {file?:File,fileName?:string} 
 
     ): Observable<UploadResultDto> {
         return null as any
@@ -61,10 +64,10 @@ export class FileService extends BaseApi {
      * 分片上传
      */
 
-    @POST('chunkUpload')
+    @FORM('chunkUpload')
     chunkUpload(
         @Payload
-        _req: {lastModified?:string,totalChunk?:number,chunkIndex?:number,file?:file,fileName?:string} 
+        _req: {lastModified?:string,totalChunk?:number,chunkIndex?:number,file?:File,fileName?:string} 
 
     ): Observable<ChunkUploadResultDto> {
         return null as any

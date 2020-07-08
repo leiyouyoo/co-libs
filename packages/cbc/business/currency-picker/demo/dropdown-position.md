@@ -24,7 +24,7 @@ import { Component } from '@angular/core';
   </div>
   `,
 })
-export class CustomerPickerDropdownPositionComponent {
+export class CurrencyPickerDropdownPositionComponent {
   mode = 'multiple';
   maxMultipleCount = 2;
   selectedValue: number[] = [2, 10, 23, 78, 90, 100];

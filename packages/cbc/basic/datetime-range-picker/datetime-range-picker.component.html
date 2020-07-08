@@ -1,0 +1,63 @@
+<!-- <nz-modal [nzStyle]="{ top: '500px',left:'0px' }" [nzVisible]="createLocationModalVisible" [nzTitle]="selectDate"
+    (nzOnCancel)="createLocationModalVisible = false" (nzOnOk)="saveLocation()" nzWidth="330"></nz-modal>
+<div #container style="display: flex;align-items: flex-end;"></div>
+<ng-template #actionTpl>
+    <div class="time-BG">
+        <div class="date-picker">
+            <span class="iconfont icon-icon_xiangzuox" (click)="lessTime($event)"></span>
+            <div style="width: 30%; margin-right: 5px;" (click)="selDate(item)" *ngFor="let item of dateList"
+                [ngClass]="{'red': item.select}">{{item.date|date:'yyyy-MM-dd'}}</div>
+            <span class="iconfont icon-icon_xiangyoux" (click)="addTime($event)"></span>
+        </div>
+        <div class="time-picker">
+            <div style="width:90px;" [ngClass]="{'disable': ComparisonTime(item)}" *ngFor="let item of timeList"
+                (click)="!ComparisonTime(item)&&selTime(item)">
+                {{item.time}}
+            </div>
+        </div>
+    </div>
+</ng-template> -->
+
+<div class="total">
+  <!-- todo i18n -->
+  <input
+    #dataPickerInput
+    nz-input
+    [placeholder]="'Select Date'"
+    nzPopoverPlacement="bottom"
+    nz-popover
+    nzPopoverTrigger="click"
+    [(nzVisible)]="isShowTime"
+    [(ngModel)]="outTimeStr"
+    [nzPopoverContent]="contentTemplate"
+  />
+  <ng-template #contentTemplate>
+    <div class="time-BG">
+      <div class="date-picker">
+        <i nz-icon nzType="left" nzTheme="outline" style="padding-top: 5px;font-size: 22px;" (click)="lessTime($event)"></i>
+        <div
+          class="date-picker-date"
+          (click)="selDate(item)"
+          *ngFor="let item of dateList"
+          [ngClass]="{ white: item.select }"
+        >
+          <p>{{ item.remark }}</p>
+          <p>{{ item.date | date: 'yyyy-MM-dd' }}</p>
+        </div>
+        <i nz-icon nzType="right" nzTheme="outline" style="padding-top: 5px;font-size: 22px;" (click)="addTime($event)"></i>
+      </div>
+      <div class="time-picker">
+        <div *ngFor="let item of timeList">
+          <div
+            style="width:110px;"
+            *ngIf="(isToday && item.index > isTodayHour) || !isToday"
+            [ngClass]="{ timeBorder: (isToday && item.index > isTodayHour) || !isToday }"
+            (click)="selTime(item)"
+          >
+            {{ item.time }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

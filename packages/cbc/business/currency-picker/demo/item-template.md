@@ -26,7 +26,7 @@ import { Component } from '@angular/core';
   </div>
   `,
 })
-export class CustomerPickerItemTemplateComponent {
+export class CurrencyPickerItemTemplateComponent {
   selectedValue: number = 2;
 }
 

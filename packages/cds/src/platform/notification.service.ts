@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { BaseApi, BaseUrl, DELETE, GET, Payload, POST, PUT } from '@co/common';
+import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 import { ListResultDto, PagedResultDto } from '@co/core';
 
 import { GetNotificationsOutput,EntityDto,GetNotificationSettingsOutput,UpdateNotificationSettingsInput,SendMessageModel, } from './platform.types';
@@ -9,7 +9,10 @@ import { GetNotificationsOutput,EntityDto,GetNotificationSettingsOutput,UpdateNo
 @BaseUrl('/platform/Notification')
 @Injectable({ providedIn: 'root' })
 export class NotificationService extends BaseApi {
-
+  constructor(injector: Injector) {
+    super(injector);
+  }
+  
    
     /**
      * @param url /Platform/Notification/GetUserNotifications

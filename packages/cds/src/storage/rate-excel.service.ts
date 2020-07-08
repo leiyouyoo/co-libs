@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { BaseApi, BaseUrl, DELETE, GET, Payload, POST, PUT } from '@co/common';
+import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 import { ListResultDto, PagedResultDto } from '@co/core';
 
 import {  } from './storage.types';
@@ -9,17 +9,20 @@ import {  } from './storage.types';
 @BaseUrl('/storage/RateExcel')
 @Injectable({ providedIn: 'root' })
 export class RateExcelService extends BaseApi {
-
+  constructor(injector: Injector) {
+    super(injector);
+  }
+  
    
     /**
      * @param url /Storage/RateExcel/ImportExcelToRate
      * 
      */
 
-    @POST('importExcelToRate')
+    @FORM('importExcelToRate')
     importExcelToRate(
         @Payload
-        _req: {oceanId?:string,file:file,type?:number} 
+        _req: {oceanId?:string,file:File,type?:number} 
 
     ): Observable<any> {
         return null as any
@@ -31,10 +34,10 @@ export class RateExcelService extends BaseApi {
      * 
      */
 
-    @POST('importExcelToTruck')
+    @FORM('importExcelToTruck')
     importExcelToTruck(
         @Payload
-        _req: {oceanId?:string,file:file,type?:number} 
+        _req: {oceanId?:string,file:File,type?:number} 
 
     ): Observable<any> {
         return null as any

@@ -674,9 +674,6 @@ export class _HttpClient {
       body,
       params,
       ...options,
-      headers: {
-        'content-type': `application/x-www-form-urlencoded`,
-      },
     });
   }
 

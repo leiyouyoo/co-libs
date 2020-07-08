@@ -27,7 +27,7 @@ import { STColumn } from '@co/cbc/web/st';
   <div class="mb-md">
     <nz-checkbox-group [(ngModel)]="customColumns" name="customColumns" (ngModelChange)="st.resetColumns({ emitReload: true })"></nz-checkbox-group>
   </div>
-  <st #st [data]="users" [columns]="columns">
+  <co-st #st [data]="users" [columns]="columns">
     <ng-template st-row="customTitle" type="title" let-c>
       {{ c.title.text }}
       <span nz-dropdown [nzDropdownMenu]="menuTpl" nzTrigger="click" [nzClickHide]="false" nzPlacement="bottomRight">
@@ -43,7 +43,7 @@ import { STColumn } from '@co/cbc/web/st';
     <ng-template st-row="custom" let-item let-index="index">
       <span nz-tooltip [nzTooltipTitle]="'年龄：' + item.age">tooltip: {{item.age}}-{{index}}</span>
     </ng-template>
-  </st>
+  </co-st>
   `,
 })
 export class ComponentsStRenderComponent {

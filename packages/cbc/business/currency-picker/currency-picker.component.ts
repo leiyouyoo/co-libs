@@ -1,11 +1,9 @@
 import { ChangeDetectorRef, ChangeDetectionStrategy, Component, forwardRef, ViewEncapsulation } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import * as _ from 'lodash';
-
 import { Observable } from 'rxjs';
 
-import { CustomerService } from '@co/cds';
+import { CurrencyService } from '@co/cds';
 import { PickerComponentBase } from '@co/cbc/core';
 
 /**
@@ -30,15 +28,17 @@ import { PickerComponentBase } from '@co/cbc/core';
 export class CurrencyPickerComponent extends PickerComponentBase {
   //#region  构造函数
 
-  constructor(cdr: ChangeDetectorRef, private customerService: CustomerService) {
+  constructor(cdr: ChangeDetectorRef, private currencyService: CurrencyService) {
     super(cdr);
 
-    this.coLabelMember = 'fax';
+    this.coLabelMember = 'name';
+    this.coShowSearch = false;
   }
 
   //#endregion
 
   fetchRemoteData(_condition: any): Observable<any> {
-    return this.customerService.getAllBySearch(_condition);
+    console.log(_condition)
+    return this.currencyService.getAllForUiPicker(_condition);
   }
 }

@@ -1,18 +1,18 @@
 ---
 title:
-  zh-CN: 客户选择器方法使用样例
+  zh-CN: 币种选择器方法使用样例
   en-US: Methods Usage
 order: 6
 ---
 
 ## zh-CN
 
-客户选择器方法(focus,blur,clear)使用样例.
+币种选择器方法(focus,blur,clear)使用样例.
 
 
 ```ts
 import { Component, ViewChild } from '@angular/core';
-import { CustomerPickerComponent } from '@co/cbc';
+import { CurrencyPickerComponent } from '@co/cbc';
 
 @Component({
   selector: 'app-demo',
@@ -28,21 +28,21 @@ import { CustomerPickerComponent } from '@co/cbc';
   </div>
   `,
 })
-export class CustomerPickerMethodsComponent {
-  @ViewChild(CustomerPickerComponent, { static: true }) coCustomerPickerComponent!: CustomerPickerComponent;
+export class CurrencyPickerMethodsComponent {
+  @ViewChild(CurrencyPickerComponent, { static: true }) coCurrencyPickerComponent!: CurrencyPickerComponent;
 
   selectedValue: number = 2;
 
   onFocus() {
-    this.coCustomerPickerComponent.focus();
+    this.coCurrencyPickerComponent.focus();
   }
 
   onBlur() {
-    this.coCustomerPickerComponent.blur();
+    this.coCurrencyPickerComponent.blur();
   }
 
   onClear() {
-    this.coCustomerPickerComponent.clear();
+    this.coCurrencyPickerComponent.clear();
   }
 }
 
