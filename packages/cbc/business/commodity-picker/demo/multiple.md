@@ -17,8 +17,8 @@ import { Component } from '@angular/core';
   selector: 'app-demo',
   template: `
   <div>
-    <co-product-picker  [(ngModel)]="selectedValue" [coMode]="mode" [coMaxMultipleCount]="maxMultipleCount" style="width:300px">
-    </co-product-picker>
+    <co-commodity-picker  [(ngModel)]="selectedValue" [coMode]="mode" [coMaxMultipleCount]="maxMultipleCount" style="width:300px">
+    </co-commodity-picker>
     <p>{{selectedValue}}</p>
   </div>
   `,

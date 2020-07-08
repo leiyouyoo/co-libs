@@ -1,17 +1,17 @@
 ---
 type: Business
-title: product-picker
+title: commodity-picker
 order: 1
 subtitle: 品名选择器
 cols: 2
-module: import { ProductPickerModule } from '@co/cbc';
+module: import { CommodityPickerModule } from '@co/cbc';
 ---
 
-币种选择器。
+品名选择器。
 
 ## API
 
-### product-picker 
+### commodity-picker 
 
 | 成员 | 说明 | 类型 | 默认值 |
 |----|----|----|-----|
@@ -39,7 +39,7 @@ module: import { ProductPickerModule } from '@co/cbc';
 
 ## 方法
 
-### product-picker
+### commodity-picker
 
 | 名称 | 说明 |
 | --- | --- |
@@ -50,7 +50,7 @@ module: import { ProductPickerModule } from '@co/cbc';
 
 ## 事件
 
-### product-picker
+### commodity-picker
 
 | 名称 | 说明 |
 | --- | --- |

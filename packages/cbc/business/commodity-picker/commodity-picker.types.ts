@@ -3,7 +3,7 @@
  *商品信息
  */
 
-export class ProductFilter {
+export class CommodityFilter {
   isDeleted?: boolean = false;
   type?: number;
 }

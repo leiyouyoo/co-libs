@@ -18,8 +18,8 @@ import { Component } from '@angular/core';
   selector: 'app-demo',
   template: `
   <div style="margin-top:8px;float:right;">
-    <co-product-picker coSize="default" [coDropdownStyle]="{width:'500px',left:'-60%'}"  coDropdownMode="table" [coDropdownColumns]="dropdownColumns"  [(ngModel)]="selectedValue" [coMode]="mode" [coMaxMultipleCount]="maxMultipleCount" style="width:300px">
-    </co-product-picker>
+    <co-commodity-picker coSize="default" [coDropdownStyle]="{width:'500px',left:'-60%'}"  coDropdownMode="table" [coDropdownColumns]="dropdownColumns"  [(ngModel)]="selectedValue" [coMode]="mode" [coMaxMultipleCount]="maxMultipleCount" style="width:300px">
+    </co-commodity-picker>
     <p>{{selectedValue}}</p>
   </div>
   `,

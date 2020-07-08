@@ -24,8 +24,8 @@ import { Component } from '@angular/core';
 
     <br /><br />
 
-    <co-product-picker [coSize]="size"  [(ngModel)]="selectedValue">
-    </co-product-picker>
+    <co-commodity-picker [coSize]="size"  [(ngModel)]="selectedValue">
+    </co-commodity-picker>
 
     <p>{{selectedValue}}</p>
   </div>
