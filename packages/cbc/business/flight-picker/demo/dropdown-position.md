@@ -27,21 +27,11 @@ import { Component } from '@angular/core';
 export class FlightPickerDropdownPositionComponent {
   mode = 'multiple';
   maxMultipleCount = 2;
-  selectedValue: string[] = ['abbebcea-11af-41c0-aeb0-61f1c9ad0e4f','872f95c5-0604-4fba-8b8a-db9eac27a228'];
+  selectedValue: string[] = [];
   dropdownColumns: any[] = [{
-    name: 'name',
+    name: 'no',
     label: '名称',
     width: 400
-  },
-  {
-    name: 'tel',
-    label: '电话',
-    width: 80
-  },
-  {
-    name: 'fax',
-    label: '传真',
-    width: 80
   }
   ]
 }

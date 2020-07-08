@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, ViewEncapsulation, OnInit } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { PickerComponentBase } from '@co/cbc/core';
 import { FlightService } from '@co/cds';
@@ -23,10 +23,12 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class FlightPickerComponent extends PickerComponentBase {
+export class FlightPickerComponent extends PickerComponentBase implements OnInit {
   constructor(cdr: ChangeDetectorRef, private flightService: FlightService) {
     super(cdr);
+    this.coLabelMember = 'no';
   }
+
   fetchRemoteData(_condition: any): Observable<any> {
     return this.flightService.getAll(_condition);
   }

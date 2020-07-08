@@ -2,7 +2,7 @@ import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
+import { ListResultDto, PagedResultDto, OwnerLessPagedResultDto } from '@co/core';
 
 import { <% for (var entityName of serveSelectedEntityList) {%><%= entityName %>,<% } %> } from './<%= pageName %>.types';
 
@@ -12,8 +12,8 @@ export class <%= classify(name) %>Service extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
-  
-  <% for (var item of data) { %> 
+
+  <% for (var item of data) { %>
     /**
      * @param url <%= item.url %>
      * <%= item.api[item.type].summary %>
@@ -22,7 +22,7 @@ export class <%= classify(name) %>Service extends BaseApi {
     @<%= item.newType.toUpperCase() %>('<%= item.api[item.type].operationId.replace(item.api[item.type].operationId[0],item.api[item.type].operationId[0].toLowerCase()) %>')
     <%= item.api[item.type].operationId.replace(item.api[item.type].operationId[0],item.api[item.type].operationId[0].toLowerCase()) %>(
         @Payload
-        _req:<% if (item.reqEntity){%><%= item.reqEntity %><% } 
+        _req:<% if (item.reqEntity){%><%= item.reqEntity %><% }
     else {%> <%= JSON.stringify(item.reqJson).replace(/\"/g,"") %> <% } %>
 
     ): Observable<<%= item.resEntity %>> {

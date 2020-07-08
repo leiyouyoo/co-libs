@@ -15,3 +15,9 @@ export class NameValueDto<T> {
   name: T;
   value: T;
 }
+
+export class OwnerLessPagedResultDto<T> {
+  isSuperior:boolean;
+  totalCount:number;
+  items:T[]
+}

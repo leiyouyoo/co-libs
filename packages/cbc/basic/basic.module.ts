@@ -16,8 +16,5 @@ const MODULES = [ImageModule, EllipsisModule, NoticeIconModule, DatePickerModule
 @NgModule({ exports: MODULES })
 export class CoBasicCompoentsModule {
   constructor() {
-    console.warn(
-      "The `DeloncbcModule` has been deprecated and will be removed in 10.0.0. Please use secondary entry instead.\ne.g. `import { STModule } from 'ng-zorro-antd/st';`",
-    );
   }
 }
