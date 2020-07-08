@@ -5,21 +5,21 @@ import * as _ from 'lodash';
 
 import { Observable } from 'rxjs';
 
-import { ProductService } from '@co/cds';
+import { CommodityService } from '@co/cds';
 import { PickerComponentBase } from '@co/cbc/core';
 
 /**
  *品名选择器控件
  */
 @Component({
-  selector: 'co-product-picker',
-  exportAs: 'coProductPicker',
+  selector: 'co-commodity-picker',
+  exportAs: 'coCommodityPicker',
   templateUrl: '../templates/picker-template.component.html',
   host: { '[class.co-picker]': 'true' },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => ProductPickerComponent),
+      useExisting: forwardRef(() => CommodityPickerComponent),
       multi: true,
     },
   ],
@@ -27,10 +27,10 @@ import { PickerComponentBase } from '@co/cbc/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class ProductPickerComponent extends PickerComponentBase {
+export class CommodityPickerComponent extends PickerComponentBase {
   //#region  构造函数
 
-  constructor(cdr: ChangeDetectorRef, private productService: ProductService) {
+  constructor(cdr: ChangeDetectorRef, private commodityService: CommodityService) {
     super(cdr);
 
     this.coLabelMember = 'name';
@@ -39,6 +39,6 @@ export class ProductPickerComponent extends PickerComponentBase {
   //#endregion
 
   fetchRemoteData(_condition: any): Observable<any> {
-    return this.productService.GetAll(_condition);
+    return this.commodityService.getAllForUiPicker(_condition);
   }
 }

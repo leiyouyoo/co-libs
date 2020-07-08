@@ -11,7 +11,7 @@ import { PlacePickerModule } from '@co/cbc/business/place-picker';
 import { AreaPickerModule } from '@co/cbc/business/area-picker';
 import { RegionPickerModule } from '@co/cbc/business/region-picker';
 import { PortPickerModule } from '@co/cbc/business/port-picker';
-import { ProductPickerModule } from '@co/cbc/business/product-picker';
+import { CommodityPickerModule } from '@co/cbc/business/commodity-picker';
 import { ShipnamePickerModule } from '@co/cbc/business/shipname-picker';
 import { YoyagePickerModule } from '@co/cbc/business/voyage-picker';
 
@@ -25,7 +25,7 @@ const EXPORT_MODULES: any[] = [
   ShipnamePickerModule,
   YoyagePickerModule,
   FlightPickerModule,
-  ProductPickerModule,
+  CommodityPickerModule,
   PlacePickerModule,
   AreaPickerModule,
   RegionPickerModule,
@@ -37,4 +37,4 @@ const IMPORT_MODULES: any[] = [CdsModule];
  * 业务组件模块
  */
 @NgModule({ imports: IMPORT_MODULES, exports: EXPORT_MODULES })
-export class CoBusinessComponentsModule {}
+export class CoBusinessComponentsModule { }

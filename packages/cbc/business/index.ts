@@ -4,7 +4,7 @@ export * from '@co/cbc/business/county-picker';
 export * from '@co/cbc/business/currency-picker';
 export * from '@co/cbc/business/container-picker';
 export * from '@co/cbc/business/data-dictionary-picker';
-export * from '@co/cbc/business/product-picker';
+export * from '@co/cbc/business/commodity-picker';
 export * from '@co/cbc/business/shipname-picker';
 export * from '@co/cbc/business/voyage-picker';
 export * from '@co/cbc/business/flight-picker';

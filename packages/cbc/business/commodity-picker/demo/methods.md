@@ -12,7 +12,7 @@ order: 6
 
 ```ts
 import { Component, ViewChild } from '@angular/core';
-import { ProductPickerComponent } from '@co/cbc';
+import { CommodityPickerComponent } from '@co/cbc';
 
 @Component({
   selector: 'app-demo',
@@ -23,26 +23,26 @@ import { ProductPickerComponent } from '@co/cbc';
       <button nz-button nzType="default" (click)='onBlur()'>失去焦点</button>
       <button nz-button nzType="default" (click)='onClear()'>清除所有值</button>
     </div>
-    <co-product-picker  [(ngModel)]="selectedValue">
-    </co-product-picker>
+    <co-commodity-picker  [(ngModel)]="selectedValue">
+    </co-commodity-picker>
   </div>
   `,
 })
 export class CustomerPickerMethodsComponent {
-  @ViewChild(ProductPickerComponent, { static: true }) coProductPickerComponent!: ProductPickerComponent;
+  @ViewChild(CommodityPickerComponent, { static: true }) coCommodityPickerComponent!: CommodityPickerComponent;
 
   selectedValue: number = 222;
 
   onFocus() {
-    this.coProductPickerComponent.focus();
+    this.coCommodityPickerComponent.focus();
   }
 
   onBlur() {
-    this.coProductPickerComponent.blur();
+    this.coCommodityPickerComponent.blur();
   }
 
   onClear() {
-    this.coProductPickerComponent.clear();
+    this.coCommodityPickerComponent.clear();
   }
 }
 
