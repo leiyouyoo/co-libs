@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, POST, BaseHeaders, Payload } from '@co/common';
 import { PagedResultDto } from '@co/core';
-import { CustomerDto, CustomerType } from './public_api';
+import { CustomerDto, CustomerSearchScope } from './public_api';
 
 /**
  * 客户服务
@@ -21,6 +21,7 @@ export class CustomerService extends BaseApi {
       searchText?: string;
       includeDeleted?: boolean;
       sorting?: string;
+      scope?: CustomerSearchScope,
       maxResultCount?: number;
       skipCount?: number;
     },

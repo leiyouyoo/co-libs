@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { CustomerSearchScope } from '@co/cds';
 
 @Component({
   selector: 'app-demo',
@@ -8,7 +9,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     <nz-form-item>
       <nz-form-label nzRequired nzFor="customer">客户</nz-form-label>
       <nz-form-control nzErrorTip="Please input your customer!">
-        <co-customer-picker style="width: 100%;" formControlName="customerId"> </co-customer-picker>
+        <co-customer-picker style="width: 100%;" formControlName="customerId" [coFilter]="customerFilter"> </co-customer-picker>
       </nz-form-control>
     </nz-form-item>
     </form>
@@ -17,6 +18,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class CustomerPickerBasicComponent implements OnInit {
   validateForm!: FormGroup;
   selectedValue: number = 2;
+  customerFilter: any = {
+    scope: CustomerSearchScope.Department
+  };
 
   constructor(private fb: FormBuilder) { }
 
