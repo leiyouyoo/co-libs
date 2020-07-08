@@ -8,13 +8,14 @@ import { SEContainerComponent } from './se-container.component';
 import { SETitleComponent } from './se-title.component';
 import { SEComponent } from './se.component';
 import { CoValidationDirective } from './co-validation.directive';
+import { TranslateModule } from '@ngx-translate/core';
 
 const COMPONENTS = [SEContainerComponent, SEComponent, SETitleComponent];
 const DIRECTIVES = [CoValidationDirective];
 const EXPORTS = [...COMPONENTS, ...DIRECTIVES];
 
 @NgModule({
-  imports: [CommonModule, CoUtilModule, NzToolTipModule, NzIconModule, NzOutletModule],
+  imports: [CommonModule, CoUtilModule, NzToolTipModule, NzIconModule, NzOutletModule, TranslateModule],
   declarations: [...EXPORTS],
   exports: [...EXPORTS],
 })

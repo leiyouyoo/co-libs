@@ -31,7 +31,7 @@ interface ErrorInfo {
   template: `
     <ng-content></ng-content>
     <ng-template #templateRef>
-      <div class="${_coValidationPrefix}-red" *ngFor="let o of getDisplayErrors()">{{o.message}}</div>
+      <div class="${_coValidationPrefix}-red" *ngFor="let o of getDisplayErrors()">{{o.message | translate}}</div>
     </ng-template>
   `,
   styles: [
@@ -99,7 +99,7 @@ export class CoValidationDirective extends NzPopoverDirective implements OnInit,
         switch (data.type) {
           case 'required':
             if (this.coLabel) {
-              data.message = `${this.translateService.instant(this.coLabel)} ${this.translateService.instant('is required')}`
+              data.message = `${this.coLabel} 'is required'`
             }
             break;
           default:
