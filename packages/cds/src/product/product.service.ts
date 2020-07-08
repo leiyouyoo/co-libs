@@ -6,7 +6,7 @@ import { ProductDto } from './product.type';
 import { PagedResultDto } from '@co/core';
 
 //商品服务
-@BaseUrl('/CSP/Product')
+@BaseUrl('/csp/Product')
 @Injectable({ providedIn: 'root' })
 export class ProductService extends BaseApi {
   @GET('GetAll')
