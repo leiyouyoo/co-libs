@@ -164,6 +164,10 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
 
   //#region 公共方法
 
+  get isSearching() {
+    return this.nzSelectComponent.nzShowSearch;
+  }
+
   focus(): void {
     this.nzSelectComponent.focus();
   }

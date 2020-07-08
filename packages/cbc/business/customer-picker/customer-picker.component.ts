@@ -31,7 +31,7 @@ export class CustomerPickerComponent extends PickerComponentBase {
   constructor(cdr: ChangeDetectorRef, private customerService: CustomerService) {
     super(cdr);
 
-    this.coLabelMember = 'fax';
+    this.coLabelMember = 'name';
   }
 
   //#endregion
