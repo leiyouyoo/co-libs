@@ -10,6 +10,7 @@ import { CustomerPickerItemTemplateComponent } from './customer-picker-itemtempl
 import { CustomerPickerMethodsComponent } from './customer-picker-methods.component';
 import { CustomerPickerMultipleComponent } from './customer-picker-multiple.component';
 import { CustomerPickerSizeComponent } from './customer-picker-size.component';
+import { CustomerPickerTagsComponent } from './customer-picker-tags.component';
 
 const COMPONENTS = [
   CustomerPickerBasicComponent,
@@ -21,6 +22,7 @@ const COMPONENTS = [
   CustomerPickerMultipleComponent,
   CustomerPickerSizeComponent,
   CustomerPickerDropdownTableComponent,
+  CustomerPickerTagsComponent
 ];
 
 const routes: Routes = [
@@ -37,10 +39,11 @@ const routes: Routes = [
   { path: 'methods', component: CustomerPickerMethodsComponent },
   { path: 'multiple', component: CustomerPickerMultipleComponent },
   { path: 'size', component: CustomerPickerSizeComponent },
+  { path: 'tags', component: CustomerPickerTagsComponent },
 ];
 
 @NgModule({
   imports: [SharedModule, RouterModule.forChild(routes)],
   declarations: COMPONENTS,
 })
-export class CustomerPickerDemoModule {}
+export class CustomerPickerDemoModule { }
