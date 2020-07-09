@@ -41,8 +41,10 @@ import { Component } from '@angular/core';
   `
 })
 export class RegionPickerBasicComponent {
+    regionValue:any;
     mode = 'multiple';
     maxMultipleCount = 1;
+    showSeacrch:boolean = true;
     //入参
     regionReq = {
       AreaIds:["56c5cf93-1820-4bf5-b5da-fee418596fed"],
