@@ -1,2 +1,2 @@
-export { BillReportComponent } from './bill-report.component';
-export { BillReportModule } from './bill-report.module';
+export { ReportViewerComponent } from './report-viewer.component';
+export { ReportViewerModule } from './report-viewer.module';
