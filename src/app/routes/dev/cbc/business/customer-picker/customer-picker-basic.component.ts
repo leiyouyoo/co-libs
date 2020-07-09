@@ -5,7 +5,7 @@ import { CustomerSearchScope } from '@co/cds';
 @Component({
   selector: 'app-demo',
   template: `
-  <form class="form-style" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()" [nzLayout]="'vertical'">
+  <form class="form-style" nz-form [formGroup]="validateForm" [nzLayout]="'vertical'">
     <nz-form-item>
       <nz-form-label nzRequired nzFor="customer">客户</nz-form-label>
       <nz-form-control nzErrorTip="Please input your customer!">
