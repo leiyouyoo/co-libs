@@ -42,6 +42,7 @@ import { Component } from '@angular/core';
   `
 })
 export class AreaPickerBasicComponent {
+    areaValue:any;
     showSeacrch :boolean = false;
     mode = 'multiple';
     maxMultipleCount = 1;   

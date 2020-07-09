@@ -23,6 +23,7 @@ import { Component } from '@angular/core';
   `
 })
 export class CurrencyPickerBasicComponent {
+  selectedValue:any;
 }
 
 ```
