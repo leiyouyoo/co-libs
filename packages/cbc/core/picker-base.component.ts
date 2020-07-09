@@ -34,6 +34,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   @Input() coValueMember: string = 'id';
   @Input() coNotFoundContent: string | TemplateRef<NzSafeAny> | undefined = undefined;
   @Input() coItemRender: TemplateRef<NzSafeAny> | null = null;
+  @Input() coDropdownRender: TemplateRef<NzSafeAny> | null = null;
 
   @Input() coDebounceInputCharCount: number = 3;
   @Input() coDebounceTime: number = 500;

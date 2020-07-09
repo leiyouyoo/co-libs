@@ -10,7 +10,7 @@ import {
 	OnInit,
 	SimpleChanges
 } from "@angular/core";
-import {take, takeUntil} from "rxjs/internal/operators";
+import {take, takeUntil} from "rxjs/operators";
 
 const onChangesKey = Symbol('onChanges');
 const onInitKey = Symbol('onInit');
