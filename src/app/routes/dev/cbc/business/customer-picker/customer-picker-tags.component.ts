@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-demo',
   template: `
     <div>
-      <co-customer-picker [coSize]="size" coMode="tags" [coValueMember]="valueMember" [coAutoClearSearchValue]="autoClearSearchValue" [(ngModel)]="selectedValue"> </co-customer-picker>
+      <co-customer-picker [coSize]="size" coMode="tags" [coValueMember]="valueMember" [(ngModel)]="selectedValue"> </co-customer-picker>
       <p>{{ selectedValue }}</p>
     </div>
   `,
