@@ -14,6 +14,7 @@ import { PortPickerModule } from '@co/cbc/business/port-picker';
 import { CommodityPickerModule } from '@co/cbc/business/commodity-picker';
 import { ShipnamePickerModule } from '@co/cbc/business/shipname-picker';
 import { YoyagePickerModule } from '@co/cbc/business/voyage-picker';
+import { BillReportModule } from './bill-report';
 
 const EXPORT_MODULES: any[] = [
   CustomerPickerModule,
@@ -30,6 +31,7 @@ const EXPORT_MODULES: any[] = [
   AreaPickerModule,
   RegionPickerModule,
   PortPickerModule,
+  BillReportModule,
 ];
 const IMPORT_MODULES: any[] = [CdsModule];
 

@@ -28,3 +28,12 @@ module: import { SearchAreaLayoutModule } from '@co/cbc/layout';
 | `[coWidth]` | 单独指定宽度 | `number` | - | - |
 | `[coMarginRight]` | 单独指定间距 | `number` | - | - |
 
+### search-area-extra
+
+| 成员 | 说明 | 类型 | 默认值 | 全局配置 |
+|----|----|----|-----|------|
+| `[coAlign]` | 默认继承`<search-area-layout>`，可单独指定 | `'left' | 'center' | 'right'` | - | - |
+| `[coCols]` | 默认继承`<search-area-layout>`，可单独指定 | `number` | - | - |
+| `[coMarginRight]` | 默认继承`<search-area-layout>`，可单独指定 | `number` | - | - |
+| `[coMarginBottom]` | 默认继承`<search-area-layout>`，可单独指定 | `number` | - | - |
+| `[coWidth]` | 默认继承`<search-area-layout>`，可单独指定 | `number | 'auto'` | - | - |

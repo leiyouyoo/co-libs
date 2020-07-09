@@ -154,12 +154,6 @@ export class AbpHttpConfiguration {
     const contentType = response.headers.get('Content-Type');
     if (!contentType) {
       console.warn('Content-Type is not sent!');
-      return null;
-    }
-
-    if (contentType.indexOf('application/json') < 0) {
-      console.warn('Content-Type is not application/json: ' + contentType);
-      return null;
     }
 
     const responseObj = JSON.parse(JSON.stringify(response.body));
