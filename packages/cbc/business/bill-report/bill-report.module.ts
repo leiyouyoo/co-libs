@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { BillReportComponent } from '@co/cbc/business/bill-report/bill-report.component';
+import { BillReportComponent } from './bill-report.component';
 
 const COMPONENTS = [BillReportComponent];
 
