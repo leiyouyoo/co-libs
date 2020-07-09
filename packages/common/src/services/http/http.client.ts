@@ -923,6 +923,7 @@ export class _HttpClient {
   ): Observable<any> {
     this.begin();
     if (options.params) options.params = this.buildHttpParams(options.params);
+    if (options.body) options.body = this.buildHttpParams(options.body);
     return of(null).pipe(
       tap(() => this.begin()),
       switchMap(() => this.http.request(method, this.processUrl(url), options)),
