@@ -49,7 +49,7 @@ export class PortPickerComponent extends PickerComponentBase {
   //#endregion
 
   fetchRemoteData(_condition: any): Observable<any> {
-    if( this.portReq && this.portReq.RegionIds.length >0 ){
+    if( this.portReq ){
       return this.portService.getAllForUiPacker(_condition);
     }else {
       return [] as any;
@@ -61,7 +61,7 @@ export class PortPickerComponent extends PickerComponentBase {
     if( changes ){
 
     }
-    if( this.portReq && this.portReq.RegionIds.length >0 ){
+    if( this.portReq ){
 
       this.fetchRemoteData(this.portReq).subscribe((response: any) => {
 

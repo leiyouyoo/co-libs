@@ -1,3 +1,3 @@
 export * from './web.module';
-export * from './st'
-export * from './se'
+export * from '@co/cbc/web/st'
+export * from '@co/cbc/web/se'

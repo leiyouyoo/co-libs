@@ -4,10 +4,10 @@ import { FormsModule } from '@angular/forms';
 
 import { NzSelectModule, NzSpinModule } from 'ng-zorro-antd';
 
-import { ProductPickerComponent } from './product-picker.component';
+import { CommodityPickerComponent } from './commodity-picker.component';
 
 
-const COMPONENTS = [ProductPickerComponent];
+const COMPONENTS = [CommodityPickerComponent];
 
 /**
  * 品名选取器模块
@@ -17,4 +17,4 @@ const COMPONENTS = [ProductPickerComponent];
   declarations: [...COMPONENTS],
   exports: [...COMPONENTS],
 })
-export class ProductPickerModule { }
+export class CommodityPickerModule { }

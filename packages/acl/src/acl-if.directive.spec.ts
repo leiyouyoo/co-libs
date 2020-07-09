@@ -1,13 +1,13 @@
 import { Component, DebugElement } from '@angular/core';
 import { ComponentFixture, ComponentFixtureAutoDetect, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DelonACLModule } from './acl.module';
+import { CoACLModule } from './acl.module';
 import { ACLService } from './acl.service';
 import { ACLCanType } from './acl.type';
 
 const CLS = '.acl-ph';
 const CLS_NOT = '.unauthorized-acl-ph';
-describe('acl-if: directive', () => {
+describe('co-acl-if: directive', () => {
   let fixture: ComponentFixture<TestComponent>;
   let context: TestComponent;
   let dl: DebugElement;
@@ -15,7 +15,7 @@ describe('acl-if: directive', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [TestComponent],
-      imports: [DelonACLModule.forRoot()],
+      imports: [CoACLModule.forRoot()],
       providers: [{ provide: ComponentFixtureAutoDetect, useValue: true }],
     });
     fixture = TestBed.createComponent(TestComponent);
@@ -51,18 +51,18 @@ describe('acl-if: directive', () => {
 
   it('should be support complex acl value', () => {
     context.srv.setFull(false);
-    context.srv.setRole(['user']);
+    context.srv.setRoles(['user']);
     context.role = { role: ['user', 'manage'], mode: 'allOf' };
     fixture.detectChanges();
     expect(dl.queryAll(By.css(CLS)).length).toBe(0);
-    context.srv.setRole(['user', 'manage']);
+    context.srv.setRoles(['user', 'manage']);
     fixture.detectChanges();
     expect(dl.queryAll(By.css(CLS)).length).toBe(1);
   });
 
   it('should be show else when unauthorized', () => {
     context.srv.setFull(false);
-    context.srv.setRole(['user']);
+    context.srv.setRoles(['user']);
     context.role = 'admin';
     fixture.detectChanges();
     expect(dl.queryAll(By.css(CLS)).length).toBe(0);
@@ -75,7 +75,7 @@ describe('acl-if: directive', () => {
 
   it('should be specify then & else tempatel', () => {
     context.srv.setFull(false);
-    context.srv.setRole(['user']);
+    context.srv.setRoles(['user']);
     context.role = 'admin';
     fixture.detectChanges();
     expect(dl.queryAll(By.css('.thenBlock')).length).toBe(0);
@@ -95,13 +95,13 @@ describe('acl-if: directive', () => {
       it('should be show when user does not a user role', () => {
         context.except = true;
         fixture.detectChanges();
-        context.srv.setRole(['user']);
+        context.srv.setRoles(['user']);
         expect(dl.queryAll(By.css('.exceptBlock')).length).toBe(1);
       });
       it('should be hide when user has a admin role', () => {
         context.except = true;
         fixture.detectChanges();
-        context.srv.setRole(['admin']);
+        context.srv.setRoles(['admin']);
         expect(dl.queryAll(By.css('.exceptBlock')).length).toBe(0);
       });
     });
@@ -109,13 +109,13 @@ describe('acl-if: directive', () => {
       it('should be hide when user does not a user role', () => {
         context.except = false;
         fixture.detectChanges();
-        context.srv.setRole(['user']);
+        context.srv.setRoles(['user']);
         expect(dl.queryAll(By.css('.exceptBlock')).length).toBe(0);
       });
       it('should be show when user has a admin role', () => {
         context.except = false;
         fixture.detectChanges();
-        context.srv.setRole(['admin']);
+        context.srv.setRoles(['admin']);
         expect(dl.queryAll(By.css('.exceptBlock')).length).toBe(1);
       });
     });
@@ -143,5 +143,5 @@ describe('acl-if: directive', () => {
 class TestComponent {
   role: ACLCanType = 'admin';
   except = false;
-  constructor(public srv: ACLService) {}
+  constructor(public srv: ACLService) { }
 }

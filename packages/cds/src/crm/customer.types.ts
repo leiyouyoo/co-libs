@@ -23,6 +23,16 @@ export class CustomerDto {
 }
 
 /**
+ * 客户搜索范围
+ */
+export enum CustomerSearchScope {
+  All = 0,
+  User = 1,
+  Department = 2,
+  Company = 3
+}
+
+/**
  * 客户类型
  */
-export enum CustomerType {}
+export enum CustomerType { }
