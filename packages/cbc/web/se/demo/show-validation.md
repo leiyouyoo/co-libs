@@ -15,6 +15,7 @@ Display error
 
 ```ts
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-demo',
@@ -55,6 +56,20 @@ import { Component } from '@angular/core';
 `,
 })
 export class DemoComponent {
-  i: any = {};
+  formGroup: FormGroup;
+  person = {
+    name: '',
+    age: null,
+    type: 'ngModel',  
+  }
+  
+  constructor(private formBuilder: FormBuilder,
+  ) {
+    this.formGroup = this.formBuilder.group({
+      name: ['', [Validators.required]],
+      age: [null],
+      type: ['formControlName']
+    })
+  }
 }
 ```

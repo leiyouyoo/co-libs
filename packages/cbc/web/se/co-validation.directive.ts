@@ -99,7 +99,7 @@ export class CoValidationDirective extends NzPopoverDirective implements OnInit,
         switch (data.type) {
           case 'required':
             if (this.coLabel) {
-              data.message = `${this.coLabel} 'is required'`
+              data.message = `${this.coLabel} is required`
             }
             break;
           default:
