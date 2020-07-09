@@ -9,7 +9,7 @@ const COMPONENTS = [DevLayoutComponent, DevHomeComponent, DevPageComponent];
 
 const routes: Routes = [
   {
-    path: 'cbc',
+    path: '',
     children: [
       { path: '', redirectTo: 'customer-picker', pathMatch: 'full' },
       {
@@ -40,6 +40,22 @@ const routes: Routes = [
         path: 'place-picker',
         loadChildren: () => import('./cbc/business/place-picker/place-picker.module').then(m => m.PlacePickerDemoModule),
       },
+      {
+        path: 'acl',
+        loadChildren: () => import('./acl/acl.module').then(m => m.AclDemoModule),
+      },
+      {
+        path: 'container-picker',
+        loadChildren: () => import('./cbc/business/container-picker/container-picker.module').then(m => m.ContainerPickerModule),
+      },
+      {
+        path: 'layout-demo',
+        loadChildren: () => import('./cbc/layout/page-layout-demo/page-layout-demo.module').then(m => m.PageLayoutDemoModule),
+      },
+      {
+        path: 'report-viewer',
+        loadChildren: () => import('./cbc/business/report-viewer/report-viewer.module').then(m => m.ReportViewerDemoModule),
+      },
     ],
   },
   {
@@ -56,4 +72,5 @@ const routes: Routes = [
   imports: [SharedModule, RouterModule.forChild(routes)],
   declarations: COMPONENTS,
 })
-export class DevTestModule {}
+export class DevTestModule {
+}

@@ -69,6 +69,17 @@ module: import { SEModule } from '@co/cbc';
 
 用于展示标题，单独一行。
 
+### co-validation `Directive`
+
+表单验证提示，使用popover 提示，一般用于table
+- 在父元素上添加 coValidation 指令
+- 在表单元素上添加 coValidation 指令 （未实现）
+
+| 成员 | 说明 | 类型 | 默认值 |
+|----|----|----|-----|
+| `[error]` | 验证提示 | `{ [key: string]: string }` | - |
+| `[coLabel]` | 验证器名字 | `string` | 如需使用内置required 验证器必须指定coLabel |
+
 ## 常见问题
 
 ### 什么时候自定义组件id

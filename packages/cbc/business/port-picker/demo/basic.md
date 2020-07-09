@@ -29,6 +29,7 @@ import { Component } from '@angular/core';
   `
 })
 export class PortPickerBasicComponent {
+    selectedValue:any;
     mode = 'multiple';
     maxMultipleCount = 1;
     //入参

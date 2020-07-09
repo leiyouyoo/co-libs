@@ -17,15 +17,15 @@ const routes: Routes = [
   {
     path: 'auth',
     canActivate: [ ACLGuard ],
-    data: { guard: 'user1' }
+    data: { guard: 'r:USER' }
   },
   {
     path: 'auth',
     canActivate: [ ACLGuard ],
     data: {
       guard: <ACLType>{
-        role: [ 'user1' ],
-        ability: [ 10, 'USER-EDIT' ],
+        roles: [ 'USER' ],
+        abilities: [ 'USER-EDIT' ],
         mode: 'allOf'
       },
       guard_url: '/no-permisseion'
@@ -47,12 +47,12 @@ const routes: Routes = [
     component: GuardComponent,
     children: [
       // 角色限定
-      { path: 'auth', component: GuardAuthComponent, canActivate: [ ACLGuard ], data: { guard: 'user1' } },
-      { path: 'admin', component: GuardAdminComponent, canActivate: [ ACLGuard ], data: { guard: 'admin' } }
+      { path: 'auth', component: GuardAuthComponent, canActivate: [ ACLGuard ], data: { guard: 'r:USER' } },
+      { path: 'admin', component: GuardAdminComponent, canActivate: [ ACLGuard ], data: { guard: 'r:ADMIN' } }
     ],
     // 所有子路由有效
     canActivateChild: [ ACLGuard ],
-    data: { guard: <ACLType>{ role: [ 'user1' ], ability: [ 10, 'USER-EDIT' ], mode: 'allOf' } }
+    data: { guard: <ACLType>{ roles: [ 'USER' ], abilities: ['USER-EDIT' ], mode: 'allOf' } }
   },
   // 权限点限定
   { path: 'pro', loadChildren: './pro/pro.module#ProModule', canLoad: [ ACLGuard ], data: { guard: 1 } },

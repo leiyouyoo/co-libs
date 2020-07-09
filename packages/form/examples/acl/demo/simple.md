@@ -25,8 +25,8 @@ import { NzMessageService } from 'ng-zorro-antd/message';
     <sf [schema]="schema" (formSubmit)="submit($event)"></sf>
     <button nz-button nzType="primary" (click)="acl.setFull(true)">Full</button>
     <button nz-button nzType="primary" (click)="acl.setFull(false)">Not Full</button>
-    <button nz-button nzType="primary" (click)="acl.setRole(['admin'])">Admin Role</button>
-    <button nz-button nzType="primary" (click)="acl.setRole(['user'])">User Role</button>
+    <button nz-button nzType="primary" (click)="acl.setRoles(['admin'])">Admin Role</button>
+    <button nz-button nzType="primary" (click)="acl.setRoles(['user'])">User Role</button>
   `,
 })
 export class DemoComponent {

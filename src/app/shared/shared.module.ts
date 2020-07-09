@@ -60,7 +60,7 @@ const THIRDS = [
     RouterModule,
     ReactiveFormsModule,
     CoCommonModule.forChild(),
-    CoACLModule,
+    CoACLModule.forRoot(),
     CoFormModule,
     CoCacheModule,
     ...SHARED_DELON_MODULES,
@@ -84,4 +84,4 @@ const THIRDS = [
     ...COMPONENTS,
   ],
 })
-export class SharedModule {}
+export class SharedModule { }

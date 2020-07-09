@@ -23,7 +23,7 @@ import { Component } from '@angular/core';
   `
 })
 export class ChargingCodePickerBasicComponent {
-  
+  selectedValue:any;
 }
 
 ```
