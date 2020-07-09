@@ -16,6 +16,7 @@ import { STComponent } from './st.component';
 })
 export class CalcScrollDirective implements AfterContentInit, AfterViewChecked {
   @Input() @InputBoolean() disableCalcX = false;
+  @Input() @InputBoolean() disableCalcY = false;
   el: HTMLElement;
   lastHeight = 0;
 
@@ -46,9 +47,10 @@ export class CalcScrollDirective implements AfterContentInit, AfterViewChecked {
     setTimeout(() => {
       const thead = this.el.querySelector('.ant-table-thead');
       const tableContent = this.el.querySelector('.ant-table-content table');
+      // const pagination
       this.nzTableComponent.nzScroll = {
         x: this.disableCalcX ? this.nzTableComponent.scrollX : `${tableContent!.clientWidth}px`,
-        y: `${this.el.clientHeight - thead!.clientHeight}px`,
+        y: `${this.el.clientHeight - thead!.clientHeight - 64}px`,
       };
       this.nzTableComponent.ngOnChanges({ nzScroll: this.nzTableComponent.nzScroll } as any);
       // hack

@@ -19,7 +19,7 @@ import { STColumn } from '@co/cbc/web/st';
 @Component({
   selector: 'app-ComponentsStAutoCalcScrollComponent',
   template: `
-    <div style="height: 120px;">
+    <div style="height: 184px;">
       <co-st [data]="users" [columns]="columns" calcScroll [showFilters]="false" style="height: 100%;"></co-st>
     </div>
     <div>
