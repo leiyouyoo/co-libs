@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ReportViewerComponent } from './bill-report/report-viewer.component';
+import { ReportViewerComponent } from './report-viewer.component';
 
 const COMPONENTS = [ReportViewerComponent];
 
