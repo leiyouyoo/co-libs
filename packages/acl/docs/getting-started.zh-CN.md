@@ -18,14 +18,14 @@ ACL 全称叫访问控制列表（Access Control List），是一种非常简单
 yarn add @co/acl
 ```
 
-导入 `DelonACLModule` 模块：
+导入 `CoACLModule` 模块：
 
 ```typescript
-import { DelonACLModule } from '@co/acl';
+import { CoACLModule } from '@co/acl';
 
 @NgModule({
   imports: [
-    DelonACLModule.forRoot()
+    CoACLModule.forRoot()
   ]
 })
 export class AppModule { }
@@ -72,7 +72,7 @@ export class AppModule { }
 ### ACLCanType
 
 ```ts
-type ACLCanType = number | number[] | string | string[] | ACLType
+type ACLCanType = string | string[] | ACLType
 ```
 
 ### ACLType
