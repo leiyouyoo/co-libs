@@ -22,6 +22,9 @@ import { STColumn } from '@co/cbc/web/st';
     <div style="height: 120px;">
       <co-st [data]="users" [columns]="columns" calcScroll [showFilters]="false" style="height: 100%;"></co-st>
     </div>
+    <div>
+      <co-st [data]="users" [columns]="columnsX"  calcScroll [showFilters]="false" style="height: 100%;"></co-st>
+    </div>
   `,
 })
 export class ComponentsStAutoCalcScrollComponentComponent {
@@ -51,6 +54,24 @@ export class ComponentsStAutoCalcScrollComponentComponent {
     { title: '姓名11', index: 'name', fixed: 'right', width: 100 },
     { title: '年龄12', index: 'age', fixed: 'right', width: 100 },
   ];
+  columnsX: STColumn[] = [
+    { title: '编号1', index: 'id', },
+    { title: '编号2', index: 'id', },
+    { title: '编号3编号3', index: 'id', },
+    { title: '编号4编号4', index: 'id',  },
+    { title: '编号5编号5', index: 'id',  },
+    { title: '编号6编号6', index: 'id',  },
+    { title: '编号7编号7', index: 'id',  },
+    { title: '编号8编号8编号8', index: 'id',  },
+    { title: '编号8编号8', index: 'id',  },
+    { title: '编号8编号8', index: 'id',  },
+    { title: '编号8编号8', index: 'id',  },
+    { title: '编号8编号8', index: 'id',  },
+    { title: '姓名10姓名10', index: 'name', },
+    { title: '姓名11姓名11姓名11姓名11', index: 'name', width: 223 },
+    { title: '年龄12年龄12年龄12', index: 'age', },
+  ];
 }
+
 
 ```

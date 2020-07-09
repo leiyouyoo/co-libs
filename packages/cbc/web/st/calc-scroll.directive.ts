@@ -45,8 +45,9 @@ export class CalcScrollDirective implements AfterContentInit, AfterViewChecked {
   calc() {
     setTimeout(() => {
       const thead = this.el.querySelector('.ant-table-thead');
+      const tableContent = this.el.querySelector('.ant-table-content table');
       this.nzTableComponent.nzScroll = {
-        x: this.disableCalcX ? this.nzTableComponent.scrollX : `${this.el.clientWidth - 17}px`,
+        x: this.disableCalcX ? this.nzTableComponent.scrollX : `${tableContent!.clientWidth}px`,
         y: `${this.el.clientHeight - thead!.clientHeight}px`,
       };
       this.nzTableComponent.ngOnChanges({ nzScroll: this.nzTableComponent.nzScroll } as any);
