@@ -14,6 +14,7 @@ import { PortPickerModule } from './port-picker';
 import { ProductPickerModule } from './product-picker';
 import { ShipnamePickerModule } from './shipname-picker';
 import { YoyagePickerModule } from './voyage-picker';
+import { BillReportModule } from './bill-report';
 
 const EXPORT_MODULES: any[] = [
   CustomerPickerModule,
@@ -30,6 +31,7 @@ const EXPORT_MODULES: any[] = [
   AreaPickerModule,
   RegionPickerModule,
   PortPickerModule,
+  BillReportModule,
 ];
 const IMPORT_MODULES: any[] = [CdsModule];
 
@@ -37,4 +39,5 @@ const IMPORT_MODULES: any[] = [CdsModule];
  * 业务组件模块
  */
 @NgModule({ imports: IMPORT_MODULES, exports: EXPORT_MODULES })
-export class CoBusinessComponentsModule {}
+export class CoBusinessComponentsModule {
+}
