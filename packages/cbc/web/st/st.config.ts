@@ -22,7 +22,7 @@ export const ST_DEFULAT_CONFIG: CoSTConfig = {
     position: 'bottom',
     placement: 'right',
     show: true,
-    showSize: false,
+    showSize: true,
     pageSizes: [10, 20, 30, 40, 50],
     showQuickJumper: false,
     total: true,

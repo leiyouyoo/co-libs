@@ -7,4 +7,5 @@ export { STComponent } from './st.component';
 export { STRowDirective } from './st-row.directive';
 export { STWidgetHostDirective } from './st-widget-host.directive';
 export * from './st.config';
+export * from './calc-scroll.directive';
 export { CoSTModule } from './co-s-t.module';

@@ -1,4 +1,4 @@
-@import '../../../theme/theme-default.less';
+@import '../../../../theme/theme-default.less';
 @st-prefix: ~'.st';
 
 @{st-prefix} {
@@ -64,6 +64,10 @@
   }
   // 修复 `st` 会导致内嵌表格的BUG
   .@{ant-prefix}-table-tbody > tr {
+    &@{st-prefix}-row-odd {
+      background:rgba(0,0,0,0.02);
+    }
+
     .@{ant-prefix}-table-wrapper:only-child {
       // 修复 https://github.com/ng-alain/ng-alain/issues/1619
       .ant-table-tbody > tr:last-child > td {

@@ -145,10 +145,13 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   //#region ngModel实现
 
   writeValue(modelValue: NzSafeAny | NzSafeAny[]): void {
+    debugger;
     if (this.value !== modelValue) {
-      this.value = modelValue;
+      if (typeof this.value === "undefined") {
+        this.loadDownList(modelValue);
+      }
 
-      this.loadDownList();
+      this.value = modelValue;
       this.cdr.markForCheck();
     }
   }
@@ -204,7 +207,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
 
   onOpenChanged(e: any) {
     if (!this.coOpen) {
-      this.loadDownList();
+      this.loadDownList(null);
     }
 
     this.coOpenChange && this.coOpenChange.emit(e);
@@ -227,6 +230,8 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   //#region 私有方法
 
   private loadByIds(value: any): void {
+    if (this.coValueMember !== "id") return;
+
     this.loadingMode = 'search';
     this.skipCount = 0;
 
@@ -279,17 +284,19 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
     });
   }
 
-  private loadDownList() {
+  private loadDownList(value: any) {
+    let val = value || this.value;
+
     if (this.optionList.length === 0) {
-      if (this.value) {
-        this.loadByIds(this.value);
+      if (val) {
+        this.loadByIds(val);
       } else {
         this.skipCount = 0;
         this.loadMore(null);
       }
     } else {
-      if (this.value) {
-        if (this.optionList.length === this.value.length || this.optionList.length === 1) {
+      if (val) {
+        if (this.optionList.length === val.length || this.optionList.length === 1) {
           this.skipCount = 0;
           this.loadMore(null);
         } else {
