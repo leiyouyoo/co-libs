@@ -12,12 +12,12 @@ import { CustomerSearchScope } from '@co/cds';
         <co-customer-picker style="width: 100%;" formControlName="customerId" [coFilter]="customerFilter"> </co-customer-picker>
       </nz-form-control>
     </nz-form-item>
+    {{customerId}}
     </form>
   `,
 })
 export class CustomerPickerBasicComponent implements OnInit {
   validateForm!: FormGroup;
-  selectedValue: number = 2;
   customerFilter: any = {
     scope: CustomerSearchScope.Department
   };
@@ -27,7 +27,7 @@ export class CustomerPickerBasicComponent implements OnInit {
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       formLayout: ['horizontal'],
-      customerId: [null, [Validators.required]],
+      customerId: ["6ac83c3b-471f-45b6-892b-51c0f61bf5e0", [Validators.required]],
       transportationMode: [null, [Validators.required]],
       contactId: [null],
       transferNo: [null],
