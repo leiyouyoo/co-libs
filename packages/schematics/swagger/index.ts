@@ -279,7 +279,7 @@ function bindEntity(ref) {
       }
 
       // set required
-      if (entity.required?.includes(key) && !key.includes('?') && required?.some(e => e !== key)) {
+      if (!key.includes('?') && !required?.some(e => e === key)) {
         const keyValue = entity.properties[key];
         delete entity.properties[key];
         entity.properties[key + '?'] = keyValue;
