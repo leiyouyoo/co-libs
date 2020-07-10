@@ -1,0 +1,210 @@
+<nz-layout style="min-height: 100vh;">
+  <nz-content style="margin: 42px 24px; overflow: hidden; flex-direction: column;">
+    <nz-breadcrumb>
+      <nz-breadcrumb-item>
+        Home
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        <a>Application List</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        An Application
+      </nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <div style="padding: 24px;width: 100%;height: 100%;background-color: #ffffff;">
+
+      <!--      size：{{size}}-->
+      <!--      <nz-radio-group [(ngModel)]="size">-->
+      <!--        <label nz-radio nzValue="small">Small</label>-->
+      <!--        <label nz-radio nzValue="middle">Middle</label>-->
+      <!--        <label nz-radio nzValue="large">Large</label>-->
+      <!--      </nz-radio-group>-->
+      <!--      <hr/>-->
+      cols：{{cols}}
+      <nz-radio-group [(ngModel)]="cols">
+        <label nz-radio [nzValue]="3">3</label>
+        <label nz-radio [nzValue]="4">4</label>
+        <label nz-radio [nzValue]="5">5</label>
+      </nz-radio-group>
+      <br/>
+      width：{{width}}
+      <nz-slider nzMin="120" nzMax="400" [(ngModel)]="width"></nz-slider>
+      <br/>
+      coMarginRight：{{coMarginRight}}
+      <nz-slider nzMin="4" nzMax="32" [(ngModel)]="coMarginRight"></nz-slider>
+      <br/>
+      coMarginBottom：{{coMarginBottom}}
+      <nz-slider nzMin="4" nzMax="24" [(ngModel)]="coMarginBottom"></nz-slider>
+      <co-page-layout>
+        <co-search-area-layout [coWidth]="width" [coMarginRight]="coMarginRight" [coMarginBottom]="coMarginBottom" [coCols]="cols">
+          <co-search-area-item>
+            <input type="text" nz-input placeholder="请输入"/>
+          </co-search-area-item>
+          <co-search-area-item>
+            <co-customer-picker style="width: 100%" coSize="default" [(ngModel)]="customer"></co-customer-picker>
+          </co-search-area-item>
+          <co-search-area-item>
+            <co-container-picker style="width: 100%" coSize="default" [(ngModel)]="container"></co-container-picker>
+          </co-search-area-item>
+          <co-search-area-item>
+            <label nz-checkbox>只搜索xx类型</label>
+          </co-search-area-item>
+          <co-search-area-item>
+            <input type="text" nz-input placeholder="请输入"/>
+          </co-search-area-item>
+          <co-search-area-item>
+            <input type="text" nz-input placeholder="请输入"/>
+          </co-search-area-item>
+          <co-search-area-item>
+            <input type="text" nz-input placeholder="请输入"/>
+          </co-search-area-item>
+          <co-search-area-item>
+            <input type="text" nz-input placeholder="请输入"/>
+          </co-search-area-item>
+          <co-search-area-item>
+            <input type="text" nz-input placeholder="请输入"/>
+          </co-search-area-item>
+          <co-search-area-item>
+            <button nz-button nzType="primary"><i nz-icon nzType="search" nzTheme="outline"></i>搜索</button>
+            <button nz-button>重置</button>
+          </co-search-area-item>
+        </co-search-area-layout>
+      </co-page-layout>
+      <hr style="margin: 12px;"/>
+      <co-page-layout>
+        <co-search-area-layout [coAlign]="'right'">
+          <co-search-area-item>
+            <input type="text" nz-input placeholder="请输入"/>
+          </co-search-area-item>
+          <co-search-area-item>
+            <co-customer-picker coSize="default" [(ngModel)]="customer"></co-customer-picker>
+          </co-search-area-item>
+          <co-search-area-item>
+            <co-container-picker coSize="default" [(ngModel)]="container"></co-container-picker>
+          </co-search-area-item>
+          <co-search-area-item>
+            <input type="text" nz-input placeholder="请输入"/>
+          </co-search-area-item>
+          <co-search-area-item>
+            <input type="text" nz-input placeholder="请输入"/>
+          </co-search-area-item>
+          <co-search-area-item>
+            <button nz-button nzType="primary"><i nz-icon nzType="search" nzTheme="outline"></i>搜索</button>
+            <button nz-button>重置</button>
+          </co-search-area-item>
+        </co-search-area-layout>
+      </co-page-layout>
+      <hr style="margin: 12px;"/>
+      <co-page-layout>
+        <co-search-area-layout [formGroup]="form" [coNoDefaultToggleShowButton]="true">
+          <co-search-area-item>
+            <input type="text" nz-input placeholder="请输入"/>
+          </co-search-area-item>
+          <co-search-area-item>
+            <co-customer-picker style="width: 100%" coSize="default" formControlName="customer"></co-customer-picker>
+          </co-search-area-item>
+          <co-search-area-item>
+            <co-container-picker style="width: 100%" coSize="default" [(ngModel)]="container" [ngModelOptions]="{standalone: true}"></co-container-picker>
+          </co-search-area-item>
+          <co-search-area-item>
+            <input type="text" nz-input placeholder="请输入"/>
+          </co-search-area-item>
+          <co-search-area-item>
+            <input type="text" nz-input placeholder="请输入"/>
+          </co-search-area-item>
+          <co-search-area-item>
+            <input type="text" nz-input placeholder="请输入"/>
+          </co-search-area-item>
+          <co-search-area-item coWidth="auto">
+            <button nz-button nzType="primary" (click)="submit()"><i nz-icon nzType="search" nzTheme="outline"></i>搜索</button>
+            <button nz-button>重置</button>
+            <a nz-button nzType="link" (click)="advanced=!advanced">
+              <span style="padding-left: 8px">高级搜索
+              <i [hidden]="advanced" nz-icon nzType="down" nzTheme="outline"></i>
+              <i [hidden]="!advanced" nz-icon nzType="up" nzTheme="outline"></i></span>
+            </a>
+          </co-search-area-item>
+          <co-search-area-extra [(isShow)]="advanced">
+            <co-search-area-item>
+              <input type="text" nz-input placeholder="请输入"/>
+            </co-search-area-item>
+            <co-search-area-item>
+              <co-customer-picker style="width: 100%" coSize="default" [(ngModel)]="customer" [ngModelOptions]="{standalone: true}"></co-customer-picker>
+            </co-search-area-item>
+            <co-search-area-item>
+              <co-container-picker style="width: 100%" coSize="default" [(ngModel)]="container" [ngModelOptions]="{standalone: true}"></co-container-picker>
+            </co-search-area-item>
+            <co-search-area-item>
+              <input type="text" nz-input placeholder="请输入"/>
+            </co-search-area-item>
+            <co-search-area-item>
+              <input type="text" nz-input placeholder="请输入"/>
+            </co-search-area-item>
+            <co-search-area-item>
+              <input type="text" nz-input placeholder="请输入"/>
+            </co-search-area-item>
+          </co-search-area-extra>
+        </co-search-area-layout>
+      </co-page-layout>
+      <hr style="margin: 12px;"/>
+      <co-page-layout>
+        <co-toolbar>
+          <co-toolbar-item>
+            <button nz-button nzType="primary"><i nz-icon nzType="plus" nzTheme="outline"></i>新增</button>
+          </co-toolbar-item>
+          <co-toolbar-item>
+            <button nz-button nzType="secondary"><i nz-icon nzType="edit" nzTheme="outline"></i>编辑</button>
+          </co-toolbar-item>
+          <co-toolbar-item>
+            <button nz-button nzType="danger"><i nz-icon nzType="delete"></i>删除</button>
+          </co-toolbar-item>
+          <co-toolbar-item>
+            <button nz-button>复制</button>
+          </co-toolbar-item>
+          <co-toolbar-item>
+            <button nz-button>其他操作</button>
+          </co-toolbar-item>
+        </co-toolbar>
+        <co-search-area-layout>
+          <co-search-area-item>
+            <input type="text" nz-input placeholder="请输入"/>
+          </co-search-area-item>
+          <co-search-area-item>
+            <input type="text" nz-input placeholder="请输入"/>
+          </co-search-area-item>
+          <co-search-area-item>
+            <input type="text" nz-input placeholder="请输入"/>
+          </co-search-area-item>
+          <co-search-area-item>
+            <input type="text" nz-input placeholder="请输入"/>
+          </co-search-area-item>
+          <co-search-area-item coWidth="auto">
+            <button nz-button nzType="primary"><i nz-icon nzType="search" nzTheme="outline"></i>搜索</button>
+            <button nz-button>重置</button>
+          </co-search-area-item>
+          <co-search-area-extra>
+            <co-search-area-item>
+              <input type="text" nz-input placeholder="请输入"/>
+            </co-search-area-item>
+            <co-search-area-item>
+              <input type="text" nz-input placeholder="请输入"/>
+            </co-search-area-item>
+            <co-search-area-item>
+              <input type="text" nz-input placeholder="请输入"/>
+            </co-search-area-item>
+            <co-search-area-item>
+              <input type="text" nz-input placeholder="请输入"/>
+            </co-search-area-item>
+          </co-search-area-extra>
+        </co-search-area-layout>
+        <co-page-main>
+          <div style="display: flex;justify-content: center;align-items: center;background: #9e9e9e;height: 300px;width:100%;color: white;">主内容区域</div>
+        </co-page-main>
+        <co-page-side>
+          <div style="display: flex;justify-content: center;align-items: center;background: #8f8f88;height: 300px;width:100%;color: white;">侧栏区域</div>
+        </co-page-side>
+      </co-page-layout>
+    </div>
+  </nz-content>
+</nz-layout>
+

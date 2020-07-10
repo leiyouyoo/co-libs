@@ -923,6 +923,7 @@ export class _HttpClient {
   ): Observable<any> {
     this.begin();
     if (options.params) options.params = this.buildHttpParams(options.params);
+    if (options.body) options.body = buildBody(options.body);
     return of(null).pipe(
       tap(() => this.begin()),
       switchMap(() => this.http.request(method, this.processUrl(url), options)),
@@ -966,4 +967,19 @@ export class _HttpClient {
       return this.environment.SERVER_URL + url;
     }
   }
+}
+
+function buildBody(datas: any) {
+  if (datas instanceof FormData) return datas;
+
+  for (const key in datas) {
+    if (datas[key] === null || datas[key] === undefined) {
+      delete datas[key];
+    } else if (Array.isArray(datas[key])) {
+      datas[key].forEach(element => {
+        return buildBody(element);
+      });
+    }
+  }
+  return datas;
 }

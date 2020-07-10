@@ -21,9 +21,10 @@ import { STComponent } from './st.component';
 import { NzAutocompleteModule, NzDatePickerModule, NzSelectModule } from 'ng-zorro-antd';
 import { TranslateModule } from '@ngx-translate/core';
 import { SettingOutline, DeleteOutline, EllipsisOutline } from '@ant-design/icons-angular/icons';
+import { CalcScrollDirective } from './calc-scroll.directive';
 
 const COMPONENTS = [STComponent];
-const DIRECTIVES = [STRowDirective, STWidgetHostDirective];
+const DIRECTIVES = [STRowDirective, STWidgetHostDirective, CalcScrollDirective];
 const icons = [SettingOutline, DeleteOutline, EllipsisOutline];
 
 @NgModule({
