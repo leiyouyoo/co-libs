@@ -241,6 +241,7 @@ function bindEntity(ref) {
   const entityName = setEntityName(ref, true);
 
   if (entity) {
+    const required = entity.required;
     // tslint:disable-next-line: forin
     for (const key in entity.properties) {
       const parmDetail = entity.properties[key];
@@ -278,7 +279,7 @@ function bindEntity(ref) {
       }
 
       // set required
-      if (entity.required?.includes(key) && !key.includes('?')) {
+      if (!key.includes('?') && !required?.some(e => e === key)) {
         const keyValue = entity.properties[key];
         delete entity.properties[key];
         entity.properties[key + '?'] = keyValue;
