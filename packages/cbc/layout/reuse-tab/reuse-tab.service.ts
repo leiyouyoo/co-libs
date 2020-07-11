@@ -18,7 +18,7 @@ import { ReuseComponentRef, ReuseHookTypes, ReuseTabCached, ReuseTabMatchMode, R
  *
  * **注：** 所有缓存数据来源于路由离开后才会产生
  */
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: 'platform' })
 export class ReuseTabService implements OnDestroy {
   private _inited = false;
   private _max = 10;
@@ -346,7 +346,7 @@ export class ReuseTabService implements OnDestroy {
 
   // #endregion
 
-  constructor(private injector: Injector, private menuService: MenuService) {}
+  constructor(private injector: Injector, private menuService: MenuService) { }
 
   init() {
     this.initScroll();
@@ -373,7 +373,7 @@ export class ReuseTabService implements OnDestroy {
   }
 
   private hasInValidRoute(route: ActivatedRouteSnapshot) {
-    return !route.routeConfig || route.routeConfig.loadChildren || route.routeConfig.children;
+    return !route.routeConfig || route.routeConfig.loadChildren || route.routeConfig.children || (route.component && (route.component as any).name === 'EmptyComponent');
   }
 
   /**
@@ -461,6 +461,8 @@ export class ReuseTabService implements OnDestroy {
    * 决定是否应该进行复用路由处理
    */
   shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot): boolean {
+    if (future.component && (future.component as any).name === 'EmptyComponent') return false;
+
     let ret = future.routeConfig === curr.routeConfig;
     if (!ret) return false;
 
@@ -528,7 +530,6 @@ export class ReuseTabService implements OnDestroy {
       }
     });
   }
-
   // #endregion
 
   ngOnDestroy(): void {

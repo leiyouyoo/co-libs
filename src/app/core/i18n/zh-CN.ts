@@ -37,7 +37,7 @@ export const ZHCN = {
   'app.header.menu.im': '@co/im-即时消息',
   'app.header.menu.map': '@co/map-地图',
   'app.header.menu.apm': '@co/apm-前端应用性能监控',
-  'app.header.menu.microservice': '@co/microservice-微服务库',
+  'app.header.menu.cms': '@co/cms-微服务',
   'app.header.menu.form.validator': '在线校验器',
   'app.header.menu.cli': '脚手架',
   'app.header.menu.tool': '工具',
