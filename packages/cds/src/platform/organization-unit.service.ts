@@ -52,7 +52,7 @@ export class OrganizationUnitService extends BaseApi {
     @GET('getSaleUsers')
     getSaleUsers(
         @Payload
-        _req: {searchText?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
+        _req: {searchText?:string,isOwnDepartment?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
     ): Observable<PagedResultDto<UserInfo>> {
         return null as any

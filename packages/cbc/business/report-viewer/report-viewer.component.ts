@@ -8,7 +8,12 @@ import {
 } from '@angular/core';
 import { LifeCycleComponent } from '@co/cbc/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { BillingService } from '@co/cds';
+import {
+  ExportSideMarksReportInput,
+  GenerateWarehouseReciptInput,
+  SideMarksReportService,
+  WarehouseReceiptService,
+} from '@co/cds';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -39,12 +44,19 @@ export class ReportViewerComponent extends LifeCycleComponent {
 
   preDisble :boolean = false;
 
-  constructor(cdr: ChangeDetectorRef, private sanitizer: DomSanitizer , private billingService: BillingService ) {
+  isHide :boolean = false;
+
+  constructor(cdr: ChangeDetectorRef,
+              private sanitizer: DomSanitizer ,
+              private warehouseReceiptService: WarehouseReceiptService,
+              private sideMarksReportService : SideMarksReportService,
+  ) {
     super();
   }
 
   ngOnInit() {
     super.ngOnInit();
+    this.coParam.ids.length == 1 ? this.isHide = true : this.isHide = false;
     this.getReportData(this.indexs);
   }
 
@@ -75,12 +87,28 @@ export class ReportViewerComponent extends LifeCycleComponent {
    * @param idx
    */
   getReportData( idx ){
-    let req = {
-      id : this.coParam.ids[idx]
+
+    if( this.coParam.type == 'order'){
+
+      let req:GenerateWarehouseReciptInput = {
+        ids : [this.coParam.ids[idx]]
+      }
+      this.warehouseReceiptService.generateWarehouseRecipt(req).subscribe(res =>{
+        this.reportIframe.nativeElement.setAttribute("src", 'http://192.168.1.5:8002/FCM/WarehouseReceipt/GetWarehouseRecipt?Id='+res.fileIds[0] );
+      })
+
+    }else {
+
+      let req:ExportSideMarksReportInput = {
+        ids : [this.coParam.ids[idx]]
+      }
+      this.sideMarksReportService.exportReport(req).subscribe(res =>{
+        this.reportIframe.nativeElement.setAttribute("src", 'http://192.168.1.5:8002/FCM/SideMarksReport/GetReport?FileId='+res.fileId[0] );
+      })
+
     }
-    this.billingService.ExportBill(req).subscribe(res =>{
-      this.reportIframe.nativeElement.setAttribute("src", 'http://192.168.1.5:8002/CSP/Billing/GetBillReport?token='+res.token );
-    })
+
+
   }
 
 }

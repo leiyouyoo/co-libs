@@ -178,7 +178,7 @@
       <ng-template [ngTemplateOutlet]="bodyHeader" [ngTemplateOutletContext]="{ $implicit: _statistical }"></ng-template>
     </ng-container>
     <ng-template #bodyTpl let-i let-index="index">
-      <tr [attr.data-index]="index" (click)="_rowClick($event, i, index)" [ngClass]="i._rowClassName">
+      <tr [attr.data-index]="index" (click)="_rowClick($event, i, index)" [class.st-row-odd]="index % 2 === 1" [ngClass]="i._rowClassName">
         <td
           *ngIf="expand"
           [nzShowExpand]="expand && i.showExpand !== false"
