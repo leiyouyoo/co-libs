@@ -17,14 +17,14 @@ export class CustomerService extends BaseApi {
     super(injector);
   }
 
-  @GET('GetAllBySearch')
+  @GET('GetAllForUiPicker')
   getAllBySearch(
     @Payload
     _req: {
       ids?: string[];
       searchText?: string;
-      isDeleted?: boolean;
-      type?: CustomerType;
+      includeDeleted?: boolean;
+      sorting?: string;
       maxResultCount?: number;
       skipCount?: number;
     },

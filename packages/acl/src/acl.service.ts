@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, Injector, Optional } from '@angular/core';
 import { CoACLConfig, CoConfigService } from '@co/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ACL_DEFAULT_CONFIG } from './acl.config';
@@ -41,8 +41,8 @@ export class ACLService {
     return this.options.guard_url!;
   }
 
-  constructor(configSrv: CoConfigService) {
-    this.options = configSrv.merge('acl', ACL_DEFAULT_CONFIG);
+  constructor(@Optional() @Inject(CoConfigService) configSrv: CoConfigService) {
+    this.options = configSrv && configSrv.merge('acl', ACL_DEFAULT_CONFIG) || {};
   }
 
   private parseACLType(val: string | string[] | ACLType | null): ACLType {
