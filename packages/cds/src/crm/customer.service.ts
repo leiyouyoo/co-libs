@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { PagedResultDto } from '@co/core';
@@ -13,6 +13,10 @@ import { CustomerDto, CustomerType } from './customer.types';
 @BaseUrl('/crm/customer')
 @Injectable({ providedIn: 'root' })
 export class CustomerService extends BaseApi {
+  constructor(injector: Injector) {
+    super(injector);
+  }
+
   @GET('GetAllBySearch')
   getAllBySearch(
     @Payload
