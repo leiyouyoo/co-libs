@@ -28,8 +28,8 @@ export class ReportViewerBasicComponent {
     width:'600',
     getReportUrl : 'http://192.168.1.5:8002/FCM/WarehouseReceipt/GetWarehouseRecipt?Id=',
     ids : [
-      "282022b8dc3a40b6a041fce228b82b66",
-      "0325fbd3438848588a50778f3e41f9cb"
+      "d01b4eb57cbb4a83b3cd4983ff40fd08",
+      "f10d7d9e221e4d62a420174535f5fa1b"
     ] ,
   }
 }

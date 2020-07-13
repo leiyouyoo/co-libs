@@ -60,6 +60,7 @@ export class ReportViewerComponent extends LifeCycleComponent {
 
     //上一个
     if(bl && this.indexs > 0 ){
+      this.nextDisble = true;
       this.indexs = this.indexs - 1;
       this.getReportData(this.indexs);
       bl && this.indexs == 0 ? this.preDisble = false: this.nextDisble = true;
@@ -67,6 +68,7 @@ export class ReportViewerComponent extends LifeCycleComponent {
 
     //下一个
     if( !bl  && this.indexs < this.coParam.ids.length*1-1 ) {
+      this.preDisble = true;
       this.indexs = this.indexs + 1;
       this.getReportData(this.indexs);
       this.indexs == this.coParam.ids.length*1-1 ?  this.nextDisble = false : this.preDisble = true;
