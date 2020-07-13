@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { PagedResultDto } from '@co/core';
 // tslint:disable-next-line: ordered-imports
-import { BaseUrl, BaseApi, GET, Payload } from '@co/common';
+import { BaseUrl, BaseApi, POST, Payload } from '@co/common';
 
 import { CustomerDto, CustomerType } from './customer.types';
 
@@ -17,7 +17,7 @@ export class CustomerService extends BaseApi {
     super(injector);
   }
 
-  @GET('GetAllForUiPicker')
+  @POST('GetAllForUiPicker')
   getAllBySearch(
     @Payload
     _req: {
