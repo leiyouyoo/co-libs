@@ -33,8 +33,6 @@ const CUSTOMERS_DATA = setupData(100);
 export const CUSTOMERS = {
   // 支持值为 Object 和 Array
   'POST /crm/customer/GetAllForUiPicker': (req: MockRequest) => {
-    debugger;
-
     const res: any = {
       items: [],
       total: 0,
