@@ -1,7 +1,7 @@
-import { DatePickerModule } from '@co/cbc/basic/date-picker';
-import { EllipsisModule } from '@co/cbc/basic/ellipsis';
-import { ImageModule } from '@co/cbc/basic/image';
-import { NoticeIconModule } from '@co/cbc/basic/notice-icon';
+import { CoDatePickerModule } from '@co/cbc/basic/date-picker';
+import { CoEllipsisModule } from '@co/cbc/basic/ellipsis';
+import { CoImageModule } from '@co/cbc/basic/image';
+import { CoNoticeIconModule } from '@co/cbc/basic/notice-icon';
 import { PageHeaderModule } from '@co/cbc/layout/page-header';
 import { ReuseTabModule } from '@co/cbc/layout/reuse-tab';
 import { SidebarNavModule } from '@co/cbc/layout/sidebar-nav';
@@ -25,11 +25,11 @@ import { CbcWebComponentsModule, CoBasicCompoentsModule, CoBusinessComponentsMod
 import { CdsModule } from '@co/cds';
 
 export const SHARED_DELON_MODULES = [
-  DatePickerModule,
-  EllipsisModule,
-  ImageModule,
+  CoDatePickerModule,
+  CoEllipsisModule,
+  CoImageModule,
   PageHeaderModule,
-  NoticeIconModule,
+  CoNoticeIconModule,
   SidebarNavModule,
   G2BarModule,
   G2CardModule,

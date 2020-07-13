@@ -1,18 +1,14 @@
-/*
- * Public API Surface of core
- */
-
-export * from './src/cms';
-export * from './src/cms-event-dispatcher';
-export * from './src/application/cms-portal-application';
-export * from './src/cms-options';
+export * from './src/planet';
+export * from './src/global-event-dispatcher';
+export * from './src/application/portal-application';
+export * from './src/planet.types';
 export * from './src/cms.module';
-export { CmsApplicationRef as cmsApplicationRef } from './src/application/cms-application-ref';
-export { defineApplication, getPortalApplicationData, getPlanetApplicationRef } from './src/cms-global-cache';
-export { CmsApplicationService as cmsApplicationService } from './src/application/cms-application.service';
-export * from './src/application/cms-application-loader';
-export * from './src/cms-assets-loader';
-export { CmsComponent, CmsComponentLoader } from './src/component/cms-component-loader';
-export { CmsComponentRef } from './src/component/cms-component-ref';
-export { CmsComponentConfig } from './src/component/cms-component.config';
-export * from './src/empty/cms-empty.component';
+export { PlanetApplicationRef } from './src/application/planet-application-ref';
+export { defineApplication, getPortalApplicationData, getPlanetApplicationRef } from './src/global-planet';
+export { PlanetApplicationService } from './src/application/planet-application.service';
+export * from './src/application/planet-application-loader';
+export * from './src/assets-loader';
+export { PlanetComponent, PlanetComponentLoader } from './src/component/planet-component-loader';
+export { PlanetComponentRef } from './src/component/planet-component-ref';
+export { PlantComponentConfig } from './src/component/plant-component.config';
+export * from './src/empty/empty.component';

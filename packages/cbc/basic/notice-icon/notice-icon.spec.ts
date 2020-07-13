@@ -5,8 +5,8 @@ import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { createTestContext } from '@co/testing';
 import { CoLocaleModule, CoLocaleService, en_US, zh_CN } from '@co/common';
-import { NoticeIconComponent } from './notice-icon.component';
-import { NoticeIconModule } from './notice-icon.module';
+import { CoNoticeIconComponent } from './notice-icon.component';
+import { CoNoticeIconModule } from './notice-icon.module';
 import { NoticeItem } from './notice-icon.types';
 
 describe('abc: notice-icon', () => {
@@ -16,7 +16,7 @@ describe('abc: notice-icon', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NoopAnimationsModule, NoticeIconModule, HttpClientTestingModule, CoLocaleModule],
+      imports: [NoopAnimationsModule, CoNoticeIconModule, HttpClientTestingModule, CoLocaleModule],
       declarations: [TestComponent],
     });
     ({ fixture, dl, context } = createTestContext(TestComponent));
@@ -131,7 +131,7 @@ describe('abc: notice-icon', () => {
 })
 class TestComponent {
   @ViewChild('comp', { static: true })
-  comp: NoticeIconComponent;
+  comp: CoNoticeIconComponent;
   data: NoticeItem[] = [
     {
       title: 'test',
@@ -178,7 +178,7 @@ class TestComponent {
   count = 10;
   loading = false;
   popoverVisible: boolean;
-  select() {}
-  clear() {}
-  popupVisibleChange() {}
+  select() { }
+  clear() { }
+  popupVisibleChange() { }
 }

@@ -3,7 +3,7 @@ type: Basic
 title: datetime-range-picker
 subtitle: 日期时间范围（一小时）
 cols: 1
-module: import { DatetimeRangePickerModule } from '@co/cbc';
+module: import { CoDatetimeRangePickerModule } from '@co/cbc';
 ---
 
 用于配送时间

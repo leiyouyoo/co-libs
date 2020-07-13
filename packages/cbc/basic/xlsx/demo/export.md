@@ -9,14 +9,10 @@ title:
 
 导出Excel并自动弹出保存对话框。
 
-## en-US
-
-Export Excel and automatically pop save dialog.
 
 ```ts
 import { Component } from '@angular/core';
-import { STColumn } from '@co/cbc';
-import { XlsxService } from '@co/cbc';
+import { STColumn,CoXlsxService } from '@co/cbc';
 
 @Component({
   selector: 'app-demo',
@@ -26,7 +22,7 @@ import { XlsxService } from '@co/cbc';
     `,
 })
 export class DemoComponent {
-  constructor(private xlsx: XlsxService) {}
+  constructor(private xlsx: CoXlsxService) {}
 
   users: any[] = Array(100)
     .fill({})

@@ -15,7 +15,7 @@ Simplest of usage.
 
 ```ts
 import { Component } from '@angular/core';
-import { LoadingService, LoadingType } from '@co/cbc/basic/loading';
+import { CoLoadingService, LoadingType } from '@co/cbc/basic/loading';
 
 @Component({
   selector: 'app-demo',
@@ -26,7 +26,7 @@ import { LoadingService, LoadingType } from '@co/cbc/basic/loading';
   `,
 })
 export class DemoComponent {
-  constructor(private loadingSrv: LoadingService) { }
+  constructor(private loadingSrv: CoLoadingService) { }
 
   show(type: LoadingType): void {
     this.loadingSrv.open({ type });

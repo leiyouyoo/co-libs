@@ -4,7 +4,7 @@ order: 2
 title: 图片
 subtitle: 显示图像
 cols: 1
-module: import { ImageModule } from '@co/cbc/image';
+module: import { CoImageModule } from '@co/cbc/image';
 ---
 
 等同于 `src`，但相比较更多功能：

@@ -11,7 +11,7 @@ module: import { LoadingModule } from '@co/cbc/basic/loading';
 
 ## API
 
-### LoadingService
+### CoLoadingService
 
 | 名称 | 说明 |
 |----|----|

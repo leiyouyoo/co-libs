@@ -8,13 +8,13 @@ import { CoConfigService, CoImageConfig, InputNumber } from '@co/core';
  * + 支持增加onerror事件
  */
 @Directive({
-  selector: '[co_image]',
-  exportAs: 'co_image',
+  selector: '[co-image]',
+  exportAs: 'coImage',
 })
-export class ImageDirective implements OnChanges, OnInit {
+export class CoImageDirective implements OnChanges, OnInit {
   //#region 输入输出参数
 
-  @Input('co_image') src: string;
+  @Input('co-image') src: string;
   @Input() @InputNumber() size: number;
   @Input() error: string;
 

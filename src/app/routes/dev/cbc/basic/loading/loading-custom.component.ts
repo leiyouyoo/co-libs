@@ -1,6 +1,6 @@
 import { DomSanitizer } from '@angular/platform-browser';
 import { Component } from '@angular/core';
-import { LoadingService } from '@co/cbc/basic/loading';
+import { CoLoadingService } from '@co/cbc/basic/loading';
 
 @Component({
   selector: 'app-demo',
@@ -201,7 +201,7 @@ export class LoadingCustomComponent {
     },
   ];
 
-  constructor(private loadingSrv: LoadingService, private dom: DomSanitizer) {}
+  constructor(private loadingSrv: CoLoadingService, private dom: DomSanitizer) { }
 
   onShow(custom: any): void {
     this.loadingSrv.open({

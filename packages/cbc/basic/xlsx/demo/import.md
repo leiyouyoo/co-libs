@@ -9,13 +9,10 @@ title:
 
 导入Excel并输出JSON，支持 File、URL 格式。
 
-## en-US
-
-Import Excel and output JSON, support File, URL.
 
 ```ts
 import { Component } from '@angular/core';
-import { XlsxService } from '@co/cbc';
+import { CoXlsxService } from '@co/cbc';
 
 @Component({
   selector: 'app-demo',
@@ -26,7 +23,7 @@ import { XlsxService } from '@co/cbc';
     `,
 })
 export class DemoComponent {
-  constructor(private xlsx: XlsxService) {}
+  constructor(private xlsx: CoXlsxService) {}
   data: any;
   url() {
     this.xlsx.import(`./assets/demo.xlsx`).then(res => this.data = res);

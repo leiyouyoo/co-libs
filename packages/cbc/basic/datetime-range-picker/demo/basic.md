@@ -16,7 +16,7 @@ import { Component } from '@angular/core';
   selector: 'app-demo',
   template: `
   result: {{datetimeRange | hourRange}}<br>
-  <datetime-range-picker [(ngModel)]="datetimeRange"></datetime-range-picker>
+  <co-datetime-range-picker [(ngModel)]="datetimeRange"></co-datetime-range-picker>
   `,
 })
 export class DatetimeRangePickerBasicComponent {

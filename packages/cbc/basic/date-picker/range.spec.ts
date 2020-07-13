@@ -8,8 +8,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { createTestContext, dispatchMouseEvent } from '@co/testing';
 import { CoDateRangePickerShortcut } from '@co/core';
 import differenceInDays from 'date-fns/differenceInDays';
-import { DatePickerModule } from './date-picker.module';
-import { RangePickerComponent } from './range.component';
+import { CoDatePickerModule } from './date-picker.module';
+import { CoRangePickerComponent } from './range.component';
 
 registerLocaleData(zh);
 
@@ -20,7 +20,7 @@ describe('abc: date-picker: range', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [DatePickerModule, FormsModule, NoopAnimationsModule],
+      imports: [CoDatePickerModule, FormsModule, NoopAnimationsModule],
       declarations: [TestComponent],
     });
     ({ fixture, dl, context } = createTestContext(TestComponent));
@@ -158,10 +158,10 @@ describe('abc: date-picker: range', () => {
   `,
 })
 class TestComponent {
-  @ViewChild('comp', { static: true }) comp: RangePickerComponent;
+  @ViewChild('comp', { static: true }) comp: CoRangePickerComponent;
   i: any = {};
   shortcut: boolean | CoDateRangePickerShortcut | null = false;
-  onOpenChange() {}
-  onPanelChange() {}
-  onOk() {}
+  onOpenChange() { }
+  onPanelChange() { }
+  onOk() { }
 }

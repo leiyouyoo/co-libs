@@ -1,12 +1,12 @@
 import { Injectable, Optional } from '@angular/core';
-import { XlsxService } from '@co/cbc/basic/xlsx';
+import { CoXlsxService } from '@co/cbc/basic/xlsx';
 import { deepGet } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { STColumn, STExportOptions } from './st.interfaces';
 
 @Injectable()
 export class STExport {
-  constructor(@Optional() private xlsxSrv: XlsxService) {}
+  constructor(@Optional() private xlsxSrv: CoXlsxService) { }
 
   private _stGet(item: any, col: STColumn, index: number): any {
     const ret: { [key: string]: any } = { t: 's', v: '' };

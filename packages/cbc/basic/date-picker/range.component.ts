@@ -25,11 +25,11 @@ import { NzRangePickerComponent } from 'ng-zorro-antd/date-picker';
     {
       provide: NG_VALUE_ACCESSOR,
       multi: true,
-      useExisting: forwardRef(() => RangePickerComponent),
+      useExisting: forwardRef(() => CoRangePickerComponent),
     },
   ],
 })
-export class RangePickerComponent implements ControlValueAccessor {
+export class CoRangePickerComponent implements ControlValueAccessor {
   @Input() ngModelEnd: Date;
   @Input()
   set shortcut(val: CoDateRangePickerShortcut | null) {
@@ -49,30 +49,30 @@ export class RangePickerComponent implements ControlValueAccessor {
 
   // #region 输入输出参数
 
-  @Input() nzAllowClear = true;
-  @Input() nzAutoFocus = false;
-  @Input() nzClassName: string;
-  @Input() nzDisabled: boolean;
-  @Input() nzSize: string;
-  @Input() nzStyle: string;
-  @Input() nzDisabledDate: (d: Date) => boolean;
-  @Input() nzLocale: object;
-  @Input() nzPopupStyle: object;
-  @Input() nzDropdownClassName: string;
-  @Input() nzPlaceHolder: string | string[];
-  @Output() readonly nzOnOpenChange = new EventEmitter<boolean>();
+  @Input() coAllowClear = true;
+  @Input() coAutoFocus = false;
+  @Input() coClassName: string;
+  @Input() coDisabled: boolean;
+  @Input() coSize: string;
+  @Input() coStyle: string;
+  @Input() coDisabledDate: (d: Date) => boolean;
+  @Input() coLocale: object;
+  @Input() coPopupStyle: object;
+  @Input() coDropdownClassName: string;
+  @Input() coPlaceHolder: string | string[];
+  @Output() readonly coOnOpenChange = new EventEmitter<boolean>();
 
   // range
-  @Input() nzDateRender: any;
-  @Input() nzFormat: any;
-  @Input() nzDisabledTime: any;
-  @Input() nzRenderExtraFooter: FunctionProp<TemplateRef<void> | string>;
-  @Input() nzShowTime: any;
+  @Input() coDateRender: any;
+  @Input() coFormat: any;
+  @Input() coDisabledTime: any;
+  @Input() coRenderExtraFooter: FunctionProp<TemplateRef<void> | string>;
+  @Input() coShowTime: any;
   @Input() @InputBoolean() nzShowToday: boolean = true;
-  @Input() nzMode: any;
-  @Input() nzRanges: any;
-  @Output() readonly nzOnPanelChange = new EventEmitter<any>();
-  @Output() readonly nzOnOk = new EventEmitter<any>();
+  @Input() coMode: any;
+  @Input() coRanges: any;
+  @Output() readonly coOnPanelChange = new EventEmitter<any>();
+  @Output() readonly coOnOk = new EventEmitter<any>();
 
   // #endregion
 
@@ -151,7 +151,7 @@ export class RangePickerComponent implements ControlValueAccessor {
   //#region 公共方法
 
   setDisabledState(disabled: boolean) {
-    this.nzDisabled = disabled;
+    this.coDisabled = disabled;
   }
 
   //#endregion
@@ -166,15 +166,15 @@ export class RangePickerComponent implements ControlValueAccessor {
   }
 
   onOpenChange(e: any) {
-    this.nzOnOpenChange.emit(e);
+    this.coOnOpenChange.emit(e);
   }
 
   onPanelChange(e: any) {
-    this.nzOnPanelChange.emit(e);
+    this.coOnPanelChange.emit(e);
   }
 
   onOk(e: any) {
-    this.nzOnOk.emit(e);
+    this.coOnOk.emit(e);
   }
 
   onShortcutClick(item: CoDateRangePickerShortcutItem) {

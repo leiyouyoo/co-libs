@@ -24,7 +24,7 @@ import { NoticeIconSelect, NoticeItem } from './notice-icon.types';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class NoticeIconComponent implements OnInit, OnChanges, OnDestroy {
+export class CoNoticeIconComponent implements OnInit, OnChanges, OnDestroy {
   private i18n$: Subscription;
   locale: LocaleData = {};
 
@@ -38,7 +38,7 @@ export class NoticeIconComponent implements OnInit, OnChanges, OnDestroy {
   @Output() readonly clear = new EventEmitter<string>();
   @Output() readonly popoverVisibleChange = new EventEmitter<boolean>();
 
-  constructor(private i18n: CoLocaleService, private cdr: ChangeDetectorRef) {}
+  constructor(private i18n: CoLocaleService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.i18n$ = this.i18n.change.subscribe(() => {

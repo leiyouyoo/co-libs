@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
-import { LoadingModule } from './loading.module';
-import { LoadingService } from './loading.service';
+import { CoLoadingModule } from './loading.module';
+import { CoLoadingService } from './loading.service';
 
 describe('abc: loading', () => {
-  let srv: LoadingService;
+  let srv: CoLoadingService;
   let fixture: ComponentFixture<TestComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [LoadingModule],
+      imports: [CoLoadingModule],
       declarations: [TestComponent],
     });
-    srv = TestBed.inject(LoadingService);
+    srv = TestBed.inject(CoLoadingService);
     fixture = TestBed.createComponent(TestComponent);
   });
 
@@ -84,4 +84,4 @@ describe('abc: loading', () => {
 });
 
 @Component({ template: `` })
-class TestComponent {}
+class TestComponent { }

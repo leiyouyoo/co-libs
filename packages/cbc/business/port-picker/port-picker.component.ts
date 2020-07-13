@@ -1,18 +1,10 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  forwardRef,
-  Input,
-  SimpleChanges ,
-  ViewEncapsulation,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, Input, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 
-import { PlaceService } from '@co/cds';
 import { PickerComponentBase } from '@co/cbc/core';
+import { PlaceService } from '@co/cds';
 import * as _ from 'lodash';
 
 /**
@@ -35,11 +27,10 @@ import * as _ from 'lodash';
   encapsulation: ViewEncapsulation.None,
 })
 export class PortPickerComponent extends PickerComponentBase {
-
-  @Input() portReq:any;
+  @Input() portReq: any;
   //#region  构造函数
 
-  constructor( cdr: ChangeDetectorRef, private portService: PlaceService) {
+  constructor(cdr: ChangeDetectorRef, private portService: PlaceService) {
     super(cdr);
 
     this.coLabelMember = 'name';
@@ -49,25 +40,22 @@ export class PortPickerComponent extends PickerComponentBase {
   //#endregion
 
   fetchRemoteData(_condition: any): Observable<any> {
-    if( this.portReq ){
-      return this.portService.getAllForUiPacker(_condition);
-    }else {
+    if (this.portReq) {
+      return this.portService.getAllForUiPicker(_condition);
+    } else {
       return [] as any;
     }
   }
 
-  ngOnChanges( changes: SimpleChanges ){
+  ngOnChanges(changes: SimpleChanges) {
     console.log(changes);
-    if( changes ){
-
+    if (changes) {
     }
-    if( this.portReq ){
-
+    if (this.portReq) {
       this.fetchRemoteData(this.portReq).subscribe((response: any) => {
-
-        let valueList:any[] = [];
-        if( response && response.items.length > 0 ){
-          response.items.forEach( (v) =>{
+        const valueList: any[] = [];
+        if (response && response.items.length > 0) {
+          response.items.forEach(v => {
             valueList.push(v.id);
           });
         }
@@ -97,15 +85,13 @@ export class PortPickerComponent extends PickerComponentBase {
 
         this.getCdrTo();
       });
-
-    }else {
+    } else {
       this.value = [];
 
       this.optionList = [];
 
       this.isLoading = false;
     }
-
   }
 
   // writeValue(modelValue: NzSafeAny | NzSafeAny[]): void {

@@ -11,7 +11,7 @@ import { LoadingShowOptions } from './loading.types';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class LoadingDefaultComponent {
+export class CoLoadingDefaultComponent {
   options: LoadingShowOptions;
 
   get icon() {
