@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
-export class STWidgetRegistry {
+export class CoSTWidgetRegistry {
   private _widgets: { [type: string]: any } = {};
 
   get widgets() {

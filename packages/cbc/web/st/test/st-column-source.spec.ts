@@ -3,7 +3,7 @@ import { CoI18NService, CoI18NServiceFake } from '@co/common';
 import { deepGet } from '@co/core';
 import { STColumnSource } from '../st-column-source';
 import { STRowSource } from '../st-row.directive';
-import { STWidgetRegistry } from '../st-widget';
+import { CoSTWidgetRegistry } from '../st-widget';
 import { ST_DEFULAT_CONFIG } from '../st.config';
 import { STColumn, STColumnButtonPop, STIcon } from '../st.interfaces';
 
@@ -25,14 +25,14 @@ describe('st: column-source', () => {
   let i18nSrv: CoI18NService | null;
   let srv: STColumnSource;
   let rowSrv: STRowSource;
-  let stWidgetRegistry: STWidgetRegistry;
+  let stWidgetRegistry: CoSTWidgetRegistry;
   let page: PageObject;
 
   function genModule(other: { acl?: boolean; i18n?: boolean; cog?: any }) {
     aclSrv = other.acl ? new ACLService({ merge: (_: any, def: any) => def } as any) : null;
     i18nSrv = other.i18n ? new MockI18NServiceFake() : null;
     rowSrv = new STRowSource();
-    stWidgetRegistry = new STWidgetRegistry();
+    stWidgetRegistry = new CoSTWidgetRegistry();
     srv = new STColumnSource(new MockDomSanitizer() as any, rowSrv, aclSrv!, i18nSrv!, stWidgetRegistry);
     srv.setCog(other.cog || ST_DEFULAT_CONFIG);
     page = new PageObject();

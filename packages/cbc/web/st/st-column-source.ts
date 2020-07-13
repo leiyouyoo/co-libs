@@ -5,7 +5,7 @@ import { CoI18NService, CO_I18N_TOKEN } from '@co/common';
 import { CoSTConfig, deepCopy, warn } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { STRowSource } from './st-row.directive';
-import { STWidgetRegistry } from './st-widget';
+import { CoSTWidgetRegistry } from './st-widget';
 import {
   STColumn,
   STColumnButton,
@@ -26,7 +26,7 @@ export class STColumnSource {
     @Host() private rowSource: STRowSource,
     @Optional() private acl: ACLService,
     @Optional() @Inject(CO_I18N_TOKEN) private i18nSrv: CoI18NService,
-    private stWidgetRegistry: STWidgetRegistry,
+    private stWidgetRegistry: CoSTWidgetRegistry,
   ) {}
 
   setCog(val: CoSTConfig): void {

@@ -1,5 +1,5 @@
 import { ComponentFactoryResolver, Directive, Input, OnInit, ViewContainerRef } from '@angular/core';
-import { STWidgetRegistry } from './st-widget';
+import { CoSTWidgetRegistry } from './st-widget';
 import { STColumn, STData } from './st.interfaces';
 
 @Directive({ selector: '[st-widget-host]' })
@@ -8,7 +8,7 @@ export class STWidgetHostDirective implements OnInit {
   @Input() column: STColumn;
 
   constructor(
-    private stWidgetRegistry: STWidgetRegistry,
+    private stWidgetRegistry: CoSTWidgetRegistry,
     private viewContainerRef: ViewContainerRef,
     private componentFactoryResolver: ComponentFactoryResolver,
   ) {}

@@ -35,7 +35,7 @@ import {
   STWidthMode,
 } from '../st.interfaces';
 import { CoSTModule } from '../co-s-t.module';
-import { STWidgetRegistry } from './../st-widget';
+import { CoSTWidgetRegistry } from './../st-widget';
 
 const MOCKDATE = new Date();
 const MOCKIMG = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wlseKgAAAABJRU5ErkJggg==`;
@@ -88,7 +88,7 @@ describe('abc: table', () => {
   let page: PageObject;
   let comp: STComponent;
   let i18nSrv: AlainI18NService;
-  let registerWidget: STWidgetRegistry;
+  let registerWidget: CoSTWidgetRegistry;
 
   function genModule(other: { template?: string; i18n?: boolean; minColumn?: boolean; providers?: any[]; createComp?: boolean }) {
     other = {
@@ -125,7 +125,7 @@ describe('abc: table', () => {
       providers,
     });
     if (other.template) TestBed.overrideTemplate(TestComponent, other.template);
-    registerWidget = TestBed.inject(STWidgetRegistry);
+    registerWidget = TestBed.inject(CoSTWidgetRegistry);
     registerWidget.register('test', TestWidgetComponent);
     // ALAIN_I18N_TOKEN 默认为 root 会导致永远都会存在
     i18nSrv = TestBed.inject(ALAIN_I18N_TOKEN);
