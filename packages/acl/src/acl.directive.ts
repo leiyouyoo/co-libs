@@ -42,7 +42,6 @@ export class ACLDirective implements OnDestroy {
         this.renderer.addClass(el, CLS);
       }
     } else {
-      debugger
       if (typeof el.readOnly !== undefined && this._controlType === 'readonly') {
         if (this.srv.can(this._value)) {
           el.readOnly = false;

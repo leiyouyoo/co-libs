@@ -94,7 +94,6 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
     );
 
     optionList$.subscribe((response: any) => {
-
       response = response.result || response;
 
       let originalOptions: Array<{ value: string; text: string }> = [];
@@ -145,9 +144,8 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   //#region ngModel实现
 
   writeValue(modelValue: NzSafeAny | NzSafeAny[]): void {
-    debugger;
     if (this.value !== modelValue) {
-      if (typeof this.value === "undefined") {
+      if (typeof this.value === "undefined" && this.coMode !== 'tags') {
         this.loadDownList(modelValue);
       }
 
