@@ -12,5 +12,5 @@ import { Component } from '@angular/core';
 export class CustomerPickerTagsComponent {
   size = 'default';
   valueMember = "name";
-  selectedValue: string;
+  selectedValue: string[] = ['测试1', '测试2'];
 }

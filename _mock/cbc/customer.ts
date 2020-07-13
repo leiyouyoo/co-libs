@@ -33,22 +33,24 @@ const CUSTOMERS_DATA = setupData(100);
 export const CUSTOMERS = {
   // 支持值为 Object 和 Array
   'POST /crm/customer/GetAllForUiPicker': (req: MockRequest) => {
+    debugger;
+
     const res: any = {
       items: [],
       total: 0,
     };
 
     const items: any[] = CUSTOMERS_DATA;
-    if (req.queryString.ids) {
+    if (req.body.ids) {
       res.items = items.filter(item => {
-        return req.queryString.ids.includes(item.id);
+        return req.body.ids.includes(item.id);
       });
     } else {
       res.items = items
         .filter(item => {
-          return !req.queryString.searchText || item.name.includes(req.queryString.searchText);
+          return !req.body.searchText || item.name.includes(req.body.searchText);
         })
-        .slice(req.queryString.skipCount, req.queryString.skipCount + req.queryString.maxResultCount);
+        .slice(req.body.skipCount, req.body.skipCount + req.body.maxResultCount);
     }
 
     res.total = res.items.length;
