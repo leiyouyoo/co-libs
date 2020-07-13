@@ -30,7 +30,6 @@ export class MockInterceptor implements HttpInterceptor {
   constructor(private injector: Injector) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    debugger;
     const src = this.injector.get(MockService);
     const config = src.config;
     const rule = src.getRule(req.method, req.url.split('?')[0]);
