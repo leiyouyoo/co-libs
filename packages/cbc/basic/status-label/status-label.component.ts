@@ -3,7 +3,7 @@ import { InputBoolean } from '@co/core';
 
 @Component({
   selector: 'co-status-label, [co-status-label]',
-  template: ` <i *ngIf="icon" nz-icon [nzType]="iconType" class="pr-xs"></i>{{ text }}<ng-content></ng-content> `,
+  template: ` <i *ngIf="icon" nz-icon class="pr-xs"></i>{{ text }}<ng-content></ng-content> `,
   host: {
     '[class.text-success]': `_t=='success'`,
     '[class.text-error]': `_t=='error'`,

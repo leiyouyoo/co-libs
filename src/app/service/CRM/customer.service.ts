@@ -8,7 +8,7 @@ import {
   CustomerDto,
   CustomerListDto,
   MergeCustomerListInput,
-  GetAllForUiPickerInput,
+  GetCustomerAllForUiPickerInput,
   ExternalPartnerAndCustomerDto,
   SearchCustomerOutput,
   CustomerOutput,
@@ -93,7 +93,7 @@ export class CustomerService extends BaseApi {
   @POST('getAllForUiPicker')
   getAllForUiPicker(
     @Payload
-    _req: GetAllForUiPickerInput,
+    _req: GetCustomerAllForUiPickerInput,
   ): Observable<PagedResultDto<CustomerListDto>> {
     return null as any;
   }

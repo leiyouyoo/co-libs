@@ -12,7 +12,7 @@ title:
 
 ```ts
 import { Component } from '@angular/core';
-import { LoadingService } from '@co/cbc/basic/loading';
+import { CoLoadingService } from '@co/cbc/basic/loading';
 
 @Component({
   selector: 'app-demo',
@@ -22,7 +22,7 @@ import { LoadingService } from '@co/cbc/basic/loading';
   `,
 })
 export class DemoComponent {
-  constructor(private loadingSrv: LoadingService) {}
+  constructor(private loadingSrv: CoLoadingService) {}
 
   show(): void {
     this.loadingSrv.open({ delay: 1000 });
