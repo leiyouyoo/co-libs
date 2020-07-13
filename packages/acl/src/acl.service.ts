@@ -9,7 +9,7 @@ import { ACLCanType, ACLType } from './acl.type';
  *
  * 务必在根目录注册 `CoACLModule.forRoot()` 才能使用服务
  */
-@Injectable()
+@Injectable({ providedIn: 'platform' })
 export class ACLService {
   private options: CoACLConfig;
   private roles: string[] = [];

@@ -2,8 +2,8 @@ import { Component, DebugElement, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { createTestContext } from '@co/testing';
-import { ImageDirective } from './image.directive';
-import { ImageModule } from './image.module';
+import { CoImageDirective } from './image.directive';
+import { CoImageModule } from './image.module';
 
 const SRC = 'http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLL1byctY955Htv9ztzVlIzY9buI9zRLg5QrkpOynrmObArKicy9icIX7aVgv3UqIbeIEo2xuUtsqYw/';
 
@@ -14,7 +14,7 @@ describe('abc: _src', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ImageModule],
+      imports: [CoImageModule],
       declarations: [TestComponent],
     });
   });
@@ -74,7 +74,7 @@ describe('abc: _src', () => {
   template: ` <div [_src]="src" #comp="_src" [size]="size" [error]="error"></div> `,
 })
 class TestComponent {
-  @ViewChild('comp', { static: true }) comp: ImageDirective;
+  @ViewChild('comp', { static: true }) comp: CoImageDirective;
   src = './assets/img/logo.svg';
   size = 64;
   error = './assets/img/logo.svg';

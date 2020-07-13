@@ -2,8 +2,8 @@ import { Component, DebugElement, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NzTooltipDirective } from 'ng-zorro-antd/tooltip';
-import { EllipsisComponent } from './ellipsis.component';
-import { EllipsisModule } from './ellipsis.module';
+import { CoEllipsisComponent } from './ellipsis.component';
+import { CoEllipsisModule } from './ellipsis.module';
 
 describe('abc: ellipsis', () => {
   let fixture: ComponentFixture<TestBaseComponent>;
@@ -13,7 +13,7 @@ describe('abc: ellipsis', () => {
 
   function genModule() {
     TestBed.configureTestingModule({
-      imports: [EllipsisModule],
+      imports: [CoEllipsisModule],
       declarations: [TestLengthComponent, TestLineComponent],
     });
   }
@@ -132,7 +132,7 @@ describe('abc: ellipsis', () => {
   });
 
   class PageObject {
-    comp: EllipsisComponent;
+    comp: CoEllipsisComponent;
 
     constructor() {
       this.comp = context.comp;
@@ -189,7 +189,7 @@ describe('abc: ellipsis', () => {
 });
 
 class TestBaseComponent {
-  @ViewChild('comp', { static: true }) comp: EllipsisComponent;
+  @ViewChild('comp', { static: true }) comp: CoEllipsisComponent;
   tooltip = false;
   length: number | null = 10;
   lines: number | null = 3;
@@ -204,7 +204,7 @@ class TestBaseComponent {
     <ellipsis #comp [tooltip]="tooltip" [length]="length" [fullWidthRecognition]="fullWidthRecognition" [tail]="tail">{{ text }}</ellipsis>
   `,
 })
-class TestLengthComponent extends TestBaseComponent {}
+class TestLengthComponent extends TestBaseComponent { }
 
 @Component({
   template: `
@@ -219,4 +219,4 @@ class TestLengthComponent extends TestBaseComponent {}
     ></ellipsis>
   `,
 })
-class TestLineComponent extends TestBaseComponent {}
+class TestLineComponent extends TestBaseComponent { }

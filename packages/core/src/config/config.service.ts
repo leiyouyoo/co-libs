@@ -2,7 +2,7 @@ import { Inject, Injectable, Optional } from '@angular/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { CoConfig, CoConfigKey, CO_CONFIG } from './config.types';
 import _ from 'lodash'
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: 'platform' })
 export class CoConfigService {
   private config: CoConfig;
 

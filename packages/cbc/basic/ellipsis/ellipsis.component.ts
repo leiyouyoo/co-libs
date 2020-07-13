@@ -28,7 +28,7 @@ import { InputBoolean, InputNumber } from '@co/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class EllipsisComponent implements AfterViewInit, OnChanges {
+export class CoEllipsisComponent implements AfterViewInit, OnChanges {
   //#region 私有变量
 
   // tslint:disable-next-line:no-string-literal
@@ -61,7 +61,7 @@ export class EllipsisComponent implements AfterViewInit, OnChanges {
     private dom: DomSanitizer,
     @Inject(DOCUMENT) private doc: Document,
     private cdr: ChangeDetectorRef,
-  ) {}
+  ) { }
 
   //#region 生命周期钩子
 

@@ -8,7 +8,7 @@ import { Menu, MenuIcon } from './interface';
 /**
  * 菜单服务，[在线文档](https://ng-alain.com/theme/menu)
  */
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: 'platform' })
 export class MenuService implements OnDestroy {
   private _change$: BehaviorSubject<Menu[]> = new BehaviorSubject<Menu[]>([]);
   private i18n$: Subscription;
@@ -21,7 +21,7 @@ export class MenuService implements OnDestroy {
     private i18nSrv: CoI18NService,
     @Optional() private aclService: ACLService,
   ) {
-    this.i18n$ = this.i18nSrv.change.subscribe(() => this.resume());
+    this.i18n$ = this.i18nSrv && this.i18nSrv.change.subscribe(() => this.resume());
   }
 
   get change(): Observable<Menu[]> {

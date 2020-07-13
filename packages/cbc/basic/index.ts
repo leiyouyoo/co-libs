@@ -5,5 +5,9 @@ export * from '@co/cbc/basic/date-picker';
 export * from '@co/cbc/basic/loading';
 export * from '@co/cbc/basic/xlsx';
 export * from '@co/cbc/basic/datetime-range-picker';
-
+export * from '@co/cbc/basic/delay';
+export * from '@co/cbc/basic/masonry';
+export * from '@co/cbc/basic/mouse-focus';
+export * from '@co/cbc/basic/scrollbar';
+export * from '@co/cbc/basic/status-label';
 export * from './basic.module';

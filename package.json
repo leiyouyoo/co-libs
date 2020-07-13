@@ -1,6 +1,6 @@
 {
   "name": "co-libs",
-  "version": "0.0.64",
+  "version": "0.0.76",
   "description": "co-libs 是一组用于前端开发的公共模块集合",
   "keywords": [
     "co-libs",
@@ -32,7 +32,6 @@
     "build:artifacts": "bash scripts/ci/build-artifacts.sh",
     "build:doc": "node scripts/site/main init && node scripts/site/scripts/color.js && node scripts/site/scripts/theme.js",
     "doc": "npm run site:gen && node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng s --hmr --port 9000",
-
     "site": "npm run site:gen && node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng s --hmr --port 9000",
     "site:gen": "node scripts/site/main init && node scripts/site/scripts/color.js && node scripts/site/scripts/theme.js",
     "test": "ng test --no-progress --browsers=ChromeHeadlessCI --code-coverage --no-watch",
@@ -81,6 +80,7 @@
     "ngx-simplemde": "^9.0.0",
     "ngx-tinymce": "^9.0.0",
     "ngx-ueditor": "^9.0.0",
+    "perfect-scrollbar": "^1.5.0",
     "qrious": "^4.0.2",
     "rxjs": "~6.5.4",
     "save-dev": "0.0.1-security",

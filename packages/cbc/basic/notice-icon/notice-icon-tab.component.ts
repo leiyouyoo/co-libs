@@ -9,7 +9,7 @@ import { NoticeIconSelect, NoticeItem } from './notice-icon.types';
   preserveWhitespaces: false,
   encapsulation: ViewEncapsulation.None,
 })
-export class NoticeIconTabComponent {
+export class CoNoticeIconTabComponent {
   @Input() locale: LocaleData = {};
   @Input() data: NoticeItem;
   @Output() readonly select = new EventEmitter<NoticeIconSelect>();

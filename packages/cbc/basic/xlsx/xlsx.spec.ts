@@ -6,8 +6,8 @@ import { By } from '@angular/platform-browser';
 import { deepCopy, LazyService } from '@co/core';
 import * as fs from 'file-saver';
 import { of, throwError } from 'rxjs';
-import { XlsxModule } from './xlsx.module';
-import { XlsxService } from './xlsx.service';
+import { CoXlsxModule } from './xlsx.module';
+import { CoXlsxService } from './xlsx.service';
 import { XlsxExportOptions } from './xlsx.types';
 
 class MockLazyService {
@@ -21,8 +21,8 @@ const DEFAULTMOCKXLSX = {
     book_new: () => {
       return {};
     },
-    aoa_to_sheet: () => {},
-    book_append_sheet: () => {},
+    aoa_to_sheet: () => { },
+    book_append_sheet: () => { },
     sheet_to_json: () => {
       return {
         A1: 1,
@@ -38,7 +38,7 @@ const DEFAULTMOCKXLSX = {
       },
     };
   },
-  write: () => {},
+  write: () => { },
 };
 
 let isErrorRequest = false;
@@ -49,17 +49,17 @@ class MockHttpClient {
 }
 
 describe('abc: xlsx', () => {
-  let srv: XlsxService;
+  let srv: CoXlsxService;
   function genModule() {
     TestBed.configureTestingModule({
-      imports: [XlsxModule, HttpClientTestingModule],
+      imports: [CoXlsxModule, HttpClientTestingModule],
       declarations: [TestComponent],
       providers: [
         { provide: HttpClient, useClass: MockHttpClient },
         { provide: LazyService, useClass: MockLazyService },
       ],
     });
-    srv = TestBed.inject<XlsxService>(XlsxService);
+    srv = TestBed.inject<CoXlsxService>(CoXlsxService);
   }
 
   beforeEach(() => {
@@ -78,7 +78,7 @@ describe('abc: xlsx', () => {
       const lazySrv: LazyService = TestBed.inject<LazyService>(LazyService);
       spyOn(lazySrv, 'load').and.callFake(() => Promise.reject());
       expect(lazySrv.load).not.toHaveBeenCalled();
-      srv.import('/1.xlsx').catch(() => {});
+      srv.import('/1.xlsx').catch(() => { });
       expect(lazySrv.load).toHaveBeenCalled();
     });
 

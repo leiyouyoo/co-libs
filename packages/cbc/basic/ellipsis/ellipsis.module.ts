@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { CoUtilModule } from '@co/core';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
-import { EllipsisComponent } from './ellipsis.component';
+import { CoEllipsisComponent } from './ellipsis.component';
 
-const COMPONENTS = [EllipsisComponent];
+const COMPONENTS = [CoEllipsisComponent];
 
 /**
  * 文本过长自动处理省略号模块
@@ -15,4 +15,4 @@ const COMPONENTS = [EllipsisComponent];
   declarations: [...COMPONENTS],
   exports: [...COMPONENTS],
 })
-export class EllipsisModule {}
+export class CoEllipsisModule { }

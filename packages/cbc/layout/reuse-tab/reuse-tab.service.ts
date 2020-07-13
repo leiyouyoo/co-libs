@@ -1,4 +1,4 @@
-import { Injectable, Injector, OnDestroy } from '@angular/core';
+import { Optional, Injectable, Injector, OnDestroy } from '@angular/core';
 import {
   ActivatedRoute,
   ActivatedRouteSnapshot,
@@ -346,10 +346,10 @@ export class ReuseTabService implements OnDestroy {
 
   // #endregion
 
-  constructor(private injector: Injector, private menuService: MenuService) { }
+  constructor(private injector: Injector, @Optional() private menuService: MenuService) { }
 
   init() {
-    this.initScroll();
+    // this.initScroll();
     this._inited = true;
   }
 

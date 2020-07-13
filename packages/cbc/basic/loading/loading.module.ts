@@ -4,14 +4,14 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
-import { LoadingDefaultComponent } from './loading.component';
+import { CoLoadingDefaultComponent } from './loading.component';
 
 /**
  * 加载中指示器模块
  */
 @NgModule({
   imports: [CommonModule, OverlayModule, PortalModule, NzIconModule, NzSpinModule],
-  declarations: [LoadingDefaultComponent],
-  exports: [LoadingDefaultComponent],
+  declarations: [CoLoadingDefaultComponent],
+  exports: [CoLoadingDefaultComponent],
 })
-export class LoadingModule {}
+export class CoLoadingModule { }

@@ -1,34 +1,28 @@
 import {
   Component,
   OnInit,
-  Input,
-  ViewChild,
-  ElementRef,
-  TemplateRef,
-  ViewContainerRef,
-  Output,
-  EventEmitter,
   Inject,
   LOCALE_ID, forwardRef, ChangeDetectorRef,
 } from '@angular/core';
-import { PositionStrategy, Overlay, ConnectionPositionPair, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
+import { Overlay } from '@angular/cdk/overlay';
 import { formatDate } from '@angular/common';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { isToday, differenceInCalendarDays } from 'date-fns';
 import { HourRangePipe } from '@co/common';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
 @Component({
-  selector: 'datetime-range-picker',
+  selector: 'co-datetime-range-picker',
   templateUrl: './datetime-range-picker.component.html',
   styleUrls: ['./datetime-range-picker.component.less'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DatetimeRangePickerComponent),
+      useExisting: forwardRef(() => CoDatetimeRangePickerComponent),
       multi: true,
     },
   ],
 })
-export class DatetimeRangePickerComponent implements OnInit, ControlValueAccessor {
+export class CoDatetimeRangePickerComponent implements OnInit, ControlValueAccessor {
 
   private onChange;
   private onTouched;
@@ -57,9 +51,9 @@ export class DatetimeRangePickerComponent implements OnInit, ControlValueAccesso
   timeList: Array<any> = new Array<any>();
   // overlayRef: OverlayRef;
   constructor(private overlay: Overlay,
-              @Inject(LOCALE_ID) private locale: string,
-              public cdr: ChangeDetectorRef,
-              ) {}
+    @Inject(LOCALE_ID) private locale: string,
+    public cdr: ChangeDetectorRef,
+  ) { }
 
   ngOnInit() {
     this.initDate(this.baseDay);
