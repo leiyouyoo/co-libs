@@ -27,8 +27,7 @@ export class ToolbarComponent extends LifeCycleComponent {
   }
 
   ngAfterViewInit(): void {
-    const changes = this.onChanges$.pipe(takeUntil(this.onDestroy$));
-    const styleChanges = changes.pipe(filter(({ coMarginRight, coWidth }) =>
+    const styleChanges = this.onChanges$.pipe(filter(({ coMarginRight, coWidth }) =>
       coMarginRight !== undefined || coWidth !== undefined));
     styleChanges.subscribe(() => {
       this.updateItems();

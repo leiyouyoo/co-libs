@@ -10,10 +10,8 @@ import { SearchAreaExtraComponent } from './search-area-extra.component';
     <ng-content select="co-search-area-item"></ng-content>
     <co-search-area-item coWidth="auto" *ngIf="searchAreaExtraComponent&&!coNoDefaultToggleShowButton">
       <a nz-button nzType="link" (click)="searchAreaExtraComponent.toggleShow()">
-        <span>高级搜索
-          <i [hidden]="searchAreaExtraComponent.isShow" nz-icon nzType="down" nzTheme="outline"></i>
-          <i [hidden]="!searchAreaExtraComponent.isShow" nz-icon nzType="up" nzTheme="outline"></i>
-        </span>
+        高级搜索
+        <i nz-icon [nzType]="searchAreaExtraComponent.isShow?'up':'down'" nzTheme="outline"></i>
       </a>
     </co-search-area-item>
     <ng-content select="co-search-area-extra"></ng-content>
@@ -51,17 +49,15 @@ export class SearchAreaLayoutComponent extends LifeCycleComponent {
   }
 
   ngAfterViewInit(): void {
-    const changes = this.onChanges$.pipe(takeUntil(this.onDestroy$));
-
     // 强行换行
-    const coColsChanges = changes.pipe(filter(({ coCols }) => coCols !== undefined));
+    const coColsChanges = this.onChanges$.pipe(filter(({ coCols }) => coCols !== undefined));
     coColsChanges.subscribe(() => {
       this.clearOtherChildren();
       this.forceWrap();
     });
 
     // 控制item
-    const styleChanges = changes.pipe(filter(({ coMarginRight, coMarginBottom, coWidth }) =>
+    const styleChanges = this.onChanges$.pipe(filter(({ coMarginRight, coMarginBottom, coWidth }) =>
       coMarginRight !== undefined || coMarginBottom !== undefined || coWidth !== undefined));
     styleChanges.subscribe(() => {
       this.updateItems();

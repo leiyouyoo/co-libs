@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2, ViewEncapsulation } from '@angular/core';
 import { LifeCycleComponent } from '@co/cbc/core';
-import { filter, startWith, takeUntil } from 'rxjs/operators';
+import { filter, startWith } from 'rxjs/operators';
 
 
 @Component({
@@ -27,11 +27,10 @@ export class SearchAreaItemComponent extends LifeCycleComponent {
   }
 
   ngOnInit(): void {
-    const changes = this.onChanges$.pipe(takeUntil(this.onDestroy$));
-    changes.pipe(filter(({ marginRight }) => marginRight !== undefined), startWith(null)).subscribe(() => {
+    this.onChanges$.pipe(filter(({ marginRight }) => marginRight !== undefined), startWith(null)).subscribe(() => {
       this.setMarginRight(this.coMarginRight);
     });
-    changes.pipe(filter(({ coWidth }) => coWidth !== undefined), startWith(null)).subscribe(() => {
+    this.onChanges$.pipe(filter(({ coWidth }) => coWidth !== undefined), startWith(null)).subscribe(() => {
       this.setWidth(this.coWidth);
     });
   }

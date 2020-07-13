@@ -119,9 +119,8 @@
             <button nz-button nzType="primary" (click)="submit()"><i nz-icon nzType="search" nzTheme="outline"></i>搜索</button>
             <button nz-button>重置</button>
             <a nz-button nzType="link" (click)="advanced=!advanced">
-              <span style="padding-left: 8px">高级搜索
-              <i [hidden]="advanced" nz-icon nzType="down" nzTheme="outline"></i>
-              <i [hidden]="!advanced" nz-icon nzType="up" nzTheme="outline"></i></span>
+              高级搜索
+              <i nz-icon [nzType]="advanced?'up':'down'" nzTheme="outline"></i>
             </a>
           </co-search-area-item>
           <co-search-area-extra [(isShow)]="advanced">
