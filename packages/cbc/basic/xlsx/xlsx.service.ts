@@ -8,7 +8,7 @@ import { XlsxExportOptions, XlsxExportSheet } from './xlsx.types';
 declare var XLSX: any;
 
 @Injectable({ providedIn: 'root' })
-export class XlsxService {
+export class CoXlsxService {
   private cog: CoXlsxConfig;
   constructor(private http: HttpClient, private lazy: LazyService, configSrv: CoConfigService) {
     this.cog = configSrv.merge('xlsx', {

@@ -3,7 +3,7 @@ type: Basic
 title: ellipsis
 subtitle: 文本自动省略号
 cols: 1
-module: import { EllipsisModule } from '@co/cbc/ellipsis';
+module: import { CoEllipsisModule } from '@co/cbc/ellipsis';
 ---
 
 文本过长自动处理省略号，支持按照文本长度和最大行数两种方式截取。

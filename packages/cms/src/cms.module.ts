@@ -1,25 +1,29 @@
-import { HttpClientModule } from '@angular/common/http';
-import { ModuleWithProviders, NgModule } from '@angular/core';
-import { CmsEmptyComponent } from './empty/cms-empty.component';
-import { CmsApplication, CMS_APPLICATIONS } from './cms-options';
+import { NgModule, ModuleWithProviders } from '@angular/core';
+import { PlanetApplication, PLANET_APPLICATIONS } from './planet.types';
 
+import { HttpClientModule } from '@angular/common/http';
+import { EmptyComponent } from './empty/empty.component';
+
+/**
+ * 微服务模块
+ */
 @NgModule({
-  declarations: [CmsEmptyComponent],
-  entryComponents: [CmsEmptyComponent],
-  imports: [HttpClientModule],
-  providers: [],
-  exports: [HttpClientModule, CmsEmptyComponent]
+    declarations: [EmptyComponent],
+    entryComponents: [EmptyComponent],
+    imports: [HttpClientModule],
+    providers: [],
+    exports: [HttpClientModule, EmptyComponent]
 })
-export class CmsModule {
-  static forRoot(apps: CmsApplication[]): ModuleWithProviders {
-    return {
-      ngModule: CmsModule,
-      providers: [
-        {
-          provide: CMS_APPLICATIONS,
-          useValue: apps
-        }
-      ]
-    };
-  }
+export class CoCmsModule {
+    static forRoot(apps: PlanetApplication[]): ModuleWithProviders<CoCmsModule> {
+        return {
+            ngModule: CoCmsModule,
+            providers: [
+                {
+                    provide: PLANET_APPLICATIONS,
+                    useValue: apps
+                }
+            ]
+        };
+    }
 }

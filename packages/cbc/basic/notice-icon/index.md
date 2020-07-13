@@ -3,7 +3,7 @@ type: Basic
 title: notice-icon
 subtitle: 通知菜单
 cols: 1
-module: import { NoticeIconModule } from '@co/cbc/basic/notice-icon';
+module: import { CoNoticeIconModule } from '@co/cbc/basic/notice-icon';
 ---
 
 用在导航工具栏上，作为整个产品统一的通知中心。

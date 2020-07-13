@@ -1,2 +1,2 @@
-export { ImageDirective } from './image.directive';
-export { ImageModule } from './image.module';
+export * from './image.directive';
+export * from './image.module';

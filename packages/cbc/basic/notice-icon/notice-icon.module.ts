@@ -8,10 +8,10 @@ import { NzListModule } from 'ng-zorro-antd/list';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzTagModule } from 'ng-zorro-antd/tag';
-import { NoticeIconTabComponent } from './notice-icon-tab.component';
-import { NoticeIconComponent } from './notice-icon.component';
+import { CoNoticeIconTabComponent } from './notice-icon-tab.component';
+import { CoNoticeIconComponent } from './notice-icon.component';
 
-const COMPONENTS = [NoticeIconComponent];
+const COMPONENTS = [CoNoticeIconComponent, CoNoticeIconTabComponent];
 
 @NgModule({
   imports: [
@@ -25,7 +25,7 @@ const COMPONENTS = [NoticeIconComponent];
     NzTabsModule,
     NzTagModule,
   ],
-  declarations: [...COMPONENTS, NoticeIconTabComponent],
+  declarations: [...COMPONENTS],
   exports: [...COMPONENTS],
 })
-export class NoticeIconModule {}
+export class CoNoticeIconModule { }

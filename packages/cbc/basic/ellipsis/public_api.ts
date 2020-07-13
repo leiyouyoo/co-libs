@@ -1,2 +1,2 @@
-export { EllipsisComponent } from './ellipsis.component';
-export { EllipsisModule } from './ellipsis.module';
+export * from './ellipsis.component';
+export * from './ellipsis.module';

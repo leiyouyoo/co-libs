@@ -47,8 +47,10 @@ export class ReportViewerComponent extends LifeCycleComponent {
 
   isHide: boolean = false;
 
-  constructor(cdr: ChangeDetectorRef, private sanitizer: DomSanitizer) // private warehouseReceiptService: WarehouseReceiptService,
-  // private sideMarksReportService : SideMarksReportService,
+  constructor(
+    cdr: ChangeDetectorRef,
+    private sanitizer: DomSanitizer, // private warehouseReceiptService: WarehouseReceiptService,
+  ) // private sideMarksReportService : SideMarksReportService,
   {
     super();
   }

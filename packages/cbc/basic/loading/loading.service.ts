@@ -4,13 +4,13 @@ import { ComponentRef, Injectable, OnDestroy } from '@angular/core';
 import { CoConfigService, CoLoadingConfig } from '@co/core';
 import { Subject, Subscription, timer } from 'rxjs';
 import { debounce } from 'rxjs/operators';
-import { LoadingDefaultComponent } from './loading.component';
+import { CoLoadingDefaultComponent } from './loading.component';
 import { LoadingShowOptions } from './loading.types';
 
 @Injectable({ providedIn: 'root' })
-export class LoadingService implements OnDestroy {
+export class CoLoadingService implements OnDestroy {
   private _overlayRef: OverlayRef;
-  private compRef: ComponentRef<LoadingDefaultComponent> | null = null;
+  private compRef: ComponentRef<CoLoadingDefaultComponent> | null = null;
   private opt: LoadingShowOptions | null = null;
   private cog: CoLoadingConfig;
   private n$ = new Subject();
@@ -48,7 +48,7 @@ export class LoadingService implements OnDestroy {
       hasBackdrop: true,
       backdropClass: 'loading-backdrop',
     });
-    const comp = new ComponentPortal(LoadingDefaultComponent);
+    const comp = new ComponentPortal(CoLoadingDefaultComponent);
     this.compRef = this._overlayRef.attach(comp);
     Object.assign(this.instance, { options: this.opt });
     this.compRef.changeDetectorRef.markForCheck();
