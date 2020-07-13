@@ -7,13 +7,6 @@ import {
   ViewChild, ElementRef, forwardRef,
 } from '@angular/core';
 import { LifeCycleComponent } from '@co/cbc/core';
-import { DomSanitizer } from '@angular/platform-browser';
-import {
-  ExportSideMarksReportInput,
-  GenerateWarehouseReciptInput,
-  SideMarksReportService,
-  WarehouseReceiptService,
-} from '@co/cds';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -34,7 +27,9 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class ReportViewerComponent extends LifeCycleComponent {
 
-  @Input() coParam:any;
+  @Input() coParam:any = {
+    width :600 ,
+  };
 
   @ViewChild('reportIframe' , {static:true} ) reportIframe : ElementRef;
 
@@ -47,9 +42,6 @@ export class ReportViewerComponent extends LifeCycleComponent {
   isHide :boolean = false;
 
   constructor(cdr: ChangeDetectorRef,
-              private sanitizer: DomSanitizer ,
-              private warehouseReceiptService: WarehouseReceiptService,
-              private sideMarksReportService : SideMarksReportService,
   ) {
     super();
   }
@@ -88,26 +80,15 @@ export class ReportViewerComponent extends LifeCycleComponent {
    */
   getReportData( idx ){
 
+    this.reportIframe.nativeElement.setAttribute("width",this.coParam.width);
     if( this.coParam.type == 'order'){
-
-      let req:GenerateWarehouseReciptInput = {
-        ids : [this.coParam.ids[idx]]
-      }
-      this.warehouseReceiptService.generateWarehouseRecipt(req).subscribe(res =>{
-        this.reportIframe.nativeElement.setAttribute("src", 'http://192.168.1.5:8002/FCM/WarehouseReceipt/GetWarehouseRecipt?Id='+res.fileIds[0] );
-      })
+      //http://192.168.1.5:8002/FCM/WarehouseReceipt/GetWarehouseRecipt?Id=
+      this.reportIframe.nativeElement.setAttribute("src", this.coParam.getReportUrl + this.coParam.ids[idx] );
 
     }else {
-
-      let req:ExportSideMarksReportInput = {
-        ids : [this.coParam.ids[idx]]
-      }
-      this.sideMarksReportService.exportReport(req).subscribe(res =>{
-        this.reportIframe.nativeElement.setAttribute("src", 'http://192.168.1.5:8002/FCM/SideMarksReport/GetReport?FileId='+res.fileId[0] );
-      })
-
+      //http://192.168.1.5:8002/FCM/SideMarksReport/GetReport?FileId=
+      this.reportIframe.nativeElement.setAttribute("src", this.coParam.getReportUrl + this.coParam.ids[idx] );
     }
-
 
   }
 

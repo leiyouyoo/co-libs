@@ -25,8 +25,11 @@ import { Component } from '@angular/core';
 export class ReportViewerBasicComponent {
   param:any ={
     type : 'order' ,
+    width:'600',
+    getReportUrl : 'http://192.168.1.5:8002/FCM/WarehouseReceipt/GetWarehouseRecipt?Id=',
     ids : [
-    'AC4B4B98-3C3D-44DE-245A-08D824081FFE',
+      "282022b8dc3a40b6a041fce228b82b66",
+      "0325fbd3438848588a50778f3e41f9cb"
     ] ,
   }
 }

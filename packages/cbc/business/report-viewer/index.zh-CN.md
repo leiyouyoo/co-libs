@@ -7,7 +7,7 @@ cols: 2
 module: import { ReportViewerModule } from '@co/cbc';
 ---
 
-客户选择器。
+报表选择器。
 
 ## API
 
@@ -15,4 +15,8 @@ module: import { ReportViewerModule } from '@co/cbc';
 
 | 成员 | 说明 | 类型 | 默认值 |
 |----|----|----|-----|
-| `[coSize]` | 选择框大小 | `'large','small','default'` | `'default'` |
+| `[coParam]` | 需要传入的值 | object |`'type','height','ids' ,'getReportUrl'` 
+| `coParam.type` | 报表类型 | string |`'order','mark'` 
+| `coParam.width` | 报表宽度 | string |`'600'` 
+| `coParam.ids` | 获取报表组件的id | [] | -
+| `coParam.getReportUrl` | 报表组件接口地址 | string | - 
