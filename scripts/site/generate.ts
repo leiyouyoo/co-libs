@@ -14,7 +14,7 @@ import { generateDemo } from './utils/generate-demo';
 import { generateExampleModule } from './utils/generate-example';
 import { groupFiles } from './utils/group-files';
 import { parseMd } from './utils/parse-md';
-import { genComponentName, generateDoc, genSelector, genUpperName, genUrl, includeAttributes, convertUrl } from './utils/utils';
+import { convertUrl, genComponentName, generateDoc, genSelector, genUpperName, genUrl, includeAttributes } from './utils/utils';
 
 const target = process.argv[2];
 const isSyncSpecific = !!target && target !== 'init';
@@ -44,6 +44,7 @@ function generateModule(config: ModuleConfig) {
     filename = convertUrl(`./${name}/${filename}`);
     name = convertUrl(name);
 
+    console.log('aaaaaa:' + componentName);
     modules.imports.push(`import { ${componentName} } from '${filename}';`);
     modules.components.push(componentName);
     if (needRouter) {
@@ -52,7 +53,7 @@ function generateModule(config: ModuleConfig) {
       }
 
       if (componentName.startsWith('Components')) {
-        let routeName = name.replace(/^(basic|layout|business|mobile)\//g, '');
+        const routeName = name.replace(/^(basic|layout|business|mobile)\//g, '');
         modules.routes.push(`{ path: '${routeName}', redirectTo: '${routeName}/zh', pathMatch: 'full' }`);
         modules.routes.push(`{ path: '${routeName}/:lang', component: ${componentName} }`);
       } else {
@@ -151,8 +152,8 @@ function generateModule(config: ModuleConfig) {
       // #endregion
 
       // #region generate document file
-      let componentName: any = genComponentName(config.name, meta.name);
-      let selector = genSelector(config.name, meta.name);
+      const componentName: any = genComponentName(config.name, meta.name);
+      const selector = genSelector(config.name, meta.name);
 
       // if (componentName.includes('\\')) {
       //   componentName = `${componentName.split('\\').map((key: any) => genUpperName(key)).join('')}`;
@@ -163,8 +164,8 @@ function generateModule(config: ModuleConfig) {
       const isDemo = demoList.length > 0;
       const isExample = demos.data.filter(w => w.type === 'example').length > 0;
       const fileObject: ContentTemplateData = {
-        componentName: componentName,
-        selector: selector,
+        componentName,
+        selector,
         item: {
           cols: meta.cols,
           urls,
