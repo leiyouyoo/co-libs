@@ -370,6 +370,11 @@ export interface STColumn {
    */
   uneditable?: boolean;
 
+  /**
+   * i18n
+   */
+  i18n?: string;
+
   [key: string]: any;
 }
 
