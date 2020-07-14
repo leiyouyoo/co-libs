@@ -368,9 +368,8 @@ export class STColumnSource {
       // #region title
 
       const tit = (typeof item.title === 'string' ? { text: item.title } : item.title) || {};
-      tit.i18n = item.i18n || tit.text;
-      if (tit.i18n && this.i18nSrv) {
-        tit.text = this.i18nSrv.fanyi(tit.i18n);
+      if (tit.text && this.i18nSrv && item.i18n !== false) {
+        tit.text = this.i18nSrv.fanyi(tit.text);
       }
       if (tit.text) {
         tit._text = this.dom.bypassSecurityTrustHtml(tit.text);
