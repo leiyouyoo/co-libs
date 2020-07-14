@@ -44,7 +44,6 @@ function generateModule(config: ModuleConfig) {
     filename = convertUrl(`./${name}/${filename}`);
     name = convertUrl(name);
 
-    console.log('aaaaaa:' + componentName);
     modules.imports.push(`import { ${componentName} } from '${filename}';`);
     modules.components.push(componentName);
     if (needRouter) {

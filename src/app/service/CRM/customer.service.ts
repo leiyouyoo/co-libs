@@ -21,7 +21,7 @@ import {
   CustomerAuthenticateDto,
   AuditCustomerInput,
   MergeCustomerInput,
-} from './CRM.types';
+} from './crm.types';
 
 @BaseUrl('/CRM/Customer')
 @Injectable({ providedIn: 'root' })
