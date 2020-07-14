@@ -249,7 +249,10 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
         takeUntil(this.unsubscribe$),
         filter(() => this._columns.length > 0),
       )
-      .subscribe(() => this.refreshColumns());
+      .subscribe(() => {
+        this.refreshColumns();
+        this.cd();
+      });
   }
 
   private setCog(cog: CoSTConfig): void {
