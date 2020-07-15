@@ -57,12 +57,13 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   onTouched: OnTouchedType = () => { };
   coFilterOption = () => true;
   optionList: Array<{ value: string; text: string }> = [];
-  searchChange$: any = new BehaviorSubject('');
+  searchChange$: any = new BehaviorSubject({});
   isLoading = false;
   loadingMode: LoadMode = 'more';
   hasMore = true;
   searchText = '';
   skipCount = 0;
+  hasLoadedByids = false;
 
   //#endregion
 
@@ -145,12 +146,12 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
 
   writeValue(modelValue: NzSafeAny | NzSafeAny[]): void {
     if (this.value !== modelValue) {
-      if (typeof this.value === "undefined" && this.coMode !== 'tags') {
-        this.loadDownList(modelValue);
+      if (modelValue && this.coValueMember == 'id' && !this.hasLoadedByids) {
+        this.loadByIds(modelValue);
+        this.hasLoadedByids = true;
       }
-
       this.value = modelValue;
-      this.cdr.markForCheck();
+      // this.cdr.markForCheck();
     }
   }
 
@@ -230,7 +231,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   private loadByIds(value: any): void {
     if (this.coValueMember !== "id") return;
 
-    this.loadingMode = 'search';
+    this.loadingMode = 'more';
     this.skipCount = 0;
 
     const covertModelToList = (model: NzSafeAny[] | NzSafeAny, mode: NzSelectModeType): NzSafeAny[] => {
