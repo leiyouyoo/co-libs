@@ -370,6 +370,12 @@ export interface STColumn {
    */
   uneditable?: boolean;
 
+  /**
+   * i18n
+   * 是否需要i18n 默认undefined 开启，仅false 关闭
+   */
+  i18n?: boolean;
+
   [key: string]: any;
 }
 

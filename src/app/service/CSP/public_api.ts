@@ -16,5 +16,4 @@ export * from './shipment-event.service';
 export * from './shipment-item.service';
 export * from './shipment-share-link.service';
 
-
-export * from './CSP.types';
+export * from './csp.types';

@@ -13,7 +13,7 @@ import {
   QuoteEnquiryListForCSPInput,
   QuoteEnquiryListForCSPOutput,
   Object,
-} from './CRM.types';
+} from './crm.types';
 
 @BaseUrl('/CRM/QuoteEnquiry')
 @Injectable({ providedIn: 'root' })

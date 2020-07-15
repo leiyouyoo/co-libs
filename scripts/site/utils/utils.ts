@@ -93,7 +93,13 @@ export function genUrl(rootDir: string, filePath: string) {
 
 export function genComponentName(...names) {
   let name = JSON.stringify(`${names.map(key => genUpperName(key)).join('')}Component`);
-  return JSON.parse(`${name.split('\\').map((key: any) => genUpperName(key)).join('')}`);
+  name = name.replace(/\//g, `\\`);
+  return JSON.parse(
+    `${name
+      .split('\\')
+      .map((key: any) => genUpperName(key))
+      .join('')}`,
+  );
 }
 
 export function genSelector(...names: string[]) {
