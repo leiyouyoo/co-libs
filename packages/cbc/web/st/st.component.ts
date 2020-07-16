@@ -221,7 +221,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   constructor(
-    @Optional() @Inject(CO_I18N_TOKEN) i18nSrv: CoI18NService,
+    @Optional() @Inject(CO_I18N_TOKEN) private i18nSrv: CoI18NService,
     private cdr: ChangeDetectorRef,
     private router: Router,
     private el: ElementRef,
@@ -765,7 +765,11 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   _btnText(record: STData, btn: STColumnButton) {
-    return typeof btn.text === 'function' ? btn.text(record, btn) : btn.text || '';
+    let text = typeof btn.text === 'function' ? btn.text(record, btn) : btn.text || '';
+    if (text && !btn.disableI18n) {
+      text = this.i18nSrv.fanyi(text);
+    }
+    return text;
   }
 
   _validBtns(btns: STColumnButton[], item: STData, col: STColumn): STColumnButton[] {
@@ -841,11 +845,12 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   getFilterOptions(column: STColumn, index: number, input?: string): any[] {
+    if (column?.filter?.optionList) return column.filter.optionList;
     const arr = Array.from(
       new Set(this._data.map(o => o._values[index].text))
     );
     let result: any[];
-    switch (column.filterType) {
+    switch (column.filter !.type) {
       case 'autocomplete':
         result = arr.filter(o => {
           const str = o + '';
@@ -868,11 +873,6 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     this._data.unshift({ _editing: true, _new: true, _values: [] })
     this.optimizeData()
     this.cdr.markForCheck();
-  }
-
-  onFilterValueChange(value, column: STColumn, ) {
-    column.filter!.menus![0].value = value;
-    this.loadPageData();
   }
 
   ngAfterViewInit() {

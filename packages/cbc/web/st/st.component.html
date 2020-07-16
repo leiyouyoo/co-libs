@@ -143,11 +143,16 @@
       </th>
     </tr>
     <tr *ngIf="showFilters && _filterRow?.length">
-      <th *ngFor="let i of _filterRow; index as index">
-        <ng-container [ngSwitch]="i.column.filterType">
-          <ng-container *ngSwitchCase="i.column.filterType === null ? null : 'nevermatch'"></ng-container>
+      <th *ngFor="let i of _filterRow; index as index" (keyup.enter)="_filterConfirm(i.column)">
+        <ng-container [ngSwitch]="i.column.filter?.type">
+          <ng-container *ngSwitchCase="i.column.filter?.type === null ? null : 'nevermatch'"></ng-container>
           <ng-container *ngSwitchCase="'select'">
-            <nz-select></nz-select>
+            <nz-select class="width-100"
+                       [(ngModel)]="i.column.filter?.menus[0].value"
+                       (ngModelChange)="_filterConfirm(i.column)"
+                       nzShowSearch
+                       [nzOptions]="getFilterOptions(i.column, index)"
+                       nzAllowClear></nz-select>
           </ng-container>
           <ng-container *ngSwitchCase="'autocomplete'">
             <input type="text"
@@ -161,14 +166,13 @@
           <ng-container *ngSwitchCase="'date'">
             <nz-date-picker class="width-100" [(ngModel)]="i.column.filter?.menus[0].value" (ngModelChange)="_filterConfirm(i.column)"></nz-date-picker>
           </ng-container>
-          <ng-template *ngSwitchCase="'widget'" co-st-va-widget-host (valueChange)="onFilterValueChange($event, i.column)" [column]="i.column"></ng-template>
+          <ng-template *ngSwitchCase="'widget'" co-st-va-widget-host
+                       [(value)]="i.column.filter?.menus[0].value"
+                       (valueChange)="_filterConfirm(i.column)"
+                       [column]="i.column"></ng-template>
+          <!-- 'keyword' type treat as default filter -->
           <ng-container *ngSwitchDefault>
-            <nz-select class="width-100"
-                       [(ngModel)]="i.column.filter?.menus[0].value"
-                       (ngModelChange)="_filterConfirm(i.column)"
-                       nzShowSearch
-                       [nzOptions]="getFilterOptions(i.column, index)"
-                       nzAllowClear></nz-select>
+            <input type="text" nz-input [(ngModel)]="i.column.filter?.menus[0].value" (ngModelChange)="_filterConfirm(i.column)">
           </ng-container>
         </ng-container>
       </th>
@@ -226,7 +230,7 @@
               <!-- 编辑 -->
               <ng-template #editing>
                 <!-- 这里和过滤器共用类型 -->
-                <ng-container [ngSwitch]="c.filterType" *ngIf="!['action'].includes(c.type)">
+                <ng-container [ngSwitch]="c.filter.type" *ngIf="!['action'].includes(c.type)">
                   <nz-date-picker *ngSwitchCase="'date'" [(ngModel)]="i._values[cIdx].value" class="width-100"></nz-date-picker>
                   <input *ngSwitchDefault type="text" nz-input [(ngModel)]="i._values[cIdx].value">
                 </ng-container>

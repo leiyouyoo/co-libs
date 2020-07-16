@@ -31,7 +31,7 @@ export class CoSTWidgetHostDirective implements OnInit, OnChanges {
   ) {}
 
   ngOnInit(): void {
-    const widget = this.column.filterWidget!;
+    const widget = this.column.filter!.widget!;
     const componentType = typeof widget.type === 'string' ? this.stWidgetRegistry.get((widget as any).type) : widget.type;
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentType as any);
 

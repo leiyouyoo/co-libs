@@ -48,9 +48,9 @@ export class DemoComponent {
   columns: STColumn[] = [
     { title: '序号', type: 'no' },
     { title: '编号', index: 'id' },
-    { title: '姓名', index: 'name', filterType: 'autocomplete' },
+    { title: '姓名', index: 'name', filter: { type: 'autocomplete' }, },
     { title: '年龄', index: 'age' },
-    { title: '注册日期', index: 'date', type: 'date', filterType: 'date' },
+    { title: '注册日期', index: 'date', type: 'date', filter: { type: 'date' }, },
     {
       title: '操作区',
       type: 'action',

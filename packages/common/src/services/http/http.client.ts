@@ -975,6 +975,8 @@ function buildBody(datas: any) {
   for (const key in datas) {
     if (datas[key] === null || datas[key] === undefined) {
       delete datas[key];
+    } else if (datas[key] instanceof Date) {
+      datas[key] = (datas[key] as Date).toISOString();
     } else if (Array.isArray(datas[key])) {
       datas[key].forEach(element => {
         return buildBody(element);

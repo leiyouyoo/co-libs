@@ -103,8 +103,8 @@ export class STColumnSource {
       item.children = item.children && item.children.length > 0 ? this.btnCoerce(item.children) : [];
 
       // i18n
-      if (this.i18nSrv && !item.disableI18n) {
-        item.text = this.i18nSrv.fanyi(item.i18n ?? (typeof item.text === 'string' ? item.text : null as any));
+      if (item.i18n && this.i18nSrv) {
+        item.text = this.i18nSrv.fanyi(item.i18n);
       }
 
       ret.push(item);
@@ -175,28 +175,27 @@ export class STColumnSource {
     if (item.filter === null || item.type === 'action' || (item.filter === void 0 && !item.index)) {
       return null;
     }
-    if (item.filter === void 0) {
-      item.filter = {
-        menus: [{  value: null, originColumn: { ...item } }],
-        type: 'co-default',
-        fn: (filter: STColumnFilterMenu, record: STData) => {
-          if (!filter.value && filter.value !== 0) return  true;
-          const value = (filter.originColumn !.index as string[]) !.reduce((acc, cur) => {
-            return acc[cur]
-          }, record)
+    item.filter = {
+      menus: [{ value: null, originColumn: { ...item } }],
+      type: 'keyword',
+      fn: (filter: STColumnFilterMenu, record: STData) => {
+        if (!filter.value && filter.value !== 0) return true;
+        const value = (filter.originColumn !.index as string[]) !.reduce((acc, cur) => {
+          return acc[cur];
+        }, record);
 
-          let isFiltered: boolean;
-          switch (filter.originColumn !.filterType || filter.originColumn !.type) {
-            case 'date':
-              isFiltered = isSameDay(filter.value, value as any);
-              break;
-            default:
-              isFiltered = (value + '').includes(filter.value);
-          }
-          return isFiltered;
-        },
-      }
-    }
+        let isFiltered: boolean;
+        switch (filter.originColumn?.filter?.type || filter.originColumn !.type) {
+          case 'date':
+            isFiltered = isSameDay(filter.value, value as any);
+            break;
+          default:
+            isFiltered = (value + '').includes(filter.value);
+        }
+        return isFiltered;
+      },
+      ...item.filter,
+    };
     item.filter?.menus?.forEach(o => o.originColumn = { ...item, filter: void 0, });
 
     let res: STColumnFilter | null = item.filter;

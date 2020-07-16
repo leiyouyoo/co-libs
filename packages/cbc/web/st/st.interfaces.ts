@@ -272,16 +272,6 @@ export interface STColumn {
    */
   filter?: STColumnFilter;
   /**
-   * filter type
-   * 为了区别
-   */
-  filterType?: 'select' | 'autocomplete' | 'date' | 'widget';
-  /**
-   * filter 用的组件
-   * type string 时从注册的组件拿，其他情况属于传组件
-   */
-  filterWidget?: CoSTFilterWidgetColumn;
-  /**
    * 格式化列值
    */
   format?: (item: STData, col: STColumn, index: number) => string;
@@ -491,7 +481,7 @@ export interface STColumnFilter {
    * - `defualt` 默认形式
    * - `keyword` 文本框形式
    */
-  type?: 'default' | 'keyword' | 'co-default';
+  type?: 'default' | 'keyword' | 'select' | 'autocomplete' | 'date' | 'widget';
   /**
    * 表头的筛选菜单项，至少一项才会生效
    * - 当 `type='keyword'` 时可为空
@@ -535,9 +525,18 @@ export interface STColumnFilter {
    */
   reName?: (list: STColumnFilterMenu[], col: STColumn) => {};
   /**
+   * filter 用的组件
+   * type string 时从注册的组件拿，其他情况属于传组件
+   */
+  widget?: CoSTFilterWidgetColumn;
+  /**
    * 是否原delon 的过滤器，默认false 即co 扩展的过滤器
    */
   isDelon?: boolean;
+  /**
+   * 过滤器选项，select, autocomplete
+   */
+  optionList?: { label: string, value: any }[];
 }
 
 export interface STColumnFilterMenu {
