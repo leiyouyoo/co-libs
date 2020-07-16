@@ -13,5 +13,6 @@ export * from '@co/cbc/business/area-picker';
 export * from '@co/cbc/business/region-picker';
 export * from '@co/cbc/business/port-picker';
 export * from '@co/cbc/business/report-viewer';
+export * from '@co/cbc/business/cascader';
 
 export * from './business.module';

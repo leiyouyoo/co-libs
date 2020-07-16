@@ -1,0 +1,11 @@
+<nz-cascader
+  [nzShowInput] = "coShowInput"
+  [nzAllowClear] = "coAllowClear"
+  [nzShowSearch] = "coShowSearch"
+  [nzOptions]="coOption"
+  [(ngModel)]="values"
+  (ngModelChange)="onChanges($event)"
+  (nzSelectionChange)="onSelectionChange($event)"
+>
+
+</nz-cascader>
