@@ -161,6 +161,7 @@
           <ng-container *ngSwitchCase="'date'">
             <nz-date-picker class="width-100" [(ngModel)]="i.column.filter?.menus[0].value" (ngModelChange)="_filterConfirm(i.column)"></nz-date-picker>
           </ng-container>
+          <ng-template *ngSwitchCase="'widget'" co-st-va-widget-host (valueChange)="onFilterValueChange($event, i.column)" [column]="i.column"></ng-template>
           <ng-container *ngSwitchDefault>
             <nz-select class="width-100"
                        [(ngModel)]="i.column.filter?.menus[0].value"
@@ -224,7 +225,7 @@
               </ng-container>
               <!-- 编辑 -->
               <ng-template #editing>
-                <!-- 这里和过滤器公用类型 -->
+                <!-- 这里和过滤器共用类型 -->
                 <ng-container [ngSwitch]="c.filterType" *ngIf="!['action'].includes(c.type)">
                   <nz-date-picker *ngSwitchCase="'date'" [(ngModel)]="i._values[cIdx].value" class="width-100"></nz-date-picker>
                   <input *ngSwitchDefault type="text" nz-input [(ngModel)]="i._values[cIdx].value">

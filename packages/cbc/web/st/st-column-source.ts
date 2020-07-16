@@ -103,8 +103,8 @@ export class STColumnSource {
       item.children = item.children && item.children.length > 0 ? this.btnCoerce(item.children) : [];
 
       // i18n
-      if (item.i18n && this.i18nSrv) {
-        item.text = this.i18nSrv.fanyi(item.i18n);
+      if (this.i18nSrv && !item.disableI18n) {
+        item.text = this.i18nSrv.fanyi(item.i18n ?? (typeof item.text === 'string' ? item.text : null as any));
       }
 
       ret.push(item);
@@ -159,7 +159,7 @@ export class STColumnSource {
     } else if (typeof item.sort !== 'boolean') {
       res = item.sort;
     } else if (typeof item.sort === 'boolean') {
-      res.compare = (a, b) => a[item.indexKey] - b[item.indexKey];
+      res.compare = (a, b) => a[item.indexKey!] - b[item.indexKey!];
     }
 
     if (!res.key) {
@@ -177,8 +177,8 @@ export class STColumnSource {
     }
     if (item.filter === void 0) {
       item.filter = {
-        menus: [{  value: '', originColumn: { ...item } }],
-        type: 'codefault',
+        menus: [{  value: null, originColumn: { ...item } }],
+        type: 'co-default',
         fn: (filter: STColumnFilterMenu, record: STData) => {
           if (!filter.value && filter.value !== 0) return  true;
           const value = (filter.originColumn !.index as string[]) !.reduce((acc, cur) => {
@@ -368,7 +368,7 @@ export class STColumnSource {
       // #region title
 
       const tit = (typeof item.title === 'string' ? { text: item.title } : item.title) || {};
-      if (tit.text && this.i18nSrv && item.i18n !== false) {
+      if (tit.text && this.i18nSrv && !item.disableI18n) {
         tit.text = this.i18nSrv.fanyi(tit.text);
       }
       if (tit.text) {

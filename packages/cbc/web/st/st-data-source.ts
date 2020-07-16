@@ -374,7 +374,7 @@ export class STDataSource {
   private getReqFilterMap(columns: STColumn[]): { [key: string]: string } {
     let ret = {};
     columns
-      .filter(w => w.filter && w.filter.default === true)
+      .filter(w => w.filter && (w.filter.default === true || w.filter.type === 'co-default'))
       .forEach(col => {
         const filter = col.filter!;
         const values = this.getFilteredData(filter);

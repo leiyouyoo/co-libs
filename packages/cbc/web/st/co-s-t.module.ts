@@ -22,9 +22,10 @@ import { NzAutocompleteModule, NzDatePickerModule, NzSelectModule } from 'ng-zor
 import { TranslateModule } from '@ngx-translate/core';
 import { SettingOutline, DeleteOutline, EllipsisOutline } from '@ant-design/icons-angular/icons';
 import { CalcScrollDirective } from './calc-scroll.directive';
+import { CoSTWidgetHostDirective } from './co-st-va-widget-host.directive';
 
 const COMPONENTS = [STComponent];
-const DIRECTIVES = [STRowDirective, STWidgetHostDirective, CalcScrollDirective];
+const DIRECTIVES = [STRowDirective, STWidgetHostDirective, CalcScrollDirective, CoSTWidgetHostDirective, ];
 const icons = [SettingOutline, DeleteOutline, EllipsisOutline];
 
 @NgModule({

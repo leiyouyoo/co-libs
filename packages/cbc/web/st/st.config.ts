@@ -7,14 +7,14 @@ export const ST_DEFULAT_CONFIG: CoSTConfig = {
   responsive: true,
   responsiveHideHeaderFooter: false,
   req: {
-    type: 'page',
-    method: 'GET',
-    allInBody: false,
+    type: 'skip',
+    method: 'POST',
+    allInBody: true,
     lazyLoad: false,
-    reName: { pi: 'pi', ps: 'ps', skip: 'skip', limit: 'limit' },
+    reName: { pi: 'pi', ps: 'ps', skip: 'skipCount', limit: 'maxResultCount' },
   },
   res: {
-    reName: { list: ['list'], total: ['total'] },
+    reName: { list: ['items'], total: ['totalCount'] },
   },
   page: {
     front: true,

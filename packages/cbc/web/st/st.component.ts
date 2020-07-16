@@ -870,6 +870,11 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     this.cdr.markForCheck();
   }
 
+  onFilterValueChange(value, column: STColumn, ) {
+    column.filter!.menus![0].value = value;
+    this.loadPageData();
+  }
+
   ngAfterViewInit() {
     this.columnSource.restoreAllRender(this._columns);
   }

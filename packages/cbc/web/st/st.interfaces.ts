@@ -273,8 +273,14 @@ export interface STColumn {
   filter?: STColumnFilter;
   /**
    * filter type
+   * 为了区别
    */
-  filterType?: 'select' | 'autocomplete' | 'date';
+  filterType?: 'select' | 'autocomplete' | 'date' | 'widget';
+  /**
+   * filter 用的组件
+   * type string 时从注册的组件拿，其他情况属于传组件
+   */
+  filterWidget?: CoSTFilterWidgetColumn;
   /**
    * 格式化列值
    */
@@ -372,9 +378,14 @@ export interface STColumn {
 
   /**
    * i18n
-   * 是否需要i18n 默认undefined 开启，仅false 关闭
+   * 是否禁用i18n，默认需要i18n
    */
-  i18n?: boolean;
+  disableI18n?: boolean;
+
+  /**
+   * st 组件内部使用的index，仅为 string 类型
+   */
+  indexKey?: string;
 
   [key: string]: any;
 }
@@ -383,6 +394,12 @@ export interface STWidgetColumn {
   type: string;
 
   params?: (options: { record: STData; column: STColumn }) => {};
+}
+
+export interface CoSTFilterWidgetColumn {
+  type: string | any;
+
+  params?: { [key: string]: any };
 }
 
 export interface STColumnTitle {
@@ -474,7 +491,7 @@ export interface STColumnFilter {
    * - `defualt` 默认形式
    * - `keyword` 文本框形式
    */
-  type?: 'default' | 'keyword' | 'codefault';
+  type?: 'default' | 'keyword' | 'co-default';
   /**
    * 表头的筛选菜单项，至少一项才会生效
    * - 当 `type='keyword'` 时可为空
@@ -517,6 +534,10 @@ export interface STColumnFilter {
    * @return 返回为 Object 对象
    */
   reName?: (list: STColumnFilterMenu[], col: STColumn) => {};
+  /**
+   * 是否原delon 的过滤器，默认false 即co 扩展的过滤器
+   */
+  isDelon?: boolean;
 }
 
 export interface STColumnFilterMenu {
@@ -606,6 +627,11 @@ export interface STColumnButton {
    * 文本 i18n
    */
   i18n?: string;
+  /**
+   * i18n
+   * 是否禁用i18n，默认需要i18n
+   */
+  disableI18n?: boolean;
   /**
    * 图标
    */
