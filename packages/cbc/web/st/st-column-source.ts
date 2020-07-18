@@ -159,7 +159,7 @@ export class STColumnSource {
     } else if (typeof item.sort !== 'boolean') {
       res = item.sort;
     } else if (typeof item.sort === 'boolean') {
-      res.compare = (a, b) => a[item.indexKey] - b[item.indexKey];
+      res.compare = (a, b) => a[item.indexKey!] - b[item.indexKey!];
     }
 
     if (!res.key) {
@@ -197,6 +197,27 @@ export class STColumnSource {
         },
       }
     }
+    item.filter = {
+      menus: [{ value: null, originColumn: { ...item } }],
+      type: 'keyword',
+      fn: (filter: STColumnFilterMenu, record: STData) => {
+        if (!filter.value && filter.value !== 0) return true;
+        const value = (filter.originColumn!.index as string[])!.reduce((acc, cur) => {
+          return acc[cur];
+        }, record);
+
+        let isFiltered: boolean;
+        switch (filter.originColumn?.filter?.type || filter.originColumn!.type) {
+          case 'date':
+            isFiltered = isSameDay(filter.value, value as any);
+            break;
+          default:
+            isFiltered = (value + '').includes(filter.value);
+        }
+        return isFiltered;
+      },
+      ...item.filter,
+    };
     item.filter?.menus?.forEach(o => o.originColumn = { ...item, filter: void 0, });
 
     let res: STColumnFilter | null = item.filter;
@@ -368,7 +389,7 @@ export class STColumnSource {
       // #region title
 
       const tit = (typeof item.title === 'string' ? { text: item.title } : item.title) || {};
-      if (tit.text && this.i18nSrv && item.i18n !== false) {
+      if (tit.text && this.i18nSrv && !item.disableI18n) {
         tit.text = this.i18nSrv.fanyi(tit.text);
       }
       if (tit.text) {

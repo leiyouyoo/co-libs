@@ -32,7 +32,6 @@ export class CurrencyPickerComponent extends PickerComponentBase {
     super(cdr);
 
     this.coLabelMember = 'name';
-    this.coShowSearch = false;
   }
 
   //#endregion

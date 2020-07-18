@@ -374,7 +374,7 @@ export class STDataSource {
   private getReqFilterMap(columns: STColumn[]): { [key: string]: string } {
     let ret = {};
     columns
-      .filter(w => w.filter && w.filter.default === true)
+      .filter(w => w.filter && (w.filter.default === true || !w.filter.isDelon))
       .forEach(col => {
         const filter = col.filter!;
         const values = this.getFilteredData(filter);
@@ -382,7 +382,7 @@ export class STDataSource {
         if (filter.reName) {
           obj = filter.reName!(filter.menus!, col);
         } else {
-          obj[filter.key!] = values.map(i => i.value).join(',');
+          obj[filter.key!] = values.map(i => i.value).join(',') || null;
         }
         ret = { ...ret, ...obj };
       });
