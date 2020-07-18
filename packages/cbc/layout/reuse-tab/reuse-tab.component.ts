@@ -17,8 +17,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CoI18NService, CO_I18N_TOKEN } from '@co/common';
-import { InputBoolean, InputNumber } from '@co/core';
+import { CoI18NService, CO_I18N_TOKEN, InputBoolean, InputNumber } from '@co/core';
 import { Subject } from 'rxjs';
 import { debounceTime, filter, takeUntil } from 'rxjs/operators';
 import { ReuseTabContextService } from './reuse-tab-context.service';
@@ -163,7 +162,7 @@ export class ReuseTabComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   private refresh(item: ReuseItem): void {
-    this.srv.runHook('_onReuseInit', this.pos === item.index ? this.srv.componentRef : item.index);
+    this.srv.runHook('coOnActived', this.pos === item.index ? this.srv.componentRef : item.index);
   }
 
   // #region UI

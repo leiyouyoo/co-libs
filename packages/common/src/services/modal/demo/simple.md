@@ -15,7 +15,7 @@ Simplest of usage.
 
 ```ts
 import { Component } from '@angular/core';
-import { DrawerHelper } from '@co/common';
+import { CoDrawerHelper } from '@co/common';
 import { DemoDrawerComponent } from '@shared';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
@@ -27,7 +27,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   `,
 })
 export class DemoComponent {
-  constructor(private modalHelper: DrawerHelper, private msg: NzMessageService) {}
+  constructor(private modalHelper: CoDrawerHelper, private msg: NzMessageService) {}
 
   open(): void {
     this.modalHelper.create('View', DemoDrawerComponent, { record: { a: 1, b: '2', c: new Date() } }).subscribe(res => {

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Injector, Component, OnInit, Optional, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CoPageBase } from '@co/core';
 
 @Component({
   selector: 'dev-page',
@@ -9,17 +10,34 @@ import { ActivatedRoute } from '@angular/router';
     page: {{ router.url | json }}
   `,
 })
-export class DevPageComponent implements OnInit {
+export class DevPageComponent extends CoPageBase implements OnInit {
   now = +new Date();
 
-  constructor(public router: ActivatedRoute) {}
-
-  ngOnInit(): void {
-    console.log('ngoninit');
+  constructor(public router: ActivatedRoute, @Optional() protected injector: Injector) {
+    super(injector);
   }
 
-  _onReuseInit(): void {
-    this.now = +new Date();
-    console.log('by _onReuseInit', this.router.snapshot.url.toString());
+  coOnInit(): void {
+    const session = this.$session.user;
+
+    console.log(`coOnInit${JSON.stringify(session)}`);
+    debugger
+    this.$titleSrvice.setTitle('aaaaaaaaaaaaaaaaa');
+  }
+
+  coAfterViewInit(): void {
+    console.log('coAfterViewInit');
+  }
+
+  coOnDeactived(): void {
+    console.log('coOnDeactived');
+  }
+
+  coOnChanges(changes: SimpleChanges): void {
+    console.log('coOnChanges');
+  }
+
+  coOnDestroy(): void {
+    console.log('coOnChanges');
   }
 }

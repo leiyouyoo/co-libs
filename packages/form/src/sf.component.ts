@@ -17,8 +17,8 @@ import {
 } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ACLService } from '@co/acl';
-import { CoI18NService, CO_I18N_TOKEN, CoLocaleService, LocaleData } from '@co/common';
-import { CoConfigService, CoSFConfig, deepCopy, InputBoolean } from '@co/core';
+import { CoLocaleService, LocaleData } from '@co/common';
+import { CoI18NService, CO_I18N_TOKEN, CoConfigService, CoSFConfig, deepCopy, InputBoolean } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { merge, Observable, Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';

@@ -1,51 +1,34 @@
 import { Injector, Optional } from '@angular/core';
 
-import { Session } from '../types';
-import { PermissionChecker } from '../interface/permission-checker';
-import { Logger } from '../interface/logger';
+import { IPermissionCheckerService, CO_PERMISSIONCHECKER_TOKEN } from '../interface/permission-checker.interface';
+import { ILogger, CO_LOGGER_TOKEN } from '../interface/logger.interface';
+import { ISessionService, CO_SESSIONSERVICE_TOKEN } from '../interface/session.interface';
+import { IModalHelper, CO_MODALHELPER_TOKEN } from '../interface/modal.interface';
+import { ITitleService, CO_TITLE_TOKEN } from '../interface/title.interface';
+import { CoI18NService, CO_I18N_TOKEN } from '../interface/i18n.interface';
 
 /**
  * 业务组件基类
  */
 export abstract class CoComponentBase {
-  localization: LocalizationService;
-  permission: PermissionService;
-  feature: FeatureCheckerService;
-  notify: NotifyService;
-  setting: SettingService;
-  message: MessageService;
-  multiTenancy: AbpMultiTenancyService;
-  appSession: AppSessionService;
-  elementRef: ElementRef;
-  modalHelper: ModalHelper;
-  titleSrvice: TitleService;
+  protected $i18n: CoI18NService;
+  protected $session: ISessionService;
+  protected $permissionChecker: IPermissionCheckerService;
+  protected $modalHelper: IModalHelper;
+  protected $titleSrvice: ITitleService;
+  protected $logger: ILogger;
+
 
   constructor(@Optional() protected injector: Injector) {
-    this.localization = injector.get<LocalizationService>(ALAIN_I18N_TOKEN);
-    this.permission = injector.get(PermissionService);
-    this.feature = injector.get(FeatureCheckerService);
-    this.notify = injector.get(NotifyService);
-    this.setting = injector.get(SettingService);
-    this.message = injector.get(MessageService);
-    this.multiTenancy = injector.get(AbpMultiTenancyService);
-    this.appSession = injector.get(AppSessionService);
-    this.elementRef = injector.get(ElementRef);
-    this.modalHelper = injector.get(ModalHelper);
-    this.titleSrvice = injector.get(TitleService);
+    this.$permissionChecker = injector.get(CO_PERMISSIONCHECKER_TOKEN);
+    this.$session = injector.get(CO_SESSIONSERVICE_TOKEN);
+    this.$modalHelper = injector.get(CO_MODALHELPER_TOKEN);
+    this.$titleSrvice = injector.get(CO_TITLE_TOKEN);
+    this.$logger = injector.get(CO_LOGGER_TOKEN);
+    this.$i18n = injector.get(CO_I18N_TOKEN);
   }
 
-  /**
-   * 会话信息
-   */
-  protected session: Session;
-
-  /**
-   * 权限检查器
-   */
-  protected permissionChecker: PermissionChecker;
-
-  /**
-   * 日志记录器
-   */
-  protected logger: Logger;
+  public $L(key: string, params?: {}, isSafe?: boolean) {
+    return this.$i18n.fanyi(key, params, isSafe);
+  }
 }

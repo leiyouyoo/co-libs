@@ -17,7 +17,7 @@ class MockRouter {
   get events() {
     return {
       subscribe: () => {
-        return { unsubscribe: () => {} };
+        return { unsubscribe: () => { } };
       },
     };
   }
@@ -463,16 +463,16 @@ describe('abc: reuse-tab(service)', () => {
       srv.store(getSnapshot(3), { componentRef: {} });
       expect(srv.count).toBe(2);
     });
-    it(`should be run _onReuseDestroy event hook`, () => {
+    it(`should be run coOnDeactived event hook`, () => {
       const handle = {
         componentRef: {
           instance: {
-            _onReuseDestroy: jasmine.createSpy('_onReuseDestroy'),
+            coOnDeactived: jasmine.createSpy('coOnDeactived'),
           },
         },
       };
       srv.store(getSnapshot(3), handle);
-      expect(handle.componentRef.instance._onReuseDestroy).toHaveBeenCalled();
+      expect(handle.componentRef.instance.coOnDeactived).toHaveBeenCalled();
     });
   });
 
@@ -511,11 +511,11 @@ describe('abc: reuse-tab(service)', () => {
       snapshot.routeConfig.loadChildren = {};
       expect(srv.retrieve(getSnapshot(2))).toBeNull();
     });
-    it(`should be run _onReuseInit event hook`, () => {
+    it(`should be run coOnActived event hook`, () => {
       const handle = {
         componentRef: {
           instance: {
-            _onReuseInit: jasmine.createSpy('_onReuseInit'),
+            coOnActived: jasmine.createSpy('coOnActived'),
           },
         },
       };
@@ -523,7 +523,7 @@ describe('abc: reuse-tab(service)', () => {
       // handle
       srv.store(snapshot, handle);
       srv.shouldAttach(snapshot);
-      expect(handle.componentRef.instance._onReuseInit).toHaveBeenCalled();
+      expect(handle.componentRef.instance.coOnActived).toHaveBeenCalled();
     });
   });
 });

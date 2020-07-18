@@ -23,7 +23,7 @@ const defaultLoginOption: LoginOption = {
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
+export class CoAuthService {
   readonly userStorageKey = 'CO_USER_INFO';
   readonly expiredStorageKey = 'token_expired_time';
   readonly loginUrl = 'sso/connect/token';

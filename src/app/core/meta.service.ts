@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { CO_I18N_TOKEN } from '@co/common';
+import { CO_I18N_TOKEN } from '@co/core';
 import { I18NService } from '../core/i18n/service';
 import { Meta, MetaList, MetaSearchGroup, MetaSearchGroupItem } from '../interfaces';
 import { META as ACLMeta } from '../routes/gen/acl/meta';

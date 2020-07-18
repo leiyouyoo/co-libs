@@ -1,2 +1,2 @@
 export * from './component-base';
-export * from './page-basee';
+export * from './page-base';

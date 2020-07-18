@@ -63,7 +63,7 @@ const routes: Routes = [
     component: DevLayoutComponent,
     children: [
       { path: '', component: DevHomeComponent },
-      { path: 'l1', component: DevPageComponent },
+      { path: 'page', component: DevPageComponent },
     ],
   },
 ];

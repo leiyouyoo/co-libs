@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { AfterViewInit, Component, Inject, NgZone, OnDestroy, OnInit } from '@angular/core';
-import { CO_I18N_TOKEN } from '@co/common';
+import { CO_I18N_TOKEN } from '@co/core';
 import AOS from 'aos';
 import { I18NService } from '../../core/i18n/service';
 
@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     { type: 'pro', url: 'https://e.ng-alain.com/theme/pro' },
     { type: 'ms', url: 'https://e.ng-alain.com/theme/ms' },
   ];
-  constructor(@Inject(CO_I18N_TOKEN) public i18n: I18NService, private ngZone: NgZone, @Inject(DOCUMENT) private doc: Document) {}
+  constructor(@Inject(CO_I18N_TOKEN) public i18n: I18NService, private ngZone: NgZone, @Inject(DOCUMENT) private doc: Document) { }
 
   private get body(): HTMLElement {
     return this.doc.querySelector('body') as HTMLElement;

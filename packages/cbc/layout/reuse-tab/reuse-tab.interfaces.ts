@@ -111,10 +111,10 @@ export interface ReuseComponentRef {
   instance: ReuseComponentInstance;
 }
 
-export type ReuseHookTypes = '_onReuseInit' | '_onReuseDestroy';
+export type ReuseHookTypes = 'coOnActived' | 'coOnDeactived';
 
 export interface ReuseComponentInstance {
-  _onReuseInit: () => void;
-  _onReuseDestroy: () => void;
+  coOnActived: () => void;
+  coOnDeactived: () => void;
   destroy: () => void;
 }

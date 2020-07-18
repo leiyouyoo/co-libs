@@ -77,11 +77,11 @@ describe('abc: reuse-tab', () => {
         !needI18n
           ? []
           : [
-              {
-                provide: CO_I18N_TOKEN,
-                useClass: MockI18NServiceFake,
-              } as any,
-            ],
+            {
+              provide: CO_I18N_TOKEN,
+              useClass: MockI18NServiceFake,
+            } as any,
+          ],
       ),
     });
   }
@@ -562,7 +562,7 @@ describe('abc: reuse-tab', () => {
 
   describe('[refresh]', () => {
     beforeEach(() => genModule(false));
-    it('should be can not call _onReuseInit when router-outlet not define (activate) event in refresh active tab', fakeAsync(() => {
+    it('should be can not call coOnActived when router-outlet not define (activate) event in refresh active tab', fakeAsync(() => {
       createComp(`<reuse-tab #comp [mode]="mode"></reuse-tab><router-outlet></router-outlet>`);
       let time = 0;
       page
@@ -572,26 +572,26 @@ describe('abc: reuse-tab', () => {
         .clickContentMenu('refresh');
       expect(time).toBe(+page.time);
     }));
-    it('should be call _onReuseInit when refresh active tab', fakeAsync(() => {
+    it('should be call coOnActived when refresh active tab', fakeAsync(() => {
       createComp(`<reuse-tab #comp [mode]="mode"></reuse-tab><router-outlet (activate)="comp.activate($event)"></router-outlet>`);
       page.to('#a').openContextMenu(0);
-      spyOn(srv.componentRef.instance, '_onReuseInit');
+      spyOn(srv.componentRef.instance, 'coOnActived');
       page.clickContentMenu('refresh');
-      expect(srv.componentRef.instance._onReuseInit).toHaveBeenCalled();
+      expect(srv.componentRef.instance.coOnActived).toHaveBeenCalled();
     }));
-    it('should be call _onReuseInit when refresh non-active tab', fakeAsync(() => {
+    it('should be call coOnActived when refresh non-active tab', fakeAsync(() => {
       createComp(`<reuse-tab #comp [mode]="mode"></reuse-tab><router-outlet (activate)="comp.activate($event)"></router-outlet>`);
       page.to('#a').to('#b').openContextMenu(0);
-      spyOn(srv.items[0]._handle.componentRef.instance, '_onReuseInit');
+      spyOn(srv.items[0]._handle.componentRef.instance, 'coOnActived');
       page.clickContentMenu('refresh');
-      expect(srv.items[0]._handle.componentRef.instance._onReuseInit).toHaveBeenCalled();
+      expect(srv.items[0]._handle.componentRef.instance.coOnActived).toHaveBeenCalled();
     }));
-    it('should be call _onReuseInit when refresh non-active tab and not define (activate) event', fakeAsync(() => {
+    it('should be call coOnActived when refresh non-active tab and not define (activate) event', fakeAsync(() => {
       createComp(`<reuse-tab #comp [mode]="mode"></reuse-tab><router-outlet></router-outlet>`);
       page.to('#a').to('#b').openContextMenu(0);
-      spyOn(srv.items[0]._handle.componentRef.instance, '_onReuseInit');
+      spyOn(srv.items[0]._handle.componentRef.instance, 'coOnActived');
       page.clickContentMenu('refresh');
-      expect(srv.items[0]._handle.componentRef.instance._onReuseInit).toHaveBeenCalled();
+      expect(srv.items[0]._handle.componentRef.instance.coOnActived).toHaveBeenCalled();
     }));
   });
 
@@ -726,7 +726,7 @@ describe('abc: reuse-tab', () => {
     <router-outlet></router-outlet>
   `,
 })
-class AppComponent {}
+class AppComponent { }
 
 @Component({
   template: `
@@ -763,8 +763,8 @@ class LayoutComponent {
   customContextMenu: ReuseCustomContextMenu[] = [];
   tabType: 'line' | 'card' = 'line';
   tabMaxWidth: number;
-  change() {}
-  close() {}
+  change() { }
+  close() { }
 }
 
 @Component({
@@ -776,8 +776,8 @@ class LayoutComponent {
 })
 class AComponent {
   time = +new Date();
-  _onReuseInit() {}
-  _onReuseDestroy() {}
+  coOnActived() { }
+  coOnDeactived() { }
 }
 
 @Component({
@@ -791,8 +791,8 @@ class AComponent {
 })
 class BComponent {
   time = +new Date();
-  _onReuseInit() {}
-  _onReuseDestroy() {}
+  coOnActived() { }
+  coOnDeactived() { }
 }
 
 @Component({
@@ -808,8 +808,8 @@ class CComponent {
   constructor(private srv: ReuseTabService) {
     this.srv.title = 'new c title';
   }
-  _onReuseInit() {}
-  _onReuseDestroy() {}
+  coOnActived() { }
+  coOnDeactived() { }
 }
 
 @Component({
@@ -822,8 +822,8 @@ class CComponent {
 })
 class DComponent {
   time = +new Date();
-  _onReuseInit() {}
-  _onReuseDestroy() {}
+  coOnActived() { }
+  coOnDeactived() { }
 }
 
 @Component({
@@ -838,6 +838,6 @@ class EComponent {
   constructor(reuse: ReuseTabService) {
     reuse.closable = false;
   }
-  _onReuseInit() {}
-  _onReuseDestroy() {}
+  coOnActived() { }
+  coOnDeactived() { }
 }

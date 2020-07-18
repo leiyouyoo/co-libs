@@ -8,7 +8,7 @@ import { Observable, Subject } from 'rxjs';
 
 import { DA_SERVICE_TOKEN, ITokenService } from '@co/auth';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { AuthService } from '../auth/auth.service';
+import { CoAuthService } from '../auth/auth.service';
 import { ENVIRONMENT } from './environment';
 
 export interface IValidationErrorInfo {
@@ -39,7 +39,7 @@ const loginUrl = `/#/passport/login`;
   providedIn: 'root',
 })
 export class AbpHttpConfiguration {
-  constructor(private messageService: NzMessageService, private injector: Injector) {}
+  constructor(private messageService: NzMessageService, private injector: Injector) { }
 
   defaultError = {
     message: 'An error has occurred!',
@@ -88,7 +88,7 @@ export class AbpHttpConfiguration {
     localStorage.removeItem('_token');
     (this.injector.get(DA_SERVICE_TOKEN) as ITokenService).clear();
     if (location.hash.includes('isForShare=true')) {
-      const authService = this.injector.get(AuthService);
+      const authService = this.injector.get(CoAuthService);
       authService.login('Anonymous', 'co@123').then(
         () => {
           location.reload();

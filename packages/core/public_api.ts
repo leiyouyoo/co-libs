@@ -5,6 +5,7 @@ export * from './src/types';
 export * from './src/util';
 export * from './src/config';
 export * from './src/interface';
+export * from './src/base';
 
 export * from './src/logger';
 

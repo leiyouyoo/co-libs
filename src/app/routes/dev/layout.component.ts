@@ -1,6 +1,7 @@
 import { Component, HostBinding, Inject, OnInit } from '@angular/core';
 // import { Router } from '@angular/router';
-import { CO_I18N_TOKEN, Menu, MenuService, SettingsService } from '@co/common';
+import { Menu, MenuService, SettingsService } from '@co/common';
+import { CO_I18N_TOKEN } from '@co/core';
 import { NzIconService } from 'ng-zorro-antd/icon';
 import { NzMessageService } from 'ng-zorro-antd/message';
 

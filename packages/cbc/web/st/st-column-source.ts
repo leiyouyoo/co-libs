@@ -1,7 +1,7 @@
 import { Host, Inject, Injectable, Optional } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ACLService } from '@co/acl';
-import { CoI18NService, CO_I18N_TOKEN } from '@co/common';
+import { CoI18NService, CO_I18N_TOKEN } from '@co/core';
 import { CoSTConfig, deepCopy, warn } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { STRowSource } from './st-row.directive';
@@ -27,7 +27,7 @@ export class STColumnSource {
     @Optional() private acl: ACLService,
     @Optional() @Inject(CO_I18N_TOKEN) private i18nSrv: CoI18NService,
     private stWidgetRegistry: CoSTWidgetRegistry,
-  ) {}
+  ) { }
 
   setCog(val: CoSTConfig): void {
     this.cog = val;
@@ -177,16 +177,16 @@ export class STColumnSource {
     }
     if (item.filter === void 0) {
       item.filter = {
-        menus: [{  value: '', originColumn: { ...item } }],
+        menus: [{ value: '', originColumn: { ...item } }],
         type: 'codefault',
         fn: (filter: STColumnFilterMenu, record: STData) => {
-          if (!filter.value && filter.value !== 0) return  true;
-          const value = (filter.originColumn !.index as string[]) !.reduce((acc, cur) => {
+          if (!filter.value && filter.value !== 0) return true;
+          const value = (filter.originColumn!.index as string[])!.reduce((acc, cur) => {
             return acc[cur]
           }, record)
 
           let isFiltered: boolean;
-          switch (filter.originColumn !.filterType || filter.originColumn !.type) {
+          switch (filter.originColumn!.filterType || filter.originColumn!.type) {
             case 'date':
               isFiltered = isSameDay(filter.value, value as any);
               break;
@@ -324,10 +324,10 @@ export class STColumnSource {
       row
         .filter(r => r.column.type !== 'action')
         .forEach((column, colIndex) => {
-        if (column.rowSpan + rowIndex === headerRows.length) {
-          lastHeaderRow.push(column);
-        }
-      });
+          if (column.rowSpan + rowIndex === headerRows.length) {
+            lastHeaderRow.push(column);
+          }
+        });
     })
     return lastHeaderRow;
   }

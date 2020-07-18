@@ -151,7 +151,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
         this.hasLoadedByids = true;
       }
       this.value = modelValue;
-      // this.cdr.markForCheck();
+      this.cdr.markForCheck();
     }
   }
 

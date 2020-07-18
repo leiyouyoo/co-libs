@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { CoI18NService, CoLocaleService, en_US as delonEnUS, zh_CN as delonZhCn } from '@co/common';
+import { en_US as delonEnUS, zh_CN as delonZhCn, CoLocaleService } from '@co/common';
+import { CoI18NService } from '@co/core';
 import { TranslateService } from '@ngx-translate/core';
 import { en_US, NzI18nService, zh_CN } from 'ng-zorro-antd/i18n';
 import { Subject } from 'rxjs';

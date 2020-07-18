@@ -416,7 +416,7 @@ export class ReuseTabService implements OnDestroy {
     this.di('#store', isAdd ? '[new]' : '[override]', url);
 
     if (_handle && _handle.componentRef) {
-      this.runHook('_onReuseDestroy', _handle.componentRef);
+      this.runHook('coOnDeactived', _handle.componentRef);
     }
 
     if (!isAdd) {
@@ -437,7 +437,7 @@ export class ReuseTabService implements OnDestroy {
       const compRef = data!._handle.componentRef;
       if (compRef) {
         this.componentRef = compRef;
-        this.runHook('_onReuseInit', compRef);
+        this.runHook('coOnActived', compRef);
       }
     } else {
       this._cachedChange.next({ active: 'add', url, list: this._cached });

@@ -17,8 +17,8 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { ReuseTabService } from '@co/cbc/layout/reuse-tab';
-import { CoI18NService, CO_I18N_TOKEN, MenuService, SettingsService, TitleService } from '@co/common';
-import { CoConfigService, CoPageHeaderConfig, InputBoolean, InputNumber, isEmpty } from '@co/core';
+import { MenuService, SettingsService, TitleService } from '@co/common';
+import { CoI18NService, CO_I18N_TOKEN, CoConfigService, CoPageHeaderConfig, InputBoolean, InputNumber, isEmpty } from '@co/core';
 import { NzAffixComponent } from 'ng-zorro-antd/affix';
 import { merge, Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';

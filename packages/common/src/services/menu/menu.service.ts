@@ -2,7 +2,7 @@ import { Inject, Injectable, OnDestroy, Optional } from '@angular/core';
 import { ACLService } from '@co/acl';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { share } from 'rxjs/operators';
-import { CoI18NService, CO_I18N_TOKEN } from '../i18n/i18n';
+import { CoI18NService, CO_I18N_TOKEN } from '@co/core';
 import { Menu, MenuIcon } from './interface';
 
 /**

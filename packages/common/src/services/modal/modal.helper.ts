@@ -3,22 +3,14 @@ import { deepMerge } from '@co/core';
 import { ModalOptions, NzModalService } from 'ng-zorro-antd/modal';
 import { Observable, Observer } from 'rxjs';
 
-export interface ModalHelperOptions {
-  /** 大小；例如：lg、600，默认：`lg` */
-  size?: 'sm' | 'md' | 'lg' | 'xl' | '' | number;
-  /** 对话框 [ModalOptions](https://github.com/NG-ZORRO/ng-zorro-antd/blob/master/components/modal/modal-types.ts) 参数 */
-  modalOptions?: ModalOptions;
-  /** 是否精准（默认：`true`），若返回值非空值（`null`或`undefined`）视为成功，否则视为错误 */
-  exact?: boolean;
-  /** 是否包裹标签页，修复模态包含标签间距问题 */
-  includeTabs?: boolean;
-}
+import { IModalHelper, ModalHelperOptions } from '@co/core';
+
 
 /**
  * 对话框辅助类
  */
 @Injectable({ providedIn: 'root' })
-export class ModalHelper {
+export class ModalHelper implements IModalHelper {
   constructor(private srv: NzModalService) { }
 
   /**

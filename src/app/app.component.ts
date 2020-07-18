@@ -1,8 +1,8 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, ElementRef, HostBinding, Inject, Renderer2 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { VERSION as VERSION_ALAIN } from '@co/core';
-import { CO_I18N_TOKEN, TitleService } from '@co/common';
+import { CO_I18N_TOKEN, VERSION as VERSION_ALAIN } from '@co/core';
+import { TitleService } from '@co/common';
 import { VERSION as VERSION_ZORRO } from 'ng-zorro-antd/version';
 import { I18NService } from './core/i18n/service';
 import { MetaService } from './core/meta.service';

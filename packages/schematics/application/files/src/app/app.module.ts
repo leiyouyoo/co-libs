@@ -30,7 +30,7 @@ const LANG_PROVIDES = [
 <% if (i18n) { %>// #region i18n services
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
   import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-  import { CO_I18N_TOKEN } from '@co/common';
+  import { CO_I18N_TOKEN } from '@co/core';
   import { I18NService } from '@core';
 
   export function I18nHttpLoaderFactory(http: HttpClient) {

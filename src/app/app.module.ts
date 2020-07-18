@@ -15,7 +15,8 @@ import { RoutesModule } from './routes/routes.module';
 import { SharedModule } from './shared/shared.module';
 
 import { CoBusinessComponentsModule } from '@co/cbc';
-import { CO_I18N_TOKEN, ResponseInterceptor } from '@co/common';
+import { CO_I18N_TOKEN } from '@co/core';
+import { ResponseInterceptor } from '@co/common';
 import { I18NService } from './core/i18n/service';
 import { StartupService } from './core/startup.service';
 

@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Input, OnDestroy } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AppService } from '@core/app.service';
-import { CO_I18N_TOKEN } from '@co/common';
-import { copy, deepCopy } from '@co/core';
+import { copy, deepCopy, CO_I18N_TOKEN } from '@co/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';

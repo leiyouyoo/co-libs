@@ -1,7 +1,8 @@
 import { Component, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { AppService } from '@core/app.service';
 import { SFSchema } from '@co/form';
-import { CO_I18N_TOKEN, _HttpClient } from '@co/common';
+import { CO_I18N_TOKEN } from '@co/core';
+import { _HttpClient } from '@co/common';
 import { copy } from '@co/core';
 import { NuMonacoEditorComponent } from '@ng-util/monaco-editor';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';

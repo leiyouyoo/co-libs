@@ -114,11 +114,11 @@ export class DemoReuseTabEditComponent implements OnInit {
 
 路由复用不会触发现Angular组件生命周期钩子（例如：`ngOnInit` 等），但是往往需要在复用过程中刷新数据，因此提供了两种新生命周期钩子用于临时解决这类问题。
 
-**_onReuseInit()**
+**coOnActived()**
 
 当目前路由在复用过程中时触发。
 
-**_onReuseDestroy()**
+**coOnDeactived()**
 
 当目前路由允许复用且进入新路由时触发。
 
@@ -127,11 +127,11 @@ export class DemoReuseTabEditComponent implements OnInit {
 ```ts
 @Component()
 export class DemoComponent {
-  _onReuseInit() {
-    console.log('_onReuseInit');
+  coOnActived() {
+    console.log('coOnActived');
   }
-  _onReuseDestroy() {
-    console.log('_onReuseDestroy');
+  coOnDeactived() {
+    console.log('coOnDeactived');
   }
 }
 ```

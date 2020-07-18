@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
-import { CoI18NService, CO_I18N_TOKEN } from '../i18n/i18n';
+import { CoI18NService, CO_I18N_TOKEN } from '@co/core';
 import { MenuService } from '../menu/menu.service';
 
 @Injectable({ providedIn: 'root' })

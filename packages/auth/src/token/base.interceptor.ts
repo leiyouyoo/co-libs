@@ -25,6 +25,7 @@ export abstract class BaseInterceptor implements HttpInterceptor {
   abstract setReq(req: HttpRequest<any>, options: CoAuthConfig): HttpRequest<any>;
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
     const options = mergeConfig(this.injector.get(CoConfigService));
     if (options.ignores) {
       for (const item of options.ignores as RegExp[]) {

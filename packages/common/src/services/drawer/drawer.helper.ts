@@ -47,7 +47,7 @@ export interface DrawerHelperOptions {
  * this.NzDrawerRef.close(false);
  */
 @Injectable({ providedIn: 'root' })
-export class DrawerHelper {
+export class CoDrawerHelper {
   constructor(private srv: NzDrawerService) { }
 
   /**

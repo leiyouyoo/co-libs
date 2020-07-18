@@ -21,16 +21,18 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import {
-  CoI18NService,
-  CO_I18N_TOKEN,
   CNCurrencyPipe,
   DatePipe,
   CoLocaleService,
-  DrawerHelper,
+  CoDrawerHelper,
   LocaleData,
   ModalHelper,
   YNPipe,
 } from '@co/common';
+import {
+  CoI18NService,
+  CO_I18N_TOKEN,
+} from '@co/core';
 import { CoConfigService, CoSTConfig, deepCopy, deepMergeKey, InputBoolean, InputNumber, toBoolean } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzTableComponent, NzTableData } from 'ng-zorro-antd/table';
@@ -62,7 +64,7 @@ import {
   STStatisticalResults,
   STWidthMode,
 } from './st.interfaces';
-import remove  from 'lodash/remove';
+import remove from 'lodash/remove';
 import { generateModel } from './utils';
 
 @Component({
@@ -227,7 +229,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     private el: ElementRef,
     private exportSrv: STExport,
     private modalHelper: ModalHelper,
-    private drawerHelper: DrawerHelper,
+    private drawerHelper: CoDrawerHelper,
     @Inject(DOCUMENT) private doc: any,
     private columnSource: STColumnSource,
     private dataSource: STDataSource,

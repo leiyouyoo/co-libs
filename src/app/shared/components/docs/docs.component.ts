@@ -1,7 +1,7 @@
 import { Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { CO_I18N_TOKEN } from '@co/common';
+import { CO_I18N_TOKEN } from '@co/core';
 import { deepCopy } from '@co/core';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
