@@ -482,7 +482,7 @@ export interface STColumnFilter {
    * - `defualt` 默认形式
    * - `keyword` 文本框形式
    */
-  type?: 'default' | 'keyword' | 'select' | 'autocomplete' | 'date' | 'widget';
+  type?: 'default' | 'keyword' | 'select' | 'autocomplete' | 'date' | 'widget' | 'codefault';
   /**
    * 表头的筛选菜单项，至少一项才会生效
    * - 当 `type='keyword'` 时可为空
