@@ -24,35 +24,35 @@ const onDestroyKey = Symbol('onDestroy');
 export abstract class LifeCycleComponent implements OnChanges, OnInit, DoCheck,
 	AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
 	// 所有observables将在组件销毁时完成
-	protected get onChanges$(): Observable<SimpleChanges> {
-		return this.getObservable(onChangesKey).pipe(takeUntil(this.onDestroy$));
+	protected get coOnChanges$(): Observable<SimpleChanges> {
+		return this.getObservable(onChangesKey).pipe(takeUntil(this.coOnDestroy$));
 	}
 
-	protected get onInit$(): Observable<void> {
-		return this.getObservable(onInitKey).pipe(takeUntil(this.onDestroy$), take(1));
+	protected get coOnInit$(): Observable<void> {
+		return this.getObservable(onInitKey).pipe(takeUntil(this.coOnDestroy$), take(1));
 	}
 
-	protected get doCheck$(): Observable<void> {
-		return this.getObservable(doCheckKey).pipe(takeUntil(this.onDestroy$));
+	protected get coDoCheck$(): Observable<void> {
+		return this.getObservable(doCheckKey).pipe(takeUntil(this.coOnDestroy$));
 	}
 
-	protected get afterContentInit$(): Observable<void> {
-		return this.getObservable(afterContentInitKey).pipe(takeUntil(this.onDestroy$), take(1));
+	protected get coAfterContentInit$(): Observable<void> {
+		return this.getObservable(afterContentInitKey).pipe(takeUntil(this.coOnDestroy$), take(1));
 	}
 
-	protected get afterContentChecked$(): Observable<void> {
-		return this.getObservable(afterContentCheckedKey).pipe(takeUntil(this.onDestroy$));
+	protected get coAfterContentChecked$(): Observable<void> {
+		return this.getObservable(afterContentCheckedKey).pipe(takeUntil(this.coOnDestroy$));
 	}
 
-	protected get afterViewInit$(): Observable<void> {
-		return this.getObservable(afterViewInitKey).pipe(takeUntil(this.onDestroy$), take(1));
+	protected get coAfterViewInit$(): Observable<void> {
+		return this.getObservable(afterViewInitKey).pipe(takeUntil(this.coOnDestroy$), take(1));
 	}
 
-	protected get afterViewChecked$(): Observable<void> {
-		return this.getObservable(afterViewCheckedKey).pipe(takeUntil(this.onDestroy$));
+	protected get coAfterViewChecked$(): Observable<void> {
+		return this.getObservable(afterViewCheckedKey).pipe(takeUntil(this.coOnDestroy$));
 	}
 
-	protected get onDestroy$(): Observable<void> {
+	protected get coOnDestroy$(): Observable<void> {
 		return this.getObservable(onDestroyKey).pipe(take(1));
 	}
 

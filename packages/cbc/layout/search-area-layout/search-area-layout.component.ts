@@ -50,19 +50,19 @@ export class SearchAreaLayoutComponent extends LifeCycleComponent {
 
   ngAfterViewInit(): void {
     // 强行换行
-    const coColsChanges = this.onChanges$.pipe(filter(({ coCols }) => coCols !== undefined));
+    const coColsChanges = this.coOnChanges$.pipe(filter(({ coCols }) => coCols !== undefined));
     coColsChanges.subscribe(() => {
       this.clearOtherChildren();
       this.forceWrap();
     });
 
     // 控制item
-    const styleChanges = this.onChanges$.pipe(filter(({ coMarginRight, coMarginBottom, coWidth }) =>
+    const styleChanges = this.coOnChanges$.pipe(filter(({ coMarginRight, coMarginBottom, coWidth }) =>
       coMarginRight !== undefined || coMarginBottom !== undefined || coWidth !== undefined));
     styleChanges.subscribe(() => {
       this.updateItems();
     });
-    this.searchAreaItemComponents.changes.pipe(startWith(null), takeUntil(this.onDestroy$)).subscribe(() => {
+    this.searchAreaItemComponents.changes.pipe(startWith(null), takeUntil(this.coOnDestroy$)).subscribe(() => {
       this.updateItems();
       this.clearOtherChildren();
       this.forceWrap();

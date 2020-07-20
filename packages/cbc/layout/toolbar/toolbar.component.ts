@@ -27,12 +27,12 @@ export class ToolbarComponent extends LifeCycleComponent {
   }
 
   ngAfterViewInit(): void {
-    const styleChanges = this.onChanges$.pipe(filter(({ coMarginRight, coWidth }) =>
+    const styleChanges = this.coOnChanges$.pipe(filter(({ coMarginRight, coWidth }) =>
       coMarginRight !== undefined || coWidth !== undefined));
     styleChanges.subscribe(() => {
       this.updateItems();
     });
-    this.toolbarItems.changes.pipe(startWith(null), takeUntil(this.onDestroy$)).subscribe(() => {
+    this.toolbarItems.changes.pipe(startWith(null), takeUntil(this.coOnDestroy$)).subscribe(() => {
       this.updateItems();
     });
   }

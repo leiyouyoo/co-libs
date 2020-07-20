@@ -7,7 +7,6 @@ import {
   ViewChild, ElementRef, forwardRef,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { LifeCycleComponent } from '@co/core';
 
 @Component({
   selector: 'co-report-viewer',
@@ -25,7 +24,7 @@ import { LifeCycleComponent } from '@co/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class ReportViewerComponent extends LifeCycleComponent {
+export class ReportViewerComponent {
 
   @Input() coParam:any = {
     width :600 ,
@@ -41,13 +40,9 @@ export class ReportViewerComponent extends LifeCycleComponent {
 
   isHide :boolean = false;
 
-  constructor(cdr: ChangeDetectorRef,
-  ) {
-    super();
-  }
+  constructor(cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
-    super.ngOnInit();
     this.coParam.ids.length == 1 ? this.isHide = true : this.isHide = false;
     this.getReportData(this.indexs);
   }

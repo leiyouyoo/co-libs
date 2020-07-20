@@ -27,10 +27,10 @@ export class SearchAreaItemComponent extends LifeCycleComponent {
   }
 
   ngOnInit(): void {
-    this.onChanges$.pipe(filter(({ marginRight }) => marginRight !== undefined), startWith(null)).subscribe(() => {
+    this.coOnChanges$.pipe(filter(({ marginRight }) => marginRight !== undefined), startWith(null)).subscribe(() => {
       this.setMarginRight(this.coMarginRight);
     });
-    this.onChanges$.pipe(filter(({ coWidth }) => coWidth !== undefined), startWith(null)).subscribe(() => {
+    this.coOnChanges$.pipe(filter(({ coWidth }) => coWidth !== undefined), startWith(null)).subscribe(() => {
       this.setWidth(this.coWidth);
     });
   }
