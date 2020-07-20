@@ -6,7 +6,7 @@ import { ISessionService, CO_SESSIONSERVICE_TOKEN } from '../interface/session.i
 import { IModalHelper, CO_MODALHELPER_TOKEN } from '../interface/modal.interface';
 import { ITitleService, CO_TITLE_TOKEN } from '../interface/title.interface';
 import { CoI18NService, CO_I18N_TOKEN } from '../interface/i18n.interface';
-import { LifeCycleComponent } from '@co/core/src/base/life-cycle-component';
+import { LifeCycleComponent } from './life-cycle-component';
 
 /**
  * 业务组件基类
