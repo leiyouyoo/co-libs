@@ -29,20 +29,24 @@ export abstract class CoPageBase extends CoComponentBase implements OnInit, OnCh
   }
 
   ngOnInit(): void {
+    super.ngOnInit();
     // 页面初始化埋点
     this.coOnInit();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    super.ngOnChanges(changes);
     this.coOnChanges(changes);
   }
 
   ngOnDestroy(): void {
+    super.ngOnDestroy();
     // 页面关闭埋点
     this.coOnDestroy();
   }
 
   ngAfterViewInit(): void {
+    super.ngAfterViewInit();
     this.coAfterViewInit();
   }
 }

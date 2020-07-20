@@ -6,11 +6,12 @@ import { ISessionService, CO_SESSIONSERVICE_TOKEN } from '../interface/session.i
 import { IModalHelper, CO_MODALHELPER_TOKEN } from '../interface/modal.interface';
 import { ITitleService, CO_TITLE_TOKEN } from '../interface/title.interface';
 import { CoI18NService, CO_I18N_TOKEN } from '../interface/i18n.interface';
+import { LifeCycleComponent } from '@co/core/src/base/life-cycle-component';
 
 /**
  * 业务组件基类
  */
-export abstract class CoComponentBase {
+export abstract class CoComponentBase extends LifeCycleComponent {
   protected $i18n: CoI18NService;
   protected $session: ISessionService;
   protected $permissionChecker: IPermissionCheckerService;
@@ -19,7 +20,8 @@ export abstract class CoComponentBase {
   protected $logger: ILogger;
 
 
-  constructor(@Optional() protected injector: Injector) {
+  protected constructor(@Optional() protected injector: Injector) {
+    super();
     this.$permissionChecker = injector.get(CO_PERMISSIONCHECKER_TOKEN);
     this.$session = injector.get(CO_SESSIONSERVICE_TOKEN);
     this.$modalHelper = injector.get(CO_MODALHELPER_TOKEN);

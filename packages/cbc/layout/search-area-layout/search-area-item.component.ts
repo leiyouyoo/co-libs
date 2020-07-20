@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2, ViewEncapsulation } from '@angular/core';
-import { LifeCycleComponent } from '@co/cbc/core';
 import { filter, startWith } from 'rxjs/operators';
+import { LifeCycleComponent } from '@co/core';
 
 
 @Component({

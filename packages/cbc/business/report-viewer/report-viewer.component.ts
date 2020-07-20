@@ -6,8 +6,8 @@ import {
   ViewEncapsulation,
   ViewChild, ElementRef, forwardRef,
 } from '@angular/core';
-import { LifeCycleComponent } from '@co/cbc/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { LifeCycleComponent } from '@co/core';
 
 @Component({
   selector: 'co-report-viewer',

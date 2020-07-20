@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input, Renderer2, ViewEncapsulation } from '@angular/core';
-import { LifeCycleComponent } from '@co/cbc/core';
 import { filter, startWith } from 'rxjs/operators';
 import { InputBoolean } from 'ng-zorro-antd';
+import { LifeCycleComponent } from '@co/core';
 
 @Component({
   selector: 'co-toolbar-item',

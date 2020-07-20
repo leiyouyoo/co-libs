@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, ContentChildren, ElementRef, HostBinding, Input, QueryList, Renderer2, ViewEncapsulation } from '@angular/core';
-import { LifeCycleComponent } from '@co/cbc/core';
 import { filter, startWith, takeUntil } from 'rxjs/operators';
 import { SearchAreaItemComponent } from './search-area-item.component';
 import { SearchAreaExtraComponent } from './search-area-extra.component';
+import { LifeCycleComponent } from '@co/core';
 
 @Component({
   selector: 'co-search-area-layout',
