@@ -46,8 +46,11 @@ export class ToolbarItemComponent extends LifeCycleComponent {
   }
 
   setMarginRight(marginRight?) {
-    marginRight = this.coMarginRight || marginRight;
-    this.renderer.setStyle(this.elementRef.nativeElement, 'margin-right', `${marginRight}px`);
+    const nativeElement = this.elementRef.nativeElement as HTMLElement;
+    if (nativeElement.parentNode?.lastElementChild !== nativeElement) {
+      marginRight = this.coMarginRight || marginRight;
+      this.renderer.setStyle(nativeElement, 'margin-right', `${marginRight}px`);
+    }
   }
 
 }

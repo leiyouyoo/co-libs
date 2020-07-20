@@ -7,7 +7,13 @@ import { LifeCycleComponent } from '@co/core';
 @Component({
   selector: 'co-toolbar',
   template: `
-    <ng-content select="co-toolbar-item"></ng-content> `,
+    <div class="co-toolbar__left">
+      <ng-content select="co-toolbar-item:not([alignRight]),co-toolbar-item[alignRight=false]"></ng-content>
+    </div>
+    <div class="co-toolbar__right">
+      <ng-content select="co-toolbar-item[alignRight]:not([alignRight=false])"></ng-content>
+    </div>
+  `,
   host: {
     '[class.co-toolbar]': 'true',
   },

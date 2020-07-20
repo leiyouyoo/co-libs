@@ -163,6 +163,14 @@
           <co-toolbar-item>
             <button nz-button>其他操作</button>
           </co-toolbar-item>
+          <co-toolbar-item alignRight>
+            <nz-input-group style="width: 320px;" [nzSuffix]="suffixIconSearch">
+              <input type="text" nz-input placeholder="搜索" />
+              <ng-template #suffixIconSearch>
+                <i nz-icon nzType="search"></i>
+              </ng-template>
+            </nz-input-group>
+          </co-toolbar-item>
         </co-toolbar>
         <co-search-area-layout>
           <co-search-area-item>

@@ -10,14 +10,30 @@
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
 
     &&__alignRight {
       justify-content: flex-end;
     }
+
     & + & {
       margin-top: @toolbar-row-margin;
     }
+  }
+
+  &__left, &__right {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: auto;
+    height: auto;
+    max-width: none;
+    min-height: 0;
+  }
+
+  &__right {
+    justify-content: flex-end;
   }
 
   &-item {
@@ -36,9 +52,12 @@
     overflow: hidden;
     margin-right: @toolbar-item-margin-right;
 
+    &:last-child {
+      margin-right: 0;
+    }
+
     &&__alignRight {
-      order: 99999;
-      flex: 1 1 99999px;
+      flex: none;
       justify-content: flex-end;
     }
 
