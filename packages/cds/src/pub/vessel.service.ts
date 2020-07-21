@@ -2,9 +2,8 @@ import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
 
-import { VesselDto,VesselCheckInputDto,GetAllVesselForUiPickerInput,VesselUiPickerDto, } from './pub.types';
+import { VesselDto,PagedResultDto,VesselCheckInputDto,GetAllVesselForUiPickerInput, } from './pub.types';
 
 @BaseUrl('/pub/Vessel')
 @Injectable({ providedIn: 'root' })
@@ -12,8 +11,8 @@ export class VesselService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /PUB/Vessel/Get
      * 获取船名详情
@@ -28,7 +27,7 @@ export class VesselService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Vessel/GetAll
      * 分页获取船名列表
@@ -43,7 +42,7 @@ export class VesselService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Vessel/Check
      * 船名重复校验
@@ -58,7 +57,7 @@ export class VesselService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Vessel/Create
      * 创建船名
@@ -73,7 +72,7 @@ export class VesselService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Vessel/Update
      * 编辑船名
@@ -88,7 +87,7 @@ export class VesselService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Vessel/Delete
      * 删除船名
@@ -103,7 +102,7 @@ export class VesselService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Vessel/GetAllForUiPicker
      * 提供给UI船名选择器的服务接口
@@ -118,7 +117,7 @@ export class VesselService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Vessel/CreateOrUpdate
      * 创建或更新

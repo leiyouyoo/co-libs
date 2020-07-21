@@ -2,9 +2,8 @@ import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
 
-import { OrganizationUnitDto,UserInfo,IMContactGroupDto,ContactUserDto,OrganizationUnitUserDto,MoveOrganizationUnitInput, } from './platform.types';
+import { ListResultDto,OrganizationUnitDto,PagedResultDto,ContactUserDto,OrganizationUnitUserDto,MoveOrganizationUnitInput, } from './platform.types';
 
 @BaseUrl('/platform/OrganizationUnit')
 @Injectable({ providedIn: 'root' })
@@ -12,8 +11,8 @@ export class OrganizationUnitService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /Platform/OrganizationUnit/GetByUserId
      * 获取用户所在组织机构
@@ -28,7 +27,7 @@ export class OrganizationUnitService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/OrganizationUnit/GetGroupOrganizationUnits
      * 
@@ -43,7 +42,7 @@ export class OrganizationUnitService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/OrganizationUnit/GetUsersByOrganizationUnitId
      * 获取组织机构下的用户
@@ -58,7 +57,7 @@ export class OrganizationUnitService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/OrganizationUnit/GetSaleUsers
      * 
@@ -73,7 +72,7 @@ export class OrganizationUnitService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/OrganizationUnit/GetUsersAndOrganizationUnit
      * 
@@ -88,7 +87,7 @@ export class OrganizationUnitService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/OrganizationUnit/GetUserDetail
      * 
@@ -103,7 +102,7 @@ export class OrganizationUnitService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/OrganizationUnit/GetOrganizationUnitUsers
      * 
@@ -118,7 +117,7 @@ export class OrganizationUnitService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/OrganizationUnit/GetPositionUserDetail
      * 
@@ -133,7 +132,7 @@ export class OrganizationUnitService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/OrganizationUnit/GetAll
      * 获取组织节点集合
@@ -148,7 +147,22 @@ export class OrganizationUnitService extends BaseApi {
         return null as any
     }
 
- 
+
+    /**
+     * @param url /Platform/OrganizationUnit/GetAllListAsync
+     * 
+     */
+
+    @GET('getAllListAsync')
+    getAllListAsync(
+        @Payload
+        _req: {searchText?:string} 
+
+    ): Observable<ListResultDto<OrganizationUnitDto>> {
+        return null as any
+    }
+
+
     /**
      * @param url /Platform/OrganizationUnit/CreateOrUpdate
      * 保存菜单项
@@ -163,7 +177,7 @@ export class OrganizationUnitService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/OrganizationUnit/Move
      * 移动组织节点
@@ -178,7 +192,7 @@ export class OrganizationUnitService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/OrganizationUnit/Delete
      * 删除组织节点

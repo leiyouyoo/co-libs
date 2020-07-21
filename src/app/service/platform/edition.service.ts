@@ -2,9 +2,8 @@ import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
 
-import { EditionDto,SetEditionPermissionsInput,GrantToTenantsInput,RevokeFromTenantsInput, } from './platform.types';
+import { PagedResultDto,EditionDto,SetEditionPermissionsInput,GrantToTenantsInput,RevokeFromTenantsInput, } from './platform.types';
 
 @BaseUrl('/platform/Edition')
 @Injectable({ providedIn: 'root' })
@@ -12,8 +11,8 @@ export class EditionService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /Platform/Edition/GetAll
      * 返回版本集合
@@ -28,7 +27,7 @@ export class EditionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Edition/Get
      * 获取版本明细
@@ -43,7 +42,7 @@ export class EditionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Edition/Create
      * 创建
@@ -58,7 +57,7 @@ export class EditionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Edition/CreateOrUpdate
      * 创建或更新版本
@@ -73,7 +72,7 @@ export class EditionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Edition/Update
      * 更新
@@ -88,7 +87,7 @@ export class EditionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Edition/Delete
      * 删除
@@ -103,7 +102,7 @@ export class EditionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Edition/GetPermissions
      * 获取指定版本下的可用功能点集合
@@ -118,7 +117,7 @@ export class EditionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Edition/SetPermissions
      * 批量设置权限
@@ -133,7 +132,7 @@ export class EditionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Edition/RemovePermissions
      * 删除权限
@@ -148,7 +147,7 @@ export class EditionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Edition/GrantToTenants
      * 授予指定版本给租户
@@ -163,7 +162,7 @@ export class EditionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Edition/RevokeFromTenants
      * 授予指定版本给租户
@@ -178,7 +177,7 @@ export class EditionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Edition/GetByTenantId
      * 根据租户获取指定版本

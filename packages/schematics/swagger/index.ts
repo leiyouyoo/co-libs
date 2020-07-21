@@ -29,8 +29,9 @@ let serviceList: any = [];
 let serveSelectedEntityList: any = [];
 export function buildCOSwagger(options: any): Rule {
   return async (tree: Tree, context: SchematicContext) => {
-    // cconst data = await getSwaggerData(options)();
+    // const data = await getSwaggerData(options)();
     console.log('loading....');
+    console.log('看我神威，无坚不催');
     const workspace = getWorkspace(tree);
     if (!options.project) {
       throw new SchematicsException('Option (project) is required.');
@@ -213,22 +214,24 @@ function setResponseName(ref) {
   // tslint:disable-next-line: one-variable-per-declaration
   let entityName: string, entityValue: string;
   if (ref.includes('`')) {
-    // 生成实体xxx<xxx>
+    // 泛型,生成实体xxx<xxx>
     entityName = ref.split('`')[0];
     entityValue = ref.split('`')[1];
     // tslint:disable-next-line: one-variable-per-declaration
     let name: string = '',
       zname: string = '';
-    if (entityValue) {
-      zname = entityValue.substring(0, entityValue.indexOf(','));
-      name = zname.includes('+') ? zname.substring(zname.lastIndexOf('+') + 1) : zname.substring(zname.lastIndexOf('.') + 1);
-      bindEntity(zname.substring(zname.lastIndexOf('[') + 1));
-    }
 
+    // 处理泛型中某实体
+    zname = entityValue.substring(0, entityValue.indexOf(','));
+    name = zname.includes('+') ? zname.substring(zname.lastIndexOf('+') + 1) : zname.substring(zname.lastIndexOf('.') + 1);
+    // bindEntity(zname.substring(zname.lastIndexOf('[') + 1));
+
+    // 处理泛型实体
     entityName = entityName.includes('+')
       ? entityName.substring(entityName.lastIndexOf('+') + 1)
       : entityName.substring(entityName.lastIndexOf('.') + 1);
-    return `${entityName}<${name ? name : 'T'}>`;
+    setGeneric(ref, `${entityName}`, true);
+    return `${entityName}<${name ? name : 'any'}>`;
   } else {
     bindEntity(ref);
     entityName = ref.includes('+') ? ref.substring(ref.lastIndexOf('+') + 1) : ref.substring(ref.lastIndexOf('.') + 1);
@@ -236,10 +239,36 @@ function setResponseName(ref) {
   }
 }
 
+function setGeneric(ref, genericName = '', isGeneric = false) {
+  const entity = serveEntityList[ref.replace('#/definitions/', '')];
+  if (isGeneric && entity) {
+    // tslint:disable-next-line: forin
+    for (const key in entity.properties) {
+      const parmDetail = entity.properties[key];
+      if (parmDetail?.type === 'integer') {
+        parmDetail.type = 'number';
+      } else if (parmDetail?.type === 'array') {
+        parmDetail.type = 'T[]';
+      }
+    }
+
+    const className = genericName + '<T>';
+    if (!selectedEntityList.some(e => e.name === className)) {
+      selectedEntityList.push({
+        name: className,
+        value: entity,
+      });
+    }
+
+    if (!serveSelectedEntityList.some(e => e === genericName)) {
+      serveSelectedEntityList.push(genericName);
+    }
+  }
+}
+
 function bindEntity(ref) {
   const entity = serveEntityList[ref.replace('#/definitions/', '')];
   const entityName = setEntityName(ref, true);
-
   if (entity) {
     const required = entity.required;
     // tslint:disable-next-line: forin
@@ -318,15 +347,16 @@ function setEntityName(ref, isEntity = false) {
     entityName = entityName.includes('+')
       ? entityName.substring(entityName.lastIndexOf('+') + 1)
       : entityName.substring(entityName.lastIndexOf('.') + 1);
+    setGeneric(ref, `${entityName}`, true);
 
     if (!entity && ref.includes('[')) {
       // 该请求来自实体
       if (isEntity) {
         return `${entityName}`;
       }
-      return `${entityName}[]`;
+      return `${entityName}<any>`;
     } else {
-      return `${entityName}<${name ? name : 'T'}>`;
+      return `${entityName}<${name ? name : 'any'}>`;
     }
   } else {
     entityName = ref.includes('+') ? ref.substring(ref.lastIndexOf('+') + 1) : ref.substring(ref.lastIndexOf('.') + 1);

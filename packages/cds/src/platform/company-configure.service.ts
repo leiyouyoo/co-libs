@@ -2,9 +2,8 @@ import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
 
-import { CompanyConfigureDto,OrganizationUnitDto, } from './platform.types';
+import { PagedResultDto,CompanyConfigureDto,ListResultDto, } from './platform.types';
 
 @BaseUrl('/platform/CompanyConfigure')
 @Injectable({ providedIn: 'root' })
@@ -12,8 +11,8 @@ export class CompanyConfigureService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /Platform/CompanyConfigure/GetAll
      * 返回公司配置集合
@@ -28,7 +27,7 @@ export class CompanyConfigureService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/CompanyConfigure/Get
      * 
@@ -43,7 +42,7 @@ export class CompanyConfigureService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/CompanyConfigure/GetByCompanyId
      * 获取公司配置详情
@@ -58,7 +57,7 @@ export class CompanyConfigureService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/CompanyConfigure/GetByUserId
      * 根据用户获取公司配置
@@ -73,7 +72,7 @@ export class CompanyConfigureService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/CompanyConfigure/Create
      * 创建
@@ -88,7 +87,7 @@ export class CompanyConfigureService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/CompanyConfigure/CreateOrUpdate
      * 创建或更新公司配置
@@ -103,7 +102,7 @@ export class CompanyConfigureService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/CompanyConfigure/Update
      * 更新
@@ -118,7 +117,7 @@ export class CompanyConfigureService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/CompanyConfigure/Delete
      * 删除
@@ -133,7 +132,7 @@ export class CompanyConfigureService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/CompanyConfigure/GetCompanies
      * 获取公司列表
@@ -148,7 +147,7 @@ export class CompanyConfigureService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/CompanyConfigure/GetByPlaceOrLocation
      * 根据港口或仓库获取口岸公司配置

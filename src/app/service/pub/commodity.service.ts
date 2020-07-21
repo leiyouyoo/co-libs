@@ -2,9 +2,8 @@ import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
 
-import { CommodityDto,CommodityCheckInputDto,GetAllCommodityForUiPickerInput,CommodityUiPickerDto, } from './pub.types';
+import { ListResultDto,CommodityDto,CommodityCheckInputDto,GetAllCommodityForUiPickerInput,PagedResultDto, } from './pub.types';
 
 @BaseUrl('/pub/Commodity')
 @Injectable({ providedIn: 'root' })
@@ -12,8 +11,8 @@ export class CommodityService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /PUB/Commodity/GetAll
      * 分页获取品名顶级父类集合
@@ -28,7 +27,7 @@ export class CommodityService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Commodity/Get
      * 获取品名明细
@@ -43,7 +42,7 @@ export class CommodityService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Commodity/Check
      * 品名重复校验
@@ -58,7 +57,7 @@ export class CommodityService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Commodity/Create
      * 创建品名
@@ -73,7 +72,7 @@ export class CommodityService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Commodity/Update
      * 更新品名
@@ -88,7 +87,7 @@ export class CommodityService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Commodity/Delete
      * 删除品名
@@ -103,7 +102,7 @@ export class CommodityService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Commodity/GetAllForUiPicker
      * 提供给UI品名选择器服务接口

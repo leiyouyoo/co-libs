@@ -2,9 +2,8 @@ import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
 
-import { TransportClauseDto,TransportClauseCheckDto,ChangeTransportClauseStateInput,GetAllTransportClauseForUiPickerInput,TransportClauseUiPickerDto, } from './pub.types';
+import { TransportClauseDto,PagedResultDto,TransportClauseCheckDto,ChangeTransportClauseStateInput,GetAllTransportClauseForUiPickerInput, } from './pub.types';
 
 @BaseUrl('/pub/TransportClause')
 @Injectable({ providedIn: 'root' })
@@ -12,8 +11,8 @@ export class TransportClauseService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /PUB/TransportClause/Get
      * 获取运输条款明细
@@ -28,7 +27,7 @@ export class TransportClauseService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/TransportClause/GetAll
      * 获取运输条款列表
@@ -43,7 +42,7 @@ export class TransportClauseService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/TransportClause/Check
      * 校验重复性数据
@@ -58,7 +57,7 @@ export class TransportClauseService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/TransportClause/CreateOrUpdate
      * 新建或更新运输条款
@@ -73,7 +72,7 @@ export class TransportClauseService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/TransportClause/Create
      * 创建运输条款
@@ -88,7 +87,7 @@ export class TransportClauseService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/TransportClause/Update
      * 更新运输条款
@@ -103,7 +102,7 @@ export class TransportClauseService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/TransportClause/Delete
      * 删除运输条款
@@ -118,7 +117,7 @@ export class TransportClauseService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/TransportClause/ChangeTransportClauseState
      * 修改运输条款状态
@@ -133,7 +132,7 @@ export class TransportClauseService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/TransportClause/GetAllForUiPicker
      * 提供给UI运输条款选择器的服务接口

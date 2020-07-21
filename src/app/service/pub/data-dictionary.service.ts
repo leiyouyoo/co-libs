@@ -2,9 +2,8 @@ import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
 
-import { DataDictionaryDto,DataDictionaryCheckDto,ChangeDataDictionnaryStateInput,GetAllDataDictionaryForUiPickerInput,DataDictionaryUiPickerDto, } from './pub.types';
+import { DataDictionaryDto,PagedResultDto,DataDictionaryCheckDto,ChangeDataDictionnaryStateInput,GetAllDataDictionaryForUiPickerInput, } from './pub.types';
 
 @BaseUrl('/pub/DataDictionary')
 @Injectable({ providedIn: 'root' })
@@ -12,8 +11,8 @@ export class DataDictionaryService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /PUB/DataDictionary/Get
      * 获取数据字典明细
@@ -28,7 +27,7 @@ export class DataDictionaryService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/DataDictionary/GetAll
      * 获取数据字典列表
@@ -43,7 +42,7 @@ export class DataDictionaryService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/DataDictionary/Check
      * 校验数据字典重复性
@@ -58,7 +57,7 @@ export class DataDictionaryService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/DataDictionary/CreateOrUpdate
      * 创建或更新数据字典
@@ -73,7 +72,7 @@ export class DataDictionaryService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/DataDictionary/Create
      * 创建数据字典
@@ -88,7 +87,7 @@ export class DataDictionaryService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/DataDictionary/Update
      * 更新数据字典
@@ -103,7 +102,7 @@ export class DataDictionaryService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/DataDictionary/Delete
      * 删除数据字典
@@ -118,7 +117,7 @@ export class DataDictionaryService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/DataDictionary/GetTradeTypes
      * 获取贸易类型类别
@@ -133,7 +132,7 @@ export class DataDictionaryService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/DataDictionary/GetIncotermsByTradeType
      * 根据贸易类型获取贸易条款
@@ -148,7 +147,7 @@ export class DataDictionaryService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/DataDictionary/ChangeDataDictionnaryState
      * 修改数据字典状态
@@ -163,7 +162,7 @@ export class DataDictionaryService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/DataDictionary/GetAllForUiPicker
      * 提供给UI数据字典选择器的服务接口

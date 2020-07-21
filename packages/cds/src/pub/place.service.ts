@@ -2,9 +2,8 @@ import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
 
-import { PlaceDto,GetPlaceListByRegionsInput,PlaceOrCountyDto,PlaceCheckDto,ChangePlaceStateInput,GetPlaceMapInput,PlaceView,FromToDto,GetByPortIdsOutput,GetPortByCityInput,GetPortByCityDto,GetAllPlaceForUiPickerInput,PlaceUiPickerDto, } from './pub.types';
+import { PlaceDto,PagedResultDto,GetPlaceListByRegionsInput,PlaceCheckDto,ChangePlaceStateInput,ListResultDto,GetPlaceMapInput,PlaceView,GetByPortIdsOutput,GetPortByCityInput,GetPortByCityDto,GetAllPlaceForUiPickerInput, } from './pub.types';
 
 @BaseUrl('/pub/Place')
 @Injectable({ providedIn: 'root' })
@@ -12,8 +11,8 @@ export class PlaceService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /PUB/Place/Get
      * 获取地点明细
@@ -28,7 +27,7 @@ export class PlaceService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/GetAll
      * 获取地点列表
@@ -43,7 +42,7 @@ export class PlaceService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/GetByRegionIds
      * 根据地区id集合查找地点
@@ -58,7 +57,7 @@ export class PlaceService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/GetByCountryIds
      * 根据国家id查找国家下的place
@@ -73,7 +72,7 @@ export class PlaceService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/GetPlaceAndCounty
      * 分页获取港口或区县
@@ -88,7 +87,7 @@ export class PlaceService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/Check
      * 校验重复性数据
@@ -103,7 +102,7 @@ export class PlaceService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/CreateOrUpdate
      * 创建或更新地点
@@ -118,7 +117,7 @@ export class PlaceService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/Create
      * 创建地点
@@ -133,7 +132,7 @@ export class PlaceService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/Update
      * 更新地点
@@ -148,7 +147,7 @@ export class PlaceService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/Delete
      * 删除地点
@@ -163,7 +162,7 @@ export class PlaceService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/ChangePlaceState
      * 修改地点状态
@@ -178,7 +177,7 @@ export class PlaceService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/GetByPlacesIds
      * 根据地点id集合查找地点集合
@@ -193,7 +192,7 @@ export class PlaceService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/Resolve
      * 根据地图解析地址
@@ -208,7 +207,7 @@ export class PlaceService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/GetFromToList
      * 获取港口或地点列表
@@ -223,7 +222,7 @@ export class PlaceService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/GetByPortIds
      * 根据港口Id获取港口信息(含逆向检索省州片区)
@@ -238,7 +237,7 @@ export class PlaceService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/GetByCountyIds
      * 根据城市港口、区县镇Id数组获取详细文本
@@ -253,7 +252,7 @@ export class PlaceService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/GetPortByCity
      * 根据城市信息获取港口
@@ -268,7 +267,7 @@ export class PlaceService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Place/GetAllForUiPicker
      * 提供给UI地点选择器的服务接口

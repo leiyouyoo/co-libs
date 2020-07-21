@@ -2,9 +2,8 @@ import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
 
-import { AppVersionDto, } from './platform.types';
+import { AppVersionDto,PagedResultDto, } from './platform.types';
 
 @BaseUrl('/platform/AppVersion')
 @Injectable({ providedIn: 'root' })
@@ -12,8 +11,8 @@ export class AppVersionService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /Platform/AppVersion/GetVersionByAppType
      * 根据系统类型获取当前系统的最新版本号
@@ -28,7 +27,7 @@ export class AppVersionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/AppVersion/CheckVersion
      * 检查更新版本(true表示有更新，false表示没有更新)
@@ -43,7 +42,7 @@ export class AppVersionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/AppVersion/CreateOrUpdate
      * 保存
@@ -58,7 +57,7 @@ export class AppVersionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/AppVersion/Get
      * 
@@ -73,7 +72,7 @@ export class AppVersionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/AppVersion/GetAll
      * 
@@ -88,7 +87,7 @@ export class AppVersionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/AppVersion/Create
      * 
@@ -103,7 +102,7 @@ export class AppVersionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/AppVersion/Update
      * 
@@ -118,7 +117,7 @@ export class AppVersionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/AppVersion/Delete
      * 

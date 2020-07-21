@@ -2,9 +2,8 @@ import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
 
-import { UploadResultDto,GetFileInfoDto,ChunkUploadResultDto, } from './storage.types';
+import { UploadResultDto,GetFileInfoDto,PagedResultDto,ChunkUploadResultDto, } from './storage.types';
 
 @BaseUrl('/storage/File')
 @Injectable({ providedIn: 'root' })
@@ -12,8 +11,8 @@ export class FileService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /Storage/File/Upload
      * 上传文件
@@ -28,7 +27,7 @@ export class FileService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Storage/File/GetFileInfo
      * 获取文件详情
@@ -43,7 +42,7 @@ export class FileService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Storage/File/GetFileInfos
      * 
@@ -58,7 +57,7 @@ export class FileService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Storage/File/ChunkUpload
      * 分片上传
@@ -73,7 +72,7 @@ export class FileService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Storage/File/GetDownLoadFile
      * 下载文件/获取图片
@@ -88,7 +87,7 @@ export class FileService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Storage/File/GetPdf
      * 获取Pdf文件
@@ -103,7 +102,7 @@ export class FileService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Storage/File/Delete
      * 
@@ -118,7 +117,7 @@ export class FileService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Storage/File/BulkDelete
      * 

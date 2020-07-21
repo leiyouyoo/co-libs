@@ -2,7 +2,6 @@ import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
 
 import { GetShipTrackInfoOutput,AddingVesselInfosTaskInput, } from './pub.types';
 
@@ -12,8 +11,8 @@ export class VesselInfosService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /PUB/VesselInfos/GetShipTrackInfo
      * 根据港口获取轨迹信息
@@ -28,7 +27,7 @@ export class VesselInfosService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/VesselInfos/GetCurrentPositions
      * 获取当前船名坐标（可批量获取）
@@ -43,7 +42,7 @@ export class VesselInfosService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/VesselInfos/GetVesselInfosNew
      * 获取需获取的船任务列表中当前轨迹数据
@@ -58,7 +57,7 @@ export class VesselInfosService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/VesselInfos/SyncShipTrackingInfo
      * 同步船舶轨迹的数据
@@ -73,7 +72,7 @@ export class VesselInfosService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/VesselInfos/SyncIcpUsers
      * 
@@ -88,7 +87,7 @@ export class VesselInfosService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/VesselInfos/AddingVesselInfosTask
      * 添加船舶轨迹定时任务

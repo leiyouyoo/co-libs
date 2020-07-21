@@ -2,9 +2,8 @@ import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
 
-import { ShippingLineDto,ShippingLineCheckInputDto,ChangeShippingLineStateInput,CountryReationShippingDto,PortReationCountryDto,GetAllShippingLineForUiPickerInput,ShippingLineUiPickerDto, } from './pub.types';
+import { ShippingLineDto,ListResultDto,ShippingLineCheckInputDto,ChangeShippingLineStateInput,GetAllShippingLineForUiPickerInput,PagedResultDto, } from './pub.types';
 
 @BaseUrl('/pub/ShippingLine')
 @Injectable({ providedIn: 'root' })
@@ -12,8 +11,8 @@ export class ShippingLineService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /PUB/ShippingLine/Get
      * 获取航线详情
@@ -28,7 +27,7 @@ export class ShippingLineService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/ShippingLine/GetAll
      * 分页获取航线顶级父类集合
@@ -43,7 +42,7 @@ export class ShippingLineService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/ShippingLine/Check
      * 航线重复校验
@@ -58,7 +57,7 @@ export class ShippingLineService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/ShippingLine/Create
      * 创建航线
@@ -73,7 +72,7 @@ export class ShippingLineService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/ShippingLine/CreateOrUpdate
      * 更新或者删除
@@ -88,7 +87,7 @@ export class ShippingLineService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/ShippingLine/PostUpdate
      * 编辑航线
@@ -103,7 +102,7 @@ export class ShippingLineService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/ShippingLine/Delete
      * 删除航线
@@ -118,7 +117,7 @@ export class ShippingLineService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/ShippingLine/ChangeShippingLineState
      * 修改航线状态
@@ -133,7 +132,7 @@ export class ShippingLineService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/ShippingLine/GetCountryList
      * 获取航线与国家关系列表
@@ -148,7 +147,7 @@ export class ShippingLineService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/ShippingLine/SaveCountry
      * 保存航线与国家关系列表
@@ -163,7 +162,7 @@ export class ShippingLineService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/ShippingLine/GetPortList
      * 获取航线与港口关系列表
@@ -178,7 +177,7 @@ export class ShippingLineService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/ShippingLine/SavePort
      * 保存航线与港口关系列表
@@ -193,7 +192,7 @@ export class ShippingLineService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/ShippingLine/GetPortsByShippingLine
      * 根据航线获取对应的港口
@@ -208,7 +207,7 @@ export class ShippingLineService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/ShippingLine/GetAllForUiPicker
      * 提供给UI航线选择器服务接口

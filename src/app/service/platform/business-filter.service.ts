@@ -2,9 +2,8 @@ import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
 
-import { ConditionGroupInfo, } from './platform.types';
+import { ConditionGroupInfo,ListResultDto, } from './platform.types';
 
 @BaseUrl('/platform/BusinessFilter')
 @Injectable({ providedIn: 'root' })
@@ -12,8 +11,8 @@ export class BusinessFilterService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /Platform/BusinessFilter/GetConditionGroup
      * 获取自定义的过滤条件组详情
@@ -28,7 +27,7 @@ export class BusinessFilterService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/BusinessFilter/GetConditionGroupList
      * 根据业务类型获取当前用户自定义的过滤条件组
@@ -43,7 +42,7 @@ export class BusinessFilterService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/BusinessFilter/CreateOrUpdateConditionGroup
      * 新增或编辑用户自定义的过滤条件组
@@ -58,7 +57,7 @@ export class BusinessFilterService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/BusinessFilter/DeleteConditionGroup
      * Deletes the condition group.

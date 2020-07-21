@@ -65,7 +65,7 @@
     "@webcomponents/custom-elements": "^1.4.1",
     "ajv": "^6.12.2",
     "aos": "^3.0.0-beta.6",
-    "co-cli": "0.0.39",
+    "co-cli": "0.0.56",
     "codesandbox": "^2.1.14",
     "docsearch.js": "^2.6.3",
     "extend": "^3.0.2",

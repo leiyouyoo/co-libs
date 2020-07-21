@@ -2,7 +2,6 @@ import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
 
 import {  } from './storage.types';
 
@@ -12,8 +11,8 @@ export class ExcelTemplateService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /Storage/ExcelTemplate/Get
      * 根据模板名称获取excel模板
@@ -28,7 +27,7 @@ export class ExcelTemplateService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Storage/ExcelTemplate/GetTemplate
      * 

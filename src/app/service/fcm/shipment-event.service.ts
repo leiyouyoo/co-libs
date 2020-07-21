@@ -3,9 +3,9 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 
-import { ShipmentEventDto, } from './csp.types';
+import {  } from './fcm.types';
 
-@BaseUrl('/csp/ShipmentEvent')
+@BaseUrl('/fcm/ShipmentEvent')
 @Injectable({ providedIn: 'root' })
 export class ShipmentEventService extends BaseApi {
   constructor(injector: Injector) {
@@ -14,8 +14,8 @@ export class ShipmentEventService extends BaseApi {
 
   
     /**
-     * @param url /CSP/ShipmentEvent/BatchCreateOrUpdate
-     * 批量创建或更新事件
+     * @param url /FCM/ShipmentEvent/BatchCreateOrUpdate
+     * 批量新增操作事件
      */
 
     @POST('batchCreateOrUpdate')
@@ -29,14 +29,29 @@ export class ShipmentEventService extends BaseApi {
 
 
     /**
-     * @param url /CSP/ShipmentEvent/CreateOrUpdate
-     * 创建或更新事件
+     * @param url /FCM/ShipmentEvent/GetEventsAsync
+     * 获取操作事件
      */
 
-    @POST('createOrUpdate')
-    createOrUpdate(
+    @GET('getEventsAsync')
+    getEventsAsync(
         @Payload
-        _req:ShipmentEventDto
+        _req: {id?:string} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /FCM/ShipmentEvent/GetEventCodes
+     * 查看eventcode事件码对应的中英文
+     */
+
+    @GET('getEventCodes')
+    getEventCodes(
+        @Payload
+        _req: {} 
 
     ): Observable<any> {
         return null as any
