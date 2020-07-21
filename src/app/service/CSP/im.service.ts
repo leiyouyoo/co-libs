@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 
-import { ListResultDto,CreateImGroupInput,CreateImGroupForCustomerInput,AddDeleteGroupInput,AjaxResponse, } from './csp.types';
+import { MayInviteUserModel,ListResultDto,CreateImGroupInput,CreateImGroupForCustomerInput,AddDeleteGroupInput,AjaxResponse, } from './csp.types';
 
 @BaseUrl('/csp/IM')
 @Injectable({ providedIn: 'root' })

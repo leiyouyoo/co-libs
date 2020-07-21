@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 
-import { ContactDto,ListResultDto,PagedResultDto,CheckContactEmailInput,CheckContactEmailOutput,CheckMainContact,CommonResponse,CreateOrUpdateContactInput,ResetUserPasswordInput, } from './crm.types';
+import { ContactDto,ListResultDto,ContactListDto,PagedResultDto,CheckContactEmailInput,CheckContactEmailOutput,CheckMainContact,CommonResponse,CreateOrUpdateContactInput,ResetUserPasswordInput, } from './crm.types';
 
 @BaseUrl('/crm/Contact')
 @Injectable({ providedIn: 'root' })

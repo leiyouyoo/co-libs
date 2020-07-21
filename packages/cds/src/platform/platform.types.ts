@@ -36,6 +36,63 @@
     }
  
     /**
+     * 租户信息
+     */
+    export class TenantInfo {
+        
+         
+            /* Id */ 
+            id?: number;
+         
+            /* 名称 */ 
+            name?: string;
+         
+            /* 租户账号 */ 
+            tenancyName?: string;
+        
+        
+    }
+ 
+    /**
+     * 用户信息
+     */
+    export class UserInfo {
+        
+         
+            /* Id */ 
+            id?: number;
+         
+            /* 名 */ 
+            name?: string;
+         
+            /* 姓 */ 
+            surname?: string;
+         
+            
+            cName?: string;
+         
+            /* 账号 */ 
+            userName?: string;
+         
+            /* 地址 */ 
+            emailAddress?: string;
+         
+            /* 电话 */ 
+            phoneNumber?: string;
+         
+            
+            profilePictureId?: string;
+         
+            /* 用户拥有的角色集合 */ 
+            roles?: any[];
+         
+            /* 用户归属租户信息 */ 
+            tenant?: TenantInfo;
+        
+        
+    }
+ 
+    /**
      * BizCodeRuleTemplate Dto
      */
     export class BizCodeRuleTemplateDto {
@@ -292,6 +349,57 @@
          
             /* 是否有效 */ 
             isActive?: boolean;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     * 组织节点-数据传输对象
+     */
+    export class OrganizationUnitDto {
+        
+         
+            /* 显示名称 */ 
+            displayName?: string;
+         
+            /* 显示名称本地化信息 */ 
+            displayNameLocalization?: string;
+         
+            
+            fullName?: string;
+         
+            /* 组织节点类型
+1 = Group
+2 = Department
+4 = Company
+8 = Region
+16 = Section
+32 = Head */ 
+            type?: number;
+         
+            /* 子节点数 */ 
+            childCount?: number;
+         
+            
+            childrenDto?: any[];
+         
+            /* 名称 */ 
+            name?: string;
+         
+            /* 带有父级Id的全Id */ 
+            fullId?: string;
+         
+            /* 层级代码 */ 
+            levelCode?: string;
+         
+            /* 层级 */ 
+            level?: number;
+         
+            /* 父ID */ 
+            parentId?: string;
          
             
             id?: string;
@@ -663,6 +771,21 @@
     /**
      *  No Remark 
      */
+    export class IMContactGroupDto {
+        
+         
+            
+            companyName?: string;
+         
+            
+            contacts?: any[];
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
     export class ContactUserDto {
         
          
@@ -743,57 +866,6 @@
          
             
             fullOrganizationUnit?: string;
-        
-        
-    }
- 
-    /**
-     * 组织节点-数据传输对象
-     */
-    export class OrganizationUnitDto {
-        
-         
-            /* 显示名称 */ 
-            displayName?: string;
-         
-            /* 显示名称本地化信息 */ 
-            displayNameLocalization?: string;
-         
-            
-            fullName?: string;
-         
-            /* 组织节点类型
-1 = Group
-2 = Department
-4 = Company
-8 = Region
-16 = Section
-32 = Head */ 
-            type?: number;
-         
-            /* 子节点数 */ 
-            childCount?: number;
-         
-            
-            childrenDto?: any[];
-         
-            /* 名称 */ 
-            name?: string;
-         
-            /* 带有父级Id的全Id */ 
-            fullId?: string;
-         
-            /* 层级代码 */ 
-            levelCode?: string;
-         
-            /* 层级 */ 
-            level?: number;
-         
-            /* 父ID */ 
-            parentId?: string;
-         
-            
-            id?: string;
         
         
     }
@@ -925,6 +997,50 @@
          
             /* 权限项集合 */ 
             permissionIds?: any[];
+        
+        
+    }
+ 
+    /**
+     * 数据权限项-数据传输对象
+     */
+    export class DataPermissionDto {
+        
+         
+            /* 数据范围 */ 
+            datas?: any[];
+         
+            /* 显示名称 */ 
+            displayName?: string;
+         
+            /* 显示名称本地化信息 */ 
+            displayNameLocalization?: string;
+         
+            /* 权限项类型
+1 = Function
+2 = Data */ 
+            type?: number;
+         
+            /* 名称 */ 
+            name?: string;
+         
+            /* 全称 */ 
+            fullName?: string;
+         
+            /* 带有父级Id的全Id */ 
+            fullId?: string;
+         
+            /* 层级代码 */ 
+            levelCode?: string;
+         
+            /* 层级 */ 
+            level?: number;
+         
+            /* 父ID */ 
+            parentId?: string;
+         
+            
+            id?: string;
         
         
     }
@@ -1569,6 +1685,21 @@
          
             
             detailedMessage?: TfsWebhookMessageDto;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class NameValueDto {
+        
+         
+            
+            name?: string;
+         
+            
+            value?: string;
         
         
     }

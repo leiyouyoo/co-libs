@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 
-import { ProductDto,PagedResultDto,ImportResult,ProductExportInput, } from './csp.types';
+import { ProductDto,ProductListDto,PagedResultDto,ImportResult,ProductExportInput,ProductSkuListOutput, } from './csp.types';
 
 @BaseUrl('/csp/Product')
 @Injectable({ providedIn: 'root' })

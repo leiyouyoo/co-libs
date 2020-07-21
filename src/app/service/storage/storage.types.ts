@@ -326,6 +326,27 @@
     }
  
     /**
+     * 提供给ICP批量下载返回内容
+     */
+    export class ICPBatchDownloadResult {
+        
+         
+            /* 文件Id */ 
+            fileId?: string;
+         
+            /* 文件名 */ 
+            fileName?: string;
+         
+            /* 文件扩展名 */ 
+            extensionName?: string;
+         
+            /* 文件字节流 */ 
+            fileContent?: string;
+        
+        
+    }
+ 
+    /**
      *  No Remark 
      */
     export class ListResultDto<T> {

@@ -11,7 +11,11 @@ import { CoSTWidgetRegistry } from './st-widget';
 import { STColumn, STData } from './st.interfaces';
 import { ControlValueAccessor } from '@angular/forms';
 
-@Directive({ selector: '[co-st-va-widget-host]' })
+@Directive({
+  selector: '[co-st-va-widget-host]',
+  host: {
+  }
+})
 export class CoSTWidgetHostDirective implements OnInit, OnChanges {
   @Input() column: STColumn;
   @Input() value: any;

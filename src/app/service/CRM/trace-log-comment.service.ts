@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 
-import { PagedResultDto,CreateTraceLogCommentInput, } from './crm.types';
+import { TraceLogCommentListDto,PagedResultDto,CreateTraceLogCommentInput, } from './crm.types';
 
 @BaseUrl('/crm/TraceLogComment')
 @Injectable({ providedIn: 'root' })

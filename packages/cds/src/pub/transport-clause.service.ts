@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 
-import { TransportClauseDto,PagedResultDto,TransportClauseCheckDto,ChangeTransportClauseStateInput,GetAllTransportClauseForUiPickerInput, } from './pub.types';
+import { TransportClauseDto,PagedResultDto,TransportClauseCheckDto,ChangeTransportClauseStateInput,GetAllTransportClauseForUiPickerInput,TransportClauseUiPickerDto, } from './pub.types';
 
 @BaseUrl('/pub/TransportClause')
 @Injectable({ providedIn: 'root' })

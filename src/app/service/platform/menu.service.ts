@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 
-import { ListResultDto,MenuItemDto,MoveMenuItemInput,AddToFavoritesInput,ChangeStateInput, } from './platform.types';
+import { MenuItemDto,ListResultDto,MoveMenuItemInput,AddToFavoritesInput,ChangeStateInput, } from './platform.types';
 
 @BaseUrl('/platform/Menu')
 @Injectable({ providedIn: 'root' })

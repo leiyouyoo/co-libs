@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 
-import { PagedResultDto,PositionDto,PositionAndOrganizationUnitDto,CreatePositionDto,ResMsgDto,UpdatePositionDto,AddUsersToPositionInput,SetUserDefaultPositionInput,IsInPositionInput,EntityDto, } from './platform.types';
+import { PositionDto,PagedResultDto,PositionAndOrganizationUnitDto,CreatePositionDto,ResMsgDto,UpdatePositionDto,AddUsersToPositionInput,SetUserDefaultPositionInput,IsInPositionInput,EntityDto, } from './platform.types';
 
 @BaseUrl('/platform/Position')
 @Injectable({ providedIn: 'root' })

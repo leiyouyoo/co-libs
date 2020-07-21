@@ -214,6 +214,116 @@
     }
  
     /**
+     * shipment列表模型
+     */
+    export class PreShipmentListItemDto {
+        
+         
+            /* 运单编号 */ 
+            shipmentNo?: string;
+         
+            /* 主要运输方式
+0 = NotSet
+1 = Ocean
+2 = Air
+3 = Truck
+4 = Rail */ 
+            transportationMode?: number;
+         
+            /* 下单时间（创建时间） */ 
+            creationTime?: string;
+         
+            /* 业务员 */ 
+            serviceUser?: string;
+         
+            /* 客户 */ 
+            customerName?: string;
+         
+            /* 客户类型
+1 = Carrier
+2 = AirLine
+3 = Forwarding
+4 = DirectClient
+5 = Trucker
+6 = CustomsBroker
+7 = WareHouse
+8 = Storage
+9 = RailWay
+10 = Express
+11 = Terminal
+12 = Other */ 
+            customerType?: number;
+         
+            /* 联系人 */ 
+            contactName?: string;
+         
+            /* 目的地送货地址(item里取) */ 
+            destinationAddress?: string;
+         
+            /* 交货方式, 客户自送、Cityocean上门取件
+0 = NotSet
+1 = DeliveryGoodsByMyself
+2 = PickUpByCityocean */ 
+            fbaPickUpMethodType?: number;
+         
+            /* 在起始地交货日期（货物就绪时间） */ 
+            cargoReadyDate?: string;
+         
+            /* 交货位置id，用于拉取名称，前端无需 */ 
+            originAddressId?: string;
+         
+            /* 交货位置 */ 
+            originAddress?: string;
+         
+            /* 交货仓库id，用于拉取名称，前端无需 */ 
+            originWarehouseId?: string;
+         
+            /* 交货仓库 */ 
+            originWarehouse?: string;
+         
+            /* 国家-送货地址的国家 */ 
+            country?: string;
+         
+            /* 品名 */ 
+            commodity?: string;
+         
+            /* 总数量 */ 
+            quantity?: QuantityDto;
+         
+            /* 总重量 */ 
+            weight?: QuantityDto;
+         
+            /* 总体积 */ 
+            volume?: QuantityDto;
+         
+            /* 渠道 */ 
+            channel?: string;
+         
+            /* 入仓时间 */ 
+            cargoPutAwayDate?: string;
+         
+            /* 操作口岸 */ 
+            serviceCompany?: string;
+         
+            /* FBA编号组（取item所有斜杠/分隔） */ 
+            fbano?: string;
+         
+            /* 承运人 */ 
+            agentCustomer?: string;
+         
+            /* 创建人 */ 
+            creatorUser?: string;
+         
+            /* 是否是CSP的客户创建的 */ 
+            isCustomerCreate?: boolean;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
      *  No Remark 
      */
     export class PagedResultDto<T> {
@@ -510,6 +620,253 @@
     /**
      *  No Remark 
      */
+    export class ShipmentListItemDto {
+        
+         
+            /* 操作状态
+0 = NoSet
+1 = Pending
+2 = Ordered
+3 = InTransit
+4 = Completed
+5 = Refusal */ 
+            operationStatus?: number;
+         
+            /* 贸易类型
+0 = NotSet
+1 = General
+2 = Fba
+3 = Fbm */ 
+            tradeType?: number;
+         
+            /* 转运单号 */ 
+            transferNo?: string;
+         
+            /* 自定义引用编号 */ 
+            referenceNo?: string;
+         
+            /* 自定义引用id */ 
+            referenceId?: string;
+         
+            /* 美国海关使用的过境编号 */ 
+            itNo?: string;
+         
+            /* 自定义的标识名称 */ 
+            name?: string;
+         
+            /* 后段代理客户 */ 
+            postAgentCustomerName?: string;
+         
+            /* 报关行客户Id */ 
+            customsCustomerName?: string;
+         
+            /* 清关行客户 */ 
+            customsClearanceCustomerName?: string;
+         
+            /* 运输条款，port_to_door、port_to_port、door_to_door、door_to_port ... */ 
+            freightType?: string;
+         
+            /* 运输状态
+0 = NotSet
+1 = SellerLocation
+2 = InTransitToDeparturePort
+3 = DeparturePort
+4 = InTransitToArrivalPort
+5 = ArrivalPort
+6 = InTransitToFinalDestination
+7 = FinalDestination */ 
+            status?: number;
+         
+            /* 是否作废 */ 
+            isInvalid?: boolean;
+         
+            /* 贸易条款，可以是 EXW, FCA, FAS, FOB, CPT, CFR, CIF, CIP, DAT, DAP, DDP, or DPU. */ 
+            incoterm?: string;
+         
+            /* 预计从起始港出发时间 */ 
+            estimatedDepartureDate?: string;
+         
+            /* 实际从起始港出发时间 */ 
+            actualDepartureDate?: string;
+         
+            /* 预计到达目的港时间 */ 
+            estimatedArrivalDate?: string;
+         
+            /* 实际到达目的港时间 */ 
+            actualArrivalDate?: string;
+         
+            /* 截关日 */ 
+            estimatedClosingDate?: string;
+         
+            /* 是否入仓 */ 
+            isCargoPutAway?: boolean;
+         
+            /* 快递单号 */ 
+            expressNo?: string;
+         
+            /* 快递单号备注 */ 
+            expressNoRemark?: string;
+         
+            /* 入库单号 */ 
+            warehouseNo?: string;
+         
+            /* 货拉拉单号 */ 
+            huoLalaOrderNo?: string;
+         
+            /* FBA 配送方式：整柜直送、拆箱后配送，客户自提，暂存仓库
+0 = NotSet
+1 = FCLDirectDelivery
+2 = DeliveryAfterUnboxing
+3 = SelfDelivery
+4 = TemporaryWarehouse */ 
+            fbaDeliveryType?: number;
+         
+            /* FBA配送方式备注 */ 
+            fbaDeliveryTypeRemark?: string;
+         
+            /* 是否拼箱(LCL)。如果为 false则整箱(FCL)运输。 */ 
+            isLcl?: boolean;
+         
+            /* 分提单号 */ 
+            houseBillNo?: string;
+         
+            /* 主提单号 */ 
+            masterBillNo?: string;
+         
+            /* SO 号，船东订舱号 */ 
+            carrierBookingNo?: string;
+         
+            /* 柜号（多个时 / 分隔） */ 
+            containerNos?: string;
+         
+            /* 柜型 （多个时 2*20GP ） */ 
+            containerSizes?: string;
+         
+            /* 目的港 */ 
+            destinationPort?: string;
+         
+            /* 装柜时间 */ 
+            loadingDate?: string;
+         
+            /* 码头名称 */ 
+            pierName?: string;
+         
+            /* 是否存在税金单，值：无，有 */ 
+            hasTaxBill?: boolean;
+         
+            /* 付款状态，值：未付，已付 */ 
+            paymentStatus?: boolean;
+         
+            /* 进度事件集合 */ 
+            events?: any[];
+         
+            /* 运单编号 */ 
+            shipmentNo?: string;
+         
+            /* 主要运输方式
+0 = NotSet
+1 = Ocean
+2 = Air
+3 = Truck
+4 = Rail */ 
+            transportationMode?: number;
+         
+            /* 下单时间（创建时间） */ 
+            creationTime?: string;
+         
+            /* 业务员 */ 
+            serviceUser?: string;
+         
+            /* 客户 */ 
+            customerName?: string;
+         
+            /* 客户类型
+1 = Carrier
+2 = AirLine
+3 = Forwarding
+4 = DirectClient
+5 = Trucker
+6 = CustomsBroker
+7 = WareHouse
+8 = Storage
+9 = RailWay
+10 = Express
+11 = Terminal
+12 = Other */ 
+            customerType?: number;
+         
+            /* 联系人 */ 
+            contactName?: string;
+         
+            /* 目的地送货地址(item里取) */ 
+            destinationAddress?: string;
+         
+            /* 交货方式, 客户自送、Cityocean上门取件
+0 = NotSet
+1 = DeliveryGoodsByMyself
+2 = PickUpByCityocean */ 
+            fbaPickUpMethodType?: number;
+         
+            /* 在起始地交货日期（货物就绪时间） */ 
+            cargoReadyDate?: string;
+         
+            /* 交货位置id，用于拉取名称，前端无需 */ 
+            originAddressId?: string;
+         
+            /* 交货位置 */ 
+            originAddress?: string;
+         
+            /* 交货仓库id，用于拉取名称，前端无需 */ 
+            originWarehouseId?: string;
+         
+            /* 交货仓库 */ 
+            originWarehouse?: string;
+         
+            /* 国家-送货地址的国家 */ 
+            country?: string;
+         
+            /* 品名 */ 
+            commodity?: string;
+         
+            /* 总数量 */ 
+            quantity?: QuantityDto;
+         
+            /* 总重量 */ 
+            weight?: QuantityDto;
+         
+            /* 总体积 */ 
+            volume?: QuantityDto;
+         
+            /* 渠道 */ 
+            channel?: string;
+         
+            /* 入仓时间 */ 
+            cargoPutAwayDate?: string;
+         
+            /* 操作口岸 */ 
+            serviceCompany?: string;
+         
+            /* FBA编号组（取item所有斜杠/分隔） */ 
+            fbano?: string;
+         
+            /* 承运人 */ 
+            agentCustomer?: string;
+         
+            /* 创建人 */ 
+            creatorUser?: string;
+         
+            /* 是否是CSP的客户创建的 */ 
+            isCustomerCreate?: boolean;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
     export class GetDeliveryInfoListInput {
         
          
@@ -544,21 +901,6 @@
     }
  
     /**
-     * 申请订舱
-     */
-    export class ApplyBookingsInput {
-        
-         
-            /* 需要申请订舱的Id列表 */ 
-            ids?: any[];
-         
-            /* SO 号，船东订舱号 */ 
-            carrierBookingNo?: string;
-        
-        
-    }
- 
-    /**
      *  No Remark 
      */
     export class AddressDto {
@@ -584,6 +926,277 @@
          
             /* 如果是港口，则为UN/LOCODE（联合国贸易和运输地点代码） */ 
             unlocode?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class DeliveryInfoListItemDto {
+        
+         
+            
+            shipmentId?: string;
+         
+            /* 清关行客户Id */ 
+            customsClearanceCustomerId?: string;
+         
+            /* 配送地址 */ 
+            address?: AddressDto;
+         
+            /* 操作状态
+0 = NoSet
+1 = Pending
+2 = Ordered
+3 = InTransit
+4 = Completed
+5 = Refusal */ 
+            operationStatus?: number;
+         
+            /* 贸易类型
+0 = NotSet
+1 = General
+2 = Fba
+3 = Fbm */ 
+            tradeType?: number;
+         
+            /* 转运单号 */ 
+            transferNo?: string;
+         
+            /* 自定义引用编号 */ 
+            referenceNo?: string;
+         
+            /* 自定义引用id */ 
+            referenceId?: string;
+         
+            /* 美国海关使用的过境编号 */ 
+            itNo?: string;
+         
+            /* 自定义的标识名称 */ 
+            name?: string;
+         
+            /* 后段代理客户 */ 
+            postAgentCustomerName?: string;
+         
+            /* 报关行客户Id */ 
+            customsCustomerName?: string;
+         
+            /* 清关行客户 */ 
+            customsClearanceCustomerName?: string;
+         
+            /* 运输条款，port_to_door、port_to_port、door_to_door、door_to_port ... */ 
+            freightType?: string;
+         
+            /* 运输状态
+0 = NotSet
+1 = SellerLocation
+2 = InTransitToDeparturePort
+3 = DeparturePort
+4 = InTransitToArrivalPort
+5 = ArrivalPort
+6 = InTransitToFinalDestination
+7 = FinalDestination */ 
+            status?: number;
+         
+            /* 是否作废 */ 
+            isInvalid?: boolean;
+         
+            /* 贸易条款，可以是 EXW, FCA, FAS, FOB, CPT, CFR, CIF, CIP, DAT, DAP, DDP, or DPU. */ 
+            incoterm?: string;
+         
+            /* 预计从起始港出发时间 */ 
+            estimatedDepartureDate?: string;
+         
+            /* 实际从起始港出发时间 */ 
+            actualDepartureDate?: string;
+         
+            /* 预计到达目的港时间 */ 
+            estimatedArrivalDate?: string;
+         
+            /* 实际到达目的港时间 */ 
+            actualArrivalDate?: string;
+         
+            /* 截关日 */ 
+            estimatedClosingDate?: string;
+         
+            /* 是否入仓 */ 
+            isCargoPutAway?: boolean;
+         
+            /* 快递单号 */ 
+            expressNo?: string;
+         
+            /* 快递单号备注 */ 
+            expressNoRemark?: string;
+         
+            /* 入库单号 */ 
+            warehouseNo?: string;
+         
+            /* 货拉拉单号 */ 
+            huoLalaOrderNo?: string;
+         
+            /* FBA 配送方式：整柜直送、拆箱后配送，客户自提，暂存仓库
+0 = NotSet
+1 = FCLDirectDelivery
+2 = DeliveryAfterUnboxing
+3 = SelfDelivery
+4 = TemporaryWarehouse */ 
+            fbaDeliveryType?: number;
+         
+            /* FBA配送方式备注 */ 
+            fbaDeliveryTypeRemark?: string;
+         
+            /* 是否拼箱(LCL)。如果为 false则整箱(FCL)运输。 */ 
+            isLcl?: boolean;
+         
+            /* 分提单号 */ 
+            houseBillNo?: string;
+         
+            /* 主提单号 */ 
+            masterBillNo?: string;
+         
+            /* SO 号，船东订舱号 */ 
+            carrierBookingNo?: string;
+         
+            /* 柜号（多个时 / 分隔） */ 
+            containerNos?: string;
+         
+            /* 柜型 （多个时 2*20GP ） */ 
+            containerSizes?: string;
+         
+            /* 目的港 */ 
+            destinationPort?: string;
+         
+            /* 装柜时间 */ 
+            loadingDate?: string;
+         
+            /* 码头名称 */ 
+            pierName?: string;
+         
+            /* 是否存在税金单，值：无，有 */ 
+            hasTaxBill?: boolean;
+         
+            /* 付款状态，值：未付，已付 */ 
+            paymentStatus?: boolean;
+         
+            /* 进度事件集合 */ 
+            events?: any[];
+         
+            /* 运单编号 */ 
+            shipmentNo?: string;
+         
+            /* 主要运输方式
+0 = NotSet
+1 = Ocean
+2 = Air
+3 = Truck
+4 = Rail */ 
+            transportationMode?: number;
+         
+            /* 下单时间（创建时间） */ 
+            creationTime?: string;
+         
+            /* 业务员 */ 
+            serviceUser?: string;
+         
+            /* 客户 */ 
+            customerName?: string;
+         
+            /* 客户类型
+1 = Carrier
+2 = AirLine
+3 = Forwarding
+4 = DirectClient
+5 = Trucker
+6 = CustomsBroker
+7 = WareHouse
+8 = Storage
+9 = RailWay
+10 = Express
+11 = Terminal
+12 = Other */ 
+            customerType?: number;
+         
+            /* 联系人 */ 
+            contactName?: string;
+         
+            /* 目的地送货地址(item里取) */ 
+            destinationAddress?: string;
+         
+            /* 交货方式, 客户自送、Cityocean上门取件
+0 = NotSet
+1 = DeliveryGoodsByMyself
+2 = PickUpByCityocean */ 
+            fbaPickUpMethodType?: number;
+         
+            /* 在起始地交货日期（货物就绪时间） */ 
+            cargoReadyDate?: string;
+         
+            /* 交货位置id，用于拉取名称，前端无需 */ 
+            originAddressId?: string;
+         
+            /* 交货位置 */ 
+            originAddress?: string;
+         
+            /* 交货仓库id，用于拉取名称，前端无需 */ 
+            originWarehouseId?: string;
+         
+            /* 交货仓库 */ 
+            originWarehouse?: string;
+         
+            /* 国家-送货地址的国家 */ 
+            country?: string;
+         
+            /* 品名 */ 
+            commodity?: string;
+         
+            /* 总数量 */ 
+            quantity?: QuantityDto;
+         
+            /* 总重量 */ 
+            weight?: QuantityDto;
+         
+            /* 总体积 */ 
+            volume?: QuantityDto;
+         
+            /* 渠道 */ 
+            channel?: string;
+         
+            /* 入仓时间 */ 
+            cargoPutAwayDate?: string;
+         
+            /* 操作口岸 */ 
+            serviceCompany?: string;
+         
+            /* FBA编号组（取item所有斜杠/分隔） */ 
+            fbano?: string;
+         
+            /* 承运人 */ 
+            agentCustomer?: string;
+         
+            /* 创建人 */ 
+            creatorUser?: string;
+         
+            /* 是否是CSP的客户创建的 */ 
+            isCustomerCreate?: boolean;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     * 申请订舱
+     */
+    export class ApplyBookingsInput {
+        
+         
+            /* 需要申请订舱的Id列表 */ 
+            ids?: any[];
+         
+            /* SO 号，船东订舱号 */ 
+            carrierBookingNo?: string;
         
         
     }

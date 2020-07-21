@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 
-import { DataDictionaryDto,PagedResultDto,DataDictionaryCheckDto,ChangeDataDictionnaryStateInput,GetAllDataDictionaryForUiPickerInput, } from './pub.types';
+import { DataDictionaryDto,PagedResultDto,DataDictionaryCheckDto,ChangeDataDictionnaryStateInput,GetAllDataDictionaryForUiPickerInput,DataDictionaryUiPickerDto, } from './pub.types';
 
 @BaseUrl('/pub/DataDictionary')
 @Injectable({ providedIn: 'root' })

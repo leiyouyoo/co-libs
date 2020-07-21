@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 
-import { ShipmentDto,PreShipmentListInput,PagedResultDto,CreateOrUpdateShipmentInput,WarehousingDto,ChangeShipmentInvalidStatusInput,SetShipmentPostAgentCustomerInput,GetShipmentListInput,GetDeliveryInfoListInput,ApplyBookingsInput,DeliveryInfoDto, } from './fcm.types';
+import { ShipmentDto,PreShipmentListInput,PreShipmentListItemDto,PagedResultDto,ShipmentListItemDto,CreateOrUpdateShipmentInput,WarehousingDto,ChangeShipmentInvalidStatusInput,SetShipmentPostAgentCustomerInput,GetShipmentListInput,GetDeliveryInfoListInput,DeliveryInfoListItemDto,ApplyBookingsInput,DeliveryInfoDto, } from './fcm.types';
 
 @BaseUrl('/fcm/Shipment')
 @Injectable({ providedIn: 'root' })

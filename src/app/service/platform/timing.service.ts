@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 
-import { ListResultDto, } from './platform.types';
+import { NameValueDto,ListResultDto, } from './platform.types';
 
 @BaseUrl('/platform/Timing')
 @Injectable({ providedIn: 'root' })

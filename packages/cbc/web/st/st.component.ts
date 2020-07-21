@@ -780,6 +780,9 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
       const isRenderDisabled = btn.iifBehavior === 'disabled';
       btn._result = result;
       btn._disabled = !result && isRenderDisabled;
+      if (btn.className) {
+        btn._className = typeof btn.className === 'string' ? btn.className : btn.className(item);
+      }
       /* 根据编辑状态显示按钮 */
       let showByEdit: boolean;
       if (item._editing) {

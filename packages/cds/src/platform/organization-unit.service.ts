@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 
-import { ListResultDto,OrganizationUnitDto,PagedResultDto,ContactUserDto,OrganizationUnitUserDto,MoveOrganizationUnitInput, } from './platform.types';
+import { OrganizationUnitDto,ListResultDto,UserInfo,PagedResultDto,IMContactGroupDto,ContactUserDto,OrganizationUnitUserDto,MoveOrganizationUnitInput, } from './platform.types';
 
 @BaseUrl('/platform/OrganizationUnit')
 @Injectable({ providedIn: 'root' })

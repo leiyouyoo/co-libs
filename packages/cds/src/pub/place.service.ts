@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 
-import { PlaceDto,PagedResultDto,GetPlaceListByRegionsInput,PlaceCheckDto,ChangePlaceStateInput,ListResultDto,GetPlaceMapInput,PlaceView,GetByPortIdsOutput,GetPortByCityInput,GetPortByCityDto,GetAllPlaceForUiPickerInput, } from './pub.types';
+import { PlaceDto,PagedResultDto,GetPlaceListByRegionsInput,PlaceOrCountyDto,PlaceCheckDto,ChangePlaceStateInput,ListResultDto,GetPlaceMapInput,PlaceView,FromToDto,GetByPortIdsOutput,GetPortByCityInput,GetPortByCityDto,GetAllPlaceForUiPickerInput,PlaceUiPickerDto, } from './pub.types';
 
 @BaseUrl('/pub/Place')
 @Injectable({ providedIn: 'root' })

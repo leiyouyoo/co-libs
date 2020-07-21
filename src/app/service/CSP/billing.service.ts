@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 
-import { UserIdentifier,GetBillListInput,PagedResultDto,BillOutput,ListResultDto,BillDto,CoEntityDto,ChangeBillStatusInput,ConfirmBillsInput,ExportBillInput,ExportBillOutput,SynchronizeBillsInput,CreateOrUpdatePaymentRecordsInput,PaymentRecordDto,CreateOrUpdateChargeItemsInput,ChargeItemDto,BillingStatisticsOutput, } from './csp.types';
+import { UserIdentifier,GetBillListInput,BillOutput,PagedResultDto,ListResultDto,BillDto,CoEntityDto,ChangeBillStatusInput,ConfirmBillsInput,ExportBillInput,ExportBillOutput,SynchronizeBillsInput,CreateOrUpdatePaymentRecordsInput,PaymentRecordDto,CreateOrUpdateChargeItemsInput,ChargeItemDto,BankAccountDto,BillingStatisticsOutput, } from './csp.types';
 
 @BaseUrl('/csp/Billing')
 @Injectable({ providedIn: 'root' })

@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 
-import { CurrencyDto,PagedResultDto,CurrencyCheckDto,ChangeCurrencyStateInput,GetAllForUiPickerInput, } from './pub.types';
+import { CurrencyDto,PagedResultDto,CurrencyCheckDto,ChangeCurrencyStateInput,GetAllForUiPickerInput,CurrencyUiPickerDto, } from './pub.types';
 
 @BaseUrl('/pub/Currency')
 @Injectable({ providedIn: 'root' })

@@ -39,6 +39,7 @@ const loginUrl = `/#/passport/login`;
   providedIn: 'root',
 })
 export class AbpHttpConfiguration {
+  loginUrl: string;
   constructor(private messageService: NzMessageService, private injector: Injector) { }
 
   defaultError = {
@@ -85,6 +86,7 @@ export class AbpHttpConfiguration {
   }
 
   handleUnAuthorizedRequest(targetUrl?: string) {
+    targetUrl = targetUrl || this.loginUrl;
     localStorage.removeItem('_token');
     (this.injector.get(DA_SERVICE_TOKEN) as ITokenService).clear();
     if (location.hash.includes('isForShare=true')) {
@@ -107,7 +109,7 @@ export class AbpHttpConfiguration {
     let error;
     switch (response.status) {
       case 401:
-        self.handleUnAuthorizedRequest(loginUrl);
+        self.handleUnAuthorizedRequest();
         break;
       case 403:
         error = self.defaultError403;
@@ -142,7 +144,7 @@ export class AbpHttpConfiguration {
       const targetUrl = ajaxResponse.targetUrl;
 
       if (response.status === 401) {
-        this.handleUnAuthorizedRequest(targetUrl || loginUrl);
+        this.handleUnAuthorizedRequest(targetUrl);
       }
     }
 
@@ -187,6 +189,7 @@ export class ResponseInterceptor implements HttpInterceptor {
   protected configuration: AbpHttpConfiguration;
 
   constructor(configuration: AbpHttpConfiguration, @Inject(ENVIRONMENT) private environment) {
+    configuration.loginUrl = environment?.LOGIN_URL ?? loginUrl;
     this.configuration = configuration;
   }
 

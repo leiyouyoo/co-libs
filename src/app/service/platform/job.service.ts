@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 
-import { PagedResultDto,JobDto,EntityDto,CheckedRepeatForJobInput, } from './platform.types';
+import { JobDto,PagedResultDto,EntityDto,CheckedRepeatForJobInput, } from './platform.types';
 
 @BaseUrl('/platform/Job')
 @Injectable({ providedIn: 'root' })

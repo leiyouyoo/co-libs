@@ -224,7 +224,7 @@ function setResponseName(ref) {
     // 处理泛型中某实体
     zname = entityValue.substring(0, entityValue.indexOf(','));
     name = zname.includes('+') ? zname.substring(zname.lastIndexOf('+') + 1) : zname.substring(zname.lastIndexOf('.') + 1);
-    // bindEntity(zname.substring(zname.lastIndexOf('[') + 1));
+    bindEntity(zname.substring(zname.lastIndexOf('[') + 1));
 
     // 处理泛型实体
     entityName = entityName.includes('+')

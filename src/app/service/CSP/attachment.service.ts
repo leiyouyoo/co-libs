@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 
-import { TestDtoValidateInput,HttpResponseMessage,ListResultDto,GetAllAttachmentListInput,AttachmentDto,BatchCreateAttachmentInput,CreateAttachmentInput, } from './csp.types';
+import { TestDtoValidateInput,HttpResponseMessage,AttachmentListDto,ListResultDto,GetAllAttachmentListInput,AttachmentDto,BatchCreateAttachmentInput,CreateAttachmentInput,ShareableContactModel,AttachmentForIcpDto, } from './csp.types';
 
 @BaseUrl('/csp/Attachment')
 @Injectable({ providedIn: 'root' })

@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 
-import { GetShipmentListInput,PagedResultDto,ShipmentListOutput,ListResultDto,PubLocation,NameValueDto,ShipmentDetailOutput,CreateOrUpdateShipmentInput,CloseShipmentInput,ImportShipmentOrderItemsInput,UpdatePostPortEstDateInput,ShipmentsStatisticsOutput,GetRelatedBusinessOutput, } from './csp.types';
+import { GetShipmentListInput,ShipmentListOutput,PagedResultDto,PubLocation,ListResultDto,NameValueDto,NetWorkLocationModel,GetAllForProductOutput,ShipmentDetailOutput,ShipmentEventGroupDto,CreateOrUpdateShipmentInput,CloseShipmentInput,ShipmentOrderItemDto,ImportShipmentOrderItemsInput,UpdatePostPortEstDateInput,ConditionItemAttribute,ShipmentsStatisticsOutput,GetRelatedBusinessOutput, } from './csp.types';
 
 @BaseUrl('/csp/Shipment')
 @Injectable({ providedIn: 'root' })

@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 
-import { ListResultDto,ExternalLocationDto,PagedResultDto,CreateOrUpdateLocationExternalInput,AssignUsersToLocationDto,AssignLocationsToUserDto,UnbindUsersLocationDto,GlobalSearchInput, } from './crm.types';
+import { ExternalLocationListDto,ListResultDto,ExternalLocationDto,PagedResultDto,FBALocationListDto,CreateOrUpdateLocationExternalInput,AssignUsersToLocationDto,AssignLocationsToUserDto,UnbindUsersLocationDto,GlobalSearchInput,GlobalSearchOutput, } from './crm.types';
 
 @BaseUrl('/crm/LocationExternal')
 @Injectable({ providedIn: 'root' })

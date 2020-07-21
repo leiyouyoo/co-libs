@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 
-import { PagedResultDto,BizCodeRuleTemplateDto,CreateOrUpdateTemplateInput, } from './platform.types';
+import { UserInfo,PagedResultDto,BizCodeRuleTemplateDto,CreateOrUpdateTemplateInput, } from './platform.types';
 
 @BaseUrl('/platform/BizCodeRule')
 @Injectable({ providedIn: 'root' })

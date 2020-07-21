@@ -192,6 +192,94 @@
     }
  
     /**
+     * 用于附件列表显示的 Dto
+     */
+    export class AttachmentListDto {
+        
+         
+            /* 上传人 */ 
+            uploadBy?: string;
+         
+            /* 上传时间 */ 
+            creationTime?: string;
+         
+            /* Gets or sets the sharing items. */ 
+            sharingItems?: any[];
+         
+            /* Id */ 
+            id?: string;
+         
+            /* 业务id（如是booking，则传booking的id） */ 
+            businessId?: string;
+         
+            /* 业务类型
+0 = Quote
+1 = Booking
+2 = Shipment
+3 = Order
+4 = Product
+5 = Billing */ 
+            businessType?: number;
+         
+            /* 附件类型
+1 = OSO
+2 = TRK
+3 = CF
+4 = SI
+5 = ARR
+6 = MBL
+7 = HBL
+8 = SID
+9 = ISF
+10 = Other
+11 = AR
+12 = AP
+13 = DC
+14 = ASO
+15 = BKG
+16 = LGTLX
+17 = LGPKG
+18 = LGDC
+19 = LGPBL
+20 = LGABL
+21 = LGMBL
+22 = LGPKG1
+23 = LGDC1
+24 = LGABL1
+25 = LGMBL1
+26 = LGTLX1
+27 = AMS
+28 = AN
+29 = SIMBL
+30 = SIHBL
+31 = AN_C
+32 = NRAS
+33 = QuotedPrice
+34 = POD
+35 = AC
+36 = BR
+37 = WFF
+38 = CI
+39 = PL
+40 = PO
+41 = DM
+43 = SideMarks
+44 = WarehouseRecipt */ 
+            attachmentType?: number;
+         
+            /* 文件id(上传到文件服务器后返回) */ 
+            fileId?: string;
+         
+            /* 文件名称(上传到文件服务器后返回) */ 
+            fileName?: string;
+         
+            /* 文件扩展名(上传到文件服务器后返回) */ 
+            extensionName?: string;
+        
+        
+    }
+ 
+    /**
      *  No Remark 
      */
     export class ListResultDto<T> {
@@ -443,6 +531,127 @@
     /**
      *  No Remark 
      */
+    export class ShareableContactModel {
+        
+         
+            
+            userId?: number;
+         
+            
+            contactId?: string;
+         
+            
+            userFullName?: string;
+         
+            
+            customerId?: string;
+         
+            
+            partnerId?: string;
+         
+            
+            positionId?: string;
+         
+            
+            positionName?: string;
+         
+            
+            companyName?: string;
+        
+        
+    }
+ 
+    /**
+     * 文档模型
+     */
+    export class AttachmentForIcpDto {
+        
+         
+            /* 上传人 */ 
+            uploadBy?: string;
+         
+            /* 上传时间 */ 
+            creationTime?: string;
+         
+            /* Gets or sets the current token. */ 
+            currentToken?: string;
+         
+            /* Id */ 
+            id?: string;
+         
+            /* 业务id（如是booking，则传booking的id） */ 
+            businessId?: string;
+         
+            /* 业务类型
+0 = Quote
+1 = Booking
+2 = Shipment
+3 = Order
+4 = Product
+5 = Billing */ 
+            businessType?: number;
+         
+            /* 附件类型
+1 = OSO
+2 = TRK
+3 = CF
+4 = SI
+5 = ARR
+6 = MBL
+7 = HBL
+8 = SID
+9 = ISF
+10 = Other
+11 = AR
+12 = AP
+13 = DC
+14 = ASO
+15 = BKG
+16 = LGTLX
+17 = LGPKG
+18 = LGDC
+19 = LGPBL
+20 = LGABL
+21 = LGMBL
+22 = LGPKG1
+23 = LGDC1
+24 = LGABL1
+25 = LGMBL1
+26 = LGTLX1
+27 = AMS
+28 = AN
+29 = SIMBL
+30 = SIHBL
+31 = AN_C
+32 = NRAS
+33 = QuotedPrice
+34 = POD
+35 = AC
+36 = BR
+37 = WFF
+38 = CI
+39 = PL
+40 = PO
+41 = DM
+43 = SideMarks
+44 = WarehouseRecipt */ 
+            attachmentType?: number;
+         
+            /* 文件id(上传到文件服务器后返回) */ 
+            fileId?: string;
+         
+            /* 文件名称(上传到文件服务器后返回) */ 
+            fileName?: string;
+         
+            /* 文件扩展名(上传到文件服务器后返回) */ 
+            extensionName?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
     export class UserIdentifier {
         
          
@@ -484,21 +693,6 @@
          
             /* 跳过指定条数 */ 
             skipCount?: number;
-        
-        
-    }
- 
-    /**
-     *  No Remark 
-     */
-    export class PagedResultDto<T> {
-        
-         
-            
-            totalCount: number;
-         
-            
-            items: T[];
         
         
     }
@@ -580,6 +774,21 @@
          
             
             id?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PagedResultDto<T> {
+        
+         
+            
+            totalCount: number;
+         
+            
+            items: T[];
         
         
     }
@@ -857,6 +1066,30 @@
     }
  
     /**
+     * Class BankAccountDto.
+     */
+    export class BankAccountDto {
+        
+         
+            /* 户名 */ 
+            accountName?: string;
+         
+            /* 银行名称 */ 
+            bankBranchName?: string;
+         
+            /* 银行地址 */ 
+            bankAddress?: string;
+         
+            /* 银行代码 */ 
+            bankCode?: string;
+         
+            /* 各币种账户 */ 
+            accounts?: any[];
+        
+        
+    }
+ 
+    /**
      * 获取Billings统计信息
      */
     export class BillingStatisticsOutput {
@@ -929,6 +1162,117 @@
          
             /* 跳过指定条数 */ 
             skipCount?: number;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class NetWorkLocationModel {
+        
+         
+            
+            country?: string;
+         
+            
+            province?: string;
+         
+            
+            city?: string;
+         
+            
+            streetAddress?: string;
+         
+            
+            streetAddress2?: string;
+         
+            
+            name?: string;
+         
+            
+            longitude?: string;
+         
+            
+            latitude?: string;
+         
+            
+            customerName?: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     * 为CRM获取全部分页列表输出
+     */
+    export class GetAllListForCRMOutput {
+        
+         
+            /* 创建人Id */ 
+            creatorUserId?: number;
+         
+            /* 订舱单业务号 */ 
+            bookingNo?: string;
+         
+            /* Booking名称（PO号可多个/自定义） */ 
+            name?: string;
+         
+            /* 货号日期 */ 
+            cargoReadyDate?: string;
+         
+            /* 运输方式
+0 = Unknown
+1 = Ocean
+2 = Air */ 
+            freightMethodType?: number;
+         
+            /* 预订状态(枚举)
+0 = BookingDraft
+1 = WaitingForCancelling
+2 = BookingSubmitted
+3 = ShippingDone
+4 = WaitingForPricing
+5 = WaitingForBuyer
+6 = WaitingForSeller
+7 = BookingCancelled
+8 = ShippingCancelled
+9 = PriceConfirmedByCustomer
+10 = ShippingSubmittedToCarrier
+11 = SoNumberNotifiedToCustomer */ 
+            status?: number;
+         
+            /* 起始港Id */ 
+            originPortId?: string;
+         
+            /* 服务商存储电商货物的国内仓库地址 */ 
+            deliveryWarehouseId?: string;
+         
+            /* 提交后用户修改标志属性:当用户提交之后订舱单之后，订舱成功之前，且用户未申请取消订舱单时，可以修改订舱申请，并通知到业务员（一旦出现一直存在）。 */ 
+            isCustomerUpdate?: boolean;
+         
+            /* 出货口岸 */ 
+            serviceCompanyId?: string;
+         
+            /* 起始地址 */ 
+            originAddress?: NetWorkLocationModel;
+         
+            /* 目的地址 */ 
+            destinationAddress?: NetWorkLocationModel;
+         
+            /* 重量 */ 
+            totalWeightDisplay?: string;
+         
+            /* 体积 */ 
+            totalVolumeDisplay?: string;
+         
+            /* 出货口岸 */ 
+            serviceCompanyDisplay?: string;
+         
+            
+            id?: string;
         
         
     }
@@ -1018,45 +1362,6 @@
          
             
             isAir?: boolean;
-         
-            
-            id?: string;
-        
-        
-    }
- 
-    /**
-     *  No Remark 
-     */
-    export class NetWorkLocationModel {
-        
-         
-            
-            country?: string;
-         
-            
-            province?: string;
-         
-            
-            city?: string;
-         
-            
-            streetAddress?: string;
-         
-            
-            streetAddress2?: string;
-         
-            
-            name?: string;
-         
-            
-            longitude?: string;
-         
-            
-            latitude?: string;
-         
-            
-            customerName?: string;
          
             
             id?: string;
@@ -1606,6 +1911,397 @@
     }
  
     /**
+     * Class PurchaseOrderItemForIcpDto.
+     */
+    export class PurchaseOrderItemForIcpDto {
+        
+         
+            /* Gets or sets the po no. */ 
+            orderNumber?: string;
+         
+            /* PO Id */ 
+            orderId?: string;
+         
+            /* 关联的供应商客户Id */ 
+            venderCustomerId?: string;
+         
+            /* 关联的采购商客户Id */ 
+            buyerCustomerId?: string;
+         
+            /* PO ItemId */ 
+            orderItemId?: string;
+         
+            /* Product Id */ 
+            productId?: string;
+         
+            /* Gets or sets the name of the product. */ 
+            productName?: string;
+         
+            /* Gets or sets the MPN. */ 
+            mpn?: string;
+         
+            /* Gets or sets the sku. */ 
+            sku?: string;
+         
+            /* 数量 */ 
+            units?: number;
+         
+            /* 单价 */ 
+            unitCost?: number;
+         
+            /* 体积 */ 
+            volume?: number;
+         
+            /* 箱数 */ 
+            cartons?: number;
+         
+            /* 毛重 */ 
+            grossWeight?: number;
+         
+            /* 净重 */ 
+            netWeight?: number;
+        
+        
+    }
+ 
+    /**
+     * Class BookingForIcpDto.
+     */
+    export class BookingForIcpDto {
+        
+         
+            /* 客户名称 */ 
+            customerName?: string;
+         
+            /* 申报币种 */ 
+            declareCurrencyString?: string;
+         
+            /* 运输类型（门到门港 到 港等） */ 
+            freightTypeString?: string;
+         
+            /* 发货港 */ 
+            originPort?: string;
+         
+            /* 港前拖车出发地 */ 
+            originAddress?: string;
+         
+            /* 目的港 */ 
+            destinationPort?: string;
+         
+            /* 目的地址 */ 
+            destinationAddress?: string;
+         
+            /* FBA起始仓库 */ 
+            deliveryWarehouse?: string;
+         
+            /* 服务商默认业务员用户Id */ 
+            serviceBusinessUserId?: number;
+         
+            /* 服务商默认业务员用户全名 */ 
+            serviceBusinessUserFullName?: string;
+         
+            /* CreatorUserFullName */ 
+            creatorUserFullName?: string;
+         
+            /* 附件 */ 
+            attachments?: any[];
+         
+            /* 订舱单号 */ 
+            bookingNo?: string;
+         
+            /* 是否业务员关联已确认的报价 */ 
+            isQuoteConfirmed?: boolean;
+         
+            /* 是否 ICP 端已下载 */ 
+            icpDownloaded?: boolean;
+         
+            /* 是否显示报价 */ 
+            isShowQuote?: boolean;
+         
+            /* 取消原因
+0 = TransitTime
+1 = CargoReadyTime
+2 = SlowBookingResponse
+3 = Other */ 
+            cancelReason?: number;
+         
+            /* 取消备注 */ 
+            cancelRemark?: string;
+         
+            /* 由业务员绑定运输单号 */ 
+            shipmentNo?: string;
+         
+            /* 由业务员绑定询价Id */ 
+            quoteEnquiryId?: string;
+         
+            /* 预订状态(枚举)
+0 = BookingDraft
+1 = WaitingForCancelling
+2 = BookingSubmitted
+3 = ShippingDone
+4 = WaitingForPricing
+5 = WaitingForBuyer
+6 = WaitingForSeller
+7 = BookingCancelled
+8 = ShippingCancelled
+9 = PriceConfirmedByCustomer
+10 = ShippingSubmittedToCarrier
+11 = SoNumberNotifiedToCustomer */ 
+            status?: number;
+         
+            /* FBA报关文件Id */ 
+            customsDeclarationDocumentIds?: any[];
+         
+            /* 提交后用户修改标志属性:当用户提交之后订舱单之后，订舱成功之前，且用户未申请取消订舱单时，可以修改订舱申请，并通知到业务员（一旦出现一直存在）。 */ 
+            isCustomerUpdate?: boolean;
+         
+            /* 提交后用户修改的上一次属性json */ 
+            customerUpdateLastDataJson?: string;
+         
+            /* 是否包含特殊品 */ 
+            isContainsSpecialGoods?: boolean;
+         
+            /* CRM查看变更属性历史值（仅显示上一次的） */ 
+            lastData?: BookingOldData;
+         
+            /* 模板Id */ 
+            bookingTemplateId?: string;
+         
+            /* 关联的 PO id */ 
+            purchaseOrderIds?: any[];
+         
+            /* 贸易条款显示字符 */ 
+            incotermsString?: string;
+         
+            /* 数量单位 */ 
+            quantityUnitString?: string;
+         
+            /* 重量单位 */ 
+            weightUnitString?: string;
+         
+            /* 体积单位 */ 
+            volumeUnitString?: string;
+         
+            /* 数量单位代码 */ 
+            quantityUnitCode?: string;
+         
+            /* 重量单位代码 */ 
+            weightUnitCode?: string;
+         
+            /* 体积单位代码 */ 
+            volumeUnitCode?: string;
+         
+            /* Delivery  goods by myself 时间范围 */ 
+            deliveryTimeRange?: string;
+         
+            /* 上门提货时间范围 */ 
+            pickUpTimeRange?: string;
+         
+            /* 联系人姓名 */ 
+            contactName?: string;
+         
+            /* 联系人电话 */ 
+            contactPhone?: string;
+         
+            /* FBA运输方式代码 */ 
+            fbaFreightMethodCode?: string;
+         
+            /* FBA运输方式 */ 
+            fbaFreightMethodString?: string;
+         
+            /* 渠道 */ 
+            channelString?: string;
+         
+            /* 映射 */ 
+            cusClearanceInvoices?: any[];
+         
+            /* 映射 */ 
+            packingLists?: any[];
+         
+            /* Gets or sets the name of the consignee customer. */ 
+            consigneeCustomerName?: string;
+         
+            /* Gets or sets the name of the shipper customer. */ 
+            shipperCustomerName?: string;
+         
+            
+            serviceCompanyId?: string;
+         
+            
+            quantity?: number;
+         
+            
+            quantityUnitId?: string;
+         
+            
+            weight?: number;
+         
+            
+            weightUnitId?: string;
+         
+            
+            volume?: number;
+         
+            
+            volumeUnitId?: string;
+         
+            /* 
+0 = Imperial
+1 = Metric */ 
+            unitConvertType?: number;
+         
+            
+            containsSpecialGoodsTypes?: string;
+         
+            
+            description?: string;
+         
+            
+            specialInstructions?: string;
+         
+            
+            containerType?: string;
+         
+            
+            name?: string;
+         
+            
+            consigneeCustomerId?: string;
+         
+            
+            consigneePartnerId?: string;
+         
+            
+            shipperCustomerId?: string;
+         
+            
+            shipperPartnerId?: string;
+         
+            
+            cargoReadyDate?: string;
+         
+            
+            incotermsId?: string;
+         
+            /* 
+0 = NotSet
+1 = General
+2 = FBA
+3 = FBM */ 
+            tradeType?: number;
+         
+            /* 
+0 = NotSet
+1 = CY_CY
+2 = CY_DOOR
+3 = DOOR_CY
+4 = DOOR_DOOR */ 
+            freightType?: number;
+         
+            /* 
+0 = Unknown
+1 = Ocean
+2 = Air */ 
+            freightMethodType?: number;
+         
+            /* 
+0 = FCL
+1 = LCL */ 
+            shipmentType?: number;
+         
+            
+            originPortId?: string;
+         
+            
+            originIsRequireTruck?: boolean;
+         
+            
+            originAddressId?: string;
+         
+            
+            isDeclaration?: boolean;
+         
+            
+            isInsurance?: boolean;
+         
+            
+            destinationPortId?: string;
+         
+            
+            destinationAddressId?: string;
+         
+            
+            deliveryDate?: string;
+         
+            
+            destinationIsRequireTruck?: boolean;
+         
+            
+            isClearance?: boolean;
+         
+            
+            isTaxIncluded?: boolean;
+         
+            
+            declareCurrencyId?: string;
+         
+            
+            contactId?: string;
+         
+            
+            contactUserId?: string;
+         
+            /* 
+0 = DeliveryGoodsByMyself
+1 = PickUpByCityocean */ 
+            deliveryMethodType?: number;
+         
+            
+            deliveryWarehouseId?: string;
+         
+            
+            fbaFreightMethodId?: string;
+         
+            
+            channelId?: string;
+         
+            
+            customerId?: string;
+         
+            
+            tenantId?: number;
+         
+            
+            extensionData?: string;
+         
+            /* 主键 */ 
+            id?: string;
+         
+            /* 创建时间 */ 
+            creationTime?: string;
+         
+            /* 创建人ID */ 
+            creatorUserId?: number;
+         
+            /* 最后一次修改时间 */ 
+            lastModificationTime?: string;
+         
+            /* 最后一次修改人 */ 
+            lastModifierUserId?: number;
+         
+            /* 删除时间 */ 
+            deletionTime?: string;
+         
+            /* 删除用户 */ 
+            deleterUserId?: number;
+         
+            
+            isDeleted?: boolean;
+        
+        
+    }
+ 
+    /**
      * 清关发票上传解析返回
      */
     export class ClearanceInviocesUploadOutput {
@@ -1742,6 +2438,27 @@ Destination location：默认显示最近一次选中的信息； */
     }
  
     /**
+     *  No Remark 
+     */
+    export class GetChannelListOutput {
+        
+         
+            /* 组合字符串 */ 
+            channelGroupStr?: string;
+         
+            /* 快递、卡车 */ 
+            fbaFreightMethodId?: string;
+         
+            /* 是否含税 */ 
+            isTaxIncluded?: boolean;
+         
+            /* 渠道公司 */ 
+            channelId?: string;
+        
+        
+    }
+ 
+    /**
      * 预报单列表查询入口参数
      */
     export class GetBookingListInputForFcm {
@@ -1812,6 +2529,125 @@ Destination location：默认显示最近一次选中的信息； */
          
             /* 跳过指定条数 */ 
             skipCount?: number;
+        
+        
+    }
+ 
+    /**
+     * 列表返回的单条记录
+     */
+    export class BookingForFcmDto {
+        
+         
+            /* 创建人Id */ 
+            creatorUserId?: number;
+         
+            /* 创建人 */ 
+            creatorUserFullName?: string;
+         
+            /* 预订状态(枚举)
+0 = BookingDraft
+1 = WaitingForCancelling
+2 = BookingSubmitted
+3 = ShippingDone
+4 = WaitingForPricing
+5 = WaitingForBuyer
+6 = WaitingForSeller
+7 = BookingCancelled
+8 = ShippingCancelled
+9 = PriceConfirmedByCustomer
+10 = ShippingSubmittedToCarrier
+11 = SoNumberNotifiedToCustomer */ 
+            status?: number;
+         
+            /* 订舱单业务号 */ 
+            bookingNo?: string;
+         
+            /* 运单号（frm下获取） */ 
+            name?: string;
+         
+            /* 下单时间（创建时间） */ 
+            creationTime?: string;
+         
+            /* TODO 业务员 */ 
+            customerId?: string;
+         
+            /* 客户名称 */ 
+            customerName?: string;
+         
+            /* 货号日期 */ 
+            cargoReadyDate?: string;
+         
+            /* 运输方式
+0 = Unknown
+1 = Ocean
+2 = Air */ 
+            freightMethodType?: number;
+         
+            /* 起始港Id */ 
+            originPortId?: string;
+         
+            /* 服务商存储电商货物的国内仓库地址 */ 
+            deliveryWarehouseId?: string;
+         
+            /* 出货口岸 */ 
+            serviceCompanyId?: string;
+         
+            /* 渠道ID */ 
+            channelId?: string;
+         
+            /* 渠道 */ 
+            channel?: string;
+         
+            /* 交货方式 */ 
+            fbaPickUpMethodType?: string;
+         
+            /* 联系人id */ 
+            contactId?: string;
+         
+            /* 目的仓库地址（交货仓库） */ 
+            destinationWarehouseId?: string;
+         
+            /* 关联的目的地址 */ 
+            destinationAddressId?: string;
+         
+            /* 预估交货日期，指必须交付货物的日期。 */ 
+            deliveryDate?: string;
+         
+            /* 品名 */ 
+            commodity?: string;
+         
+            /* 重量 */ 
+            weight?: number;
+         
+            /* 体积 */ 
+            volume?: string;
+         
+            /* 数量 */ 
+            quantity?: string;
+         
+            /* CO.CSP.Application.Bookings.Bookings.Dto.FCM.BookingForFcmDto.ContactId 绑定的用户Id */ 
+            contactUserId?: string;
+         
+            /* 运送方式
+0 = DeliveryGoodsByMyself
+1 = PickUpByCityocean */ 
+            deliveryMethodType?: number;
+         
+            /* 送货地址 */ 
+            destinationAddress?: NetWorkLocationModel;
+         
+            /* 起始地址 */ 
+            originAddress?: NetWorkLocationModel;
+         
+            /* FBA No，可能存在多个 */ 
+            fbaNos?: any[];
+         
+            /* 是否由 FCM 端创建 */ 
+            isFcmCreated?: boolean;
+         
+            
+            id?: string;
         
         
     }
@@ -2000,6 +2836,103 @@ Destination location：默认显示最近一次选中的信息； */
          
             
             bookingIds?: any[];
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class BookingListItemDtoForFcm {
+        
+         
+            /* Id */ 
+            id?: string;
+         
+            /* 主客户Id */ 
+            customerId?: string;
+         
+            /* 发货客户Id */ 
+            shipperCustomerId?: string;
+         
+            /* 业务员id */ 
+            serviceUserId?: number;
+         
+            /* 业务类型（运输方式）
+0 = Unknown
+1 = Ocean
+2 = Air */ 
+            transportationMode?: number;
+         
+            /* 贸易类型
+0 = NotSet
+1 = General
+2 = FBA
+3 = FBM */ 
+            tradeType?: number;
+         
+            /* 运输条款，port_to_door、port_to_port、door_to_door、door_to_port ... */ 
+            freightType?: string;
+         
+            /* 订舱单号 */ 
+            bookingNo?: string;
+         
+            /* 出货口岸 */ 
+            serviceCompanyId?: string;
+         
+            /* 渠道 */ 
+            channel?: string;
+         
+            /* 交货方式 */ 
+            fbaPickUpMethodType?: string;
+         
+            /* 联系人id */ 
+            contactId?: string;
+         
+            /* 地址地址 */ 
+            originAddressId?: string;
+         
+            /* 起始仓库地址 */ 
+            originWarehouseId?: string;
+         
+            /* 目的仓库地址 */ 
+            destinationWarehouseId?: string;
+         
+            /* 目的地址 */ 
+            destinationAddressId?: string;
+         
+            /* 始发装载时间/FBA时  Pick Up / Delivery Time */ 
+            cargoReadyDate?: string;
+         
+            /* 预估交货日期，指必须交付货物的日期。 */ 
+            deliveryDate?: string;
+         
+            /* 贸易条款 */ 
+            incoterm?: string;
+         
+            /* 目的港 */ 
+            destinationPortId?: string;
+         
+            /* 起始港Id */ 
+            originPortId?: string;
+         
+            /* 数量 */ 
+            quantity?: number;
+         
+            /* 数量单位代码 */ 
+            quantityUnitCode?: string;
+         
+            /* 重量 */ 
+            weight?: number;
+         
+            /* 重量单位代码 */ 
+            weightUnitCode?: string;
+         
+            /* 体积 */ 
+            volume?: number;
+         
+            /* 体积单位代码 */ 
+            volumeUnitCode?: string;
         
         
     }
@@ -2452,6 +3385,21 @@ Destination location：默认显示最近一次选中的信息； */
     }
  
     /**
+     * 客服团队Dto
+     */
+    export class ServiceUserGroupDto {
+        
+         
+            /* 公司名称 */ 
+            companyName?: string;
+         
+            /* 公司成员 */ 
+            users?: any[];
+        
+        
+    }
+ 
+    /**
      * 危险品-传输对象模型
      */
     export class DangerousGoodDto {
@@ -2528,6 +3476,42 @@ Destination location：默认显示最近一次选中的信息； */
          
             
             id?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class MayInviteUserModel {
+        
+         
+            
+            userId?: number;
+         
+            
+            userFullName?: string;
+         
+            
+            companyId?: string;
+         
+            
+            companyName?: string;
+         
+            
+            isInGroup?: boolean;
+         
+            
+            tenantId?: number;
+         
+            
+            positionId?: string;
+         
+            
+            positionName?: string;
+         
+            
+            isActive?: boolean;
         
         
     }
@@ -2701,6 +3685,45 @@ Destination location：默认显示最近一次选中的信息； */
     }
  
     /**
+     * 产品列表-传输对象模型
+     */
+    export class ProductListDto {
+        
+         
+            /* 产品名称 */ 
+            name?: string;
+         
+            /* Sku */ 
+            sku?: string;
+         
+            /* 原产地名称 */ 
+            originName?: string;
+         
+            /* 产品链接 */ 
+            url?: string;
+         
+            /* 产品属性 */ 
+            properties?: any[];
+         
+            /* 产品关税分类 */ 
+            classifications?: any[];
+         
+            /* 运输中的数量 */ 
+            unitsInTransit?: number;
+         
+            /* 有效运输的数量 */ 
+            activeShipments?: number;
+         
+            /* 产品图片 */ 
+            imageId?: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
      * 导入结果
      */
     export class ImportResult {
@@ -2741,6 +3764,33 @@ Destination location：默认显示最近一次选中的信息； */
          
             /* 产品Id集合 */ 
             ids?: any[];
+        
+        
+    }
+ 
+    /**
+     * 获取产品Sku列表
+     */
+    export class ProductSkuListOutput {
+        
+         
+            /* 产品名称 */ 
+            name?: string;
+         
+            /* Sku */ 
+            sku?: string;
+         
+            /* 产品链接 */ 
+            url?: string;
+         
+            /* H.S. Code */ 
+            hsCode?: string;
+         
+            /* 图片Id */ 
+            imageId?: string;
+         
+            
+            id?: string;
         
         
     }
@@ -2966,6 +4016,149 @@ Destination location：默认显示最近一次选中的信息； */
     }
  
     /**
+     * 采购订单列表-传输对象模型
+     */
+    export class PurchaseOrderListDto {
+        
+         
+            /* 订单号 */ 
+            orderNumber?: string;
+         
+            /* 产品 */ 
+            products?: any[];
+         
+            /* 采购商名称 */ 
+            buyerName?: string;
+         
+            /* 供应商名称 */ 
+            venderName?: string;
+         
+            /* 供应商客户Id */ 
+            venderCustomerId?: string;
+         
+            /* 供应商Id，供应商创建为null */ 
+            venderPartnerId?: string;
+         
+            /* 采购商客户Id */ 
+            buyerCustomerId?: string;
+         
+            /* 采购商Id，采购商创建为null */ 
+            buyerPartnerId?: string;
+         
+            /* 发送人 */ 
+            senderName?: string;
+         
+            /* 接收人 */ 
+            receivers?: any[];
+         
+            /* 是否供应商创建 */ 
+            isVenderCreated?: boolean;
+         
+            /* 状态
+0 = AwaitingConfirmation
+1 = Confirmed
+2 = Rejected
+3 = Modified
+4 = Booked
+5 = PartiallyBooked
+6 = Expired */ 
+            status?: number;
+         
+            /* 采购数量 */ 
+            requested?: number;
+         
+            /* 供货数量 */ 
+            received?: number;
+         
+            /* 金额 */ 
+            totalUnitCost?: number;
+         
+            /* 创建时间 */ 
+            creationTime?: string;
+         
+            /* 创建人id */ 
+            creatorUserId?: number;
+         
+            /* 最后修改人id */ 
+            lastModifierUserId?: number;
+         
+            /* 最后一次修改时间 */ 
+            lastModificationTime?: string;
+         
+            /* 可拒绝或确认 */ 
+            canConfirmOrReject?: boolean;
+         
+            /* 可编辑 */ 
+            canEdit?: boolean;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     * 获取采购订单列表供Product模块使用
+     */
+    export class PurchaseOrderListToProductDto {
+        
+         
+            /* 订单号 */ 
+            orderNumber?: string;
+         
+            /* 创建时间 */ 
+            creationTime?: string;
+         
+            /* 供应商名称 */ 
+            venderName?: string;
+         
+            /* 采购商名称 */ 
+            buyerName?: string;
+         
+            /* 状态
+0 = AwaitingConfirmation
+1 = Confirmed
+2 = Rejected
+3 = Modified
+4 = Booked
+5 = PartiallyBooked
+6 = Expired */ 
+            status?: number;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     * 采购订单列表明细-传输对象模型
+     */
+    export class PurchaseOrderListDetailOutput {
+        
+         
+            /* 订单号 */ 
+            orderNumber?: string;
+         
+            /* 运输方式
+0 = Unknown
+1 = Ocean
+2 = Air */ 
+            freightMethodType?: number;
+         
+            /* 到达日期 */ 
+            arriveDate?: string;
+         
+            /* 订单项 */ 
+            items?: any[];
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
      * 获取采购订单修改明细-传输对象模型
      */
     export class PurchaseOrderChangeDetailOutput {
@@ -3080,6 +4273,30 @@ Destination location：默认显示最近一次选中的信息； */
     }
  
     /**
+     * Booking创建搜索关联-传输对象模型
+     */
+    export class PurchaseOrderBookingSearchOutput {
+        
+         
+            /* 订单号 */ 
+            orderNumber?: string;
+         
+            /* 是否包含危险品 */ 
+            hasDangerousGood?: boolean;
+         
+            /* 产品名称 */ 
+            productNames?: any[];
+         
+            /* 子集合 */ 
+            children?: any[];
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
      * 导入采购订单
      */
     export class PurchaseOrderImportInput {
@@ -3099,6 +4316,63 @@ Destination location：默认显示最近一次选中的信息； */
          
             /* 采购订单Id集合 */ 
             ids?: any[];
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class ConditionItemAttribute {
+        
+         
+            
+            modelTypeName?: string;
+         
+            
+            groupName?: string;
+         
+            
+            groupOrder?: number;
+         
+            
+            displayName?: string;
+         
+            
+            memberName?: string;
+         
+            
+            inputValueType?: string;
+         
+            
+            isSpecial?: boolean;
+         
+            
+            optionalValues?: object;
+         
+            
+            remark?: string;
+         
+            
+            operators?: any[];
+         
+            
+            typeId?: object;
+        
+        
+    }
+ 
+    /**
+     * 采购订单统一返回下拉数据模型
+     */
+    export class PurchaseOrderFilterDto {
+        
+         
+            /* 显示名称 */ 
+            displayName?: string;
+         
+            /* 值 */ 
+            value?: object;
         
         
     }
@@ -3332,6 +4606,211 @@ Destination location：默认显示最近一次选中的信息； */
     }
  
     /**
+     * 运输单主页List
+     */
+    export class ShipmentListOutput {
+        
+         
+            /* Gets or sets the customer identifier. */ 
+            customerId?: string;
+         
+            /* shipment业务号 */ 
+            shipmentNo?: string;
+         
+            /* shipment名称 */ 
+            shipmentName?: string;
+         
+            /* icp订舱号 */ 
+            soNo?: string;
+         
+            /* 运输类型 整箱或散货
+0 = FCL
+1 = LCL */ 
+            shipmentType?: number;
+         
+            /* 运输方式
+0 = Unknown
+1 = Ocean
+2 = Air */ 
+            freightMethodType?: number;
+         
+            /* 运输状态
+0 = Seller_Location
+1 = OriginStopOff
+2 = In_Transit_To_Departure_port
+3 = Departure_Port
+4 = In_Transit_To_Arrival_Port
+5 = Arrival_Port
+6 = In_Transit_To_Final_Destination
+7 = DestinationStopOff
+8 = Final_Destination
+9 = Canceled
+10 = Completed
+-1 = Default */ 
+            status?: number;
+         
+            /* 最晚预计最终到达时间 */ 
+            mainESTTruckDeliveryDate?: string;
+         
+            /* 大船/航次 */ 
+            vessel?: string;
+         
+            /* 大船航次信息 */ 
+            vesselVoyage?: NameValueDto;
+         
+            /* 大船/航次 */ 
+            preVessel?: string;
+         
+            /* 驳船航次信息 */ 
+            preVesselVoyage?: NameValueDto;
+         
+            /* 运输条款 来自基础数据（用来判断显示路径door to door） */ 
+            transportClausesId?: string;
+         
+            /* 运输条款显示 */ 
+            transportClausesString?: string;
+         
+            /* 箱型规格计算后List
+01 整柜 ：显示运单中container 型号、数量；可以是多个
+02 散货：显示运单中 货物"计费总重量"（e.g.：982.33 cbm）或者"计费总体积"；（e.g. 889.99cbm） */ 
+            containerTypes?: any[];
+         
+            /* 重量 */ 
+            totalWeightString?: string;
+         
+            /* 体积 */ 
+            totalVolumeString?: string;
+         
+            /* 路线详情 */ 
+            routeDetails?: RouteDetails;
+         
+            /* 事件分组，包括异常正常 */ 
+            shipmentEventGroups?: any[];
+         
+            /* 采购单Id list(用于详情) */ 
+            purchaseOrderIds?: any[];
+         
+            /* 关联的询价Id */ 
+            quoteEnquiryIds?: any[];
+         
+            /* 关联的产品Id */ 
+            productIds?: any[];
+         
+            /* 提单号 */ 
+            billOfLadingNo?: string;
+         
+            /* 贸易条款(单选取字典) */ 
+            incotermsId?: string;
+         
+            /* 箱号 */ 
+            containerNos?: string;
+         
+            /* 运输类型（门到门港 到 港等） */ 
+            freightTypeString?: string;
+         
+            /* 数量 */ 
+            quantityString?: string;
+         
+            /* 贸易条款显示字符 */ 
+            incotermsString?: string;
+         
+            /* 特殊介绍 */ 
+            specialInstructions?: string;
+         
+            /* 装货港 */ 
+            portOfLoading?: PubLocation;
+         
+            /* 卸货港 */ 
+            portOfDischarge?: PubLocation;
+         
+            /* 预计到达时间 */ 
+            eta?: string;
+         
+            /* 预计出发时间 */ 
+            etd?: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     * 为产品提供Shipment列表返回
+     */
+    export class GetAllForProductOutput {
+        
+         
+            /* shipment业务号 */ 
+            shipmentNo?: string;
+         
+            /* 运输方式（用来判断显示图标）
+0 = Unknown
+1 = Ocean
+2 = Air */ 
+            freightMethodType?: number;
+         
+            /* 运输方式显示 */ 
+            freightMethodTypeString?: string;
+         
+            /* 运输状态
+0 = Seller_Location
+1 = OriginStopOff
+2 = In_Transit_To_Departure_port
+3 = Departure_Port
+4 = In_Transit_To_Arrival_Port
+5 = Arrival_Port
+6 = In_Transit_To_Final_Destination
+7 = DestinationStopOff
+8 = Final_Destination
+9 = Canceled
+10 = Completed
+-1 = Default */ 
+            status?: number;
+         
+            /* 属于船运公司工作范围的起始地 */ 
+            originPortId?: string;
+         
+            /* 属于船运公司工作范围的目的地 */ 
+            destinationPortId?: string;
+         
+            /* 货物到达最终目的地的预估时间 */ 
+            estDeliveryDate?: string;
+         
+            /* 在途货物件数 */ 
+            quantity?: number;
+         
+            /* PO号多个，号分开 */ 
+            poNumbers?: string;
+         
+            /* 起始港 */ 
+            originPort?: PubLocation;
+         
+            /* 起始港 */ 
+            originPortString?: string;
+         
+            /* 目的港 */ 
+            destinationPort?: PubLocation;
+         
+            /* 目的港 */ 
+            destinationPortString?: string;
+         
+            /* 发货客户名称集合 */ 
+            shipperCustomerNames?: any[];
+         
+            /* 收货客户名称集合 */ 
+            consigneeCustomerNames?: any[];
+         
+            /* 这里是发货公司 */ 
+            originPorts?: any[];
+         
+            /* 这里是收货公司 */ 
+            destinationPorts?: any[];
+        
+        
+    }
+ 
+    /**
      * 运单详情仅用于展示模型
      */
     export class ShipmentDetailOutput {
@@ -3468,131 +4947,65 @@ Destination location：默认显示最近一次选中的信息； */
     }
  
     /**
-     * 运输单主页List
+     * Class ShipmentEventGroupDto.
      */
-    export class ShipmentListOutput {
+    export class ShipmentEventGroupDto {
         
          
-            /* Gets or sets the customer identifier. */ 
-            customerId?: string;
+            /* 关联的 Shipment Id */ 
+            shipmentId?: string;
          
-            /* shipment业务号 */ 
-            shipmentNo?: string;
-         
-            /* shipment名称 */ 
-            shipmentName?: string;
-         
-            /* icp订舱号 */ 
-            soNo?: string;
-         
-            /* 运输类型 整箱或散货
-0 = FCL
-1 = LCL */ 
-            shipmentType?: number;
-         
-            /* 运输方式
+            /* 事件针对的业务类型
 0 = Unknown
-1 = Ocean
-2 = Air */ 
-            freightMethodType?: number;
+1 = Shipment
+2 = ShipmentItem
+3 = ShipmentContainer
+8 = Bill */ 
+            businessEventType?: number;
          
-            /* 运输状态
-0 = Seller_Location
-1 = OriginStopOff
-2 = In_Transit_To_Departure_port
-3 = Departure_Port
-4 = In_Transit_To_Arrival_Port
-5 = Arrival_Port
-6 = In_Transit_To_Final_Destination
-7 = DestinationStopOff
-8 = Final_Destination
-9 = Canceled
-10 = Completed
--1 = Default */ 
-            status?: number;
+            /* 事件类型：操作流程事件、运输状态事件、其它事件
+0 = ProcedureEvent
+1 = ShipmentStatusEvent
+2 = OthersEvent */ 
+            type?: number;
          
-            /* 最晚预计最终到达时间 */ 
-            mainESTTruckDeliveryDate?: string;
+            /* 事件代码 */ 
+            eventCode?: string;
          
-            /* 大船/航次 */ 
-            vessel?: string;
+            /* 主题 */ 
+            subject?: string;
          
-            /* 大船航次信息 */ 
-            vesselVoyage?: NameValueDto;
+            /* 描述 */ 
+            description?: string;
          
-            /* 大船/航次 */ 
-            preVessel?: string;
+            /* 发生节点
+0 = NotSet
+1 = OriginPlace
+2 = OriginPort
+3 = DestinationPort
+4 = DestinationPlace */ 
+            happenNode?: number;
          
-            /* 驳船航次信息 */ 
-            preVesselVoyage?: NameValueDto;
+            /* 发生时间 */ 
+            happenTime?: string;
          
-            /* 运输条款 来自基础数据（用来判断显示路径door to door） */ 
-            transportClausesId?: string;
+            /* 是否异常 0无，1异常 */ 
+            isException?: boolean;
          
-            /* 运输条款显示 */ 
-            transportClausesString?: string;
+            /* 详细 */ 
+            details?: string;
          
-            /* 箱型规格计算后List
-01 整柜 ：显示运单中container 型号、数量；可以是多个
-02 散货：显示运单中 货物"计费总重量"（e.g.：982.33 cbm）或者"计费总体积"；（e.g. 889.99cbm） */ 
-            containerTypes?: any[];
+            /* 发生地点 */ 
+            address?: string;
          
-            /* 重量 */ 
-            totalWeightString?: string;
+            /* 当前事件代码分组下的箱信息 */ 
+            shipmentContainers?: any[];
          
-            /* 体积 */ 
-            totalVolumeString?: string;
+            /* 当前事件下活动的箱数量 */ 
+            containerActivityCount?: number;
          
-            /* 路线详情 */ 
-            routeDetails?: RouteDetails;
-         
-            /* 事件分组，包括异常正常 */ 
-            shipmentEventGroups?: any[];
-         
-            /* 采购单Id list(用于详情) */ 
-            purchaseOrderIds?: any[];
-         
-            /* 关联的询价Id */ 
-            quoteEnquiryIds?: any[];
-         
-            /* 关联的产品Id */ 
-            productIds?: any[];
-         
-            /* 提单号 */ 
-            billOfLadingNo?: string;
-         
-            /* 贸易条款(单选取字典) */ 
-            incotermsId?: string;
-         
-            /* 箱号 */ 
-            containerNos?: string;
-         
-            /* 运输类型（门到门港 到 港等） */ 
-            freightTypeString?: string;
-         
-            /* 数量 */ 
-            quantityString?: string;
-         
-            /* 贸易条款显示字符 */ 
-            incotermsString?: string;
-         
-            /* 特殊介绍 */ 
-            specialInstructions?: string;
-         
-            /* 装货港 */ 
-            portOfLoading?: PubLocation;
-         
-            /* 卸货港 */ 
-            portOfDischarge?: PubLocation;
-         
-            /* 预计到达时间 */ 
-            eta?: string;
-         
-            /* 预计出发时间 */ 
-            etd?: string;
-         
-            
-            id?: string;
+            /* 总箱数 */ 
+            containerTotalCount?: number;
         
         
     }
@@ -3738,6 +5151,66 @@ Implements the CO.Platform.Core.Application.Dto.CoEntityDto
          
             
             id?: string;
+        
+        
+    }
+ 
+    /**
+     * Class ShipmentOrderItemDto.
+     */
+    export class ShipmentOrderItemDto {
+        
+         
+            /* ShipmentId */ 
+            shipmentId?: string;
+         
+            /* Gets or sets the order item in containers. */ 
+            orderItemInContainers?: any[];
+         
+            /* Gets or sets the po no. */ 
+            orderNumber?: string;
+         
+            /* PO Id */ 
+            orderId?: string;
+         
+            /* 关联的供应商客户Id */ 
+            venderCustomerId?: string;
+         
+            /* 关联的采购商客户Id */ 
+            buyerCustomerId?: string;
+         
+            /* PO ItemId */ 
+            orderItemId?: string;
+         
+            /* Product Id */ 
+            productId?: string;
+         
+            /* Gets or sets the name of the product. */ 
+            productName?: string;
+         
+            /* Gets or sets the MPN. */ 
+            mpn?: string;
+         
+            /* Gets or sets the sku. */ 
+            sku?: string;
+         
+            /* 数量 */ 
+            units?: number;
+         
+            /* 单价 */ 
+            unitCost?: number;
+         
+            /* 体积 */ 
+            volume?: number;
+         
+            /* 箱数 */ 
+            cartons?: number;
+         
+            /* 毛重 */ 
+            grossWeight?: number;
+         
+            /* 净重 */ 
+            netWeight?: number;
         
         
     }
@@ -4021,6 +5494,78 @@ Implements the CO.Platform.Core.Domain.Entities.CoEntity
          
             
             items?: any[];
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class ShipmentOrderItemInContainerDto {
+        
+         
+            /* ShipmentId */ 
+            shipmentId?: string;
+         
+            /* 提单Id */ 
+            shipmentItemId?: string;
+         
+            /* 提单号 */ 
+            billOfLadingNo?: string;
+         
+            /* 提单箱Id */ 
+            shipmentItemContainerId?: string;
+         
+            /* 箱号 */ 
+            containerNo?: string;
+         
+            /* 关联的 ShipmentOrderId */ 
+            shipmentOrderItemId?: string;
+         
+            /* Gets or sets the po no. */ 
+            orderNumber?: string;
+         
+            /* PO Id */ 
+            orderId?: string;
+         
+            /* 关联的供应商客户Id */ 
+            venderCustomerId?: string;
+         
+            /* 关联的采购商客户Id */ 
+            buyerCustomerId?: string;
+         
+            /* PO ItemId */ 
+            orderItemId?: string;
+         
+            /* Product Id */ 
+            productId?: string;
+         
+            /* Gets or sets the name of the product. */ 
+            productName?: string;
+         
+            /* Gets or sets the MPN. */ 
+            mpn?: string;
+         
+            /* Gets or sets the sku. */ 
+            sku?: string;
+         
+            /* 数量 */ 
+            units?: number;
+         
+            /* 单价 */ 
+            unitCost?: number;
+         
+            /* 体积 */ 
+            volume?: number;
+         
+            /* 箱数 */ 
+            cartons?: number;
+         
+            /* 毛重 */ 
+            grossWeight?: number;
+         
+            /* 净重 */ 
+            netWeight?: number;
         
         
     }

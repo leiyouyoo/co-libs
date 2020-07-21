@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 
-import { PagedResultDto, } from './crm.types';
+import { CustomerAccessAllowOutput,PagedResultDto, } from './crm.types';
 
 @BaseUrl('/crm/CustomerAccessAllow')
 @Injectable({ providedIn: 'root' })

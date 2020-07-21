@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 
-import { ICPUploadFileInput,UploadResultDto,ICPBatchDownloadInput,ListResultDto, } from './storage.types';
+import { ICPUploadFileInput,UploadResultDto,ICPBatchDownloadInput,ICPBatchDownloadResult,ListResultDto, } from './storage.types';
 
 @BaseUrl('/storage/ICPFile')
 @Injectable({ providedIn: 'root' })

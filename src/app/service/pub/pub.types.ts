@@ -84,6 +84,33 @@
     }
  
     /**
+     * AreaUiPickerDto
+     */
+    export class AreaUiPickerDto {
+        
+         
+            /* 片区名称 */ 
+            name?: string;
+         
+            /* 片区名称-本地化 */ 
+            nameLocalization?: string;
+         
+            /* 直接RegionId */ 
+            regionIds?: any[];
+         
+            /* 直接Region名称-本地化 */ 
+            regionNames?: any[];
+         
+            /* 片区包含或所属国家 */ 
+            countryIds?: any[];
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
      *  No Remark 
      */
     export class PagedResultDto<T> {
@@ -175,6 +202,39 @@
          
             /* 跳过指定条数 */ 
             skipCount?: number;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class ChargingCodeUiPickerDto {
+        
+         
+            /* 费用组Id */ 
+            groupId?: string;
+         
+            /* 费用代码 */ 
+            code?: string;
+         
+            /* 费用名称 */ 
+            name?: string;
+         
+            /* 是否佣金 */ 
+            isCommission?: boolean;
+         
+            /* 是否有效 */ 
+            isValid?: boolean;
+         
+            /* 是特殊费用（特殊费用名称：profit\cuf，新增提示：是否加到baseport rates? 。
+默认加到base,可以勾选不添加到基本港费用。）
+0 = OtherCharging
+1 = ManagerCharging */ 
+            type?: number;
+         
+            
+            id?: string;
         
         
     }
@@ -273,6 +333,42 @@
     }
  
     /**
+     *  No Remark 
+     */
+    export class CommodityUiPickerDto {
+        
+         
+            /* 名称 */ 
+            name?: string;
+         
+            /* 本地化名称 */ 
+            localizationName?: string;
+         
+            /* 备注 */ 
+            remark?: string;
+         
+            /* 创建人 */ 
+            creatorUserName?: string;
+         
+            /* 创建时间 */ 
+            creationTime?: string;
+         
+            /* 是否有效 */ 
+            isValid?: boolean;
+         
+            /* 子集Md */ 
+            children?: any[];
+         
+            /* 父Id */ 
+            parentId?: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
      * 箱型管理
      */
     export class ContainerDto {
@@ -304,6 +400,21 @@
          
             
             id?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class ContainerGroupDto {
+        
+         
+            /* 箱型分组名 */ 
+            groupName?: string;
+         
+            /* 箱型集合 */ 
+            containers?: any[];
         
         
     }
@@ -392,6 +503,42 @@
     }
  
     /**
+     *  No Remark 
+     */
+    export class ContainerUiPickerDto {
+        
+         
+            /* 创建人 */ 
+            creatorUserName?: string;
+         
+            /* 创建时间 */ 
+            creationTime?: string;
+         
+            /* 代码 */ 
+            code?: string;
+         
+            /* 国际标准代码 */ 
+            isoCode?: string;
+         
+            /* 描述 MaxLength(500) */ 
+            desc?: string;
+         
+            /* 箱量 */ 
+            teu?: number;
+         
+            /* 是否有效 */ 
+            isValid?: boolean;
+         
+            /* ISO */ 
+            iso?: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
      * 费用代码-传输对象模型
      */
     export class CostItemDto {
@@ -443,6 +590,39 @@
             name: string;
          
             /* 上级Id */ 
+            parentId?: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     * 费用代码扁平列表
+     */
+    export class CostItemFlatDto {
+        
+         
+            /* 费用代码 */ 
+            code?: string;
+         
+            /* 名称 */ 
+            name?: string;
+         
+            /* 全称 */ 
+            fullName?: string;
+         
+            /* 带有父级Id的全Id */ 
+            fullId?: string;
+         
+            /* 层级代码 */ 
+            levelCode?: string;
+         
+            /* 层级 */ 
+            level?: number;
+         
+            /* 父ID */ 
             parentId?: string;
          
             
@@ -614,6 +794,33 @@
     }
  
     /**
+     * 币种列表
+     */
+    export class CurrencyUiPickerDto {
+        
+         
+            /* 币种代码 */ 
+            code: string;
+         
+            /* 币种名称 */ 
+            name: string;
+         
+            /* 币种名称-本地化 */ 
+            nameLocalization?: string;
+         
+            /* 国家名称 */ 
+            regionName?: string;
+         
+            /* 是否有效 */ 
+            isValid?: boolean;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
      * 数据字典-传输对象模型
      */
     export class DataDictionaryDto {
@@ -717,6 +924,45 @@
          
             /* 跳过指定条数 */ 
             skipCount?: number;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class DataDictionaryUiPickerDto {
+        
+         
+            /* 类型Id */ 
+            typeId?: string;
+         
+            /* 类型代码 */ 
+            typeCode?: string;
+         
+            /* 字典代码 */ 
+            code?: string;
+         
+            /* 字典名称 */ 
+            name?: string;
+         
+            /* 描述 */ 
+            description?: string;
+         
+            /* 字典名称-本地化 */ 
+            nameLocalization?: string;
+         
+            /* 创建人 */ 
+            creatorUserName?: string;
+         
+            /* 是否有效 */ 
+            isValid?: boolean;
+         
+            /* 创建时间 */ 
+            creationTime?: string;
+         
+            
+            id?: string;
         
         
     }
@@ -857,6 +1103,36 @@
     }
  
     /**
+     *  No Remark 
+     */
+    export class FlightUiPickerDto {
+        
+         
+            /* 创建人姓名 */ 
+            creatorUserName?: string;
+         
+            /* 创建时间 */ 
+            creationTime?: string;
+         
+            /* 航空公司ID */ 
+            airlineId?: string;
+         
+            /* 航空公司名称 */ 
+            airlineName?: string;
+         
+            /* 航班号 */ 
+            no?: string;
+         
+            /* 是否有效 */ 
+            isValid?: boolean;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
      * 地点-传输对象模型
      */
     export class PlaceDto {
@@ -956,6 +1232,36 @@
     }
  
     /**
+     * 港口或区县Dto
+     */
+    export class PlaceOrCountyDto {
+        
+         
+            /* 0为place,1为Country区县 */ 
+            type?: number;
+         
+            /* 地点代码 */ 
+            code?: string;
+         
+            /* 地点名称 */ 
+            name?: string;
+         
+            /* 地点名称-本地化 */ 
+            nameLocalization?: string;
+         
+            /* 多语言 */ 
+            localizationText?: string;
+         
+            /* 创建时间 */ 
+            creationTime?: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
      * 地点重复性校验-传输对象模型
      */
     export class PlaceCheckDto {
@@ -1050,6 +1356,33 @@
          
             
             streetLocalizationText?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class FromToDto {
+        
+         
+            /* 国家Id */ 
+            countryId?: string;
+         
+            /* 全称 */ 
+            fullName?: string;
+         
+            /* 邮政编码 */ 
+            zipCode?: string;
+         
+            /* 全称-本地化 */ 
+            fullNameLocalization?: string;
+         
+            /* 多语言 */ 
+            localizationText?: string;
+         
+            
+            id?: string;
         
         
     }
@@ -1163,6 +1496,48 @@
     }
  
     /**
+     *  No Remark 
+     */
+    export class PlaceUiPickerDto {
+        
+         
+            /* 地点代码 */ 
+            code?: string;
+         
+            /* 地点名称 */ 
+            name?: string;
+         
+            /* 地点名称-本地化 */ 
+            nameLocalization?: string;
+         
+            /* 地区Id */ 
+            regionId?: string;
+         
+            /* 地区名称-列表显示 */ 
+            regionName?: string;
+         
+            /* 是否海运 */ 
+            isOcean?: boolean;
+         
+            /* 是否空运 */ 
+            isAir?: boolean;
+         
+            /* 其它 */ 
+            isOther?: boolean;
+         
+            /* 创建人 */ 
+            creatorUserName?: string;
+         
+            /* 创建时间 */ 
+            creationTime?: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
      * 树形地区-传输对象模型
      */
     export class RegionDto {
@@ -1268,6 +1643,42 @@
     }
  
     /**
+     *  No Remark 
+     */
+    export class CountryUiPickerDto {
+        
+         
+            /* 地区名称-英文 */ 
+            name: string;
+         
+            /* 地区代码 */ 
+            code?: string;
+         
+            /* 地区名称-本地化 */ 
+            nameLocalization?: string;
+         
+            /* 是否有效 */ 
+            isValid?: boolean;
+         
+            /* 上级Id */ 
+            parentId?: string;
+         
+            /* 子集 */ 
+            children?: any[];
+         
+            /* 创建人 */ 
+            creatorUserName?: string;
+         
+            /* 创建时间 */ 
+            creationTime?: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
      * 地区（省份）UI组件过滤
      */
     export class GetAllRegionForUiPickerInput {
@@ -1307,6 +1718,42 @@
     }
  
     /**
+     *  No Remark 
+     */
+    export class RegionUiPickerDto {
+        
+         
+            /* 地区名称-英文 */ 
+            name: string;
+         
+            /* 地区代码 */ 
+            code?: string;
+         
+            /* 地区名称-本地化 */ 
+            nameLocalization?: string;
+         
+            /* 是否有效 */ 
+            isValid?: boolean;
+         
+            /* 上级Id */ 
+            parentId?: string;
+         
+            /* 子集 */ 
+            children?: any[];
+         
+            /* 创建人 */ 
+            creatorUserName?: string;
+         
+            /* 创建时间 */ 
+            creationTime?: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
      * 传入参数
      */
     export class SailingSchedulesInput {
@@ -1341,6 +1788,45 @@
          
             /* 跳过指定条数 */ 
             skipCount?: number;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class SailingSchedulesDto {
+        
+         
+            /* 图片网址 */ 
+            imageUrl?: string;
+         
+            /* 船东代码 */ 
+            carrierCode?: string;
+         
+            /* 船期和航次 */ 
+            vesselVoyage?: string;
+         
+            /* 起始港名称 */ 
+            originPortName?: string;
+         
+            /* 中途经过的港口 */ 
+            portOfPass?: any[];
+         
+            /* 目的港名称 */ 
+            destinationPortName?: string;
+         
+            /* 到港日期 */ 
+            eta?: string;
+         
+            /* 离港日期 */ 
+            etd?: string;
+         
+            /* IMO */ 
+            imo?: string;
+         
+            /* 航程 */ 
+            transitTime?: number;
         
         
     }
@@ -1425,6 +1911,42 @@
     }
  
     /**
+     * 国家航线关系Dto
+     */
+    export class CountryReationShippingDto {
+        
+         
+            /* 国家Id */ 
+            countryId: string;
+         
+            /* 航线Id */ 
+            shippingLineId: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     * 港口航线关系Dto
+     */
+    export class PortReationCountryDto {
+        
+         
+            /* 港口 */ 
+            portId: string;
+         
+            /* 航线 */ 
+            shippingLineId: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
      *  No Remark 
      */
     export class GetAllShippingLineForUiPickerInput {
@@ -1453,6 +1975,42 @@
          
             /* 跳过指定条数 */ 
             skipCount?: number;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class ShippingLineUiPickerDto {
+        
+         
+            /* 名称 */ 
+            name?: string;
+         
+            /* 本地化名称 */ 
+            localizationName?: string;
+         
+            /* Code */ 
+            code?: string;
+         
+            /* 创建人 */ 
+            creatorUserName?: string;
+         
+            /* 创建时间 */ 
+            creationTime?: string;
+         
+            /* 是否有效 */ 
+            isValid?: boolean;
+         
+            /* 子集Md */ 
+            children?: any[];
+         
+            /* 父Id */ 
+            parentId?: string;
+         
+            
+            id?: string;
         
         
     }
@@ -1557,6 +2115,42 @@
     }
  
     /**
+     *  No Remark 
+     */
+    export class TransportClauseUiPickerDto {
+        
+         
+            /* 起始地类型 */ 
+            originalId?: string;
+         
+            /* 目的地类型 */ 
+            destinationId?: string;
+         
+            /* 是否有效 */ 
+            isValid?: boolean;
+         
+            /* 描述 */ 
+            description?: string;
+         
+            /* 起始地类型 */ 
+            originalName?: string;
+         
+            /* 目的地类型 */ 
+            destinationName?: string;
+         
+            /* 创建人 */ 
+            creatorUserName?: string;
+         
+            /* 创建时间 */ 
+            creationTime?: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
      * 船名管理
      */
     export class VesselDto {
@@ -1652,6 +2246,45 @@
          
             /* 跳过指定条数 */ 
             skipCount?: number;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class VesselUiPickerDto {
+        
+         
+            /* 创建人姓名 */ 
+            creatorUserName?: string;
+         
+            /* 创建时间 */ 
+            creationTime?: string;
+         
+            /* 代码 */ 
+            code?: string;
+         
+            /* 名称 */ 
+            name?: string;
+         
+            /* 船东ID */ 
+            carrierId?: string;
+         
+            /* 船的注册国家 */ 
+            registration?: string;
+         
+            /* IMO编号 */ 
+            imoNumber?: string;
+         
+            /* UNCode */ 
+            unCode?: string;
+         
+            /* 是否有效 */ 
+            isValid?: boolean;
+         
+            
+            id?: string;
         
         
     }
@@ -1808,6 +2441,36 @@
          
             /* 跳过指定条数 */ 
             skipCount?: number;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class VoyageUiPickerDto {
+        
+         
+            /* 创建人姓名 */ 
+            creatorUserName?: string;
+         
+            /* 创建时间 */ 
+            creationTime?: string;
+         
+            /* 船名Id */ 
+            vesselId?: string;
+         
+            /* 船名 */ 
+            vesselName?: string;
+         
+            /* 航次 */ 
+            no?: string;
+         
+            /* 是否有效 */ 
+            isValid?: boolean;
+         
+            
+            id?: string;
         
         
     }

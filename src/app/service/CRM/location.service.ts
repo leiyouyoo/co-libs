@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 
-import { CreateOrUpdateLocationInput,PagedResultDto,ListResultDto,AssignUsersToLocationDto,AssignLocationsToUserDto,UnbindUsersLocationDto, } from './crm.types';
+import { CreateOrUpdateLocationInput,LocationListDto,PagedResultDto,ListResultDto,AssignUsersToLocationDto,AssignLocationsToUserDto,UnbindUsersLocationDto, } from './crm.types';
 
 @BaseUrl('/crm/Location')
 @Injectable({ providedIn: 'root' })

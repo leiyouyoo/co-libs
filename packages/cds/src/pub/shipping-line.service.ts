@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 
-import { ShippingLineDto,ListResultDto,ShippingLineCheckInputDto,ChangeShippingLineStateInput,GetAllShippingLineForUiPickerInput,PagedResultDto, } from './pub.types';
+import { ShippingLineDto,ListResultDto,ShippingLineCheckInputDto,ChangeShippingLineStateInput,CountryReationShippingDto,PortReationCountryDto,GetAllShippingLineForUiPickerInput,ShippingLineUiPickerDto,PagedResultDto, } from './pub.types';
 
 @BaseUrl('/pub/ShippingLine')
 @Injectable({ providedIn: 'root' })

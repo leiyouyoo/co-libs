@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 
-import { QuoteEnquiryDto,PagedResultDto,ListResultDto,GetRelatedQuoteForCRMOutput,QuoteEnquiryListForCSPInput, } from './crm.types';
+import { QuoteEnquiryDto,QuoteEnquiryListForCRMOutput,PagedResultDto,QuoteEnquiryListForCRMInput,ListResultDto,CustomerListModel,GetRelatedQuoteForCRMOutput,QuoteEnquiryListForCSPInput,QuoteEnquiryListForCSPOutput,Object, } from './crm.types';
 
 @BaseUrl('/crm/QuoteEnquiry')
 @Injectable({ providedIn: 'root' })

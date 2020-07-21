@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 
-import { ListResultDto,CommodityDto,CommodityCheckInputDto,GetAllCommodityForUiPickerInput,PagedResultDto, } from './pub.types';
+import { CommodityDto,ListResultDto,CommodityCheckInputDto,GetAllCommodityForUiPickerInput,CommodityUiPickerDto,PagedResultDto, } from './pub.types';
 
 @BaseUrl('/pub/Commodity')
 @Injectable({ providedIn: 'root' })

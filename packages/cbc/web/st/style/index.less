@@ -19,6 +19,9 @@
   }
   // 修复按钮block
   &__btn {
+    &--red &-text {
+      color: red;
+    }
     &-sub {
       @{st-prefix}__btn-text {
         color: inherit;
@@ -91,6 +94,12 @@
     &-cell-fix-right-first::after,
     &-cell-fix-right-last::after {
       transform: translateX(-80%);
+    }
+  }
+
+  th {
+    .co-picker {
+      width: 100%;
     }
   }
 

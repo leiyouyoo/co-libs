@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 
-import { PagedResultDto,FlightDto,FlightCheckInputDto,GetAllFlightForUiPickerInput, } from './pub.types';
+import { FlightDto,PagedResultDto,FlightCheckInputDto,GetAllFlightForUiPickerInput,FlightUiPickerDto, } from './pub.types';
 
 @BaseUrl('/pub/Flight')
 @Injectable({ providedIn: 'root' })
