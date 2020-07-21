@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 import { ListResultDto, PagedResultDto } from '@co/core';
 
-import { JobDto,EntityDto, } from './platform.types';
+import { JobDto,EntityDto,CheckedRepeatForJobInput, } from './platform.types';
 
 @BaseUrl('/platform/Job')
 @Injectable({ providedIn: 'root' })
@@ -113,6 +113,36 @@ export class JobService extends BaseApi {
     recover(
         @Payload
         _req:EntityDto[]
+
+    ): Observable<any> {
+        return null as any
+    }
+
+ 
+    /**
+     * @param url /Platform/Job/Cancel
+     * 
+     */
+
+    @POST('cancel')
+    cancel(
+        @Payload
+        _req:EntityDto[]
+
+    ): Observable<any> {
+        return null as any
+    }
+
+ 
+    /**
+     * @param url /Platform/Job/CheckedRepeat
+     * 
+     */
+
+    @POST('checkedRepeat')
+    checkedRepeat(
+        @Payload
+        _req:CheckedRepeatForJobInput
 
     ): Observable<any> {
         return null as any

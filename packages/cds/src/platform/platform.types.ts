@@ -461,6 +461,9 @@
     export class JobDto {
         
          
+            
+            no: number;
+         
             /* 显示名称 */ 
             displayName: string;
          
@@ -501,6 +504,21 @@
         
          
             
+            id: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class CheckedRepeatForJobInput {
+        
+         
+            
+            name: string;
+         
+            /* 主键 */ 
             id: string;
         
         
@@ -1143,6 +1161,21 @@
          
             
             jobId?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class ResMsgDto {
+        
+         
+            
+            result: boolean;
+         
+            
+            messages: any[];
         
         
     }
