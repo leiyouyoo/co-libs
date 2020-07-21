@@ -678,6 +678,14 @@ export interface STColumnButton {
    */
   children?: STColumnButton[];
   /**
+   * class name
+   */
+  className?: string | ((s: STData) => string);
+  /**
+   * st内部使用，映射className
+   */
+  _className?: string;
+  /**
    * 权限，等同 [ACLCanType](https://ng-alain.com/acl/getting-started/#ACLCanType) 参数值
    */
   acl?: any;
