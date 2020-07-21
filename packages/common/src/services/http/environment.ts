@@ -4,4 +4,5 @@ export const ENVIRONMENT = new InjectionToken('env');
 
 export interface Environment {
   SERVER_URL: string;
+  LOGIN_URL?: string;
 }
