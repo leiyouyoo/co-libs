@@ -150,6 +150,21 @@ export class OrganizationUnitService extends BaseApi {
 
  
     /**
+     * @param url /Platform/OrganizationUnit/GetAllListAsync
+     * 
+     */
+
+    @GET('getAllListAsync')
+    getAllListAsync(
+        @Payload
+        _req: {searchText?:string} 
+
+    ): Observable<ListResultDto<OrganizationUnitDto>> {
+        return null as any
+    }
+
+ 
+    /**
      * @param url /Platform/OrganizationUnit/CreateOrUpdate
      * 保存菜单项
      */

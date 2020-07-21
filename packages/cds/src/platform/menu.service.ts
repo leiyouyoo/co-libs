@@ -4,16 +4,16 @@ import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 import { ListResultDto, PagedResultDto } from '@co/core';
 
-import { MenuItemDto, MoveMenuItemInput, AddToFavoritesInput, ChangeStateInput, } from './platform.types';
+import { MenuItemDto,MoveMenuItemInput,AddToFavoritesInput,ChangeStateInput, } from './platform.types';
 
 @BaseUrl('/platform/Menu')
 @Injectable({ providedIn: 'root' })
-export class PlatformMenuService extends BaseApi {
-    constructor(injector: Injector) {
-        super(injector);
-    }
-
-
+export class MenuService extends BaseApi {
+  constructor(injector: Injector) {
+    super(injector);
+  }
+  
+   
     /**
      * @param url /Platform/Menu/GetAll
      * 获取平台所有菜单项集合
@@ -22,13 +22,13 @@ export class PlatformMenuService extends BaseApi {
     @GET('getAll')
     getAll(
         @Payload
-        _req: { parentId?: string, isRecursion?: boolean }
+        _req: {parentId?:string,isRecursion?:boolean} 
 
     ): Observable<ListResultDto<MenuItemDto>> {
         return null as any
     }
 
-
+ 
     /**
      * @param url /Platform/Menu/CreateOrUpdate
      * 保存菜单项
@@ -37,13 +37,13 @@ export class PlatformMenuService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req: MenuItemDto
+        _req:MenuItemDto
 
     ): Observable<MenuItemDto> {
         return null as any
     }
 
-
+ 
     /**
      * @param url /Platform/Menu/Delete
      * 删除菜单项
@@ -52,13 +52,13 @@ export class PlatformMenuService extends BaseApi {
     @DELETE('delete')
     delete(
         @Payload
-        _req: { id?: string }
+        _req: {id?:string} 
 
     ): Observable<any> {
         return null as any
     }
 
-
+ 
     /**
      * @param url /Platform/Menu/Move
      * 移动菜单项
@@ -67,13 +67,13 @@ export class PlatformMenuService extends BaseApi {
     @POST('move')
     move(
         @Payload
-        _req: MoveMenuItemInput
+        _req:MoveMenuItemInput
 
     ): Observable<any> {
         return null as any
     }
 
-
+ 
     /**
      * @param url /Platform/Menu/AddToMyFavorites
      * 添加菜单到收藏夹
@@ -82,13 +82,13 @@ export class PlatformMenuService extends BaseApi {
     @POST('addToMyFavorites')
     addToMyFavorites(
         @Payload
-        _req: AddToFavoritesInput
+        _req:AddToFavoritesInput
 
     ): Observable<any> {
         return null as any
     }
 
-
+ 
     /**
      * @param url /Platform/Menu/AddBatchToMyFavorites
      * 批量收藏用户菜单
@@ -97,13 +97,13 @@ export class PlatformMenuService extends BaseApi {
     @POST('addBatchToMyFavorites')
     addBatchToMyFavorites(
         @Payload
-        _req: AddToFavoritesInput
+        _req:AddToFavoritesInput
 
     ): Observable<any> {
         return null as any
     }
 
-
+ 
     /**
      * @param url /Platform/Menu/RemoveFromMyFavorites
      * 添加菜单到收藏夹
@@ -112,13 +112,13 @@ export class PlatformMenuService extends BaseApi {
     @DELETE('removeFromMyFavorites')
     removeFromMyFavorites(
         @Payload
-        _req: { menuIds?: any[] }
+        _req: {menuIds?:any[]} 
 
     ): Observable<any> {
         return null as any
     }
 
-
+ 
     /**
      * @param url /Platform/Menu/GetMyFavorites
      * 获取我收藏的菜单集合
@@ -127,13 +127,13 @@ export class PlatformMenuService extends BaseApi {
     @GET('getMyFavorites')
     getMyFavorites(
         @Payload
-        _req: { input?: object }
+        _req: {input?:object} 
 
     ): Observable<any> {
         return null as any
     }
 
-
+ 
     /**
      * @param url /Platform/Menu/ChangeState
      * 更改菜单项状态
@@ -142,13 +142,13 @@ export class PlatformMenuService extends BaseApi {
     @POST('changeState')
     changeState(
         @Payload
-        _req: ChangeStateInput
+        _req:ChangeStateInput
 
     ): Observable<any> {
         return null as any
     }
 
-
+ 
     /**
      * @param url /Platform/Menu/UpdateUserMenuSetting
      * 
@@ -157,7 +157,7 @@ export class PlatformMenuService extends BaseApi {
     @PUT('updateUserMenuSetting')
     updateUserMenuSetting(
         @Payload
-        _req: { moduleName?: string }
+        _req: {moduleName?:string} 
 
     ): Observable<any> {
         return null as any
@@ -165,4 +165,4 @@ export class PlatformMenuService extends BaseApi {
 
 
 
-}
+  }

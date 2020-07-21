@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 import { ListResultDto, PagedResultDto } from '@co/core';
 
-import { PositionDto,PositionAndOrganizationUnitDto,AddUsersToPositionInput,SetUserDefaultPositionInput,IsInPositionInput, } from './platform.types';
+import { PositionDto,PositionAndOrganizationUnitDto,CreatePositionDto,AddUsersToPositionInput,SetUserDefaultPositionInput,IsInPositionInput, } from './platform.types';
 
 @BaseUrl('/platform/Position')
 @Injectable({ providedIn: 'root' })
@@ -70,6 +70,21 @@ export class PositionService extends BaseApi {
         _req:PositionDto
 
     ): Observable<PositionDto> {
+        return null as any
+    }
+
+ 
+    /**
+     * @param url /Platform/Position/CreateAsync
+     * 
+     */
+
+    @POST('createAsync')
+    createAsync(
+        @Payload
+        _req:CreatePositionDto
+
+    ): Observable<any> {
         return null as any
     }
 

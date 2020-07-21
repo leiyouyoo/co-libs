@@ -461,14 +461,8 @@
     export class JobDto {
         
          
-            /* 名称 */ 
-            name: string;
-         
             /* 显示名称 */ 
             displayName: string;
-         
-            /* 显示名称本地化信息 */ 
-            displayNameLocalization: string;
          
             /* 职务类型 */ 
             jobTypeId: string;
@@ -476,8 +470,35 @@
             /* 职务类型 */ 
             jobTypeName: string;
          
+            
+            creatorUserName: string;
+         
+            
+            isValid: boolean;
+         
+            
+            creationTime: string;
+         
+            
+            id: string;
+         
+            /* 名称 */ 
+            name?: string;
+         
+            /* 显示名称本地化信息 */ 
+            displayNameLocalization?: string;
+         
             /* 描述 */ 
-            desc: string;
+            desc?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class EntityDto {
+        
          
             
             id: string;
@@ -621,18 +642,6 @@
          
             
             items: any[];
-        
-        
-    }
- 
-    /**
-     *  No Remark 
-     */
-    export class EntityDto {
-        
-         
-            
-            id: string;
         
         
     }
@@ -1063,6 +1072,15 @@
             /* 职务名 */ 
             jobName: string;
          
+            
+            creatorUserName: string;
+         
+            
+            isValid: boolean;
+         
+            
+            creationTime: string;
+         
             /* 名称 */ 
             name: string;
          
@@ -1101,6 +1119,30 @@
          
             
             fullOrganizationUnit: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class CreatePositionDto {
+        
+         
+            
+            desc: string;
+         
+            
+            belongToOrganizationModels: any[];
+         
+            
+            nameLocalization?: string;
+         
+            
+            name?: string;
+         
+            
+            jobId?: string;
         
         
     }
