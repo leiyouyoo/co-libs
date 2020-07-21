@@ -16,7 +16,7 @@ import { SharedModule } from './shared/shared.module';
 
 import { CoBusinessComponentsModule } from '@co/cbc';
 import { CO_I18N_TOKEN } from '@co/core';
-import { ResponseInterceptor } from '@co/common';
+import { ResponseInterceptor, CoCommonModule } from '@co/common';
 import { I18NService } from './core/i18n/service';
 import { StartupService } from './core/startup.service';
 
@@ -33,6 +33,7 @@ import { JsonSchemaModule } from './shared/json-schema/json-schema.module';
 
 import { ExampleModule, EXAMPLE_COMPONENTS } from './routes/gen/examples';
 import { IconComponent } from './shared/components/icon/icon.component';
+import { JWTInterceptor } from '@co/auth';
 
 export function StartupServiceFactory(startupService: StartupService) {
   return () => startupService.load();
@@ -65,9 +66,13 @@ export function StartupServiceFactory(startupService: StartupService) {
     SimplemdeModule.forRoot({
       delay: 300,
     }),
+    CoCommonModule.forRoot( { environment: { SERVER_URL: 'http://192.168.1.5:8000', LOGIN_URL: '' } } )
   ],
   providers: [
-    [{ provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true }],
+    [
+      { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true },
+      { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true },
+      ],
     { provide: CO_I18N_TOKEN, useClass: I18NService, multi: false },
     StartupService,
     {
