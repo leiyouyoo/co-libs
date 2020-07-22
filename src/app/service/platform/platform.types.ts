@@ -1072,6 +1072,9 @@
     export class PositionDto {
         
          
+            
+            no: number;
+         
             /* 显示名称本地化信息 */ 
             nameLocalization: string;
          
@@ -1176,6 +1179,33 @@
          
             
             messages: any[];
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class UpdatePositionDto {
+        
+         
+            
+            id: string;
+         
+            
+            desc: string;
+         
+            
+            belongToOrganizationModels: any[];
+         
+            
+            nameLocalization?: string;
+         
+            
+            name?: string;
+         
+            
+            jobId?: string;
         
         
     }

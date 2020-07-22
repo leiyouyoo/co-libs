@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 import { ListResultDto, PagedResultDto } from '@co/core';
 
-import { PositionDto,PositionAndOrganizationUnitDto,CreatePositionDto,ResMsgDto,AddUsersToPositionInput,SetUserDefaultPositionInput,IsInPositionInput, } from './platform.types';
+import { PositionDto,PositionAndOrganizationUnitDto,CreatePositionDto,ResMsgDto,UpdatePositionDto,AddUsersToPositionInput,SetUserDefaultPositionInput,IsInPositionInput,EntityDto, } from './platform.types';
 
 @BaseUrl('/platform/Position')
 @Injectable({ providedIn: 'root' })
@@ -22,7 +22,7 @@ export class PositionService extends BaseApi {
     @GET('getAll')
     getAll(
         @Payload
-        _req: {organizationUnitId?:string,parentId?:string,isRecursion?:boolean} 
+        _req: {organizationUnitId?:string,parentId?:string,isRecursion?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
     ): Observable<PagedResultDto<PositionDto>> {
         return null as any
@@ -100,6 +100,21 @@ export class PositionService extends BaseApi {
         _req:PositionDto
 
     ): Observable<PositionDto> {
+        return null as any
+    }
+
+ 
+    /**
+     * @param url /Platform/Position/UpdateAsync
+     * 
+     */
+
+    @PUT('updateAsync')
+    updateAsync(
+        @Payload
+        _req:UpdatePositionDto
+
+    ): Observable<ResMsgDto> {
         return null as any
     }
 
@@ -233,6 +248,36 @@ export class PositionService extends BaseApi {
     getSubordinates(
         @Payload
         _req: {userId?:number,subordinatePositionName?:string} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+ 
+    /**
+     * @param url /Platform/Position/Recover
+     * 
+     */
+
+    @POST('recover')
+    recover(
+        @Payload
+        _req:EntityDto[]
+
+    ): Observable<any> {
+        return null as any
+    }
+
+ 
+    /**
+     * @param url /Platform/Position/Cancel
+     * 
+     */
+
+    @POST('cancel')
+    cancel(
+        @Payload
+        _req:EntityDto[]
 
     ): Observable<any> {
         return null as any
