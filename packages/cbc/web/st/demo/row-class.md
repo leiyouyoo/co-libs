@@ -27,7 +27,7 @@ import { STColumn, STChange, STData } from '@co/cbc/web/st';
          [columns]="columns"></co-st>`,
 })
 export class ComponentsStRowClassComponentComponent {
-  url = `/users?results=3`;
+  url = `/users`;
   params = { a: 1, b: 2 };
   // mock
   columns: STColumn[] = [
@@ -49,7 +49,9 @@ export class ComponentsStRowClassComponentComponent {
   getRowClassName(record: STData, index: number, ) {
     switch (index) {
       case 0:
-        return `st-row-red`
+        return `st-row-red`;
+      case 1:
+        return `st-row-line-through`;
       default:
         return ``;
     }

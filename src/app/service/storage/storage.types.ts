@@ -6,22 +6,22 @@
         
          
             
-            fileType: string;
+            fileName: string;
          
             
-            isSuccess: boolean;
+            fileToken: string;
          
             
-            message: string;
+            fileType?: string;
          
             
-            result: object;
+            isSuccess?: boolean;
          
             
-            fileName?: string;
+            message?: string;
          
             
-            fileToken?: string;
+            result?: object;
         
         
     }
@@ -33,25 +33,25 @@
         
          
             /* 验证错误 */ 
-            rowErrors: any[];
+            rowErrors?: any[];
          
             /* 模板错误 */ 
-            templateErrors: any[];
+            templateErrors?: any[];
          
             /* 其它消息信息 */ 
-            message: string;
+            message?: string;
          
             /* 行数据总条数 */ 
-            totalRowCount: number;
+            totalRowCount?: number;
          
             /* 行数据验证错误条数 */ 
-            errorRowCount: number;
+            errorRowCount?: number;
          
             /* 导入异常信息 */ 
-            exception: object;
+            exception?: object;
          
             /* 是否存在导入错误 */ 
-            hasError: boolean;
+            hasError?: boolean;
         
         
     }
@@ -63,13 +63,13 @@
         
          
             /* 国家Id */ 
-            regionId: string;
+            regionId?: string;
          
             /* 搜索关键字 */ 
-            searchText: string;
+            searchText?: string;
          
             /* 产品Id集合 */ 
-            ids: any[];
+            ids?: any[];
         
         
     }
@@ -81,7 +81,132 @@
         
          
             /* 采购订单Id集合 */ 
-            ids: any[];
+            ids?: any[];
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PreShipmentExportInput {
+        
+         
+            
+            isCustomerCreate?: boolean;
+         
+            /* 
+0 = NotSet
+1 = Ocean
+2 = Air
+3 = Truck
+4 = Rail */ 
+            transportationMode?: number;
+         
+            
+            creationTime?: string;
+         
+            
+            serviceUserId?: number;
+         
+            
+            customerId?: string;
+         
+            /* 
+0 = NotSet
+1 = DeliveryGoodsByMyself
+2 = PickUpByCityocean */ 
+            fbaPickUpMethodType?: number;
+         
+            
+            cargoPutAwayDate?: string;
+         
+            
+            serviceCompanyId?: string;
+         
+            
+            agentCustomerId?: string;
+         
+            
+            contact?: string;
+         
+            
+            shipmentNo?: string;
+         
+            
+            destinationAddress?: string;
+         
+            
+            originAddress?: string;
+         
+            
+            originWarehouse?: string;
+         
+            
+            country?: string;
+         
+            
+            channel?: string;
+         
+            
+            fbaNo?: string;
+         
+            
+            creatorUser?: string;
+         
+            
+            ids?: any[];
+         
+            
+            isExport?: boolean;
+         
+            /* 排序 */ 
+            sorting?: string;
+         
+            /* 页大小 */ 
+            maxResultCount?: number;
+         
+            /* 跳过指定条数 */ 
+            skipCount?: number;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class GetShipmentListInput {
+        
+         
+            
+            searchText?: string;
+         
+            
+            agentCustomerIds?: any[];
+         
+            
+            channel?: string;
+         
+            
+            startTime?: string;
+         
+            
+            endTime?: string;
+         
+            
+            ids?: any[];
+         
+            
+            isExport?: boolean;
+         
+            /* 排序 */ 
+            sorting?: string;
+         
+            /* 页大小 */ 
+            maxResultCount?: number;
+         
+            /* 跳过指定条数 */ 
+            skipCount?: number;
         
         
     }
@@ -93,16 +218,16 @@
         
          
             /* 文件访问ID */ 
-            fileId: string;
+            fileId?: string;
          
             /* 文件下载根地址 */ 
-            url: string;
+            url?: string;
          
             /* 文件名 */ 
-            fileName: string;
+            fileName?: string;
          
             /* 文件扩展名 */ 
-            extensionName: string;
+            extensionName?: string;
         
         
     }
@@ -114,19 +239,34 @@
         
          
             /* 文件访问ID */ 
-            fileId: string;
+            fileId?: string;
          
             /* 文件下载根地址 */ 
-            url: string;
+            url?: string;
          
             /* 文件名 */ 
-            fileName: string;
+            fileName?: string;
          
             /* 文件扩展名 */ 
-            extensionName: string;
+            extensionName?: string;
          
             
-            creationTime: string;
+            creationTime?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PagedResultDto<T> {
+        
+         
+            
+            totalCount: number;
+         
+            
+            items: T[];
         
         
     }
@@ -138,22 +278,22 @@
         
          
             /* 是否合并成功 */ 
-            mergeOk: boolean;
+            mergeOk?: boolean;
          
             /* 第几片 */ 
-            chunkIndex: number;
+            chunkIndex?: number;
          
             /* 文件访问ID */ 
-            fileId: string;
+            fileId?: string;
          
             /* 文件下载根地址 */ 
-            url: string;
+            url?: string;
          
             /* 文件名 */ 
-            fileName: string;
+            fileName?: string;
          
             /* 文件扩展名 */ 
-            extensionName: string;
+            extensionName?: string;
         
         
     }
@@ -165,10 +305,10 @@
         
          
             
-            fileName: string;
+            fileName?: string;
          
             
-            fileContent: string;
+            fileContent?: string;
         
         
     }
@@ -180,7 +320,7 @@
         
          
             /* 文件Ids */ 
-            fileIds: any[];
+            fileIds?: any[];
         
         
     }
@@ -192,16 +332,28 @@
         
          
             /* 文件Id */ 
-            fileId: string;
+            fileId?: string;
          
             /* 文件名 */ 
-            fileName: string;
+            fileName?: string;
          
             /* 文件扩展名 */ 
-            extensionName: string;
+            extensionName?: string;
          
             /* 文件字节流 */ 
-            fileContent: string;
+            fileContent?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class ListResultDto<T> {
+        
+         
+            
+            items: T[];
         
         
     }

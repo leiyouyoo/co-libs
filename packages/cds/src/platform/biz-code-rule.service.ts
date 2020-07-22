@@ -1,10 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
-
-import { UserInfo,BizCodeRuleTemplateDto,CreateOrUpdateTemplateInput, } from './platform.types';
+import { UserInfo,PagedResultDto,BizCodeRuleTemplateDto,CreateOrUpdateTemplateInput, } from './platform.types';
 
 @BaseUrl('/platform/BizCodeRule')
 @Injectable({ providedIn: 'root' })
@@ -12,8 +9,8 @@ export class BizCodeRuleService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /Platform/BizCodeRule/TestImpersonationAuthorize
      * 
@@ -28,7 +25,7 @@ export class BizCodeRuleService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/BizCodeRule/GetTemplate
      * 
@@ -43,7 +40,7 @@ export class BizCodeRuleService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/BizCodeRule/DeleteTemplate
      * 
@@ -58,7 +55,7 @@ export class BizCodeRuleService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/BizCodeRule/CreateTemplate
      * 
@@ -73,7 +70,7 @@ export class BizCodeRuleService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/BizCodeRule/UpdateTemplate
      * 
@@ -88,7 +85,7 @@ export class BizCodeRuleService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/BizCodeRule/GetAllTemplateList
      * 

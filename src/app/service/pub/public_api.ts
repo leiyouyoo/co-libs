@@ -17,5 +17,4 @@ export * from './vessel.service';
 export * from './vessel-infos.service';
 export * from './voyage.service';
 
-
 export * from './pub.types';

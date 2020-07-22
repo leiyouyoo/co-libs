@@ -1,9 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
-
 import { FileDto, } from './storage.types';
 
 @BaseUrl('/storage/Excel')
@@ -12,8 +9,8 @@ export class ExcelService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /Storage/Excel/ExportExcel
      * 导出excel
@@ -28,7 +25,7 @@ export class ExcelService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Storage/Excel/ImportExcel
      * 导入excel
@@ -43,7 +40,7 @@ export class ExcelService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Storage/Excel/DownloadExcel
      * 下载excel

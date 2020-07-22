@@ -1,10 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
-
-import { CountyDto, } from './pub.types';
+import { CountyDto,ListResultDto,PagedResultDto, } from './pub.types';
 
 @BaseUrl('/pub/County')
 @Injectable({ providedIn: 'root' })
@@ -12,8 +9,8 @@ export class CountyService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /PUB/County/Get
      * 获取区县镇
@@ -28,7 +25,7 @@ export class CountyService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/County/GetAll
      * 获取区县镇列表
@@ -43,7 +40,7 @@ export class CountyService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/County/GetFlatList
      * 获取区县镇列表（不区分上下级）
@@ -58,7 +55,7 @@ export class CountyService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/County/CreateOrUpdate
      * 创建或更新地区-前端提交只需调用这个方法即可
@@ -73,7 +70,7 @@ export class CountyService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/County/Create
      * 创建地区
@@ -88,7 +85,7 @@ export class CountyService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/County/Update
      * 更新地区
@@ -103,7 +100,7 @@ export class CountyService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/County/Delete
      * 删除区县镇

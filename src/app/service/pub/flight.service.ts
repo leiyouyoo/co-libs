@@ -1,10 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
-
-import { FlightDto,FlightCheckInputDto,GetAllFlightForUiPickerInput,FlightUiPickerDto, } from './pub.types';
+import { FlightDto,PagedResultDto,FlightCheckInputDto,GetAllFlightForUiPickerInput,FlightUiPickerDto, } from './pub.types';
 
 @BaseUrl('/pub/Flight')
 @Injectable({ providedIn: 'root' })
@@ -12,8 +9,8 @@ export class FlightService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /PUB/Flight/GetAll
      * 分页获取航班列表
@@ -28,7 +25,7 @@ export class FlightService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Flight/Get
      * 获取航班详情
@@ -43,7 +40,7 @@ export class FlightService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Flight/Check
      * 航班重复校验
@@ -58,7 +55,7 @@ export class FlightService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Flight/Create
      * 创建航班
@@ -73,7 +70,7 @@ export class FlightService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Flight/Update
      * 编辑航班
@@ -88,7 +85,7 @@ export class FlightService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Flight/Delete
      * 删除航班
@@ -103,7 +100,7 @@ export class FlightService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Flight/GetAllForUiPicker
      * 提供给UI航班选择器的服务接口
@@ -118,7 +115,7 @@ export class FlightService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Flight/CreateOrUpdate
      * 创建或更新

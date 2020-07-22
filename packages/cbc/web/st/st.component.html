@@ -235,8 +235,11 @@
                   <input *ngSwitchDefault type="text" nz-input [(ngModel)]="i._values[cIdx].value">
                 </ng-container>
               </ng-template>
+              <!-- button -->
               <ng-container *ngFor="let btn of _validBtns(c.buttons, i, c); let last = last">
-                <a *ngIf="btn.children.length > 0" nz-dropdown [nzDropdownMenu]="btnMenu"
+                <a *ngIf="btn.children.length > 0"
+                   nz-dropdown [nzDropdownMenu]="btnMenu"
+                   [className]="btn._className || ''"
                    nzOverlayClassName="st__btn-sub">
                   <ng-container *ngIf="_btnText(i, btn); else ellipsisIcon">
                     <span [innerHTML]="_btnText(i, btn)"></span>
@@ -258,7 +261,9 @@
                     </ng-container>
                   </ul>
                 </nz-dropdown-menu>
-                <span *ngIf="btn.children.length == 0" [class.st__btn-disabled]="btn._disabled">
+                <span *ngIf="btn.children.length == 0"
+                      [className]="btn._className || ''"
+                      [class.st__btn-disabled]="btn._disabled">
                   <ng-template [ngTemplateOutlet]="btnTpl"
                                [ngTemplateOutletContext]="{ $implicit: i, btn: btn }"></ng-template>
                 </span>

@@ -96,6 +96,7 @@ export class DemoComponent {
         {
           icon: 'delete',
           type: 'del',
+          className: 'st__btn--red',
           pop: {
             title: 'Yar you sure?',
             okType: 'danger',

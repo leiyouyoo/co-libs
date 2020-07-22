@@ -1,10 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
-
-import { PermissionDto,MovePermissionItemInput,GrantFunctionPermissionsToUserInput,RevokeUserFunctionPermissionsInput,GrantFunctionPermissionsToRoleInput,RevokeRoleFunctionPermissionsInput,DataPermissionDto,GrantDataPermissionsToUserInput,RevokeUserDataPermissionsInput,GrantDataPermissionsToRoleInput,RevokeRoleDataPermissionsInput, } from './platform.types';
+import { PermissionDto,ListResultDto,MovePermissionItemInput,GrantFunctionPermissionsToUserInput,RevokeUserFunctionPermissionsInput,GrantFunctionPermissionsToRoleInput,RevokeRoleFunctionPermissionsInput,DataPermissionDto,GrantDataPermissionsToUserInput,RevokeUserDataPermissionsInput,GrantDataPermissionsToRoleInput,RevokeRoleDataPermissionsInput, } from './platform.types';
 
 @BaseUrl('/platform/Permission')
 @Injectable({ providedIn: 'root' })
@@ -12,8 +9,8 @@ export class PermissionService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /Platform/Permission/GetAll
      * 获取所有权限项集合
@@ -28,7 +25,7 @@ export class PermissionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Permission/CreateOrUpdate
      * 保存权限项
@@ -43,7 +40,7 @@ export class PermissionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Permission/Delete
      * 删除权限项
@@ -58,7 +55,7 @@ export class PermissionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Permission/Move
      * 移动权限项
@@ -73,7 +70,7 @@ export class PermissionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Permission/GetUserFunctionPermissions
      * 获取用户拥有的功能权限集合
@@ -88,7 +85,7 @@ export class PermissionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Permission/GrantFunctionPermissionsToUser
      * 批量授予用户功能权限
@@ -103,7 +100,7 @@ export class PermissionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Permission/RevokeUserFunctionPermissions
      * 撤销用户功能权限
@@ -118,7 +115,7 @@ export class PermissionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Permission/GetRoleFunctionPermissions
      * 获取角色拥有的权限集合
@@ -133,7 +130,7 @@ export class PermissionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Permission/GrantFunctionPermissionsToRole
      * 批量授予角色权限
@@ -148,7 +145,7 @@ export class PermissionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Permission/RevokeRoleFunctionPermissions
      * 批量撤销角色权限
@@ -163,7 +160,7 @@ export class PermissionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Permission/GetUserDataPermissions
      * 获取用户拥有的数据权限集合
@@ -178,7 +175,7 @@ export class PermissionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Permission/GrantDataPermissionsToUser
      * 批量授予用户数据权限
@@ -193,7 +190,7 @@ export class PermissionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Permission/RevokeUserDataPermissions
      * 撤销用户数据权限
@@ -208,7 +205,7 @@ export class PermissionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Permission/GetRoleDataPermissions
      * 获取角色拥有的数据权限集合
@@ -223,7 +220,7 @@ export class PermissionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Permission/GrantDataPermissionsToRole
      * 批量授予角色数据权限
@@ -238,7 +235,7 @@ export class PermissionService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Permission/RevokeRoleDataPermissions
      * 批量撤销角色数据权限

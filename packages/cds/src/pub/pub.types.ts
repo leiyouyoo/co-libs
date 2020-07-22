@@ -1,419 +1,384 @@
-
 /**
  * 片区Dto
  */
 export class AreaDto {
+  /* 片区名称-英文 */
 
+  name: string;
 
-        /* 片区名称-本地化 */
-        nameLocalization: string;
+  /* 片区名称-本地化 */
 
-        /* 直接RegionId */
-        regionIds: any[];
+  nameLocalization?: string;
 
-        /* 直接Region名称-本地化 */
-        regionNames: any[];
+  /* 直接RegionId */
 
-        /* 片区包含或所属国家 */
-        countryIds: any[];
+  regionIds?: any[];
 
+  /* 直接Region名称-本地化 */
 
-        id: string;
+  regionNames?: any[];
 
-        /* 片区名称-英文 */
-        name?: string;
+  /* 片区包含或所属国家 */
 
+  countryIds?: any[];
 
+  id?: string;
 }
 
 /**
  * 片区重复校验-传输对象模型
  */
 export class AreaCheckDto {
+  /* 名称 */
 
+  name?: string;
 
-        /* 名称 */
-        name: string;
-
-
-        id: string;
-
-
+  id?: string;
 }
 
 /**
  * GetAllAreaForUiPickerInput
  */
 export class GetAllAreaForUiPickerInput {
+  /* 是否包含无效数据 */
 
+  includeInvalid?: boolean;
 
-        /* 是否包含无效数据 */
-        includeInvalid: boolean;
+  ids?: any[];
 
+  searchText?: string;
 
-        ids: any[];
+  includeDeleted?: boolean;
 
+  sorting?: string;
 
-        searchText: string;
+  /* 页大小 */
 
+  maxResultCount?: number;
 
-        includeDeleted: boolean;
+  /* 跳过指定条数 */
 
-
-        sorting: string;
-
-        /* 页大小 */
-        maxResultCount: number;
-
-        /* 跳过指定条数 */
-        skipCount: number;
-
-
+  skipCount?: number;
 }
 
 /**
  * AreaUiPickerDto
  */
 export class AreaUiPickerDto {
+  /* 片区名称 */
 
+  name?: string;
 
-        /* 片区名称 */
-        name: string;
+  /* 片区名称-本地化 */
 
-        /* 片区名称-本地化 */
-        nameLocalization: string;
+  nameLocalization?: string;
 
-        /* 直接RegionId */
-        regionIds: any[];
+  /* 直接RegionId */
 
-        /* 直接Region名称-本地化 */
-        regionNames: any[];
+  regionIds?: any[];
 
-        /* 片区包含或所属国家 */
-        countryIds: any[];
+  /* 直接Region名称-本地化 */
 
+  regionNames?: any[];
 
-        id: string;
+  /* 片区包含或所属国家 */
 
+  countryIds?: any[];
 
+  id?: string;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class ChargingCodeDto {
+  /* 费用组Id */
 
+  groupId?: string;
 
-        /* 费用组Id */
-        groupId: string;
+  /* 费用代码 */
 
-        /* 费用代码 */
-        code: string;
+  code?: string;
 
-        /* 费用名称 */
-        name: string;
+  /* 费用名称 */
 
-        /* 是否佣金 */
-        isCommission: boolean;
+  name?: string;
 
-        /* 是否有效 */
-        isValid: boolean;
+  /* 是否佣金 */
 
-        /* 是特殊费用（特殊费用名称：profit\cuf，新增提示：是否加到baseport rates? 。
+  isCommission?: boolean;
+
+  /* 是否有效 */
+
+  isValid?: boolean;
+
+  /* 是特殊费用（特殊费用名称：profit\cuf，新增提示：是否加到baseport rates? 。
 默认加到base,可以勾选不添加到基本港费用。）
 0 = OtherCharging
 1 = ManagerCharging */
-        type: number;
 
+  type?: number;
 
-        id: string;
-
-
+  id?: string;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class ChangeChargingCodeStateInput {
+  id: string;
 
-
-
-        id?: string;
-
-
-        isValid?: boolean;
-
-
+  isValid: boolean;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class GetAllChargingCodeForUiPickerInput {
+  /* 分组Id */
 
+  groupId?: string;
 
-        /* 分组Id */
-        groupId: string;
+  /* 是否包含无效数据 */
 
-        /* 是否包含无效数据 */
-        includeInvalid: boolean;
+  includeInvalid?: boolean;
 
+  ids?: any[];
 
-        ids: any[];
+  searchText?: string;
 
+  includeDeleted?: boolean;
 
-        searchText: string;
+  sorting?: string;
 
+  /* 页大小 */
 
-        includeDeleted: boolean;
+  maxResultCount?: number;
 
+  /* 跳过指定条数 */
 
-        sorting: string;
-
-        /* 页大小 */
-        maxResultCount: number;
-
-        /* 跳过指定条数 */
-        skipCount: number;
-
-
+  skipCount?: number;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class ChargingCodeUiPickerDto {
+  /* 费用组Id */
 
+  groupId?: string;
 
-        /* 费用组Id */
-        groupId: string;
+  /* 费用代码 */
 
-        /* 费用代码 */
-        code: string;
+  code?: string;
 
-        /* 费用名称 */
-        name: string;
+  /* 费用名称 */
 
-        /* 是否佣金 */
-        isCommission: boolean;
+  name?: string;
 
-        /* 是否有效 */
-        isValid: boolean;
+  /* 是否佣金 */
 
-        /* 是特殊费用（特殊费用名称：profit\cuf，新增提示：是否加到baseport rates? 。
+  isCommission?: boolean;
+
+  /* 是否有效 */
+
+  isValid?: boolean;
+
+  /* 是特殊费用（特殊费用名称：profit\cuf，新增提示：是否加到baseport rates? 。
 默认加到base,可以勾选不添加到基本港费用。）
 0 = OtherCharging
 1 = ManagerCharging */
-        type: number;
 
+  type?: number;
 
-        id: string;
-
-
+  id?: string;
 }
 
 /**
  * 品名管理
  */
 export class CommodityDto {
+  /* 名称 */
 
+  name: string;
 
-        /* 本地化名称 */
-        localizationName: string;
+  /* 本地化名称 */
 
-        /* 备注 */
-        remark: string;
+  localizationName?: string;
 
-        /* 创建人 */
-        creatorUserName: string;
+  /* 备注 */
 
-        /* 创建时间 */
-        creationTime: string;
+  remark?: string;
 
-        /* 是否有效 */
-        isValid: boolean;
+  /* 创建人 */
 
-        /* 子集Md */
-        children: any[];
+  creatorUserName?: string;
 
-        /* 父Id */
-        parentId: string;
+  /* 创建时间 */
 
+  creationTime?: string;
 
-        id: string;
+  /* 是否有效 */
 
-        /* 名称 */
-        name?: string;
+  isValid?: boolean;
 
+  /* 子集Md */
 
+  children?: any[];
+
+  /* 父Id */
+
+  parentId?: string;
+
+  id?: string;
 }
 
 /**
  * 品名校验
  */
 export class CommodityCheckInputDto {
-
-
-
-        id: string;
-
-        /* 校验类型 
+  /* 校验类型 
 公共类型：不校验 0； 与校验 1； 或校验 2； 
 自定义类型：校验Name 3；
 0 = NoCheck
 1 = AndCheck
 2 = OrCheck
 3 = Name */
-        checkType?: number;
 
-        /* 名称 */
-        name?: string;
+  checkType: number;
 
+  /* 名称 */
 
+  name: string;
+
+  id?: string;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class GetAllCommodityForUiPickerInput {
+  /* 是否包含子级 */
 
+  includeChildren?: boolean;
 
-        /* 是否包含子级 */
-        includeChildren: boolean;
+  /* 是否包含无效数据 */
 
-        /* 是否包含无效数据 */
-        includeInvalid: boolean;
+  includeInvalid?: boolean;
 
+  ids?: any[];
 
-        ids: any[];
+  searchText?: string;
 
+  includeDeleted?: boolean;
 
-        searchText: string;
+  sorting?: string;
 
+  /* 页大小 */
 
-        includeDeleted: boolean;
+  maxResultCount?: number;
 
+  /* 跳过指定条数 */
 
-        sorting: string;
-
-        /* 页大小 */
-        maxResultCount: number;
-
-        /* 跳过指定条数 */
-        skipCount: number;
-
-
+  skipCount?: number;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class CommodityUiPickerDto {
+  /* 名称 */
 
+  name?: string;
 
-        /* 名称 */
-        name: string;
+  /* 本地化名称 */
 
-        /* 本地化名称 */
-        localizationName: string;
+  localizationName?: string;
 
-        /* 备注 */
-        remark: string;
+  /* 备注 */
 
-        /* 创建人 */
-        creatorUserName: string;
+  remark?: string;
 
-        /* 创建时间 */
-        creationTime: string;
+  /* 创建人 */
 
-        /* 是否有效 */
-        isValid: boolean;
+  creatorUserName?: string;
 
-        /* 子集Md */
-        children: any[];
+  /* 创建时间 */
 
-        /* 父Id */
-        parentId: string;
+  creationTime?: string;
 
+  /* 是否有效 */
 
-        id: string;
+  isValid?: boolean;
 
+  /* 子集Md */
 
+  children?: any[];
+
+  /* 父Id */
+
+  parentId?: string;
+
+  id?: string;
 }
 
 /**
  * 箱型管理
  */
 export class ContainerDto {
+  /* 代码 */
 
+  code: string;
 
-        /* 创建人 */
-        creatorUserName: string;
+  /* 国际标准代码 */
 
-        /* 创建时间 */
-        creationTime: string;
+  isoCode: string;
 
-        /* 描述 MaxLength(500) */
-        desc: string;
+  /* 箱量 */
 
-        /* 是否有效 */
-        isValid: boolean;
+  teu: number;
 
-        /* ISO */
-        iso: string;
+  /* 创建人 */
 
+  creatorUserName?: string;
 
-        id: string;
+  /* 创建时间 */
 
-        /* 代码 */
-        code?: string;
+  creationTime?: string;
 
-        /* 国际标准代码 */
-        isoCode?: string;
+  /* 描述 MaxLength(500) */
 
-        /* 箱量 */
-        teu?: number;
+  desc?: string;
 
+  /* 是否有效 */
 
+  isValid?: boolean;
+
+  /* ISO */
+
+  iso?: string;
+
+  id?: string;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class ContainerGroupDto {
+  /* 箱型分组名 */
 
+  groupName?: string;
 
-        /* 箱型分组名 */
-        groupName: string;
+  /* 箱型集合 */
 
-        /* 箱型集合 */
-        containers: any[];
-
-
+  containers?: any[];
 }
 
 /**
  * 箱型校验
  */
 export class ContainerCheckInputDto {
-
-
-        /* 代码 */
-        code: string;
-
-        /* 国际标准代码 */
-        isoCode: string;
-
-        /* 箱量 */
-        teu: number;
-
-        /* ISO */
-        iso: string;
-
-
-        id: string;
-
-        /* 校验类型
+  /* 校验类型
 公共类型：不校验 0； 与校验 1； 或校验 2； 
 自定义类型：校验Code 3； 校验ISOCode 4； 校验ISO 5；
 0 = NoCheck
@@ -422,1436 +387,1434 @@ export class ContainerCheckInputDto {
 3 = Code
 4 = ISOCode
 5 = ISO */
-        checkType?: number;
 
+  checkType: number;
 
+  /* 代码 */
+
+  code?: string;
+
+  /* 国际标准代码 */
+
+  isoCode?: string;
+
+  /* 箱量 */
+
+  teu?: number;
+
+  /* ISO */
+
+  iso?: string;
+
+  id?: string;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class ChangeContainerStateInput {
+  id: string;
 
-
-
-        id?: string;
-
-
-        isValid?: boolean;
-
-
+  isValid: boolean;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class GetAllContainerForUiPickerInput {
+  /* 箱型代码 */
 
+  code?: string;
 
-        /* 箱型代码 */
-        code: string;
+  /* 是否包含无效数据 */
 
-        /* 是否包含无效数据 */
-        includeInvalid: boolean;
+  includeInvalid?: boolean;
 
+  ids?: any[];
 
-        ids: any[];
+  searchText?: string;
 
+  includeDeleted?: boolean;
 
-        searchText: string;
+  sorting?: string;
 
+  /* 页大小 */
 
-        includeDeleted: boolean;
+  maxResultCount?: number;
 
+  /* 跳过指定条数 */
 
-        sorting: string;
-
-        /* 页大小 */
-        maxResultCount: number;
-
-        /* 跳过指定条数 */
-        skipCount: number;
-
-
+  skipCount?: number;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class ContainerUiPickerDto {
+  /* 创建人 */
 
+  creatorUserName?: string;
 
-        /* 创建人 */
-        creatorUserName: string;
+  /* 创建时间 */
 
-        /* 创建时间 */
-        creationTime: string;
+  creationTime?: string;
 
-        /* 代码 */
-        code: string;
+  /* 代码 */
 
-        /* 国际标准代码 */
-        isoCode: string;
+  code?: string;
 
-        /* 描述 MaxLength(500) */
-        desc: string;
+  /* 国际标准代码 */
 
-        /* 箱量 */
-        teu: number;
+  isoCode?: string;
 
-        /* 是否有效 */
-        isValid: boolean;
+  /* 描述 MaxLength(500) */
 
-        /* ISO */
-        iso: string;
+  desc?: string;
 
+  /* 箱量 */
 
-        id: string;
+  teu?: number;
 
+  /* 是否有效 */
 
+  isValid?: boolean;
+
+  /* ISO */
+
+  iso?: string;
+
+  id?: string;
 }
 
 /**
  * 费用代码-传输对象模型
  */
 export class CostItemDto {
+  /* 费用代码 */
 
+  code: string;
 
-        /* 费用名称-本地化 */
-        nameLocalization: string;
+  /* 费用代码名称 */
 
-        /* 是否包含佣金 */
-        property: boolean;
+  name: string;
 
-        /* 是否有效 */
-        isValid: boolean;
+  /* 费用名称-本地化 */
 
-        /* 上级Id */
-        parentId: string;
+  nameLocalization?: string;
 
-        /* 子集 */
-        children: any[];
+  /* 是否包含佣金 */
 
-        /* 创建人 */
-        creatorUserName: string;
+  property?: boolean;
 
-        /* 创建时间 */
-        creationTime: string;
+  /* 是否有效 */
 
+  isValid?: boolean;
 
-        id: string;
+  /* 上级Id */
 
-        /* 费用代码 */
-        code?: string;
+  parentId?: string;
 
-        /* 费用代码名称 */
-        name?: string;
+  /* 子集 */
 
+  children?: any[];
 
+  /* 创建人 */
+
+  creatorUserName?: string;
+
+  /* 创建时间 */
+
+  creationTime?: string;
+
+  id?: string;
 }
 
 /**
  * 费用代码重复校验-传输对象模型
  */
 export class CostItemCheckDto {
+  /* 费用代码 */
 
+  code: string;
 
-        /* 上级Id */
-        parentId: string;
+  /* 费用名称 */
 
+  name: string;
 
-        id: string;
+  /* 上级Id */
 
-        /* 费用代码 */
-        code?: string;
+  parentId?: string;
 
-        /* 费用名称 */
-        name?: string;
-
-
+  id?: string;
 }
 
 /**
  * 费用代码扁平列表
  */
 export class CostItemFlatDto {
+  /* 费用代码 */
 
+  code?: string;
 
-        /* 费用代码 */
-        code: string;
+  /* 名称 */
 
-        /* 名称 */
-        name: string;
+  name?: string;
 
-        /* 全称 */
-        fullName: string;
+  /* 全称 */
 
-        /* 带有父级Id的全Id */
-        fullId: string;
+  fullName?: string;
 
-        /* 层级代码 */
-        levelCode: string;
+  /* 带有父级Id的全Id */
 
-        /* 层级 */
-        level: number;
+  fullId?: string;
 
-        /* 父ID */
-        parentId: string;
+  /* 层级代码 */
 
+  levelCode?: string;
 
-        id: string;
+  /* 层级 */
 
+  level?: number;
 
+  /* 父ID */
+
+  parentId?: string;
+
+  id?: string;
 }
 
 /**
  * 区县镇
  */
 export class CountyDto {
+  /* 地区名称-英文 */
 
+  name: string;
 
-        /* 地区代码 */
-        code: string;
+  /* 地区代码 */
 
-        /* 地区名称-本地化 */
-        nameLocalization: string;
+  code?: string;
 
-        /* 国家Id */
-        countryId: string;
+  /* 地区名称-本地化 */
 
-        /* 国家名称 */
-        countryName: string;
+  nameLocalization?: string;
 
-        /* 省份Id */
-        provinceId: string;
+  /* 国家Id */
 
-        /* 省份 */
-        provinceName: string;
+  countryId?: string;
 
-        /* 城市Id */
-        placeId: string;
+  /* 国家名称 */
 
-        /* 城市名称 */
-        placeName: string;
+  countryName?: string;
 
-        /* 经度 */
-        longitude: string;
+  /* 省份Id */
 
-        /* 纬度 */
-        latitude: string;
+  provinceId?: string;
 
-        /* 备注 */
-        remark: string;
+  /* 省份 */
 
-        /* 上级Id */
-        parentId: string;
+  provinceName?: string;
 
-        /* 子集 */
-        children: any[];
+  /* 城市Id */
 
-        /* 创建人 */
-        creatorUserName: string;
+  placeId?: string;
 
-        /* 创建时间 */
-        creationTime: string;
+  /* 城市名称 */
 
+  placeName?: string;
 
-        id: string;
+  /* 经度 */
 
-        /* 地区名称-英文 */
-        name?: string;
+  longitude?: string;
 
+  /* 纬度 */
 
+  latitude?: string;
+
+  /* 备注 */
+
+  remark?: string;
+
+  /* 上级Id */
+
+  parentId?: string;
+
+  /* 子集 */
+
+  children?: any[];
+
+  /* 创建人 */
+
+  creatorUserName?: string;
+
+  /* 创建时间 */
+
+  creationTime?: string;
+
+  id?: string;
 }
 
 /**
  * 币种管理
  */
 export class CurrencyDto {
+  /* 国家Id */
 
+  regionId: string;
 
-        /* 币种名称-本地化 */
-        nameLocalization: string;
+  /* 币种代码 */
 
-        /* 国家名称 */
-        regionName: string;
+  code: string;
 
-        /* 是否有效 */
-        isValid: boolean;
+  /* 币种名称 */
 
-        /* 创建人 */
-        creatorUserName: string;
+  name: string;
 
-        /* 创建时间 */
-        creationTime: string;
+  /* 币种名称-本地化 */
 
+  nameLocalization?: string;
 
-        id: string;
+  /* 国家名称 */
 
-        /* 国家Id */
-        regionId?: string;
+  regionName?: string;
 
-        /* 币种代码 */
-        code?: string;
+  /* 是否有效 */
 
-        /* 币种名称 */
-        name?: string;
+  isValid?: boolean;
 
+  /* 创建人 */
 
+  creatorUserName?: string;
+
+  /* 创建时间 */
+
+  creationTime?: string;
+
+  id?: string;
 }
 
 /**
  * 币种重复校验-传输对象模型
  */
 export class CurrencyCheckDto {
+  /* 币种代码 */
 
+  code: string;
 
-        /* 校验类型 - Code|Name
+  /* 币种名称 */
+
+  name: string;
+
+  /* 校验类型 - Code|Name
 0 = All
 1 = Code
 2 = Name */
-        type: number;
 
+  type?: number;
 
-        id: string;
-
-        /* 币种代码 */
-        code?: string;
-
-        /* 币种名称 */
-        name?: string;
-
-
+  id?: string;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class ChangeCurrencyStateInput {
+  id: string;
 
-
-
-        id?: string;
-
-
-        isValid?: boolean;
-
-
+  isValid: boolean;
 }
 
 /**
  * 币种过滤条件
  */
 export class GetAllForUiPickerInput {
+  ids?: any[];
 
+  searchText?: string;
 
+  includeDeleted?: boolean;
 
-        ids: any[];
+  sorting?: string;
 
+  /* 页大小 */
 
-        searchText: string;
+  maxResultCount?: number;
 
+  /* 跳过指定条数 */
 
-        includeDeleted: boolean;
-
-
-        sorting: string;
-
-        /* 页大小 */
-        maxResultCount: number;
-
-        /* 跳过指定条数 */
-        skipCount: number;
-
+  skipCount?: number;
 }
 
 /**
  * 币种列表
  */
 export class CurrencyUiPickerDto {
+  /* 币种代码 */
 
+  code: string;
 
-        /* 币种名称-本地化 */
-        nameLocalization: string;
+  /* 币种名称 */
 
-        /* 国家名称 */
-        regionName: string;
+  name: string;
 
-        /* 是否有效 */
-        isValid: boolean;
+  /* 币种名称-本地化 */
 
+  nameLocalization?: string;
 
-        id: string;
+  /* 国家名称 */
 
-        /* 币种代码 */
-        code?: string;
+  regionName?: string;
 
-        /* 币种名称 */
-        name?: string;
+  /* 是否有效 */
 
+  isValid?: boolean;
 
+  id?: string;
 }
 
 /**
  * 数据字典-传输对象模型
  */
 export class DataDictionaryDto {
+  /* 类型Id */
 
+  typeId: string;
 
-        /* 字典名称 */
-        name: string;
+  /* 字典代码 */
 
-        /* 描述 */
-        description: string;
+  code: string;
 
-        /* 字典名称-本地化 */
-        nameLocalization: string;
+  /* 字典名称 */
 
-        /* 创建人 */
-        creatorUserName: string;
+  name?: string;
 
+  /* 描述 */
 
-        isValid: boolean;
+  description?: string;
 
-        /* 创建时间 */
-        creationTime: string;
+  /* 字典名称-本地化 */
 
+  nameLocalization?: string;
 
-        id: string;
+  /* 创建人 */
 
-        /* 类型Id */
-        typeId?: string;
+  creatorUserName?: string;
 
-        /* 字典代码 */
-        code?: string;
+  isValid?: boolean;
 
+  /* 创建时间 */
 
+  creationTime?: string;
+
+  id?: string;
 }
 
 /**
  * 数据字典重复校验-传输对象模型
  */
 export class DataDictionaryCheckDto {
+  /* 字典类型 */
 
+  typeId: string;
 
+  /* 代码 */
 
-        id: string;
+  code: string;
 
-        /* 字典类型 */
-        typeId?: string;
+  /* 名称 */
 
-        /* 代码 */
-        code?: string;
+  name: string;
 
-        /* 名称 */
-        name?: string;
-
-
+  id?: string;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class ChangeDataDictionnaryStateInput {
+  id: string;
 
-
-
-        id?: string;
-
-
-        isValid?: boolean;
-
-
+  isValid: boolean;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class GetAllDataDictionaryForUiPickerInput {
+  /* 是否包含无效数据 */
 
+  includeInvalid?: boolean;
 
-        /* 是否包含无效数据 */
-        includeInvalid: boolean;
+  /* 类型Id */
 
-        /* 类型Id */
-        typeIds: any[];
+  typeIds?: any[];
 
-        /* 类型代码 */
-        typeCodes: any[];
+  /* 类型代码 */
 
+  typeCodes?: any[];
 
-        ids: any[];
+  ids?: any[];
 
+  searchText?: string;
 
-        searchText: string;
+  includeDeleted?: boolean;
 
+  sorting?: string;
 
-        includeDeleted: boolean;
+  /* 页大小 */
 
+  maxResultCount?: number;
 
-        sorting: string;
+  /* 跳过指定条数 */
 
-        /* 页大小 */
-        maxResultCount: number;
-
-        /* 跳过指定条数 */
-        skipCount: number;
-
-
+  skipCount?: number;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class DataDictionaryUiPickerDto {
+  /* 类型Id */
 
+  typeId?: string;
 
-        /* 类型Id */
-        typeId: string;
+  /* 类型代码 */
 
-        /* 类型代码 */
-        typeCode: string;
+  typeCode?: string;
 
-        /* 字典代码 */
-        code: string;
+  /* 字典代码 */
 
-        /* 字典名称 */
-        name: string;
+  code?: string;
 
-        /* 描述 */
-        description: string;
+  /* 字典名称 */
 
-        /* 字典名称-本地化 */
-        nameLocalization: string;
+  name?: string;
 
-        /* 创建人 */
-        creatorUserName: string;
+  /* 描述 */
 
-        /* 是否有效 */
-        isValid: boolean;
+  description?: string;
 
-        /* 创建时间 */
-        creationTime: string;
+  /* 字典名称-本地化 */
 
+  nameLocalization?: string;
 
-        id: string;
+  /* 创建人 */
 
+  creatorUserName?: string;
 
+  /* 是否有效 */
+
+  isValid?: boolean;
+
+  /* 创建时间 */
+
+  creationTime?: string;
+
+  id?: string;
 }
 
 /**
  * 字典类型-传输对象模型
  */
 export class DictionaryTypeDto {
+  /* 类型代码 */
 
+  code: string;
 
-        /* 地区名称-本地化 */
-        nameLocalization: string;
+  /* 类型名称 */
 
-        /* 是否有效 */
-        isValid: boolean;
+  name: string;
 
-        /* 创建人 */
-        creatorUserName: string;
+  /* 地区名称-本地化 */
 
-        /* 创建时间 */
-        creationTime: string;
+  nameLocalization?: string;
 
-        /* 描述 */
-        description: string;
+  /* 是否有效 */
 
-        /* 备注 */
-        remark: string;
+  isValid?: boolean;
 
+  /* 创建人 */
 
-        id: string;
+  creatorUserName?: string;
 
-        /* 类型代码 */
-        code?: string;
+  /* 创建时间 */
 
-        /* 类型名称 */
-        name?: string;
+  creationTime?: string;
 
+  /* 描述 */
 
+  description?: string;
+
+  /* 备注 */
+
+  remark?: string;
+
+  id?: string;
 }
 
 /**
  * 数据字典类型重复校验-传输对象模型
  */
 export class DictionaryTypeCheckDto {
+  /* 名称 */
 
+  name: string;
 
-
-        id: string;
-
-        /* 名称 */
-        name?: string;
-
-
+  id?: string;
 }
 
 /**
  * 航班管理
  */
 export class FlightDto {
+  /* 航空公司ID */
 
+  airlineId: string;
 
-        /* 创建人姓名 */
-        creatorUserName: string;
+  /* 航班号 */
 
-        /* 创建时间 */
-        creationTime: string;
+  no: string;
 
-        /* 是否有效 */
-        isValid: boolean;
+  /* 创建人姓名 */
 
+  creatorUserName?: string;
 
-        id: string;
+  /* 创建时间 */
 
-        /* 航空公司ID */
-        airlineId?: string;
+  creationTime?: string;
 
-        /* 航班号 */
-        no?: string;
+  /* 是否有效 */
 
+  isValid?: boolean;
 
+  id?: string;
 }
 
 /**
  * 航班校验
  */
 export class FlightCheckInputDto {
-
-
-        /* 航班号 */
-        no: string;
-
-
-        id: string;
-
-        /* 校验类型
+  /* 校验类型
 公共类型：不校验 0； 与校验 1； 或校验 2； 
 自定义类型：校验No 3；
 0 = NoCheck
 1 = AndCheck
 2 = OrCheck
 3 = No */
-        checkType?: number;
 
+  checkType: number;
 
+  /* 航班号 */
+
+  no?: string;
+
+  id?: string;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class GetAllFlightForUiPickerInput {
+  /* 是否包含无效数据 */
 
+  includeInvalid?: boolean;
 
-        /* 是否包含无效数据 */
-        includeInvalid: boolean;
+  /* 航空公司 Id */
 
-        /* 航空公司 Id */
-        airlineIds: any[];
+  airlineIds?: any[];
 
+  ids?: any[];
 
-        ids: any[];
+  searchText?: string;
 
+  includeDeleted?: boolean;
 
-        searchText: string;
+  sorting?: string;
 
+  /* 页大小 */
 
-        includeDeleted: boolean;
+  maxResultCount?: number;
 
+  /* 跳过指定条数 */
 
-        sorting: string;
-
-        /* 页大小 */
-        maxResultCount: number;
-
-        /* 跳过指定条数 */
-        skipCount: number;
-
-
+  skipCount?: number;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class FlightUiPickerDto {
+  /* 创建人姓名 */
 
+  creatorUserName?: string;
 
-        /* 创建人姓名 */
-        creatorUserName: string;
+  /* 创建时间 */
 
-        /* 创建时间 */
-        creationTime: string;
+  creationTime?: string;
 
-        /* 航空公司ID */
-        airlineId: string;
+  /* 航空公司ID */
 
-        /* 航空公司名称 */
-        airlineName: string;
+  airlineId?: string;
 
-        /* 航班号 */
-        no: string;
+  /* 航空公司名称 */
 
-        /* 是否有效 */
-        isValid: boolean;
+  airlineName?: string;
 
+  /* 航班号 */
 
-        id: string;
+  no?: string;
 
+  /* 是否有效 */
 
+  isValid?: boolean;
+
+  id?: string;
 }
 
 /**
  * 地点-传输对象模型
  */
 export class PlaceDto {
+  /* 地点代码 */
 
+  code: string;
 
-        /* 地点名称-本地化 */
-        nameLocalization: string;
+  /* 地点名称 */
 
-        /* 全称 */
-        fullName: string;
+  name: string;
 
-        /* 全称-本地化 */
-        fullNameLocalization: string;
+  /* 地区Id */
 
-        /* 地区名称-列表显示 */
-        regionName: string;
+  regionId: string;
 
-        /* 是否海运 */
-        isOcean: boolean;
+  /* 地点名称-本地化 */
 
-        /* 是否空运 */
-        isAir: boolean;
+  nameLocalization?: string;
 
-        /* 其它 */
-        isOther: boolean;
+  /* 全称 */
 
-        /* 创建人 */
-        creatorUserName: string;
+  fullName?: string;
 
-        /* 是否有效 */
-        isValid: boolean;
+  /* 全称-本地化 */
 
-        /* 创建时间 */
-        creationTime: string;
+  fullNameLocalization?: string;
 
+  /* 地区名称-列表显示 */
 
-        id: string;
+  regionName?: string;
 
-        /* 地点代码 */
-        code?: string;
+  /* 是否海运 */
 
-        /* 地点名称 */
-        name?: string;
+  isOcean?: boolean;
 
-        /* 地区Id */
-        regionId?: string;
+  /* 是否空运 */
 
+  isAir?: boolean;
 
+  /* 其它 */
+
+  isOther?: boolean;
+
+  /* 创建人 */
+
+  creatorUserName?: string;
+
+  /* 是否有效 */
+
+  isValid?: boolean;
+
+  /* 创建时间 */
+
+  creationTime?: string;
+
+  id?: string;
 }
 
 /**
  * 获取列表-传输对象模型
  */
 export class GetPlaceListByRegionsInput {
+  /* 城市id */
 
+  placeId?: string;
 
-        /* 城市id */
-        placeId: string;
+  /* 地点名称 */
 
-        /* 地点名称 */
-        name: string;
+  name?: string;
 
-        /* 地区Id */
-        regionIds: any[];
+  /* 地区Id */
 
-        /* 是否海运 */
-        isOcean: boolean;
+  regionIds?: any[];
 
-        /* 是否空运 */
-        isAir: boolean;
+  /* 是否海运 */
 
-        /* 是海运港或空运港 */
-        isAirOrOcean: boolean;
+  isOcean?: boolean;
 
-        /* 其它 */
-        isOther: boolean;
+  /* 是否空运 */
 
-        /* 是否为城市 */
-        isCity: boolean;
+  isAir?: boolean;
 
-        /* 是否有效 */
-        isValid: boolean;
+  /* 是海运港或空运港 */
 
-        /* 是否分页 */
-        isPaged: boolean;
+  isAirOrOcean?: boolean;
 
-        /* 排序 */
-        sorting: string;
+  /* 其它 */
 
-        /* 页大小 */
-        maxResultCount: number;
+  isOther?: boolean;
 
-        /* 跳过指定条数 */
-        skipCount: number;
+  /* 是否为城市 */
 
+  isCity?: boolean;
 
+  /* 是否有效 */
+
+  isValid?: boolean;
+
+  /* 是否分页 */
+
+  isPaged?: boolean;
+
+  /* 排序 */
+
+  sorting?: string;
+
+  /* 页大小 */
+
+  maxResultCount?: number;
+
+  /* 跳过指定条数 */
+
+  skipCount?: number;
 }
 
 /**
  * 港口或区县Dto
  */
 export class PlaceOrCountyDto {
+  /* 0为place,1为Country区县 */
 
+  type?: number;
 
-        /* 0为place,1为Country区县 */
-        type: number;
+  /* 地点代码 */
 
-        /* 地点代码 */
-        code: string;
+  code?: string;
 
-        /* 地点名称 */
-        name: string;
+  /* 地点名称 */
 
-        /* 地点名称-本地化 */
-        nameLocalization: string;
+  name?: string;
 
-        /* 多语言 */
-        localizationText: string;
+  /* 地点名称-本地化 */
 
-        /* 创建时间 */
-        creationTime: string;
+  nameLocalization?: string;
 
+  /* 多语言 */
 
-        id: string;
+  localizationText?: string;
 
+  /* 创建时间 */
 
+  creationTime?: string;
+
+  id?: string;
 }
 
 /**
  * 地点重复性校验-传输对象模型
  */
 export class PlaceCheckDto {
+  /* 地点代码 */
 
+  code: string;
 
+  /* 名称 */
 
-        id: string;
+  name: string;
 
-        /* 地点代码 */
-        code?: string;
-
-        /* 名称 */
-        name?: string;
-
-
+  id?: string;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class ChangePlaceStateInput {
+  id: string;
 
-
-
-        id?: string;
-
-
-        isValid?: boolean;
-
-
+  isValid: boolean;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class GetPlaceMapInput {
-
-
-
-        address_components: any[];
-
-
+  address_components?: any[];
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class PlaceView {
+  countryId?: string;
 
+  countryName?: string;
 
+  countryLocalizationText?: string;
 
-        countryId: string;
+  provinceId?: string;
 
+  provinceName?: string;
 
-        countryName: string;
+  provinceLocalizationText?: string;
 
+  cityId?: string;
 
-        countryLocalizationText: string;
+  cityName?: string;
 
+  cityLocalizationText?: string;
 
-        provinceId: string;
+  countyId?: string;
 
+  countyName?: string;
 
-        provinceName: string;
+  countyLocalizationText?: string;
 
+  streetId?: string;
 
-        provinceLocalizationText: string;
+  streetName?: string;
 
-
-        cityId: string;
-
-
-        cityName: string;
-
-
-        cityLocalizationText: string;
-
-
-        countyId: string;
-
-
-        countyName: string;
-
-
-        countyLocalizationText: string;
-
-
-        streetId: string;
-
-
-        streetName: string;
-
-
-        streetLocalizationText: string;
-
-
+  streetLocalizationText?: string;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class FromToDto {
+  /* 国家Id */
 
+  countryId?: string;
 
-        /* 国家Id */
-        countryId: string;
+  /* 全称 */
 
-        /* 全称 */
-        fullName: string;
+  fullName?: string;
 
-        /* 邮政编码 */
-        zipCode: string;
+  /* 邮政编码 */
 
-        /* 全称-本地化 */
-        fullNameLocalization: string;
+  zipCode?: string;
 
-        /* 多语言 */
-        localizationText: string;
+  /* 全称-本地化 */
 
+  fullNameLocalization?: string;
 
-        id: string;
+  /* 多语言 */
 
+  localizationText?: string;
 
+  id?: string;
 }
 
 /**
  * 根据港口Id获取港口信息(含逆向检索省州片区)
  */
 export class GetByPortIdsOutput {
+  /* 港口 */
 
+  places?: any[];
 
-        /* 港口 */
-        places: any[];
+  /* 区域 */
 
-        /* 区域 */
-        regions: any[];
+  regions?: any[];
 
-        /* 片区 */
-        areas: any[];
+  /* 片区 */
 
-
+  areas?: any[];
 }
 
 /**
  * 根据城市信息返回港口数据
  */
 export class GetPortByCityInput {
+  /* 城市Id */
 
+  cityId?: string;
 
-        /* 城市Id */
-        cityId: string;
+  /* 谷歌地图place_id */
 
-        /* 谷歌地图place_id */
-        placeId: string;
+  placeId?: string;
 
-        /* 谷歌地点明细 */
-        placeName: string;
+  /* 谷歌地点明细 */
 
-        /* 是否返回Data，如果为false，则Data为null */
-        returnData: boolean;
+  placeName?: string;
 
+  /* 是否返回Data，如果为false，则Data为null */
 
+  returnData?: boolean;
 }
 
 /**
  * 根据城市信息返回港口数据
  */
 export class GetPortByCityDto {
+  /* 是否有值 */
 
+  hasData?: boolean;
 
-        /* 是否有值 */
-        hasData: boolean;
+  /* 港口数据 */
 
-        /* 港口数据 */
-        data: any[];
-
-
+  data?: any[];
 }
 
 /**
  * 地点UI选择器
  */
 export class GetAllPlaceForUiPickerInput {
+  /* 地区Id */
 
+  regionIds?: any[];
 
-        /* 地区Id */
-        regionIds: any[];
+  /* 城市Id */
 
-        /* 城市Id */
-        cityIds: any[];
+  cityIds?: any[];
 
-        /* 是否海运 */
-        isOcean: boolean;
+  /* 是否海运 */
 
-        /* 是否空运 */
-        isAir: boolean;
+  isOcean?: boolean;
 
-        /* 是海运港或空运港 */
-        isAirOrOcean: boolean;
+  /* 是否空运 */
 
-        /* 其它 */
-        isOther: boolean;
+  isAir?: boolean;
 
-        /* 是否为城市 */
-        isCity: boolean;
+  /* 是海运港或空运港 */
 
-        /* 是否有效 */
-        isValid: boolean;
+  isAirOrOcean?: boolean;
 
-        /* 是否分页 */
-        isPaged: boolean;
+  /* 其它 */
 
+  isOther?: boolean;
 
-        ids: any[];
+  /* 是否为城市 */
 
+  isCity?: boolean;
 
-        searchText: string;
+  /* 是否有效 */
 
+  isValid?: boolean;
 
-        includeDeleted: boolean;
+  /* 是否分页 */
 
+  isPaged?: boolean;
 
-        sorting: string;
+  ids?: any[];
 
-        /* 页大小 */
-        maxResultCount: number;
+  searchText?: string;
 
-        /* 跳过指定条数 */
-        skipCount: number;
+  includeDeleted?: boolean;
 
+  sorting?: string;
 
+  /* 页大小 */
+
+  maxResultCount?: number;
+
+  /* 跳过指定条数 */
+
+  skipCount?: number;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class PlaceUiPickerDto {
+  /* 地点代码 */
 
+  code?: string;
 
-        /* 地点代码 */
-        code: string;
+  /* 地点名称 */
 
-        /* 地点名称 */
-        name: string;
+  name?: string;
 
-        /* 地点名称-本地化 */
-        nameLocalization: string;
+  /* 地点名称-本地化 */
 
-        /* 地区Id */
-        regionId: string;
+  nameLocalization?: string;
 
-        /* 地区名称-列表显示 */
-        regionName: string;
+  /* 地区Id */
 
-        /* 是否海运 */
-        isOcean: boolean;
+  regionId?: string;
 
-        /* 是否空运 */
-        isAir: boolean;
+  /* 地区名称-列表显示 */
 
-        /* 其它 */
-        isOther: boolean;
+  regionName?: string;
 
-        /* 创建人 */
-        creatorUserName: string;
+  /* 是否海运 */
 
-        /* 创建时间 */
-        creationTime: string;
+  isOcean?: boolean;
 
+  /* 是否空运 */
 
-        id: string;
+  isAir?: boolean;
 
+  /* 其它 */
 
+  isOther?: boolean;
+
+  /* 创建人 */
+
+  creatorUserName?: string;
+
+  /* 创建时间 */
+
+  creationTime?: string;
+
+  id?: string;
 }
 
 /**
  * 树形地区-传输对象模型
  */
 export class RegionDto {
+  /* 地区名称-英文 */
 
+  name: string;
 
-        /* 地区代码 */
-        code: string;
+  /* 地区代码 */
 
-        /* 地区名称-本地化 */
-        nameLocalization: string;
+  code?: string;
 
-        /* 是否有效 */
-        isValid: boolean;
+  /* 地区名称-本地化 */
 
-        /* 上级Id */
-        parentId: string;
+  nameLocalization?: string;
 
-        /* 子集 */
-        children: any[];
+  /* 是否有效 */
 
-        /* 创建人 */
-        creatorUserName: string;
+  isValid?: boolean;
 
-        /* 创建时间 */
-        creationTime: string;
+  /* 上级Id */
 
+  parentId?: string;
 
-        id: string;
+  /* 子集 */
 
-        /* 地区名称-英文 */
-        name?: string;
+  children?: any[];
 
+  /* 创建人 */
 
+  creatorUserName?: string;
+
+  /* 创建时间 */
+
+  creationTime?: string;
+
+  id?: string;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class GetByAreaInput {
+  /* 片区id */
 
+  areaIds?: any[];
 
-        /* 片区id */
-        areaIds: any[];
+  /* 是否递归取所有下级 */
 
-        /* 是否递归取所有下级 */
-        recursive: boolean;
-
-
+  recursive?: boolean;
 }
 
 /**
  * 地区重复校验-传输对象模型
  */
 export class RegionCheckDto {
+  /* 上级Id */
 
+  parentId?: string;
 
-        /* 上级Id */
-        parentId: string;
+  /* 代码 */
 
-        /* 代码 */
-        code: string;
+  code?: string;
 
-        /* 名称 */
-        name: string;
+  /* 名称 */
 
+  name?: string;
 
-        id: string;
-
-
+  id?: string;
 }
 
 /**
  * 国家UI组件过滤
  */
 export class GetAllCountryForUiPickerInput {
+  /* 是否包含无效数据 */
 
+  includeInvalid?: boolean;
 
-        /* 是否包含无效数据 */
-        includeInvalid: boolean;
+  /* 是否包含子对象数据 */
 
-        /* 是否包含子对象数据 */
-        includeChildren: boolean;
+  includeChildren?: boolean;
 
+  ids?: any[];
 
-        ids: any[];
+  searchText?: string;
 
+  includeDeleted?: boolean;
 
-        searchText: string;
+  sorting?: string;
 
+  /* 页大小 */
 
-        includeDeleted: boolean;
+  maxResultCount?: number;
 
+  /* 跳过指定条数 */
 
-        sorting: string;
-
-        /* 页大小 */
-        maxResultCount: number;
-
-        /* 跳过指定条数 */
-        skipCount: number;
-
-
+  skipCount?: number;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class CountryUiPickerDto {
+  /* 地区名称-英文 */
 
+  name: string;
 
-        /* 地区代码 */
-        code: string;
+  /* 地区代码 */
 
-        /* 地区名称-本地化 */
-        nameLocalization: string;
+  code?: string;
 
-        /* 是否有效 */
-        isValid: boolean;
+  /* 地区名称-本地化 */
 
-        /* 上级Id */
-        parentId: string;
+  nameLocalization?: string;
 
-        /* 子集 */
-        children: any[];
+  /* 是否有效 */
 
-        /* 创建人 */
-        creatorUserName: string;
+  isValid?: boolean;
 
-        /* 创建时间 */
-        creationTime: string;
+  /* 上级Id */
 
+  parentId?: string;
 
-        id: string;
+  /* 子集 */
 
-        /* 地区名称-英文 */
-        name?: string;
+  children?: any[];
 
+  /* 创建人 */
 
+  creatorUserName?: string;
+
+  /* 创建时间 */
+
+  creationTime?: string;
+
+  id?: string;
 }
 
 /**
  * 地区（省份）UI组件过滤
  */
 export class GetAllRegionForUiPickerInput {
+  /* 是否包含无效数据 */
 
+  includeInvalid?: boolean;
 
-        /* 是否包含无效数据 */
-        includeInvalid: boolean;
+  /* 是否包含子对象数据 */
 
-        /* 是否包含子对象数据 */
-        includeChildren: boolean;
+  includeChildren?: boolean;
 
-        /* 国家Id */
-        countryIds: any[];
+  /* 国家Id */
 
-        /* 地区Id */
-        areaIds: any[];
+  countryIds?: any[];
 
+  /* 地区Id */
 
-        ids: any[];
+  areaIds?: any[];
 
+  ids?: any[];
 
-        searchText: string;
+  searchText?: string;
 
+  includeDeleted?: boolean;
 
-        includeDeleted: boolean;
+  sorting?: string;
 
+  /* 页大小 */
 
-        sorting: string;
+  maxResultCount?: number;
 
-        /* 页大小 */
-        maxResultCount: number;
+  /* 跳过指定条数 */
 
-        /* 跳过指定条数 */
-        skipCount: number;
-
-
+  skipCount?: number;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class RegionUiPickerDto {
+  /* 地区名称-英文 */
 
+  name: string;
 
-        /* 地区代码 */
-        code: string;
+  /* 地区代码 */
 
-        /* 地区名称-本地化 */
-        nameLocalization: string;
+  code?: string;
 
-        /* 是否有效 */
-        isValid: boolean;
+  /* 地区名称-本地化 */
 
-        /* 上级Id */
-        parentId: string;
+  nameLocalization?: string;
 
-        /* 子集 */
-        children: any[];
+  /* 是否有效 */
 
-        /* 创建人 */
-        creatorUserName: string;
+  isValid?: boolean;
 
-        /* 创建时间 */
-        creationTime: string;
+  /* 上级Id */
 
+  parentId?: string;
 
-        id: string;
+  /* 子集 */
 
-        /* 地区名称-英文 */
-        name?: string;
+  children?: any[];
 
+  /* 创建人 */
 
+  creatorUserName?: string;
+
+  /* 创建时间 */
+
+  creationTime?: string;
+
+  id?: string;
 }
 
 /**
  * 传入参数
  */
 export class SailingSchedulesInput {
+  /* 起始港代码 */
 
+  origPortId: string;
 
-        /* 离港日期 */
-        etd: string;
+  /* 目的港代码 */
 
-        /* 到港日期 */
-        eta: string;
+  destPortId: string;
 
-        /* 添加几周的日期 */
-        week: number;
+  /* 船公司代码 */
 
-        /* 过滤条件 */
-        filter: string;
+  carrierCode: any[];
 
-        /* 排序 */
-        sorting: string;
+  /* 离港日期 */
 
-        /* 页大小 */
-        maxResultCount: number;
+  etd?: string;
 
-        /* 跳过指定条数 */
-        skipCount: number;
+  /* 到港日期 */
 
-        /* 起始港代码 */
-        origPortId?: string;
+  eta?: string;
 
-        /* 目的港代码 */
-        destPortId?: string;
+  /* 添加几周的日期 */
 
-        /* 船公司代码 */
-        carrierCode?: any[];
+  week?: number;
 
+  /* 过滤条件 */
 
+  filter?: string;
+
+  /* 排序 */
+
+  sorting?: string;
+
+  /* 页大小 */
+
+  maxResultCount?: number;
+
+  /* 跳过指定条数 */
+
+  skipCount?: number;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class SailingSchedulesDto {
+  /* 图片网址 */
 
+  imageUrl?: string;
 
-        /* 图片网址 */
-        imageUrl: string;
+  /* 船东代码 */
 
-        /* 船东代码 */
-        carrierCode: string;
+  carrierCode?: string;
 
-        /* 船期和航次 */
-        vesselVoyage: string;
+  /* 船期和航次 */
 
-        /* 起始港名称 */
-        originPortName: string;
+  vesselVoyage?: string;
 
-        /* 中途经过的港口 */
-        portOfPass: any[];
+  /* 起始港名称 */
 
-        /* 目的港名称 */
-        destinationPortName: string;
+  originPortName?: string;
 
-        /* 到港日期 */
-        eta: string;
+  /* 中途经过的港口 */
 
-        /* 离港日期 */
-        etd: string;
+  portOfPass?: any[];
 
-        /* IMO */
-        imo: string;
+  /* 目的港名称 */
 
-        /* 航程 */
-        transitTime: number;
+  destinationPortName?: string;
 
+  /* 到港日期 */
 
+  eta?: string;
+
+  /* 离港日期 */
+
+  etd?: string;
+
+  /* IMO */
+
+  imo?: string;
+
+  /* 航程 */
+
+  transitTime?: number;
 }
 
 /**
  * 航线管理
  */
 export class ShippingLineDto {
+  /* 代码 */
 
+  code: string;
 
-        /* 创建人姓名 */
-        creatorUserName: string;
+  /* 名称 */
 
-        /* 创建时间 */
-        creationTime: string;
+  name: string;
 
-        /* 本地化名称 */
-        localizationName: string;
+  /* 创建人姓名 */
 
-        /* 是否有效 */
-        isValid: boolean;
+  creatorUserName?: string;
 
-        /* 子集Md */
-        children: any[];
+  /* 创建时间 */
 
-        /* 父Id */
-        parentId: string;
+  creationTime?: string;
 
+  /* 本地化名称 */
 
-        id: string;
+  localizationName?: string;
 
-        /* 代码 */
-        code?: string;
+  /* 是否有效 */
 
-        /* 名称 */
-        name?: string;
+  isValid?: boolean;
 
+  /* 子集Md */
 
+  children?: any[];
+
+  /* 父Id */
+
+  parentId?: string;
+
+  id?: string;
 }
 
 /**
  * 航线校验
  */
 export class ShippingLineCheckInputDto {
-
-
-        /* 代码 */
-        code: string;
-
-
-        id: string;
-
-        /* 校验类型 
+  /* 校验类型 
 公共类型：不校验 0； 与校验 1； 或校验 2； 
 自定义类型：校验Code 3； 校验Name 4；
 0 = NoCheck
@@ -1859,324 +1822,300 @@ export class ShippingLineCheckInputDto {
 2 = OrCheck
 3 = Code
 4 = Name */
-        checkType?: number;
 
-        /* 名称 */
-        name?: string;
+  checkType: number;
 
+  /* 名称 */
 
+  name: string;
+
+  /* 代码 */
+
+  code?: string;
+
+  id?: string;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class ChangeShippingLineStateInput {
+  id: string;
 
-
-
-        id?: string;
-
-
-        isValid?: boolean;
-
-
+  isValid: boolean;
 }
 
 /**
  * 国家航线关系Dto
  */
 export class CountryReationShippingDto {
+  /* 国家Id */
 
+  countryId: string;
 
+  /* 航线Id */
 
-        id: string;
+  shippingLineId: string;
 
-        /* 国家Id */
-        countryId?: string;
-
-        /* 航线Id */
-        shippingLineId?: string;
-
-
+  id?: string;
 }
 
 /**
  * 港口航线关系Dto
  */
 export class PortReationCountryDto {
+  /* 港口 */
 
+  portId: string;
 
+  /* 航线 */
 
-        id: string;
+  shippingLineId: string;
 
-        /* 港口 */
-        portId?: string;
-
-        /* 航线 */
-        shippingLineId?: string;
-
-
+  id?: string;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class GetAllShippingLineForUiPickerInput {
+  /* 是否包含子级 */
 
+  includeChildren?: boolean;
 
-        /* 是否包含子级 */
-        includeChildren: boolean;
+  /* 是否包含无效数据 */
 
-        /* 是否包含无效数据 */
-        includeInvalid: boolean;
+  includeInvalid?: boolean;
 
+  ids?: any[];
 
-        ids: any[];
+  searchText?: string;
 
+  includeDeleted?: boolean;
 
-        searchText: string;
+  sorting?: string;
 
+  /* 页大小 */
 
-        includeDeleted: boolean;
+  maxResultCount?: number;
 
+  /* 跳过指定条数 */
 
-        sorting: string;
-
-        /* 页大小 */
-        maxResultCount: number;
-
-        /* 跳过指定条数 */
-        skipCount: number;
-
-
+  skipCount?: number;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class ShippingLineUiPickerDto {
+  /* 名称 */
 
+  name?: string;
 
-        /* 名称 */
-        name: string;
+  /* 本地化名称 */
 
-        /* 本地化名称 */
-        localizationName: string;
+  localizationName?: string;
 
-        /* Code */
-        code: string;
+  /* Code */
 
-        /* 创建人 */
-        creatorUserName: string;
+  code?: string;
 
-        /* 创建时间 */
-        creationTime: string;
+  /* 创建人 */
 
-        /* 是否有效 */
-        isValid: boolean;
+  creatorUserName?: string;
 
-        /* 子集Md */
-        children: any[];
+  /* 创建时间 */
 
-        /* 父Id */
-        parentId: string;
+  creationTime?: string;
 
+  /* 是否有效 */
 
-        id: string;
+  isValid?: boolean;
 
+  /* 子集Md */
 
+  children?: any[];
+
+  /* 父Id */
+
+  parentId?: string;
+
+  id?: string;
 }
 
 /**
  * 运输条款-传输对象模型
  */
 export class TransportClauseDto {
+  /* 起始地类型 */
 
+  originalId: string;
 
-        /* 是否有效 */
-        isValid: boolean;
+  /* 目的地类型 */
 
-        /* 描述 */
-        description: string;
+  destinationId: string;
 
-        /* 起始地类型 */
-        originalName: string;
+  /* 是否有效 */
 
-        /* 目的地类型 */
-        destinationName: string;
+  isValid?: boolean;
 
-        /* 创建人 */
-        creatorUserName: string;
+  /* 描述 */
 
-        /* 创建时间 */
-        creationTime: string;
+  description?: string;
 
+  /* 起始地类型 */
 
-        id: string;
+  originalName?: string;
 
-        /* 起始地类型 */
-        originalId?: string;
+  /* 目的地类型 */
 
-        /* 目的地类型 */
-        destinationId?: string;
+  destinationName?: string;
 
+  /* 创建人 */
 
+  creatorUserName?: string;
+
+  /* 创建时间 */
+
+  creationTime?: string;
+
+  id?: string;
 }
 
 /**
  * 运输条款重复校验-传输对象模型
  */
 export class TransportClauseCheckDto {
+  /* 起始地 */
 
+  originalId?: string;
 
-        /* 起始地 */
-        originalId: string;
+  /* 目的地 */
 
-        /* 目的地 */
-        destinationId: string;
+  destinationId?: string;
 
-
-        id: string;
-
-
+  id?: string;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class ChangeTransportClauseStateInput {
+  id: string;
 
-
-
-        id?: string;
-
-
-        isValid?: boolean;
-
-
+  isValid: boolean;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class GetAllTransportClauseForUiPickerInput {
+  /* 是否包含无效数据 */
 
+  includeInvalid?: boolean;
 
-        /* 是否包含无效数据 */
-        includeInvalid: boolean;
+  ids?: any[];
 
+  searchText?: string;
 
-        ids: any[];
+  includeDeleted?: boolean;
 
+  sorting?: string;
 
-        searchText: string;
+  /* 页大小 */
 
+  maxResultCount?: number;
 
-        includeDeleted: boolean;
+  /* 跳过指定条数 */
 
-
-        sorting: string;
-
-        /* 页大小 */
-        maxResultCount: number;
-
-        /* 跳过指定条数 */
-        skipCount: number;
-
-
+  skipCount?: number;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class TransportClauseUiPickerDto {
+  /* 起始地类型 */
 
+  originalId?: string;
 
-        /* 起始地类型 */
-        originalId: string;
+  /* 目的地类型 */
 
-        /* 目的地类型 */
-        destinationId: string;
+  destinationId?: string;
 
-        /* 是否有效 */
-        isValid: boolean;
+  /* 是否有效 */
 
-        /* 描述 */
-        description: string;
+  isValid?: boolean;
 
-        /* 起始地类型 */
-        originalName: string;
+  /* 描述 */
 
-        /* 目的地类型 */
-        destinationName: string;
+  description?: string;
 
-        /* 创建人 */
-        creatorUserName: string;
+  /* 起始地类型 */
 
-        /* 创建时间 */
-        creationTime: string;
+  originalName?: string;
 
+  /* 目的地类型 */
 
-        id: string;
+  destinationName?: string;
 
+  /* 创建人 */
 
+  creatorUserName?: string;
+
+  /* 创建时间 */
+
+  creationTime?: string;
+
+  id?: string;
 }
 
 /**
  * 船名管理
  */
 export class VesselDto {
+  /* 代码 */
 
+  code: string;
 
-        /* 创建人姓名 */
-        creatorUserName: string;
+  /* 名称 */
 
-        /* 创建时间 */
-        creationTime: string;
+  name: string;
 
-        /* 是否有效 */
-        isValid: boolean;
+  /* 船东ID */
 
+  carrierId: string;
 
-        id: string;
+  /* 船的注册国家 */
 
-        /* 代码 */
-        code?: string;
+  registration: string;
 
-        /* 名称 */
-        name?: string;
+  /* IMO编号 */
 
-        /* 船东ID */
-        carrierId?: string;
+  imoNumber: string;
 
-        /* 船的注册国家 */
-        registration?: string;
+  unCode: string;
 
-        /* IMO编号 */
-        imoNumber?: string;
+  /* 创建人姓名 */
 
+  creatorUserName?: string;
 
-        unCode?: string;
+  /* 创建时间 */
 
+  creationTime?: string;
 
+  /* 是否有效 */
+
+  isValid?: boolean;
+
+  id?: string;
 }
 
 /**
  * 船名校验
  */
 export class VesselCheckInputDto {
-
-
-        /* 代码 */
-        code: string;
-
-        /* 名称 */
-        name: string;
-
-
-        id: string;
-
-        /* 校验类型 
+  /* 校验类型 
 公共类型：不校验 0； 与校验 1； 或校验 2； 
 自定义类型：校验Code 3； 校验Name 4；
 0 = NoCheck
@@ -2184,267 +2123,249 @@ export class VesselCheckInputDto {
 2 = OrCheck
 3 = Code
 4 = Name */
-        checkType?: number;
 
+  checkType: number;
 
+  /* 代码 */
+
+  code?: string;
+
+  /* 名称 */
+
+  name?: string;
+
+  id?: string;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class GetAllVesselForUiPickerInput {
+  /* 是否包含无效数据 */
 
+  includeInvalid?: boolean;
 
-        /* 是否包含无效数据 */
-        includeInvalid: boolean;
+  /* 船东 Id */
 
-        /* 船东 Id */
-        carrierIds: any[];
+  carrierIds?: any[];
 
+  ids?: any[];
 
-        ids: any[];
+  searchText?: string;
 
+  includeDeleted?: boolean;
 
-        searchText: string;
+  sorting?: string;
 
+  /* 页大小 */
 
-        includeDeleted: boolean;
+  maxResultCount?: number;
 
+  /* 跳过指定条数 */
 
-        sorting: string;
-
-        /* 页大小 */
-        maxResultCount: number;
-
-        /* 跳过指定条数 */
-        skipCount: number;
-
-
+  skipCount?: number;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class VesselUiPickerDto {
+  /* 创建人姓名 */
 
+  creatorUserName?: string;
 
-        /* 创建人姓名 */
-        creatorUserName: string;
+  /* 创建时间 */
 
-        /* 创建时间 */
-        creationTime: string;
+  creationTime?: string;
 
-        /* 代码 */
-        code: string;
+  /* 代码 */
 
-        /* 名称 */
-        name: string;
+  code?: string;
 
-        /* 船东ID */
-        carrierId: string;
+  /* 名称 */
 
-        /* 船的注册国家 */
-        registration: string;
+  name?: string;
 
-        /* IMO编号 */
-        imoNumber: string;
+  /* 船东ID */
 
-        /* UNCode */
-        unCode: string;
+  carrierId?: string;
 
-        /* 是否有效 */
-        isValid: boolean;
+  /* 船的注册国家 */
 
+  registration?: string;
 
-        id: string;
+  /* IMO编号 */
 
+  imoNumber?: string;
 
+  /* UNCode */
+
+  unCode?: string;
+
+  /* 是否有效 */
+
+  isValid?: boolean;
+
+  id?: string;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class VesselInfosDto {
+  imo?: string;
 
+  mmsiNumber?: string;
 
+  vesselName?: string;
 
-        imo: string;
+  vesselCallNumber?: string;
 
+  countryOfDestination?: string;
 
-        mmsiNumber: string;
+  navistatus?: string;
 
+  estimatedArrivalDateTime?: string;
 
-        vesselName: string;
+  latitudeDegree?: string;
 
+  longitudeDegree?: string;
 
-        vesselCallNumber: string;
-
-
-        countryOfDestination: string;
-
-
-        navistatus: string;
-
-
-        estimatedArrivalDateTime: string;
-
-
-        latitudeDegree: string;
-
-
-        longitudeDegree: string;
-
-
-        postTime: string;
-
-
+  postTime?: string;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class GetShipTrackInfoOutput {
+  shipTracePoints?: any[];
 
+  /* 当前坐标点 */
 
-
-        shipTracePoints: any[];
-
-        /* 当前坐标点 */
-        currentPosition: VesselInfosDto;
-
-
+  currentPosition?: VesselInfosDto;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class AddingVesselInfosTaskInput {
+  /* 船名Id */
 
+  vesselName: string;
 
-        /* 船名Id */
-        vesselName?: string;
+  /* 开始时间(UTC) */
 
-        /* 开始时间(UTC) */
-        startTime?: string;
+  startTime: string;
 
-        /* 结束时间(UTC) */
-        endTime?: string;
+  /* 结束时间(UTC) */
 
-
+  endTime: string;
 }
 
 /**
  * 航次管理
  */
 export class VoyageDto {
+  /* 船名Id */
 
+  vesselId: string;
 
-        /* 创建人姓名 */
-        creatorUserName: string;
+  /* 航次 */
 
-        /* 创建时间 */
-        creationTime: string;
+  no: string;
 
-        /* 是否有效 */
-        isValid: boolean;
+  /* 创建人姓名 */
 
+  creatorUserName?: string;
 
-        id: string;
+  /* 创建时间 */
 
-        /* 船名Id */
-        vesselId?: string;
+  creationTime?: string;
 
-        /* 航次 */
-        no?: string;
+  /* 是否有效 */
 
+  isValid?: boolean;
 
+  id?: string;
 }
 
 /**
  * 航次校验
  */
 export class VoyageCheckInputDto {
-
-
-        /* 航次 */
-        no: string;
-
-
-        id: string;
-
-        /* 校验类型 
+  /* 校验类型 
 公共类型：不校验 0； 与校验 1； 或校验 2； 
 自定义类型：校验No 3；
 0 = NoCheck
 1 = AndCheck
 2 = OrCheck
 3 = No */
-        checkType?: number;
 
+  checkType: number;
 
+  /* 航次 */
+
+  no?: string;
+
+  id?: string;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class GetAllVoyageForUiPickerInput {
+  /* 是否包含无效数据 */
 
+  includeInvalid?: boolean;
 
-        /* 是否包含无效数据 */
-        includeInvalid: boolean;
+  /* 船名 Id */
 
-        /* 船名 Id */
-        vesselIds: any[];
+  vesselIds?: any[];
 
+  ids?: any[];
 
-        ids: any[];
+  searchText?: string;
 
+  includeDeleted?: boolean;
 
-        searchText: string;
+  sorting?: string;
 
+  /* 页大小 */
 
-        includeDeleted: boolean;
+  maxResultCount?: number;
 
+  /* 跳过指定条数 */
 
-        sorting: string;
-
-        /* 页大小 */
-        maxResultCount: number;
-
-        /* 跳过指定条数 */
-        skipCount: number;
-
-
+  skipCount?: number;
 }
 
 /**
- *  No Remark 
+ *  No Remark
  */
 export class VoyageUiPickerDto {
+  /* 创建人姓名 */
 
+  creatorUserName?: string;
 
-        /* 创建人姓名 */
-        creatorUserName: string;
+  /* 创建时间 */
 
-        /* 创建时间 */
-        creationTime: string;
+  creationTime?: string;
 
-        /* 船名Id */
-        vesselId: string;
+  /* 船名Id */
 
-        /* 船名 */
-        vesselName: string;
+  vesselId?: string;
 
-        /* 航次 */
-        no: string;
+  /* 船名 */
 
-        /* 是否有效 */
-        isValid: boolean;
+  vesselName?: string;
 
+  /* 航次 */
 
-        id: string;
+  no?: string;
 
+  /* 是否有效 */
 
+  isValid?: boolean;
+
+  id?: string;
 }
-
-

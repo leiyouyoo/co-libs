@@ -1,10 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
-
-import { VoyageDto,VoyageCheckInputDto,GetAllVoyageForUiPickerInput,VoyageUiPickerDto, } from './pub.types';
+import { VoyageDto,PagedResultDto,VoyageCheckInputDto,GetAllVoyageForUiPickerInput,VoyageUiPickerDto, } from './pub.types';
 
 @BaseUrl('/pub/Voyage')
 @Injectable({ providedIn: 'root' })
@@ -12,8 +9,8 @@ export class VoyageService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /PUB/Voyage/Get
      * 获取航次详情
@@ -28,7 +25,7 @@ export class VoyageService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Voyage/GetAll
      * 分页获取航次列表
@@ -43,7 +40,7 @@ export class VoyageService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Voyage/Check
      * 航次重复校验
@@ -58,7 +55,7 @@ export class VoyageService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Voyage/Create
      * 创建航次
@@ -73,7 +70,7 @@ export class VoyageService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Voyage/Update
      * 编辑航次
@@ -88,7 +85,7 @@ export class VoyageService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Voyage/Delete
      * 删除航次
@@ -103,7 +100,7 @@ export class VoyageService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Voyage/GetAllForUiPicker
      * 提供给UI航次选择器的服务接口
@@ -118,7 +115,7 @@ export class VoyageService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/Voyage/CreateOrUpdate
      * 创建或更新

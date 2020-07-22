@@ -1,10 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
-
-import { DictionaryTypeDto,DictionaryTypeCheckDto, } from './pub.types';
+import { DictionaryTypeDto,PagedResultDto,DictionaryTypeCheckDto, } from './pub.types';
 
 @BaseUrl('/pub/DictionaryType')
 @Injectable({ providedIn: 'root' })
@@ -12,8 +9,8 @@ export class DictionaryTypeService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /PUB/DictionaryType/Get
      * 获取字典类型明细
@@ -28,7 +25,7 @@ export class DictionaryTypeService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/DictionaryType/GetAll
      * 获取字典类型列表
@@ -43,7 +40,7 @@ export class DictionaryTypeService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/DictionaryType/Check
      * 校验重复性数据
@@ -58,7 +55,7 @@ export class DictionaryTypeService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/DictionaryType/CreateOrUpdate
      * 创建或更新字典类型
@@ -73,7 +70,7 @@ export class DictionaryTypeService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/DictionaryType/Create
      * 创建字典类型
@@ -88,7 +85,7 @@ export class DictionaryTypeService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/DictionaryType/Update
      * 更新字典类型
@@ -103,7 +100,7 @@ export class DictionaryTypeService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/DictionaryType/Delete
      * 删除字典类型

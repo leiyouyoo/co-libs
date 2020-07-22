@@ -1,10 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
-
-import { ChargingCodeDto,ChangeChargingCodeStateInput,GetAllChargingCodeForUiPickerInput,ChargingCodeUiPickerDto, } from './pub.types';
+import { ChargingCodeDto,PagedResultDto,ChangeChargingCodeStateInput,GetAllChargingCodeForUiPickerInput,ChargingCodeUiPickerDto, } from './pub.types';
 
 @BaseUrl('/pub/ChargingCode')
 @Injectable({ providedIn: 'root' })
@@ -12,8 +9,8 @@ export class ChargingCodeService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /PUB/ChargingCode/Get
      * 获取费用代码
@@ -28,7 +25,7 @@ export class ChargingCodeService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/ChargingCode/GetAll
      * 获取费用代码列表
@@ -43,7 +40,7 @@ export class ChargingCodeService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/ChargingCode/ChangeChargingCodeState
      * 修改费用代码状态
@@ -58,7 +55,7 @@ export class ChargingCodeService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/ChargingCode/CreateOrUpdate
      * 创建或更新费用代码
@@ -73,7 +70,7 @@ export class ChargingCodeService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/ChargingCode/GetAllForUiPicker
      * 提供给UI费用代码选择器的服务接口
@@ -88,7 +85,7 @@ export class ChargingCodeService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/ChargingCode/Check
      * 数据检查
@@ -103,7 +100,7 @@ export class ChargingCodeService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/ChargingCode/Create
      * 
@@ -118,7 +115,7 @@ export class ChargingCodeService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/ChargingCode/Update
      * 
@@ -133,7 +130,7 @@ export class ChargingCodeService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /PUB/ChargingCode/Delete
      * 

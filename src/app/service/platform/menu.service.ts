@@ -1,10 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
-
-import { MenuItemDto,MoveMenuItemInput,AddToFavoritesInput,ChangeStateInput, } from './platform.types';
+import { MenuItemDto,ListResultDto,MoveMenuItemInput,AddToFavoritesInput,ChangeStateInput, } from './platform.types';
 
 @BaseUrl('/platform/Menu')
 @Injectable({ providedIn: 'root' })
@@ -12,8 +9,8 @@ export class MenuService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /Platform/Menu/GetAll
      * 获取平台所有菜单项集合
@@ -28,7 +25,7 @@ export class MenuService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Menu/CreateOrUpdate
      * 保存菜单项
@@ -43,7 +40,7 @@ export class MenuService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Menu/Delete
      * 删除菜单项
@@ -58,7 +55,7 @@ export class MenuService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Menu/Move
      * 移动菜单项
@@ -73,7 +70,7 @@ export class MenuService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Menu/AddToMyFavorites
      * 添加菜单到收藏夹
@@ -88,7 +85,7 @@ export class MenuService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Menu/AddBatchToMyFavorites
      * 批量收藏用户菜单
@@ -103,7 +100,7 @@ export class MenuService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Menu/RemoveFromMyFavorites
      * 添加菜单到收藏夹
@@ -118,7 +115,7 @@ export class MenuService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Menu/GetMyFavorites
      * 获取我收藏的菜单集合
@@ -133,7 +130,7 @@ export class MenuService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Menu/ChangeState
      * 更改菜单项状态
@@ -148,7 +145,7 @@ export class MenuService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Menu/UpdateUserMenuSetting
      * 

@@ -1,9 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
-
 import { ExportSideMarksReportInput,ExportSideMarksReportOutput,SideMarksData, } from './fcm.types';
 
 @BaseUrl('/fcm/SideMarksReport')
@@ -12,11 +9,11 @@ export class SideMarksReportService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /FCM/SideMarksReport/ExportReport
-     * 
+     * 导出侧唛信息
      */
 
     @POST('exportReport')
@@ -28,7 +25,7 @@ export class SideMarksReportService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /FCM/SideMarksReport/GetReport
      * 
@@ -43,7 +40,7 @@ export class SideMarksReportService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /FCM/SideMarksReport/GetSideMarksQrCodeData
      * 获取侧唛二维码信息
@@ -52,7 +49,7 @@ export class SideMarksReportService extends BaseApi {
     @GET('getSideMarksQrCodeData')
     getSideMarksQrCodeData(
         @Payload
-        _req: {bookingid?:string,fbaNo?:string} 
+        _req: {id?:string,fbaNo?:string} 
 
     ): Observable<SideMarksData> {
         return null as any

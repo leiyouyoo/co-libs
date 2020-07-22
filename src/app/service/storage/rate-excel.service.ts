@@ -1,9 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
-
 import {  } from './storage.types';
 
 @BaseUrl('/storage/RateExcel')
@@ -12,8 +9,8 @@ export class RateExcelService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /Storage/RateExcel/ImportExcelToRate
      * 
@@ -28,7 +25,7 @@ export class RateExcelService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Storage/RateExcel/ImportExcelToTruck
      * 
@@ -43,7 +40,7 @@ export class RateExcelService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Storage/RateExcel/GetTemplateDownloadBasePort
      * 基本港模板下载
@@ -58,7 +55,7 @@ export class RateExcelService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Storage/RateExcel/GetTemplateDownloadArbitrary
      * 驳船模板下载
@@ -73,7 +70,7 @@ export class RateExcelService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Storage/RateExcel/GetTemplateDownloadTruck
      * 拖车模板下载

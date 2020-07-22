@@ -1,10 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
-
-import { ShipmentDto,PreShipmentListInput,PreShipmentListItemDto,ShipmentListItemDto,CreateOrUpdateShipmentInput,WarehousingDto,ChangeShipmentInvalidStatusInput,SetShipmentPostAgentCustomerInput,GetShipmentListInput, } from './fcm.types';
+import { ShipmentDto,PreShipmentListInput,PreShipmentListItemDto,PagedResultDto,ShipmentListItemDto,CreateOrUpdateShipmentInput,WarehousingDto,ChangeShipmentInvalidStatusInput,SetShipmentPostAgentCustomerInput,GetShipmentListInput,GetDeliveryInfoListInput,DeliveryInfoListItemDto,ApplyBookingsInput,DeliveryInfoDto, } from './fcm.types';
 
 @BaseUrl('/fcm/Shipment')
 @Injectable({ providedIn: 'root' })
@@ -12,8 +9,8 @@ export class ShipmentService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /FCM/Shipment/Get
      * 获取已受理单明细
@@ -28,7 +25,7 @@ export class ShipmentService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /FCM/Shipment/GetAllPreShipment
      * 分页获取预报单列表
@@ -43,7 +40,7 @@ export class ShipmentService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /FCM/Shipment/GetForUpdate
      * 获取用于更新
@@ -58,7 +55,7 @@ export class ShipmentService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /FCM/Shipment/CreateOrUpdate
      * 创建或编辑订单
@@ -73,7 +70,7 @@ export class ShipmentService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /FCM/Shipment/Warehousing
      * 入仓
@@ -88,7 +85,7 @@ export class ShipmentService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /FCM/Shipment/ChangeInvalidStatus
      * 作废或取消作废指定的 Shipment(s)
@@ -103,7 +100,7 @@ export class ShipmentService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /FCM/Shipment/SetPostAgentCustomer
      * 设置 Shipment(s) 的后段代理，已分配数据不能重复分配
@@ -118,7 +115,7 @@ export class ShipmentService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /FCM/Shipment/Delete
      * 删除预报单
@@ -133,7 +130,7 @@ export class ShipmentService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /FCM/Shipment/GetShipmentList
      * 获取已受理列表数据
@@ -145,6 +142,51 @@ export class ShipmentService extends BaseApi {
         _req:GetShipmentListInput
 
     ): Observable<PagedResultDto<ShipmentListItemDto>> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /FCM/Shipment/GetDeliveryInfoList
+     * 获取配送列表数据
+     */
+
+    @POST('getDeliveryInfoList')
+    getDeliveryInfoList(
+        @Payload
+        _req:GetDeliveryInfoListInput
+
+    ): Observable<PagedResultDto<DeliveryInfoListItemDto>> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /FCM/Shipment/ApplyBooking
+     * 申请订舱
+     */
+
+    @POST('applyBooking')
+    applyBooking(
+        @Payload
+        _req:ApplyBookingsInput
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /FCM/Shipment/UpdateDeliveryInfo
+     * 编辑配送信息
+     */
+
+    @PUT('updateDeliveryInfo')
+    updateDeliveryInfo(
+        @Payload
+        _req:DeliveryInfoDto
+
+    ): Observable<any> {
         return null as any
     }
 

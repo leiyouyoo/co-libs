@@ -1,10 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
-
-import { JPushUserIdBindRegistrationIdDto, } from './platform.types';
+import { JPushUserIdBindRegistrationIdDto,PagedResultDto, } from './platform.types';
 
 @BaseUrl('/platform/JPush')
 @Injectable({ providedIn: 'root' })
@@ -12,8 +9,8 @@ export class JPushService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /Platform/JPush/CreateAsync
      * 用于app端用户每次登录时调用
@@ -28,7 +25,7 @@ export class JPushService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/JPush/CreateOrUpdate
      * 保存
@@ -43,7 +40,7 @@ export class JPushService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/JPush/Get
      * 
@@ -58,7 +55,7 @@ export class JPushService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/JPush/GetAll
      * 
@@ -73,7 +70,7 @@ export class JPushService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/JPush/Create
      * 
@@ -88,7 +85,7 @@ export class JPushService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/JPush/Update
      * 
@@ -103,7 +100,7 @@ export class JPushService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/JPush/Delete
      * 

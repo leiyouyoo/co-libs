@@ -19,6 +19,9 @@
   }
   // 修复按钮block
   &__btn {
+    &--red &-text {
+      color: red;
+    }
     &-sub {
       @{st-prefix}__btn-text {
         color: inherit;
@@ -70,6 +73,10 @@
     &@{st-prefix}-row-red {
       background: #FFA39E;
     }
+    &@{st-prefix}-row-line-through {
+      color: rgba(0, 0, 0, 0.25);
+      text-decoration: line-through;
+    }
 
     .@{ant-prefix}-table-wrapper:only-child {
       // 修复 https://github.com/ng-alain/ng-alain/issues/1619
@@ -91,6 +98,12 @@
     &-cell-fix-right-first::after,
     &-cell-fix-right-last::after {
       transform: translateX(-80%);
+    }
+  }
+
+  th {
+    .co-picker {
+      width: 100%;
     }
   }
 

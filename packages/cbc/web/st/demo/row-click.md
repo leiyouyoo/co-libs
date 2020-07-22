@@ -29,7 +29,7 @@ import { STColumn, STChange } from '@co/cbc/web/st';
     (change)="_click($event)"></co-st>`,
 })
 export class DemoComponent {
-  url = `/users?results=3`;
+  url = `/users?maxResultCount=3`;
   params = { a: 1, b: 2 };
   // mock
   columns: STColumn[] = [
