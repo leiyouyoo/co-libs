@@ -235,6 +235,7 @@
                   <input *ngSwitchDefault type="text" nz-input [(ngModel)]="i._values[cIdx].value">
                 </ng-container>
               </ng-template>
+              <!-- button -->
               <ng-container *ngFor="let btn of _validBtns(c.buttons, i, c); let last = last">
                 <a *ngIf="btn.children.length > 0"
                    nz-dropdown [nzDropdownMenu]="btnMenu"
