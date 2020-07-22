@@ -7,7 +7,7 @@ cols: 2
 module: import { PortOfficePickerModule } from '@co/cbc';
 ---
 
-地区选择器。
+操作口岸选择器。
 
 ## API
 
