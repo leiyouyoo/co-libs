@@ -39,10 +39,10 @@ export class ComponentsStRowClassComponentComponent {
     { title: '电话', index: 'phone' },
     {
       title: '',
+      className: 'no-line-through',
       buttons: [
         {
           text: 'btn',
-          className: 'no-line-through',
           type: 'link',
           click: (e: any) => console.log('btn click', e),
         },
