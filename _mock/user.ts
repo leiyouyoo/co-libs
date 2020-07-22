@@ -5,19 +5,19 @@ const r = (min: number, max: number) => Math.floor(Math.random() * (max - min + 
 
 export const USERS = {
   // 支持值为 Object 和 Array
-  'GET /users': (req: MockRequest) => {
+  'POST http://192.168.1.5:8000/users': (req: MockRequest) => {
     const total = +(req.queryString.total || 100);
     const res: any = {
-      list: [],
-      total,
+      items: [],
+      totalCount: total,
     };
     const onlyList = req.queryString!.field === 'list';
-    let num = onlyList ? total : +req.queryString.ps;
+    let num = onlyList ? total : +req.queryString.maxResultCount;
     if (isNaN(num) || num <= 0) {
-      num = total;
+      num = 3;
     }
     for (let i = 0; i < num; i++) {
-      res.list.push({
+      res.items.push({
         id: i + 1,
         picture: {
           thumbnail: `https://randomuser.me/api/portraits/thumb/${r(0, 1) === 0 ? 'men' : 'women'}/${r(1, 50)}.jpg`,
@@ -34,7 +34,7 @@ export const USERS = {
         registered: new Date(),
       });
     }
-    return onlyList ? res.list : res;
+    return onlyList ? res.items : res;
   },
   'GET /user/check/': () => false,
   'GET /user/check/:name': (req: MockRequest) => req.params.name === 'cipchk',
