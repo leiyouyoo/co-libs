@@ -1,8 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-
 import { ExternalLocationListDto,ListResultDto,ExternalLocationDto,PagedResultDto,FBALocationListDto,CreateOrUpdateLocationExternalInput,AssignUsersToLocationDto,AssignLocationsToUserDto,UnbindUsersLocationDto,GlobalSearchInput,GlobalSearchOutput, } from './crm.types';
 
 @BaseUrl('/crm/LocationExternal')

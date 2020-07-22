@@ -1,8 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-
 import { PlaceDto,PagedResultDto,GetPlaceListByRegionsInput,PlaceOrCountyDto,PlaceCheckDto,ChangePlaceStateInput,ListResultDto,GetPlaceMapInput,PlaceView,FromToDto,GetByPortIdsOutput,GetPortByCityInput,GetPortByCityDto,GetAllPlaceForUiPickerInput,PlaceUiPickerDto, } from './pub.types';
 
 @BaseUrl('/pub/Place')

@@ -854,18 +854,6 @@
     }
  
     /**
-     * 指定主键类型的数据传输对象基类
-     */
-    export class CoEntityDto {
-        
-         
-            
-            id?: string;
-        
-        
-    }
- 
-    /**
      * Class ChangeBillStatusInput.
      */
     export class ChangeBillStatusInput {

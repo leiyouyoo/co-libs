@@ -1,8 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-
 import { RegionDto,ListResultDto,GetByAreaInput,RegionCheckDto,GetAllCountryForUiPickerInput,CountryUiPickerDto,PagedResultDto,GetAllRegionForUiPickerInput,RegionUiPickerDto, } from './pub.types';
 
 @BaseUrl('/pub/Region')

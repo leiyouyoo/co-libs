@@ -1,8 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-
 import { ExportSideMarksReportInput,ExportSideMarksReportOutput,SideMarksData, } from './fcm.types';
 
 @BaseUrl('/fcm/SideMarksReport')

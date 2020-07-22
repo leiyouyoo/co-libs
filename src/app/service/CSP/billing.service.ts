@@ -1,8 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-
 import { UserIdentifier,GetBillListInput,BillOutput,PagedResultDto,ListResultDto,BillDto,CoEntityDto,ChangeBillStatusInput,ConfirmBillsInput,ExportBillInput,ExportBillOutput,SynchronizeBillsInput,CreateOrUpdatePaymentRecordsInput,PaymentRecordDto,CreateOrUpdateChargeItemsInput,ChargeItemDto,BankAccountDto,BillingStatisticsOutput, } from './csp.types';
 
 @BaseUrl('/csp/Billing')

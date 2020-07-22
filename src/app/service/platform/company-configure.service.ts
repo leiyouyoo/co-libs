@@ -1,8 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-
 import { CompanyConfigureDto,PagedResultDto,OrganizationUnitDto,ListResultDto, } from './platform.types';
 
 @BaseUrl('/platform/CompanyConfigure')

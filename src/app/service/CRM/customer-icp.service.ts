@@ -1,8 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-
 import { IcpCreateOrUpdateCustomerInput,CustomerOutput,IcpUpdateCustomerCodeInput, } from './crm.types';
 
 @BaseUrl('/crm/CustomerIcp')

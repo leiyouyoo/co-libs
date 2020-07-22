@@ -1,8 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-
 import { CustomerDto,CustomerListDto,PagedResultDto,MergeCustomerListInput,GetAllForUiPickerInput,ExternalPartnerAndCustomerDto,ListResultDto,OwnerLessPagedResultDto,SearchCustomerOutput,CustomerOutput,CreateOrUpdateCustomerInput,GetCustomerByNameInput,CheckDeleteOutput,FollowCustomerInput,AssignCustomerInput,CustomerAndPartnerListDto,CustomerAuthenticateDto,AuditCustomerInput,MergeCustomerInput, } from './crm.types';
 
 @BaseUrl('/crm/Customer')
@@ -84,6 +82,21 @@ export class CustomerService extends BaseApi {
         _req: {} 
 
     ): Observable<ListResultDto<ExternalPartnerAndCustomerDto>> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /CRM/Customer/GetMyCustomerAndPartnersWithLocationsAndContacts
+     * 获取业务员的客户及合作伙伴(包含联系人与地址)
+     */
+
+    @GET('getMyCustomerAndPartnersWithLocationsAndContacts')
+    getMyCustomerAndPartnersWithLocationsAndContacts(
+        @Payload
+        _req: {} 
+
+    ): Observable<ListResultDto<CustomerListDto>> {
         return null as any
     }
 

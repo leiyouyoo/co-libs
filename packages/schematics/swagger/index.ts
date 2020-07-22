@@ -27,6 +27,7 @@ let serveEntityList: any = [];
 const selectedEntityList: any = [];
 let serviceList: any = [];
 let serveSelectedEntityList: any = [];
+
 export function buildCOSwagger(options: any): Rule {
   return async (tree: Tree, context: SchematicContext) => {
     // const data = await getSwaggerData(options)();
@@ -42,6 +43,7 @@ export function buildCOSwagger(options: any): Rule {
 
     const data = await getSwaggerData(options)();
     const response = [addToNgModuleProviders(options), ...data];
+
     // 导出模板
     let html = '';
     for (let msg of serviceList) {
@@ -316,13 +318,15 @@ function bindEntity(ref) {
     }
   }
 
-  if (!selectedEntityList.some(e => e.name === entityName)) {
+  // 用于生成实体文件
+  if (!selectedEntityList.some(e => e.name === entityName || e.name === entityName + '<T>')) {
     selectedEntityList.push({
       name: entityName,
       value: entity,
     });
   }
 
+  // 用于引用
   if (!serveSelectedEntityList.some(e => e === entityName)) {
     serveSelectedEntityList.push(entityName);
   }

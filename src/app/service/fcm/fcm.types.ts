@@ -618,6 +618,69 @@
     }
  
     /**
+     * 平铺的event事件时间
+     */
+    export class ShipmentEventDetailDto {
+        
+         
+            /* 订单预受理 */ 
+            createBooking?: string;
+         
+            /* 已申请订舱 */ 
+            applyBooking?: string;
+         
+            /* 订舱成功 */ 
+            successBooking?: string;
+         
+            /* 货物已装柜 */ 
+            containerLoading?: string;
+         
+            /* 已报关 */ 
+            customsdeclaration?: string;
+         
+            /* 已经开船 */ 
+            onboard?: string;
+         
+            /* 转运至目的港 */ 
+            toPod?: string;
+         
+            /* 已出税金单 */ 
+            taxBill?: string;
+         
+            /* 已付账单 */ 
+            billsPaid?: string;
+         
+            /* 清关/查验/放行 */ 
+            customsClearance?: string;
+         
+            /* 已预约提货 */ 
+            scheduledPickup?: string;
+         
+            /* 转运到仓库 */ 
+            toWarehouse?: string;
+         
+            /* 空柜 */ 
+            emptyCabinet?: string;
+         
+            /* 提空柜 */ 
+            pickupEmptyCabinet?: string;
+         
+            /* UPS/FedEx已提货 */ 
+            pickupFedExUPS?: string;
+         
+            /* FBA预约日期 */ 
+            fbaAppointmentDate?: string;
+         
+            /* POD提供日期 */ 
+            podDate?: string;
+         
+            /* 已退回 */ 
+            refusal?: string;
+        
+        
+    }
+ 
+    /**
      *  No Remark 
      */
     export class ShipmentListItemDto {
@@ -759,6 +822,9 @@
          
             /* 进度事件集合 */ 
             events?: any[];
+         
+            /* 事件平铺时间Dto */ 
+            eventDetail?: ShipmentEventDetailDto;
          
             /* 运单编号 */ 
             shipmentNo?: string;
@@ -1081,6 +1147,9 @@
          
             /* 进度事件集合 */ 
             events?: any[];
+         
+            /* 事件平铺时间Dto */ 
+            eventDetail?: ShipmentEventDetailDto;
          
             /* 运单编号 */ 
             shipmentNo?: string;

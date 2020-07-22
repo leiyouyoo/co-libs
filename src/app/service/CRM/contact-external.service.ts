@@ -1,8 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-
 import { ContactDto,ListResultDto,CustomerBindCoUserDto,ExternalContactListDto,GetByCustomerIdsInput,PagedResultDto,ExternalCustomerContactInput,SSOUser,ContactAndSaleOutput, } from './crm.types';
 
 @BaseUrl('/crm/ContactExternal')

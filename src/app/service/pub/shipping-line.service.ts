@@ -1,8 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-
 import { ShippingLineDto,ListResultDto,ShippingLineCheckInputDto,ChangeShippingLineStateInput,CountryReationShippingDto,PortReationCountryDto,GetAllShippingLineForUiPickerInput,ShippingLineUiPickerDto,PagedResultDto, } from './pub.types';
 
 @BaseUrl('/pub/ShippingLine')

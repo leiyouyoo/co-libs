@@ -1,8 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-
 import { GetAllListForCRMInput,GetAllListForCRMOutput,PagedResultDto,UpdateRoutesForCRMInput,SureServiceCompanyInput,CoEntityDto,BookingDto,SearchModel,ListResultDto,GetCustomerBindUserForCRMOutput,CRMBookingBindQuoteInput,BookingCheckIsExistsInputDto,UpdateBookingForIcpInput,PurchaseOrderItemForIcpDto,BookingForIcpDto,ClearanceInviocesUploadOutput,ClearanceInviocesDownloadOutput,BookingRecentlyUsedOutput,BookingStatisticsOutput,ChangeBookingStatusInput,CancelBookingInput,GetRelatedBusinessOutput,GetChannelListOutput,GetBookingListInputForFcm,BookingForFcmDto,SetBookingAcceptedInput,SetBookingAcceptedOutput,GetClearanceInvoicesForFcmOutput,CreateOrUpdateForFcmInput,CreateOrUpdateForFcmOutput,CreateOrUpdateClearanceInvoicesForFcmInput,DeleteBookingForFcmInput,GetBookingListForFcmInput,BookingListItemDtoForFcm, } from './csp.types';
 
 @BaseUrl('/csp/Booking')

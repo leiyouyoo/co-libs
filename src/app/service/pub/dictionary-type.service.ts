@@ -1,8 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-
 import { DictionaryTypeDto,PagedResultDto,DictionaryTypeCheckDto, } from './pub.types';
 
 @BaseUrl('/pub/DictionaryType')

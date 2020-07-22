@@ -1,8 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-
 import { TestDtoValidateInput,HttpResponseMessage,AttachmentListDto,ListResultDto,GetAllAttachmentListInput,AttachmentDto,BatchCreateAttachmentInput,CreateAttachmentInput,ShareableContactModel,AttachmentForIcpDto, } from './csp.types';
 
 @BaseUrl('/csp/Attachment')

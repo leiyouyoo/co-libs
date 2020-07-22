@@ -539,18 +539,6 @@
     /**
      *  No Remark 
      */
-    export class EntityDto {
-        
-         
-            
-            id?: string;
-        
-        
-    }
- 
-    /**
-     *  No Remark 
-     */
     export class CheckedRepeatForJobInput {
         
          

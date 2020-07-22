@@ -1,8 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-
 import { QuoteEnquiryDto,QuoteEnquiryListForCRMOutput,PagedResultDto,QuoteEnquiryListForCRMInput,ListResultDto,CustomerListModel,GetRelatedQuoteForCRMOutput,QuoteEnquiryListForCSPInput,QuoteEnquiryListForCSPOutput,Object, } from './crm.types';
 
 @BaseUrl('/crm/QuoteEnquiry')
@@ -81,7 +79,7 @@ export class QuoteEnquiryService extends BaseApi {
     @GET('getRelatedQuoteForCRM')
     getRelatedQuoteForCRM(
         @Payload
-        _req: {originPortId?:string,originAddressId?:string,destinationPortId?:string,destinationAddressId?:string,incotermsString:string,shipperCustomerId?:string,consigneeCustomerId?:string} 
+        _req: {originPortId?:string,originAddressId?:string,destinationPortId?:string,destinationAddressId?:string,incotermsString?:string,shipperCustomerId?:string,consigneeCustomerId?:string} 
 
     ): Observable<GetRelatedQuoteForCRMOutput> {
         return null as any
