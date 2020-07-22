@@ -27,7 +27,7 @@ import * as _ from 'lodash';
   encapsulation: ViewEncapsulation.None,
 })
 export class PortOfficePickerComponent extends PickerComponentBase {
-  //#region  构造函数
+  static readonly SELECTOR = `co-port-office-picker`;
 
   constructor(cdr: ChangeDetectorRef, private companyConfigureService: CompanyConfigureService) {
     super(cdr);
