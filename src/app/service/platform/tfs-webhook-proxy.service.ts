@@ -1,9 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
-
 import { TfsWebhookInput, } from './platform.types';
 
 @BaseUrl('/platform/TfsWebhookProxy')
@@ -12,8 +9,8 @@ export class TfsWebhookProxyService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /Platform/TfsWebhookProxy/ReleaseNotification
      * 

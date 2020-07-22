@@ -5,17 +5,32 @@
     export class AppVersionDto {
         
          
-            
-            id: string;
-         
             /* App所属系统
 0 = NotSet
 1 = Android
 2 = Ios */ 
-            appType?: number;
+            appType: number;
          
             /* 最新版本 */ 
-            version?: string;
+            version: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PagedResultDto<T> {
+        
+         
+            
+            totalCount: number;
+         
+            
+            items: T[];
         
         
     }
@@ -27,13 +42,13 @@
         
          
             /* Id */ 
-            id: number;
+            id?: number;
          
             /* 名称 */ 
-            name: string;
+            name?: string;
          
             /* 租户账号 */ 
-            tenancyName: string;
+            tenancyName?: string;
         
         
     }
@@ -45,34 +60,34 @@
         
          
             /* Id */ 
-            id: number;
+            id?: number;
          
             /* 名 */ 
-            name: string;
+            name?: string;
          
             /* 姓 */ 
-            surname: string;
+            surname?: string;
          
             
-            cName: string;
+            cName?: string;
          
             /* 账号 */ 
-            userName: string;
+            userName?: string;
          
             /* 地址 */ 
-            emailAddress: string;
+            emailAddress?: string;
          
             /* 电话 */ 
-            phoneNumber: string;
+            phoneNumber?: string;
          
             
-            profilePictureId: string;
+            profilePictureId?: string;
          
             /* 用户拥有的角色集合 */ 
-            roles: any[];
+            roles?: any[];
          
             /* 用户归属租户信息 */ 
-            tenant: TenantInfo;
+            tenant?: TenantInfo;
         
         
     }
@@ -84,49 +99,49 @@
         
          
             
-            id: string;
+            id?: string;
          
             
-            groupId: string;
+            groupId?: string;
          
             
-            name: string;
+            name?: string;
          
             
-            value: string;
+            value?: string;
          
             
-            isEnabled: boolean;
+            isEnabled?: boolean;
          
             
-            numberStep: number;
+            numberStep?: number;
          
             
-            resetDateFormat: string;
+            resetDateFormat?: string;
          
             
-            description: string;
+            description?: string;
          
             
-            creationTime: string;
+            creationTime?: string;
          
             
-            creatorUserId: number;
+            creatorUserId?: number;
          
             
-            lastModificationTime: string;
+            lastModificationTime?: string;
          
             
-            lastModifierUserId: number;
+            lastModifierUserId?: number;
          
             
-            isDeleted: boolean;
+            isDeleted?: boolean;
          
             
-            deletionTime: string;
+            deletionTime?: string;
          
             
-            deleterUserId: number;
+            deleterUserId?: number;
         
         
     }
@@ -137,29 +152,29 @@
     export class CreateOrUpdateTemplateInput {
         
          
-            /* 为空时表示新建 */ 
-            id: string;
-         
-            /* 租户Id，如果不为空则表示为特定租户特有规则 */ 
-            tenantId: number;
-         
-            /* 是否启用 */ 
-            isEnabled: boolean;
-         
-            /* 数字序号步长 */ 
-            numberStep: number;
-         
-            /* 备注说明 */ 
-            description: string;
-         
             /* 规则模板名称 */ 
-            name?: string;
+            name: string;
          
             /* 规则模板值 */ 
-            value?: string;
+            value: string;
          
             /* 编码序号重置日期格式。（以当前时间为基准，如果当前时间不等于最后生成的时间，则重置编码） */ 
-            resetDateFormat?: string;
+            resetDateFormat: string;
+         
+            /* 为空时表示新建 */ 
+            id?: string;
+         
+            /* 租户Id，如果不为空则表示为特定租户特有规则 */ 
+            tenantId?: number;
+         
+            /* 是否启用 */ 
+            isEnabled?: boolean;
+         
+            /* 数字序号步长 */ 
+            numberStep?: number;
+         
+            /* 备注说明 */ 
+            description?: string;
         
         
     }
@@ -170,47 +185,59 @@
     export class ConditionGroupInfo {
         
          
-            /* 该分组的拥有者，如果为空则租户下的所有人都可以使用此过滤 */ 
-            userId: number;
-         
-            /* Gets a value indicating whether this instance is default. */ 
-            isDefault: boolean;
-         
-            /* Gets or sets the tenant identifier. */ 
-            tenantId: number;
-         
-            /* Gets or sets the condition items. */ 
-            items: any[];
-         
-            /* 主键 */ 
-            id: string;
-         
-            /* 创建时间 */ 
-            creationTime: string;
-         
-            /* 创建人ID */ 
-            creatorUserId: number;
-         
-            /* 最后一次修改时间 */ 
-            lastModificationTime: string;
-         
-            /* 最后一次修改人 */ 
-            lastModifierUserId: number;
-         
-            /* 删除时间 */ 
-            deletionTime: string;
-         
-            /* 删除用户 */ 
-            deleterUserId: number;
-         
-            
-            isDeleted: boolean;
-         
             /* 过滤条件组名称 */ 
-            name?: string;
+            name: string;
          
             /* Gets or sets the type of the business. */ 
-            businessType?: string;
+            businessType: string;
+         
+            /* 该分组的拥有者，如果为空则租户下的所有人都可以使用此过滤 */ 
+            userId?: number;
+         
+            /* Gets a value indicating whether this instance is default. */ 
+            isDefault?: boolean;
+         
+            /* Gets or sets the tenant identifier. */ 
+            tenantId?: number;
+         
+            /* Gets or sets the condition items. */ 
+            items?: any[];
+         
+            /* 主键 */ 
+            id?: string;
+         
+            /* 创建时间 */ 
+            creationTime?: string;
+         
+            /* 创建人ID */ 
+            creatorUserId?: number;
+         
+            /* 最后一次修改时间 */ 
+            lastModificationTime?: string;
+         
+            /* 最后一次修改人 */ 
+            lastModifierUserId?: number;
+         
+            /* 删除时间 */ 
+            deletionTime?: string;
+         
+            /* 删除用户 */ 
+            deleterUserId?: number;
+         
+            
+            isDeleted?: boolean;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class ListResultDto<T> {
+        
+         
+            
+            items: T[];
         
         
     }
@@ -222,34 +249,34 @@
         
          
             /* 名 */ 
-            name: string;
+            name?: string;
          
             /* 姓 */ 
-            surname: string;
+            surname?: string;
          
             
-            cName: string;
+            cName?: string;
          
             /* 账号 */ 
-            userName: string;
+            userName?: string;
          
             /* 邮箱 */ 
-            emailAddress: string;
+            emailAddress?: string;
          
             /* 电话 */ 
-            phoneNumber: string;
+            phoneNumber?: string;
          
             /* 头像 */ 
-            profilePictureId: string;
+            profilePictureId?: string;
          
             /* 是否激活 */ 
-            isActive: boolean;
+            isActive?: boolean;
          
             /* 创建时间 */ 
-            creationTime: string;
+            creationTime?: string;
          
             
-            id: number;
+            id?: number;
         
         
     }
@@ -261,22 +288,22 @@
         
          
             /* 备注 */ 
-            remark: string;
+            remark?: string;
          
             /* 创建人ID */ 
-            createUserId: number;
+            createUserId?: number;
          
             /* 创建用户 */ 
-            createUser: UserDto;
+            createUser?: UserDto;
          
             /* 名称 */ 
-            name: string;
+            name?: string;
          
             /* 别名 */ 
-            displayName: string;
+            displayName?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -288,10 +315,10 @@
         
          
             /* 变更属性快照字典 */ 
-            changedPropertiesSnapshots: object;
+            changedPropertiesSnapshots?: object;
          
             /* 属性变更层级记录 */ 
-            propertyChangesStackTree: object;
+            propertyChangesStackTree?: object;
         
         
     }
@@ -303,28 +330,28 @@
         
          
             /* 公司ID */ 
-            companyId: string;
+            companyId?: string;
          
             /* 公司名称 */ 
-            companyName: string;
+            companyName?: string;
          
             /* 客户ID */ 
-            customerId: string;
+            customerId?: string;
          
             /* 客户名称 */ 
-            customerName: string;
+            customerName?: string;
          
             /* 标准币种ID */ 
-            standardCurrencyId: string;
+            standardCurrencyId?: string;
          
             /* 标准币种ID */ 
-            standardCurrencyName: string;
+            standardCurrencyName?: string;
          
             /* 是否有效 */ 
-            isActive: boolean;
+            isActive?: boolean;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -336,13 +363,13 @@
         
          
             /* 显示名称 */ 
-            displayName: string;
+            displayName?: string;
          
             /* 显示名称本地化信息 */ 
-            displayNameLocalization: string;
+            displayNameLocalization?: string;
          
             
-            fullName: string;
+            fullName?: string;
          
             /* 组织节点类型
 1 = Group
@@ -351,31 +378,31 @@
 8 = Region
 16 = Section
 32 = Head */ 
-            type: number;
+            type?: number;
          
             /* 子节点数 */ 
-            childCount: number;
+            childCount?: number;
          
             
-            childrenDto: any[];
+            childrenDto?: any[];
          
             /* 名称 */ 
-            name: string;
+            name?: string;
          
             /* 带有父级Id的全Id */ 
-            fullId: string;
+            fullId?: string;
          
             /* 层级代码 */ 
-            levelCode: string;
+            levelCode?: string;
          
             /* 层级 */ 
-            level: number;
+            level?: number;
          
             /* 父ID */ 
-            parentId: string;
+            parentId?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -387,25 +414,25 @@
         
          
             /* 功能权限 */ 
-            functionPermissions: any[];
+            functionPermissions?: any[];
          
             /* 租户集合 */ 
-            tenants: any[];
+            tenants?: any[];
          
             /* 名称 */ 
-            name: string;
+            name?: string;
          
             /* 显示名称 */ 
-            displayName: string;
+            displayName?: string;
          
             /* 显示名称本地化信息 */ 
-            displayNameLocalization: string;
+            displayNameLocalization?: string;
          
             /* 描述 */ 
-            desc: string;
+            desc?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -417,10 +444,10 @@
         
          
             /* 功能权限集合 */ 
-            functionPermissionIds: any[];
+            functionPermissionIds?: any[];
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -432,10 +459,10 @@
         
          
             /* 功能权限集合 */ 
-            tenantIds: any[];
+            tenantIds?: any[];
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -447,10 +474,10 @@
         
          
             /* 租户集合 */ 
-            tenantIds: any[];
+            tenantIds?: any[];
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -461,38 +488,38 @@
     export class JobDto {
         
          
-            
-            no: number;
-         
-            /* 显示名称 */ 
-            displayName: string;
-         
-            /* 职务类型 */ 
-            jobTypeId: string;
-         
-            /* 职务类型 */ 
-            jobTypeName: string;
-         
-            
-            creatorUserName: string;
-         
-            
-            isValid: boolean;
-         
-            
-            creationTime: string;
-         
-            
-            id: string;
-         
             /* 名称 */ 
-            name?: string;
+            name: string;
          
             /* 显示名称本地化信息 */ 
-            displayNameLocalization?: string;
+            displayNameLocalization: string;
          
             /* 描述 */ 
-            desc?: string;
+            desc: string;
+         
+            
+            no?: number;
+         
+            /* 显示名称 */ 
+            displayName?: string;
+         
+            /* 职务类型 */ 
+            jobTypeId?: string;
+         
+            /* 职务类型 */ 
+            jobTypeName?: string;
+         
+            
+            creatorUserName?: string;
+         
+            
+            isValid?: boolean;
+         
+            
+            creationTime?: string;
+         
+            
+            id?: string;
         
         
     }
@@ -500,11 +527,11 @@
     /**
      *  No Remark 
      */
-    export class EntityDto {
+    export class EntityDto<T> {
         
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -516,10 +543,10 @@
         
          
             
-            name: string;
+            name?: string;
          
             /* 主键 */ 
-            id: string;
+            id?: string;
         
         
     }
@@ -530,11 +557,11 @@
     export class JPushUserIdBindRegistrationIdDto {
         
          
-            
-            id: string;
-         
             /* 设备Id */ 
-            registrationId?: string;
+            registrationId: string;
+         
+            
+            id?: string;
         
         
     }
@@ -546,60 +573,60 @@
         
          
             /* 显示名称 */ 
-            displayName: string;
+            displayName?: string;
          
             /* 显示名称本地化信息 */ 
-            displayNameLocalization: string;
+            displayNameLocalization?: string;
          
             /* 顺序 */ 
-            order: number;
+            order?: number;
          
             /* 图标 */ 
-            icon: string;
+            icon?: string;
          
             /* 菜单项类型
 0 = Web
 1 = Mobile */ 
-            type: number;
+            type?: number;
          
             /* Url */ 
-            url: string;
+            url?: string;
          
             /* 关联权限ID */ 
-            permissionId: string;
+            permissionId?: string;
          
             /* 关联权限全称 */ 
-            permissionName: string;
+            permissionName?: string;
          
             /* 目标位置 */ 
-            target: string;
+            target?: string;
          
             /* 快捷键 */ 
-            shortcut: string;
+            shortcut?: string;
          
             /* 是否激活 */ 
-            isActive: boolean;
+            isActive?: boolean;
          
             /* 名称 */ 
-            name: string;
+            name?: string;
          
             /* 全称 */ 
-            fullName: string;
+            fullName?: string;
          
             /* 带有父级Id的全Id */ 
-            fullId: string;
+            fullId?: string;
          
             /* 层级代码 */ 
-            levelCode: string;
+            levelCode?: string;
          
             /* 层级 */ 
-            level: number;
+            level?: number;
          
             /* 父ID */ 
-            parentId: string;
+            parentId?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -611,10 +638,10 @@
         
          
             /* ID */ 
-            id: string;
+            id?: string;
          
             /* 新父项ID */ 
-            parentId: string;
+            parentId?: string;
         
         
     }
@@ -626,7 +653,7 @@
         
          
             /* 菜单项ID */ 
-            menuIds: any[];
+            menuIds?: any[];
         
         
     }
@@ -638,10 +665,10 @@
         
          
             /* 是否激活状态 */ 
-            isActive: boolean;
+            isActive?: boolean;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -653,13 +680,13 @@
         
          
             /* 未读数量 */ 
-            unreadCount: number;
+            unreadCount?: number;
          
             
-            totalCount: number;
+            totalCount?: number;
          
             
-            items: any[];
+            items?: any[];
         
         
     }
@@ -671,16 +698,16 @@
         
          
             /* 租户Id */ 
-            tenantId: number;
+            tenantId?: number;
          
             /* 用户 Id */ 
-            userId: number;
+            userId?: number;
          
             /* 是否接收通知 */ 
-            receiveNotifications: boolean;
+            receiveNotifications?: boolean;
          
             /* 已订阅的通知 */ 
-            notifications: any[];
+            notifications?: any[];
         
         
     }
@@ -692,16 +719,16 @@
         
          
             /* 租户Id */ 
-            tenantId: number;
+            tenantId?: number;
          
             /* 用户 Id */ 
-            userId: number;
+            userId?: number;
          
             /* 是否接收全部通知 */ 
-            receiveNotifications: boolean;
+            receiveNotifications?: boolean;
          
             /* 通知订阅信息 */ 
-            notifications: any[];
+            notifications?: any[];
         
         
     }
@@ -713,10 +740,10 @@
         
          
             
-            targetUsers: any[];
+            targetUsers?: any[];
          
             
-            message: string;
+            message?: string;
          
             /* 
 0 = Info
@@ -724,7 +751,7 @@
 2 = Warn
 3 = Error
 4 = Fatal */ 
-            severity: number;
+            severity?: number;
         
         
     }
@@ -736,10 +763,10 @@
         
          
             
-            companyName: string;
+            companyName?: string;
          
             
-            contacts: any[];
+            contacts?: any[];
         
         
     }
@@ -751,43 +778,43 @@
         
          
             
-            userId: number;
+            userId?: number;
          
             
-            profilePictureId: string;
+            profilePictureId?: string;
          
             
-            name: string;
+            name?: string;
          
             
-            surname: string;
+            surname?: string;
          
             
-            cName: string;
+            cName?: string;
          
             
-            phoneNumber: string;
+            phoneNumber?: string;
          
             
-            email: string;
+            email?: string;
          
             
-            isActive: boolean;
+            isActive?: boolean;
          
             
-            position: string;
+            position?: string;
          
             
-            fullOrganizationUnit: string;
+            fullOrganizationUnit?: string;
          
             
-            organizationUnitLevelCode: string;
+            organizationUnitLevelCode?: string;
          
             
-            customerId: string;
+            customerId?: string;
          
             
-            companyName: string;
+            companyName?: string;
         
         
     }
@@ -799,34 +826,34 @@
         
          
             
-            userId: number;
+            userId?: number;
          
             
-            profilePictureId: string;
+            profilePictureId?: string;
          
             
-            userName: string;
+            userName?: string;
          
             
-            name: string;
+            name?: string;
          
             
-            surname: string;
+            surname?: string;
          
             
-            cName: string;
+            cName?: string;
          
             
-            phoneNumber: string;
+            phoneNumber?: string;
          
             
-            email: string;
+            email?: string;
          
             
-            position: string;
+            position?: string;
          
             
-            fullOrganizationUnit: string;
+            fullOrganizationUnit?: string;
         
         
     }
@@ -838,10 +865,10 @@
         
          
             /* 组织节点ID */ 
-            id: string;
+            id?: string;
          
             /* 新父项ID */ 
-            parentId: string;
+            parentId?: string;
         
         
     }
@@ -853,36 +880,36 @@
         
          
             /* 显示名称 */ 
-            displayName: string;
+            displayName?: string;
          
             /* 显示名称本地化信息 */ 
-            displayNameLocalization: string;
+            displayNameLocalization?: string;
          
             /* 权限项类型
 1 = Function
 2 = Data */ 
-            type: number;
+            type?: number;
          
             /* 名称 */ 
-            name: string;
+            name?: string;
          
             /* 全称 */ 
-            fullName: string;
+            fullName?: string;
          
             /* 带有父级Id的全Id */ 
-            fullId: string;
+            fullId?: string;
          
             /* 层级代码 */ 
-            levelCode: string;
+            levelCode?: string;
          
             /* 层级 */ 
-            level: number;
+            level?: number;
          
             /* 父ID */ 
-            parentId: string;
+            parentId?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -894,10 +921,10 @@
         
          
             /* 父项ID */ 
-            parentId: string;
+            parentId?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -909,10 +936,10 @@
         
          
             /* 父项ID */ 
-            userId: number;
+            userId?: number;
          
             /* 权限项集合 */ 
-            permissionIds: any[];
+            permissionIds?: any[];
         
         
     }
@@ -924,10 +951,10 @@
         
          
             /* 父项ID */ 
-            userId: number;
+            userId?: number;
          
             /* 权限项集合 */ 
-            permissionIds: any[];
+            permissionIds?: any[];
         
         
     }
@@ -939,10 +966,10 @@
         
          
             /* 角色ID */ 
-            roleId: number;
+            roleId?: number;
          
             /* 权限项集合 */ 
-            permissionIds: any[];
+            permissionIds?: any[];
         
         
     }
@@ -954,10 +981,10 @@
         
          
             /* 角色ID */ 
-            roleId: number;
+            roleId?: number;
          
             /* 权限项集合 */ 
-            permissionIds: any[];
+            permissionIds?: any[];
         
         
     }
@@ -969,39 +996,39 @@
         
          
             /* 数据范围 */ 
-            datas: any[];
+            datas?: any[];
          
             /* 显示名称 */ 
-            displayName: string;
+            displayName?: string;
          
             /* 显示名称本地化信息 */ 
-            displayNameLocalization: string;
+            displayNameLocalization?: string;
          
             /* 权限项类型
 1 = Function
 2 = Data */ 
-            type: number;
+            type?: number;
          
             /* 名称 */ 
-            name: string;
+            name?: string;
          
             /* 全称 */ 
-            fullName: string;
+            fullName?: string;
          
             /* 带有父级Id的全Id */ 
-            fullId: string;
+            fullId?: string;
          
             /* 层级代码 */ 
-            levelCode: string;
+            levelCode?: string;
          
             /* 层级 */ 
-            level: number;
+            level?: number;
          
             /* 父ID */ 
-            parentId: string;
+            parentId?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -1013,10 +1040,10 @@
         
          
             /* 父项ID */ 
-            userId: number;
+            userId?: number;
          
             /* 权限项集合 */ 
-            permissions: any[];
+            permissions?: any[];
         
         
     }
@@ -1028,10 +1055,10 @@
         
          
             /* 父项ID */ 
-            userId: number;
+            userId?: number;
          
             /* 权限项集合 */ 
-            permissionIds: any[];
+            permissionIds?: any[];
         
         
     }
@@ -1043,10 +1070,10 @@
         
          
             /* 角色ID */ 
-            roleId: number;
+            roleId?: number;
          
             /* 权限项集合 */ 
-            permissions: any[];
+            permissions?: any[];
         
         
     }
@@ -1058,10 +1085,10 @@
         
          
             /* 角色ID */ 
-            roleId: number;
+            roleId?: number;
          
             /* 权限项集合 */ 
-            permissionIds: any[];
+            permissionIds?: any[];
         
         
     }
@@ -1073,55 +1100,55 @@
         
          
             
-            no: number;
+            no?: number;
          
             /* 显示名称本地化信息 */ 
-            nameLocalization: string;
+            nameLocalization?: string;
          
             /* 描述 */ 
-            desc: string;
+            desc?: string;
          
             /* 所属部门 */ 
-            organizationUnitId: string;
+            organizationUnitId?: string;
          
             /* 所属部门 */ 
-            organizationUnitName: string;
+            organizationUnitName?: string;
          
             /* 职务ID */ 
-            jobId: string;
+            jobId?: string;
          
             /* 职务名 */ 
-            jobName: string;
+            jobName?: string;
          
             
-            creatorUserName: string;
+            creatorUserName?: string;
          
             
-            isValid: boolean;
+            isValid?: boolean;
          
             
-            creationTime: string;
+            creationTime?: string;
          
             /* 名称 */ 
-            name: string;
+            name?: string;
          
             /* 全称 */ 
-            fullName: string;
+            fullName?: string;
          
             /* 带有父级Id的全Id */ 
-            fullId: string;
+            fullId?: string;
          
             /* 层级代码 */ 
-            levelCode: string;
+            levelCode?: string;
          
             /* 层级 */ 
-            level: number;
+            level?: number;
          
             /* 父ID */ 
-            parentId: string;
+            parentId?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -1133,13 +1160,13 @@
         
          
             
-            desc: string;
+            desc?: string;
          
             
-            localizationDesc: string;
+            localizationDesc?: string;
          
             
-            fullOrganizationUnit: string;
+            fullOrganizationUnit?: string;
         
         
     }
@@ -1151,19 +1178,19 @@
         
          
             
-            desc: string;
+            nameLocalization: string;
          
             
-            belongToOrganizationModels: any[];
+            name: string;
          
             
-            nameLocalization?: string;
+            jobId: string;
          
             
-            name?: string;
+            desc?: string;
          
             
-            jobId?: string;
+            belongToOrganizationModels?: any[];
         
         
     }
@@ -1175,10 +1202,10 @@
         
          
             
-            result: boolean;
+            result?: boolean;
          
             
-            messages: any[];
+            messages?: any[];
         
         
     }
@@ -1190,22 +1217,22 @@
         
          
             
-            id: string;
+            nameLocalization: string;
          
             
-            desc: string;
+            name: string;
          
             
-            belongToOrganizationModels: any[];
+            jobId: string;
          
             
-            nameLocalization?: string;
+            id?: string;
          
             
-            name?: string;
+            desc?: string;
          
             
-            jobId?: string;
+            belongToOrganizationModels?: any[];
         
         
     }
@@ -1217,13 +1244,13 @@
         
          
             /* 用户ID集合 */ 
-            userIds: any[];
+            userIds?: any[];
          
             /* 职位ID */ 
-            positionId: string;
+            positionId?: string;
          
             /* 是否默认职位 */ 
-            isDefault: boolean;
+            isDefault?: boolean;
         
         
     }
@@ -1235,10 +1262,10 @@
         
          
             /* 用户ID */ 
-            userId: number;
+            userId?: number;
          
             /* 职位ID */ 
-            positionId: string;
+            positionId?: string;
         
         
     }
@@ -1250,13 +1277,13 @@
         
          
             /* 用户ID */ 
-            userId: number;
+            userId?: number;
          
             /* 职位ID */ 
-            positionId: string;
+            positionId?: string;
          
             /* 是否默认职位 */ 
-            isDefault: boolean;
+            isDefault?: boolean;
         
         
     }
@@ -1268,43 +1295,43 @@
         
          
             /* 客户Id */ 
-            customerId: string;
+            customerId?: string;
          
             /* 当前客户归属的服务商（如 Cityocean）客户Id */ 
-            serviceCustomerId: string;
+            serviceCustomerId?: string;
          
             /* 当前客户归属的服务商（如 Cityocean）租户Id */ 
-            serviceCustomerTenantId: number;
+            serviceCustomerTenantId?: number;
          
             /* 当前客户归属的服务商（如 Cityocean）租户名称 */ 
-            serviceCustomerTenantName: string;
+            serviceCustomerTenantName?: string;
          
             /* 名 */ 
-            name: string;
+            name?: string;
          
             /* 姓 */ 
-            surname: string;
+            surname?: string;
          
             /* 账号 */ 
-            userName: string;
+            userName?: string;
          
             /* 邮箱 */ 
-            emailAddress: string;
+            emailAddress?: string;
          
             /* 头像图片ID */ 
-            profilePictureId: string;
+            profilePictureId?: string;
          
             /* 角色集合 */ 
-            roles: any[];
+            roles?: any[];
          
             
-            positions: any[];
+            positions?: any[];
          
             /* 模拟用户Id */ 
-            impersonatorUserId: number;
+            impersonatorUserId?: number;
          
             
-            id: number;
+            id?: number;
         
         
     }
@@ -1316,25 +1343,25 @@
         
          
             /* 租户账号 */ 
-            tenancyName: string;
+            tenancyName?: string;
          
             /* 名称 */ 
-            name: string;
+            name?: string;
          
             /* Logo文件Id */ 
-            logoId: string;
+            logoId?: string;
          
             /* Logo文件类型 */ 
-            logoFileType: string;
+            logoFileType?: string;
          
             /* 创建时间 */ 
-            creationTime: string;
+            creationTime?: string;
          
             /* 模拟租户Id */ 
-            impersonatorTenantId: number;
+            impersonatorTenantId?: number;
          
             
-            id: number;
+            id?: number;
         
         
     }
@@ -1346,16 +1373,16 @@
         
          
             /* 平台名 */ 
-            name: string;
+            name?: string;
          
             /* 描述 */ 
-            desc: string;
+            desc?: string;
          
             /* 版本 */ 
-            version: string;
+            version?: string;
          
             /* 发布日期 */ 
-            releaseDate: string;
+            releaseDate?: string;
         
         
     }
@@ -1367,18 +1394,18 @@
         
          
             /* 用户信息 */ 
-            user: SessionUserDto;
+            user?: SessionUserDto;
          
             /* 租户信息 */ 
-            tenant: SessionTenantDto;
+            tenant?: SessionTenantDto;
          
             /* 平台信息 */ 
-            platform: SessionPlatformDto;
+            platform?: SessionPlatformDto;
          
             /* 是否在多租户侧
 1 = Tenant
 2 = Host */ 
-            multiTenancySide: number;
+            multiTenancySide?: number;
         
         
     }
@@ -1390,10 +1417,10 @@
         
          
             
-            name: string;
+            name?: string;
          
             
-            displayName: string;
+            displayName?: string;
         
         
     }
@@ -1405,22 +1432,22 @@
         
          
             
-            name: string;
+            name?: string;
          
             
-            displayName: string;
+            displayName?: string;
          
             
-            icon: string;
+            icon?: string;
          
             
-            isDefault: boolean;
+            isDefault?: boolean;
          
             
-            isDisabled: boolean;
+            isDisabled?: boolean;
          
             
-            isRightToLeft: boolean;
+            isRightToLeft?: boolean;
         
         
     }
@@ -1432,19 +1459,19 @@
         
          
             
-            currentCulture: AbpUserCurrentCultureConfigDto;
+            currentCulture?: AbpUserCurrentCultureConfigDto;
          
             
-            languages: any[];
+            languages?: any[];
          
             
-            currentLanguage: LanguageInfo;
+            currentLanguage?: LanguageInfo;
          
             
-            sources: any[];
+            sources?: any[];
          
             
-            values: object;
+            values?: object;
         
         
     }
@@ -1456,10 +1483,10 @@
         
          
             /* 授予的数据权限 */ 
-            grantedDataPermissions: any[];
+            grantedDataPermissions?: any[];
          
             /* 授予的功能权限 */ 
-            grantedFunctionPermissions: any[];
+            grantedFunctionPermissions?: any[];
         
         
     }
@@ -1471,7 +1498,7 @@
         
          
             
-            menus: object;
+            menus?: object;
         
         
     }
@@ -1483,7 +1510,7 @@
         
          
             
-            values: object;
+            values?: object;
         
         
     }
@@ -1495,7 +1522,7 @@
         
          
             
-            provider: string;
+            provider?: string;
         
         
     }
@@ -1507,16 +1534,16 @@
         
          
             
-            timeZoneId: string;
+            timeZoneId?: string;
          
             
-            baseUtcOffsetInMilliseconds: number;
+            baseUtcOffsetInMilliseconds?: number;
          
             
-            currentUtcOffsetInMilliseconds: number;
+            currentUtcOffsetInMilliseconds?: number;
          
             
-            isDaylightSavingTimeNow: boolean;
+            isDaylightSavingTimeNow?: boolean;
         
         
     }
@@ -1528,7 +1555,7 @@
         
          
             
-            timeZoneId: string;
+            timeZoneId?: string;
         
         
     }
@@ -1540,10 +1567,10 @@
         
          
             
-            windows: AbpUserWindowsTimeZoneConfigDto;
+            windows?: AbpUserWindowsTimeZoneConfigDto;
          
             
-            iana: AbpUserIanaTimeZoneConfigDto;
+            iana?: AbpUserIanaTimeZoneConfigDto;
         
         
     }
@@ -1555,7 +1582,7 @@
         
          
             
-            timeZoneInfo: AbpUserTimeZoneConfigDto;
+            timeZoneInfo?: AbpUserTimeZoneConfigDto;
         
         
     }
@@ -1567,10 +1594,10 @@
         
          
             
-            tokenCookieName: string;
+            tokenCookieName?: string;
          
             
-            tokenHeaderName: string;
+            tokenHeaderName?: string;
         
         
     }
@@ -1582,7 +1609,7 @@
         
          
             
-            antiForgery: AbpUserAntiForgeryConfigDto;
+            antiForgery?: AbpUserAntiForgeryConfigDto;
         
         
     }
@@ -1594,28 +1621,28 @@
         
          
             /* 会话信息 */ 
-            session: UserSessionDto;
+            session?: UserSessionDto;
          
             /* 本地化设置 */ 
-            localization: AbpUserLocalizationConfigDto;
+            localization?: AbpUserLocalizationConfigDto;
          
             /* 授权设置 */ 
-            auth: UserAuthConfigDto;
+            auth?: UserAuthConfigDto;
          
             /* 导航设置 */ 
-            nav: AbpUserNavConfigDto;
+            nav?: AbpUserNavConfigDto;
          
             /* 用户设置数据 */ 
-            setting: AbpUserSettingConfigDto;
+            setting?: AbpUserSettingConfigDto;
          
             /* 时钟设置 */ 
-            clock: AbpUserClockConfigDto;
+            clock?: AbpUserClockConfigDto;
          
             /* 时区设置 */ 
-            timing: AbpUserTimingConfigDto;
+            timing?: AbpUserTimingConfigDto;
          
             /* 安全设置 */ 
-            security: AbpUserSecurityConfigDto;
+            security?: AbpUserSecurityConfigDto;
         
         
     }
@@ -1627,10 +1654,10 @@
         
          
             
-            text: string;
+            text?: string;
          
             
-            markdown: string;
+            markdown?: string;
         
         
     }
@@ -1642,10 +1669,10 @@
         
          
             
-            message: TfsWebhookMessageDto;
+            message?: TfsWebhookMessageDto;
          
             
-            detailedMessage: TfsWebhookMessageDto;
+            detailedMessage?: TfsWebhookMessageDto;
         
         
     }
@@ -1657,10 +1684,10 @@
         
          
             
-            name: string;
+            name?: string;
          
             
-            value: string;
+            value?: string;
         
         
     }

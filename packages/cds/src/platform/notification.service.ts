@@ -1,9 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
-
 import { GetNotificationsOutput,EntityDto,GetNotificationSettingsOutput,UpdateNotificationSettingsInput,SendMessageModel, } from './platform.types';
 
 @BaseUrl('/platform/Notification')
@@ -12,8 +9,8 @@ export class NotificationService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /Platform/Notification/GetUserNotifications
      * 
@@ -28,7 +25,7 @@ export class NotificationService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Notification/SetAllNotificationsAsRead
      * 
@@ -43,7 +40,7 @@ export class NotificationService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Notification/SetNotificationAsRead
      * 
@@ -52,13 +49,13 @@ export class NotificationService extends BaseApi {
     @POST('setNotificationAsRead')
     setNotificationAsRead(
         @Payload
-        _req:EntityDto[]
+        _req:EntityDto<any>
 
     ): Observable<any> {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Notification/GetNotificationSettings
      * 
@@ -73,7 +70,7 @@ export class NotificationService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Notification/UpdateNotificationSettings
      * 
@@ -88,7 +85,7 @@ export class NotificationService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Notification/DeleteNotification
      * 
@@ -103,7 +100,7 @@ export class NotificationService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Notification/DeleteAllUserNotifications
      * 
@@ -118,7 +115,7 @@ export class NotificationService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/Notification/SendMessage
      * 

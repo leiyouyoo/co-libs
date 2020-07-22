@@ -1,10 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ListResultDto, PagedResultDto } from '@co/core';
-
-import { CacheExampleDto,EntityHistorySnapshot, } from './platform.types';
+import { CacheExampleDto,PagedResultDto,EntityHistorySnapshot, } from './platform.types';
 
 @BaseUrl('/platform/CacheExample')
 @Injectable({ providedIn: 'root' })
@@ -12,8 +9,8 @@ export class CacheExampleService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
   
-   
     /**
      * @param url /Platform/CacheExample/GetAll
      * 返回样例集合
@@ -28,7 +25,7 @@ export class CacheExampleService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/CacheExample/Get
      * 获取样例明细
@@ -43,7 +40,7 @@ export class CacheExampleService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/CacheExample/Create
      * 创建
@@ -58,7 +55,7 @@ export class CacheExampleService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/CacheExample/BulkInsert
      * 批量插入
@@ -73,7 +70,7 @@ export class CacheExampleService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/CacheExample/Update
      * 更新
@@ -88,7 +85,7 @@ export class CacheExampleService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/CacheExample/Test
      * 本地化测试
@@ -103,7 +100,7 @@ export class CacheExampleService extends BaseApi {
         return null as any
     }
 
- 
+
     /**
      * @param url /Platform/CacheExample/Delete
      * 
