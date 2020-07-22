@@ -3,9 +3,9 @@ import { Observable } from 'rxjs';
 
 import { PagedResultDto } from '@co/core';
 // tslint:disable-next-line: ordered-imports
-import { BaseUrl, BaseApi, POST, Payload } from '@co/common';
+import { BaseUrl, BaseApi, POST, Payload, GET } from '@co/common';
 
-import { CustomerDto, CustomerType } from './customer.types';
+import { CustomerDto, CustomerType, SearchCustomerOutput } from './customer.types';
 
 /**
  * 客户服务
@@ -30,5 +30,18 @@ export class CustomerService extends BaseApi {
     },
   ): Observable<PagedResultDto<CustomerDto>> {
     return null as any;
+  }
+
+  /**
+   * url /CRM/Customer/GetForwardingCompanies
+   * 分页搜索同行客户
+   */
+  @GET('getForwardingCompanies')
+  getForwardingCompanies(
+    @Payload
+      _req: {searchText?:string,includeDefault?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number}
+
+  ): Observable<PagedResultDto<SearchCustomerOutput>> {
+    return null as any
   }
 }
