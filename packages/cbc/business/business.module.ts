@@ -17,6 +17,7 @@ import { YoyagePickerModule } from '@co/cbc/business/voyage-picker';
 import { ReportViewerModule } from '@co/cbc/business/report-viewer';
 import { CascaderModule } from '@co/cbc/business/cascader';
 import { PortOfficePickerModule } from '@co/cbc/business/port-office-picker';
+import { SalespersonPickerModule } from '@co/cbc/business/salesperson-picker';
 
 const EXPORT_MODULES: any[] = [
   CustomerPickerModule,
@@ -36,6 +37,7 @@ const EXPORT_MODULES: any[] = [
   ReportViewerModule,
   CascaderModule,
   PortOfficePickerModule,
+  SalespersonPickerModule,
 ];
 const IMPORT_MODULES: any[] = [CdsModule];
 
