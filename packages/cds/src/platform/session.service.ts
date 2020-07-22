@@ -1,6 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
+
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
+import { ListResultDto, PagedResultDto } from '@co/core';
+
 import { UserConfigurationDto, } from './platform.types';
 
 @BaseUrl('/platform/Session')
@@ -9,8 +12,8 @@ export class SessionService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
-
   
+   
     /**
      * @param url /Platform/Session/GetCurrentUserConfiguration
      * 获取当前用户配置信息
