@@ -1,6 +1,8 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
+
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
+
 import { JobDto,PagedResultDto,EntityDto,CheckedRepeatForJobInput, } from './platform.types';
 
 @BaseUrl('/platform/Job')
@@ -19,7 +21,7 @@ export class JobService extends BaseApi {
     @GET('getAll')
     getAll(
         @Payload
-        _req: {jobTypeId?:string,searchText?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
+        _req: {id?:string,jobTypeId?:string,searchText?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
     ): Observable<PagedResultDto<JobDto>> {
         return null as any
