@@ -56,6 +56,16 @@
       color: @st-title-optional-color;
     }
   }
+  // 过滤器行
+  &-thead-row-filter {
+    th {
+      padding-top: 0 !important;
+    }
+
+    .co-picker {
+      min-width: initial;
+    }
+  }
   // 修复自动定义图标无法高亮问题
   .@{ant-prefix}-table-thead > tr > th .@{ant-prefix}-table-filter-selected.@{ant-prefix}-table-filter-icon {
     color: @primary-color;

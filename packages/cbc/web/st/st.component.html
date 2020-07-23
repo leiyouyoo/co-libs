@@ -85,11 +85,10 @@
   [nzShowTotal]="totalTpl"
   [nzWidthConfig]="widthConfig"
 >
-  <thead class="st__head">
+  <thead class="st__head" [class.st-has-filter]="showFilters">
     <tr *ngFor="let row of _headers; let rowFirst = first">
-      <th *ngIf="rowFirst && expand" nzWidth="50px" [attr.rowspan]="_headers.length + (showFilters ? 1 : 0)"></th>
       <th *ngIf="rowFirst && showCheckbox" nzWidth="50px" [attr.rowspan]="_headers.length + (showFilters ? 1 : 0)">
-        <ng-container *ngIf="checkboxSelections.length === 0">
+      <ng-container *ngIf="checkboxSelections.length === 0">
           <ng-template [ngTemplateOutlet]="chkAllTpl" [ngTemplateOutletContext]="{ $implicit: false }"> </ng-template>
         </ng-container>
         <div *ngIf="checkboxSelections.length > 0" class="ant-table-selection">
@@ -110,6 +109,7 @@
           </nz-dropdown-menu>
         </div>
       </th>
+      <th *ngIf="rowFirst && expand" nzWidth="50px" [attr.rowspan]="_headers.length + (showFilters ? 1 : 0)"></th>
       <th
         *ngFor="let h of row; let index = index"
         [attr.colspan]="h.colSpan"
@@ -142,7 +142,7 @@
         </ng-container>
       </th>
     </tr>
-    <tr *ngIf="showFilters && _filterRow?.length">
+    <tr class="st-thead-row-filter" *ngIf="showFilters && _filterRow?.length">
       <th *ngFor="let i of _filterRow; index as index" (keyup.enter)="_filterConfirm(i.column)">
         <ng-container [ngSwitch]="i.column.filter?.type">
           <ng-container *ngSwitchCase="i.column.filter?.type === null ? null : 'nevermatch'"></ng-container>
@@ -184,13 +184,6 @@
     </ng-container>
     <ng-template #bodyTpl let-i let-index="index">
       <tr [attr.data-index]="index" (click)="_rowClick($event, i, index)" [class.st-row-odd]="index % 2 === 1" [ngClass]="i._rowClassName">
-        <td
-          *ngIf="expand"
-          [nzShowExpand]="expand && i.showExpand !== false"
-          [nzExpand]="i.expand"
-          (nzExpandChange)="_expandChange(i, $event)"
-          nzWidth="50px"
-        ></td>
         <td>
           <label
             *ngIf="showCheckbox"
@@ -200,6 +193,13 @@
             (ngModelChange)="_checkSelection(i, $event)"
           ></label>
         </td>
+        <td
+          *ngIf="expand"
+          [nzShowExpand]="expand && i.showExpand !== false"
+          [nzExpand]="i.expand"
+          (nzExpandChange)="_expandChange(i, $event)"
+          nzWidth="50px"
+        ></td>
         <!-- 展示状态 -->
         <td *ngFor="let c of _columns; let cIdx = index" [nzLeft]="!!c._left" [nzRight]="!!c._right"
             [ngClass]="columnClass(c)" [attr.colspan]="c.colSpan">
