@@ -80,7 +80,7 @@ module: import { CoSTModule } from '@co/cbc';
 | `[expand]` | 当前列是否包含展开按钮，当数据源中包括 `expand` 表示展开状态 | `TemplateRef<void>` | - |
 | `[responsive]` | 是否开启响应式 | `boolean` | `true` |
 | `[responsiveHideHeaderFooter]` | 是否在小屏幕下才显示顶部与底部 | `boolean` | `false` |
-| `[checkOnLoad]` | 选择框是否在每次数据加载时选中 | `boolean` | `false` |
+| `[checkOnLoad]` | 多选框是否在每次数据加载时选中 | `boolean` | `false` |
 | `(change)` | 变化时回调，包括：`pi`、`ps`、`checkbox`、`radio`、`sort`、`filter`、`click`、`dblClick`、`expand` 变动 | `EventEmitter<STChange>` | - |
 | `(error)` | 异常时回调 | `EventEmitter<STError>` | - |
 
