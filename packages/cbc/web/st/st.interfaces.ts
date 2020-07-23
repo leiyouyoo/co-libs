@@ -215,6 +215,11 @@ export interface STColumn {
    */
   index?: string | string[] | null;
   /**
+   * 表内数据i18n
+   * 是否启用用数据i18n，默认不需要
+   */
+  indexI18n?: boolean;
+  /**
    * 类型
    * - `no` 行号，计算规则：`index + noIndex`
    * - `checkbox` 多选
@@ -369,7 +374,7 @@ export interface STColumn {
 
   /**
    * i18n
-   * 是否禁用i18n，默认需要i18n
+   * 是否禁用表头i18n，默认需要i18n
    */
   disableI18n?: boolean;
 

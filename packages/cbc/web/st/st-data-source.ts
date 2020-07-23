@@ -1,8 +1,8 @@
 import { DecimalPipe } from '@angular/common';
-import { Host, Injectable } from '@angular/core';
+import { Host, Inject, Injectable, Optional } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { CNCurrencyPipe, DatePipe, YNPipe, _HttpClient } from '@co/common';
-import { deepCopy, deepGet } from '@co/core';
+import { CO_I18N_TOKEN, CoI18NService, deepCopy, deepGet } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { Observable, of } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
@@ -67,7 +67,9 @@ export class STDataSource {
     @Host() private ynPipe: YNPipe,
     @Host() private numberPipe: DecimalPipe,
     private dom: DomSanitizer,
-  ) {}
+    @Optional() @Inject(CO_I18N_TOKEN) private i18nSrv: CoI18NService,
+  ) {
+  }
 
   process(options: STDataSourceOptions): Observable<STDataSourceResult> {
     let data$: Observable<STData[]>;
@@ -242,6 +244,9 @@ export class STDataSource {
         break;
     }
     if (text == null) text = '';
+    if (text && col.indexI18n && this.i18nSrv) {
+      text = this.i18nSrv.fanyi(text);
+    }
     return {
       text,
       _text: this.dom.bypassSecurityTrustHtml(text),
