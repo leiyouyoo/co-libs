@@ -1,6 +1,8 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
+
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
+
 import { PositionDto,PagedResultDto,PositionAndOrganizationUnitDto,CreatePositionDto,ResMsgDto,UpdatePositionDto,AddUsersToPositionInput,SetUserDefaultPositionInput,IsInPositionInput,EntityDto, } from './platform.types';
 
 @BaseUrl('/platform/Position')
@@ -19,7 +21,7 @@ export class PositionService extends BaseApi {
     @GET('getAll')
     getAll(
         @Payload
-        _req: {organizationUnitId?:string,parentId?:string,isRecursion?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
+        _req: {organizationUnitId?:string,parentId?:string,searchText?:string,isRecursion?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
     ): Observable<PagedResultDto<PositionDto>> {
         return null as any
