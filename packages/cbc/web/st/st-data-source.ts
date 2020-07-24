@@ -402,7 +402,16 @@ export class STDataSource {
         if (filter.reName) {
           obj = filter.reName!(filter.menus!, col);
         } else {
-          obj[filter.key!] = values.map(i => i.value).join(',') || null;
+          obj[filter.key!] =
+            values
+              .map(i => {
+                let value = i.value;
+                if (value instanceof Date) {
+                  return value.toISOString();
+                }
+                return value;
+              })
+              .join(',') || null;
         }
         ret = { ...ret, ...obj };
       });

@@ -184,9 +184,8 @@
     </ng-container>
     <ng-template #bodyTpl let-i let-index="index">
       <tr [attr.data-index]="index" (click)="_rowClick($event, i, index)" [class.st-row-odd]="index % 2 === 1" [ngClass]="i._rowClassName">
-        <td>
+        <td *ngIf="showCheckbox">
           <label
-            *ngIf="showCheckbox"
             nz-checkbox
             [nzDisabled]="i.disabled"
             [ngModel]="i.checked"
