@@ -18,6 +18,7 @@ import { CoAuthConfig } from './auth/auth.type';
 import { CoCacheConfig } from './cache/cache.type';
 import { CoChartConfig } from './chart/chart.type';
 import { CoMockConfig } from './mock/mock.type';
+import { CoCommonConfig } from './common/common.type';
 import { CoSFConfig } from './sf/sf.type';
 import { CoThemeHttpClientConfig, CoThemeResponsiveConfig } from './theme/index';
 import { CoUtilArrayConfig } from './util/array.type';
@@ -38,6 +39,7 @@ export interface CoConfig {
   im?: CoIMConfig;
   map?: CoMapConfig;
   auth?: CoAuthConfig;
+  common?: CoCommonConfig;
   cache?: CoCacheConfig;
   chart?: CoChartConfig;
   mock?: CoMockConfig;

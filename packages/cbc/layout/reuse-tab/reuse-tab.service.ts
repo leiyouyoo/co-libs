@@ -373,7 +373,7 @@ export class ReuseTabService implements OnDestroy {
   }
 
   private hasInValidRoute(route: ActivatedRouteSnapshot) {
-    return !route.routeConfig || route.routeConfig.loadChildren || route.routeConfig.children || (route.component && (route.component as any).name === 'EmptyComponent');
+    return !route.routeConfig || route.routeConfig.loadChildren || route.routeConfig.children || (route.component && (route.component as any).componentName === 'EmptyComponent');
   }
 
   /**
@@ -461,7 +461,7 @@ export class ReuseTabService implements OnDestroy {
    * 决定是否应该进行复用路由处理
    */
   shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot): boolean {
-    if (future.component && (future.component as any).name === 'EmptyComponent') return false;
+    if (future.component && (future.component as any).componentName === 'EmptyComponent') return false;
 
     let ret = future.routeConfig === curr.routeConfig;
     if (!ret) return false;

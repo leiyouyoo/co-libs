@@ -1,8 +1,8 @@
-import {InjectionToken} from '@angular/core';
+import { InjectionToken } from '@angular/core';
 
 export const ENVIRONMENT = new InjectionToken('env');
 
 export interface Environment {
-  SERVER_URL: string;
+  SERVER_URL?: string;
   LOGIN_URL?: string;
 }
