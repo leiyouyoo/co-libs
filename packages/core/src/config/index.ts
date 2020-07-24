@@ -8,6 +8,7 @@ export * from './cache/cache.type';
 export * from './chart/chart.type';
 export * from './util/array.type';
 export * from './theme/index';
+export * from './common/common.type';
 export * from './mock/mock.type';
 export * from './sf/sf.type';
 

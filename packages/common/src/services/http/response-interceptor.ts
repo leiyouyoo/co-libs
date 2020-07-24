@@ -5,7 +5,7 @@ import { HttpInterceptor, HttpHandler, HttpRequest, HttpEvent, HttpResponse, Htt
 import * as _ from 'lodash';
 import { Observable, Subject } from 'rxjs';
 // import { MODAL_SERVICE, ModalService } from '../ModalService.injector';
-
+import { CoConfigService, CoCommonConfig } from '@co/core';
 import { DA_SERVICE_TOKEN, ITokenService } from '@co/auth';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { CoAuthService } from '../auth/auth.service';
@@ -187,9 +187,10 @@ export class AbpHttpConfiguration {
 @Injectable()
 export class ResponseInterceptor implements HttpInterceptor {
   protected configuration: AbpHttpConfiguration;
+  private config: CoCommonConfig | undefined;
 
   constructor(configuration: AbpHttpConfiguration, @Inject(ENVIRONMENT) private environment) {
-    configuration.loginUrl = environment?.LOGIN_URL ?? loginUrl;
+    configuration.loginUrl = environment?.LOGIN_URL || loginUrl;
     this.configuration = configuration;
   }
 

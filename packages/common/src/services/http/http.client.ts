@@ -1,6 +1,6 @@
 import { HttpClient, HttpEvent, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { Inject, Injectable, Optional } from '@angular/core';
-import { CoConfigService, CoThemeHttpClientConfig } from '@co/core';
+import { CoConfigService, CoThemeHttpClientConfig, CoCommonConfig } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, switchMap, tap } from 'rxjs/operators';
@@ -19,11 +19,13 @@ export type HttpObserve = 'body' | 'events' | 'response';
 // tslint:disable-next-line:class-name
 export class _HttpClient {
   private cog: CoThemeHttpClientConfig;
+  private config: CoCommonConfig | undefined;
   constructor(private http: HttpClient, cogSrv: CoConfigService, @Optional() @Inject(ENVIRONMENT) public environment: Environment) {
-    this.cog = cogSrv.merge<CoThemeHttpClientConfig, 'themeHttp'>('themeHttp', {
+    this.cog = cogSrv.merge<CoThemeHttpClientConfig, 'common'>('common', {
       nullValueHandling: 'include',
       dateValueHandling: 'timestamp',
     });
+    this.config = cogSrv.get("common");
   }
 
   private _loading = false;
@@ -964,7 +966,12 @@ export class _HttpClient {
       if (!url.startsWith('/')) {
         url = '/' + url;
       }
-      return this.environment.SERVER_URL + url;
+
+      if (this.config && this.config.httpClient) {
+        return this.config.httpClient.SERVER_URL + url;
+      } else {
+        return this.environment.SERVER_URL + url;
+      }
     }
   }
 }
