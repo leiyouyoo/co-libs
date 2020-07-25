@@ -16,11 +16,11 @@ export const globalPlanet: GlobalPlanet = (window.planet = window.planet || {
     apps: {}
 });
 
-export function defineApplication(name: string, version: string, bootstrapModule: BootstrapAppModule) {
+export function defineApplication(name: string, bootstrapModule: BootstrapAppModule, extras: { version: string, releaseDate?: Date }) {
     if (globalPlanet.apps[name]) {
         throw new Error(`${name} application has exist.`);
     }
-    const appRef = new PlanetApplicationRef(name, version, bootstrapModule);
+    const appRef = new PlanetApplicationRef(name, bootstrapModule, extras);
     globalPlanet.apps[name] = appRef;
 }
 

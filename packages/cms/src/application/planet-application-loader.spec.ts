@@ -22,7 +22,7 @@ class PlanetApplicationRefFaker {
     bootstrap$: Subject<PlanetApplicationRef>;
 
     constructor(appName: string) {
-        this.planetAppRef = new PlanetApplicationRef(appName, null);
+        this.planetAppRef = new PlanetApplicationRef(appName, null, null);
         this.bootstrapSpy = spyOn(this.planetAppRef, 'bootstrap');
         this.bootstrap$ = new Subject<PlanetApplicationRef>();
         this.bootstrapSpy.and.returnValues(this.bootstrap$, this.bootstrap$);

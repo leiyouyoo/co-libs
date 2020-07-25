@@ -20,11 +20,11 @@ describe('PlanetComponentLoader', () => {
     function defineAndBootstrapApplication(name: string, appModule: Type<any>) {
         const ngModuleFactory = compiler.compileModuleSync(appModule);
         const ngModuleRef = ngModuleFactory.create(injector);
-        defineApplication(name, "1.0.0", (portalApp?: PlanetPortalApplication) => {
+        defineApplication(name, (portalApp?: PlanetPortalApplication) => {
             return new Promise(resolve => {
                 resolve(ngModuleRef);
             });
-        });
+        }, { version: '1.0.0' });
         const appRef = getPlanetApplicationRef(name);
         const portalApplication = new PlanetPortalApplication();
         appRef.bootstrap(portalApplication);

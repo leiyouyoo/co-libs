@@ -31,18 +31,18 @@ describe('PlanetApplicationRef', () => {
 
     describe('getPlanetApplicationRef', () => {
         it('should get planet application ref success', () => {
-            defineApplication('app1', "1.0.0", (portalApp?: PlanetPortalApplication) => {
+            defineApplication('app1', (portalApp?: PlanetPortalApplication) => {
                 return new Promise(() => { });
-            });
+            }, { version: '1.0.0' });
             const planetAppRef = getPlanetApplicationRef('app1');
             expect(planetAppRef).toBeTruthy();
             expect(planetAppRef).toBe(window['planet'].apps['app1']);
         });
 
         it('should not get planet appRef which has not exist', () => {
-            defineApplication('app1', "1.0.0", (portalApp?: PlanetPortalApplication) => {
+            defineApplication('app1', (portalApp?: PlanetPortalApplication) => {
                 return new Promise(() => { });
-            });
+            }, { version: '1.0.0' });
             const planetAppRef = getPlanetApplicationRef('app2');
             expect(planetAppRef).toBeFalsy();
         });
@@ -65,12 +65,12 @@ describe('PlanetApplicationRef', () => {
             const portalApplication = new PlanetPortalApplication();
             const ngModuleFactory = compiler.compileModuleSync(AppModule);
             const ngModuleRef = ngModuleFactory.create(injector);
-            defineApplication('app1', "1.0.0", (portalApp?: PlanetPortalApplication) => {
+            defineApplication('app1', (portalApp?: PlanetPortalApplication) => {
                 return new Promise(resolve => {
                     expect(portalApp).toBe(portalApplication);
                     resolve(ngModuleRef);
                 });
-            });
+            }, { version: '1.0.0' });
             const appRef = getPlanetApplicationRef('app1');
             expect(appRef).toBeTruthy();
             appRef.bootstrap(portalApplication);
@@ -82,12 +82,12 @@ describe('PlanetApplicationRef', () => {
             const navigateByUrlSpy = spyOn(portalApplication.router, 'navigateByUrl');
             const ngModuleFactory = compiler.compileModuleSync(AppModule);
             const ngModuleRef = ngModuleFactory.create(injector);
-            defineApplication('app1', "1.0.0", (portalApp?: PlanetPortalApplication) => {
+            defineApplication('app1', (portalApp?: PlanetPortalApplication) => {
                 return new Promise(resolve => {
                     expect(portalApp).toBe(portalApplication);
                     resolve(ngModuleRef);
                 });
-            });
+            }, { version: '1.0.0' });
             const appRef = getPlanetApplicationRef('app1');
             expect(appRef).toBeTruthy();
             appRef.bootstrap(portalApplication);
