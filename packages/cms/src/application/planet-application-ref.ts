@@ -19,13 +19,15 @@ export class PlanetApplicationRef {
     private get bootstrapped() {
         return !!this.appModuleRef;
     }
-    private name: string;
+    public name: string;
+    public version: string;
     private portalApp: PlanetPortalApplication;
     private appModuleBootstrap: (app: PlanetPortalApplication) => Promise<NgModuleRef<any>>;
     private componentFactory: PlantComponentFactory;
 
-    constructor(name: string, appModuleBootstrap: (app: PlanetPortalApplication) => Promise<NgModuleRef<any>>) {
+    constructor(name: string, version: string, appModuleBootstrap: (app: PlanetPortalApplication) => Promise<NgModuleRef<any>>) {
         this.name = name;
+        this.version = version;
         this.appModuleBootstrap = appModuleBootstrap;
     }
 
