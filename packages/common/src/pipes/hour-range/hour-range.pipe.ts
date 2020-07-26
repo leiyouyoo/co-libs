@@ -10,6 +10,7 @@ export class HourRangePipe implements PipeTransform {
    * @param isToZeroZone
    */
   transform(value: string, isToZeroZone = false): any {
+    if (!value) return '';
     const [date, hourRange] = value.split(' ');
     let [hour1, hour2] = hourRange.split('-');
     if (hour1.length < 5) {

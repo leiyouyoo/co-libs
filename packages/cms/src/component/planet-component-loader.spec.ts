@@ -24,7 +24,7 @@ describe('PlanetComponentLoader', () => {
             return new Promise(resolve => {
                 resolve(ngModuleRef);
             });
-        });
+        }, { version: '1.0.0' });
         const appRef = getPlanetApplicationRef(name);
         const portalApplication = new PlanetPortalApplication();
         appRef.bootstrap(portalApplication);

@@ -51,6 +51,7 @@ export class CoRangePickerComponent implements ControlValueAccessor {
 
   @Input() coAllowClear = true;
   @Input() coAutoFocus = false;
+  @Input() coShowToday = false;
   @Input() coClassName: string;
   @Input() coDisabled: boolean;
   @Input() coSize: string;

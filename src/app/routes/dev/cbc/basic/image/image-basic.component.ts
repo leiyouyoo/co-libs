@@ -3,9 +3,9 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'demo',
   template: `
-    <img [co_image]="src" size="46" />
-    <img [co_image]="src" size="64" />
-    <img [co_image]="src" size="96" />
+    <img [co-image]="src" size="46" />
+    <img [co-image]="src" size="64" />
+    <img [co-image]="src" size="96" />
   `,
 })
 export class ImageBasicComponent {

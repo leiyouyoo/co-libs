@@ -80,6 +80,7 @@ module: import { CoSTModule } from '@co/cbc';
 | `[expand]` | 当前列是否包含展开按钮，当数据源中包括 `expand` 表示展开状态 | `TemplateRef<void>` | - |
 | `[responsive]` | 是否开启响应式 | `boolean` | `true` |
 | `[responsiveHideHeaderFooter]` | 是否在小屏幕下才显示顶部与底部 | `boolean` | `false` |
+| `[checkOnLoad]` | 多选框是否在每次数据加载时选中 | `boolean` | `false` |
 | `(change)` | 变化时回调，包括：`pi`、`ps`、`checkbox`、`radio`、`sort`、`filter`、`click`、`dblClick`、`expand` 变动 | `EventEmitter<STChange>` | - |
 | `(error)` | 异常时回调 | `EventEmitter<STError>` | - |
 
@@ -236,6 +237,7 @@ class TestComponent {
 | `[i18n]` | 列名i18n | `string` | - |
 | `[type]` | `no` 行号<br>`checkbox` 多选<br>`radio` 单选<br>`link` 链接，可触发 `click`<br>`img` 图像且居中<br>`number` 数字且居右<br>`currency` 货币且居右<br>`date` 日期格式且居中<br>`badge` [徽标](https://ng.ant.design/components/badge/zh)<br>`tag` [标签](https://ng.ant.design/components/tag/zh)<br>`yn` 将`boolean`类型徽章化 [document](/theme/yn)<br>`widget` 自定义小部件来渲染列 | `string` | - |
 | `[index]` | 列数据在数据项中对应的 key，支持 `a.b.c` 的嵌套写法 | `string, string[]` | - |
+| `[indexI18n]` | 列数据是否需要I18n | boolean | - |
 | `[render]` | 自定义渲染ID | `string` | - |
 | `[renderTitle]` | 标题自定义渲染ID | `string` | - |
 | `[default]` | 当不存在数据（值类型为 `undefined`）时以默认值替代 | `string` | - |
@@ -262,6 +264,7 @@ class TestComponent {
 | `[iif]` | 条件表达式<br>1、仅赋值 `columns` 时执行一次<br>2、可调用 `resetColumns()` 再一次触发 | `(item: STColumn) => boolean` | - |
 | `[statistical]` | 统计信息 | `STStatisticalType,STStatistical` | - |
 | `[children]` | 多表头 | `STColumn[]` | - |
+| `[disableI18n]` | 表头I18n，默认false 即开启 | `boolean` | false |
 
 ### STColumnTitle
 

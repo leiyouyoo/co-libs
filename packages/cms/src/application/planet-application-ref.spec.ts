@@ -10,7 +10,7 @@ import { defineApplication, getPlanetApplicationRef, clearGlobalPlanet } from '.
         <router-outlet></router-outlet>
     `
 })
-class EmptyComponent {}
+class EmptyComponent { }
 @NgModule({
     declarations: [EmptyComponent],
     imports: [
@@ -22,7 +22,7 @@ class EmptyComponent {}
         ])
     ]
 })
-class AppModule {}
+class AppModule { }
 
 describe('PlanetApplicationRef', () => {
     afterEach(() => {
@@ -32,8 +32,8 @@ describe('PlanetApplicationRef', () => {
     describe('getPlanetApplicationRef', () => {
         it('should get planet application ref success', () => {
             defineApplication('app1', (portalApp?: PlanetPortalApplication) => {
-                return new Promise(() => {});
-            });
+                return new Promise(() => { });
+            }, { version: '1.0.0' });
             const planetAppRef = getPlanetApplicationRef('app1');
             expect(planetAppRef).toBeTruthy();
             expect(planetAppRef).toBe(window['planet'].apps['app1']);
@@ -41,8 +41,8 @@ describe('PlanetApplicationRef', () => {
 
         it('should not get planet appRef which has not exist', () => {
             defineApplication('app1', (portalApp?: PlanetPortalApplication) => {
-                return new Promise(() => {});
-            });
+                return new Promise(() => { });
+            }, { version: '1.0.0' });
             const planetAppRef = getPlanetApplicationRef('app2');
             expect(planetAppRef).toBeFalsy();
         });
@@ -70,7 +70,7 @@ describe('PlanetApplicationRef', () => {
                     expect(portalApp).toBe(portalApplication);
                     resolve(ngModuleRef);
                 });
-            });
+            }, { version: '1.0.0' });
             const appRef = getPlanetApplicationRef('app1');
             expect(appRef).toBeTruthy();
             appRef.bootstrap(portalApplication);
@@ -78,7 +78,7 @@ describe('PlanetApplicationRef', () => {
 
         it(`should sync portal route change when sub app(app1) route navigate`, fakeAsync(() => {
             const portalApplication = new PlanetPortalApplication();
-            portalApplication.router = { navigateByUrl: () => {} } as any;
+            portalApplication.router = { navigateByUrl: () => { } } as any;
             const navigateByUrlSpy = spyOn(portalApplication.router, 'navigateByUrl');
             const ngModuleFactory = compiler.compileModuleSync(AppModule);
             const ngModuleRef = ngModuleFactory.create(injector);
@@ -87,7 +87,7 @@ describe('PlanetApplicationRef', () => {
                     expect(portalApp).toBe(portalApplication);
                     resolve(ngModuleRef);
                 });
-            });
+            }, { version: '1.0.0' });
             const appRef = getPlanetApplicationRef('app1');
             expect(appRef).toBeTruthy();
             appRef.bootstrap(portalApplication);

@@ -201,6 +201,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() @InputNumber() virtualMinBufferPx = 100;
   @Input() virtualForTrackBy: TrackByFunction<NzTableData> = index => index;
   @Input() @InputBoolean() showCheckbox = true;
+  @Input() @InputBoolean() checkOnLoad = false;
   @Input() checkboxSelections = [];
 
   /**
@@ -332,7 +333,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   private loadData(options?: STDataSourceOptions): Promise<STDataSourceResult> {
-    const { pi, ps, data, req, res, page, total, singleSort, multiSort, rowClassName } = this;
+    const { pi, ps, data, req, res, page, total, singleSort, multiSort, rowClassName, checkOnLoad } = this;
     return new Promise((resolvePromise, rejectPromise) => {
       if (this.data$) {
         this.data$.unsubscribe();
@@ -351,6 +352,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
           singleSort,
           multiSort,
           rowClassName,
+          checkOnLoad,
           paginator: true,
           ...options,
         })

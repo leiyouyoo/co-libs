@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PreShipmentExportInput,FileDto,GetShipmentListInput, } from './storage.types';
+import { PreShipmentExportInput,FileDto,GetShipmentListInput,GetDeliveryInfoListInput, } from './storage.types';
 
 @BaseUrl('/storage/FCMExcel')
 @Injectable({ providedIn: 'root' })
@@ -10,10 +10,10 @@ export class FCMExcelService extends BaseApi {
     super(injector);
   }
 
-  
+
     /**
      * @param url /Storage/FCMExcel/PreShipmentExport
-     * 
+     *
      */
 
     @POST('preShipmentExport')
@@ -28,7 +28,7 @@ export class FCMExcelService extends BaseApi {
 
     /**
      * @param url /Storage/FCMExcel/ShipmentListExport
-     * 
+     *
      */
 
     @POST('shipmentListExport')
@@ -40,6 +40,18 @@ export class FCMExcelService extends BaseApi {
         return null as any
     }
 
+  /**
+   * @param url /Storage/FCMExcel/deliveryInfoListExport
+   *
+   */
 
+  @POST('deliveryInfoListExport')
+  deliveryInfoListExport(
+    @Payload
+      _req:GetDeliveryInfoListInput
+
+  ): Observable<FileDto> {
+    return null as any
+  }
 
   }

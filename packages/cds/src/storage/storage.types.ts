@@ -80,7 +80,7 @@ export class OrderExportInput {
 export class PreShipmentExportInput {
   isCustomerCreate?: boolean;
 
-  /* 
+  /*
 0 = NotSet
 1 = Ocean
 2 = Air
@@ -95,7 +95,7 @@ export class PreShipmentExportInput {
 
   customerId?: string;
 
-  /* 
+  /*
 0 = NotSet
 1 = DeliveryGoodsByMyself
 2 = PickUpByCityocean */
@@ -150,6 +150,32 @@ export class GetShipmentListInput {
   searchText?: string;
 
   agentCustomerIds?: any[];
+
+  channel?: string;
+
+  startTime?: string;
+
+  endTime?: string;
+
+  ids?: any[];
+
+  isExport?: boolean;
+
+  /* 排序 */
+
+  sorting?: string;
+
+  /* 页大小 */
+
+  maxResultCount?: number;
+
+  /* 跳过指定条数 */
+
+  skipCount?: number;
+}
+
+export class GetDeliveryInfoListInput {
+  searchText?: string;
 
   channel?: string;
 

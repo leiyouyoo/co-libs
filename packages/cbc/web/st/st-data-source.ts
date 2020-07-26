@@ -1,11 +1,11 @@
 import { DecimalPipe } from '@angular/common';
-import { Host, Injectable } from '@angular/core';
+import { Host, Inject, Injectable, Optional } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { CNCurrencyPipe, DatePipe, YNPipe, _HttpClient } from '@co/common';
-import { deepCopy, deepGet } from '@co/core';
+import { CO_I18N_TOKEN, CoI18NService, deepCopy, deepGet } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 import {
   STColumn,
   STColumnFilter, STColumnViewValue,
@@ -38,6 +38,7 @@ export interface STDataSourceOptions {
   singleSort?: STSingleSort;
   multiSort?: STMultiSort;
   rowClassName?: STRowClassName;
+  checkOnLoad?: boolean;
 }
 
 export interface STDataSourceResult {
@@ -66,7 +67,9 @@ export class STDataSource {
     @Host() private ynPipe: YNPipe,
     @Host() private numberPipe: DecimalPipe,
     private dom: DomSanitizer,
-  ) {}
+    @Optional() @Inject(CO_I18N_TOKEN) private i18nSrv: CoI18NService,
+  ) {
+  }
 
   process(options: STDataSourceOptions): Observable<STDataSourceResult> {
     let data$: Observable<STData[]>;
@@ -160,6 +163,20 @@ export class STDataSource {
     }
 
     data$ = data$.pipe(map(result => this.optimizeData({ result, columns, rowClassName: options.rowClassName })));
+    data$ = data$.pipe(
+      map(result => {
+        if (!options.checkOnLoad) {
+          return result;
+        }  else {
+          return result.map(o => {
+            if (options.checkOnLoad && o?.hasOwnProperty('checked') === false) {
+              o.checked = true;
+            }
+            return o;
+          })
+        }
+      }),
+    );
 
     return data$.pipe(
       map(result => {
@@ -227,6 +244,9 @@ export class STDataSource {
         break;
     }
     if (text == null) text = '';
+    if (text && col.indexI18n && this.i18nSrv) {
+      text = this.i18nSrv.fanyi(text);
+    }
     return {
       text,
       _text: this.dom.bypassSecurityTrustHtml(text),
@@ -382,7 +402,16 @@ export class STDataSource {
         if (filter.reName) {
           obj = filter.reName!(filter.menus!, col);
         } else {
-          obj[filter.key!] = values.map(i => i.value).join(',') || null;
+          obj[filter.key!] =
+            values
+              .map(i => {
+                let value = i.value;
+                if (value instanceof Date) {
+                  return value.toISOString();
+                }
+                return value;
+              })
+              .join(',') || null;
         }
         ret = { ...ret, ...obj };
       });

@@ -8,8 +8,11 @@ title:
 ## zh-CN
 
 `[rowClassName]` 的使用及已内置的样式
+
 已有class: 
 `.st-row-red`  红色
+
+`.st-row-line-through` 删除样式，如果个别列需排除需要在columns 定义里加上 `className: 'no-line-through'`
 
 ## en-US
 
@@ -36,6 +39,7 @@ export class ComponentsStRowClassComponentComponent {
     { title: '电话', index: 'phone' },
     {
       title: '',
+      className: 'no-line-through',
       buttons: [
         {
           text: 'btn',

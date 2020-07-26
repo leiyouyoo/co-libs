@@ -1,0 +1,11 @@
+{
+  "ngPackage": {
+    "lib": {
+      "flatModuleFile": "coCarrierPicker",
+      "entryFile": "public_api.ts",
+      "umdModuleIds": {
+        "@co/core": "co.core"
+      }
+    }
+  }
+}
