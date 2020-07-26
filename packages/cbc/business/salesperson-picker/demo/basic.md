@@ -26,7 +26,7 @@ import { Component } from '@angular/core';
   `
 })
 export class SalespersonBasicComponent {
-  
+  selectedValue:string;
 }
 
 ```

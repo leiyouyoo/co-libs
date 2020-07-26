@@ -12,7 +12,6 @@ import { CustomerSearchScope } from '@co/cds';
         <co-customer-picker style="width: 100%;" formControlName="customerId" [coFilter]="customerFilter"> </co-customer-picker>
       </nz-form-control>
     </nz-form-item>
-    {{customerId}}
     </form>
   `,
 })
