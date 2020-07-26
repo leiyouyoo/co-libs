@@ -1,0 +1,23 @@
+<co-page-layout>
+  <co-toolbar>
+    <co-toolbar-item>
+      <button nz-button nzType="primary" (click)="showDetailDrawer()"><i nz-icon nzType="plus" nzTheme="outline"></i>新增</button>
+    </co-toolbar-item>
+    <co-toolbar-item alignRight>
+      <nz-spin [nzSpinning]="loading" nzDelay="300">
+        <nz-input-group style="width: 320px;" [nzSuffix]="suffixIconSearch">
+          <input type="text" nz-input placeholder="搜索" [(ngModel)]="searchParams.searchText"/>
+          <ng-template #suffixIconSearch>
+            <i nz-icon nzType="search" style="cursor: pointer" (click)="search()"></i>
+          </ng-template>
+        </nz-input-group>
+      </nz-spin>
+    </co-toolbar-item>
+  </co-toolbar>
+  <co-page-main>
+    <co-st [page]="{front:false, pageSizes: [15, 30, 45, 60]}" [ps]="searchParams.pageSize" [data]="users" [total]="total" [columns]="columns" [rowClassName]="rowClassName" size="small"
+           [loading]="loading" loadingDelay="300" virtualScroll [scroll]="{y:'700px'}" virtualMaxBufferPx="0" expandRowByClick
+           (change)="onTableChange($event)"
+           [showFilters]="false"></co-st>
+  </co-page-main>
+</co-page-layout>

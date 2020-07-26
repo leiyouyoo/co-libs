@@ -1,0 +1,5 @@
+{
+  "name": "co-app-<%= name %>",
+  "version": "0.0.1",
+  "description": "平台管理子应用"
+}

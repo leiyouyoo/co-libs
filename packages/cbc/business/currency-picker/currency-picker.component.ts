@@ -32,12 +32,13 @@ export class CurrencyPickerComponent extends PickerComponentBase {
     super(cdr);
 
     this.coLabelMember = 'name';
+    this.coValueMember = 'code';
   }
 
   //#endregion
 
   fetchRemoteData(_condition: any): Observable<any> {
-    console.log(_condition)
+    console.log(_condition);
     return this.currencyService.getAllForUiPicker(_condition);
   }
 }

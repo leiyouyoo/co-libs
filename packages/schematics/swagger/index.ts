@@ -18,7 +18,6 @@ import { getWorkspace } from '@schematics/angular/utility/config';
 import { buildRelativePath } from '@schematics/angular/utility/find-module';
 import axios from 'axios';
 import { groupBy } from 'lodash';
-import * as ts from 'typescript';
 
 // You don't have to export the function as default. You can also have more than one rule factory
 // per file.
@@ -32,17 +31,20 @@ export function buildCOSwagger(options: any): Rule {
   return async (tree: Tree, context: SchematicContext) => {
     // const data = await getSwaggerData(options)();
     console.log('loading....');
-    console.log('看我神威，无坚不催');
     const workspace = getWorkspace(tree);
     if (!options.project) {
       throw new SchematicsException('Option (project) is required.');
     }
+
     const projectName = options.project as string;
     const project = workspace.projects[projectName];
     options.path = `${project.sourceRoot}/app/service/${options.name}`;
+    console.log(`${options.path}/${options.name}.type.ts`);
+    [`${options.path}/index.ts`, `${options.path}/public_api.ts`, `${options.path}/${options.name}.types.ts`]
+      .filter(p => tree.exists(p))
+      .forEach(p => tree.delete(p));
 
-    const data = await getSwaggerData(options)();
-    const response = [addToNgModuleProviders(options), ...data];
+    const response = await getSwaggerData(options, project, tree)();
 
     // 导出模板
     let html = '';
@@ -71,7 +73,7 @@ export function buildCOSwagger(options: any): Rule {
   };
 }
 
-function getSwaggerData(options): () => Promise<any[]> {
+function getSwaggerData(options, project, tree: Tree): () => Promise<any[]> {
   // 获取接口数据
   return async () => {
     const res: any = await axios.get(options.url);
@@ -120,6 +122,13 @@ function getSwaggerData(options): () => Promise<any[]> {
           }
         });
       });
+
+      const name = strings.dasherize(na);
+      const path = `${options.path}/${name}.service.ts`;
+
+      if (tree.exists(path)) {
+        tree.delete(path);
+      }
 
       chainArr.push(
         mergeWith(
@@ -366,42 +375,4 @@ function setEntityName(ref, isEntity = false) {
     entityName = ref.includes('+') ? ref.substring(ref.lastIndexOf('+') + 1) : ref.substring(ref.lastIndexOf('.') + 1);
     return entityName;
   }
-}
-
-function addToNgModuleProviders(options: any): Rule {
-  return (host: Tree) => {
-    if (!options.module) {
-      return host;
-    }
-
-    const modulePath = `${options.path}/${options.module}`;
-    const moduleSource = readIntoSourceFile(host, modulePath);
-
-    const servicePath =
-      `${options.path}/` + (options.flat ? '' : strings.dasherize(options.name) + '/') + strings.dasherize(options.name) + '.service';
-
-    const relativePath = buildRelativePath(modulePath, servicePath);
-    const classifiedName = strings.classify(`${options.name}Service`);
-    const providersChanges = addProviderToModule(moduleSource, modulePath, classifiedName, relativePath);
-
-    const providersRecorder = host.beginUpdate(modulePath);
-    for (const change of providersChanges) {
-      if (change instanceof InsertChange) {
-        providersRecorder.insertLeft(change.pos, change.toAdd);
-      }
-    }
-    host.commitUpdate(providersRecorder);
-
-    return host;
-  };
-}
-
-function readIntoSourceFile(host: Tree, modulePath: string): ts.SourceFile {
-  const text = host.read(modulePath);
-  if (text === null) {
-    throw new SchematicsException(`File ${modulePath} does not exist.`);
-  }
-  const sourceText = text.toString('utf-8');
-
-  return ts.createSourceFile(modulePath, sourceText, ts.ScriptTarget.Latest, true);
 }

@@ -1,5 +1,10 @@
 {
   "schematics": {
+    "co-application": {
+      "description": "build co-application",
+      "factory": "./co-application/index#build",
+      "schema": "./co-application/schema.json"
+    },
     "swagger": {
       "description": "build co-service schematic",
       "factory": "./swagger/index#buildCOSwagger",
@@ -9,7 +14,9 @@
       "factory": "./ng-add",
       "description": "Create an Alain workspace.",
       "schema": "./ng-add/schema.json",
-      "aliases": ["alain-shell"]
+      "aliases": [
+        "alain-shell"
+      ]
     },
     "application": {
       "factory": "./application",
