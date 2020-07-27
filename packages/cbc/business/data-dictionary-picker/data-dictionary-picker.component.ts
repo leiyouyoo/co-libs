@@ -29,7 +29,7 @@ import * as _ from 'lodash';
 })
 export class DataDictionaryPickerComponent extends PickerComponentBase {
 
-  @Input() TypeCode: string;
+  @Input() typeCode: string;
 
   //#region  构造函数
 
@@ -82,7 +82,7 @@ export class DataDictionaryPickerComponent extends PickerComponentBase {
   }
 
   fetchRemoteData(condition: any): Observable<any> {
-    _.defaults(condition, { TypeCode: this.TypeCode });
+    _.defaults(condition, { typeCode: this.typeCode });
     return this.dataDictionaryService.getAll(condition);
   }
 
