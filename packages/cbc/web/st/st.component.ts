@@ -779,6 +779,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
       }
     } else {
       const result = btn.click(record, modal, this);
+      return result;
     }
   }
 
