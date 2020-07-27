@@ -77,6 +77,7 @@ import { generateModel } from './utils';
     '[class.st__p-left]': `page.placement === 'left'`,
     '[class.st__p-center]': `page.placement === 'center'`,
     '[class.st__width-strict]': `widthMode.type === 'strict'`,
+    '[class.st-bordered]': `bordered`,
     '[class.ant-table-rep]': `responsive`,
     '[class.ant-table-rep__hide-header-footer]': `responsiveHideHeaderFooter`,
   },
@@ -143,7 +144,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() loading: boolean | null = null;
   @Input() @InputNumber() loadingDelay = 0;
   @Input() loadingIndicator: TemplateRef<void>;
-  @Input() @InputBoolean() bordered = false;
+  @Input() @InputBoolean() bordered = true;
   @Input() size: 'small' | 'middle' | 'default';
   @Input() scroll: { y?: string; x?: string };
   @Input() singleSort: STSingleSort;
@@ -641,6 +642,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     const allUnChecked = validData.every(value => !value.checked);
     this._indeterminate = !this._allChecked && !allUnChecked;
     this._allCheckedDisabled = this._data.length === this._data.filter(w => w.disabled).length;
+    this.optimizeData();
     return this.cd();
   }
 
@@ -872,7 +874,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     return result;
   }
 
-  private optimizeData(): void {
+  optimizeData(): void {
     this._data = this.dataSource.optimizeData({ columns: this._columns, result: this._data, rowClassName: this.rowClassName });
   }
 

@@ -59,7 +59,8 @@
   // 过滤器行
   &-thead-row-filter {
     th {
-      padding-top: 0 !important;
+      padding-top: 6px !important;
+      padding-bottom: 6px !important;
     }
 
     .co-picker {
@@ -82,6 +83,12 @@
     }
     &@{st-prefix}-row-red {
       background: #FFA39E;
+    }
+    &@{st-prefix}-row-selected {
+      background:rgba(230,247,255,1);
+      &:hover td {
+        background:rgba(230,247,255,1);
+      }
     }
     &@{st-prefix}-row-line-through td:not(.no-line-through) {
       color: rgba(0, 0, 0, 0.25);
@@ -111,9 +118,40 @@
     }
   }
 
-  th {
-    .co-picker {
-      width: 100%;
+  tr {
+    th, td {
+      padding: 8px 12px;
+
+      .co-picker {
+        width: 100%;
+      }
+    }
+  }
+
+  &-bordered {
+    table {
+      border-collapse: collapse;
+    }
+
+    thead {
+      tr {
+        &:first-of-type {
+          th {
+            border-top: none;
+          }
+        }
+      }
+    }
+
+    th, td {
+      border: 1px solid rgba(231,231,231,1);
+
+      &:first-of-type {
+        border-left: none;
+      }
+      &:last-of-type {
+        border-right: none;
+      }
     }
   }
 
