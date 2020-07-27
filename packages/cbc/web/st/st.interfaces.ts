@@ -5,6 +5,7 @@ import { NzDrawerOptions } from 'ng-zorro-antd/drawer';
 import { ModalOptions } from 'ng-zorro-antd/modal';
 import { STComponent } from './st.component';
 import { SafeHtml } from '@angular/platform-browser';
+import { Subscription } from 'rxjs';
 
 export interface STWidthMode {
   /**
@@ -653,8 +654,9 @@ export interface STColumnButton {
    * - `edit` 编辑
    * - `save` 保存
    * - `cancel` 取消编辑
+   * - `delay` 延迟执行
    */
-  type?: 'none' | 'del' | 'modal' | 'static' | 'drawer' | 'link' | 'divider' | 'edit' | 'save' | 'cancel';
+  type?: 'none' | 'del' | 'modal' | 'static' | 'drawer' | 'link' | 'divider' | 'edit' | 'save' | 'cancel' | 'delay';
   /**
    * 点击回调
    * - Function
@@ -706,6 +708,13 @@ export interface STColumnButton {
   iifBehavior?: IifBehaviorType;
 
   tooltip?: string;
+
+  /**
+   * 加载中
+   */
+  loading?: boolean;
+
+  _delay$?: Subscription;
 
   [key: string]: any;
 }

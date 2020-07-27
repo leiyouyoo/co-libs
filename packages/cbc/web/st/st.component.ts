@@ -36,8 +36,8 @@ import {
 import { CoConfigService, CoSTConfig, deepCopy, deepMergeKey, InputBoolean, InputNumber, toBoolean } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzTableComponent, NzTableData } from 'ng-zorro-antd/table';
-import { from, Observable, of, Subject, Subscription } from 'rxjs';
-import { filter, takeUntil } from 'rxjs/operators';
+import { from, Observable, of, Subject, Subscription, timer } from 'rxjs';
+import { delay, filter, takeUntil } from 'rxjs/operators';
 import { STColumnSource } from './st-column-source';
 import { STDataSource, STDataSourceOptions, STDataSourceResult } from './st-data-source';
 import { STExport } from './st-export';
@@ -726,6 +726,18 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
         this.router.navigateByUrl(clickRes, { state: this.routerState });
       }
       return;
+    } else if (btn.type === 'delay') {
+      if (btn._delay$) {
+        btn._delay$.unsubscribe();
+        btn._delay$ = void 0;
+      } else {
+        btn._delay$ = timer(3e3)
+          .subscribe(() => {
+            btn._delay$ = void 0;
+            this.btnCallback(record, btn);
+            this.cd();
+          })
+      }
     } else if (btn.type === 'edit') {
 
     } else if (btn.type === 'save') {
@@ -766,7 +778,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
           break;
       }
     } else {
-      return btn.click(record, modal, this);
+      const result = btn.click(record, modal, this);
     }
   }
 

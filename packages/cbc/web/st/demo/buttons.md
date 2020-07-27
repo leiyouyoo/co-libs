@@ -109,6 +109,11 @@ export class DemoComponent {
           iif: record => record.id % 2 === 0,
         },
         {
+          text: 'Delay',
+          type: 'delay',
+          iif: (record) => record.id === 3,
+        },
+        {
           children: [
             {
               text: record => (record.id === 1 ? `过期` : `正常`),

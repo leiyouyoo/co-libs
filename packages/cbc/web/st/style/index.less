@@ -33,6 +33,16 @@
         pointer-events: none;
       }
     }
+    &-loading {
+      margin-left: 4px;
+
+      display: inline-flex;
+      line-height: 1;
+      vertical-align: 0.125em;
+      .ant-spin {
+        line-height: 1;
+      }
+    }
   }
   // 清除页码底部间距，在大部分列表中会包裹 `nz-card` 导致底部间距过大，若有需求可自行使用 `mb-md` 来调整
   .@{ant-prefix}-table ~ nz-pagination > .@{ant-prefix}-pagination {
