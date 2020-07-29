@@ -668,6 +668,11 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     return this;
   }
 
+  getCheckedList(): STData[] {
+    const res = this._data.filter(w => !w.disabled && w.checked === true);
+    return res;
+  }
+
   // #endregion
 
   // #region radio
