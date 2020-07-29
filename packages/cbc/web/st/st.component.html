@@ -38,6 +38,10 @@
     <i *ngIf="btn.icon.iconfont" nz-icon [nzIconfont]="btn.icon.iconfont"></i>
   </ng-container>
   <span [innerHTML]="_btnText(i, btn)" [ngClass]="{ 'pl-xs': btn.icon }"></span>
+  <nz-spin *ngIf="btn._delay$" nzSimple [nzIndicator]="indicatorTemplate" class="st__btn-loading"></nz-spin>
+  <ng-template #indicatorTemplate><i nz-icon nzType="loading"></i></ng-template>
+  <nz-spin *ngIf="btn.loading" nzSimple [nzIndicator]="indicatorTemplate" class="st__btn-loading"></nz-spin>
+  <ng-template #indicatorTemplate><i nz-icon nzType="loading"></i></ng-template>
 </ng-template>
 <ng-template #titleTpl let-i>
   <span [innerHTML]="i._text"></span>
@@ -65,7 +69,6 @@
   [nzTotal]="total"
   [nzShowPagination]="_isPagination"
   [nzFrontPagination]="false"
-  [nzBordered]="bordered"
   [nzSize]="size"
   [nzLoading]="_loading"
   [nzLoadingDelay]="loadingDelay"
@@ -183,7 +186,11 @@
       <ng-template [ngTemplateOutlet]="bodyHeader" [ngTemplateOutletContext]="{ $implicit: _statistical }"></ng-template>
     </ng-container>
     <ng-template #bodyTpl let-i let-index="index">
-      <tr [attr.data-index]="index" (click)="_rowClick($event, i, index)" [class.st-row-odd]="index % 2 === 1" [ngClass]="i._rowClassName">
+      <tr [attr.data-index]="index"
+          (click)="_rowClick($event, i, index)"
+          [class.st-row-odd]="index % 2 === 1"
+          [class.st-row-selected]="i.checked"
+          [ngClass]="i._rowClassName">
         <td *ngIf="showCheckbox">
           <label
             nz-checkbox

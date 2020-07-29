@@ -33,6 +33,16 @@
         pointer-events: none;
       }
     }
+    &-loading {
+      margin-left: 4px;
+
+      display: inline-flex;
+      line-height: 1;
+      vertical-align: 0.125em;
+      .ant-spin {
+        line-height: 1;
+      }
+    }
   }
   // 清除页码底部间距，在大部分列表中会包裹 `nz-card` 导致底部间距过大，若有需求可自行使用 `mb-md` 来调整
   .@{ant-prefix}-table ~ nz-pagination > .@{ant-prefix}-pagination {
@@ -58,10 +68,6 @@
   }
   // 过滤器行
   &-thead-row-filter {
-    th {
-      padding-top: 0 !important;
-    }
-
     .co-picker {
       min-width: initial;
     }
@@ -82,6 +88,12 @@
     }
     &@{st-prefix}-row-red {
       background: #FFA39E;
+    }
+    &@{st-prefix}-row-selected {
+      background:rgba(230,247,255,1);
+      &:hover td {
+        background:rgba(230,247,255,1);
+      }
     }
     &@{st-prefix}-row-line-through td:not(.no-line-through) {
       color: rgba(0, 0, 0, 0.25);
@@ -111,9 +123,36 @@
     }
   }
 
-  th {
-    .co-picker {
-      width: 100%;
+  tr {
+      .co-picker {
+        width: 100%;
+      }
+  }
+
+  &-bordered {
+    table {
+      border-collapse: collapse;
+    }
+
+    thead {
+      tr {
+        &:first-of-type {
+          th {
+            border-top: none;
+          }
+        }
+      }
+    }
+
+    th, td {
+      border: 1px solid rgba(231,231,231,1);
+
+      &:first-of-type {
+        border-left: none;
+      }
+      &:last-of-type {
+        border-right: none;
+      }
     }
   }
 

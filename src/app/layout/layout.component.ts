@@ -39,7 +39,9 @@ export class LayoutComponent implements OnDestroy {
         return;
       }
       this.isFetching = false;
-      scroll.scrollToTop();
+      if (!location.hash) {
+        scroll.scrollToTop();
+      }
     });
   }
 

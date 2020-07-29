@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NzCascaderOption } from 'ng-zorro-antd';
+import { OrganizationUnitService } from '@co/cds';
 
 /**
  *  级联选择
@@ -40,7 +41,7 @@ export class CoCascaderComponent implements OnInit {
   @Output() coSelectionChange = new EventEmitter<any>();
   @Output() coModelChange = new EventEmitter<any>();
 
-  constructor() {} // private organizationUnitService: OrganizationUnitService
+  constructor(private organizationUnitService: OrganizationUnitService) {} // private organizationUnitService: OrganizationUnitService
 
   ngOnInit(): void {
     // console.log(this.coOption);
@@ -58,29 +59,29 @@ export class CoCascaderComponent implements OnInit {
   }
 
   getData(reqID?) {
-    // const req: any = reqID ? { ParentId: reqID } : {};
-    // this.organizationUnitService.getGroupOrganizationUnits(req).subscribe(res => {
-    //   console.log(res);
-    //   const option: any = [];
-    //   res.items.forEach(data => {
-    //     option.push(this.getChildData(data));
-    //   });
-    //   this.coOption = option;
-    // });
+    const req: any = reqID ? { ParentId: reqID } : {};
+    this.organizationUnitService.getGroupOrganizationUnits(req).subscribe(res => {
+      console.log(res);
+      const option: any = [];
+      res.items.forEach(data => {
+        option.push(this.getChildData(data));
+      });
+      this.coOption = option;
+    });
   }
 
   getChildData(data) {
-    // let newList = {};
-    // newList["value"] = data.id;
-    // newList["label"] = data.displayNameLocalization;
-    // if( data.childrenDto && data.childrenDto.length > 0 ){
-    //   newList["children"] = [];
-    //   data.childrenDto.forEach( dto =>{
-    //     newList["children"].push(this.getChildData( dto ) );
-    //   })
-    // }else {
-    //   newList["isLeaf"] = true;
-    // }
-    // return newList;
+    let newList = {};
+    newList["value"] = data.id;
+    newList["label"] = data.displayNameLocalization;
+    if( data.childrenDto && data.childrenDto.length > 0 ){
+      newList["children"] = [];
+      data.childrenDto.forEach( dto =>{
+        newList["children"].push(this.getChildData( dto ) );
+      })
+    }else {
+      newList["isLeaf"] = true;
+    }
+    return newList;
   }
 }

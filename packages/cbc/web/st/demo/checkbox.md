@@ -14,16 +14,22 @@ title:
 Use `change` event get selected data.
 
 ```ts
-import { Component } from '@angular/core';
-import { STColumn, STData, STChange } from '@co/cbc/web/st';
+import { Component, ViewChild } from '@angular/core';
+import { STColumn, STData, STChange, STComponent } from '@co/cbc/web/st';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
-  selector: 'app-demo',
-  template: `<co-st [data]="url" [columns]="columns"
-        [req]="{params: params}" [res]="{process: dataProcess}"
-        (change)="change($event)"></co-st>`,
+  selector: 'app-ComponentsStCheckboxComponent',
+  template: `
+    <button nz-button nzType="primary" (click)="getChecked()">Get checked</button>
+    <co-st
+      #st
+      [data]="url" [columns]="columns"
+      [req]="{params: params}" [res]="{process: dataProcess}"
+      (change)="change($event)"></co-st>`,
 })
-export class DemoComponent {
+export class ComponentsStCheckboxComponentComponent {
+  @ViewChild('st') st: STComponent;
   url = `/users?total=100`;
   params = { a: 1, b: 2 };
   columns: STColumn[] = [
@@ -33,6 +39,8 @@ export class DemoComponent {
     { title: '电话', index: 'phone' },
     { title: '注册时间', type: 'date', index: 'registered' },
   ];
+  constructor(private messageService: NzMessageService,) {
+  }
   change(e: STChange) {
     console.log('change', e);
   }
@@ -41,6 +49,10 @@ export class DemoComponent {
       i.disabled = index === 0;
       return i;
     });
+  }
+  getChecked() {
+    console.log(this.st.getCheckedList());
+    this.messageService.success('打开控制台查看')
   }
 }
 ```
