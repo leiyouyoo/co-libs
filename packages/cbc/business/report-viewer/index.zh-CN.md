@@ -16,7 +16,7 @@ module: import { ReportViewerModule } from '@co/cbc';
 | 成员 | 说明 | 类型 | 默认值 |
 |----|----|----|-----|
 | `[coParam]` | 需要传入的值 | object |`'type','height','ids' ,'getReportUrl'` 
-| `coParam.type` | 报表类型 | string |`'order','mark'` 
+| `coParam.height` | 报表高度 | string |`'600'` 
 | `coParam.width` | 报表宽度 | string |`'600'` 
 | `coParam.ids` | 获取报表组件的id | [] | -
 | `coParam.getReportUrl` | 报表组件接口地址 | string | - 

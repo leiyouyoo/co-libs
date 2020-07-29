@@ -1,6 +1,6 @@
 <div class="report-viewer-container">
   <button [hidden]="isHide"  [ngClass]="{'disabled': !preDisble}"  (click)="chooseReport(true)">&lt;</button>
-  <iframe #reportIframe src="" allowtransparency="true" frameborder="0" height="600px"></iframe>
+  <iframe #reportIframe src="" allowtransparency="true" frameborder="0"></iframe>
   <button [hidden]="isHide" [ngClass]="{'disabled': !nextDisble}"  (click)="chooseReport(false)">&gt;</button>
 </div>
 
