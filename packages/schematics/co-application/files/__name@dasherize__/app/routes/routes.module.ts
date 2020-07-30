@@ -16,13 +16,13 @@ export const routers: Routes = [
     component: DefaultLayoutComponent,
     children: [
       {
-        path: '**',
-        component: EmptyComponent,
-      },
-      {
         path: 'demo',
         loadChildren: () => import('./demo/demo.module').then(mod => mod.DemoModule),
 
+      },
+      {
+        path: '**',
+        component: EmptyComponent,
       },
     ],
   },

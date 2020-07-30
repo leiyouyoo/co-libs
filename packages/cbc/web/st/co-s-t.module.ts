@@ -18,7 +18,7 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { STRowDirective } from './st-row.directive';
 import { STWidgetHostDirective } from './st-widget-host.directive';
 import { STComponent } from './st.component';
-import { NzAutocompleteModule, NzDatePickerModule, NzSelectModule } from 'ng-zorro-antd';
+import { NzAutocompleteModule, NzDatePickerModule, NzSelectModule, NzSpinModule } from 'ng-zorro-antd';
 import { TranslateModule } from '@ngx-translate/core';
 import { SettingOutline, DeleteOutline, EllipsisOutline } from '@ant-design/icons-angular/icons';
 import { CalcScrollDirective } from './calc-scroll.directive';
@@ -50,6 +50,7 @@ const icons = [SettingOutline, DeleteOutline, EllipsisOutline];
     TranslateModule,
     NzIconModule,
     NzDatePickerModule,
+    NzSpinModule,
   ],
   declarations: [...COMPONENTS, ...DIRECTIVES],
   exports: [...COMPONENTS, ...DIRECTIVES],

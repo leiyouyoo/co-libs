@@ -316,7 +316,7 @@ class TestComponent {
 | `[icon]` | 图标与文本共存 | `string | STIcon` | - |
 | `[i18n]` | 文本i18n | `string` | - |
 | (deprecated) `[format]` | 格式化文本 | `(record: STData, btn: STColumnButton) => string` | - |
-| `[type]` | 按钮类型 | `none,del,modal,static,drawer,link` | - |
+| `[type]` | 按钮类型 | `none,del,modal,static,drawer,link,edit,save,cancel,delay` | - |
 | `[click]` | 点击回调；**函数：** `type=modal` 只会在 `确认` 时触发且 `modal` 参数有效<br>**reload：** 重新刷新当前页<br>**load：** 重新加载数据，并重置页码为：`1` | `(record: STData, modal?: any, instance?: STComponent) => void | reload` | - |
 | `[pop]` | 是否需要气泡确认框 | `boolean, string, STColumnButtonPop` | `false` |
 | (deprecated) `[popTitle]` | 气泡确认框内容 | `string` | 确认删除吗？ |
@@ -328,6 +328,7 @@ class TestComponent {
 | `[iifBehavior]` | 表达式 `false` 值时渲染方式 | `hide,disabled` | `hide` |
 | `[tooltip]` | 按钮文字提示 | `string` | - |
 | `[className]` | button 样式 | `string | (data: STData) => string` | - |
+| `[loading]` | button 状态，加载中 | `boolean` | - |
 
 ### STIcon
 

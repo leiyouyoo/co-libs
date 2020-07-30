@@ -28,6 +28,7 @@ export class ReportViewerComponent {
 
   @Input() coParam:any = {
     width :600 ,
+    height : 600
   };
 
   @ViewChild('reportIframe' , {static:true} ) reportIframe : ElementRef;
@@ -78,14 +79,8 @@ export class ReportViewerComponent {
   getReportData( idx ){
 
     this.reportIframe.nativeElement.setAttribute("width",this.coParam.width);
-    if( this.coParam.type == 'order'){
-      //http://192.168.1.5:8002/FCM/WarehouseReceipt/GetWarehouseRecipt?Id=
-      this.reportIframe.nativeElement.setAttribute("src", this.coParam.getReportUrl + this.coParam.ids[idx] );
-
-    }else {
-      //http://192.168.1.5:8002/FCM/SideMarksReport/GetReport?FileId=
-      this.reportIframe.nativeElement.setAttribute("src", this.coParam.getReportUrl + this.coParam.ids[idx] );
-    }
+    this.reportIframe.nativeElement.setAttribute("height",this.coParam.height);
+    this.reportIframe.nativeElement.setAttribute("src", this.coParam.getReportUrl + this.coParam.ids[idx] );
 
   }
 
