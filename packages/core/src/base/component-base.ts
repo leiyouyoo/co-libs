@@ -38,8 +38,5 @@ export abstract class CoComponentBase extends LifeCycleComponent {
   public $navigate(commands: any[], extras?: NavigationExtras): void {
     const ngZone = this.injector.get(NgZone);
     window.planet.portalApplication.navigate(commands, extras);
-    // ngZone.runOutsideAngular(() => {
-
-    // });
   }
 }

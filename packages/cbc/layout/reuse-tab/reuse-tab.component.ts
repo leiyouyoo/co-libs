@@ -19,8 +19,10 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CoI18NService, CO_I18N_TOKEN, InputBoolean, InputNumber } from '@co/core';
+import * as _ from 'lodash';
 import { NzTabSetComponent } from 'ng-zorro-antd/tabs';
 import { Subject } from 'rxjs';
+
 import { debounceTime, filter, takeUntil } from 'rxjs/operators';
 import { ReuseTabContextService } from './reuse-tab-context.service';
 import {
@@ -35,6 +37,7 @@ import {
 } from './reuse-tab.interfaces';
 import { ReuseTabService } from './reuse-tab.service';
 
+declare var window: any;
 @Component({
   selector: 'reuse-tab, [reuse-tab]',
   exportAs: 'reuseTab',
@@ -94,7 +97,27 @@ export class ReuseTabComponent implements OnInit, OnChanges, OnDestroy {
   ) {}
 
   private genTit(title: ReuseTitle): string {
-    return title.i18n && this.i18nSrv ? this.i18nSrv.fanyi(title.i18n) : title.text!;
+    let i18nName = title.i18n;
+    const segs = _.split(i18nName || '', ':');
+    const module = window.planet?.apps[segs.length > 0 ? segs[0] : ''];
+    let tIl8nSrv = this.i18nSrv;
+    if (module) {
+      i18nName = segs[1];
+      // tIl8nSrv = module.appModuleRef.injector.r.get(CO_I18N_TOKEN);
+      // tIl8nSrv = _.find(module.appModuleRef.injector._r3Injector.records,(item)=>{
+      //     return item[0].name=='I18NService'
+      // });
+
+      // TODO:优化此处代码
+      for (const item of module.appModuleRef.injector._r3Injector.records) {
+        if (item[0].name === 'I18NService') {
+          tIl8nSrv = item[1].value;
+          break;
+        }
+      }
+    }
+
+    return title.i18n && tIl8nSrv ? tIl8nSrv.fanyi(title.i18n) : title.text || title.i18n!;
   }
 
   private get curUrl() {
@@ -220,10 +243,14 @@ export class ReuseTabComponent implements OnInit, OnChanges, OnDestroy {
       e.preventDefault();
       e.stopPropagation();
     }
-    const item = this.list[idx];
-    this.srv.close(item.url, includeNonCloseable);
-    this.close.emit(item);
-    this.cdr.detectChanges();
+
+    this.srv.componentRef.instance.coOnClosing().then(v => {
+      const item = this.list[idx];
+      this.srv.close(item.url, includeNonCloseable);
+      this.close.emit(item);
+      this.cdr.detectChanges();
+    });
+
     return false;
   }
 

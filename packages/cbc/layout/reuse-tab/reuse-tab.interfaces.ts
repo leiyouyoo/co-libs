@@ -115,6 +115,7 @@ export type ReuseHookTypes = 'coOnActived' | 'coOnDeactived';
 
 export interface ReuseComponentInstance {
   coOnActived: () => void;
+  coOnClosing: () => Promise<any>;
   coOnDeactived: () => void;
   destroy: () => void;
 }

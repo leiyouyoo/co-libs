@@ -221,35 +221,20 @@ export class ReuseTabService implements OnDestroy {
    * @param route 指定路由快照
    */
   getTitle(url: string, route?: ActivatedRouteSnapshot): ReuseTitle {
-    const segs = _.split('/');
-    let i18nSrv: any = null;
-    if (segs.length > 0) {
-      const moduleName = segs[1];
-      const module = window.planet[moduleName];
-      if (module) {
-        const moduleInjector = module.appModuleRef.injector;
-        i18nSrv = moduleInjector.get(CO_I18N_TOKEN);
-      }
-    }
-
     if (this._titleCached[url]) {
       return this._titleCached[url];
     }
 
+    const paramTitle = route?.queryParams?._title;
     if (route && route.data && (route.data.titleI18n || route.data.title)) {
-      if (route.data.titleI18n && i18nSrv) {
-        return {
-          text: i18nSrv.fanyi(route.data.titleI18n, undefined, false) || route.data.title,
-        } as ReuseTitle;
-      } else {
-        return {
-          text: route.data.title,
-        } as ReuseTitle;
-      }
+      return {
+        i18n: paramTitle || route.data.titleI18n,
+        text: paramTitle || route.data.title,
+      } as ReuseTitle;
     }
 
     const menu = this.getMenu(url);
-    return menu ? { text: menu.text, i18n: menu.i18n } : { text: url };
+    return menu ? { text: menu.text, i18n: menu.i18n } : { text: paramTitle || url };
   }
 
   /**

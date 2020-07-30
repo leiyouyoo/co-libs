@@ -1,4 +1,4 @@
-import { Injector, Optional, OnDestroy, OnInit, OnChanges, AfterViewInit, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Injector, OnChanges, OnDestroy, OnInit, Optional, SimpleChanges } from '@angular/core';
 
 import { CoComponentBase } from './component-base';
 
@@ -10,23 +10,21 @@ export abstract class CoPageBase extends CoComponentBase implements OnInit, OnCh
     super(injector);
   }
 
-  coOnInit(): void {
+  coOnInit(): void {}
+
+  coOnActived(): void {}
+
+  coOnDeactived(): void {}
+
+  coOnClosing(): Promise<any> {
+    return Promise.resolve(true);
   }
 
-  coOnActived(): void {
-  }
+  coOnChanges(changes: SimpleChanges): void {}
 
-  coOnDeactived(): void {
-  }
+  coAfterViewInit(): void {}
 
-  coOnChanges(changes: SimpleChanges): void {
-  }
-
-  coAfterViewInit(): void {
-  }
-
-  coOnDestroy(): void {
-  }
+  coOnDestroy(): void {}
 
   ngOnInit(): void {
     // 页面初始化埋点
