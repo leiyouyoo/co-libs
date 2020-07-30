@@ -14,20 +14,27 @@ title:
 Use `#expand` template implement expandable, allowing you to receive three values: `item`, `index`, `column`. Additional achievable: nested subtables.
 
 ```ts
-import { Component } from '@angular/core';
-import { STColumn } from '@co/cbc/web/st';
+import { Component, ViewChild } from '@angular/core';
+import { STColumn, STComponent } from '@co/cbc/web/st';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
-  selector: 'app-demo',
+  selector: 'app-ComponentsStExpandComponent',
   template: `
-    <co-st [data]="users" [columns]="columns" [expand]="expand" expandRowByClick expandAccordion>
+    <button nz-button nzType="primary" (click)="getChecked()">Get checked</button>
+    <co-st #st [data]="users" [columns]="columns" [expand]="expand" expandRowByClick expandAccordion>
       <ng-template #expand let-item let-index="index" let-column="column">
         {{ item.description }}
+        <co-st [data]="item.items"
+               [page]="{ show: false }"
+               [columns]="childColumns"
+               [showFilters]="false"></co-st>
       </ng-template>
     </co-st>
   `,
 })
-export class DemoComponent {
+export class ComponentsStExpandComponentComponent {
+  @ViewChild('st') st: STComponent;
   users: any[] = Array(10)
     .fill({})
     .map((_item: any, idx: number) => {
@@ -37,6 +44,7 @@ export class DemoComponent {
         age: Math.ceil(Math.random() * 10) + 20,
         // 是否显示展开按钮
         showExpand: idx !== 0,
+        items: new Array(3).fill(0).map((o, i) => ({a: i, b: `${i}${i}`})),
         description: `${idx + 1}. My name is John Brown, I am 32 years old, living in New York No. 1 Lake Park.`,
       };
     });
@@ -52,5 +60,16 @@ export class DemoComponent {
       ],
     },
   ];
+  childColumns: STColumn[] = [
+    { title: 'A', index: 'a' },
+    { title: 'B', index: 'b' },
+  ];
+  constructor(private messageService: NzMessageService,) {
+  }
+  getChecked() {
+    console.log(this.st.getCheckedList());
+    this.messageService.success('打开控制台查看')
+  }
 }
+
 ```

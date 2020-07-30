@@ -30,6 +30,6 @@ export class FlightPickerComponent extends PickerComponentBase implements OnInit
   }
 
   fetchRemoteData(_condition: any): Observable<any> {
-    return this.flightService.getAll(_condition);
+    return this.flightService.getAllForUiPicker(_condition);
   }
 }

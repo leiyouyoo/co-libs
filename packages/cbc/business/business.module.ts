@@ -19,6 +19,7 @@ import { CascaderModule } from '@co/cbc/business/cascader';
 import { PortOfficePickerModule } from '@co/cbc/business/port-office-picker';
 import { SalespersonPickerModule } from '@co/cbc/business/salesperson-picker';
 import { CarrierPickerModule } from '@co/cbc/business/carrier-picker';
+import { ShippingLinePickerModule } from '@co/cbc/business/shipping-line-picker';
 
 const EXPORT_MODULES: any[] = [
   CustomerPickerModule,
@@ -40,6 +41,7 @@ const EXPORT_MODULES: any[] = [
   PortOfficePickerModule,
   SalespersonPickerModule,
   CarrierPickerModule,
+  ShippingLinePickerModule,
 ];
 const IMPORT_MODULES: any[] = [CdsModule];
 

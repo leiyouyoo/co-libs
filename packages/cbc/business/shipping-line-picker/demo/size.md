@@ -24,16 +24,16 @@ import { Component } from '@angular/core';
 
     <br /><br />
 
-    <co-commodity-picker [coSize]="size"  [(ngModel)]="selectedValue">
-    </co-commodity-picker>
+    <co-shipping-line-picker [coSize]="size"  [(ngModel)]="selectedValue">
+    </co-shipping-line-picker>
 
     <p>{{selectedValue}}</p>
   </div>
   `,
 })
-export class CustomerPickerSizeComponent {
+export class ShippingLinePickerSizeComponent {
   size = 'default';
-  selectedValue = 'd86b5fdd-edcb-e111-8d6d-0026551ca87b';
+  selectedValue = '9f18bbd4-aabd-4e89-9fe4-6cc9b9807b8e';
 }
 
 

@@ -192,6 +192,10 @@ export interface STData {
    * delon 用于模板显示，co 用于构造行内编辑
    */
   _values: STColumnViewValue[];
+  /**
+   * expand 嵌套的co-st 选中数据
+   */
+  expandSelectedList?: STData[];
 
   [key: string]: any;
 }

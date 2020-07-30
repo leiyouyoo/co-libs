@@ -30,7 +30,7 @@ import { CustomerPickerComponent } from '@co/cbc';
 export class CustomerPickerMethodsComponent {
   @ViewChild(CustomerPickerComponent, { static: true }) coCustomerPickerComponent!: CustomerPickerComponent;
 
-  selectedValue: number = 2;
+  selectedValue = '25f6f24a-22ea-4b85-b916-1345a122d295';
 
   onFocus(_e: any) {
     this.coCustomerPickerComponent.focus();

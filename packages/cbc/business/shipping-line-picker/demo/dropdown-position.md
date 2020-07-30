@@ -18,16 +18,16 @@ import { Component } from '@angular/core';
   selector: 'app-demo',
   template: `
   <div style="margin-top:8px;float:right;">
-    <co-customer-picker coSize="default" [coDropdownStyle]="{width:'500px',left:'-60%'}"  coDropdownMode="table" [coDropdownColumns]="dropdownColumns"  [(ngModel)]="selectedValue" [coMode]="mode" [coMaxMultipleCount]="maxMultipleCount" style="width:300px">
-    </co-customer-picker>
+    <co-shipping-line-picker coSize="default" [coDropdownStyle]="{width:'500px',left:'-60%'}"  coDropdownMode="table" [coDropdownColumns]="dropdownColumns"  [(ngModel)]="selectedValue" [coMode]="mode" [coMaxMultipleCount]="maxMultipleCount" style="width:300px">
+    </co-shipping-line-picker>
     <p>{{selectedValue}}</p>
   </div>
   `,
 })
-export class CustomerPickerDropdownPositionComponent {
+export class ShippingLinePickerDropdownPositionComponent {
   mode = 'multiple';
   maxMultipleCount = 2;
-  selectedValue = ['25f6f24a-22ea-4b85-b916-1345a122d295', '5ea4a683-b0fa-47f8-9757-3c04c1f1474d'];
+  selectedValue = ['9f18bbd4-aabd-4e89-9fe4-6cc9b9807b8e', '8addaa17-68fe-4cd4-9e88-beb4a6782c56'];
   dropdownColumns: any[] = [{
     name: 'name',
     label: '名称',

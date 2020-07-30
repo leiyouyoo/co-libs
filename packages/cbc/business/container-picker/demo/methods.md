@@ -31,7 +31,7 @@ import { ContainerPickerComponent } from '@co/cbc';
 export class ContainerPickerMethodsComponent {
   @ViewChild(ContainerPickerComponent, { static: true }) coContainerPickerComponent!: ContainerPickerComponent;
 
-  selectedValue = [2];
+  selectedValue = ['b1dfd995-5d98-42fe-a81c-55ec4db2c49a'];
 
   onFocus() {
     this.coContainerPickerComponent.focus();

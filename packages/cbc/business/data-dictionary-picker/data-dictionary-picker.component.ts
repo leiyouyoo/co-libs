@@ -29,7 +29,7 @@ import * as _ from 'lodash';
 })
 export class DataDictionaryPickerComponent extends PickerComponentBase {
 
-  @Input() TypeCode: string;
+  @Input() typeCode: string | string[];
 
   //#region  构造函数
 
@@ -50,6 +50,12 @@ export class DataDictionaryPickerComponent extends PickerComponentBase {
     const optionList$: Observable<string[]> = this.searchChange$.asObservable().pipe(
       switchMap((condition: any) => {
         this.isLoading = true;
+        condition = {
+          ...condition,
+          skipCount: this.skipCount,
+          maxResultCount: this.coPageSize,
+          ...this.coFilter,
+        };
         return this.fetchRemoteData(condition);
       }),
       takeUntil(this.destroy$),
@@ -82,8 +88,8 @@ export class DataDictionaryPickerComponent extends PickerComponentBase {
   }
 
   fetchRemoteData(condition: any): Observable<any> {
-    _.defaults(condition, { TypeCode: this.TypeCode });
-    return this.dataDictionaryService.getAll(condition);
+    _.defaults(condition, { typeCodes: Array.isArray(this.typeCode) ? this.typeCode : [this.typeCode] });
+    return this.dataDictionaryService.getAllForUiPicker(condition);
   }
 
   writeValue(modelValue: NzSafeAny | NzSafeAny[]): void {

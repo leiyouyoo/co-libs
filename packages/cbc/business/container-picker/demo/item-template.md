@@ -17,17 +17,15 @@ import { Component } from '@angular/core';
   selector: 'app-demo',
   template: `
   <div>
-    <co-container-picker coDropdownMode="custom" [coItemRender]="itemTemplate" [(ngModel)]="selectedValue"  >
+    <co-container-picker coDropdownMode="custom" [coItemRender]="itemTemplate" >
     <ng-template #itemTemplate let-item>
-    <p> {{item.name}}(<span style='color:red;'>{{item.tel}}</span>)</p>
+    <p> {{item.name}}(<span style='color:red;'>{{item.teu}}</span>)</p>
     </ng-template>
     </co-container-picker>
-    <p>{{selectedValue}}</p>
   </div>
   `,
 })
 export class ContainerPickerItemTemplateComponent {
-  selectedValue = [2];
 }
 
 

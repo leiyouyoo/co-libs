@@ -16,14 +16,12 @@ import { Component } from '@angular/core';
   selector: 'app-demo',
   template: `
   <div>
-    <co-shipname-picker [(ngModel)]="selectedValue">
-    </co-shipname-picker>
-    <p>{{selectedValue}}</p>
+    <co-shipping-line-picker>
+    </co-shipping-line-picker>
   </div>
   `
 })
-export class ShipnamePickerBasicComponent {
-  selectedValue;
+export class ShippingLinePickerBasicComponent {
 }
 
 ```

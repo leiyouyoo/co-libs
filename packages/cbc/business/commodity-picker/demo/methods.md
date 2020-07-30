@@ -31,7 +31,7 @@ import { CommodityPickerComponent } from '@co/cbc';
 export class CustomerPickerMethodsComponent {
   @ViewChild(CommodityPickerComponent, { static: true }) coCommodityPickerComponent!: CommodityPickerComponent;
 
-  selectedValue: number = 222;
+  selectedValue = 'd86b5fdd-edcb-e111-8d6d-0026551ca87b';
 
   onFocus() {
     this.coCommodityPickerComponent.focus();

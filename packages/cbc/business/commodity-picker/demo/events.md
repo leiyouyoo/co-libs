@@ -24,7 +24,7 @@ import { Component } from '@angular/core';
   `,
 })
 export class CustomerPickerEventsComponent {
-  selectedValue: number = 222;
+  selectedValue = 'd86b5fdd-edcb-e111-8d6d-0026551ca87b';
   msg: string;
 
   onFocus() {

@@ -3,21 +3,21 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 
-import { ContainerService } from '@co/cds';
 import { PickerComponentBase } from '@co/cbc/core';
+import { ShippingLineService } from '@co/cds';
 
 /**
- * 箱选择器控件
+ * 航线选择器控件
  */
 @Component({
-  selector: 'co-container-picker',
-  exportAs: 'coContainerPicker',
+  selector: 'co-shipping-line-picker',
+  exportAs: 'coShippingLinePicker',
   templateUrl: '../templates/picker-template.component.html',
   host: { '[class.co-picker]': 'true' },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => ContainerPickerComponent),
+      useExisting: forwardRef(() => ShippingLinePickerComponent),
       multi: true,
     },
   ],
@@ -25,21 +25,20 @@ import { PickerComponentBase } from '@co/cbc/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class ContainerPickerComponent extends PickerComponentBase {
+export class ShippingLinePickerComponent extends PickerComponentBase {
   //#region  构造函数
 
-  constructor(cdr: ChangeDetectorRef, private containerService: ContainerService) {
+  constructor(cdr: ChangeDetectorRef, private shippingLineService: ShippingLineService) {
     super(cdr);
 
-    this.coLabelMember = 'code';
-    this.coMode = 'multiple';
-    this.coMaxMultipleCount = 3;
+    this.coLabelMember = 'localizationName';
   }
 
   //#endregion
 
-
   fetchRemoteData(_condition: any): Observable<any> {
-    return this.containerService.getAllForUiPicker(_condition);
+    _condition.sorting = 'code';
+    _condition.maxResultCount = 20;
+    return this.shippingLineService.getAllForUiPicker(_condition);
   }
 }

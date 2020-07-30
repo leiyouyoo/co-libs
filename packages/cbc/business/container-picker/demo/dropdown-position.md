@@ -27,7 +27,7 @@ import { Component } from '@angular/core';
 export class ContainerPickerDropdownPositionComponent {
   mode = 'multiple';
   maxMultipleCount = 2;
-  selectedValue: number[] = [2, 10, 23, 78, 90, 100];
+  selectedValue = ['b1dfd995-5d98-42fe-a81c-55ec4db2c49a', '1902d3c9-fbe7-4b0f-b362-05ba1c7675f2'];
   dropdownColumns: any[] = [{
     name: 'name',
     label: '名称',

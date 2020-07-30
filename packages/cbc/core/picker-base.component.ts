@@ -57,13 +57,13 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   onTouched: OnTouchedType = () => { };
   coFilterOption = () => true;
   optionList: Array<{ value: string; text: string }> = [];
-  searchChange$: any = new BehaviorSubject({});
   isLoading = false;
   loadingMode: LoadMode = 'more';
   hasMore = true;
   searchText = '';
   skipCount = 0;
   hasLoadedByids = false;
+  searchChange$: any = new BehaviorSubject({});
 
   //#endregion
 
@@ -87,7 +87,12 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
       distinctUntilChanged(),
       switchMap((condition: any) => {
         this.isLoading = true;
-
+        condition = {
+          ...condition,
+          skipCount: this.skipCount,
+          maxResultCount: this.coPageSize,
+          ...this.coFilter,
+        }
         // return this.customerService.getAllBySearch(condition);
         return this.fetchRemoteData(condition);
       }),
@@ -245,10 +250,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
     };
 
     this.searchChange$.next({
-      ...this.coFilter,
       ids: covertModelToList(value, this.coMode),
-      skipCount: this.skipCount,
-      maxResultCount: this.coPageSize,
     });
   }
 
@@ -257,13 +259,13 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
     this.loadingMode = 'search';
     this.searchText = value;
     this.skipCount = 0;
-    this.searchChange$.next({ ...this.coFilter, searchText: value, skipCount: this.skipCount, maxResultCount: this.coPageSize });
+    this.searchChange$.next({ searchText: value });
   }
 
   private loadMore(value: any): void {
     this.loadingMode = 'more';
 
-    this.searchChange$.next({ ...this.coFilter, searchText: value, skipCount: this.skipCount, maxResultCount: this.coPageSize });
+    this.searchChange$.next({ searchText: value });
   }
 
   protected sortByDownList(items: any[]) {

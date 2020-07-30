@@ -17,16 +17,16 @@ import { Component } from '@angular/core';
   selector: 'app-demo',
   template: `
   <div>
-    <co-customer-picker  [(ngModel)]="selectedValue" [coMode]="mode" [coMaxMultipleCount]="maxMultipleCount" style="width:300px">
-    </co-customer-picker>
+    <co-shipping-line-picker  [(ngModel)]="selectedValue" [coMode]="mode" [coMaxMultipleCount]="maxMultipleCount" style="width:300px">
+    </co-shipping-line-picker>
     <p>{{selectedValue}}</p>
   </div>
   `,
 })
-export class CustomerPickerMultipleComponent {
+export class ShippingLinePickerMultipleComponent {
   mode = 'multiple';
   maxMultipleCount = 2;
-  selectedValue = ['25f6f24a-22ea-4b85-b916-1345a122d295', '5ea4a683-b0fa-47f8-9757-3c04c1f1474d'];
+  selectedValue = ['9f18bbd4-aabd-4e89-9fe4-6cc9b9807b8e', '8addaa17-68fe-4cd4-9e88-beb4a6782c56'];
 }
 
 ```

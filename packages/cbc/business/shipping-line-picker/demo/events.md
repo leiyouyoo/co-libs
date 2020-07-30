@@ -1,13 +1,13 @@
 ---
 title:
-  zh-CN: 客户选择器事件使用样例
+  zh-CN: 航线选择器事件使用样例
   en-US: Events Usage
 order: 7
 ---
 
 ## zh-CN
 
-客户选择器事件(coFocus,coBlur,coOpenChange)使用样例.
+航线选择器事件(coFocus,coBlur,coOpenChange)使用样例.
 
 
 ```ts
@@ -17,19 +17,19 @@ import { Component } from '@angular/core';
   selector: 'app-demo',
   template: `
     <div>
-      <co-customer-picker
+      <co-shipping-line-picker
         [(ngModel)]="selectedValue"
         (coFocus)="onFocus($event)"
         (coBlur)="onBlur($event)"
         (coOpenChange)="onOpenChange($event)"
       >
-      </co-customer-picker>
+      </co-shipping-line-picker>
       <p>{{ msg }}</p>
     </div>
   `,
 })
-export class CustomerPickerEventsComponent {
-  selectedValue = '25f6f24a-22ea-4b85-b916-1345a122d295';
+export class ShippingLinePickerEventsComponent {
+  selectedValue = '9f18bbd4-aabd-4e89-9fe4-6cc9b9807b8e';
   msg: string;
 
   onFocus(_e: any) {
