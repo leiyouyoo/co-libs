@@ -298,7 +298,8 @@ export class ReuseTabService implements OnDestroy {
         .reverse()
         .join('/');
 
-    return url + ':' + _.values(route.queryParams).join('-');
+    return url;
+    // return url + ':' + _.values(route.queryParams).join('-');
   }
   /**
    * 检查快照是否允许被复用
