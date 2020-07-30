@@ -14,10 +14,12 @@ import {
   SimpleChange,
   SimpleChanges,
   TemplateRef,
+  ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CoI18NService, CO_I18N_TOKEN, InputBoolean, InputNumber } from '@co/core';
+import { NzTabSetComponent } from 'ng-zorro-antd/tabs';
 import { Subject } from 'rxjs';
 import { debounceTime, filter, takeUntil } from 'rxjs/operators';
 import { ReuseTabContextService } from './reuse-tab-context.service';
@@ -48,6 +50,7 @@ import { ReuseTabService } from './reuse-tab.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class ReuseTabComponent implements OnInit, OnChanges, OnDestroy {
+  @ViewChild('tabset') private tabset: NzTabSetComponent;
   private unsubscribe$ = new Subject<void>();
   private updatePos$ = new Subject<void>();
   private _keepingScrollContainer: Element;
@@ -88,7 +91,7 @@ export class ReuseTabComponent implements OnInit, OnChanges, OnDestroy {
     private route: ActivatedRoute,
     @Optional() @Inject(CO_I18N_TOKEN) private i18nSrv: CoI18NService,
     @Inject(DOCUMENT) private doc: any,
-  ) { }
+  ) {}
 
   private genTit(title: ReuseTitle): string {
     return title.i18n && this.i18nSrv ? this.i18nSrv.fanyi(title.i18n) : title.text!;
@@ -112,7 +115,7 @@ export class ReuseTabComponent implements OnInit, OnChanges, OnDestroy {
     };
   }
 
-  private genList(notify: ReuseTabNotify): void {
+  private genList(notify: ReuseTabNotify | null): void {
     const ls = this.srv.items.map(
       (item: ReuseTabCached, index: number) =>
         ({
@@ -127,7 +130,7 @@ export class ReuseTabComponent implements OnInit, OnChanges, OnDestroy {
 
     const url = this.curUrl;
     let addCurrent = ls.findIndex(w => w.url === url) === -1;
-    if (notify.active === 'close' && notify.url === url) {
+    if (notify && notify.active === 'close' && notify.url === url) {
       addCurrent = false;
       let toPos = 0;
       const curItem = this.list.find(w => w.url === url)!;
@@ -234,7 +237,9 @@ export class ReuseTabComponent implements OnInit, OnChanges, OnDestroy {
     this.updatePos$.pipe(takeUntil(this.unsubscribe$), debounceTime(50)).subscribe(() => {
       const url = this.srv.getUrl(this.route.snapshot);
       const ls = this.list.filter(w => w.url === url || !this.srv.isExclude(w.url));
-      if (ls.length === 0) return;
+      if (ls.length === 0) {
+        return;
+      }
 
       const last = ls[ls.length - 1];
       const item = ls.find(w => w.url === url);
@@ -242,6 +247,9 @@ export class ReuseTabComponent implements OnInit, OnChanges, OnDestroy {
       const pos = item == null ? last.index : item.index;
       ls.forEach((i, idx) => (i.active = pos === idx));
       this.pos = pos;
+      // TODO: 目前无法知道为什么 `pos` 无法通过 `nzSelectedIndex` 生效，因此强制使用组件实例的方式来修改，这种方式是安全的
+      // https://github.com/ng-alain/ng-alain/issues/1736
+      this.tabset.nzSelectedIndex = pos;
       this.list = ls;
       this.cdr.detectChanges();
     });
@@ -252,10 +260,12 @@ export class ReuseTabComponent implements OnInit, OnChanges, OnDestroy {
           this.updateTitle(res);
           return;
         case 'override':
-          this.updatePos$.next();
+          if (res?.list?.length === this.list.length) {
+            this.updatePos$.next();
+          }
           return;
       }
-      this.genList(res!);
+      this.genList(res);
     });
 
     this.i18nSrv.change

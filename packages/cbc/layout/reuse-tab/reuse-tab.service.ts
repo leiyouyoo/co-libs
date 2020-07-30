@@ -1,4 +1,4 @@
-import { Optional, Injectable, Injector, OnDestroy } from '@angular/core';
+import { Injectable, Injector, OnDestroy, Optional } from '@angular/core';
 import {
   ActivatedRoute,
   ActivatedRouteSnapshot,
@@ -9,6 +9,7 @@ import {
   ROUTER_CONFIGURATION,
 } from '@angular/router';
 import { MenuService, ScrollService } from '@co/common';
+import * as _ from 'lodash';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { BehaviorSubject, Observable, Unsubscribable } from 'rxjs';
 import { ReuseComponentRef, ReuseHookTypes, ReuseTabCached, ReuseTabMatchMode, ReuseTabNotify, ReuseTitle } from './reuse-tab.interfaces';
@@ -296,7 +297,8 @@ export class ReuseTabService implements OnDestroy {
         .filter(i => i)
         .reverse()
         .join('/');
-    return url;
+
+    return url + ':' + _.values(route.queryParams).join('-');
   }
   /**
    * 检查快照是否允许被复用
@@ -346,7 +348,7 @@ export class ReuseTabService implements OnDestroy {
 
   // #endregion
 
-  constructor(private injector: Injector, @Optional() private menuService: MenuService) { }
+  constructor(private injector: Injector, @Optional() private menuService: MenuService) {}
 
   init() {
     // this.initScroll();
@@ -373,7 +375,12 @@ export class ReuseTabService implements OnDestroy {
   }
 
   private hasInValidRoute(route: ActivatedRouteSnapshot) {
-    return !route.routeConfig || route.routeConfig.loadChildren || route.routeConfig.children || (route.component && (route.component as any).componentName === 'EmptyComponent');
+    return (
+      !route.routeConfig ||
+      route.routeConfig.loadChildren ||
+      route.routeConfig.children ||
+      (route.component && (route.component as any).componentName === 'EmptyComponent')
+    );
   }
 
   /**
