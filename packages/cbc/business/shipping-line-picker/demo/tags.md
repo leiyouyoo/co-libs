@@ -24,7 +24,7 @@ import { Component } from '@angular/core';
 export class ShippingLinePickerTagsComponent {
   size = 'default';
   valueMember = "name";
-  selectedValue: string;
+  selectedValue: any[];
 }
 
 

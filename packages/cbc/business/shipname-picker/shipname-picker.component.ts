@@ -31,6 +31,6 @@ export class ShipnamePickerComponent extends PickerComponentBase {
 
   fetchRemoteData(_condition: any): Observable<any> {
     _.defaults(_condition, { No: this.No });
-    return this.vesselService.getAll(_condition);
+    return this.vesselService.getAllForUiPicker(_condition);
   }
 }

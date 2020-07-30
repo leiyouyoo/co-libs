@@ -18,7 +18,6 @@ import { Component } from '@angular/core';
   <div>
     <co-shipping-line-picker>
     </co-shipping-line-picker>
-    <p>{{selectedValue}}</p>
   </div>
   `
 })

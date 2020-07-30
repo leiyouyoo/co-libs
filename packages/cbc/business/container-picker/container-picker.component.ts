@@ -34,13 +34,12 @@ export class ContainerPickerComponent extends PickerComponentBase {
     this.coLabelMember = 'code';
     this.coMode = 'multiple';
     this.coMaxMultipleCount = 3;
-    this.coFilter = { isValid: true };
   }
 
   //#endregion
 
 
   fetchRemoteData(_condition: any): Observable<any> {
-    return this.containerService.getAll(_condition);
+    return this.containerService.getAllForUiPicker(_condition);
   }
 }

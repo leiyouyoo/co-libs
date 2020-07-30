@@ -19,7 +19,7 @@ import { Component } from '@angular/core';
   <div>
     <co-shipping-line-picker coDropdownMode="custom" [coItemRender]="itemTemplate" >
     <ng-template #itemTemplate let-item>
-    <p> {{item.name}}(<span style='color:red;'>{{item.tel}}</span>)</p>
+    <p> {{item.name}}(<span style='color:red;'>some……</span>)</p>
     </ng-template>
     </co-shipping-line-picker>
     <p>{{selectedValue}}</p>

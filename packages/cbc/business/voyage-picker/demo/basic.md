@@ -23,7 +23,7 @@ import { Component } from '@angular/core';
   `
 })
 export class VoyagePickerBasicComponent {
-  selectedValue: string = 'abbebcea-11af-41c0-aeb0-61f1c9ad0e4f';
+  selectedValue;
 }
 
 ```

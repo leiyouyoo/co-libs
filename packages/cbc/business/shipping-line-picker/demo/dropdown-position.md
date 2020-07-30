@@ -27,7 +27,7 @@ import { Component } from '@angular/core';
 export class ShippingLinePickerDropdownPositionComponent {
   mode = 'multiple';
   maxMultipleCount = 2;
-  selectedValue: number[] = [2, 10, 23, 78, 90, 100];
+  selectedValue = ['9f18bbd4-aabd-4e89-9fe4-6cc9b9807b8e', '8addaa17-68fe-4cd4-9e88-beb4a6782c56'];
   dropdownColumns: any[] = [{
     name: 'name',
     label: '名称',

@@ -33,7 +33,7 @@ import { Component } from '@angular/core';
 })
 export class ShippingLinePickerSizeComponent {
   size = 'default';
-  selectedValue: number = 2;
+  selectedValue = '9f18bbd4-aabd-4e89-9fe4-6cc9b9807b8e';
 }
 
 

@@ -1,7 +1,7 @@
 ---
 type: Business
 title: commodity-picker
-order: 1
+order: 17
 subtitle: 品名选择器
 cols: 2
 module: import { CommodityPickerModule } from '@co/cbc';

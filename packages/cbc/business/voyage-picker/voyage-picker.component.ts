@@ -28,6 +28,6 @@ export class VoyagePickerComponent extends PickerComponentBase {
     super(cdr);
   }
   fetchRemoteData(_condition: any): Observable<any> {
-    return this.voyageService.getAll(_condition);
+    return this.voyageService.getAllForUiPicker(_condition);
   }
 }

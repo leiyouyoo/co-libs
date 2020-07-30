@@ -27,7 +27,7 @@ import { Component } from '@angular/core';
 export class CustomerPickerDropdownPositionComponent {
   mode = 'multiple';
   maxMultipleCount = 2;
-  selectedValue: number[] = [2, 10, 23, 78, 90, 100];
+  selectedValue = ['25f6f24a-22ea-4b85-b916-1345a122d295', '5ea4a683-b0fa-47f8-9757-3c04c1f1474d'];
   dropdownColumns: any[] = [{
     name: 'name',
     label: '名称',

@@ -17,5 +17,6 @@ export * from '@co/cbc/business/cascader';
 export * from '@co/cbc/business/port-office-picker';
 export * from '@co/cbc/business/salesperson-picker';
 export * from '@co/cbc/business/carrier-picker';
+export * from '@co/cbc/business/shipping-line-picker';
 
 export * from './business.module';

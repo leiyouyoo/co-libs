@@ -16,14 +16,12 @@ import { Component } from '@angular/core';
   selector: 'app-demo',
   template: `
   <div>
-    <co-container-picker [(ngModel)]="selectedValue">
+    <co-container-picker>
     </co-container-picker>
-    <p>{{selectedValue}}</p>
   </div>
   `
 })
 export class ContainerPickerBasicComponent {
-  selectedValue = [2];
 }
 
 ```

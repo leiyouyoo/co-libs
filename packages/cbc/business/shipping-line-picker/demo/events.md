@@ -29,7 +29,7 @@ import { Component } from '@angular/core';
   `,
 })
 export class ShippingLinePickerEventsComponent {
-  selectedValue: number = 2;
+  selectedValue = '9f18bbd4-aabd-4e89-9fe4-6cc9b9807b8e';
   msg: string;
 
   onFocus(_e: any) {

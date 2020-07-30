@@ -33,7 +33,7 @@ import { Component } from '@angular/core';
 })
 export class CustomerPickerSizeComponent {
   size = 'default';
-  selectedValue: number = 2;
+  selectedValue = '25f6f24a-22ea-4b85-b916-1345a122d295';
 }
 
 
