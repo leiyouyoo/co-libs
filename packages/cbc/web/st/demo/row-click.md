@@ -9,6 +9,8 @@ title:
 
 利用 `(change)` 实现点击行回调，因于DOM事件在同一元素上无法区分单或双击，若明确不需要双击事件，可以设定 `rowClickTime` 值为 `0` 以防止 `200ms` 迟延。
 
+默认禁用button click 冒泡，可以用 `[buttonPropagation]` 开启冒泡
+
 > 打开控制面板了解打印明细。
 
 ## en-US

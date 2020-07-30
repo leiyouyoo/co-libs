@@ -269,6 +269,7 @@
                 </nz-dropdown-menu>
                 <span *ngIf="btn.children.length == 0"
                       [className]="btn._className || ''"
+                      (click)="!buttonPropagation && $event.stopPropagation()"
                       [class.st__btn-disabled]="btn._disabled">
                   <ng-template [ngTemplateOutlet]="btnTpl"
                                [ngTemplateOutletContext]="{ $implicit: i, btn: btn }"></ng-template>
@@ -293,7 +294,7 @@
         <ng-template [ngTemplateOutlet]="bodyTpl" [ngTemplateOutletContext]="{ $implicit: i, index: index }"> </ng-template>
       </ng-container>
     </ng-container>
-    <ng-container *ngIf="virtualScroll">
+    <ng-container *ngIf="virtualScroll && _data?.length">
       <ng-template nz-virtual-scroll let-i let-index="index">
         <ng-template [ngTemplateOutlet]="bodyTpl" [ngTemplateOutletContext]="{ $implicit: i, index: index }"> </ng-template>
       </ng-template>
