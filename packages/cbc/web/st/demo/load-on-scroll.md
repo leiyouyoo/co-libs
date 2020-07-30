@@ -1,7 +1,7 @@
 ---
 order: 8
 title:
-  zh-CN: 滚动加载[scroll]
+  zh-CN: 滚动加载
   en-US: Load on scroll
 ---
 
@@ -33,14 +33,14 @@ export class ComponentsStAutoCalcScrollComponentComponent {
     { title: '编号5编号5', index: 'id',  },
     { title: '编号6编号6', index: 'id',  },
     { title: '编号7编号7', index: 'id',  },
-    { title: '编号8编号8编号8', index: 'id',  },
+    { title: '编号8编号8', index: 'id',  },
     { title: '编号8编号8', index: 'id',  },
     { title: '编号8编号8', index: 'id',  },
     { title: '编号8编号8', index: 'id',  },
     { title: '编号8编号8', index: 'id',  },
     { title: '姓名10姓名10', index: 'name', },
-    { title: '姓名11姓名11姓名11姓名11', index: 'name', width: 223 },
-    { title: '年龄12年龄12年龄12', index: 'age', },
+    { title: '姓名11', index: 'name', width: 223 },
+    { title: '年龄12', index: 'age', },
   ];
 }
 

@@ -61,9 +61,6 @@ export class DemoComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.st.cdkVirtualScrollViewport.scrolledIndexChange.pipe(takeUntil(this.destroy$)).subscribe(data => {
-      console.log('scroll index to', data);
-    });
   }
 
   ngOnDestroy(): void {

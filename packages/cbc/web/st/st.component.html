@@ -196,7 +196,7 @@
             nz-checkbox
             [nzDisabled]="i.disabled"
             [ngModel]="i.checked"
-            (ngModelChange)="_checkSelection(i, $event)"
+            (ngModelChange)="_checkSelection(i, $event, index)"
           ></label>
         </td>
         <td

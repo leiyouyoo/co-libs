@@ -3,7 +3,7 @@ import {
   AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
-  Component,
+  Component, ContentChildren,
   ElementRef,
   EventEmitter,
   Inject,
@@ -11,7 +11,7 @@ import {
   OnChanges,
   OnDestroy,
   Optional,
-  Output,
+  Output, QueryList,
   SimpleChange,
   SimpleChanges,
   TemplateRef,
@@ -108,6 +108,26 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   _showFilters = false;
   _filterRow: STColumn[] = [];
   @ViewChild('table', { static: false }) readonly orgTable: NzTableComponent;
+  private expandSTChangeList$: Subscription[] = [];
+  private _expandSTList: QueryList<STComponent>;
+  get expandSTList(): QueryList<STComponent> {
+    return this._expandSTList;
+  }
+  @ContentChildren(STComponent) set expandSTList(value: QueryList<STComponent>) {
+    this.expandSTChangeList$.forEach(o => o.unsubscribe());
+    this.expandSTChangeList$ =
+      value.toArray().map((o, i) => {
+        return o.change.pipe(takeUntil(this.unsubscribe$)).subscribe(event => {
+          switch (event.type) {
+            case 'checkbox':
+              this._data[i].checked = !!event.checkbox?.length;
+              break;
+            default:
+          }
+        })
+      });
+    this._expandSTList = value;
+  }
 
   @Input()
   get req() {
@@ -653,8 +673,9 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     return this._refCheck()._checkNotify();
   }
 
-  _checkSelection(i: STData, value: boolean) {
+  _checkSelection(i: STData, value: boolean, index: number) {
     i.checked = value;
+    this.expandSTList.toArray()?.[index]?._checkAll(value);
     return this._refCheck()._checkNotify();
   }
 
@@ -671,7 +692,13 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
 
   getCheckedList(): STData[] {
     const res = this._data.filter(w => !w.disabled && w.checked === true);
-    return res;
+    const expandSelected = this.expandSTList.toArray().map(o => o.getCheckedList()).filter(o => !!o.length);
+
+    return res.map((o, i) => (
+      {
+        ...o,
+        expandSelectedList: expandSelected?.[i]
+      }));
   }
 
   // #endregion
