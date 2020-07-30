@@ -117,7 +117,7 @@ export class ReuseTabComponent implements OnInit, OnChanges, OnDestroy {
       }
     }
 
-    return title.i18n && tIl8nSrv ? tIl8nSrv.fanyi(title.i18n) : title.text || title.i18n!;
+    return i18nName && tIl8nSrv ? tIl8nSrv.fanyi(i18nName) : title.text || i18nName!;
   }
 
   private get curUrl() {
