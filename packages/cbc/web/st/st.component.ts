@@ -120,7 +120,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
         return o.change.pipe(takeUntil(this.unsubscribe$)).subscribe(event => {
           switch (event.type) {
             case 'checkbox':
-              this._data[i].checked = !!event.checkbox?.length;
+              this._checkSelection(this._data[i], !!event.checkbox?.length, -1);
               break;
             default:
           }
