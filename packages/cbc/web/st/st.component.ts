@@ -117,14 +117,16 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     this.expandSTChangeList$.forEach(o => o.unsubscribe());
     this.expandSTChangeList$ =
       value.toArray().map((o, i) => {
-        return o.change.pipe(takeUntil(this.unsubscribe$)).subscribe(event => {
-          switch (event.type) {
-            case 'checkbox':
-              this._checkSelection(this._data[i], !!event.checkbox?.length, -1);
-              break;
-            default:
-          }
-        })
+        return o.change
+          .pipe(takeUntil(this.unsubscribe$))
+          .subscribe(event => {
+            switch (event.type) {
+              case 'checkbox':
+                this._checkSelection(this._data[i], !!event.checkbox?.length, -1);
+                break;
+              default:
+            }
+          });
       });
     this._expandSTList = value;
   }
