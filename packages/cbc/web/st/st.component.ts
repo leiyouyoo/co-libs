@@ -204,6 +204,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() @InputBoolean() showCheckbox = true;
   @Input() @InputBoolean() checkOnLoad = false;
   @Input() checkboxSelections = [];
+  @Input() @InputBoolean() buttonPropagation = false;
 
   /**
    * Get the number of the current page

@@ -81,6 +81,7 @@ module: import { CoSTModule } from '@co/cbc';
 | `[responsive]` | 是否开启响应式 | `boolean` | `true` |
 | `[responsiveHideHeaderFooter]` | 是否在小屏幕下才显示顶部与底部 | `boolean` | `false` |
 | `[checkOnLoad]` | 多选框是否在每次数据加载时选中 | `boolean` | `false` |
+| `[buttonPropagation]` | 是否启用按钮click 冒泡 | `boolean` | `false` |
 | `(change)` | 变化时回调，包括：`pi`、`ps`、`checkbox`、`radio`、`sort`、`filter`、`click`、`dblClick`、`expand` 变动 | `EventEmitter<STChange>` | - |
 | `(error)` | 异常时回调 | `EventEmitter<STError>` | - |
 

@@ -40,12 +40,13 @@ export class CalcScrollDirective implements AfterContentInit, AfterViewChecked {
     }
   }
 
-  // todo performance
   @HostListener('window:resize')
   @debounce()
   calc() {
     setTimeout(() => {
-      const thead = this.el.querySelector('.ant-table-thead');
+      const thead =
+        this.el.querySelector('.ant-table-header') ??
+        this.el.querySelector('.ant-table-thead');
       const tableContent = this.el.querySelector('.ant-table-content table');
       // const pagination
       this.nzTableComponent.nzScroll = {
