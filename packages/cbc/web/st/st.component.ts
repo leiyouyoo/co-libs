@@ -168,8 +168,18 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() loadingIndicator: TemplateRef<void>;
   @Input() @InputBoolean() bordered = true;
   @Input() size: 'small' | 'middle' | 'default';
-  @Input() scroll: { y?: string; x?: string };
   @Input() singleSort: STSingleSort;
+  _scroll: { y?: string; x?: string };
+  get scroll(): { y?: string; x?: string } {
+    /**
+     * fix: virtual scroll height
+     */
+    if (this.virtualScroll && !this._data?.length) return {};
+    return this._scroll;
+  }
+  @Input() set scroll(value: { y?: string; x?: string }) {
+    this._scroll = value;
+  }
   private _multiSort?: STMultiSort;
   @Input()
   get multiSort() {
