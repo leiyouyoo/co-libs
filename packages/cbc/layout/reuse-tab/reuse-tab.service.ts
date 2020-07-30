@@ -9,10 +9,13 @@ import {
   ROUTER_CONFIGURATION,
 } from '@angular/router';
 import { MenuService, ScrollService } from '@co/common';
+import { CoI18NService, CO_I18N_TOKEN } from '@co/core';
 import * as _ from 'lodash';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { BehaviorSubject, Observable, Unsubscribable } from 'rxjs';
 import { ReuseComponentRef, ReuseHookTypes, ReuseTabCached, ReuseTabMatchMode, ReuseTabNotify, ReuseTitle } from './reuse-tab.interfaces';
+
+declare var window: any;
 
 /**
  * 路由复用类，提供复用所需要一些基本接口
@@ -218,15 +221,31 @@ export class ReuseTabService implements OnDestroy {
    * @param route 指定路由快照
    */
   getTitle(url: string, route?: ActivatedRouteSnapshot): ReuseTitle {
+    const segs = _.split('/');
+    let i18nSrv: any = null;
+    if (segs.length > 0) {
+      const moduleName = segs[1];
+      const module = window.planet[moduleName];
+      if (module) {
+        const moduleInjector = module.appModuleRef.injector;
+        i18nSrv = moduleInjector.get(CO_I18N_TOKEN);
+      }
+    }
+
     if (this._titleCached[url]) {
       return this._titleCached[url];
     }
 
     if (route && route.data && (route.data.titleI18n || route.data.title)) {
-      return {
-        text: route.data.title,
-        i18n: route.data.titleI18n,
-      } as ReuseTitle;
+      if (route.data.titleI18n && i18nSrv) {
+        return {
+          text: i18nSrv.fanyi(route.data.titleI18n, undefined, false) || route.data.title,
+        } as ReuseTitle;
+      } else {
+        return {
+          text: route.data.title,
+        } as ReuseTitle;
+      }
     }
 
     const menu = this.getMenu(url);
@@ -298,7 +317,17 @@ export class ReuseTabService implements OnDestroy {
         .reverse()
         .join('/');
 
-    return url;
+    let q = '';
+    for (const k in route.queryParams) {
+      if (!q) {
+        q = '?';
+      } else {
+        q = q + '&';
+      }
+      q = q + k + '=' + route.queryParams[k];
+    }
+    return url + q;
+
     // return url + ':' + _.values(route.queryParams).join('-');
   }
   /**

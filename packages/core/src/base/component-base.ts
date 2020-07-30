@@ -1,13 +1,15 @@
-import { Injector, Optional } from '@angular/core';
+import { Injector, NgZone, Optional } from '@angular/core';
+import { NavigationExtras } from '@angular/router';
 
-import { IPermissionCheckerService, CO_PERMISSIONCHECKER_TOKEN } from '../interface/permission-checker.interface';
-import { ILogger, CO_LOGGER_TOKEN } from '../interface/logger.interface';
-import { ISessionService, CO_SESSIONSERVICE_TOKEN } from '../interface/session.interface';
-import { IModalHelper, CO_MODALHELPER_TOKEN } from '../interface/modal.interface';
-import { ITitleService, CO_TITLE_TOKEN } from '../interface/title.interface';
 import { CoI18NService, CO_I18N_TOKEN } from '../interface/i18n.interface';
+import { CO_LOGGER_TOKEN, ILogger } from '../interface/logger.interface';
+import { CO_MODALHELPER_TOKEN, IModalHelper } from '../interface/modal.interface';
+import { CO_PERMISSIONCHECKER_TOKEN, IPermissionCheckerService } from '../interface/permission-checker.interface';
+import { CO_SESSIONSERVICE_TOKEN, ISessionService } from '../interface/session.interface';
+import { CO_TITLE_TOKEN, ITitleService } from '../interface/title.interface';
 import { LifeCycleComponent } from './life-cycle-component';
 
+declare var window: any;
 /**
  * 业务组件基类
  */
@@ -18,7 +20,6 @@ export abstract class CoComponentBase extends LifeCycleComponent {
   protected $modalHelper: IModalHelper;
   protected $titleSrvice: ITitleService;
   protected $logger: ILogger;
-
 
   protected constructor(@Optional() protected injector: Injector) {
     super();
@@ -32,5 +33,13 @@ export abstract class CoComponentBase extends LifeCycleComponent {
 
   public $L(key: string, params?: {}, isSafe?: boolean) {
     return this.$i18n.fanyi(key, params, isSafe);
+  }
+
+  public $navigate(commands: any[], extras?: NavigationExtras): void {
+    const ngZone = this.injector.get(NgZone);
+    window.planet.portalApplication.navigate(commands, extras);
+    // ngZone.runOutsideAngular(() => {
+
+    // });
   }
 }
