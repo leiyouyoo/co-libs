@@ -195,7 +195,7 @@ export interface STData {
   /**
    * expand 嵌套的co-st 选中数据
    */
-  expandSelectedList: STData[];
+  expandSelectedList?: STData[];
 
   [key: string]: any;
 }
