@@ -11,8 +11,8 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { NzCascaderOption } from 'ng-zorro-antd';
 import { OrganizationUnitService } from '@co/cds';
+import { NzCascaderOption } from 'ng-zorro-antd';
 
 /**
  *  级联选择
@@ -44,12 +44,10 @@ export class CoCascaderComponent implements OnInit {
   constructor(private organizationUnitService: OrganizationUnitService) {} // private organizationUnitService: OrganizationUnitService
 
   ngOnInit(): void {
-    // console.log(this.coOption);
     this.getData();
   }
 
   onChanges(values: any): void {
-    console.log(values, this.values);
     this.coModelChange.emit(values);
   }
 
@@ -61,7 +59,6 @@ export class CoCascaderComponent implements OnInit {
   getData(reqID?) {
     const req: any = reqID ? { ParentId: reqID } : {};
     this.organizationUnitService.getGroupOrganizationUnits(req).subscribe(res => {
-      console.log(res);
       const option: any = [];
       res.items.forEach(data => {
         option.push(this.getChildData(data));
@@ -71,16 +68,16 @@ export class CoCascaderComponent implements OnInit {
   }
 
   getChildData(data) {
-    let newList = {};
-    newList["value"] = data.id;
-    newList["label"] = data.displayNameLocalization;
-    if( data.childrenDto && data.childrenDto.length > 0 ){
-      newList["children"] = [];
-      data.childrenDto.forEach( dto =>{
-        newList["children"].push(this.getChildData( dto ) );
-      })
-    }else {
-      newList["isLeaf"] = true;
+    const newList = {};
+    newList.value = data.id;
+    newList.label = data.displayNameLocalization;
+    if (data.childrenDto && data.childrenDto.length > 0) {
+      newList.children = [];
+      data.childrenDto.forEach(dto => {
+        newList.children.push(this.getChildData(dto));
+      });
+    } else {
+      newList.isLeaf = true;
     }
     return newList;
   }

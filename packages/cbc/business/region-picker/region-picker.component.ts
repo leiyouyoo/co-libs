@@ -1,18 +1,10 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  forwardRef,
-  Input,
-  SimpleChanges ,
-  ViewEncapsulation,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, Input, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 
-import { RegionService } from '@co/cds';
 import { PickerComponentBase } from '@co/cbc/core';
+import { RegionService } from '@co/cds';
 import * as _ from 'lodash';
 
 /**
@@ -35,11 +27,10 @@ import * as _ from 'lodash';
   encapsulation: ViewEncapsulation.None,
 })
 export class RegionPickerComponent extends PickerComponentBase {
-
-  @Input() regionReq:any;
+  @Input() regionReq: any;
   //#region  构造函数
 
-  constructor( cdr: ChangeDetectorRef, private regionService: RegionService) {
+  constructor(cdr: ChangeDetectorRef, private regionService: RegionService) {
     super(cdr);
 
     this.coLabelMember = 'name';
@@ -49,25 +40,21 @@ export class RegionPickerComponent extends PickerComponentBase {
   //#endregion
 
   fetchRemoteData(_condition: any): Observable<any> {
-    if( this.regionReq ){
+    if (this.regionReq) {
       return this.regionService.getAllRegionForUiPicker(_condition);
-    }else {
+    } else {
       return [] as any;
     }
   }
 
-  ngOnChanges( changes: SimpleChanges ){
-    console.log(changes);
-    if( changes ){
-
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes) {
     }
-    if( this.regionReq  ){
-
+    if (this.regionReq) {
       this.fetchRemoteData(this.regionReq).subscribe((response: any) => {
-
-        let valueList:any[] = [];
-        if( response && response.items.length > 0 ){
-          response.items.forEach( (v) =>{
+        const valueList: any[] = [];
+        if (response && response.items.length > 0) {
+          response.items.forEach(v => {
             valueList.push(v.id);
           });
         }
@@ -97,15 +84,13 @@ export class RegionPickerComponent extends PickerComponentBase {
 
         this.getCdrTo();
       });
-
-    }else {
+    } else {
       this.value = [];
 
       this.optionList = [];
 
       this.isLoading = false;
     }
-
   }
 
   // writeValue(modelValue: NzSafeAny | NzSafeAny[]): void {

@@ -1,10 +1,10 @@
-import { ChangeDetectorRef, ChangeDetectionStrategy, Component, forwardRef, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, ViewEncapsulation } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 
-import { CurrencyService } from '@co/cds';
 import { PickerComponentBase } from '@co/cbc/core';
+import { CurrencyService } from '@co/cds';
 
 /**
  * 客户选择器控件
@@ -38,7 +38,6 @@ export class CurrencyPickerComponent extends PickerComponentBase {
   //#endregion
 
   fetchRemoteData(_condition: any): Observable<any> {
-    console.log(_condition);
     return this.currencyService.getAllForUiPicker(_condition);
   }
 }

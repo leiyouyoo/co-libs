@@ -1,10 +1,10 @@
-import { ChangeDetectorRef, ChangeDetectionStrategy, Component, forwardRef, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, ViewEncapsulation } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 
-import { ChargingCodeService } from '@co/cds';
 import { PickerComponentBase } from '@co/cbc/core';
+import { ChargingCodeService } from '@co/cds';
 
 /**
  * 费用代码选择器控件
@@ -30,7 +30,7 @@ export class ChargingCodePickerComponent extends PickerComponentBase {
 
   constructor(cdr: ChangeDetectorRef, private chargingCodeService: ChargingCodeService) {
     super(cdr);
-    //显示列的key
+    // 显示列的key
     this.coLabelMember = 'name';
     this.coValueMember = 'id';
   }
@@ -38,7 +38,6 @@ export class ChargingCodePickerComponent extends PickerComponentBase {
   //#endregion
 
   fetchRemoteData(_condition: any): Observable<any> {
-    console.log(_condition);
     return this.chargingCodeService.getAllForUiPicker(_condition);
   }
 }
