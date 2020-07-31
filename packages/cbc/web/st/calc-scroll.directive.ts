@@ -48,6 +48,7 @@ export class CalcScrollDirective implements AfterContentInit, AfterViewChecked {
         this.el.querySelector('.ant-table-header') ??
         this.el.querySelector('.ant-table-thead');
       const tableContent = this.el.querySelector('.ant-table-content table');
+      const paginator = this.el.querySelector('.ant-table-pagination');
       // const pagination
       this.nzTableComponent.nzScroll = {
         x: this.disableCalcX ? this.nzTableComponent.scrollX : `${tableContent!.clientWidth}px`,
