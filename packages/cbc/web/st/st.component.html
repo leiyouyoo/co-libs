@@ -90,8 +90,8 @@
 >
   <thead class="st__head" [class.st-has-filter]="showFilters">
     <tr *ngFor="let row of _headers; let rowFirst = first">
-      <th *ngIf="rowFirst && showCheckbox" nzWidth="50px" [attr.rowspan]="_headers.length + (showFilters ? 1 : 0)">
-      <ng-container *ngIf="checkboxSelections.length === 0">
+      <th *ngIf="rowFirst && showCheckbox" nzWidth="50px" [attr.rowspan]="_headers.length">
+        <ng-container *ngIf="checkboxSelections.length === 0">
           <ng-template [ngTemplateOutlet]="chkAllTpl" [ngTemplateOutletContext]="{ $implicit: false }"> </ng-template>
         </ng-container>
         <div *ngIf="checkboxSelections.length > 0" class="ant-table-selection">
@@ -112,11 +112,11 @@
           </nz-dropdown-menu>
         </div>
       </th>
-      <th *ngIf="rowFirst && expand" nzWidth="50px" [attr.rowspan]="_headers.length + (showFilters ? 1 : 0)"></th>
+      <th *ngIf="rowFirst && expand" nzWidth="50px" [attr.rowspan]="_headers.length"></th>
       <th
         *ngFor="let h of row; let index = index"
         [attr.colspan]="h.colSpan"
-        [attr.rowspan]="h.column.type === 'action' ? (_headers.length + (showFilters ? 1 : 0)) : h.rowSpan"
+        [attr.rowspan]="h.column.type === 'action' ? _headers.length + (showFilters ? 1 : 0) : h.rowSpan"
         [nzWidth]="h.column.width"
         [nzLeft]="!!h.column._left"
         [nzRight]="!!h.column._right"
@@ -146,36 +146,44 @@
       </th>
     </tr>
     <tr class="st-thead-row-filter" *ngIf="showFilters && _filterRow?.length">
+      <th *ngIf="showFilters" nzWidth="50px"></th>
       <th *ngFor="let i of _filterRow; index as index" (keyup.enter)="_filterConfirm(i.column)">
         <ng-container [ngSwitch]="i.column.filter?.type">
           <ng-container *ngSwitchCase="i.column.filter?.type === null ? null : 'nevermatch'"></ng-container>
           <ng-container *ngSwitchCase="'select'">
-            <nz-select class="width-100"
-                       [(ngModel)]="i.column.filter?.menus[0].value"
-                       (ngModelChange)="_filterConfirm(i.column)"
-                       nzShowSearch
-                       [nzOptions]="getFilterOptions(i.column, index)"
-                       nzAllowClear></nz-select>
+            <nz-select
+              class="width-100"
+              [(ngModel)]="(i.column.filter?.menus)[0].value"
+              (ngModelChange)="_filterConfirm(i.column)"
+              nzShowSearch
+              [nzOptions]="getFilterOptions(i.column, index)"
+              nzAllowClear
+            ></nz-select>
           </ng-container>
           <ng-container *ngSwitchCase="'autocomplete'">
-            <input type="text"
-                   [nzAutocomplete]="auto"
-                   #autocompleteInput
-                   [(ngModel)]="i.column.filter?.menus[0].value"
-                   (ngModelChange)="_filterConfirm(i.column)"
-                   nz-input>
+            <input
+              type="text"
+              [nzAutocomplete]="auto"
+              #autocompleteInput
+              [(ngModel)]="(i.column.filter?.menus)[0].value"
+              (ngModelChange)="_filterConfirm(i.column)"
+              nz-input
+            />
             <nz-autocomplete [nzDataSource]="getFilterOptions(i.column, index, autocompleteInput.value)" nzBackfill #auto></nz-autocomplete>
           </ng-container>
           <ng-container *ngSwitchCase="'date'">
-            <nz-date-picker class="width-100" [(ngModel)]="i.column.filter?.menus[0].value" (ngModelChange)="_filterConfirm(i.column)"></nz-date-picker>
+            <nz-date-picker class="width-100" [(ngModel)]="(i.column.filter?.menus)[0].value" (ngModelChange)="_filterConfirm(i.column)"></nz-date-picker>
           </ng-container>
-          <ng-template *ngSwitchCase="'widget'" co-st-va-widget-host
-                       [(value)]="i.column.filter?.menus[0].value"
-                       (valueChange)="_filterConfirm(i.column)"
-                       [column]="i.column"></ng-template>
+          <ng-template
+            *ngSwitchCase="'widget'"
+            co-st-va-widget-host
+            [(value)]="(i.column.filter?.menus)[0].value"
+            (valueChange)="_filterConfirm(i.column)"
+            [column]="i.column"
+          ></ng-template>
           <!-- 'keyword' type treat as default filter -->
           <ng-container *ngSwitchDefault>
-            <input type="text" nz-input [(ngModel)]="i.column.filter?.menus[0].value" (ngModelChange)="_filterConfirm(i.column)">
+            <input type="text" nz-input [(ngModel)]="(i.column.filter?.menus)[0].value" (ngModelChange)="_filterConfirm(i.column)" />
           </ng-container>
         </ng-container>
       </th>
@@ -186,18 +194,15 @@
       <ng-template [ngTemplateOutlet]="bodyHeader" [ngTemplateOutletContext]="{ $implicit: _statistical }"></ng-template>
     </ng-container>
     <ng-template #bodyTpl let-i let-index="index">
-      <tr [attr.data-index]="index"
-          (click)="_rowClick($event, i, index)"
-          [class.st-row-odd]="index % 2 === 1"
-          [class.st-row-selected]="i.checked"
-          [ngClass]="i._rowClassName">
+      <tr
+        [attr.data-index]="index"
+        (click)="_rowClick($event, i, index)"
+        [class.st-row-odd]="index % 2 === 0"
+        [class.st-row-selected]="i.checked"
+        [ngClass]="i._rowClassName"
+      >
         <td *ngIf="showCheckbox">
-          <label
-            nz-checkbox
-            [nzDisabled]="i.disabled"
-            [ngModel]="i.checked"
-            (ngModelChange)="_checkSelection(i, $event, index)"
-          ></label>
+          <label nz-checkbox [nzDisabled]="i.disabled" [ngModel]="i.checked" (ngModelChange)="_checkSelection(i, $event, index)"></label>
         </td>
         <td
           *ngIf="expand"
@@ -207,46 +212,37 @@
           nzWidth="50px"
         ></td>
         <!-- 展示状态 -->
-        <td *ngFor="let c of _columns; let cIdx = index" [nzLeft]="!!c._left" [nzRight]="!!c._right"
-            [ngClass]="columnClass(c)" [attr.colspan]="c.colSpan">
+        <td *ngFor="let c of _columns; let cIdx = index" [nzLeft]="!!c._left" [nzRight]="!!c._right" [ngClass]="columnClass(c)" [attr.colspan]="c.colSpan">
           <span *ngIf="responsive" class="ant-table-rep__title">
-            <ng-template [ngTemplateOutlet]="titleTpl"
-                         [ngTemplateOutletContext]="{ $implicit: c.title }"></ng-template>
+            <ng-template [ngTemplateOutlet]="titleTpl" [ngTemplateOutletContext]="{ $implicit: c.title }"></ng-template>
           </span>
           <span>
-            <ng-template #render [ngTemplateOutlet]="c.__render"
-                         [ngTemplateOutletContext]="{ $implicit: i, index: index, column: c }"></ng-template>
+            <ng-template #render [ngTemplateOutlet]="c.__render" [ngTemplateOutletContext]="{ $implicit: i, index: index, column: c }"></ng-template>
             <ng-container *ngIf="!c.__render; else render">
               <!-- 常规展示 -->
               <ng-container [ngSwitch]="c.type" *ngIf="['no'].includes(c.type) || !i._editing || c.uneditable; else editing">
-                <label *ngSwitchCase="'radio'" nz-radio [nzDisabled]="i.disabled" [ngModel]="i.checked"
-                       (ngModelChange)="_refRadio($event, i)"></label>
+                <label *ngSwitchCase="'radio'" nz-radio [nzDisabled]="i.disabled" [ngModel]="i.checked" (ngModelChange)="_refRadio($event, i)"></label>
                 <a *ngSwitchCase="'link'" (click)="_click($event, i, c)" [innerHTML]="i._values[cIdx]._text"></a>
                 <ng-container *ngIf="i._values[cIdx].text">
                   <nz-tag *ngSwitchCase="'tag'" [nzColor]="i._values[cIdx].color">
                     <span [innerHTML]="i._values[cIdx]._text"></span>
                   </nz-tag>
-                  <nz-badge *ngSwitchCase="'badge'" [nzStatus]="i._values[cIdx].color"
-                            [nzText]="i._values[cIdx].text"></nz-badge>
+                  <nz-badge *ngSwitchCase="'badge'" [nzStatus]="i._values[cIdx].color" [nzText]="i._values[cIdx].text"></nz-badge>
                 </ng-container>
                 <ng-template *ngSwitchCase="'widget'" st-widget-host [record]="i" [column]="c"></ng-template>
-                <span *ngSwitchDefault [innerHTML]="i._values[cIdx]._text"
-                      [attr.title]="isTruncate(c) ? i._values[cIdx].text : null"></span>
+                <span *ngSwitchDefault [innerHTML]="i._values[cIdx]._text" [attr.title]="isTruncate(c) ? i._values[cIdx].text : null"></span>
               </ng-container>
               <!-- 编辑 -->
               <ng-template #editing>
                 <!-- 这里和过滤器共用类型 -->
                 <ng-container [ngSwitch]="c.filter.type" *ngIf="!['action'].includes(c.type)">
                   <nz-date-picker *ngSwitchCase="'date'" [(ngModel)]="i._values[cIdx].value" class="width-100"></nz-date-picker>
-                  <input *ngSwitchDefault type="text" nz-input [(ngModel)]="i._values[cIdx].value">
+                  <input *ngSwitchDefault type="text" nz-input [(ngModel)]="i._values[cIdx].value" />
                 </ng-container>
               </ng-template>
               <!-- button -->
               <ng-container *ngFor="let btn of _validBtns(c.buttons, i, c); let last = last">
-                <a *ngIf="btn.children.length > 0"
-                   nz-dropdown [nzDropdownMenu]="btnMenu"
-                   [className]="btn._className || ''"
-                   nzOverlayClassName="st__btn-sub">
+                <a *ngIf="btn.children.length > 0" nz-dropdown [nzDropdownMenu]="btnMenu" [className]="btn._className || ''" nzOverlayClassName="st__btn-sub">
                   <ng-container *ngIf="_btnText(i, btn); else ellipsisIcon">
                     <span [innerHTML]="_btnText(i, btn)"></span>
                     <i nz-icon nzType="down"></i>
@@ -258,21 +254,20 @@
                 <nz-dropdown-menu #btnMenu="nzDropdownMenu">
                   <ul nz-menu>
                     <ng-container *ngFor="let subBtn of _validBtns(btn.children, i, c)">
-                      <li *ngIf="subBtn.type !== 'divider'" nz-menu-item
-                          [class.st__btn-disabled]="subBtn._disabled">
-                        <ng-template [ngTemplateOutlet]="btnTpl"
-                                     [ngTemplateOutletContext]="{ $implicit: i, btn: subBtn }"></ng-template>
+                      <li *ngIf="subBtn.type !== 'divider'" nz-menu-item [class.st__btn-disabled]="subBtn._disabled">
+                        <ng-template [ngTemplateOutlet]="btnTpl" [ngTemplateOutletContext]="{ $implicit: i, btn: subBtn }"></ng-template>
                       </li>
                       <li *ngIf="subBtn.type === 'divider'" nz-menu-divider></li>
                     </ng-container>
                   </ul>
                 </nz-dropdown-menu>
-                <span *ngIf="btn.children.length == 0"
-                      [className]="btn._className || ''"
-                      (click)="!buttonPropagation && $event.stopPropagation()"
-                      [class.st__btn-disabled]="btn._disabled">
-                  <ng-template [ngTemplateOutlet]="btnTpl"
-                               [ngTemplateOutletContext]="{ $implicit: i, btn: btn }"></ng-template>
+                <span
+                  *ngIf="btn.children.length == 0"
+                  [className]="btn._className || ''"
+                  (click)="!buttonPropagation && $event.stopPropagation()"
+                  [class.st__btn-disabled]="btn._disabled"
+                >
+                  <ng-template [ngTemplateOutlet]="btnTpl" [ngTemplateOutletContext]="{ $implicit: i, btn: btn }"></ng-template>
                 </span>
                 <nz-divider *ngIf="!last" nzType="vertical"></nz-divider>
               </ng-container>
@@ -289,7 +284,7 @@
         <ng-template [ngTemplateOutlet]="expand" [ngTemplateOutletContext]="{ $implicit: i, index: index }"></ng-template>
       </tr>
       <tr *ngIf="showLoading('load-on-scroll') && index === _data?.length - 1">
-        <div style="position: sticky;left: 50%;height: 40px;display:flex;align-items:center;">
+        <div style="position: sticky; left: 50%; height: 40px; display: flex; align-items: center;">
           <nz-spin></nz-spin>
         </div>
       </tr>
