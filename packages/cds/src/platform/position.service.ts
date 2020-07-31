@@ -21,7 +21,7 @@ export class PositionService extends BaseApi {
     @GET('getAll')
     getAll(
         @Payload
-        _req: {organizationUnitId?:string,parentId?:string,searchText?:string,isRecursion?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
+        _req: {organizationUnitId?:string,parentId?:string,searchText?:string,isRecursion?:boolean,isValid?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
     ): Observable<PagedResultDto<PositionDto>> {
         return null as any
