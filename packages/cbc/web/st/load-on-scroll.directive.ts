@@ -1,12 +1,13 @@
-import { Directive, ElementRef, NgZone, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input, NgZone, OnInit } from '@angular/core';
 import { STComponent } from './st.component';
 import { fromEvent, interval } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, startWith } from 'rxjs/operators';
 
 @Directive({
   selector: 'co-st[loadOnScroll]',
 })
 export class LoadOnScrollDirective implements OnInit {
+  @Input() distance = 80;
   status: 'unset' | 'trying' | 'set' = 'unset';
 
   constructor(private st: STComponent,
@@ -33,8 +34,14 @@ export class LoadOnScrollDirective implements OnInit {
             .pipe(
               debounceTime(50),
             )
-            .subscribe(e => {
-              console.log(e);
+            .subscribe(async (e: Event) => {
+              const element = tbodyContainer;
+              const loadMore = element.scrollHeight - element.clientHeight - element.scrollTop <= this.distance;
+              console.log(loadMore);
+              if (!loadMore) return;
+              console.log(this.st);
+              return ;
+              await this.st.loadPageData({ singleLoading: true, appendData: true });
             })
           this.status = 'set';
         });

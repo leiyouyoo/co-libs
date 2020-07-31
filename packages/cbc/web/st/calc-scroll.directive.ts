@@ -11,6 +11,15 @@ import { debounce, InputBoolean } from '@co/core';
 import { NzTableComponent } from 'ng-zorro-antd';
 import { STComponent } from './st.component';
 
+function outerHeight(el, defaultValue?) {
+  if (!el && defaultValue !== void 0) return defaultValue;
+  var height = el.offsetHeight;
+  var style = getComputedStyle(el);
+
+  height += parseInt(style.marginTop) + parseInt(style.marginBottom);
+  return height;
+}
+
 @Directive({
   selector: 'co-st[calcScroll],nz-table[calcScroll]'
 })
@@ -48,11 +57,11 @@ export class CalcScrollDirective implements AfterContentInit, AfterViewChecked {
         this.el.querySelector('.ant-table-header') ??
         this.el.querySelector('.ant-table-thead');
       const tableContent = this.el.querySelector('.ant-table-content table');
-      const paginator = this.el.querySelector('.ant-table-pagination');
+      const paginatorOuterHeight = outerHeight(this.el.querySelector('.ant-table-pagination'), 0);
       // const pagination
       this.nzTableComponent.nzScroll = {
         x: this.disableCalcX ? this.nzTableComponent.scrollX : `${tableContent!.clientWidth}px`,
-        y: `${this.el.clientHeight - thead!.clientHeight - 64}px`,
+        y: `${this.el.clientHeight - thead!.clientHeight - paginatorOuterHeight}px`,
       };
       this.nzTableComponent.ngOnChanges({ nzScroll: this.nzTableComponent.nzScroll } as any);
       // hack
