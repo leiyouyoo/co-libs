@@ -15,13 +15,13 @@ export class JobService extends BaseApi {
   
     /**
      * @param url /Platform/Job/GetAll
-     * 返回职务集合
+     * 返回职务集合(包含作废的数据)
      */
 
     @GET('getAll')
     getAll(
         @Payload
-        _req: {id?:string,jobTypeId?:string,searchText?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
+        _req: {id?:string,jobTypeId?:string,searchText?:string,isValid?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
     ): Observable<PagedResultDto<JobDto>> {
         return null as any
@@ -104,8 +104,23 @@ export class JobService extends BaseApi {
 
 
     /**
+     * @param url /Platform/Job/CheckIsBindPosition
+     * 校验当前职务是否绑定职位
+     */
+
+    @POST('checkIsBindPosition')
+    checkIsBindPosition(
+        @Payload
+        _req:EntityDto<any>
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
      * @param url /Platform/Job/Recover
-     * 
+     * 恢复职务
      */
 
     @POST('recover')
@@ -120,7 +135,7 @@ export class JobService extends BaseApi {
 
     /**
      * @param url /Platform/Job/Cancel
-     * 
+     * 作废职务
      */
 
     @POST('cancel')
@@ -135,7 +150,7 @@ export class JobService extends BaseApi {
 
     /**
      * @param url /Platform/Job/CheckedRepeat
-     * 
+     * 校验重复(职务只验证英文名称)
      */
 
     @POST('checkedRepeat')
