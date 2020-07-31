@@ -1,6 +1,6 @@
 ---
 order: 5
-title: 新增编辑或查看详情页
+title: 编辑或详情页
 type: Documents
 ---
 
