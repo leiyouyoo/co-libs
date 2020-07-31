@@ -22,6 +22,7 @@ import { Component } from '@angular/core';
   `
 })
 export class DataDictionaryPickerTypeCodeComponent {
+selectedValue
 }
 
 ```

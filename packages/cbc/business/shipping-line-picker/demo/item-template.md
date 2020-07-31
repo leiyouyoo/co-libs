@@ -27,6 +27,7 @@ import { Component } from '@angular/core';
   `,
 })
 export class ShippingLinePickerItemTemplateComponent {
+  selectedValue: number = 2;
 }
 
 

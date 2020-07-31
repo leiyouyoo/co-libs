@@ -21,9 +21,9 @@ import { STColumn } from '@co/cbc/web/st';
   selector: 'app-demo',
   template: `
        <div>Size: default</div>
-    <co-st #st [data]="url" [req]="{ params: params }" [columns]="columns" multiSort></co-st>
+    <co-st #st1 [data]="url" [req]="{ params: params }" [columns]="columns" multiSort></co-st>
     <div>Size: small</div>
-    <co-st #st size="small" [data]="url" [req]="{ params: params }" [columns]="columns" multiSort></co-st>
+    <co-st #st2 size="small" [data]="url" [req]="{ params: params }" [columns]="columns" multiSort></co-st>
   `,
 })
 export class DemoComponent {
