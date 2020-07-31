@@ -68,7 +68,7 @@ export class CoCascaderComponent implements OnInit {
   }
 
   getChildData(data) {
-    const newList = {};
+    const newList: any = {};
     newList.value = data.id;
     newList.label = data.displayNameLocalization;
     if (data.childrenDto && data.childrenDto.length > 0) {

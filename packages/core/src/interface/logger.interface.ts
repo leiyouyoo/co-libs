@@ -1,5 +1,5 @@
 import { Injectable, InjectionToken } from '@angular/core';
-import { CoConfigManager } from '@co/core';
+import { CoConfigManager } from '../config';
 
 /**
  * 日志记录器
