@@ -1,6 +1,7 @@
 import { Directive, ElementRef, NgZone, OnInit } from '@angular/core';
 import { STComponent } from './st.component';
-import { interval } from 'rxjs';
+import { fromEvent, interval } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Directive({
   selector: 'co-st[loadOnScroll]',
@@ -25,12 +26,16 @@ export class LoadOnScrollDirective implements OnInit {
       const sub$ = interval(5e2)
         .subscribe(() => {
           const tbodyContainer =
-            (<HTMLElement>this.el.nativeElement).querySelector('.ant-table-body');
+            (<HTMLElement>this.el.nativeElement).querySelector('.cdk-virtual-scroll-viewport');
           if (!tbodyContainer) return;
           sub$.unsubscribe();
-          tbodyContainer.addEventListener('scroll', (e) => {
-            console.log(e);
-          });
+          fromEvent(tbodyContainer, 'scroll')
+            .pipe(
+              debounceTime(50),
+            )
+            .subscribe(e => {
+              console.log(e);
+            })
           this.status = 'set';
         });
     });

@@ -168,8 +168,18 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() loadingIndicator: TemplateRef<void>;
   @Input() @InputBoolean() bordered = true;
   @Input() size: 'small' | 'middle' | 'default';
-  @Input() scroll: { y?: string; x?: string };
   @Input() singleSort: STSingleSort;
+  _scroll: { y?: string; x?: string };
+  get scroll(): { y?: string; x?: string } {
+    /**
+     * fix: virtual scroll height
+     */
+    if (this.virtualScroll && !this._data?.length) return {};
+    return this._scroll;
+  }
+  @Input() set scroll(value: { y?: string; x?: string }) {
+    this._scroll = value;
+  }
   private _multiSort?: STMultiSort;
   @Input()
   get multiSort() {
@@ -227,6 +237,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() @InputBoolean() checkOnLoad = false;
   @Input() checkboxSelections = [];
   @Input() @InputBoolean() buttonPropagation = false;
+  @Input() @InputBoolean() loadOnScroll = false;
 
   /**
    * Get the number of the current page
@@ -391,7 +402,12 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     });
   }
 
-  private async loadPageData(): Promise<this> {
+  async loadPageData(
+    option: {
+      appendData: boolean,
+    } = {} as any
+  ): Promise<this> {
+    const { appendData } = option;
     this.setLoading(true);
     try {
       const result = await this.loadData();
@@ -408,7 +424,11 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
       if (typeof result.pageShow !== 'undefined') {
         this._isPagination = result.pageShow;
       }
-      this._data = result.list as STData[];
+      if (appendData) {
+        this._data = this._data.concat(result.list as STData[]);
+      } else {
+        this._data = result.list as STData[];
+      }
       this._statistical = result.statistical as STStatisticalResults;
       this.changeEmit('loaded', result.list);
       return this._refCheck();
@@ -930,6 +950,20 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     this._data.unshift({ _editing: true, _new: true, _values: [] })
     this.optimizeData()
     this.cdr.markForCheck();
+  }
+
+  /**
+   *
+   */
+  showLoading(type?: 'nz-table' | 'load-on-scroll', ): boolean {
+    switch (type) {
+      case 'nz-table':
+        return this.loadOnScroll ? !this._data?.length : this._loading;
+      case 'load-on-scroll':
+        return this._loading;
+      default:
+        return this.loadOnScroll ? false : this._loading;
+    }
   }
 
   ngAfterViewInit() {
