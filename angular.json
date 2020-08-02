@@ -40,11 +40,11 @@
               "extractCss": true,
               "namedChunks": false,
               "aot": true,
-              "index": "src/index-prod.html",
               "deployUrl": "//doc.cityocean.com:8010/frontend/",
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
+              "baseHref": "/frontend/",
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
