@@ -53,7 +53,7 @@ const routes: Route[] = [
 ];
 
 @NgModule({
-  imports: [SharedModule, RouterModule.forRoot(routes, environment.production ? {} : { useHash: false })],
+  imports: [SharedModule, RouterModule.forRoot(routes, { useHash: true })],
   declarations: [...COMPONENTS],
 })
-export class RoutesModule { }
+export class RoutesModule {}
