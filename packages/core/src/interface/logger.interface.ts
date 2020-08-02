@@ -1,5 +1,5 @@
 import { Injectable, InjectionToken } from '@angular/core';
-import { CoConfigManager } from '../config';
+import { isDebug } from '../environment';
 
 /**
  * 日志记录器
@@ -45,7 +45,7 @@ export class CoLoggerFake implements ILogger {
    * @param message 消息
    */
   info(message: string): void {
-    if (CoConfigManager.getValue('debug')) {
+    if (isDebug()) {
       console.log(message);
     }
   }
@@ -56,7 +56,7 @@ export class CoLoggerFake implements ILogger {
    * @param message 警告消息
    */
   warn(message: string): void {
-    if (CoConfigManager.getValue('debug')) {
+    if (isDebug()) {
       console.warn(message);
     }
   }
@@ -68,7 +68,7 @@ export class CoLoggerFake implements ILogger {
    * @param exception 异常
    */
   error(message: string, exception: any): void {
-    if (CoConfigManager.getValue('debug')) {
+    if (isDebug()) {
       console.error(message);
     }
   }

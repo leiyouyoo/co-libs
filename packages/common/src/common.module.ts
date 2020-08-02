@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { CO_TITLE_TOKEN, CO_SESSIONSERVICE_TOKEN, CO_MODALHELPER_TOKEN, CO_LOGGER_TOKEN } from '@co/core';
+import { CO_LOGGER_TOKEN, CO_MODALHELPER_TOKEN, CO_SESSIONSERVICE_TOKEN, CO_TITLE_TOKEN } from '@co/core';
 
 import { CoLocaleModule } from './locale/locale.module';
 
@@ -15,9 +15,9 @@ import { COMMON_DIRECTIVES } from './directives';
 import { COMMON_PIPES } from './pipes';
 import { I18nPipe } from './services/i18n/i18n.pipe';
 
-import { TitleService } from './services/title/title.service';
-import { CoSessionService } from './services/session/session.service';
 import { CoLogger } from './services/logger/logger';
+import { CoSessionService } from './services/session/session.service';
+import { TitleService } from './services/title/title.service';
 
 import { NzI18nModule } from 'ng-zorro-antd/i18n';
 import { Environment, ENVIRONMENT } from './services/http/environment';
@@ -37,7 +37,7 @@ export class CoCommonModule {
         { provide: CO_TITLE_TOKEN, useClass: TitleService, multi: false },
         { provide: CO_SESSIONSERVICE_TOKEN, useClass: CoSessionService, multi: false },
         { provide: CO_MODALHELPER_TOKEN, useClass: ModalHelper, multi: false },
-        { provide: CO_LOGGER_TOKEN, useClass: CoLogger, multi: false }
+        { provide: CO_LOGGER_TOKEN, useClass: CoLogger, multi: false },
       ],
     };
   }
@@ -45,9 +45,7 @@ export class CoCommonModule {
   static forChild(): ModuleWithProviders {
     return {
       ngModule: CoCommonModule,
-      providers: [ModalHelper,
-        CoDrawerHelper,
-        { provide: CO_TITLE_TOKEN, useClass: TitleService, multi: false }],
+      providers: [ModalHelper, CoDrawerHelper, { provide: CO_TITLE_TOKEN, useClass: TitleService, multi: false }],
     };
   }
 }
