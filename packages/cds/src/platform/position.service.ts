@@ -21,7 +21,7 @@ export class PositionService extends BaseApi {
     @GET('getAll')
     getAll(
         @Payload
-        _req: {organizationUnitId?:string,parentId?:string,searchText?:string,isRecursion?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
+        _req: {organizationUnitId?:string,parentId?:string,searchText?:string,isRecursion?:boolean,isValid?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
     ): Observable<PagedResultDto<PositionDto>> {
         return null as any
@@ -45,7 +45,7 @@ export class PositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/GetPositionAndOrganization
-     * 
+     * 获取用户的职位及组织机构
      */
 
     @GET('getPositionAndOrganization')
@@ -75,7 +75,7 @@ export class PositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/CreateAsync
-     * 
+     * 创建职位（支持同一职位的多组织生成）
      */
 
     @POST('createAsync')
@@ -105,7 +105,7 @@ export class PositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/UpdateAsync
-     * 
+     * 编辑职位（支持同一职位的多组织生成）
      */
 
     @PUT('updateAsync')
@@ -255,7 +255,7 @@ export class PositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/Recover
-     * 
+     * 恢复职位
      */
 
     @POST('recover')
@@ -270,7 +270,7 @@ export class PositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/Cancel
-     * 
+     * 作废职位
      */
 
     @POST('cancel')

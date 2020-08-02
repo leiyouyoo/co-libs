@@ -405,9 +405,12 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   async loadPageData(
     option: {
       appendData: boolean,
+      singleLoading: boolean,
     } = {} as any
   ): Promise<this> {
-    const { appendData } = option;
+    const { appendData, singleLoading } = option;
+    if (singleLoading && this._loading) return this;
+    if (appendData) this.pi++;
     this.setLoading(true);
     try {
       const result = await this.loadData();

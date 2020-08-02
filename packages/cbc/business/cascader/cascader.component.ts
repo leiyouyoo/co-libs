@@ -10,7 +10,12 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
+<<<<<<< HEAD
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
+=======
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NzCascaderOption, NzSafeAny, OnChangeType, OnTouchedType } from 'ng-zorro-antd';
+>>>>>>> 91d85b80ae935c50d63062af82a40641625afb0a
 import { OrganizationUnitService } from '@co/cds';
 import { NzCascaderOption } from 'ng-zorro-antd';
 
@@ -31,7 +36,7 @@ import { NzCascaderOption } from 'ng-zorro-antd';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class CoCascaderComponent implements OnInit {
+export class CoCascaderComponent implements OnInit , ControlValueAccessor {
   coOption: any[] | null = null;
   @Input() values: any[] | null = null;
   @Input() coAllowClear: boolean = true;
@@ -40,6 +45,9 @@ export class CoCascaderComponent implements OnInit {
 
   @Output() coSelectionChange = new EventEmitter<any>();
   @Output() coModelChange = new EventEmitter<any>();
+
+  onChange: OnChangeType = () => { };
+  onTouched: OnTouchedType = () => { };
 
   constructor(private organizationUnitService: OrganizationUnitService) {} // private organizationUnitService: OrganizationUnitService
 
@@ -59,6 +67,7 @@ export class CoCascaderComponent implements OnInit {
   getData(reqID?) {
     const req: any = reqID ? { ParentId: reqID } : {};
     this.organizationUnitService.getGroupOrganizationUnits(req).subscribe(res => {
+      // console.log(res);
       const option: any = [];
       res.items.forEach(data => {
         option.push(this.getChildData(data));
@@ -80,5 +89,19 @@ export class CoCascaderComponent implements OnInit {
       newList.isLeaf = true;
     }
     return newList;
+  }
+
+  //#region ngModel实现
+
+  writeValue(modelValue: NzSafeAny | NzSafeAny[]): void {
+      this.values = modelValue;
+  }
+
+  registerOnChange(fn: OnChangeType): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: OnTouchedType): void {
+    this.onTouched = fn;
   }
 }

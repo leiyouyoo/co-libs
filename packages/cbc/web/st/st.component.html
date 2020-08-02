@@ -288,11 +288,6 @@
       <tr [nzExpand]="i.expand">
         <ng-template [ngTemplateOutlet]="expand" [ngTemplateOutletContext]="{ $implicit: i, index: index }"></ng-template>
       </tr>
-      <tr *ngIf="showLoading('load-on-scroll') && index === _data?.length - 1">
-        <div style="position: sticky;left: 50%;height: 40px;display:flex;align-items:center;">
-          <nz-spin></nz-spin>
-        </div>
-      </tr>
     </ng-template>
     <ng-container *ngIf="!virtualScroll">
       <ng-container *ngFor="let i of _data; let index = index">
@@ -309,4 +304,7 @@
     </ng-container>
   </tbody>
   <ng-template #totalTpl let-range="range" let-total>{{ renderTotal(total, range) }}</ng-template>
+  <div *ngIf="showLoading('load-on-scroll')" style="position: sticky;left: 50%;height: 40px;display:flex;align-items:center;">
+    <nz-spin></nz-spin>
+  </div>
 </nz-table>
