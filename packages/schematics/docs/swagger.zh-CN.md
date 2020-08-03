@@ -1,6 +1,6 @@
 ---
 order: 40
-title: 生成CO服务插件
+title: 生成服务插件
 type: Documents
 ---
 
