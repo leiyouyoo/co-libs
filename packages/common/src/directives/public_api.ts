@@ -1,6 +1,6 @@
 import { Provider } from '@angular/core';
-import { CoPluralCase } from './plural-case';
+import { CoPluralCaseDirective } from './plural-case.directive';
 
-export { CoPluralCase };
+export { CoPluralCaseDirective };
 
-export const COMMON_DIRECTIVES: Provider[] = [CoPluralCase];
+export const COMMON_DIRECTIVES: Provider[] = [CoPluralCaseDirective];

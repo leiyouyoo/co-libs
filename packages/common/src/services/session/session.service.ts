@@ -1,16 +1,13 @@
 import { Inject, Injectable } from '@angular/core';
 import { ISessionService, User } from '@co/core';
-import *  as _ from 'lodash';
+import * as _ from 'lodash';
 
 @Injectable({ providedIn: 'root' })
 export class CoSessionService implements ISessionService {
-
-  constructor() {
-
-  }
+  constructor() {}
 
   get data(): any {
-    const c = localStorage.getItem("co.session");
+    const c = localStorage.getItem('co.session');
     if (!_.isEmpty(c)) {
       const sessonJson = JSON.parse(c || '');
       return sessonJson;
@@ -18,9 +15,10 @@ export class CoSessionService implements ISessionService {
       return null;
     }
   }
+
   /**
-  * 令牌
-  */
+   * 令牌
+   */
   get token(): string | any {
     return localStorage.getItem('token');
   }
@@ -29,7 +27,7 @@ export class CoSessionService implements ISessionService {
    * 用户信息
    */
   get user(): User | any {
-    const user = _.get(this.data, "session.user");
+    const user = _.get(this.data, 'session.user');
     return user;
   }
 
@@ -37,6 +35,6 @@ export class CoSessionService implements ISessionService {
    * 当前语言
    */
   get lang(): string | any {
-    return _.get(this.data, "localization.currentLanguage.name");
+    return _.get(this.data, 'localization.currentLanguage.name');
   }
 }

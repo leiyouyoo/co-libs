@@ -3,21 +3,22 @@ import { CO_I18N_TOKEN } from '@co/core';
 import { I18NService } from '../core/i18n/service';
 import { Meta, MetaList, MetaSearchGroup, MetaSearchGroupItem } from '../interfaces';
 import { META as ACLMeta } from '../routes/gen/acl/meta';
+import { META as ApmMeta } from '../routes/gen/apm/meta';
 import { META as AuthMeta } from '../routes/gen/auth/meta';
 import { META as CacheMeta } from '../routes/gen/cache/meta';
+import { META as BasicDataMeta } from '../routes/gen/cds/meta';
 import { META as ChartMeta } from '../routes/gen/chart/meta';
 import { META as CliMeta } from '../routes/gen/cli/meta';
+import { META as MicroserviceMeta } from '../routes/gen/cms/meta';
+import { META as CommonMeta } from '../routes/gen/common/meta';
 import { META as ComponentsMeta } from '../routes/gen/components/meta';
+import { META as CoreMeta } from '../routes/gen/core/meta';
 import { META as DocsMeta } from '../routes/gen/docs/meta';
 import { META as FormMeta } from '../routes/gen/form/meta';
-import { META as MockMeta } from '../routes/gen/mock/meta';
-import { META as ThemeMeta } from '../routes/gen/theme/meta';
-import { META as ApmMeta } from '../routes/gen/apm/meta';
 import { META as ImMeta } from '../routes/gen/im/meta';
 import { META as MapMeta } from '../routes/gen/map/meta';
-import { META as MicroserviceMeta } from '../routes/gen/cms/meta';
-import { META as CoreMeta } from '../routes/gen/core/meta';
-import { META as BasicDataMeta } from '../routes/gen/cds/meta';
+import { META as MockMeta } from '../routes/gen/mock/meta';
+import { META as ThemeMeta } from '../routes/gen/theme/meta';
 
 const FULLMETAS: Meta[] = [
   DocsMeta,
@@ -36,6 +37,7 @@ const FULLMETAS: Meta[] = [
   MicroserviceMeta,
   BasicDataMeta,
   CoreMeta,
+  CommonMeta,
 ] as any;
 
 @Injectable({ providedIn: 'root' })
@@ -54,8 +56,8 @@ export class MetaService {
         item._t =
           typeof curTitle !== 'string'
             ? Object.values(curTitle!)
-              .map(v => v)
-              .join('-')
+                .map(v => v)
+                .join('-')
             : curTitle;
       }
     }
@@ -161,7 +163,6 @@ export class MetaService {
   }
 
   genMenus(url: string): void {
-
     const category = this.getCatgory(url);
     if (!category) return;
 

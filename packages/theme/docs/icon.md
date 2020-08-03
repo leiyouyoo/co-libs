@@ -9,7 +9,6 @@ title: Icon
 
 1. 上传字体图标到[iconfont.cn](https://www.iconfont.cn/manage/index?spm=a313x.7781069.1998910419.12&manage_type=myprojects&projectId=1909561)。
 
-
 2. 生成字体图标远程脚本。
   ![](./assets/screenshot/iconfont.png)。
 

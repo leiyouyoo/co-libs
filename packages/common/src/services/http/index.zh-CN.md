@@ -1,10 +1,11 @@
 ---
 order: 1
 title: _HttpClient
+subtitle: HttpClient
 type: Service
 ---
 
-`@co/theme` 包含了一个叫 [\_HttpClient](https://github.com/ng-alain/delon/blob/master/packages/theme/src/services/http/http.client.ts) 类，其本质还是调用 Angular 的 `HttpClient`。
+`@co/common` 包含了一个叫 _HttpClient类，其本质还是调用 Angular 的 `HttpClient`。
 
 ## 特性
 
@@ -28,14 +29,14 @@ HttpClient.get(url, { params: { pi: 1 } });
 _HttpClient.get(url, { pi: 1 });
 ```
 
-## AlainThemeConfig
+## CoConfig
 
 通用配置项，例如统一对 `_HttpClient` 设置空值、时间处理方式。
 
 ```ts
-import { AlainThemeConfig } from '@co/common';
-export function fnAlainThemeConfig(): AlainThemeConfig {
-  return Object.assign(new AlainThemeConfig(), <AlainThemeConfig>{
+import { CoConfig } from '@co/core';
+export function fnCoConfig(): CoConfig {
+  return Object.assign(new CoConfig(), <CoConfig>{
     http: {
       nullValueHandling: 'ignore',
     },
@@ -43,12 +44,12 @@ export function fnAlainThemeConfig(): AlainThemeConfig {
 }
 
 @NgModule({})
-export class DelonModule {
+export class DemoModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: DelonModule,
+      ngModule: CoCommonModule,
       providers: [
-        { provide: AlainThemeConfig, useFactory: fnAlainThemeConfig },
+        { provide: CoConfig, useFactory: fnCoConfig },
       ],
     };
   }

@@ -23,6 +23,7 @@ const routes: Route[] = [
         loadChildren: () => import('./gen/components/components.module').then(m => m.ComponentsModule),
       },
       { path: 'core', loadChildren: () => import('./gen/core/core.module').then(m => m.CoreModule) },
+      { path: 'common', loadChildren: () => import('./gen/common/common.module').then(m => m.CommonModule) },
       { path: 'theme', loadChildren: () => import('./gen/theme/theme.module').then(m => m.ThemeModule) },
       { path: 'auth', loadChildren: () => import('./gen/auth/auth.module').then(m => m.AuthModule) },
       { path: 'acl', loadChildren: () => import('./gen/acl/acl.module').then(m => m.AclModule) },
@@ -53,7 +54,7 @@ const routes: Route[] = [
 ];
 
 @NgModule({
-  imports: [SharedModule, RouterModule.forRoot(routes, { useHash: true })],
+  imports: [SharedModule, RouterModule.forRoot(routes, { useHash: false })],
   declarations: [...COMPONENTS],
 })
 export class RoutesModule {}

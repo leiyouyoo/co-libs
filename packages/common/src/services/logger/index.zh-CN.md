@@ -1,56 +1,47 @@
 ---
 order: 3
-title: ModalHelper
-subtitle: 对话框辅助类
+title: 日志服务
+subtitle: 日志服务
 type: Service
 ---
 
-基于 `NzModalService` 封装，它解决一些已知问题：
+日志组件用于在co-libs和业务子应用中控制在调试模式下打印日志到控制台，方便生产模式下禁用控制打印和上报错误信息。
 
-- 更友好的处理回调
+### co-libs 日志记录
 
-## 用法
 
 ```ts
-this.modalHelper.create(FormEditComponent, { i }).subscribe(res => this.load());
 
-// 成功范例
-// 1. 视为成功
-this.subject.close(true);
-this.subject.close({ other: 1 });
-// 2. 视为失败
-this.subject.close();
+import { log } from '@co/core';
 
-// 关闭：
-this.subject.destroy();
+export class DemoComponent  {
+constructor() {
+    log('构造函数');
+  }
+}
+
 ```
 
-包括两个方法体 `create` & `createStatic` 分别打开普通&静态对话框。在 `NzModalService` 基础上新增若干参数。
 
-**自定义组件HTML模板**
 
-```html
-<div class="modal-header">
-    <div class="modal-title">Title</div>
-</div>
+### 业务子应用日志记录
 
-Your body content
+> 注: 后面重写该日志记录器上报错误信息
 
-<div class="modal-footer">
-  <button nz-button [nzType]="'default'" (click)="cancel()">
-    Cancel
-  </button>
-  <button nz-button [nzType]="'primary'" (click)="ok()">
-    OK
-  </button>
-</div>
+```ts
+
+import { CoPageBase } from '@co/core';
+
+export class CmsDemoDetailComponent extends CoPageBase {
+constructor(
+    protected injector: Injector
+  ) {
+    super(injector);
+  }
+}
+
+coOnClosing():Promise<any>{
+    this.$logger.info('即将关闭页面');
+    Promise.resolve(true);
+}
 ```
-
-### API
-
-| 名称 | 类型 | 默认值 | 描述 |
-| --- | --- | --- | --- |
-| `size` | 指定对话框大小 | `sm,md,lg,xl,number` | `lg` |
-| `exact` | 是否精准（默认：`true`），若返回值非空值（`null`或`undefined`）视为成功，否则视为错误 | `boolean` | `true` |
-| `includeTabs` | 是否包裹标签页 | `boolean` | `false` |
-| `modalOptions` | 对话框 [ModalOptions](https://github.com/NG-ZORRO/ng-zorro-antd/blob/master/components/modal/modal-types.ts) 参数 | `ModalOptions` | - |

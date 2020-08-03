@@ -1,10 +1,10 @@
 ---
 order: 1
-title: 开始使用
+subtitle: 开始使用
 type: Documents
 ---
 
-@co/common 核心库，包括组件，页面，服务等抽象实现及拦截器等一些默认实现。
+@co/common 公共库，包括指令，服务，管道等等。
 
 ## 如何使用
 
@@ -27,6 +27,4 @@ import { CoCommonModule } from '@co/common';
 export class AppModule { }
 ```
 
-## 参数
 
-可以通过[全局配置](/docs/global-config)覆盖 `ArrayService` 设置映射名称。
