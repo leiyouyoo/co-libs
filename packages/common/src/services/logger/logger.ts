@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Observable, Observer } from 'rxjs';
-import { ILogger } from '@co/core';
-
+import { CoConfigManager, ILogger, isDebug } from '@co/core';
 
 @Injectable({ providedIn: 'root' })
 export class CoLogger implements ILogger {
-
   /**
    * 记录信息
    *
    * @param message 消息
    */
   info(message: string): void {
-    console.info(message);
+    if (isDebug()) {
+      console.log(message);
+    }
   }
 
   /**
@@ -21,7 +20,9 @@ export class CoLogger implements ILogger {
    * @param message 警告消息
    */
   warn(message: string): void {
-    console.warn(message);
+    if (isDebug()) {
+      console.warn(message);
+    }
   }
 
   /**
@@ -31,6 +32,8 @@ export class CoLogger implements ILogger {
    * @param exception 异常
    */
   error(message: string, exception: any): void {
-    console.error(message);
+    if (isDebug()) {
+      console.error(message, exception);
+    }
   }
 }

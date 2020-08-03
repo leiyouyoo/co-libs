@@ -1,6 +1,6 @@
 import { Injectable, InjectionToken } from '@angular/core';
-import { ModalOptions, NzModalService } from 'ng-zorro-antd/modal';
-import { Observable, Observer, BehaviorSubject } from 'rxjs';
+import { ModalOptions } from 'ng-zorro-antd/modal';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 export interface ModalHelperOptions {
   /** 大小；例如：lg、600，默认：`lg` */

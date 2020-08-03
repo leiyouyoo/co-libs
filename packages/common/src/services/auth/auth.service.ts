@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { DA_SERVICE_TOKEN, ITokenService } from '@co/auth';
+import { log } from '@co/core';
 import { _HttpClient } from '../http/http.client';
 
 interface LoginOption {
@@ -61,7 +62,7 @@ export class CoAuthService {
         },
         error => {
           reject(error);
-          console.log(error);
+          log(error);
         },
       );
     });

@@ -55,6 +55,7 @@ export class PlanetApplicationRef {
       throw new Error(`${this.name} app is not define`);
     }
     this.portalApp = app;
+
     return from(
       this.appModuleBootstrap(app).then(appModuleRef => {
         this.appModuleRef = appModuleRef;

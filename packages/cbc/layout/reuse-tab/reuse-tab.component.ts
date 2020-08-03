@@ -38,6 +38,7 @@ import {
 import { ReuseTabService } from './reuse-tab.service';
 
 declare var window: any;
+
 @Component({
   selector: 'reuse-tab, [reuse-tab]',
   exportAs: 'reuseTab',

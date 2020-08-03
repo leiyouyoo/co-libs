@@ -1,6 +1,7 @@
 import { isDevMode } from '@angular/core';
 import { environment } from 'ng-zorro-antd/core/environments';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
+import { isDebug } from '../environment';
 
 const record: Record<string, boolean> = {};
 
@@ -35,13 +36,19 @@ export const warnDeprecation = (...args: NzSafeAny[]) => {
     const stack = new Error().stack;
     return consoleCommonBehavior((...arg: NzSafeAny[]) => console.warn(PREFIX, 'deprecated:', ...arg, stack), ...args);
   } else {
-    return () => { };
+    return () => {};
   }
 };
 
 // Log should only be printed in dev mode.
 export const log = (...args: NzSafeAny[]) => {
-  if (isDevMode()) {
+  if (isDebug()) {
     console.log(PREFIX, ...args);
+  }
+};
+
+export const error = (...args: NzSafeAny[]) => {
+  if (isDebug()) {
+    console.error(PREFIX, ...args);
   }
 };

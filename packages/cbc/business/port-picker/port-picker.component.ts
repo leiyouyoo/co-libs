@@ -48,7 +48,6 @@ export class PortPickerComponent extends PickerComponentBase {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
     if (changes) {
     }
     if (this.portReq) {

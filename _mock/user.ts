@@ -18,7 +18,7 @@ export const USERS = {
     }
     for (let i = 0; i < num; i++) {
       res.items.push({
-        id: i + 1,
+        id: i + 1 + (req.body.skipCount || 0),
         picture: {
           thumbnail: `https://randomuser.me/api/portraits/thumb/${r(0, 1) === 0 ? 'men' : 'women'}/${r(1, 50)}.jpg`,
         },
