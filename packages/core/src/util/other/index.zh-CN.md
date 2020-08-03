@@ -1,8 +1,9 @@
 ---
 title: other
 subtitle: 其他
-type: Type
+type: Util
 ---
+
 
 ## isEmpty
 
@@ -72,3 +73,7 @@ updateHostClass(
   }
 )
 ```
+
+
+## lodash 
+其它工具函数见 [lodash](https://www.lodashjs.com/)。

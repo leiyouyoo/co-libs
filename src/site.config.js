@@ -188,13 +188,13 @@ module.exports = {
           'en-US': 'Documents',
         },
         {
-          'zh-CN': '类型',
-          'en-US': 'Type',
+          'zh-CN': '工具类',
+          'en-US': 'Util',
         },
         {
-          'zh-CN': '模板',
-          'en-US': 'Template',
-        },
+          'zh-CN': '类型',
+          'en-US': 'Type',
+        }
       ],
       module: '@co/core',
       defaultRoute: 'getting-started',
@@ -211,8 +211,40 @@ module.exports = {
           },
           hasSubDir: false,
         },
+        // {
+        //   src: ['./packages/core/src/base'],
+        //   // ignores: [ 'README.md' ],
+        //   template: {
+        //     content: './src/templates/content.ts',
+        //   },
+        //   hasSubDir: true,
+        // },
+        // {
+        //   src: ['./packages/core/src/config'],
+        //   // ignores: [ 'README.md' ],
+        //   template: {
+        //     content: './src/templates/content.ts',
+        //   },
+        //   hasSubDir: true,
+        // },
+        // {
+        //   src: ['./packages/core/src/interface'],
+        //   // ignores: [ 'README.md' ],
+        //   template: {
+        //     content: './src/templates/content.ts',
+        //   },
+        //   hasSubDir: true,
+        // },
+        // {
+        //   src: ['./packages/core/src/logger'],
+        //   // ignores: [ 'README.md' ],
+        //   template: {
+        //     content: './src/templates/content.ts',
+        //   },
+        //   hasSubDir: true,
+        // },
         {
-          src: ['./packages/core/src'],
+          src: ['./packages/core/src/util'],
           // ignores: [ 'README.md' ],
           template: {
             content: './src/templates/content.ts',

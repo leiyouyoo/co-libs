@@ -1,7 +1,7 @@
 ---
 title: string
 subtitle: 字符串
-type: Type
+type: Util
 ---
 
 ## format

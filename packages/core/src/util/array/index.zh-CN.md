@@ -1,7 +1,7 @@
 ---
 title: array
 subtitle: 数组
-type: Type
+type: Util
 ---
 
 `ArrayService` 用于数组与树之间的转化、访问等，一般配合 `nz-tree` 一起使用。

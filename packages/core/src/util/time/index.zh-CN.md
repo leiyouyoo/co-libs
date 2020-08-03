@@ -1,7 +1,7 @@
 ---
 title: time
 subtitle: 日期
-type: Type
+type: Util
 ---
 
 ## getTimeDistance

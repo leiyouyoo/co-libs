@@ -1,6 +1,6 @@
 ---
 title: 校验
-type: Type
+type: Util
 ---
 
 ## API

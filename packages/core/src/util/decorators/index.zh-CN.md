@@ -1,7 +1,8 @@
 ---
-title: decorators
-subtitle: 装饰器
-type: 
+title: debounce
+subtitle: 函数防抖
+type: Util
+
 ---
 
 ## debounce
