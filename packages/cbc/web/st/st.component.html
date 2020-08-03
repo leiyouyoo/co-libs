@@ -299,7 +299,7 @@
     </ng-container>
   </tbody>
   <ng-template #totalTpl let-range="range" let-total>{{ renderTotal(total, range) }}</ng-template>
-  <div *ngIf="showLoading('load-on-scroll')" style="position: sticky; left: 50%; height: 40px; display: flex; align-items: center;">
-    <nz-spin></nz-spin>
-  </div>
 </nz-table>
+<div *ngIf="showLoading('load-on-scroll')" class="st__scroll-loading">
+  <nz-spin></nz-spin>
+</div>

@@ -2,6 +2,8 @@
 @st-prefix: ~'.st';
 
 @{st-prefix} {
+  position: relative;
+
   display: block;
   &__p-left {
     .@{ant-prefix}-table-pagination {
@@ -154,6 +156,17 @@
         border-right: none;
       }
     }
+  }
+  &__scroll-loading {
+    position: absolute;
+    bottom: 10px;
+
+    left: 50%;
+    height: 40px;
+
+    pointer-events: none;
+    display: flex;
+    align-items: center;
   }
 
   @media screen and (min-width: @nz-table-rep-min-width) {

@@ -39,8 +39,6 @@ export class LoadOnScrollDirective implements OnInit {
               const loadMore = element.scrollHeight - element.clientHeight - element.scrollTop <= this.distance;
               console.log(loadMore);
               if (!loadMore) return;
-              console.log(this.st);
-              return ;
               await this.st.loadPageData({ singleLoading: true, appendData: true });
             })
           this.status = 'set';

@@ -16,16 +16,17 @@ import { Component } from '@angular/core';
 import { STColumn } from '@co/cbc/web/st';
 
 @Component({
-  selector: 'app-ComponentsStAutoCalcScrollComponent',
+  selector: 'app-ComponentsStLoadOnScrollComponent',
   template: `
-    <div>
-      <co-st [data]="url" [columns]="columnsX"  calcScroll [showFilters]="false" style="height: 100%;"></co-st>
+    <div style="height: 400px;">
+      <co-st loadOnScroll virtualScroll [virtualItemSize]="77" [virtualMinBufferPx]="5" [virtualMaxBufferPx]="5"
+             [data]="url" [columns]="columnsX" [ps]="6" calcScroll [showFilters]="false" style="height: 100%;"></co-st>
     </div>
   `,
 })
-export class ComponentsStAutoCalcScrollComponentComponent {
-   url = `/users?total=100&maxResultCount=10`;
- columnsX: STColumn[] = [
+export class ComponentsStLoadOnScrollComponentComponent {
+  url = `/users?total=100&maxResultCount=6`;
+  columnsX: STColumn[] = [
     { title: '编号1', index: 'id', },
     { title: '编号2', index: 'id', },
     { title: '编号3编号3', index: 'id', },
@@ -43,6 +44,7 @@ export class ComponentsStAutoCalcScrollComponentComponent {
     { title: '年龄12', index: 'age', },
   ];
 }
+
 
 
 ```

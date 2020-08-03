@@ -8,6 +8,9 @@ import { ENVIRONMENT, Environment } from './environment';
 
 export type _HttpHeaders = HttpHeaders | { [header: string]: string | string[] };
 export type HttpObserve = 'body' | 'events' | 'response';
+interface BuildParamsOptions {
+  allowNullable?: boolean;
+}
 
 /**
  * 封装HttpClient，主要解决：
@@ -925,7 +928,7 @@ export class _HttpClient {
   ): Observable<any> {
     this.begin();
     if (options.params) options.params = this.buildHttpParams(options.params);
-    if (options.body) options.body = buildBody(options.body);
+    if (options.body) options.body = buildBody(options.body, genBuildOption(options.headers));
     return of(null).pipe(
       tap(() => this.begin()),
       switchMap(() => this.http.request(method, this.processUrl(url), options)),
@@ -939,7 +942,7 @@ export class _HttpClient {
 
   // #endregion
 
-  private buildHttpParams(_params: any): any {
+  private buildHttpParams(_params: any, option: BuildParamsOptions = {} as BuildParamsOptions): any {
     let params = { ..._params };
     params = params ? params : {};
     const timestamp = Date.parse(new Date().toString());
@@ -976,11 +979,11 @@ export class _HttpClient {
   }
 }
 
-function buildBody(datas: any) {
+function buildBody(datas: any, option: BuildParamsOptions = {} as BuildParamsOptions) {
   if (datas instanceof FormData) return datas;
 
   for (const key in datas) {
-    if (datas[key] === null || datas[key] === undefined) {
+    if ((datas[key] === null || datas[key] === undefined) && !option?.allowNullable) {
       delete datas[key];
     } else if (datas[key] instanceof Date) {
       datas[key] = (datas[key] as Date).toISOString();
@@ -991,4 +994,19 @@ function buildBody(datas: any) {
     }
   }
   return datas;
+}
+
+function genBuildOption(header): BuildParamsOptions {
+  const allowNullable = hasHeader(header, 'Allow-Nullable');
+  return { allowNullable };
+}
+
+function hasHeader(header: _HttpHeaders, name: string): boolean {
+  if (!header) return false;
+  switch (true) {
+    case header instanceof HttpHeaders:
+      return (<HttpHeaders>header).has(name);
+    default:
+      return !!(<object>header)?.hasOwnProperty(name);
+  }
 }
