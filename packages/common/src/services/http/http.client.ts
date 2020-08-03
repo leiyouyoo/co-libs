@@ -983,14 +983,22 @@ function buildBody(datas: any, option: BuildParamsOptions = {} as BuildParamsOpt
   if (datas instanceof FormData) return datas;
 
   for (const key in datas) {
-    if ((datas[key] === null || datas[key] === undefined) && !option?.allowNullable) {
-      delete datas[key];
-    } else if (datas[key] instanceof Date) {
-      datas[key] = (datas[key] as Date).toISOString();
-    } else if (Array.isArray(datas[key])) {
-      datas[key].forEach(element => {
-        return buildBody(element);
-      });
+    switch (true) {
+      case datas[key] === null:
+      case datas[key] === void 0:
+        if (!option?.allowNullable) {
+          delete datas[key];
+        }
+        break;
+      case datas[key] instanceof Date:
+        datas[key] = (datas[key] as Date).toISOString();
+        break;
+      case Array.isArray(datas[key]):
+        datas[key].forEach(element => {
+          return buildBody(element);
+        });
+        break;
+      default:
     }
   }
   return datas;
