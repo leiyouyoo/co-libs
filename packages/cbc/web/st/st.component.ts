@@ -796,6 +796,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
             this.cd();
           })
       }
+      return;
     } else if (btn.type === 'edit') {
 
     } else if (btn.type === 'save') {
@@ -827,6 +828,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   private btnCallback(record: STData, btn: STColumnButton, modal?: any) {
     if (!btn.click) return;
     if (typeof btn.click === 'string') {
+      // 已定义的操作类型: load, reload
       switch (btn.click) {
         case 'load':
           this.load();
@@ -836,8 +838,25 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
           break;
       }
     } else {
+      // callback 类型
       const result = btn.click(record, modal, this);
-      return result;
+      if (result instanceof Promise) {
+        // 如果是promise，设置loading，并判断返回值是否有action
+        btn.loading = true;
+        return result
+          .finally(() => btn.loading = false)
+          .then(data => {
+            switch (data?.action) {
+              case 'delete':
+                this.removeRow(record);
+                break;
+              default:
+            }
+            return data;
+          });
+      } else {
+        return result;
+      }
     }
   }
 

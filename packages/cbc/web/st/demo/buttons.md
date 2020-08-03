@@ -24,6 +24,7 @@ import { Component } from '@angular/core';
 import { STColumn } from '@co/cbc/web/st';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { DemoModalComponent, DemoDrawerComponent } from '@shared';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-demo',
@@ -112,6 +113,9 @@ export class DemoComponent {
           text: 'Delay',
           type: 'delay',
           iif: (record) => record.id === 3,
+          click: () => {
+            return timer(1e3).toPromise().then(() => ({ action: `delete` }));
+          },
         },
         {
           children: [
