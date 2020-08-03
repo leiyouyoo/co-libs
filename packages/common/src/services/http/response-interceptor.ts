@@ -190,7 +190,7 @@ export class ResponseInterceptor implements HttpInterceptor {
   private config: CoCommonConfig | undefined;
 
   constructor(configuration: AbpHttpConfiguration, @Inject(ENVIRONMENT) private environment) {
-    configuration.loginUrl = environment?.LOGIN_URL || loginUrl;
+    configuration.loginUrl = environment?.LOGIN_URL ?? loginUrl;
     this.configuration = configuration;
   }
 

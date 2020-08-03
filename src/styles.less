@@ -18,9 +18,19 @@
 
 // 可以替换 dark, compact
 // @import '../packages/theme/theme-dark.less';
-html .ant-table-thead > tr > th {
-  overflow: hidden;
-   white-space: nowrap;
-  text-align: left;
-  background-color: #f5f5f5ff;
+html {
+  .st-thead-row-filter {
+    th {
+      background   : #ffffff !important;
+      border-bottom: none !important;
+      padding      : 10px 16px !important;
+    }
+  }
+
+  .ant-table-thead>tr:first-child>th {
+    overflow        : hidden;
+    white-space     : nowrap;
+    text-align      : left;
+    background-color: #f5f5f5ff;
+  }
 }
