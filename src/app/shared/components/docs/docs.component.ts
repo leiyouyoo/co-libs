@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { I18NService } from '../../../core/i18n/service';
 import { MetaService } from '../../../core/meta.service';
+declare var hljs: any;
 
 @Component({
   selector: 'app-docs',
