@@ -245,7 +245,7 @@ export class ReuseTabComponent implements OnInit, OnChanges, OnDestroy {
       e.stopPropagation();
     }
     const item = this.list[idx];
-    if (this.srv.componentRef.instance.coOnClosing) {
+    if (this.srv.componentRef && this.srv.componentRef.instance.coOnClosing) {
       this.srv.componentRef.instance.coOnClosing().then(v => {
         this.srv.close(item.url, includeNonCloseable);
         this.close.emit(item);
