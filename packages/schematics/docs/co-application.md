@@ -1,6 +1,6 @@
 ---
 order: 40
-title: 生成子应用插件
+title: 生成子应用
 type: Documents
 ---
 

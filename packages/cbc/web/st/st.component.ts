@@ -982,7 +982,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
       case 'nz-table':
         return this.loadOnScroll ? !this._data?.length : this._loading;
       case 'load-on-scroll':
-        return this._loading;
+        return this.loadOnScroll && this._loading;
       default:
         return this.loadOnScroll ? false : this._loading;
     }
