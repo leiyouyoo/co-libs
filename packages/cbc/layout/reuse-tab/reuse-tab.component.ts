@@ -244,13 +244,18 @@ export class ReuseTabComponent implements OnInit, OnChanges, OnDestroy {
       e.preventDefault();
       e.stopPropagation();
     }
-
-    this.srv.componentRef.instance.coOnClosing().then(v => {
-      const item = this.list[idx];
+    const item = this.list[idx];
+    if (this.srv.componentRef.instance.coOnClosing) {
+      this.srv.componentRef.instance.coOnClosing().then(v => {
+        this.srv.close(item.url, includeNonCloseable);
+        this.close.emit(item);
+        this.cdr.detectChanges();
+      });
+    } else {
       this.srv.close(item.url, includeNonCloseable);
       this.close.emit(item);
       this.cdr.detectChanges();
-    });
+    }
 
     return false;
   }

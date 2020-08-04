@@ -4,16 +4,30 @@ import * as _ from 'lodash';
 
 @Injectable({ providedIn: 'root' })
 export class CoSessionService implements ISessionService {
+  _data: any;
   constructor() {}
 
   get data(): any {
+    if (this._data) {
+      return this._data;
+    }
+
     const c = localStorage.getItem('co.session');
     if (!_.isEmpty(c)) {
-      const sessonJson = JSON.parse(c || '');
-      return sessonJson;
+      return JSON.parse(c || '');
     } else {
       return null;
     }
+  }
+
+  /**
+   * 设置会话信息
+   *
+   * @param data 会话数据
+   */
+  set(data) {
+    this._data = data;
+    localStorage.setItem('co.session', JSON.stringify(data));
   }
 
   /**
