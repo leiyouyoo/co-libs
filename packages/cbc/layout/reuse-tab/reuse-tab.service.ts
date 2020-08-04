@@ -451,19 +451,30 @@ export class ReuseTabService implements OnDestroy {
    */
   shouldAttach(route: ActivatedRouteSnapshot): boolean {
     if (this.hasInValidRoute(route)) return false;
+
     const url = this.getUrl(route);
     const data = this.get(url);
     const ret = !!(data && data._handle);
     this.di('#shouldAttach', ret, url);
+
     if (ret) {
       const compRef = data!._handle.componentRef;
       if (compRef) {
         this.componentRef = compRef;
+
+        // 附加关闭方法
+        // if (compRef.instance) {
+        //   this.componentRef.instance.$close = () => {
+        //     this.close(url, true);
+        //   };
+        // }
+
         this.runHook('coOnActived', compRef);
       }
     } else {
       this._cachedChange.next({ active: 'add', url, list: this._cached });
     }
+
     return ret;
   }
 

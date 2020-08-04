@@ -114,6 +114,7 @@ export interface ReuseComponentRef {
 export type ReuseHookTypes = 'coOnActived' | 'coOnDeactived';
 
 export interface ReuseComponentInstance {
+  [x: string]: () => void;
   coOnActived: () => void;
   coOnClosing: () => Promise<any>;
   coOnDeactived: () => void;

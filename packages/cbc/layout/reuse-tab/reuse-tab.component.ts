@@ -111,7 +111,7 @@ export class ReuseTabComponent implements OnInit, OnChanges, OnDestroy {
 
       // TODO:优化此处代码
       for (const item of module.appModuleRef.injector._r3Injector.records) {
-        if (item[0].name === 'I18NService') {
+        if (item[0].serviceName === 'I18NService') {
           tIl8nSrv = item[1].value;
           break;
         }
