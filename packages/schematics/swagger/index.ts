@@ -199,7 +199,7 @@ function setSwaggerRequest(reqList: any) {
         // 找寻该实体,并加入处理
         const name = setEntityName(parmDetail.schema?.$ref);
         detail.reqEntity = name;
-        parmDetail.type = name;
+        parmDetail.type = entityTitle + name;
         bindEntity(parmDetail.schema.$ref);
       }
 
@@ -310,14 +310,14 @@ function bindEntity(ref) {
       if (parmDetail?.schema?.$ref) {
         // 找寻该实体,并加入处理
         const name = setEntityName(parmDetail.schema?.$ref);
-        parmDetail.type = name;
+        parmDetail.type = entityTitle + name;
         bindEntity(parmDetail.schema.$ref);
       }
 
       if (parmDetail?.$ref) {
         // 找寻该实体,并加入处理
         const name = setEntityName(parmDetail.$ref);
-        parmDetail.type = name;
+        parmDetail.type = entityTitle + name;
         bindEntity(parmDetail.$ref);
       }
 

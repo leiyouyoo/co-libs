@@ -2344,7 +2344,7 @@
             shipTracePoints?: any[];
          
             /* 当前坐标点 */ 
-            currentPosition?: VesselInfosDto;
+            currentPosition?: PUBVesselInfosDto;
         
         
     }

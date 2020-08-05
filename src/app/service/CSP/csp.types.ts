@@ -75,13 +75,13 @@
         
          
             
-            version?: Version;
+            version?: CSPVersion;
          
             
-            content?: HttpContent;
+            content?: CSPHttpContent;
          
             
-            method?: HttpMethod;
+            method?: CSPHttpMethod;
          
             
             requestUri?: string;
@@ -102,10 +102,10 @@
         
          
             
-            version?: Version;
+            version?: CSPVersion;
          
             
-            content?: HttpContent;
+            content?: CSPHttpContent;
          
             /* 
 100 = Continue
@@ -183,7 +183,7 @@
             headers?: any[];
          
             
-            requestMessage?: HttpRequestMessage;
+            requestMessage?: CSPHttpRequestMessage;
          
             
             isSuccessStatusCode?: boolean;
@@ -690,7 +690,7 @@
             shipmentNo?: string;
          
             /* 账单收件人信息 */ 
-            recipient?: NameValueDto;
+            recipient?: CSPNameValueDto;
          
             /* 总额 */ 
             amount?: any[];
@@ -1084,10 +1084,10 @@
         
          
             /* 订舱单业务号或订舱单名称 */ 
-            bookingNoOrName?: SearchModel;
+            bookingNoOrName?: CSPSearchModel;
          
             /* 委托客户或联系人 */ 
-            customerOrContact?: SearchModel;
+            customerOrContact?: CSPSearchModel;
          
             /* 预订状态(枚举)
 0 = BookingDraft
@@ -1210,10 +1210,10 @@
             serviceCompanyId?: string;
          
             /* 起始地址 */ 
-            originAddress?: NetWorkLocationModel;
+            originAddress?: CSPNetWorkLocationModel;
          
             /* 目的地址 */ 
-            destinationAddress?: NetWorkLocationModel;
+            destinationAddress?: CSPNetWorkLocationModel;
          
             /* 重量 */ 
             totalWeightDisplay?: string;
@@ -1329,16 +1329,16 @@
         
          
             /* 发货港 */ 
-            originPort?: PubLocation;
+            originPort?: CSPPubLocation;
          
             /* 目的港 */ 
-            destinationPort?: PubLocation;
+            destinationPort?: CSPPubLocation;
          
             /* 起始地址 */ 
-            originAddress?: NetWorkLocationModel;
+            originAddress?: CSPNetWorkLocationModel;
          
             /* 目的地址 */ 
-            destinationAddress?: NetWorkLocationModel;
+            destinationAddress?: CSPNetWorkLocationModel;
          
             /* 货好日期 */ 
             cargoReadyDate?: string;
@@ -1510,7 +1510,7 @@
             isContainsSpecialGoods?: boolean;
          
             /* CRM查看变更属性历史值（仅显示上一次的） */ 
-            lastData?: BookingOldData;
+            lastData?: CSPBookingOldData;
          
             /* 模板Id */ 
             bookingTemplateId?: string;
@@ -1540,19 +1540,19 @@
             volumeUnitCode?: string;
          
             /* 发货港 */ 
-            originPort?: PubLocation;
+            originPort?: CSPPubLocation;
          
             /* 目的港 */ 
-            destinationPort?: PubLocation;
+            destinationPort?: CSPPubLocation;
          
             /* 起始仓库 */ 
-            deliveryWarehouse?: FBALocationModel;
+            deliveryWarehouse?: CSPFBALocationModel;
          
             /* 起始地址 */ 
-            originAddress?: NetWorkLocationModel;
+            originAddress?: CSPNetWorkLocationModel;
          
             /* 目的地址 */ 
-            destinationAddress?: NetWorkLocationModel;
+            destinationAddress?: CSPNetWorkLocationModel;
          
             /* Delivery  goods by myself 时间范围 */ 
             deliveryTimeRange?: string;
@@ -2015,7 +2015,7 @@
             isContainsSpecialGoods?: boolean;
          
             /* CRM查看变更属性历史值（仅显示上一次的） */ 
-            lastData?: BookingOldData;
+            lastData?: CSPBookingOldData;
          
             /* 模板Id */ 
             bookingTemplateId?: string;
@@ -2291,7 +2291,7 @@
 Shipper：显示最近一次选中的信息；
 FBM Address：默认显示最近一次选中的信息；
 Destination location：默认显示最近一次选中的信息； */ 
-            recentBooking?: BookingDto;
+            recentBooking?: CSPBookingDto;
          
             /* 显示最近使用过的起始港口数据(5条)； */ 
             originPorts?: any[];
@@ -2594,10 +2594,10 @@ Destination location：默认显示最近一次选中的信息； */
             deliveryMethodType?: number;
          
             /* 送货地址 */ 
-            destinationAddress?: NetWorkLocationModel;
+            destinationAddress?: CSPNetWorkLocationModel;
          
             /* 起始地址 */ 
-            originAddress?: NetWorkLocationModel;
+            originAddress?: CSPNetWorkLocationModel;
          
             /* FBA No，可能存在多个 */ 
             fbaNos?: any[];
@@ -2915,31 +2915,31 @@ Destination location：默认显示最近一次选中的信息； */
             isContainsSpecialGoods?: boolean;
          
             /* 发货港 */ 
-            originPort?: PubLocation;
+            originPort?: CSPPubLocation;
          
             /* 目的港 */ 
-            destinationPort?: PubLocation;
+            destinationPort?: CSPPubLocation;
          
             /* 贸易条款显示字符 */ 
             incotermsString?: string;
          
             /* 发货方地址 */ 
-            shipperAddress?: NetWorkLocationModel;
+            shipperAddress?: CSPNetWorkLocationModel;
          
             /* 收货方地址 */ 
-            consigneeAddress?: NetWorkLocationModel;
+            consigneeAddress?: CSPNetWorkLocationModel;
          
             /* 起始仓库 */ 
-            deliveryWarehouse?: FBALocationModel;
+            deliveryWarehouse?: CSPFBALocationModel;
          
             /* FBA/FBM 上门提货地址（取件详细地址） */ 
-            pickUpAddress?: NetWorkLocationModel;
+            pickUpAddress?: CSPNetWorkLocationModel;
          
             /* 起始地址 */ 
-            originAddress?: NetWorkLocationModel;
+            originAddress?: CSPNetWorkLocationModel;
          
             /* 目的地址 */ 
-            destinationAddress?: NetWorkLocationModel;
+            destinationAddress?: CSPNetWorkLocationModel;
          
             /* Gets or sets the name of the consignee customer. */ 
             consigneeCustomerName?: string;
@@ -3137,25 +3137,25 @@ Destination location：默认显示最近一次选中的信息； */
             freightMethodType?: number;
          
             /* 发货港 */ 
-            originPort?: PubLocation;
+            originPort?: CSPPubLocation;
          
             /* 目的港 */ 
-            destinationPort?: PubLocation;
+            destinationPort?: CSPPubLocation;
          
             /* 贸易条款显示字符 */ 
             incotermsString?: string;
          
             /* 发货方地址 */ 
-            shipperAddress?: NetWorkLocationModel;
+            shipperAddress?: CSPNetWorkLocationModel;
          
             /* 收货方地址 */ 
-            consigneeAddress?: NetWorkLocationModel;
+            consigneeAddress?: CSPNetWorkLocationModel;
          
             /* 起始仓库 */ 
-            deliveryWarehouse?: FBALocationModel;
+            deliveryWarehouse?: CSPFBALocationModel;
          
             /* FBA/FBM 上门提货地址（取件详细地址） */ 
-            pickUpAddress?: NetWorkLocationModel;
+            pickUpAddress?: CSPNetWorkLocationModel;
          
             /* 是否包含特殊品 */ 
             isContainsSpecialGoods?: boolean;
@@ -3587,7 +3587,7 @@ Destination location：默认显示最近一次选中的信息； */
             success?: boolean;
          
             
-            error?: ErrorInfo;
+            error?: CSPErrorInfo;
          
             
             unAuthorizedRequest?: boolean;
@@ -3635,7 +3635,7 @@ Destination location：默认显示最近一次选中的信息； */
             dangerousGoodId?: string;
          
             /* 危险品对象-仅明细使用 */ 
-            dangerousGoodDto?: DangerousGoodDto;
+            dangerousGoodDto?: CSPDangerousGoodDto;
          
             /* 产品属性 */ 
             properties?: any[];
@@ -3876,16 +3876,16 @@ Destination location：默认显示最近一次选中的信息； */
             products?: any[];
          
             /* 最新记录 */ 
-            current?: PurchaseOrderDto;
+            current?: CSPPurchaseOrderDto;
          
             /* 变更记录 */ 
             modified?: any[];
          
             /* 原始记录 */ 
-            original?: PurchaseOrderDto;
+            original?: CSPPurchaseOrderDto;
          
             /* 最后的修改记录 */ 
-            lastChange?: PurchaseOrderDto;
+            lastChange?: CSPPurchaseOrderDto;
          
             /* 最新的修改中涉及到的 OrderItem 数量 */ 
             orderItemNewChangeCount?: number;
@@ -4133,13 +4133,13 @@ Destination location：默认显示最近一次选中的信息； */
         
          
             /* 最新记录 */ 
-            current?: PurchaseOrderDto;
+            current?: CSPPurchaseOrderDto;
          
             /* 变更记录 */ 
             modified?: any[];
          
             /* 原始记录 */ 
-            original?: PurchaseOrderDto;
+            original?: CSPPurchaseOrderDto;
         
         
     }
@@ -4223,7 +4223,7 @@ Destination location：默认显示最近一次选中的信息； */
             orders?: any[];
          
             
-            bookingOrder?: BookingDto;
+            bookingOrder?: CSPBookingDto;
         
         
     }
@@ -4448,10 +4448,10 @@ Destination location：默认显示最近一次选中的信息； */
         
          
             /* 基础设置 */ 
-            general?: GeneralSettingsEditDto;
+            general?: CSPGeneralSettingsEditDto;
          
             /* Gets or sets the news and updates. */ 
-            newsAndUpdates?: NewsAndUpdatesSettingsEditDto;
+            newsAndUpdates?: CSPNewsAndUpdatesSettingsEditDto;
         
         
     }
@@ -4517,7 +4517,7 @@ Destination location：默认显示最近一次选中的信息； */
             lastFreeDate?: string;
          
             /* 起始港 */ 
-            originPort?: PubLocation;
+            originPort?: CSPPubLocation;
          
             /* 预计拖车到达起始港时间 */ 
             estTruckDeliveryOrignDate?: string;
@@ -4556,7 +4556,7 @@ Destination location：默认显示最近一次选中的信息； */
             actualPickUpTruckDestinationDate?: string;
          
             /* 目的港 */ 
-            destinationPort?: PubLocation;
+            destinationPort?: CSPPubLocation;
          
             /* 港后拖车公司 */ 
             truckCustomerName?: string;
@@ -4624,13 +4624,13 @@ Destination location：默认显示最近一次选中的信息； */
             vessel?: string;
          
             /* 大船航次信息 */ 
-            vesselVoyage?: NameValueDto;
+            vesselVoyage?: CSPNameValueDto;
          
             /* 大船/航次 */ 
             preVessel?: string;
          
             /* 驳船航次信息 */ 
-            preVesselVoyage?: NameValueDto;
+            preVesselVoyage?: CSPNameValueDto;
          
             /* 运输条款 来自基础数据（用来判断显示路径door to door） */ 
             transportClausesId?: string;
@@ -4650,7 +4650,7 @@ Destination location：默认显示最近一次选中的信息； */
             totalVolumeString?: string;
          
             /* 路线详情 */ 
-            routeDetails?: RouteDetails;
+            routeDetails?: CSPRouteDetails;
          
             /* 事件分组，包括异常正常 */ 
             shipmentEventGroups?: any[];
@@ -4686,10 +4686,10 @@ Destination location：默认显示最近一次选中的信息； */
             specialInstructions?: string;
          
             /* 装货港 */ 
-            portOfLoading?: PubLocation;
+            portOfLoading?: CSPPubLocation;
          
             /* 卸货港 */ 
-            portOfDischarge?: PubLocation;
+            portOfDischarge?: CSPPubLocation;
          
             /* 预计到达时间 */ 
             eta?: string;
@@ -4752,13 +4752,13 @@ Destination location：默认显示最近一次选中的信息； */
             poNumbers?: string;
          
             /* 起始港 */ 
-            originPort?: PubLocation;
+            originPort?: CSPPubLocation;
          
             /* 起始港 */ 
             originPortString?: string;
          
             /* 目的港 */ 
-            destinationPort?: PubLocation;
+            destinationPort?: CSPPubLocation;
          
             /* 目的港 */ 
             destinationPortString?: string;
@@ -4835,13 +4835,13 @@ Destination location：默认显示最近一次选中的信息； */
             vessel?: string;
          
             /* 大船航次信息 */ 
-            vesselVoyage?: NameValueDto;
+            vesselVoyage?: CSPNameValueDto;
          
             /* 大船/航次 */ 
             preVessel?: string;
          
             /* 驳船航次信息 */ 
-            preVesselVoyage?: NameValueDto;
+            preVesselVoyage?: CSPNameValueDto;
          
             /* 运输条款 来自基础数据（用来判断显示路径door to door） */ 
             transportClausesId?: string;
@@ -4861,7 +4861,7 @@ Destination location：默认显示最近一次选中的信息； */
             totalVolumeString?: string;
          
             /* 路线详情 */ 
-            routeDetails?: RouteDetails;
+            routeDetails?: CSPRouteDetails;
          
             /* 事件分组，包括异常正常 */ 
             shipmentEventGroups?: any[];
@@ -4897,10 +4897,10 @@ Destination location：默认显示最近一次选中的信息； */
             specialInstructions?: string;
          
             /* 装货港 */ 
-            portOfLoading?: PubLocation;
+            portOfLoading?: CSPPubLocation;
          
             /* 卸货港 */ 
-            portOfDischarge?: PubLocation;
+            portOfDischarge?: CSPPubLocation;
          
             /* 预计到达时间 */ 
             eta?: string;
@@ -5608,13 +5608,13 @@ Implements the CO.Platform.Core.Domain.Entities.CoEntity
             freightMethodType?: number;
          
             /* 详情 */ 
-            details?: ShipmentDetailOutput;
+            details?: CSPShipmentDetailOutput;
          
             /* 事件时间轴 */ 
             eventTimeAxis?: any[];
          
             /* 路线详情 */ 
-            routeDetails?: RouteDetails;
+            routeDetails?: CSPRouteDetails;
         
         
     }

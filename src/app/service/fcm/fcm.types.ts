@@ -146,13 +146,13 @@
             commodity?: string;
          
             /* 装运的产品总数 */ 
-            totalQuantity?: QuantityDto;
+            totalQuantity?: FCMQuantityDto;
          
             /* 装运的产品总重量 */ 
-            totalWeight?: QuantityDto;
+            totalWeight?: FCMQuantityDto;
          
             /* 装运的产品总体积 */ 
-            totalVolume?: QuantityDto;
+            totalVolume?: FCMQuantityDto;
          
             /* 备注  todo:暂时不知道哪个 */ 
             remark?: string;
@@ -324,13 +324,13 @@
             commodity?: string;
          
             /* 总数量 */ 
-            quantity?: QuantityDto;
+            quantity?: FCMQuantityDto;
          
             /* 总重量 */ 
-            weight?: QuantityDto;
+            weight?: FCMQuantityDto;
          
             /* 总体积 */ 
-            volume?: QuantityDto;
+            volume?: FCMQuantityDto;
          
             /* 渠道 */ 
             channel?: string;
@@ -570,13 +570,13 @@
             customsClearanceCustomerId?: string;
          
             /* booking相关信息 */ 
-            booking?: BookingDetailDto;
+            booking?: FCMBookingDetailDto;
          
             /* 海运业务明细 */ 
-            oceanShipment?: OceanShipmentDetailDto;
+            oceanShipment?: FCMOceanShipmentDetailDto;
          
             /* FBA信息 */ 
-            fbaShipment?: FbaShipmentDetailDto;
+            fbaShipment?: FCMFbaShipmentDetailDto;
          
             /* Shipment 中的产品信息 */ 
             lineItems?: any[];
@@ -887,7 +887,7 @@
             events?: any[];
          
             /* 事件平铺时间Dto */ 
-            eventDetail?: ShipmentEventDetailDto;
+            eventDetail?: FCMShipmentEventDetailDto;
          
             /* 运单编号 */ 
             shipmentNo?: string;
@@ -958,13 +958,13 @@
             commodity?: string;
          
             /* 总数量 */ 
-            quantity?: QuantityDto;
+            quantity?: FCMQuantityDto;
          
             /* 总重量 */ 
-            weight?: QuantityDto;
+            weight?: FCMQuantityDto;
          
             /* 总体积 */ 
-            volume?: QuantityDto;
+            volume?: FCMQuantityDto;
          
             /* 渠道 */ 
             channel?: string;
@@ -1209,7 +1209,7 @@
             events?: any[];
          
             /* 事件平铺时间Dto */ 
-            eventDetail?: ShipmentEventDetailDto;
+            eventDetail?: FCMShipmentEventDetailDto;
          
             /* 运单编号 */ 
             shipmentNo?: string;
@@ -1411,13 +1411,13 @@
             commodity?: string;
          
             /* 装运的产品总数 */ 
-            totalQuantity?: QuantityDto;
+            totalQuantity?: FCMQuantityDto;
          
             /* 装运的产品总重量 */ 
-            totalWeight?: QuantityDto;
+            totalWeight?: FCMQuantityDto;
          
             /* 装运的产品总体积 */ 
-            totalVolume?: QuantityDto;
+            totalVolume?: FCMQuantityDto;
          
             /* 备注  todo:暂时不知道哪个 */ 
             remark?: string;

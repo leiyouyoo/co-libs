@@ -120,7 +120,7 @@
             isMainAccount?: boolean;
          
             /* 用户信息 */ 
-            userInfo?: CustomerBindCoUserDto;
+            userInfo?: CRMCustomerBindCoUserDto;
          
             
             id?: string;
@@ -237,7 +237,7 @@
             userId?: number;
          
             /* 用户信息 */ 
-            userInfo?: UserListResponse;
+            userInfo?: CRMUserListResponse;
          
             /* 地点集合 */ 
             locations?: any[];
@@ -480,7 +480,7 @@
             locations?: any[];
          
             /* 用户信息 */ 
-            userInfo?: UserListResponse;
+            userInfo?: CRMUserListResponse;
          
             
             id?: string;
@@ -1435,7 +1435,7 @@
             contactFullName?: string;
          
             /* 客户配置 */ 
-            customerConfigure?: CustomerConfigureDto;
+            customerConfigure?: CRMCustomerConfigureDto;
          
             /* 在分布式事务中，该字段会自动设置为本地事务ID */ 
             txId?: string;
@@ -1768,7 +1768,7 @@
             viewableType?: number;
          
             /* 地点附加属性 */ 
-            locationAddition?: LocationAdditionDto;
+            locationAddition?: CRMLocationAdditionDto;
          
             /* 如果是为合作伙伴创建才需要传值 */ 
             partnerId?: string;
@@ -1825,7 +1825,7 @@
             viewableType?: number;
          
             /* 地点附加属性 */ 
-            locationAddition?: LocationAdditionDto;
+            locationAddition?: CRMLocationAdditionDto;
          
             /* 关联的联系人 */ 
             contacts?: any[];
@@ -2005,7 +2005,7 @@
             viewableType?: number;
          
             /* 地点附加属性 */ 
-            locationAddition?: LocationAdditionDto;
+            locationAddition?: CRMLocationAdditionDto;
          
             /* 如果是为合作伙伴创建才需要传值 */ 
             partnerId?: string;
@@ -2095,7 +2095,7 @@
             viewableType?: number;
          
             /* 地点附加属性 */ 
-            locationAddition?: LocationAdditionDto;
+            locationAddition?: CRMLocationAdditionDto;
          
             /* 如果是CRM给客户创建地址，则需要传 */ 
             customerId?: string;
@@ -2197,7 +2197,7 @@
             contactCount?: number;
          
             /* 合作伙伴所属客户 */ 
-            partnerCustomer?: CustomerDto;
+            partnerCustomer?: CRMCustomerDto;
          
             /* 当前账号是否为合作伙伴所属客户的拥有者 */ 
             isOwner?: boolean;
@@ -2263,7 +2263,7 @@
             partnerId?: string;
          
             
-            partnerCustomer?: CreateOrUpdateCustomerInput;
+            partnerCustomer?: CRMCreateOrUpdateCustomerInput;
          
             /* 是否创建合作伙伴所绑定客户下的合作伙伴 */ 
             isCreatePartner?: boolean;
@@ -2575,16 +2575,16 @@
             creationTime?: string;
          
             /* 起始地 */ 
-            originAddress?: AddressModel;
+            originAddress?: CRMAddressModel;
          
             /* 目的地 */ 
-            destinationAddress?: AddressModel;
+            destinationAddress?: CRMAddressModel;
          
             /* 起始港口 */ 
-            originPort?: PortModel;
+            originPort?: CRMPortModel;
          
             /* 目的港口 */ 
-            destinationPort?: PortModel;
+            destinationPort?: CRMPortModel;
          
             /* 数量显示 */ 
             quantityDisplay?: string;
@@ -2617,10 +2617,10 @@
         
          
             
-            addressModel?: AddressModel;
+            addressModel?: CRMAddressModel;
          
             
-            portModel?: PortModel;
+            portModel?: CRMPortModel;
         
         
     }
@@ -2661,13 +2661,13 @@
             deliveryDate?: string;
          
             /* 出发地 */ 
-            from?: AddressGroupModel;
+            from?: CRMAddressGroupModel;
          
             /* 拖车起始地址手输部分/地图DIY查询 */ 
             truckOriginAddressName?: string;
          
             /* 目的地 */ 
-            to?: AddressGroupModel;
+            to?: CRMAddressGroupModel;
          
             /* 拖车起始地址手输部分/地图DIY查询 */ 
             truckDestinationAddressName?: string;
@@ -2874,7 +2874,7 @@
             freightMethodTypes?: string;
          
             /* 地点参数 */ 
-            location?: QueryLocationSourceModel;
+            location?: CRMQueryLocationSourceModel;
          
             /* 创建人Id数组 */ 
             ownerIds?: any[];
@@ -2921,13 +2921,13 @@
             cargoReadyDate?: string;
          
             /* 出发地 */ 
-            from?: AddressGroupModel;
+            from?: CRMAddressGroupModel;
          
             /* 拖车起始地址手输部分/地图DIY查询 */ 
             truckOriginAddressName?: string;
          
             /* 目的地 */ 
-            to?: AddressGroupModel;
+            to?: CRMAddressGroupModel;
          
             /* 拖车起始地址手输部分/地图DIY查询 */ 
             truckDestinationAddressName?: string;

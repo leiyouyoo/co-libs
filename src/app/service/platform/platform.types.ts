@@ -87,7 +87,7 @@
             roles?: any[];
          
             /* 用户归属租户信息 */ 
-            tenant?: TenantInfo;
+            tenant?: PlatformTenantInfo;
         
         
     }
@@ -294,7 +294,7 @@
             createUserId?: number;
          
             /* 创建用户 */ 
-            createUser?: UserDto;
+            createUser?: PlatformUserDto;
          
             /* 名称 */ 
             name?: string;
@@ -1405,13 +1405,13 @@
         
          
             /* 用户信息 */ 
-            user?: SessionUserDto;
+            user?: PlatformSessionUserDto;
          
             /* 租户信息 */ 
-            tenant?: SessionTenantDto;
+            tenant?: PlatformSessionTenantDto;
          
             /* 平台信息 */ 
-            platform?: SessionPlatformDto;
+            platform?: PlatformSessionPlatformDto;
          
             /* 是否在多租户侧
 1 = Tenant
@@ -1470,13 +1470,13 @@
         
          
             
-            currentCulture?: AbpUserCurrentCultureConfigDto;
+            currentCulture?: PlatformAbpUserCurrentCultureConfigDto;
          
             
             languages?: any[];
          
             
-            currentLanguage?: LanguageInfo;
+            currentLanguage?: PlatformLanguageInfo;
          
             
             sources?: any[];
@@ -1578,10 +1578,10 @@
         
          
             
-            windows?: AbpUserWindowsTimeZoneConfigDto;
+            windows?: PlatformAbpUserWindowsTimeZoneConfigDto;
          
             
-            iana?: AbpUserIanaTimeZoneConfigDto;
+            iana?: PlatformAbpUserIanaTimeZoneConfigDto;
         
         
     }
@@ -1593,7 +1593,7 @@
         
          
             
-            timeZoneInfo?: AbpUserTimeZoneConfigDto;
+            timeZoneInfo?: PlatformAbpUserTimeZoneConfigDto;
         
         
     }
@@ -1620,7 +1620,7 @@
         
          
             
-            antiForgery?: AbpUserAntiForgeryConfigDto;
+            antiForgery?: PlatformAbpUserAntiForgeryConfigDto;
         
         
     }
@@ -1632,28 +1632,28 @@
         
          
             /* 会话信息 */ 
-            session?: UserSessionDto;
+            session?: PlatformUserSessionDto;
          
             /* 本地化设置 */ 
-            localization?: AbpUserLocalizationConfigDto;
+            localization?: PlatformAbpUserLocalizationConfigDto;
          
             /* 授权设置 */ 
-            auth?: UserAuthConfigDto;
+            auth?: PlatformUserAuthConfigDto;
          
             /* 导航设置 */ 
-            nav?: AbpUserNavConfigDto;
+            nav?: PlatformAbpUserNavConfigDto;
          
             /* 用户设置数据 */ 
-            setting?: AbpUserSettingConfigDto;
+            setting?: PlatformAbpUserSettingConfigDto;
          
             /* 时钟设置 */ 
-            clock?: AbpUserClockConfigDto;
+            clock?: PlatformAbpUserClockConfigDto;
          
             /* 时区设置 */ 
-            timing?: AbpUserTimingConfigDto;
+            timing?: PlatformAbpUserTimingConfigDto;
          
             /* 安全设置 */ 
-            security?: AbpUserSecurityConfigDto;
+            security?: PlatformAbpUserSecurityConfigDto;
         
         
     }
@@ -1695,10 +1695,10 @@
         
          
             
-            message?: TfsWebhookMessageDto;
+            message?: PlatformTfsWebhookMessageDto;
          
             
-            detailedMessage?: TfsWebhookMessageDto;
+            detailedMessage?: PlatformTfsWebhookMessageDto;
         
         
     }
