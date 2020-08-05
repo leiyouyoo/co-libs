@@ -8,7 +8,7 @@ ACL 全称叫访问控制列表（Access Control List），是一种非常简单
 
 ## 如何运行
 
-内部实际是一个 `ACLService` 它提供一套基于用户身份权限服务类。为了更好的编码体验 co-libs 有多处组件或模块也依赖于它，例如：`st`、`MenuService` 等，并且这些会以 `acl` 属性的形式表现。因此，当遇到 `acl` 属性都表示 [can](#ACLCanType) 方法的**参数值**。
+ `ACLService` 它提供一套基于用户身份权限服务类。
 
 ## 如何使用
 
@@ -29,6 +29,41 @@ import { CoACLModule } from '@co/acl';
   ]
 })
 export class AppModule { }
+
+
+import { ACLService, ACLType } from '@co/acl';
+
+@Injectable({ providedIn: 'root' })
+export class StartupService {
+  constructor(
+    private aclService: ACLService,
+  ) {
+   
+  }
+
+  /*
+  * 是否指定部门员工
+  */
+  get isDepartmentStaff(){
+    // 对应部门全称(FullName)
+    return this.aclService.can({organizationUnits:['PCH.YDQ.BMQ.BHZ'],mode:'oneOf'});
+  }
+
+ /*
+  * 是否客服人员
+  */
+  get isCustomerServiceStaff(){
+    return this.aclService.can({jobs:['客服'],mode:'oneOf'});
+  }
+
+
+   /*
+  * 是否特定部门客服人员
+  */
+  get isDepartmentCustomerServiceStaff(){
+    return this.aclService.can({jobs:['客服'],organizationUnits:['PCH.YDQ.BMQ.BHZ'],mode:'allOf'});
+  }
+}
 ```
 
 ## API
@@ -40,7 +75,7 @@ export class AppModule { }
 | `[guard_url]` | `string` | 路由守卫失败后跳转 | `/403` | ✅ |
 | `[preCan]` | `(roleOrAbility: ACLCanType) => ACLType` | `can` 执行前回调 | - | ✅ |
 
-> 可以通过[全局配置](/docs/global-config)覆盖它们。
+
 
 ### ACLService
 

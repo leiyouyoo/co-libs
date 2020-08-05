@@ -1,5 +1,6 @@
 import { Inject, Injectable, Injector, Optional } from '@angular/core';
 import { CoACLConfig, CoConfigService } from '@co/core';
+import * as _ from 'lodash';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ACL_DEFAULT_CONFIG } from './acl.config';
 import { ACLCanType, ACLType } from './acl.type';
@@ -42,7 +43,7 @@ export class ACLService {
   }
 
   constructor(@Optional() @Inject(CoConfigService) configSrv: CoConfigService) {
-    this.options = configSrv && configSrv.merge('acl', ACL_DEFAULT_CONFIG) || {};
+    this.options = (configSrv && configSrv.merge('acl', ACL_DEFAULT_CONFIG)) || {};
   }
 
   private parseACLType(val: string | string[] | ACLType | null): ACLType {
@@ -50,25 +51,24 @@ export class ACLService {
     if (val == null) return t;
 
     if (Array.isArray(val)) {
-      const abilities = val.filter(v => v.startsWith("a:")).map(v => v.replace("a:", ""));
-      const roles = val.filter(v => v.startsWith("r:")).map(v => v.replace("r:", ""));
-      const jobs = val.filter(v => v.startsWith("j:")).map(v => v.replace("j:", ""));
-      const organizationUnits = val.filter(v => v.startsWith("o:")).map(v => v.replace("o:", ""));
-      const positions = val.filter(v => v.startsWith("p:")).map(v => v.replace("p:", ""));
+      const abilities = val.filter(v => v.startsWith('a:')).map(v => v.replace('a:', ''));
+      const roles = val.filter(v => v.startsWith('r:')).map(v => v.replace('r:', ''));
+      const jobs = val.filter(v => v.startsWith('j:')).map(v => v.replace('j:', ''));
+      const organizationUnits = val.filter(v => v.startsWith('o:')).map(v => v.replace('o:', ''));
+      const positions = val.filter(v => v.startsWith('p:')).map(v => v.replace('p:', ''));
 
       t = { abilities, roles, jobs, organizationUnits, positions };
-
     } else {
-      if (val.startsWith("a:")) {
-        t = { abilities: val == null ? [] : [val.replace("a:", "")] };
-      } else if (val.startsWith("r:")) {
-        t = { roles: val == null ? [] : [val.replace("r:", "")] };
-      } else if (val.startsWith("j:")) {
-        t = { jobs: val == null ? [] : [val.replace("j:", "")] };
-      } else if (val.startsWith("o:")) {
-        t = { organizationUnits: val == null ? [] : [val.replace("o:", "")] };
-      } else if (val.startsWith("p:")) {
-        t = { positions: val == null ? [] : [val.replace("p:", "")] };
+      if (val.startsWith('a:')) {
+        t = { abilities: val == null ? [] : [val.replace('a:', '')] };
+      } else if (val.startsWith('r:')) {
+        t = { roles: val == null ? [] : [val.replace('r:', '')] };
+      } else if (val.startsWith('j:')) {
+        t = { jobs: val == null ? [] : [val.replace('j:', '')] };
+      } else if (val.startsWith('o:')) {
+        t = { organizationUnits: val == null ? [] : [val.replace('o:', '')] };
+      } else if (val.startsWith('p:')) {
+        t = { positions: val == null ? [] : [val.replace('p:', '')] };
       }
     }
 
@@ -101,36 +101,35 @@ export class ACLService {
    * 设置当前用户权限能力（会先清除所有）
    */
   setAbilities(abilities: Array<number | string>) {
-    this.set({ abilities: abilities } as ACLType);
+    this.set({ abilities } as ACLType);
   }
 
   /**
    * 设置当前用户角色（会先清除所有）
    */
   setRoles(roles: string[]) {
-    this.set({ roles: roles } as ACLType);
+    this.set({ roles } as ACLType);
   }
 
   /**
    * 设置职务（会先清除所有）
    */
   setJobs(jobs: string[]) {
-    this.set({ jobs: jobs } as ACLType);
+    this.set({ jobs } as ACLType);
   }
 
   /**
    * 设置职位（会先清除所有）
    */
   setPositions(positions: string[]) {
-    this.set({ positions: positions } as ACLType);
+    this.set({ positions } as ACLType);
   }
-
 
   /**
    * 设置组织节点（会先清除所有）
    */
   setOrganizationUnits(organizationUnits: string[]) {
-    this.set({ organizationUnits: organizationUnits } as ACLType);
+    this.set({ organizationUnits } as ACLType);
   }
 
   /**
@@ -205,7 +204,6 @@ export class ACLService {
     this.aclChange.next(this.data as any);
   }
 
-
   /**
    * 为当前用户附加职位权限
    */
@@ -229,8 +227,6 @@ export class ACLService {
     }
     this.aclChange.next(this.data as any);
   }
-
-
 
   /**
    * 为当前用户移除角色
@@ -258,10 +254,9 @@ export class ACLService {
     this.aclChange.next(this.data as any);
   }
 
-
   /**
- * 为当前用户移除角色
- */
+   * 为当前用户移除角色
+   */
   removePositions(positions: string[]) {
     for (const val of positions) {
       const idx = this.positions.indexOf(val);
@@ -272,11 +267,9 @@ export class ACLService {
     this.aclChange.next(this.data as any);
   }
 
-
-
   /**
- * 为当前用户移除角色
- */
+   * 为当前用户移除角色
+   */
   removeJobs(jobs: string[]) {
     for (const val of jobs) {
       const idx = this.jobs.indexOf(val);
@@ -287,11 +280,9 @@ export class ACLService {
     this.aclChange.next(this.data as any);
   }
 
-
-
   /**
- * 为当前用户移除角色
- */
+   * 为当前用户移除角色
+   */
   removeOrganizationUnits(organizationUnits: string[]) {
     for (const val of organizationUnits) {
       const idx = this.organizationUnits.indexOf(val);
@@ -301,7 +292,6 @@ export class ACLService {
     }
     this.aclChange.next(this.data as any);
   }
-
 
   /**
    * 当前用户是否有对应角色，其实 `number` 表示Ability
@@ -316,41 +306,41 @@ export class ACLService {
     }
 
     const t = this.parseACLType(roleOrAbility);
-    let result = false;
+    let result = true;
     if (this.full === true || !roleOrAbility) {
       result = true;
     } else {
       if (t.roles && t.roles.length > 0) {
         if (t.mode === 'allOf') {
-          result = t.roles.every(v => this.roles.includes(v));
+          result = result && t.roles.every(v => this.roles.includes(v));
         } else {
           result = t.roles.some(v => this.roles.includes(v));
         }
       }
       if (t.jobs && t.jobs.length > 0) {
         if (t.mode === 'allOf') {
-          result = t.jobs.every(v => this.jobs.includes(v));
+          result = result && t.jobs.every(v => this.jobs.includes(v));
         } else {
           result = t.jobs.some(v => this.jobs.includes(v));
         }
       }
       if (t.organizationUnits && t.organizationUnits.length > 0) {
         if (t.mode === 'allOf') {
-          result = t.organizationUnits.every(v => this.organizationUnits.includes(v));
+          result = result && t.organizationUnits.every(v => this.organizationUnits.some(o => o.includes(v)));
         } else {
-          result = t.organizationUnits.some(v => this.organizationUnits.includes(v));
+          result = t.organizationUnits.some(v => this.organizationUnits.some(o => o.includes(v)));
         }
       }
       if (t.positions && t.positions.length > 0) {
         if (t.mode === 'allOf') {
-          result = t.positions.every(v => this.positions.includes(v));
+          result = result && t.positions.every(v => this.positions.some(o => o.includes(v)));
         } else {
-          result = t.positions.some(v => this.positions.includes(v));
+          result = t.positions.some(v => this.positions.some(o => o.includes(v)));
         }
       }
       if (t.abilities && t.abilities.length > 0) {
         if (t.mode === 'allOf') {
-          result = (t.abilities as any[]).every(v => this.abilities.includes(v));
+          result = result && (t.abilities as any[]).every(v => this.abilities.includes(v));
         } else {
           result = (t.abilities as any[]).some(v => this.abilities.includes(v));
         }
