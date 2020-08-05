@@ -12,10 +12,7 @@ import {
   Tree,
   url,
 } from '@angular-devkit/schematics';
-import { addProviderToModule } from '@schematics/angular/utility/ast-utils';
-import { InsertChange } from '@schematics/angular/utility/change';
 import { getWorkspace } from '@schematics/angular/utility/config';
-import { buildRelativePath } from '@schematics/angular/utility/find-module';
 import axios from 'axios';
 import { groupBy } from 'lodash';
 
@@ -26,11 +23,11 @@ let serveEntityList: any = [];
 const selectedEntityList: any = [];
 let serviceList: any = [];
 let serveSelectedEntityList: any = [];
-
+let entityTitle = '';
 export function buildCOSwagger(options: any): Rule {
   return async (tree: Tree, context: SchematicContext) => {
-    // const data = await getSwaggerData(options)();
     console.log('loading....');
+    entityTitle = options.url.substring(options.url.indexOf('swagger/') + 8, options.url.lastIndexOf('/'));
     const workspace = getWorkspace(tree);
     if (!options.project) {
       throw new SchematicsException('Option (project) is required.');
@@ -38,13 +35,17 @@ export function buildCOSwagger(options: any): Rule {
 
     const projectName = options.project as string;
     const project = workspace.projects[projectName];
-    options.path = `${project.sourceRoot}/app/service/${options.name}`;
-    console.log(`${options.path}/${options.name}.type.ts`);
+    let path = 'app/service';
+    if (options.path) {
+      path = options.path;
+    }
+    options.path = `${project.root}/${path}/${options.name}`;
+
     [`${options.path}/index.ts`, `${options.path}/public_api.ts`, `${options.path}/${options.name}.types.ts`]
       .filter(p => tree.exists(p))
       .forEach(p => tree.delete(p));
 
-    const response = await getSwaggerData(options, project, tree)();
+    const response = await getSwaggerData(options, tree)();
 
     // 导出模板
     let html = '';
@@ -53,12 +54,14 @@ export function buildCOSwagger(options: any): Rule {
       msg += '.service';
       html += `export * from './${msg}';\r\n`;
     }
+
     const index_ts = mergeWith(
       apply(url('./index_files'), [
         template({
           ...strings,
           'if-flat': (s: string) => (options.flat ? '' : s),
           ...{
+            entityTitle,
             name: options.name,
             serviceList: html,
             entity: selectedEntityList,
@@ -73,7 +76,7 @@ export function buildCOSwagger(options: any): Rule {
   };
 }
 
-function getSwaggerData(options, project, tree: Tree): () => Promise<any[]> {
+function getSwaggerData(options, tree: Tree): () => Promise<any[]> {
   // 获取接口数据
   return async () => {
     const res: any = await axios.get(options.url);
@@ -104,6 +107,10 @@ function getSwaggerData(options, project, tree: Tree): () => Promise<any[]> {
     let i = 0;
     // tslint:disable-next-line: forin
     for (const na in group) {
+      if (options.entity && options.entity !== na) {
+        continue;
+      }
+
       serveSelectedEntityList = [];
       i++;
       // 重构实体结构
@@ -139,6 +146,7 @@ function getSwaggerData(options, project, tree: Tree): () => Promise<any[]> {
               ...{
                 name: na,
                 pageName: options.name,
+                entityTitle,
                 serveSelectedEntityList: newServeSelectedEntityList,
                 data: group[na].arr,
               },
@@ -213,7 +221,7 @@ function setSwaggerRequest(reqList: any) {
       if (serveEntityList[entity_name]) {
         // set entity
         const entityName = setResponseName(reqDetail.responses[200].schema.$ref);
-        detail.resEntity = entityName;
+        detail.resEntity = entityTitle + entityName;
       }
     }
   }
