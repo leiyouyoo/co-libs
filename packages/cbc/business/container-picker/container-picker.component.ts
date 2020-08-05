@@ -3,7 +3,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 
-import { ContainerService } from '@co/cds';
+import { PUBContainerService } from '@co/cds';
 import { PickerComponentBase } from '@co/cbc/core';
 
 /**
@@ -28,7 +28,7 @@ import { PickerComponentBase } from '@co/cbc/core';
 export class ContainerPickerComponent extends PickerComponentBase {
   //#region  构造函数
 
-  constructor(cdr: ChangeDetectorRef, private containerService: ContainerService) {
+  constructor(cdr: ChangeDetectorRef, private containerService: PUBContainerService) {
     super(cdr);
 
     this.coLabelMember = 'code';

@@ -4,7 +4,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import { PickerComponentBase } from '@co/cbc/core';
-import { OrganizationUnitService } from '@co/cds';
+import { PlatformOrganizationUnitService } from '@co/cds';
 
 /**
  * 选择器控件
@@ -29,7 +29,7 @@ export class SalespersonPickerComponent extends PickerComponentBase {
   static readonly SELECTOR = `co-salesperson-picker`;
   coDebounceInputCharCount = 1;
 
-  constructor(cdr: ChangeDetectorRef, private organizationUnitService: OrganizationUnitService) {
+  constructor(cdr: ChangeDetectorRef, private organizationUnitService: PlatformOrganizationUnitService) {
     super(cdr);
   }
   //#region  override

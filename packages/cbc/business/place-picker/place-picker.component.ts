@@ -4,7 +4,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import { PickerComponentBase } from '@co/cbc/core';
-import { PlaceService } from '@co/cds';
+import { PUBPlaceService } from '@co/cds';
 
 /**
  * 地址选择器控件
@@ -28,7 +28,7 @@ import { PlaceService } from '@co/cds';
 export class PlacePickerComponent extends PickerComponentBase {
   //#region  构造函数
 
-  constructor(cdr: ChangeDetectorRef, private placeService: PlaceService) {
+  constructor(cdr: ChangeDetectorRef, private placeService: PUBPlaceService) {
     super(cdr);
 
     this.coLabelMember = 'fax';

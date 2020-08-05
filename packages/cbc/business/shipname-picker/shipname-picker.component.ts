@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, View
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { PickerComponentBase } from '@co/cbc/core';
 
-import { VesselService } from '@co/cds';
+import { PUBVesselService } from '@co/cds';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -23,7 +23,7 @@ import { Observable } from 'rxjs';
 })
 export class ShipnamePickerComponent extends PickerComponentBase {
 
-  constructor(cdr: ChangeDetectorRef, private vesselService: VesselService) {
+  constructor(cdr: ChangeDetectorRef, private vesselService: PUBVesselService) {
     super(cdr);
     this.coLabelMember = 'name';
   }

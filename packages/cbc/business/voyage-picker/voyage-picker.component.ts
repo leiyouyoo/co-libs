@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, ViewEncapsulation } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { PickerComponentBase } from '@co/cbc/core';
-import { VoyageService } from '@co/cds';
+import { PUBVoyageService } from '@co/cds';
 import { Observable } from 'rxjs';
 
 /**
@@ -24,7 +24,7 @@ import { Observable } from 'rxjs';
   encapsulation: ViewEncapsulation.None,
 })
 export class VoyagePickerComponent extends PickerComponentBase {
-  constructor(cdr: ChangeDetectorRef, private voyageService: VoyageService) {
+  constructor(cdr: ChangeDetectorRef, private voyageService: PUBVoyageService) {
     super(cdr);
   }
   fetchRemoteData(_condition: any): Observable<any> {

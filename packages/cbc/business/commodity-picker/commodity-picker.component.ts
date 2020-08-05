@@ -5,7 +5,7 @@ import * as _ from 'lodash';
 
 import { Observable } from 'rxjs';
 
-import { CommodityService } from '@co/cds';
+import { PUBCommodityService } from '@co/cds';
 import { PickerComponentBase } from '@co/cbc/core';
 
 /**
@@ -30,7 +30,7 @@ import { PickerComponentBase } from '@co/cbc/core';
 export class CommodityPickerComponent extends PickerComponentBase {
   //#region  构造函数
 
-  constructor(cdr: ChangeDetectorRef, private commodityService: CommodityService) {
+  constructor(cdr: ChangeDetectorRef, private commodityService: PUBCommodityService) {
     super(cdr);
 
     this.coLabelMember = 'name';

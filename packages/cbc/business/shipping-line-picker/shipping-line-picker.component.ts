@@ -4,7 +4,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import { PickerComponentBase } from '@co/cbc/core';
-import { ShippingLineService } from '@co/cds';
+import { PUBShippingLineService } from '@co/cds';
 
 /**
  * 航线选择器控件
@@ -28,7 +28,7 @@ import { ShippingLineService } from '@co/cds';
 export class ShippingLinePickerComponent extends PickerComponentBase {
   //#region  构造函数
 
-  constructor(cdr: ChangeDetectorRef, private shippingLineService: ShippingLineService) {
+  constructor(cdr: ChangeDetectorRef, private shippingLineService: PUBShippingLineService) {
     super(cdr);
 
     this.coLabelMember = 'localizationName';

@@ -4,7 +4,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import { PickerComponentBase } from '@co/cbc/core';
-import { RegionService } from '@co/cds';
+import { PUBRegionService } from '@co/cds';
 import * as _ from 'lodash';
 
 /**
@@ -30,7 +30,7 @@ export class RegionPickerComponent extends PickerComponentBase {
   @Input() regionReq: any;
   //#region  构造函数
 
-  constructor(cdr: ChangeDetectorRef, private regionService: RegionService) {
+  constructor(cdr: ChangeDetectorRef, private regionService: PUBRegionService) {
     super(cdr);
 
     this.coLabelMember = 'name';
