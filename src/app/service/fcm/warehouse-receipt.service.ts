@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { GenerateWarehouseReciptInput,GenerateWarehouseReciptOutput, } from './fcm.types';
+import { FCMGenerateWarehouseReciptInput,FCMGenerateWarehouseReciptOutput, } from './fcm.types';
 
 @BaseUrl('/fcm/WarehouseReceipt')
 @Injectable({ providedIn: 'root' })
-export class WarehouseReceiptService extends BaseApi {
+export class FCMWarehouseReceiptService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -19,9 +19,9 @@ export class WarehouseReceiptService extends BaseApi {
     @POST('generateWarehouseRecipt')
     generateWarehouseRecipt(
         @Payload
-        _req:GenerateWarehouseReciptInput
+        _req:FCMGenerateWarehouseReciptInput
 
-    ): Observable<GenerateWarehouseReciptOutput> {
+    ): Observable<FCMGenerateWarehouseReciptOutput> {
         return null as any
     }
 

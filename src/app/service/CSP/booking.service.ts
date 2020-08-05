@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { GetAllListForCRMInput,GetAllListForCRMOutput,PagedResultDto,UpdateRoutesForCRMInput,SureServiceCompanyInput,CoEntityDto,BookingDto,SearchModel,ListResultDto,GetCustomerBindUserForCRMOutput,CRMBookingBindQuoteInput,BookingCheckIsExistsInputDto,UpdateBookingForIcpInput,PurchaseOrderItemForIcpDto,BookingForIcpDto,ClearanceInviocesUploadOutput,ClearanceInviocesDownloadOutput,BookingRecentlyUsedOutput,BookingStatisticsOutput,ChangeBookingStatusInput,CancelBookingInput,GetRelatedBusinessOutput,GetChannelListOutput,GetBookingListInputForFcm,BookingForFcmDto,SetBookingAcceptedInput,SetBookingAcceptedOutput,GetClearanceInvoicesForFcmOutput,CreateOrUpdateForFcmInput,CreateOrUpdateForFcmOutput,CreateOrUpdateClearanceInvoicesForFcmInput,DeleteBookingForFcmInput,GetBookingListForFcmInput,BookingListItemDtoForFcm, } from './csp.types';
+import { CSPGetAllListForCRMInput,CSPGetAllListForCRMOutput,CSPPagedResultDto,CSPUpdateRoutesForCRMInput,CSPSureServiceCompanyInput,CSPCoEntityDto,CSPBookingDto,CSPSearchModel,CSPListResultDto,CSPGetCustomerBindUserForCRMOutput,CSPCRMBookingBindQuoteInput,CSPBookingCheckIsExistsInputDto,CSPUpdateBookingForIcpInput,CSPPurchaseOrderItemForIcpDto,CSPBookingForIcpDto,CSPClearanceInviocesUploadOutput,CSPClearanceInviocesDownloadOutput,CSPBookingRecentlyUsedOutput,CSPBookingStatisticsOutput,CSPChangeBookingStatusInput,CSPCancelBookingInput,CSPGetRelatedBusinessOutput,CSPGetChannelListOutput,CSPGetBookingListInputForFcm,CSPBookingForFcmDto,CSPSetBookingAcceptedInput,CSPSetBookingAcceptedOutput,CSPGetClearanceInvoicesForFcmOutput,CSPCreateOrUpdateForFcmInput,CSPCreateOrUpdateForFcmOutput,CSPCreateOrUpdateClearanceInvoicesForFcmInput,CSPDeleteBookingForFcmInput,CSPGetBookingListForFcmInput,CSPBookingListItemDtoForFcm, } from './csp.types';
 
 @BaseUrl('/csp/Booking')
 @Injectable({ providedIn: 'root' })
-export class BookingService extends BaseApi {
+export class CSPBookingService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -19,9 +19,9 @@ export class BookingService extends BaseApi {
     @POST('getAllListForCRM')
     getAllListForCRM(
         @Payload
-        _req:GetAllListForCRMInput
+        _req:CSPGetAllListForCRMInput
 
-    ): Observable<PagedResultDto<GetAllListForCRMOutput>> {
+    ): Observable<CSPPagedResultDto<GetAllListForCRMOutput>> {
         return null as any
     }
 
@@ -34,7 +34,7 @@ export class BookingService extends BaseApi {
     @PUT('updateRoutesForCRM')
     updateRoutesForCRM(
         @Payload
-        _req:UpdateRoutesForCRMInput
+        _req:CSPUpdateRoutesForCRMInput
 
     ): Observable<any> {
         return null as any
@@ -49,7 +49,7 @@ export class BookingService extends BaseApi {
     @POST('sureServiceCompany')
     sureServiceCompany(
         @Payload
-        _req:SureServiceCompanyInput
+        _req:CSPSureServiceCompanyInput
 
     ): Observable<any> {
         return null as any
@@ -64,7 +64,7 @@ export class BookingService extends BaseApi {
     @POST('salesConfirmCancelForCRM')
     salesConfirmCancelForCRM(
         @Payload
-        _req:CoEntityDto<any>
+        _req:CSPCoEntityDto<any>
 
     ): Observable<any> {
         return null as any
@@ -81,7 +81,7 @@ export class BookingService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<BookingDto> {
+    ): Observable<CSPBookingDto> {
         return null as any
     }
 
@@ -96,7 +96,7 @@ export class BookingService extends BaseApi {
         @Payload
         _req: {isRequiredBookingNo?:boolean,isRequiredBookingName?:boolean,isRequiredCustomer?:boolean,isRequiredContact?:boolean} 
 
-    ): Observable<ListResultDto<SearchModel>> {
+    ): Observable<CSPListResultDto<SearchModel>> {
         return null as any
     }
 
@@ -111,7 +111,7 @@ export class BookingService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<GetCustomerBindUserForCRMOutput> {
+    ): Observable<CSPGetCustomerBindUserForCRMOutput> {
         return null as any
     }
 
@@ -124,7 +124,7 @@ export class BookingService extends BaseApi {
     @POST('cRMBookingBindQuote')
     cRMBookingBindQuote(
         @Payload
-        _req:CRMBookingBindQuoteInput
+        _req:CSPCRMBookingBindQuoteInput
 
     ): Observable<any> {
         return null as any
@@ -139,9 +139,9 @@ export class BookingService extends BaseApi {
     @PUT('updateForCRM')
     updateForCRM(
         @Payload
-        _req:BookingDto
+        _req:CSPBookingDto
 
-    ): Observable<BookingDto> {
+    ): Observable<CSPBookingDto> {
         return null as any
     }
 
@@ -156,7 +156,7 @@ export class BookingService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<ListResultDto<BookingDto>> {
+    ): Observable<CSPListResultDto<BookingDto>> {
         return null as any
     }
 
@@ -171,7 +171,7 @@ export class BookingService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<BookingDto> {
+    ): Observable<CSPBookingDto> {
         return null as any
     }
 
@@ -186,7 +186,7 @@ export class BookingService extends BaseApi {
         @Payload
         _req: {bookingStatus?:string,searchKey?:string,serviceCompanyId?:string,freightMethodType?:number,tradeType?:number,shipmentType?:number,isEnglish?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<BookingDto>> {
+    ): Observable<CSPPagedResultDto<BookingDto>> {
         return null as any
     }
 
@@ -199,9 +199,9 @@ export class BookingService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:BookingDto
+        _req:CSPBookingDto
 
-    ): Observable<BookingDto> {
+    ): Observable<CSPBookingDto> {
         return null as any
     }
 
@@ -214,9 +214,9 @@ export class BookingService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:BookingDto
+        _req:CSPBookingDto
 
-    ): Observable<BookingDto> {
+    ): Observable<CSPBookingDto> {
         return null as any
     }
 
@@ -229,7 +229,7 @@ export class BookingService extends BaseApi {
     @POST('isExists')
     isExists(
         @Payload
-        _req:BookingCheckIsExistsInputDto
+        _req:CSPBookingCheckIsExistsInputDto
 
     ): Observable<any> {
         return null as any
@@ -244,9 +244,9 @@ export class BookingService extends BaseApi {
     @POST('updateForIcp')
     updateForIcp(
         @Payload
-        _req:UpdateBookingForIcpInput
+        _req:CSPUpdateBookingForIcpInput
 
-    ): Observable<BookingDto> {
+    ): Observable<CSPBookingDto> {
         return null as any
     }
 
@@ -261,7 +261,7 @@ export class BookingService extends BaseApi {
         @Payload
         _req: {bookingIds?:string} 
 
-    ): Observable<ListResultDto<PurchaseOrderItemForIcpDto>> {
+    ): Observable<CSPListResultDto<PurchaseOrderItemForIcpDto>> {
         return null as any
     }
 
@@ -276,7 +276,7 @@ export class BookingService extends BaseApi {
         @Payload
         _req: {bookingStatus?:string,searchKey?:string,serviceCompanyId?:string,freightMethodType?:number,tradeType?:number,shipmentType?:number,isEnglish?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<BookingForIcpDto>> {
+    ): Observable<CSPPagedResultDto<BookingForIcpDto>> {
         return null as any
     }
 
@@ -291,7 +291,7 @@ export class BookingService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<ClearanceInviocesUploadOutput> {
+    ): Observable<CSPClearanceInviocesUploadOutput> {
         return null as any
     }
 
@@ -304,9 +304,9 @@ export class BookingService extends BaseApi {
     @POST('clearanceInviocesDownload')
     clearanceInviocesDownload(
         @Payload
-        _req:CoEntityDto<any>
+        _req:CSPCoEntityDto<any>
 
-    ): Observable<ClearanceInviocesDownloadOutput> {
+    ): Observable<CSPClearanceInviocesDownloadOutput> {
         return null as any
     }
 
@@ -321,7 +321,7 @@ export class BookingService extends BaseApi {
         @Payload
         _req: {tradeType?:number,freightMethodType?:number} 
 
-    ): Observable<BookingRecentlyUsedOutput> {
+    ): Observable<CSPBookingRecentlyUsedOutput> {
         return null as any
     }
 
@@ -336,7 +336,7 @@ export class BookingService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<BookingStatisticsOutput> {
+    ): Observable<CSPBookingStatisticsOutput> {
         return null as any
     }
 
@@ -349,7 +349,7 @@ export class BookingService extends BaseApi {
     @POST('changeBookingStatus')
     changeBookingStatus(
         @Payload
-        _req:ChangeBookingStatusInput
+        _req:CSPChangeBookingStatusInput
 
     ): Observable<any> {
         return null as any
@@ -364,9 +364,9 @@ export class BookingService extends BaseApi {
     @POST('cancel')
     cancel(
         @Payload
-        _req:CancelBookingInput
+        _req:CSPCancelBookingInput
 
-    ): Observable<BookingDto> {
+    ): Observable<CSPBookingDto> {
         return null as any
     }
 
@@ -379,9 +379,9 @@ export class BookingService extends BaseApi {
     @POST('cancelShippingOrder')
     cancelShippingOrder(
         @Payload
-        _req:CancelBookingInput
+        _req:CSPCancelBookingInput
 
-    ): Observable<BookingDto> {
+    ): Observable<CSPBookingDto> {
         return null as any
     }
 
@@ -396,7 +396,7 @@ export class BookingService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<GetRelatedBusinessOutput> {
+    ): Observable<CSPGetRelatedBusinessOutput> {
         return null as any
     }
 
@@ -411,7 +411,7 @@ export class BookingService extends BaseApi {
         @Payload
         _req: {freightMethodType?:number} 
 
-    ): Observable<ListResultDto<GetChannelListOutput>> {
+    ): Observable<CSPListResultDto<GetChannelListOutput>> {
         return null as any
     }
 
@@ -424,9 +424,9 @@ export class BookingService extends BaseApi {
     @POST('getPagedListForFcm')
     getPagedListForFcm(
         @Payload
-        _req:GetBookingListInputForFcm
+        _req:CSPGetBookingListInputForFcm
 
-    ): Observable<PagedResultDto<BookingForFcmDto>> {
+    ): Observable<CSPPagedResultDto<BookingForFcmDto>> {
         return null as any
     }
 
@@ -439,9 +439,9 @@ export class BookingService extends BaseApi {
     @POST('setBookingAccepted')
     setBookingAccepted(
         @Payload
-        _req:SetBookingAcceptedInput
+        _req:CSPSetBookingAcceptedInput
 
-    ): Observable<SetBookingAcceptedOutput> {
+    ): Observable<CSPSetBookingAcceptedOutput> {
         return null as any
     }
 
@@ -456,7 +456,7 @@ export class BookingService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<GetClearanceInvoicesForFcmOutput> {
+    ): Observable<CSPGetClearanceInvoicesForFcmOutput> {
         return null as any
     }
 
@@ -469,9 +469,9 @@ export class BookingService extends BaseApi {
     @POST('createOrUpdateForFcm')
     createOrUpdateForFcm(
         @Payload
-        _req:CreateOrUpdateForFcmInput
+        _req:CSPCreateOrUpdateForFcmInput
 
-    ): Observable<CreateOrUpdateForFcmOutput> {
+    ): Observable<CSPCreateOrUpdateForFcmOutput> {
         return null as any
     }
 
@@ -484,7 +484,7 @@ export class BookingService extends BaseApi {
     @POST('createOrUpdateClearanceInvoicesForFcm')
     createOrUpdateClearanceInvoicesForFcm(
         @Payload
-        _req:CreateOrUpdateClearanceInvoicesForFcmInput
+        _req:CSPCreateOrUpdateClearanceInvoicesForFcmInput
 
     ): Observable<any> {
         return null as any
@@ -499,7 +499,7 @@ export class BookingService extends BaseApi {
     @POST('deleteBookingForFcm')
     deleteBookingForFcm(
         @Payload
-        _req:DeleteBookingForFcmInput
+        _req:CSPDeleteBookingForFcmInput
 
     ): Observable<any> {
         return null as any
@@ -514,9 +514,9 @@ export class BookingService extends BaseApi {
     @POST('getBookingListForFcm')
     getBookingListForFcm(
         @Payload
-        _req:GetBookingListForFcmInput
+        _req:CSPGetBookingListForFcmInput
 
-    ): Observable<ListResultDto<BookingListItemDtoForFcm>> {
+    ): Observable<CSPListResultDto<BookingListItemDtoForFcm>> {
         return null as any
     }
 

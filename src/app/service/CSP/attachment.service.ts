@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { TestDtoValidateInput,HttpResponseMessage,AttachmentListDto,ListResultDto,GetAllAttachmentListInput,AttachmentDto,BatchCreateAttachmentInput,CreateAttachmentInput,ShareableContactModel,AttachmentForIcpDto, } from './csp.types';
+import { CSPTestDtoValidateInput,CSPHttpResponseMessage,CSPAttachmentListDto,CSPListResultDto,CSPGetAllAttachmentListInput,CSPAttachmentDto,CSPBatchCreateAttachmentInput,CSPCreateAttachmentInput,CSPShareableContactModel,CSPAttachmentForIcpDto, } from './csp.types';
 
 @BaseUrl('/csp/Attachment')
 @Injectable({ providedIn: 'root' })
-export class AttachmentService extends BaseApi {
+export class CSPAttachmentService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -19,7 +19,7 @@ export class AttachmentService extends BaseApi {
     @POST('testDtoValidate')
     testDtoValidate(
         @Payload
-        _req:TestDtoValidateInput
+        _req:CSPTestDtoValidateInput
 
     ): Observable<any> {
         return null as any
@@ -36,7 +36,7 @@ export class AttachmentService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<HttpResponseMessage> {
+    ): Observable<CSPHttpResponseMessage> {
         return null as any
     }
 
@@ -51,7 +51,7 @@ export class AttachmentService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<HttpResponseMessage> {
+    ): Observable<CSPHttpResponseMessage> {
         return null as any
     }
 
@@ -66,7 +66,7 @@ export class AttachmentService extends BaseApi {
         @Payload
         _req: {businessId?:string,businessType?:number,attachmentType?:number} 
 
-    ): Observable<ListResultDto<AttachmentListDto>> {
+    ): Observable<CSPListResultDto<AttachmentListDto>> {
         return null as any
     }
 
@@ -79,9 +79,9 @@ export class AttachmentService extends BaseApi {
     @POST('getAllList')
     getAllList(
         @Payload
-        _req:GetAllAttachmentListInput
+        _req:CSPGetAllAttachmentListInput
 
-    ): Observable<ListResultDto<AttachmentListDto>> {
+    ): Observable<CSPListResultDto<AttachmentListDto>> {
         return null as any
     }
 
@@ -126,7 +126,7 @@ export class AttachmentService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<AttachmentDto> {
+    ): Observable<CSPAttachmentDto> {
         return null as any
     }
 
@@ -141,7 +141,7 @@ export class AttachmentService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<AttachmentDto> {
+    ): Observable<CSPAttachmentDto> {
         return null as any
     }
 
@@ -156,7 +156,7 @@ export class AttachmentService extends BaseApi {
         @Payload
         _req: {input?:any[]} 
 
-    ): Observable<ListResultDto<AttachmentListDto>> {
+    ): Observable<CSPListResultDto<AttachmentListDto>> {
         return null as any
     }
 
@@ -169,9 +169,9 @@ export class AttachmentService extends BaseApi {
     @POST('batchCreate')
     batchCreate(
         @Payload
-        _req:BatchCreateAttachmentInput
+        _req:CSPBatchCreateAttachmentInput
 
-    ): Observable<ListResultDto<AttachmentDto>> {
+    ): Observable<CSPListResultDto<AttachmentDto>> {
         return null as any
     }
 
@@ -184,9 +184,9 @@ export class AttachmentService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:CreateAttachmentInput
+        _req:CSPCreateAttachmentInput
 
-    ): Observable<AttachmentDto> {
+    ): Observable<CSPAttachmentDto> {
         return null as any
     }
 
@@ -201,7 +201,7 @@ export class AttachmentService extends BaseApi {
         @Payload
         _req: {businessType?:number,businessId?:string} 
 
-    ): Observable<ListResultDto<ShareableContactModel>> {
+    ): Observable<CSPListResultDto<ShareableContactModel>> {
         return null as any
     }
 
@@ -216,7 +216,7 @@ export class AttachmentService extends BaseApi {
         @Payload
         _req: {businessId?:string,businessType?:number,attachmentType?:number} 
 
-    ): Observable<ListResultDto<AttachmentForIcpDto>> {
+    ): Observable<CSPListResultDto<AttachmentForIcpDto>> {
         return null as any
     }
 

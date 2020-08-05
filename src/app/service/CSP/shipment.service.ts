@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { GetShipmentListInput,ShipmentListOutput,PagedResultDto,PubLocation,ListResultDto,NameValueDto,NetWorkLocationModel,GetAllForProductOutput,ShipmentDetailOutput,ShipmentEventGroupDto,CreateOrUpdateShipmentInput,CloseShipmentInput,ShipmentOrderItemDto,ImportShipmentOrderItemsInput,UpdatePostPortEstDateInput,ConditionItemAttribute,ShipmentsStatisticsOutput,GetRelatedBusinessOutput, } from './csp.types';
+import { CSPGetShipmentListInput,CSPShipmentListOutput,CSPPagedResultDto,CSPPubLocation,CSPListResultDto,CSPNameValueDto,CSPNetWorkLocationModel,CSPGetAllForProductOutput,CSPShipmentDetailOutput,CSPShipmentEventGroupDto,CSPCreateOrUpdateShipmentInput,CSPCloseShipmentInput,CSPShipmentOrderItemDto,CSPImportShipmentOrderItemsInput,CSPUpdatePostPortEstDateInput,CSPConditionItemAttribute,CSPShipmentsStatisticsOutput,CSPGetRelatedBusinessOutput, } from './csp.types';
 
 @BaseUrl('/csp/Shipment')
 @Injectable({ providedIn: 'root' })
-export class ShipmentService extends BaseApi {
+export class CSPShipmentService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -34,9 +34,9 @@ export class ShipmentService extends BaseApi {
     @POST('getAllListForDashboard')
     getAllListForDashboard(
         @Payload
-        _req:GetShipmentListInput
+        _req:CSPGetShipmentListInput
 
-    ): Observable<PagedResultDto<ShipmentListOutput>> {
+    ): Observable<CSPPagedResultDto<ShipmentListOutput>> {
         return null as any
     }
 
@@ -49,9 +49,9 @@ export class ShipmentService extends BaseApi {
     @POST('getAllList')
     getAllList(
         @Payload
-        _req:GetShipmentListInput
+        _req:CSPGetShipmentListInput
 
-    ): Observable<PagedResultDto<ShipmentListOutput>> {
+    ): Observable<CSPPagedResultDto<ShipmentListOutput>> {
         return null as any
     }
 
@@ -66,7 +66,7 @@ export class ShipmentService extends BaseApi {
         @Payload
         _req: {isFromBooking?:boolean,isFromShipment?:boolean,isFromOrigin?:boolean,isFromDestination?:boolean} 
 
-    ): Observable<ListResultDto<PubLocation>> {
+    ): Observable<CSPListResultDto<PubLocation>> {
         return null as any
     }
 
@@ -81,7 +81,7 @@ export class ShipmentService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<ListResultDto<NameValueDto>> {
+    ): Observable<CSPListResultDto<NameValueDto>> {
         return null as any
     }
 
@@ -96,7 +96,7 @@ export class ShipmentService extends BaseApi {
         @Payload
         _req: {isFromBooking?:boolean,isFromShipment?:boolean,isFromOrigin?:boolean,isFromDestination?:boolean} 
 
-    ): Observable<ListResultDto<NetWorkLocationModel>> {
+    ): Observable<CSPListResultDto<NetWorkLocationModel>> {
         return null as any
     }
 
@@ -111,7 +111,7 @@ export class ShipmentService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<ListResultDto<GetAllForProductOutput>> {
+    ): Observable<CSPListResultDto<GetAllForProductOutput>> {
         return null as any
     }
 
@@ -126,7 +126,7 @@ export class ShipmentService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<ShipmentDetailOutput> {
+    ): Observable<CSPShipmentDetailOutput> {
         return null as any
     }
 
@@ -141,7 +141,7 @@ export class ShipmentService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<ShipmentListOutput> {
+    ): Observable<CSPShipmentListOutput> {
         return null as any
     }
 
@@ -156,7 +156,7 @@ export class ShipmentService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<ListResultDto<ShipmentEventGroupDto>> {
+    ): Observable<CSPListResultDto<ShipmentEventGroupDto>> {
         return null as any
     }
 
@@ -214,9 +214,9 @@ export class ShipmentService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:CreateOrUpdateShipmentInput
+        _req:CSPCreateOrUpdateShipmentInput
 
-    ): Observable<ShipmentListOutput> {
+    ): Observable<CSPShipmentListOutput> {
         return null as any
     }
 
@@ -229,7 +229,7 @@ export class ShipmentService extends BaseApi {
     @POST('closeShipment')
     closeShipment(
         @Payload
-        _req:CloseShipmentInput
+        _req:CSPCloseShipmentInput
 
     ): Observable<any> {
         return null as any
@@ -246,7 +246,7 @@ export class ShipmentService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<ListResultDto<ShipmentOrderItemDto>> {
+    ): Observable<CSPListResultDto<ShipmentOrderItemDto>> {
         return null as any
     }
 
@@ -259,7 +259,7 @@ export class ShipmentService extends BaseApi {
     @POST('importShipmentOrderItems')
     importShipmentOrderItems(
         @Payload
-        _req:ImportShipmentOrderItemsInput
+        _req:CSPImportShipmentOrderItemsInput
 
     ): Observable<any> {
         return null as any
@@ -289,7 +289,7 @@ export class ShipmentService extends BaseApi {
     @POST('updatePostPortEstDate')
     updatePostPortEstDate(
         @Payload
-        _req:UpdatePostPortEstDateInput
+        _req:CSPUpdatePostPortEstDateInput
 
     ): Observable<any> {
         return null as any
@@ -306,7 +306,7 @@ export class ShipmentService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<ListResultDto<ConditionItemAttribute>> {
+    ): Observable<CSPListResultDto<ConditionItemAttribute>> {
         return null as any
     }
 
@@ -321,7 +321,7 @@ export class ShipmentService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<ListResultDto<ConditionItemAttribute>> {
+    ): Observable<CSPListResultDto<ConditionItemAttribute>> {
         return null as any
     }
 
@@ -336,7 +336,7 @@ export class ShipmentService extends BaseApi {
         @Payload
         _req: {withCount?:boolean} 
 
-    ): Observable<ShipmentsStatisticsOutput> {
+    ): Observable<CSPShipmentsStatisticsOutput> {
         return null as any
     }
 
@@ -351,7 +351,7 @@ export class ShipmentService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<ListResultDto<NameValueDto>> {
+    ): Observable<CSPListResultDto<NameValueDto>> {
         return null as any
     }
 
@@ -366,20 +366,35 @@ export class ShipmentService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<GetRelatedBusinessOutput> {
+    ): Observable<CSPGetRelatedBusinessOutput> {
         return null as any
     }
 
 
     /**
      * @param url /CSP/Shipment/GenerateJob
-     * 用于通过数据库脚本同步业务数据时，生成IM、日程、航线信息
+     * 用于通过数据库脚本同步业务数据时，生成日程、航线信息
      */
 
-    @GET('generateJob')
+    @POST('generateJob')
     generateJob(
         @Payload
-        _req: {} 
+        _req: {skipCount?:number,maxResultCount?:number} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /CSP/Shipment/CreateShipmentIm
+     * 用于通过数据库脚本同步业务数据时，生成IM
+     */
+
+    @POST('createShipmentIm')
+    createShipmentIm(
+        @Payload
+        _req: {skipCount?:number,maxResultCount?:number} 
 
     ): Observable<any> {
         return null as any

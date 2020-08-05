@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ScheduleDto,ListResultDto,ScheduleSentInput,PagedResultDto, } from './csp.types';
+import { CSPScheduleDto,CSPListResultDto,CSPScheduleSentInput,CSPPagedResultDto, } from './csp.types';
 
 @BaseUrl('/csp/Schedule')
 @Injectable({ providedIn: 'root' })
-export class ScheduleService extends BaseApi {
+export class CSPScheduleService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class ScheduleService extends BaseApi {
         @Payload
         _req: {searchMonthOrDay:string} 
 
-    ): Observable<ListResultDto<ScheduleDto>> {
+    ): Observable<CSPListResultDto<ScheduleDto>> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class ScheduleService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<ScheduleDto> {
+    ): Observable<CSPScheduleDto> {
         return null as any
     }
 
@@ -49,9 +49,9 @@ export class ScheduleService extends BaseApi {
     @POST('createAsync')
     createAsync(
         @Payload
-        _req:ScheduleDto
+        _req:CSPScheduleDto
 
-    ): Observable<ScheduleDto> {
+    ): Observable<CSPScheduleDto> {
         return null as any
     }
 
@@ -64,9 +64,9 @@ export class ScheduleService extends BaseApi {
     @PUT('updateAsync')
     updateAsync(
         @Payload
-        _req:ScheduleDto
+        _req:CSPScheduleDto
 
-    ): Observable<ScheduleDto> {
+    ): Observable<CSPScheduleDto> {
         return null as any
     }
 
@@ -94,7 +94,7 @@ export class ScheduleService extends BaseApi {
     @POST('scheduleSent')
     scheduleSent(
         @Payload
-        _req:ScheduleSentInput
+        _req:CSPScheduleSentInput
 
     ): Observable<any> {
         return null as any
@@ -124,9 +124,9 @@ export class ScheduleService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:ScheduleDto
+        _req:CSPScheduleDto
 
-    ): Observable<ScheduleDto> {
+    ): Observable<CSPScheduleDto> {
         return null as any
     }
 
@@ -141,7 +141,7 @@ export class ScheduleService extends BaseApi {
         @Payload
         _req: {sorting?:string,skipCount?:number,maxResultCount?:number} 
 
-    ): Observable<PagedResultDto<ScheduleDto>> {
+    ): Observable<CSPPagedResultDto<ScheduleDto>> {
         return null as any
     }
 
@@ -154,9 +154,9 @@ export class ScheduleService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:ScheduleDto
+        _req:CSPScheduleDto
 
-    ): Observable<ScheduleDto> {
+    ): Observable<CSPScheduleDto> {
         return null as any
     }
 
@@ -169,9 +169,9 @@ export class ScheduleService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:ScheduleDto
+        _req:CSPScheduleDto
 
-    ): Observable<ScheduleDto> {
+    ): Observable<CSPScheduleDto> {
         return null as any
     }
 

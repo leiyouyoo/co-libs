@@ -1,16 +1,31 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ExportSideMarksReportInput,ExportSideMarksReportOutput,SideMarksData, } from './fcm.types';
+import { FCMExportSideMarksReportInput,FCMExportSideMarksReportOutput,FCMSidMarkdReportData, } from './fcm.types';
 
 @BaseUrl('/fcm/SideMarksReport')
 @Injectable({ providedIn: 'root' })
-export class SideMarksReportService extends BaseApi {
+export class FCMSideMarksReportService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
 
   
+    /**
+     * @param url /FCM/SideMarksReport/GetMultiSideMarks
+     * 获取多个侧唛的拼接文件
+     */
+
+    @POST('getMultiSideMarks')
+    getMultiSideMarks(
+        @Payload
+        _req:FCMExportSideMarksReportInput
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
     /**
      * @param url /FCM/SideMarksReport/ExportReport
      * 导出侧唛信息
@@ -19,9 +34,9 @@ export class SideMarksReportService extends BaseApi {
     @POST('exportReport')
     exportReport(
         @Payload
-        _req:ExportSideMarksReportInput
+        _req:FCMExportSideMarksReportInput
 
-    ): Observable<ExportSideMarksReportOutput> {
+    ): Observable<FCMExportSideMarksReportOutput> {
         return null as any
     }
 
@@ -49,9 +64,9 @@ export class SideMarksReportService extends BaseApi {
     @GET('getSideMarksQrCodeData')
     getSideMarksQrCodeData(
         @Payload
-        _req: {id?:string,fbaNo?:string} 
+        _req: {id?:string} 
 
-    ): Observable<SideMarksData> {
+    ): Observable<FCMSidMarkdReportData> {
         return null as any
     }
 

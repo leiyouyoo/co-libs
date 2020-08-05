@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { UserInfo,PagedResultDto,BizCodeRuleTemplateDto,CreateOrUpdateTemplateInput, } from './platform.types';
+import { PlatformUserInfo,PlatformPagedResultDto,PlatformBizCodeRuleTemplateDto,PlatformCreateOrUpdateTemplateInput, } from './platform.types';
 
 @BaseUrl('/platform/BizCodeRule')
 @Injectable({ providedIn: 'root' })
-export class BizCodeRuleService extends BaseApi {
+export class PlatformBizCodeRuleService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -13,7 +13,7 @@ export class BizCodeRuleService extends BaseApi {
   
     /**
      * @param url /Platform/BizCodeRule/TestImpersonationAuthorize
-     * 
+     * 测试模拟匿名账户
      */
 
     @POST('testImpersonationAuthorize')
@@ -21,7 +21,7 @@ export class BizCodeRuleService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<PagedResultDto<UserInfo>> {
+    ): Observable<PlatformPagedResultDto<UserInfo>> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class BizCodeRuleService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<BizCodeRuleTemplateDto> {
+    ): Observable<PlatformBizCodeRuleTemplateDto> {
         return null as any
     }
 
@@ -64,9 +64,9 @@ export class BizCodeRuleService extends BaseApi {
     @POST('createTemplate')
     createTemplate(
         @Payload
-        _req:CreateOrUpdateTemplateInput
+        _req:PlatformCreateOrUpdateTemplateInput
 
-    ): Observable<BizCodeRuleTemplateDto> {
+    ): Observable<PlatformBizCodeRuleTemplateDto> {
         return null as any
     }
 
@@ -79,9 +79,9 @@ export class BizCodeRuleService extends BaseApi {
     @PUT('updateTemplate')
     updateTemplate(
         @Payload
-        _req:CreateOrUpdateTemplateInput
+        _req:PlatformCreateOrUpdateTemplateInput
 
-    ): Observable<BizCodeRuleTemplateDto> {
+    ): Observable<PlatformBizCodeRuleTemplateDto> {
         return null as any
     }
 
@@ -96,7 +96,7 @@ export class BizCodeRuleService extends BaseApi {
         @Payload
         _req: {groupId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<BizCodeRuleTemplateDto>> {
+    ): Observable<PlatformPagedResultDto<BizCodeRuleTemplateDto>> {
         return null as any
     }
 

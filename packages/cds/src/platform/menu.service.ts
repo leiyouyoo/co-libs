@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { MenuItemDto,ListResultDto,MoveMenuItemInput,AddToFavoritesInput,ChangeStateInput, } from './platform.types';
+import { PlatformMenuItemDto,PlatformListResultDto,PlatformMoveMenuItemInput,PlatformAddToFavoritesInput,PlatformChangeStateInput, } from './platform.types';
 
 @BaseUrl('/platform/Menu')
 @Injectable({ providedIn: 'root' })
-export class MenuService extends BaseApi {
+export class PlatformMenuService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class MenuService extends BaseApi {
         @Payload
         _req: {parentId?:string,isRecursion?:boolean} 
 
-    ): Observable<ListResultDto<MenuItemDto>> {
+    ): Observable<PlatformListResultDto<MenuItemDto>> {
         return null as any
     }
 
@@ -34,9 +34,9 @@ export class MenuService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:MenuItemDto
+        _req:PlatformMenuItemDto
 
-    ): Observable<MenuItemDto> {
+    ): Observable<PlatformMenuItemDto> {
         return null as any
     }
 
@@ -64,7 +64,7 @@ export class MenuService extends BaseApi {
     @POST('move')
     move(
         @Payload
-        _req:MoveMenuItemInput
+        _req:PlatformMoveMenuItemInput
 
     ): Observable<any> {
         return null as any
@@ -79,7 +79,7 @@ export class MenuService extends BaseApi {
     @POST('addToMyFavorites')
     addToMyFavorites(
         @Payload
-        _req:AddToFavoritesInput
+        _req:PlatformAddToFavoritesInput
 
     ): Observable<any> {
         return null as any
@@ -94,7 +94,7 @@ export class MenuService extends BaseApi {
     @POST('addBatchToMyFavorites')
     addBatchToMyFavorites(
         @Payload
-        _req:AddToFavoritesInput
+        _req:PlatformAddToFavoritesInput
 
     ): Observable<any> {
         return null as any
@@ -139,7 +139,7 @@ export class MenuService extends BaseApi {
     @POST('changeState')
     changeState(
         @Payload
-        _req:ChangeStateInput
+        _req:PlatformChangeStateInput
 
     ): Observable<any> {
         return null as any
@@ -148,7 +148,7 @@ export class MenuService extends BaseApi {
 
     /**
      * @param url /Platform/Menu/UpdateUserMenuSetting
-     * 
+     * 更新用户菜单配置
      */
 
     @PUT('updateUserMenuSetting')

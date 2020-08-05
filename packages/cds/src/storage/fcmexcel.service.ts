@@ -1,57 +1,60 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PreShipmentExportInput,FileDto,GetShipmentListInput,GetDeliveryInfoListInput, } from './storage.types';
+import { StoragePreShipmentExportInput,StorageFileDto,StorageGetShipmentListInput,StorageGetDeliveryInfoListInput, } from './storage.types';
 
 @BaseUrl('/storage/FCMExcel')
 @Injectable({ providedIn: 'root' })
-export class FCMExcelService extends BaseApi {
+export class StorageFCMExcelService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
 
-
+  
     /**
      * @param url /Storage/FCMExcel/PreShipmentExport
-     *
+     * 
      */
 
     @POST('preShipmentExport')
     preShipmentExport(
         @Payload
-        _req:PreShipmentExportInput
+        _req:StoragePreShipmentExportInput
 
-    ): Observable<FileDto> {
+    ): Observable<StorageFileDto> {
         return null as any
     }
 
 
     /**
      * @param url /Storage/FCMExcel/ShipmentListExport
-     *
+     * 已受理列表导出
      */
 
     @POST('shipmentListExport')
     shipmentListExport(
         @Payload
-        _req:GetShipmentListInput
+        _req:StorageGetShipmentListInput
 
-    ): Observable<FileDto> {
+    ): Observable<StorageFileDto> {
         return null as any
     }
 
-  /**
-   * @param url /Storage/FCMExcel/deliveryInfoListExport
-   *
-   */
 
-  @POST('deliveryInfoListExport')
-  deliveryInfoListExport(
-    @Payload
-      _req:GetDeliveryInfoListInput
+    /**
+     * @param url /Storage/FCMExcel/DeliveryInfoListExport
+     * 配送列表导出
+     */
 
-  ): Observable<FileDto> {
-    return null as any
-  }
+    @POST('deliveryInfoListExport')
+    deliveryInfoListExport(
+        @Payload
+        _req:StorageGetDeliveryInfoListInput
+
+    ): Observable<StorageFileDto> {
+        return null as any
+    }
+
+
 
   }

@@ -2,7 +2,7 @@
     /**
      *  No Remark 
      */
-    export class FileDto {
+    export class StorageFileDto {
         
          
             
@@ -29,7 +29,7 @@
     /**
      * 导入结果
      */
-    export class ImportResultDto {
+    export class StorageImportResultDto {
         
          
             /* 验证错误 */ 
@@ -59,7 +59,7 @@
     /**
      * 产品导出
      */
-    export class ProductExportInput {
+    export class StorageProductExportInput {
         
          
             /* 国家Id */ 
@@ -77,7 +77,7 @@
     /**
      * 采购订单导出
      */
-    export class OrderExportInput {
+    export class StorageOrderExportInput {
         
          
             /* 采购订单Id集合 */ 
@@ -87,15 +87,15 @@
     }
  
     /**
-     *  No Remark 
+     * 预报单查询模型
      */
-    export class PreShipmentExportInput {
+    export class StoragePreShipmentExportInput {
         
          
-            
+            /* 是否是CSP的客户创建的 */ 
             isCustomerCreate?: boolean;
          
-            /* 
+            /* 运输方式，枚举下拉
 0 = NotSet
 1 = Ocean
 2 = Air
@@ -103,61 +103,58 @@
 4 = Rail */ 
             transportationMode?: number;
          
-            
+            /* 下单日期 */ 
             creationTime?: string;
          
-            
+            /* 业务员 */ 
             serviceUserId?: number;
          
-            
+            /* 客户id */ 
             customerId?: string;
          
-            /* 
+            /* 交货方式，枚举下拉
 0 = NotSet
 1 = DeliveryGoodsByMyself
 2 = PickUpByCityocean */ 
             fbaPickUpMethodType?: number;
          
-            
-            cargoPutAwayDate?: string;
-         
-            
+            /* 操作口岸 */ 
             serviceCompanyId?: string;
          
-            
+            /* 承运人（代理）客户Id，如 Cityocean ... */ 
             agentCustomerId?: string;
          
-            
-            contact?: string;
+            /* 联系人，模糊 */ 
+            contactName?: string;
          
-            
+            /* 运单号，模糊 */ 
             shipmentNo?: string;
          
-            
+            /* 送货地址，模糊 */ 
             destinationAddress?: string;
          
-            
+            /* 交货位置，模糊 */ 
             originAddress?: string;
          
-            
+            /* 交货仓库，模糊 */ 
             originWarehouse?: string;
          
-            
+            /* 国家，模糊 */ 
             country?: string;
          
-            
+            /* 渠道，模糊 */ 
             channel?: string;
          
-            
+            /* FBA编号，模糊 */ 
             fbaNo?: string;
          
-            
+            /* 创建人，模糊 */ 
             creatorUser?: string;
          
             
             ids?: any[];
          
-            
+            /* 是否导出 */ 
             isExport?: boolean;
          
             /* 排序 */ 
@@ -175,28 +172,28 @@
     /**
      *  No Remark 
      */
-    export class GetShipmentListInput {
+    export class StorageGetShipmentListInput {
         
          
-            
+            /* 搜索关键字 */ 
             searchText?: string;
          
-            
+            /* 承运人 Ids */ 
             agentCustomerIds?: any[];
          
-            
+            /* 渠道 */ 
             channel?: string;
          
-            
+            /* 开始时间 */ 
             startTime?: string;
          
-            
+            /* 结束时间 */ 
             endTime?: string;
          
             
             ids?: any[];
          
-            
+            /* 是否导出 */ 
             isExport?: boolean;
          
             /* 排序 */ 
@@ -214,7 +211,43 @@
     /**
      *  No Remark 
      */
-    export class UploadResultDto {
+    export class StorageGetDeliveryInfoListInput {
+        
+         
+            /* 搜索关键字 */ 
+            searchText?: string;
+         
+            /* 渠道 */ 
+            channel?: string;
+         
+            /* 开始时间 */ 
+            startTime?: string;
+         
+            /* 结束时间 */ 
+            endTime?: string;
+         
+            
+            ids?: any[];
+         
+            /* 是否导出 */ 
+            isExport?: boolean;
+         
+            /* 排序 */ 
+            sorting?: string;
+         
+            /* 页大小 */ 
+            maxResultCount?: number;
+         
+            /* 跳过指定条数 */ 
+            skipCount?: number;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class StorageUploadResultDto {
         
          
             /* 文件访问ID */ 
@@ -235,7 +268,7 @@
     /**
      *  No Remark 
      */
-    export class GetFileInfoDto {
+    export class StorageGetFileInfoDto {
         
          
             /* 文件访问ID */ 
@@ -250,7 +283,7 @@
             /* 文件扩展名 */ 
             extensionName?: string;
          
-            
+            /* 创建时间 */ 
             creationTime?: string;
         
         
@@ -259,7 +292,7 @@
     /**
      *  No Remark 
      */
-    export class PagedResultDto<T> {
+    export class StoragePagedResultDto<T> {
         
          
             
@@ -274,7 +307,7 @@
     /**
      *  No Remark 
      */
-    export class ChunkUploadResultDto {
+    export class StorageChunkUploadResultDto {
         
          
             /* 是否合并成功 */ 
@@ -301,7 +334,7 @@
     /**
      *  No Remark 
      */
-    export class ICPUploadFileInput {
+    export class StorageICPUploadFileInput {
         
          
             
@@ -316,7 +349,7 @@
     /**
      * 提供给ICP下载
      */
-    export class ICPBatchDownloadInput {
+    export class StorageICPBatchDownloadInput {
         
          
             /* 文件Ids */ 
@@ -328,7 +361,7 @@
     /**
      * 提供给ICP批量下载返回内容
      */
-    export class ICPBatchDownloadResult {
+    export class StorageICPBatchDownloadResult {
         
          
             /* 文件Id */ 
@@ -349,7 +382,7 @@
     /**
      *  No Remark 
      */
-    export class ListResultDto<T> {
+    export class StorageListResultDto<T> {
         
          
             

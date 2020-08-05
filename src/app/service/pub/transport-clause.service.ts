@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { TransportClauseDto,PagedResultDto,TransportClauseCheckDto,ChangeTransportClauseStateInput,GetAllTransportClauseForUiPickerInput,TransportClauseUiPickerDto, } from './pub.types';
+import { PUBTransportClauseDto,PUBPagedResultDto,PUBTransportClauseCheckDto,PUBChangeTransportClauseStateInput,PUBGetAllTransportClauseForUiPickerInput,PUBTransportClauseUiPickerDto, } from './pub.types';
 
 @BaseUrl('/pub/TransportClause')
 @Injectable({ providedIn: 'root' })
-export class TransportClauseService extends BaseApi {
+export class PUBTransportClauseService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class TransportClauseService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<TransportClauseDto> {
+    ): Observable<PUBTransportClauseDto> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class TransportClauseService extends BaseApi {
         @Payload
         _req: {originalId?:string,destinationId?:string,isValid?:boolean} 
 
-    ): Observable<PagedResultDto<TransportClauseDto>> {
+    ): Observable<PUBPagedResultDto<TransportClauseDto>> {
         return null as any
     }
 
@@ -49,7 +49,7 @@ export class TransportClauseService extends BaseApi {
     @POST('check')
     check(
         @Payload
-        _req:TransportClauseCheckDto
+        _req:PUBTransportClauseCheckDto
 
     ): Observable<any> {
         return null as any
@@ -64,9 +64,9 @@ export class TransportClauseService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:TransportClauseDto
+        _req:PUBTransportClauseDto
 
-    ): Observable<TransportClauseDto> {
+    ): Observable<PUBTransportClauseDto> {
         return null as any
     }
 
@@ -79,9 +79,9 @@ export class TransportClauseService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:TransportClauseDto
+        _req:PUBTransportClauseDto
 
-    ): Observable<TransportClauseDto> {
+    ): Observable<PUBTransportClauseDto> {
         return null as any
     }
 
@@ -94,9 +94,9 @@ export class TransportClauseService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:TransportClauseDto
+        _req:PUBTransportClauseDto
 
-    ): Observable<TransportClauseDto> {
+    ): Observable<PUBTransportClauseDto> {
         return null as any
     }
 
@@ -124,9 +124,9 @@ export class TransportClauseService extends BaseApi {
     @POST('changeTransportClauseState')
     changeTransportClauseState(
         @Payload
-        _req:ChangeTransportClauseStateInput
+        _req:PUBChangeTransportClauseStateInput
 
-    ): Observable<TransportClauseDto> {
+    ): Observable<PUBTransportClauseDto> {
         return null as any
     }
 
@@ -139,9 +139,9 @@ export class TransportClauseService extends BaseApi {
     @POST('getAllForUiPicker')
     getAllForUiPicker(
         @Payload
-        _req:GetAllTransportClauseForUiPickerInput
+        _req:PUBGetAllTransportClauseForUiPickerInput
 
-    ): Observable<PagedResultDto<TransportClauseUiPickerDto>> {
+    ): Observable<PUBPagedResultDto<TransportClauseUiPickerDto>> {
         return null as any
     }
 

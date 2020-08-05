@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ExternalPartnerDto,ExternalPartnerListDto,PagedResultDto,ExternalPartnerAndCustomerDto,ListResultDto, } from './crm.types';
+import { CRMExternalPartnerDto,CRMExternalPartnerListDto,CRMPagedResultDto,CRMExternalPartnerAndCustomerDto,CRMListResultDto, } from './crm.types';
 
 @BaseUrl('/crm/PartnerExternal')
 @Injectable({ providedIn: 'root' })
-export class PartnerExternalService extends BaseApi {
+export class CRMPartnerExternalService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class PartnerExternalService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<ExternalPartnerDto> {
+    ): Observable<CRMExternalPartnerDto> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class PartnerExternalService extends BaseApi {
         @Payload
         _req: {sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<ExternalPartnerListDto>> {
+    ): Observable<CRMPagedResultDto<ExternalPartnerListDto>> {
         return null as any
     }
 
@@ -51,7 +51,7 @@ export class PartnerExternalService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<ListResultDto<ExternalPartnerAndCustomerDto>> {
+    ): Observable<CRMListResultDto<ExternalPartnerAndCustomerDto>> {
         return null as any
     }
 
@@ -66,7 +66,7 @@ export class PartnerExternalService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<ListResultDto<ExternalPartnerListDto>> {
+    ): Observable<CRMListResultDto<ExternalPartnerListDto>> {
         return null as any
     }
 
@@ -79,7 +79,7 @@ export class PartnerExternalService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:ExternalPartnerDto
+        _req:CRMExternalPartnerDto
 
     ): Observable<any> {
         return null as any
@@ -94,7 +94,7 @@ export class PartnerExternalService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:ExternalPartnerDto
+        _req:CRMExternalPartnerDto
 
     ): Observable<any> {
         return null as any

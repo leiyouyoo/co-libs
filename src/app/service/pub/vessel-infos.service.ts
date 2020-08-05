@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { GetShipTrackInfoOutput,AddingVesselInfosTaskInput, } from './pub.types';
+import { PUBGetShipTrackInfoOutput,PUBAddingVesselInfosTaskInput, } from './pub.types';
 
 @BaseUrl('/pub/VesselInfos')
 @Injectable({ providedIn: 'root' })
-export class VesselInfosService extends BaseApi {
+export class PUBVesselInfosService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class VesselInfosService extends BaseApi {
         @Payload
         _req: {pOLCode:string,pODCode:string,vesselName?:string} 
 
-    ): Observable<GetShipTrackInfoOutput> {
+    ): Observable<PUBGetShipTrackInfoOutput> {
         return null as any
     }
 
@@ -94,7 +94,7 @@ export class VesselInfosService extends BaseApi {
     @POST('addingVesselInfosTask')
     addingVesselInfosTask(
         @Payload
-        _req:AddingVesselInfosTaskInput
+        _req:PUBAddingVesselInfosTaskInput
 
     ): Observable<any> {
         return null as any

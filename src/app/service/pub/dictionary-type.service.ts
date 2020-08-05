@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { DictionaryTypeDto,PagedResultDto,DictionaryTypeCheckDto, } from './pub.types';
+import { PUBDictionaryTypeDto,PUBPagedResultDto,PUBDictionaryTypeCheckDto, } from './pub.types';
 
 @BaseUrl('/pub/DictionaryType')
 @Injectable({ providedIn: 'root' })
-export class DictionaryTypeService extends BaseApi {
+export class PUBDictionaryTypeService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class DictionaryTypeService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<DictionaryTypeDto> {
+    ): Observable<PUBDictionaryTypeDto> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class DictionaryTypeService extends BaseApi {
         @Payload
         _req: {code?:string,name?:string,isValid?:boolean} 
 
-    ): Observable<PagedResultDto<DictionaryTypeDto>> {
+    ): Observable<PUBPagedResultDto<DictionaryTypeDto>> {
         return null as any
     }
 
@@ -49,7 +49,7 @@ export class DictionaryTypeService extends BaseApi {
     @POST('check')
     check(
         @Payload
-        _req:DictionaryTypeCheckDto
+        _req:PUBDictionaryTypeCheckDto
 
     ): Observable<any> {
         return null as any
@@ -64,9 +64,9 @@ export class DictionaryTypeService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:DictionaryTypeDto
+        _req:PUBDictionaryTypeDto
 
-    ): Observable<DictionaryTypeDto> {
+    ): Observable<PUBDictionaryTypeDto> {
         return null as any
     }
 
@@ -79,9 +79,9 @@ export class DictionaryTypeService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:DictionaryTypeDto
+        _req:PUBDictionaryTypeDto
 
-    ): Observable<DictionaryTypeDto> {
+    ): Observable<PUBDictionaryTypeDto> {
         return null as any
     }
 
@@ -94,9 +94,9 @@ export class DictionaryTypeService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:DictionaryTypeDto
+        _req:PUBDictionaryTypeDto
 
-    ): Observable<DictionaryTypeDto> {
+    ): Observable<PUBDictionaryTypeDto> {
         return null as any
     }
 

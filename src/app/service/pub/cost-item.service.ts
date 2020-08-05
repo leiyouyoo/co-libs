@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { CostItemDto,PagedResultDto,CostItemCheckDto,ListResultDto,CostItemFlatDto, } from './pub.types';
+import { PUBCostItemDto,PUBPagedResultDto,PUBCostItemCheckDto,PUBListResultDto,PUBCostItemFlatDto, } from './pub.types';
 
 @BaseUrl('/pub/CostItem')
 @Injectable({ providedIn: 'root' })
-export class CostItemService extends BaseApi {
+export class PUBCostItemService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class CostItemService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<CostItemDto> {
+    ): Observable<PUBCostItemDto> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class CostItemService extends BaseApi {
         @Payload
         _req: {code?:string,name?:string,property?:boolean,isValid?:boolean,parentId?:string} 
 
-    ): Observable<PagedResultDto<CostItemDto>> {
+    ): Observable<PUBPagedResultDto<CostItemDto>> {
         return null as any
     }
 
@@ -49,7 +49,7 @@ export class CostItemService extends BaseApi {
     @POST('check')
     check(
         @Payload
-        _req:CostItemCheckDto
+        _req:PUBCostItemCheckDto
 
     ): Observable<any> {
         return null as any
@@ -64,9 +64,9 @@ export class CostItemService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:CostItemDto
+        _req:PUBCostItemDto
 
-    ): Observable<CostItemDto> {
+    ): Observable<PUBCostItemDto> {
         return null as any
     }
 
@@ -79,9 +79,9 @@ export class CostItemService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:CostItemDto
+        _req:PUBCostItemDto
 
-    ): Observable<CostItemDto> {
+    ): Observable<PUBCostItemDto> {
         return null as any
     }
 
@@ -94,9 +94,9 @@ export class CostItemService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:CostItemDto
+        _req:PUBCostItemDto
 
-    ): Observable<CostItemDto> {
+    ): Observable<PUBCostItemDto> {
         return null as any
     }
 
@@ -126,7 +126,7 @@ export class CostItemService extends BaseApi {
         @Payload
         _req: {parentId?:string} 
 
-    ): Observable<ListResultDto<CostItemDto>> {
+    ): Observable<PUBListResultDto<CostItemDto>> {
         return null as any
     }
 
@@ -141,7 +141,7 @@ export class CostItemService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<ListResultDto<CostItemFlatDto>> {
+    ): Observable<PUBListResultDto<CostItemFlatDto>> {
         return null as any
     }
 
@@ -156,7 +156,7 @@ export class CostItemService extends BaseApi {
         @Payload
         _req: {parentId?:string} 
 
-    ): Observable<ListResultDto<CostItemFlatDto>> {
+    ): Observable<PUBListResultDto<CostItemFlatDto>> {
         return null as any
     }
 

@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ProductDto,ProductListDto,PagedResultDto,ImportResult,ProductExportInput,ProductSkuListOutput, } from './csp.types';
+import { CSPProductDto,CSPProductListDto,CSPPagedResultDto,CSPImportResult,CSPProductExportInput,CSPProductSkuListOutput, } from './csp.types';
 
 @BaseUrl('/csp/Product')
 @Injectable({ providedIn: 'root' })
-export class ProductService extends BaseApi {
+export class CSPProductService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class ProductService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<ProductDto> {
+    ): Observable<CSPProductDto> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class ProductService extends BaseApi {
         @Payload
         _req: {regionId?:string,searchText?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<ProductListDto>> {
+    ): Observable<CSPPagedResultDto<ProductListDto>> {
         return null as any
     }
 
@@ -49,9 +49,9 @@ export class ProductService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:ProductDto
+        _req:CSPProductDto
 
-    ): Observable<ProductDto> {
+    ): Observable<CSPProductDto> {
         return null as any
     }
 
@@ -81,7 +81,7 @@ export class ProductService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<ImportResult> {
+    ): Observable<CSPImportResult> {
         return null as any
     }
 
@@ -94,7 +94,7 @@ export class ProductService extends BaseApi {
     @POST('export')
     export(
         @Payload
-        _req:ProductExportInput
+        _req:CSPProductExportInput
 
     ): Observable<any> {
         return null as any
@@ -111,7 +111,7 @@ export class ProductService extends BaseApi {
         @Payload
         _req: {searchText?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<ProductSkuListOutput>> {
+    ): Observable<CSPPagedResultDto<ProductSkuListOutput>> {
         return null as any
     }
 

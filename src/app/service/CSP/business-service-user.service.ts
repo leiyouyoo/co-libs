@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ServiceUserGroupDto,ListResultDto, } from './csp.types';
+import { CSPServiceUserGroupDto,CSPListResultDto, } from './csp.types';
 
 @BaseUrl('/csp/BusinessServiceUser')
 @Injectable({ providedIn: 'root' })
-export class BusinessServiceUserService extends BaseApi {
+export class CSPBusinessServiceUserService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class BusinessServiceUserService extends BaseApi {
         @Payload
         _req: {customerId?:string} 
 
-    ): Observable<ListResultDto<ServiceUserGroupDto>> {
+    ): Observable<CSPListResultDto<ServiceUserGroupDto>> {
         return null as any
     }
 

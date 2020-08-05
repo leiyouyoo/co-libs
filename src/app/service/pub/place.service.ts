@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PlaceDto,PagedResultDto,GetPlaceListByRegionsInput,PlaceOrCountyDto,PlaceCheckDto,ChangePlaceStateInput,ListResultDto,GetPlaceMapInput,PlaceView,FromToDto,GetByPortIdsOutput,GetPortByCityInput,GetPortByCityDto,GetAllPlaceForUiPickerInput,PlaceUiPickerDto, } from './pub.types';
+import { PUBPlaceDto,PUBPagedResultDto,PUBGetPlaceListByRegionsInput,PUBPlaceOrCountyDto,PUBPlaceCheckDto,PUBChangePlaceStateInput,PUBListResultDto,PUBGetPlaceMapInput,PUBPlaceView,PUBFromToDto,PUBGetByPortIdsOutput,PUBGetPortByCityInput,PUBGetPortByCityDto,PUBGetAllPlaceForUiPickerInput,PUBPlaceUiPickerDto, } from './pub.types';
 
 @BaseUrl('/pub/Place')
 @Injectable({ providedIn: 'root' })
-export class PlaceService extends BaseApi {
+export class PUBPlaceService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class PlaceService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<PlaceDto> {
+    ): Observable<PUBPlaceDto> {
         return null as any
     }
 
@@ -34,9 +34,9 @@ export class PlaceService extends BaseApi {
     @GET('getAll')
     getAll(
         @Payload
-        _req: {id?:string,name?:string,regionId?:string,isOcean?:boolean,isAir?:boolean,isAirOrOcean?:boolean,isRail?:boolean,isOther?:boolean,isCity?:boolean,isValid?:boolean,isMultiple?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
+        _req: {id?:string,name?:string,regionId?:string,isOcean?:boolean,isAir?:boolean,isAirOrOcean?:boolean,isRail?:boolean,isOther?:boolean,isCity?:boolean,isRamp?:boolean,isValid?:boolean,isMultiple?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<PlaceDto>> {
+    ): Observable<PUBPagedResultDto<PlaceDto>> {
         return null as any
     }
 
@@ -49,9 +49,9 @@ export class PlaceService extends BaseApi {
     @POST('getByRegionIds')
     getByRegionIds(
         @Payload
-        _req:GetPlaceListByRegionsInput
+        _req:PUBGetPlaceListByRegionsInput
 
-    ): Observable<PagedResultDto<PlaceDto>> {
+    ): Observable<PUBPagedResultDto<PlaceDto>> {
         return null as any
     }
 
@@ -66,7 +66,7 @@ export class PlaceService extends BaseApi {
         @Payload
         _req: {placeId?:string,name?:string,regionIds?:any[],isOcean?:boolean,isAir?:boolean,isAirOrOcean?:boolean,isOther?:boolean,isCity?:boolean,isValid?:boolean,isPaged?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<PlaceDto>> {
+    ): Observable<PUBPagedResultDto<PlaceDto>> {
         return null as any
     }
 
@@ -81,7 +81,7 @@ export class PlaceService extends BaseApi {
         @Payload
         _req: {code?:string,name?:string,type?:number,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<PlaceOrCountyDto>> {
+    ): Observable<PUBPagedResultDto<PlaceOrCountyDto>> {
         return null as any
     }
 
@@ -94,7 +94,7 @@ export class PlaceService extends BaseApi {
     @POST('check')
     check(
         @Payload
-        _req:PlaceCheckDto
+        _req:PUBPlaceCheckDto
 
     ): Observable<any> {
         return null as any
@@ -109,9 +109,9 @@ export class PlaceService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:PlaceDto
+        _req:PUBPlaceDto
 
-    ): Observable<PlaceDto> {
+    ): Observable<PUBPlaceDto> {
         return null as any
     }
 
@@ -124,9 +124,9 @@ export class PlaceService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:PlaceDto
+        _req:PUBPlaceDto
 
-    ): Observable<PlaceDto> {
+    ): Observable<PUBPlaceDto> {
         return null as any
     }
 
@@ -139,9 +139,9 @@ export class PlaceService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:PlaceDto
+        _req:PUBPlaceDto
 
-    ): Observable<PlaceDto> {
+    ): Observable<PUBPlaceDto> {
         return null as any
     }
 
@@ -169,9 +169,9 @@ export class PlaceService extends BaseApi {
     @POST('changePlaceState')
     changePlaceState(
         @Payload
-        _req:ChangePlaceStateInput
+        _req:PUBChangePlaceStateInput
 
-    ): Observable<PlaceDto> {
+    ): Observable<PUBPlaceDto> {
         return null as any
     }
 
@@ -186,7 +186,7 @@ export class PlaceService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<ListResultDto<PlaceDto>> {
+    ): Observable<PUBListResultDto<PlaceDto>> {
         return null as any
     }
 
@@ -199,9 +199,9 @@ export class PlaceService extends BaseApi {
     @POST('resolve')
     resolve(
         @Payload
-        _req:GetPlaceMapInput
+        _req:PUBGetPlaceMapInput
 
-    ): Observable<PlaceView> {
+    ): Observable<PUBPlaceView> {
         return null as any
     }
 
@@ -216,7 +216,7 @@ export class PlaceService extends BaseApi {
         @Payload
         _req: {searchText?:string,id?:string,isPort?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<FromToDto>> {
+    ): Observable<PUBPagedResultDto<FromToDto>> {
         return null as any
     }
 
@@ -231,7 +231,7 @@ export class PlaceService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<GetByPortIdsOutput> {
+    ): Observable<PUBGetByPortIdsOutput> {
         return null as any
     }
 
@@ -259,9 +259,9 @@ export class PlaceService extends BaseApi {
     @POST('getPortByCity')
     getPortByCity(
         @Payload
-        _req:GetPortByCityInput
+        _req:PUBGetPortByCityInput
 
-    ): Observable<GetPortByCityDto> {
+    ): Observable<PUBGetPortByCityDto> {
         return null as any
     }
 
@@ -274,9 +274,9 @@ export class PlaceService extends BaseApi {
     @POST('getAllForUiPicker')
     getAllForUiPicker(
         @Payload
-        _req:GetAllPlaceForUiPickerInput
+        _req:PUBGetAllPlaceForUiPickerInput
 
-    ): Observable<PagedResultDto<PlaceUiPickerDto>> {
+    ): Observable<PUBPagedResultDto<PlaceUiPickerDto>> {
         return null as any
     }
 

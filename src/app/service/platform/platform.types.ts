@@ -2,7 +2,7 @@
     /**
      * App版本管理Dto模型
      */
-    export class AppVersionDto {
+    export class PlatformAppVersionDto {
         
          
             /* App所属系统
@@ -23,7 +23,7 @@
     /**
      *  No Remark 
      */
-    export class PagedResultDto<T> {
+    export class PlatformPagedResultDto<T> {
         
          
             
@@ -38,7 +38,7 @@
     /**
      * 租户信息
      */
-    export class TenantInfo {
+    export class PlatformTenantInfo {
         
          
             /* Id */ 
@@ -56,7 +56,7 @@
     /**
      * 用户信息
      */
-    export class UserInfo {
+    export class PlatformUserInfo {
         
          
             /* Id */ 
@@ -95,7 +95,7 @@
     /**
      * BizCodeRuleTemplate Dto
      */
-    export class BizCodeRuleTemplateDto {
+    export class PlatformBizCodeRuleTemplateDto {
         
          
             
@@ -149,7 +149,7 @@
     /**
      * 获取模板详情
      */
-    export class CreateOrUpdateTemplateInput {
+    export class PlatformCreateOrUpdateTemplateInput {
         
          
             /* 规则模板名称 */ 
@@ -182,7 +182,7 @@
     /**
      * 自定义过滤条件组信息
      */
-    export class ConditionGroupInfo {
+    export class PlatformConditionGroupInfo {
         
          
             /* 过滤条件组名称 */ 
@@ -233,7 +233,7 @@
     /**
      *  No Remark 
      */
-    export class ListResultDto<T> {
+    export class PlatformListResultDto<T> {
         
          
             
@@ -245,7 +245,7 @@
     /**
      * 用户-数据传输对象
      */
-    export class UserDto {
+    export class PlatformUserDto {
         
          
             /* 名 */ 
@@ -254,7 +254,7 @@
             /* 姓 */ 
             surname?: string;
          
-            
+            /* 中文名 */ 
             cName?: string;
          
             /* 账号 */ 
@@ -284,7 +284,7 @@
     /**
      * 样例列表-数据传输对象
      */
-    export class CacheExampleDto {
+    export class PlatformCacheExampleDto {
         
          
             /* 备注 */ 
@@ -311,7 +311,7 @@
     /**
      * 实体变更版本快照
      */
-    export class EntityHistorySnapshot {
+    export class PlatformEntityHistorySnapshot {
         
          
             /* 变更属性快照字典 */ 
@@ -326,7 +326,7 @@
     /**
      * 公司配置-数据传输对象
      */
-    export class CompanyConfigureDto {
+    export class PlatformCompanyConfigureDto {
         
          
             /* 公司ID */ 
@@ -359,7 +359,7 @@
     /**
      * 组织节点-数据传输对象
      */
-    export class OrganizationUnitDto {
+    export class PlatformOrganizationUnitDto {
         
          
             /* 显示名称 */ 
@@ -368,7 +368,7 @@
             /* 显示名称本地化信息 */ 
             displayNameLocalization?: string;
          
-            
+            /* 公司全名 */ 
             fullName?: string;
          
             /* 组织节点类型
@@ -383,7 +383,7 @@
             /* 子节点数 */ 
             childCount?: number;
          
-            
+            /* 子集 */ 
             childrenDto?: any[];
          
             /* 名称 */ 
@@ -410,7 +410,7 @@
     /**
      * 版本-数据传输对象
      */
-    export class EditionDto {
+    export class PlatformEditionDto {
         
          
             /* 功能权限 */ 
@@ -440,7 +440,7 @@
     /**
      * 设置版本权限-输入参数
      */
-    export class SetEditionPermissionsInput {
+    export class PlatformSetEditionPermissionsInput {
         
          
             /* 功能权限集合 */ 
@@ -455,7 +455,7 @@
     /**
      * 授予版本给指定租户-输入参数
      */
-    export class GrantToTenantsInput {
+    export class PlatformGrantToTenantsInput {
         
          
             /* 功能权限集合 */ 
@@ -470,7 +470,7 @@
     /**
      * 移除版本从指定租户-输入参数
      */
-    export class RevokeFromTenantsInput {
+    export class PlatformRevokeFromTenantsInput {
         
          
             /* 租户集合 */ 
@@ -485,7 +485,7 @@
     /**
      * 职务-数据传输对象
      */
-    export class JobDto {
+    export class PlatformJobDto {
         
          
             /* 名称 */ 
@@ -494,10 +494,7 @@
             /* 显示名称本地化信息 */ 
             displayNameLocalization: string;
          
-            /* 描述 */ 
-            desc: string;
-         
-            
+            /* 序号 */ 
             no?: number;
          
             /* 显示名称 */ 
@@ -509,13 +506,16 @@
             /* 职务类型 */ 
             jobTypeName?: string;
          
-            
+            /* 描述 */ 
+            desc?: string;
+         
+            /* 创建人 */ 
             creatorUserName?: string;
          
-            
+            /* 1有效、0作废 */ 
             isValid?: boolean;
          
-            
+            /* 创建时间 */ 
             creationTime?: string;
          
             
@@ -527,7 +527,7 @@
     /**
      *  No Remark 
      */
-    export class EntityDto<T> {
+    export class PlatformEntityDto<T> {
         
          
             
@@ -537,13 +537,16 @@
     }
  
     /**
-     *  No Remark 
+     * 校验重复
      */
-    export class CheckedRepeatForJobInput {
+    export class PlatformCheckedRepeatForJobInput {
         
          
-            
+            /* 职务名称 */ 
             name?: string;
+         
+            /* 显示名称本地化信息 */ 
+            nameLocalization?: string;
          
             /* 主键 */ 
             id?: string;
@@ -554,7 +557,7 @@
     /**
      * 极光用户绑定Dto
      */
-    export class JPushUserIdBindRegistrationIdDto {
+    export class PlatformJPushUserIdBindRegistrationIdDto {
         
          
             /* 设备Id */ 
@@ -569,7 +572,7 @@
     /**
      * 菜单项-数据传输对象
      */
-    export class MenuItemDto {
+    export class PlatformMenuItemDto {
         
          
             /* 显示名称 */ 
@@ -585,8 +588,10 @@
             icon?: string;
          
             /* 菜单项类型
-0 = Web
-1 = Mobile */ 
+0 = CSP_Web
+1 = CSP_Mobile
+2 = ICP_Web
+3 = ICP_Mobile */ 
             type?: number;
          
             /* Url */ 
@@ -634,7 +639,7 @@
     /**
      * 移动菜单项-数据传输对象
      */
-    export class MoveMenuItemInput {
+    export class PlatformMoveMenuItemInput {
         
          
             /* ID */ 
@@ -649,7 +654,7 @@
     /**
      * 添加菜单到收藏夹-数据传输对象
      */
-    export class AddToFavoritesInput {
+    export class PlatformAddToFavoritesInput {
         
          
             /* 菜单项ID */ 
@@ -661,7 +666,7 @@
     /**
      * 更改菜单项状态-数据传输对象
      */
-    export class ChangeStateInput {
+    export class PlatformChangeStateInput {
         
          
             /* 是否激活状态 */ 
@@ -676,7 +681,7 @@
     /**
      * 当前用户的通知分页集合
      */
-    export class GetNotificationsOutput {
+    export class PlatformGetNotificationsOutput {
         
          
             /* 未读数量 */ 
@@ -694,7 +699,7 @@
     /**
      * 当前登录用户的通知设置参数
      */
-    export class GetNotificationSettingsOutput {
+    export class PlatformGetNotificationSettingsOutput {
         
          
             /* 租户Id */ 
@@ -715,7 +720,7 @@
     /**
      * 更新通知设置的输入参数
      */
-    export class UpdateNotificationSettingsInput {
+    export class PlatformUpdateNotificationSettingsInput {
         
          
             /* 租户Id */ 
@@ -736,7 +741,7 @@
     /**
      *  No Remark 
      */
-    export class SendMessageModel {
+    export class PlatformSendMessageModel {
         
          
             
@@ -759,100 +764,100 @@
     /**
      *  No Remark 
      */
-    export class IMContactGroupDto {
+    export class PlatformIMContactGroupDto {
         
          
-            
+            /* 所属公司名称（客户名/合作伙伴名） */ 
             companyName?: string;
          
-            
+            /* 联系人集合 */ 
             contacts?: any[];
         
         
     }
  
     /**
-     *  No Remark 
+     * IM联系人Dto
      */
-    export class ContactUserDto {
+    export class PlatformContactUserDto {
         
          
-            
+            /* 用户id */ 
             userId?: number;
          
-            
+            /* 头像Id(用存储地址拼接) */ 
             profilePictureId?: string;
          
-            
+            /* 名 */ 
             name?: string;
          
-            
+            /* 姓 */ 
             surname?: string;
          
-            
+            /* 中文名 */ 
             cName?: string;
          
-            
+            /* 电话 */ 
             phoneNumber?: string;
          
-            
+            /* 邮箱 */ 
             email?: string;
          
-            
+            /* 是否激活 */ 
             isActive?: boolean;
          
-            
+            /* 职位 */ 
             position?: string;
          
-            
+            /* 组织机构路径 */ 
             fullOrganizationUnit?: string;
          
-            
+            /* 组织机构级别路径 */ 
             organizationUnitLevelCode?: string;
          
-            
+            /* 所属客户id */ 
             customerId?: string;
          
-            
+            /* 所属公司名称（客户名/合作伙伴名） */ 
             companyName?: string;
         
         
     }
  
     /**
-     *  No Remark 
+     * 组织机构用户dto
      */
-    export class OrganizationUnitUserDto {
+    export class PlatformOrganizationUnitUserDto {
         
          
-            
+            /* 用户id */ 
             userId?: number;
          
-            
+            /* 头像 */ 
             profilePictureId?: string;
          
-            
+            /* 账号 */ 
             userName?: string;
          
-            
+            /* 名 */ 
             name?: string;
          
-            
+            /* 姓 */ 
             surname?: string;
          
-            
+            /* 本地化名 */ 
             cName?: string;
          
-            
+            /* 电话 */ 
             phoneNumber?: string;
          
-            
+            /* 邮箱 */ 
             email?: string;
          
-            
+            /* 职位 */ 
             position?: string;
          
-            
+            /* 组织机构路径 */ 
             fullOrganizationUnit?: string;
         
         
@@ -861,7 +866,7 @@
     /**
      * 移动组织节点-输入参数
      */
-    export class MoveOrganizationUnitInput {
+    export class PlatformMoveOrganizationUnitInput {
         
          
             /* 组织节点ID */ 
@@ -876,7 +881,7 @@
     /**
      * 权限项-数据传输对象
      */
-    export class PermissionDto {
+    export class PlatformPermissionDto {
         
          
             /* 显示名称 */ 
@@ -917,7 +922,7 @@
     /**
      * 移动权限项-输入参数
      */
-    export class MovePermissionItemInput {
+    export class PlatformMovePermissionItemInput {
         
          
             /* 父项ID */ 
@@ -932,7 +937,7 @@
     /**
      * 批量授予权限给用户-输入参数
      */
-    export class GrantFunctionPermissionsToUserInput {
+    export class PlatformGrantFunctionPermissionsToUserInput {
         
          
             /* 父项ID */ 
@@ -947,7 +952,7 @@
     /**
      * 撤销用户权限-输入参数
      */
-    export class RevokeUserFunctionPermissionsInput {
+    export class PlatformRevokeUserFunctionPermissionsInput {
         
          
             /* 父项ID */ 
@@ -962,7 +967,7 @@
     /**
      * 批量授予权限给角色-输入参数
      */
-    export class GrantFunctionPermissionsToRoleInput {
+    export class PlatformGrantFunctionPermissionsToRoleInput {
         
          
             /* 角色ID */ 
@@ -977,7 +982,7 @@
     /**
      * 撤销角色的权限-输入参数
      */
-    export class RevokeRoleFunctionPermissionsInput {
+    export class PlatformRevokeRoleFunctionPermissionsInput {
         
          
             /* 角色ID */ 
@@ -992,7 +997,7 @@
     /**
      * 数据权限项-数据传输对象
      */
-    export class DataPermissionDto {
+    export class PlatformDataPermissionDto {
         
          
             /* 数据范围 */ 
@@ -1036,7 +1041,7 @@
     /**
      * 批量授予权限给用户-输入参数
      */
-    export class GrantDataPermissionsToUserInput {
+    export class PlatformGrantDataPermissionsToUserInput {
         
          
             /* 父项ID */ 
@@ -1051,7 +1056,7 @@
     /**
      * 撤销用户权限-输入参数
      */
-    export class RevokeUserDataPermissionsInput {
+    export class PlatformRevokeUserDataPermissionsInput {
         
          
             /* 父项ID */ 
@@ -1066,7 +1071,7 @@
     /**
      * 批量授予权限给角色-输入参数
      */
-    export class GrantDataPermissionsToRoleInput {
+    export class PlatformGrantDataPermissionsToRoleInput {
         
          
             /* 角色ID */ 
@@ -1081,7 +1086,7 @@
     /**
      * 撤销角色的权限-输入参数
      */
-    export class RevokeRoleDataPermissionsInput {
+    export class PlatformRevokeRoleDataPermissionsInput {
         
          
             /* 角色ID */ 
@@ -1096,14 +1101,17 @@
     /**
      * 职位-数据传输对象
      */
-    export class PositionDto {
+    export class PlatformPositionDto {
         
          
-            
-            no?: number;
-         
             /* 显示名称本地化信息 */ 
-            nameLocalization?: string;
+            nameLocalization: string;
+         
+            /* 职务ID */ 
+            jobId: string;
+         
+            /* 序号 */ 
+            no?: number;
          
             /* 描述 */ 
             desc?: string;
@@ -1114,19 +1122,16 @@
             /* 所属部门 */ 
             organizationUnitName?: string;
          
-            /* 职务ID */ 
-            jobId?: string;
-         
             /* 职务名 */ 
             jobName?: string;
          
-            
+            /* 创建人 */ 
             creatorUserName?: string;
          
-            
+            /* 1有效、0作废 */ 
             isValid?: boolean;
          
-            
+            /* 创建时间 */ 
             creationTime?: string;
          
             /* 名称 */ 
@@ -1154,9 +1159,9 @@
     }
  
     /**
-     *  No Remark 
+     * 职位带组织机构Dto
      */
-    export class PositionAndOrganizationUnitDto {
+    export class PlatformPositionAndOrganizationUnitDto {
         
          
             
@@ -1172,24 +1177,24 @@
     }
  
     /**
-     *  No Remark 
+     * 创建模型
      */
-    export class CreatePositionDto {
+    export class PlatformCreatePositionDto {
         
          
-            
+            /* 显示名称本地化信息 */ 
             nameLocalization: string;
          
-            
+            /* 显示名称 */ 
             name: string;
          
-            
+            /* 职务ID */ 
             jobId: string;
          
-            
+            /* 描述 */ 
             desc?: string;
          
-            
+            /* 所属组织list */ 
             belongToOrganizationModels?: any[];
         
         
@@ -1198,7 +1203,7 @@
     /**
      *  No Remark 
      */
-    export class ResMsgDto {
+    export class PlatformResMsgDto {
         
          
             
@@ -1211,27 +1216,27 @@
     }
  
     /**
-     *  No Remark 
+     * 职位更新模型
      */
-    export class UpdatePositionDto {
+    export class PlatformUpdatePositionDto {
         
          
-            
+            /* 显示名称本地化信息 */ 
             nameLocalization: string;
          
-            
+            /* 显示名称 */ 
             name: string;
          
-            
+            /* 职务ID */ 
             jobId: string;
          
-            
+            /* Id */ 
             id?: string;
          
-            
+            /* 描述 */ 
             desc?: string;
          
-            
+            /* 所属组织list */ 
             belongToOrganizationModels?: any[];
         
         
@@ -1240,7 +1245,7 @@
     /**
      * 批量添加用户到职位点-输入参数
      */
-    export class AddUsersToPositionInput {
+    export class PlatformAddUsersToPositionInput {
         
          
             /* 用户ID集合 */ 
@@ -1258,7 +1263,7 @@
     /**
      * 批量添加用户到职位-输入参数
      */
-    export class SetUserDefaultPositionInput {
+    export class PlatformSetUserDefaultPositionInput {
         
          
             /* 用户ID */ 
@@ -1273,7 +1278,7 @@
     /**
      * 判断用户是否归属指定职位-输入参数
      */
-    export class IsInPositionInput {
+    export class PlatformIsInPositionInput {
         
          
             /* 用户ID */ 
@@ -1291,8 +1296,11 @@
     /**
      * 用户信息-数据传输对象
      */
-    export class SessionUserDto {
+    export class PlatformSessionUserDto {
         
+         
+            /* ICP用户id */ 
+            icpUserId?: string;
          
             /* 客户Id */ 
             customerId?: string;
@@ -1324,7 +1332,7 @@
             /* 角色集合 */ 
             roles?: any[];
          
-            
+            /* 职位 */ 
             positions?: any[];
          
             /* 模拟用户Id */ 
@@ -1339,7 +1347,7 @@
     /**
      * 租户信息-数据传输对象
      */
-    export class SessionTenantDto {
+    export class PlatformSessionTenantDto {
         
          
             /* 租户账号 */ 
@@ -1369,7 +1377,7 @@
     /**
      * 平台信息-数据传输对象
      */
-    export class SessionPlatformDto {
+    export class PlatformSessionPlatformDto {
         
          
             /* 平台名 */ 
@@ -1383,6 +1391,9 @@
          
             /* 发布日期 */ 
             releaseDate?: string;
+         
+            /* 插件版本信息 */ 
+            pluginVersions?: any[];
         
         
     }
@@ -1390,7 +1401,7 @@
     /**
      * 获取当前用户会话信息-数据传输对象
      */
-    export class UserSessionDto {
+    export class PlatformUserSessionDto {
         
          
             /* 用户信息 */ 
@@ -1413,7 +1424,7 @@
     /**
      *  No Remark 
      */
-    export class AbpUserCurrentCultureConfigDto {
+    export class PlatformAbpUserCurrentCultureConfigDto {
         
          
             
@@ -1428,7 +1439,7 @@
     /**
      *  No Remark 
      */
-    export class LanguageInfo {
+    export class PlatformLanguageInfo {
         
          
             
@@ -1455,7 +1466,7 @@
     /**
      *  No Remark 
      */
-    export class AbpUserLocalizationConfigDto {
+    export class PlatformAbpUserLocalizationConfigDto {
         
          
             
@@ -1479,7 +1490,7 @@
     /**
      * 用户授权信息
      */
-    export class UserAuthConfigDto {
+    export class PlatformUserAuthConfigDto {
         
          
             /* 授予的数据权限 */ 
@@ -1494,7 +1505,7 @@
     /**
      *  No Remark 
      */
-    export class AbpUserNavConfigDto {
+    export class PlatformAbpUserNavConfigDto {
         
          
             
@@ -1506,7 +1517,7 @@
     /**
      *  No Remark 
      */
-    export class AbpUserSettingConfigDto {
+    export class PlatformAbpUserSettingConfigDto {
         
          
             
@@ -1518,7 +1529,7 @@
     /**
      *  No Remark 
      */
-    export class AbpUserClockConfigDto {
+    export class PlatformAbpUserClockConfigDto {
         
          
             
@@ -1530,7 +1541,7 @@
     /**
      *  No Remark 
      */
-    export class AbpUserWindowsTimeZoneConfigDto {
+    export class PlatformAbpUserWindowsTimeZoneConfigDto {
         
          
             
@@ -1551,7 +1562,7 @@
     /**
      *  No Remark 
      */
-    export class AbpUserIanaTimeZoneConfigDto {
+    export class PlatformAbpUserIanaTimeZoneConfigDto {
         
          
             
@@ -1563,7 +1574,7 @@
     /**
      *  No Remark 
      */
-    export class AbpUserTimeZoneConfigDto {
+    export class PlatformAbpUserTimeZoneConfigDto {
         
          
             
@@ -1578,7 +1589,7 @@
     /**
      *  No Remark 
      */
-    export class AbpUserTimingConfigDto {
+    export class PlatformAbpUserTimingConfigDto {
         
          
             
@@ -1590,7 +1601,7 @@
     /**
      *  No Remark 
      */
-    export class AbpUserAntiForgeryConfigDto {
+    export class PlatformAbpUserAntiForgeryConfigDto {
         
          
             
@@ -1605,7 +1616,7 @@
     /**
      *  No Remark 
      */
-    export class AbpUserSecurityConfigDto {
+    export class PlatformAbpUserSecurityConfigDto {
         
          
             
@@ -1617,7 +1628,7 @@
     /**
      * 用户配置-数据传输对象
      */
-    export class UserConfigurationDto {
+    export class PlatformUserConfigurationDto {
         
          
             /* 会话信息 */ 
@@ -1650,13 +1661,28 @@
     /**
      *  No Remark 
      */
-    export class TfsWebhookMessageDto {
+    export class PlatformSettingDto {
         
          
             
-            text?: string;
+            name?: string;
          
             
+            value?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformTfsWebhookMessageDto {
+        
+         
+            /* 文本消息 */ 
+            text?: string;
+         
+            /* markdown消息 */ 
             markdown?: string;
         
         
@@ -1665,7 +1691,7 @@
     /**
      *  No Remark 
      */
-    export class TfsWebhookInput {
+    export class PlatformTfsWebhookInput {
         
          
             
@@ -1680,7 +1706,7 @@
     /**
      *  No Remark 
      */
-    export class NameValueDto {
+    export class PlatformNameValueDto {
         
          
             

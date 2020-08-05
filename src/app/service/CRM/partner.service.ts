@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PartnerDto,PartnerListDto,PagedResultDto,CreateOrUpdatePartnerDto,PartnerBindCustomerInput,UnBindCustomerInput, } from './crm.types';
+import { CRMPartnerDto,CRMPartnerListDto,CRMPagedResultDto,CRMCreateOrUpdatePartnerDto,CRMPartnerBindCustomerInput,CRMUnBindCustomerInput, } from './crm.types';
 
 @BaseUrl('/crm/Partner')
 @Injectable({ providedIn: 'root' })
-export class PartnerService extends BaseApi {
+export class CRMPartnerService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class PartnerService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<PartnerDto> {
+    ): Observable<CRMPartnerDto> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class PartnerService extends BaseApi {
         @Payload
         _req: {customerId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<PartnerListDto>> {
+    ): Observable<CRMPagedResultDto<PartnerListDto>> {
         return null as any
     }
 
@@ -49,7 +49,7 @@ export class PartnerService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:CreateOrUpdatePartnerDto
+        _req:CRMCreateOrUpdatePartnerDto
 
     ): Observable<any> {
         return null as any
@@ -64,7 +64,7 @@ export class PartnerService extends BaseApi {
     @POST('bindCustomer')
     bindCustomer(
         @Payload
-        _req:PartnerBindCustomerInput
+        _req:CRMPartnerBindCustomerInput
 
     ): Observable<any> {
         return null as any
@@ -79,7 +79,7 @@ export class PartnerService extends BaseApi {
     @POST('unBindCustomer')
     unBindCustomer(
         @Payload
-        _req:UnBindCustomerInput
+        _req:CRMUnBindCustomerInput
 
     ): Observable<any> {
         return null as any

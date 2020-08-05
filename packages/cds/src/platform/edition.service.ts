@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { EditionDto,PagedResultDto,SetEditionPermissionsInput,GrantToTenantsInput,RevokeFromTenantsInput, } from './platform.types';
+import { PlatformEditionDto,PlatformPagedResultDto,PlatformSetEditionPermissionsInput,PlatformGrantToTenantsInput,PlatformRevokeFromTenantsInput, } from './platform.types';
 
 @BaseUrl('/platform/Edition')
 @Injectable({ providedIn: 'root' })
-export class EditionService extends BaseApi {
+export class PlatformEditionService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class EditionService extends BaseApi {
         @Payload
         _req: {searchText?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<EditionDto>> {
+    ): Observable<PlatformPagedResultDto<EditionDto>> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class EditionService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<EditionDto> {
+    ): Observable<PlatformEditionDto> {
         return null as any
     }
 
@@ -49,9 +49,9 @@ export class EditionService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:EditionDto
+        _req:PlatformEditionDto
 
-    ): Observable<EditionDto> {
+    ): Observable<PlatformEditionDto> {
         return null as any
     }
 
@@ -64,9 +64,9 @@ export class EditionService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:EditionDto
+        _req:PlatformEditionDto
 
-    ): Observable<EditionDto> {
+    ): Observable<PlatformEditionDto> {
         return null as any
     }
 
@@ -79,9 +79,9 @@ export class EditionService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:EditionDto
+        _req:PlatformEditionDto
 
-    ): Observable<EditionDto> {
+    ): Observable<PlatformEditionDto> {
         return null as any
     }
 
@@ -124,7 +124,7 @@ export class EditionService extends BaseApi {
     @POST('setPermissions')
     setPermissions(
         @Payload
-        _req:SetEditionPermissionsInput
+        _req:PlatformSetEditionPermissionsInput
 
     ): Observable<any> {
         return null as any
@@ -154,7 +154,7 @@ export class EditionService extends BaseApi {
     @POST('grantToTenants')
     grantToTenants(
         @Payload
-        _req:GrantToTenantsInput
+        _req:PlatformGrantToTenantsInput
 
     ): Observable<any> {
         return null as any
@@ -169,7 +169,7 @@ export class EditionService extends BaseApi {
     @POST('revokeFromTenants')
     revokeFromTenants(
         @Payload
-        _req:RevokeFromTenantsInput
+        _req:PlatformRevokeFromTenantsInput
 
     ): Observable<any> {
         return null as any
@@ -186,7 +186,7 @@ export class EditionService extends BaseApi {
         @Payload
         _req: {id?:number} 
 
-    ): Observable<EditionDto> {
+    ): Observable<PlatformEditionDto> {
         return null as any
     }
 

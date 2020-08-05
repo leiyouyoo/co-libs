@@ -5,7 +5,7 @@ import {  } from './storage.types';
 
 @BaseUrl('/storage/RateExcel')
 @Injectable({ providedIn: 'root' })
-export class RateExcelService extends BaseApi {
+export class StorageRateExcelService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -13,7 +13,7 @@ export class RateExcelService extends BaseApi {
   
     /**
      * @param url /Storage/RateExcel/ImportExcelToRate
-     * 
+     * baseport arbitrary 导入
      */
 
     @FORM('importExcelToRate')
@@ -28,7 +28,7 @@ export class RateExcelService extends BaseApi {
 
     /**
      * @param url /Storage/RateExcel/ImportExcelToTruck
-     * 
+     * 拖车导入
      */
 
     @FORM('importExcelToTruck')

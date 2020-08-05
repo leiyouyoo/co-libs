@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ShipmentDto,PreShipmentListInput,PreShipmentListItemDto,PagedResultDto,ShipmentListItemDto,CreateOrUpdateShipmentInput,WarehousingDto,ChangeShipmentInvalidStatusInput,SetShipmentPostAgentCustomerInput,GetShipmentListInput,GetDeliveryInfoListInput,DeliveryInfoListItemDto,ApplyBookingsInput,DeliveryInfoDto, } from './fcm.types';
+import { FCMShipmentDto,FCMGetPreShipmentListInput,FCMPreShipmentListItemDto,FCMPagedResultDto,FCMShipmentListItemDto,FCMCreateOrUpdateShipmentInput,FCMWarehousingDto,FCMChangeShipmentInvalidStatusInput,FCMSetPostAgentCustomerInput,FCMGetShipmentListInput,FCMGetDeliveryInfoListInput,FCMDeliveryInfoListItemDto,FCMApplyBookingsInput,FCMDeliveryInfoEditDto,FCMDeliveryInfoDetailDto, } from './fcm.types';
 
 @BaseUrl('/fcm/Shipment')
 @Injectable({ providedIn: 'root' })
-export class ShipmentService extends BaseApi {
+export class FCMShipmentService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class ShipmentService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<ShipmentDto> {
+    ): Observable<FCMShipmentDto> {
         return null as any
     }
 
@@ -34,9 +34,9 @@ export class ShipmentService extends BaseApi {
     @POST('getAllPreShipment')
     getAllPreShipment(
         @Payload
-        _req:PreShipmentListInput
+        _req:FCMGetPreShipmentListInput
 
-    ): Observable<PagedResultDto<PreShipmentListItemDto>> {
+    ): Observable<FCMPagedResultDto<PreShipmentListItemDto>> {
         return null as any
     }
 
@@ -51,7 +51,7 @@ export class ShipmentService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<CreateOrUpdateShipmentInput> {
+    ): Observable<FCMCreateOrUpdateShipmentInput> {
         return null as any
     }
 
@@ -64,7 +64,7 @@ export class ShipmentService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:CreateOrUpdateShipmentInput
+        _req:FCMCreateOrUpdateShipmentInput
 
     ): Observable<any> {
         return null as any
@@ -79,7 +79,7 @@ export class ShipmentService extends BaseApi {
     @POST('warehousing')
     warehousing(
         @Payload
-        _req:WarehousingDto
+        _req:FCMWarehousingDto
 
     ): Observable<any> {
         return null as any
@@ -94,7 +94,7 @@ export class ShipmentService extends BaseApi {
     @POST('changeInvalidStatus')
     changeInvalidStatus(
         @Payload
-        _req:ChangeShipmentInvalidStatusInput
+        _req:FCMChangeShipmentInvalidStatusInput
 
     ): Observable<any> {
         return null as any
@@ -109,7 +109,7 @@ export class ShipmentService extends BaseApi {
     @POST('setPostAgentCustomer')
     setPostAgentCustomer(
         @Payload
-        _req:SetShipmentPostAgentCustomerInput
+        _req:FCMSetPostAgentCustomerInput
 
     ): Observable<any> {
         return null as any
@@ -139,9 +139,9 @@ export class ShipmentService extends BaseApi {
     @POST('getShipmentList')
     getShipmentList(
         @Payload
-        _req:GetShipmentListInput
+        _req:FCMGetShipmentListInput
 
-    ): Observable<PagedResultDto<ShipmentListItemDto>> {
+    ): Observable<FCMPagedResultDto<ShipmentListItemDto>> {
         return null as any
     }
 
@@ -154,9 +154,9 @@ export class ShipmentService extends BaseApi {
     @POST('getDeliveryInfoList')
     getDeliveryInfoList(
         @Payload
-        _req:GetDeliveryInfoListInput
+        _req:FCMGetDeliveryInfoListInput
 
-    ): Observable<PagedResultDto<DeliveryInfoListItemDto>> {
+    ): Observable<FCMPagedResultDto<DeliveryInfoListItemDto>> {
         return null as any
     }
 
@@ -169,7 +169,7 @@ export class ShipmentService extends BaseApi {
     @POST('applyBooking')
     applyBooking(
         @Payload
-        _req:ApplyBookingsInput
+        _req:FCMApplyBookingsInput
 
     ): Observable<any> {
         return null as any
@@ -184,7 +184,37 @@ export class ShipmentService extends BaseApi {
     @PUT('updateDeliveryInfo')
     updateDeliveryInfo(
         @Payload
-        _req:DeliveryInfoDto
+        _req:FCMDeliveryInfoEditDto
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /FCM/Shipment/GetDeliveryInfo
+     * 获取配送明细信息
+     */
+
+    @GET('getDeliveryInfo')
+    getDeliveryInfo(
+        @Payload
+        _req: {id?:string} 
+
+    ): Observable<FCMDeliveryInfoDetailDto> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /FCM/Shipment/CheckAgentCustomer
+     * 校验承运人
+     */
+
+    @POST('checkAgentCustomer')
+    checkAgentCustomer(
+        @Payload
+        _req: {} 
 
     ): Observable<any> {
         return null as any

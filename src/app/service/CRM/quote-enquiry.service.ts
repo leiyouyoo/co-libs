@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { QuoteEnquiryDto,QuoteEnquiryListForCRMOutput,PagedResultDto,QuoteEnquiryListForCRMInput,ListResultDto,CustomerListModel,GetRelatedQuoteForCRMOutput,QuoteEnquiryListForCSPInput,QuoteEnquiryListForCSPOutput,Object, } from './crm.types';
+import { CRMQuoteEnquiryDto,CRMQuoteEnquiryListForCRMOutput,CRMPagedResultDto,CRMQuoteEnquiryListForCRMInput,CRMListResultDto,CRMCustomerListModel,CRMGetRelatedQuoteForCRMOutput,CRMGetListByRouteForCRMOutput,CRMQuoteEnquiryListForCSPInput,CRMQuoteEnquiryListForCSPOutput,CRMObject, } from './crm.types';
 
 @BaseUrl('/crm/QuoteEnquiry')
 @Injectable({ providedIn: 'root' })
-export class QuoteEnquiryService extends BaseApi {
+export class CRMQuoteEnquiryService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class QuoteEnquiryService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<QuoteEnquiryDto> {
+    ): Observable<CRMQuoteEnquiryDto> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class QuoteEnquiryService extends BaseApi {
         @Payload
         _req: {status?:number,tradeTypes?:string,quoteNo?:string,historyDataType?:number,userId?:number,customerId?:string,name?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<QuoteEnquiryListForCRMOutput>> {
+    ): Observable<CRMPagedResultDto<QuoteEnquiryListForCRMOutput>> {
         return null as any
     }
 
@@ -51,7 +51,7 @@ export class QuoteEnquiryService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<ListResultDto<QuoteEnquiryListForCRMInput>> {
+    ): Observable<CRMListResultDto<QuoteEnquiryListForCRMInput>> {
         return null as any
     }
 
@@ -66,7 +66,7 @@ export class QuoteEnquiryService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<ListResultDto<CustomerListModel>> {
+    ): Observable<CRMListResultDto<CustomerListModel>> {
         return null as any
     }
 
@@ -81,7 +81,22 @@ export class QuoteEnquiryService extends BaseApi {
         @Payload
         _req: {originPortId?:string,originAddressId?:string,destinationPortId?:string,destinationAddressId?:string,incotermsString?:string,shipperCustomerId?:string,consigneeCustomerId?:string} 
 
-    ): Observable<GetRelatedQuoteForCRMOutput> {
+    ): Observable<CRMGetRelatedQuoteForCRMOutput> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /CRM/QuoteEnquiry/GetListByRouteForCRM
+     * 根据路线匹配询价信息（用于复制价格）
+     */
+
+    @GET('getListByRouteForCRM')
+    getListByRouteForCRM(
+        @Payload
+        _req: {id?:string,destinationAddressId?:string,originAddressId?:string,destinationPortId?:string,originPortId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
+
+    ): Observable<CRMPagedResultDto<GetListByRouteForCRMOutput>> {
         return null as any
     }
 
@@ -94,9 +109,9 @@ export class QuoteEnquiryService extends BaseApi {
     @POST('getAll')
     getAll(
         @Payload
-        _req:QuoteEnquiryListForCSPInput
+        _req:CRMQuoteEnquiryListForCSPInput
 
-    ): Observable<PagedResultDto<QuoteEnquiryDto>> {
+    ): Observable<CRMPagedResultDto<QuoteEnquiryDto>> {
         return null as any
     }
 
@@ -109,9 +124,9 @@ export class QuoteEnquiryService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:QuoteEnquiryDto
+        _req:CRMQuoteEnquiryDto
 
-    ): Observable<QuoteEnquiryDto> {
+    ): Observable<CRMQuoteEnquiryDto> {
         return null as any
     }
 
@@ -141,7 +156,7 @@ export class QuoteEnquiryService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<ListResultDto<QuoteEnquiryDto>> {
+    ): Observable<CRMListResultDto<QuoteEnquiryDto>> {
         return null as any
     }
 
@@ -156,7 +171,7 @@ export class QuoteEnquiryService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<QuoteEnquiryDto> {
+    ): Observable<CRMQuoteEnquiryDto> {
         return null as any
     }
 
@@ -169,9 +184,9 @@ export class QuoteEnquiryService extends BaseApi {
     @POST('getAllForCSP')
     getAllForCSP(
         @Payload
-        _req:QuoteEnquiryListForCSPInput
+        _req:CRMQuoteEnquiryListForCSPInput
 
-    ): Observable<PagedResultDto<QuoteEnquiryListForCSPOutput>> {
+    ): Observable<CRMPagedResultDto<QuoteEnquiryListForCSPOutput>> {
         return null as any
     }
 
@@ -186,7 +201,7 @@ export class QuoteEnquiryService extends BaseApi {
         @Payload
         _req: {historyDataType?:number,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<Object>> {
+    ): Observable<CRMPagedResultDto<Object>> {
         return null as any
     }
 
@@ -201,7 +216,7 @@ export class QuoteEnquiryService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<QuoteEnquiryDto> {
+    ): Observable<CRMQuoteEnquiryDto> {
         return null as any
     }
 
@@ -214,9 +229,9 @@ export class QuoteEnquiryService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:QuoteEnquiryDto
+        _req:CRMQuoteEnquiryDto
 
-    ): Observable<QuoteEnquiryDto> {
+    ): Observable<CRMQuoteEnquiryDto> {
         return null as any
     }
 

@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { SailingSchedulesInput,SailingSchedulesDto,PagedResultDto, } from './pub.types';
+import { PUBSailingSchedulesInput,PUBSailingSchedulesDto,PUBPagedResultDto, } from './pub.types';
 
 @BaseUrl('/pub/SailingSchedules')
 @Injectable({ providedIn: 'root' })
-export class SailingSchedulesService extends BaseApi {
+export class PUBSailingSchedulesService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -64,9 +64,9 @@ export class SailingSchedulesService extends BaseApi {
     @POST('querySailingSchedules')
     querySailingSchedules(
         @Payload
-        _req:SailingSchedulesInput
+        _req:PUBSailingSchedulesInput
 
-    ): Observable<PagedResultDto<SailingSchedulesDto>> {
+    ): Observable<PUBPagedResultDto<SailingSchedulesDto>> {
         return null as any
     }
 

@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ContactDto,ListResultDto,ContactListDto,PagedResultDto,CheckContactEmailInput,CheckContactEmailOutput,CheckMainContact,CommonResponse,CreateOrUpdateContactInput,ResetUserPasswordInput, } from './crm.types';
+import { CRMContactDto,CRMListResultDto,CRMContactListDto,CRMPagedResultDto,CRMCheckContactEmailInput,CRMCheckContactEmailOutput,CRMCheckMainContact,CRMCommonResponse,CRMCreateOrUpdateContactInput,CRMResetUserPasswordInput, } from './crm.types';
 
 @BaseUrl('/crm/Contact')
 @Injectable({ providedIn: 'root' })
-export class ContactService extends BaseApi {
+export class CRMContactService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class ContactService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<ContactDto> {
+    ): Observable<CRMContactDto> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class ContactService extends BaseApi {
         @Payload
         _req: {ids?:any[]} 
 
-    ): Observable<ListResultDto<ContactDto>> {
+    ): Observable<CRMListResultDto<ContactDto>> {
         return null as any
     }
 
@@ -51,7 +51,7 @@ export class ContactService extends BaseApi {
         @Payload
         _req: {partnerId?:string,customerId?:string,isRegistered?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<ListResultDto<ContactListDto>> {
+    ): Observable<CRMListResultDto<ContactListDto>> {
         return null as any
     }
 
@@ -66,7 +66,7 @@ export class ContactService extends BaseApi {
         @Payload
         _req: {partnerId?:string,customerId?:string,isRegistered?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<ContactListDto>> {
+    ): Observable<CRMPagedResultDto<ContactListDto>> {
         return null as any
     }
 
@@ -81,7 +81,7 @@ export class ContactService extends BaseApi {
         @Payload
         _req: {locationId?:string} 
 
-    ): Observable<ListResultDto<ContactListDto>> {
+    ): Observable<CRMListResultDto<ContactListDto>> {
         return null as any
     }
 
@@ -96,7 +96,7 @@ export class ContactService extends BaseApi {
         @Payload
         _req: {searchText?:string,type?:number} 
 
-    ): Observable<ListResultDto<ContactListDto>> {
+    ): Observable<CRMListResultDto<ContactListDto>> {
         return null as any
     }
 
@@ -109,9 +109,9 @@ export class ContactService extends BaseApi {
     @POST('checkEmailRepeat')
     checkEmailRepeat(
         @Payload
-        _req:CheckContactEmailInput
+        _req:CRMCheckContactEmailInput
 
-    ): Observable<CheckContactEmailOutput> {
+    ): Observable<CRMCheckContactEmailOutput> {
         return null as any
     }
 
@@ -124,9 +124,9 @@ export class ContactService extends BaseApi {
     @POST('checkHasMainContact')
     checkHasMainContact(
         @Payload
-        _req:CheckMainContact
+        _req:CRMCheckMainContact
 
-    ): Observable<CommonResponse> {
+    ): Observable<CRMCommonResponse> {
         return null as any
     }
 
@@ -139,7 +139,7 @@ export class ContactService extends BaseApi {
     @POST('createForCustomer')
     createForCustomer(
         @Payload
-        _req:CreateOrUpdateContactInput
+        _req:CRMCreateOrUpdateContactInput
 
     ): Observable<any> {
         return null as any
@@ -154,7 +154,7 @@ export class ContactService extends BaseApi {
     @POST('createForPartner')
     createForPartner(
         @Payload
-        _req:CreateOrUpdateContactInput
+        _req:CRMCreateOrUpdateContactInput
 
     ): Observable<any> {
         return null as any
@@ -169,7 +169,7 @@ export class ContactService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:CreateOrUpdateContactInput
+        _req:CRMCreateOrUpdateContactInput
 
     ): Observable<any> {
         return null as any
@@ -214,7 +214,7 @@ export class ContactService extends BaseApi {
     @POST('resetUserPassword')
     resetUserPassword(
         @Payload
-        _req:ResetUserPasswordInput
+        _req:CRMResetUserPasswordInput
 
     ): Observable<any> {
         return null as any

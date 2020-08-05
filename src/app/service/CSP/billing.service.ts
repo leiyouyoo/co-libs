@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { UserIdentifier,GetBillListInput,BillOutput,PagedResultDto,ListResultDto,BillDto,CoEntityDto,ChangeBillStatusInput,ConfirmBillsInput,ExportBillInput,ExportBillOutput,SynchronizeBillsInput,CreateOrUpdatePaymentRecordsInput,PaymentRecordDto,CreateOrUpdateChargeItemsInput,ChargeItemDto,BankAccountDto,BillingStatisticsOutput, } from './csp.types';
+import { CSPUserIdentifier,CSPGetBillListInput,CSPBillOutput,CSPPagedResultDto,CSPListResultDto,CSPBillDto,CSPCoEntityDto,CSPChangeBillStatusInput,CSPConfirmBillsInput,CSPExportBillInput,CSPExportBillOutput,CSPSynchronizeBillsInput,CSPCreateOrUpdatePaymentRecordsInput,CSPPaymentRecordDto,CSPCreateOrUpdateChargeItemsInput,CSPChargeItemDto,CSPBankAccountDto,CSPBillingStatisticsOutput, } from './csp.types';
 
 @BaseUrl('/csp/Billing')
 @Injectable({ providedIn: 'root' })
-export class BillingService extends BaseApi {
+export class CSPBillingService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -19,7 +19,7 @@ export class BillingService extends BaseApi {
     @POST('checkPermission')
     checkPermission(
         @Payload
-        _req:UserIdentifier
+        _req:CSPUserIdentifier
 
     ): Observable<any> {
         return null as any
@@ -34,9 +34,9 @@ export class BillingService extends BaseApi {
     @POST('getBillList')
     getBillList(
         @Payload
-        _req:GetBillListInput
+        _req:CSPGetBillListInput
 
-    ): Observable<PagedResultDto<BillOutput>> {
+    ): Observable<CSPPagedResultDto<BillOutput>> {
         return null as any
     }
 
@@ -51,7 +51,7 @@ export class BillingService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<ListResultDto<BillOutput>> {
+    ): Observable<CSPListResultDto<BillOutput>> {
         return null as any
     }
 
@@ -66,7 +66,7 @@ export class BillingService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<BillOutput> {
+    ): Observable<CSPBillOutput> {
         return null as any
     }
 
@@ -94,7 +94,7 @@ export class BillingService extends BaseApi {
     @POST('createOrUpdateBill')
     createOrUpdateBill(
         @Payload
-        _req:BillDto
+        _req:CSPBillDto
 
     ): Observable<any> {
         return null as any
@@ -109,7 +109,7 @@ export class BillingService extends BaseApi {
     @POST('deleteBill')
     deleteBill(
         @Payload
-        _req:CoEntityDto<any>
+        _req:CSPCoEntityDto<any>
 
     ): Observable<any> {
         return null as any
@@ -124,7 +124,7 @@ export class BillingService extends BaseApi {
     @POST('changeBillStatus')
     changeBillStatus(
         @Payload
-        _req:ChangeBillStatusInput
+        _req:CSPChangeBillStatusInput
 
     ): Observable<any> {
         return null as any
@@ -139,7 +139,7 @@ export class BillingService extends BaseApi {
     @POST('confirmBills')
     confirmBills(
         @Payload
-        _req:ConfirmBillsInput
+        _req:CSPConfirmBillsInput
 
     ): Observable<any> {
         return null as any
@@ -169,9 +169,9 @@ export class BillingService extends BaseApi {
     @POST('exportBill')
     exportBill(
         @Payload
-        _req:ExportBillInput
+        _req:CSPExportBillInput
 
-    ): Observable<ExportBillOutput> {
+    ): Observable<CSPExportBillOutput> {
         return null as any
     }
 
@@ -184,7 +184,7 @@ export class BillingService extends BaseApi {
     @POST('synchronizeBills')
     synchronizeBills(
         @Payload
-        _req:SynchronizeBillsInput
+        _req:CSPSynchronizeBillsInput
 
     ): Observable<any> {
         return null as any
@@ -199,7 +199,7 @@ export class BillingService extends BaseApi {
     @POST('createOrUpdatePaymentRecords')
     createOrUpdatePaymentRecords(
         @Payload
-        _req:CreateOrUpdatePaymentRecordsInput
+        _req:CSPCreateOrUpdatePaymentRecordsInput
 
     ): Observable<any> {
         return null as any
@@ -214,7 +214,7 @@ export class BillingService extends BaseApi {
     @POST('createOrUpdatePaymentRecord')
     createOrUpdatePaymentRecord(
         @Payload
-        _req:PaymentRecordDto
+        _req:CSPPaymentRecordDto
 
     ): Observable<any> {
         return null as any
@@ -244,7 +244,7 @@ export class BillingService extends BaseApi {
     @POST('deletePaymentRecord')
     deletePaymentRecord(
         @Payload
-        _req:CoEntityDto<any>
+        _req:CSPCoEntityDto<any>
 
     ): Observable<any> {
         return null as any
@@ -259,7 +259,7 @@ export class BillingService extends BaseApi {
     @POST('createOrUpdateChargeItems')
     createOrUpdateChargeItems(
         @Payload
-        _req:CreateOrUpdateChargeItemsInput
+        _req:CSPCreateOrUpdateChargeItemsInput
 
     ): Observable<any> {
         return null as any
@@ -274,7 +274,7 @@ export class BillingService extends BaseApi {
     @POST('createOrUpdateChargeItem')
     createOrUpdateChargeItem(
         @Payload
-        _req:ChargeItemDto
+        _req:CSPChargeItemDto
 
     ): Observable<any> {
         return null as any
@@ -304,7 +304,7 @@ export class BillingService extends BaseApi {
     @POST('deleteChargeItem')
     deleteChargeItem(
         @Payload
-        _req:CoEntityDto<any>
+        _req:CSPCoEntityDto<any>
 
     ): Observable<any> {
         return null as any
@@ -321,7 +321,7 @@ export class BillingService extends BaseApi {
         @Payload
         _req: {billId?:string} 
 
-    ): Observable<ListResultDto<BankAccountDto>> {
+    ): Observable<CSPListResultDto<BankAccountDto>> {
         return null as any
     }
 
@@ -336,7 +336,7 @@ export class BillingService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<BillingStatisticsOutput> {
+    ): Observable<CSPBillingStatisticsOutput> {
         return null as any
     }
 

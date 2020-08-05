@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { VoyageDto,PagedResultDto,VoyageCheckInputDto,GetAllVoyageForUiPickerInput,VoyageUiPickerDto, } from './pub.types';
+import { PUBVoyageDto,PUBPagedResultDto,PUBVoyageCheckInputDto,PUBGetAllVoyageForUiPickerInput,PUBVoyageUiPickerDto, } from './pub.types';
 
 @BaseUrl('/pub/Voyage')
 @Injectable({ providedIn: 'root' })
-export class VoyageService extends BaseApi {
+export class PUBVoyageService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class VoyageService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<VoyageDto> {
+    ): Observable<PUBVoyageDto> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class VoyageService extends BaseApi {
         @Payload
         _req: {isValid?:boolean,vesselId?:string,no?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<VoyageDto>> {
+    ): Observable<PUBPagedResultDto<VoyageDto>> {
         return null as any
     }
 
@@ -49,7 +49,7 @@ export class VoyageService extends BaseApi {
     @POST('check')
     check(
         @Payload
-        _req:VoyageCheckInputDto
+        _req:PUBVoyageCheckInputDto
 
     ): Observable<any> {
         return null as any
@@ -64,9 +64,9 @@ export class VoyageService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:VoyageDto
+        _req:PUBVoyageDto
 
-    ): Observable<VoyageDto> {
+    ): Observable<PUBVoyageDto> {
         return null as any
     }
 
@@ -79,9 +79,9 @@ export class VoyageService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:VoyageDto
+        _req:PUBVoyageDto
 
-    ): Observable<VoyageDto> {
+    ): Observable<PUBVoyageDto> {
         return null as any
     }
 
@@ -109,9 +109,9 @@ export class VoyageService extends BaseApi {
     @POST('getAllForUiPicker')
     getAllForUiPicker(
         @Payload
-        _req:GetAllVoyageForUiPickerInput
+        _req:PUBGetAllVoyageForUiPickerInput
 
-    ): Observable<PagedResultDto<VoyageUiPickerDto>> {
+    ): Observable<PUBPagedResultDto<VoyageUiPickerDto>> {
         return null as any
     }
 
@@ -124,9 +124,9 @@ export class VoyageService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:VoyageDto
+        _req:PUBVoyageDto
 
-    ): Observable<VoyageDto> {
+    ): Observable<PUBVoyageDto> {
         return null as any
     }
 

@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ShippingLineDto,ListResultDto,ShippingLineCheckInputDto,ChangeShippingLineStateInput,CountryReationShippingDto,PortReationCountryDto,GetAllShippingLineForUiPickerInput,ShippingLineUiPickerDto,PagedResultDto, } from './pub.types';
+import { PUBShippingLineDto,PUBListResultDto,PUBShippingLineCheckInputDto,PUBChangeShippingLineStateInput,PUBCountryReationShippingDto,PUBPortReationCountryDto,PUBGetAllShippingLineForUiPickerInput,PUBShippingLineUiPickerDto,PUBPagedResultDto, } from './pub.types';
 
 @BaseUrl('/pub/ShippingLine')
 @Injectable({ providedIn: 'root' })
-export class ShippingLineService extends BaseApi {
+export class PUBShippingLineService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class ShippingLineService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<ShippingLineDto> {
+    ): Observable<PUBShippingLineDto> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class ShippingLineService extends BaseApi {
         @Payload
         _req: {isValid?:boolean,parentId?:string,isRecursion?:boolean} 
 
-    ): Observable<ListResultDto<ShippingLineDto>> {
+    ): Observable<PUBListResultDto<ShippingLineDto>> {
         return null as any
     }
 
@@ -49,7 +49,7 @@ export class ShippingLineService extends BaseApi {
     @POST('check')
     check(
         @Payload
-        _req:ShippingLineCheckInputDto
+        _req:PUBShippingLineCheckInputDto
 
     ): Observable<any> {
         return null as any
@@ -64,9 +64,9 @@ export class ShippingLineService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:ShippingLineDto
+        _req:PUBShippingLineDto
 
-    ): Observable<ShippingLineDto> {
+    ): Observable<PUBShippingLineDto> {
         return null as any
     }
 
@@ -79,9 +79,9 @@ export class ShippingLineService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:ShippingLineDto
+        _req:PUBShippingLineDto
 
-    ): Observable<ShippingLineDto> {
+    ): Observable<PUBShippingLineDto> {
         return null as any
     }
 
@@ -94,9 +94,9 @@ export class ShippingLineService extends BaseApi {
     @POST('postUpdate')
     postUpdate(
         @Payload
-        _req:ShippingLineDto
+        _req:PUBShippingLineDto
 
-    ): Observable<ShippingLineDto> {
+    ): Observable<PUBShippingLineDto> {
         return null as any
     }
 
@@ -124,9 +124,9 @@ export class ShippingLineService extends BaseApi {
     @POST('changeShippingLineState')
     changeShippingLineState(
         @Payload
-        _req:ChangeShippingLineStateInput
+        _req:PUBChangeShippingLineStateInput
 
-    ): Observable<ShippingLineDto> {
+    ): Observable<PUBShippingLineDto> {
         return null as any
     }
 
@@ -141,7 +141,7 @@ export class ShippingLineService extends BaseApi {
         @Payload
         _req: {shippingLineId?:string} 
 
-    ): Observable<ListResultDto<CountryReationShippingDto>> {
+    ): Observable<PUBListResultDto<CountryReationShippingDto>> {
         return null as any
     }
 
@@ -171,7 +171,7 @@ export class ShippingLineService extends BaseApi {
         @Payload
         _req: {shippingLineId?:string} 
 
-    ): Observable<ListResultDto<PortReationCountryDto>> {
+    ): Observable<PUBListResultDto<PortReationCountryDto>> {
         return null as any
     }
 
@@ -214,9 +214,9 @@ export class ShippingLineService extends BaseApi {
     @POST('getAllForUiPicker')
     getAllForUiPicker(
         @Payload
-        _req:GetAllShippingLineForUiPickerInput
+        _req:PUBGetAllShippingLineForUiPickerInput
 
-    ): Observable<PagedResultDto<ShippingLineUiPickerDto>> {
+    ): Observable<PUBPagedResultDto<ShippingLineUiPickerDto>> {
         return null as any
     }
 

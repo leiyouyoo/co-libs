@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { JPushUserIdBindRegistrationIdDto,PagedResultDto, } from './platform.types';
+import { PlatformJPushUserIdBindRegistrationIdDto,PlatformPagedResultDto, } from './platform.types';
 
 @BaseUrl('/platform/JPush')
 @Injectable({ providedIn: 'root' })
-export class JPushService extends BaseApi {
+export class PlatformJPushService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -19,9 +19,9 @@ export class JPushService extends BaseApi {
     @POST('createAsync')
     createAsync(
         @Payload
-        _req:JPushUserIdBindRegistrationIdDto
+        _req:PlatformJPushUserIdBindRegistrationIdDto
 
-    ): Observable<JPushUserIdBindRegistrationIdDto> {
+    ): Observable<PlatformJPushUserIdBindRegistrationIdDto> {
         return null as any
     }
 
@@ -34,9 +34,9 @@ export class JPushService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:JPushUserIdBindRegistrationIdDto
+        _req:PlatformJPushUserIdBindRegistrationIdDto
 
-    ): Observable<JPushUserIdBindRegistrationIdDto> {
+    ): Observable<PlatformJPushUserIdBindRegistrationIdDto> {
         return null as any
     }
 
@@ -51,7 +51,7 @@ export class JPushService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<JPushUserIdBindRegistrationIdDto> {
+    ): Observable<PlatformJPushUserIdBindRegistrationIdDto> {
         return null as any
     }
 
@@ -66,7 +66,7 @@ export class JPushService extends BaseApi {
         @Payload
         _req: {sorting?:string,skipCount?:number,maxResultCount?:number} 
 
-    ): Observable<PagedResultDto<JPushUserIdBindRegistrationIdDto>> {
+    ): Observable<PlatformPagedResultDto<JPushUserIdBindRegistrationIdDto>> {
         return null as any
     }
 
@@ -79,9 +79,9 @@ export class JPushService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:JPushUserIdBindRegistrationIdDto
+        _req:PlatformJPushUserIdBindRegistrationIdDto
 
-    ): Observable<JPushUserIdBindRegistrationIdDto> {
+    ): Observable<PlatformJPushUserIdBindRegistrationIdDto> {
         return null as any
     }
 
@@ -94,9 +94,9 @@ export class JPushService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:JPushUserIdBindRegistrationIdDto
+        _req:PlatformJPushUserIdBindRegistrationIdDto
 
-    ): Observable<JPushUserIdBindRegistrationIdDto> {
+    ): Observable<PlatformJPushUserIdBindRegistrationIdDto> {
         return null as any
     }
 
