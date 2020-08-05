@@ -43,6 +43,8 @@ export interface ReuseTabCached {
 
   url: string;
 
+  icon: string;
+
   /** 是否允许关闭，默认：`true` */
   closable?: boolean;
 

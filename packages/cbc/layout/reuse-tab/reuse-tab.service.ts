@@ -9,7 +9,7 @@ import {
   ROUTER_CONFIGURATION,
 } from '@angular/router';
 import { MenuService, ScrollService } from '@co/common';
-import { CoI18NService, CO_I18N_TOKEN } from '@co/core';
+import { log } from '@co/core';
 import * as _ from 'lodash';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { BehaviorSubject, Observable, Unsubscribable } from 'rxjs';
@@ -32,8 +32,11 @@ export class ReuseTabService implements OnDestroy {
   private _titleCached: { [url: string]: ReuseTitle } = {};
   private _closableCached: { [url: string]: boolean } = {};
   private _router$: Unsubscribable;
+  private _currentClosedUrl: string | null;
   private removeUrlBuffer: string | null;
   private positionBuffer: { [url: string]: [number, number] } = {};
+
+  keepingScrollContainer: Element;
   componentRef: ReuseComponentRef;
   debug = false;
   mode = ReuseTabMatchMode.Menu;
@@ -42,6 +45,19 @@ export class ReuseTabService implements OnDestroy {
 
   private get snapshot() {
     return this.injector.get(ActivatedRoute).snapshot;
+  }
+
+  constructor(private injector: Injector, @Optional() private menuService: MenuService) {}
+
+  ngOnDestroy(): void {
+    const { _cachedChange, _router$ } = this;
+    this.clear();
+    this._cached = [];
+    _cachedChange.complete();
+
+    if (_router$) {
+      _router$.unsubscribe();
+    }
   }
 
   // #region public
@@ -62,26 +78,31 @@ export class ReuseTabService implements OnDestroy {
       this._cached.pop();
     }
   }
+
   set keepingScroll(value: boolean) {
     this._keepingScroll = value;
     this.initScroll();
   }
+
   get keepingScroll() {
     return this._keepingScroll;
   }
-  keepingScrollContainer: Element;
+
   /** 获取已缓存的路由 */
   get items(): ReuseTabCached[] {
     return this._cached;
   }
+
   /** 获取当前缓存的路由总数 */
   get count() {
     return this._cached.length;
   }
+
   /** 订阅缓存变更通知 */
   get change(): Observable<ReuseTabNotify | null> {
     return this._cachedChange.asObservable(); // .pipe(filter(w => w !== null));
   }
+
   /** 自定义当前标题 */
   set title(value: string | ReuseTitle) {
     const url = this.curUrl;
@@ -95,29 +116,34 @@ export class ReuseTabService implements OnDestroy {
       list: this._cached,
     });
   }
+
+  /** 自定义当前 `closable` 状态 */
+  set closable(value: boolean) {
+    const url = this.curUrl;
+    this._closableCached[url] = value;
+    this.di('update current tag closable: ', value);
+    this._cachedChange.next({
+      active: 'closable',
+      closable: value,
+      list: this._cached,
+    });
+  }
+
   /** 获取指定路径缓存所在位置，`-1` 表示无缓存 */
   index(url: string): number {
     return this._cached.findIndex(w => w.url === url);
   }
+
   /** 获取指定路径缓存是否存在 */
   exists(url: string): boolean {
     return this.index(url) !== -1;
   }
+
   /** 获取指定路径缓存 */
   get(url?: string): ReuseTabCached | null {
     return url ? this._cached.find(w => w.url === url) || null : null;
   }
-  private remove(url: string | number, includeNonCloseable: boolean): boolean {
-    const idx = typeof url === 'string' ? this.index(url) : url;
-    const item = idx !== -1 ? this._cached[idx] : null;
-    if (!item || (!includeNonCloseable && !item.closable)) return false;
 
-    this.destroy(item._handle);
-
-    this._cached.splice(idx, 1);
-    delete this._titleCached[url];
-    return true;
-  }
   /**
    * 根据URL移除标签
    *
@@ -125,14 +151,21 @@ export class ReuseTabService implements OnDestroy {
    */
   close(url: string, includeNonCloseable = false) {
     this.removeUrlBuffer = url;
+    this._currentClosedUrl = url;
 
     this.remove(url, includeNonCloseable);
 
     this._cachedChange.next({ active: 'close', url, list: this._cached });
 
+    const timerId = setTimeout(() => {
+      this._currentClosedUrl = null;
+      clearTimeout(timerId);
+    }, 1000);
+
     this.di('close tag', url);
     return true;
   }
+
   /**
    * 清除右边
    *
@@ -151,12 +184,15 @@ export class ReuseTabService implements OnDestroy {
     this.di('close right tages', url);
     return true;
   }
+
   /**
    * 清除所有缓存
    *
    * @param [includeNonCloseable=false] 是否强制包含不可关闭
    */
   clear(includeNonCloseable = false) {
+    this._currentClosedUrl = window.location.hash.replace('#', '');
+
     this._cached.forEach(w => {
       if (!includeNonCloseable && w.closable) this.destroy(w._handle);
     });
@@ -166,8 +202,14 @@ export class ReuseTabService implements OnDestroy {
 
     this._cachedChange.next({ active: 'clear', list: this._cached });
 
+    const timerId = setTimeout(() => {
+      this._currentClosedUrl = null;
+      clearTimeout(timerId);
+    }, 1000);
+
     this.di('clear all catch');
   }
+
   /**
    * 移动缓存数据
    * @param url 要移动的URL地址
@@ -198,6 +240,7 @@ export class ReuseTabService implements OnDestroy {
       list: this._cached,
     });
   }
+
   /**
    * 强制关闭当前路由（包含不可关闭状态），并重新导航至 `newUrl` 路由
    */
@@ -210,6 +253,7 @@ export class ReuseTabService implements OnDestroy {
     }
     this.injector.get<Router>(Router).navigateByUrl(newUrl);
   }
+
   /**
    * 获取标题，顺序如下：
    *
@@ -243,17 +287,7 @@ export class ReuseTabService implements OnDestroy {
   clearTitleCached() {
     this._titleCached = {};
   }
-  /** 自定义当前 `closable` 状态 */
-  set closable(value: boolean) {
-    const url = this.curUrl;
-    this._closableCached[url] = value;
-    this.di('update current tag closable: ', value);
-    this._cachedChange.next({
-      active: 'closable',
-      closable: value,
-      list: this._cached,
-    });
-  }
+
   /**
    * 获取 `closable` 状态，顺序如下：
    *
@@ -274,17 +308,33 @@ export class ReuseTabService implements OnDestroy {
 
     return true;
   }
+
+  getIcon(url: string, route?: ActivatedRouteSnapshot): any {
+    if (route && route.data && route.data.icon) return route.data.icon;
+
+    const menu = this.getMenu(url);
+    if (!menu || !menu.icon) return null;
+
+    if (typeof menu.icon === 'string') {
+      return menu.icon;
+    } else {
+      return menu.icon.value;
+    }
+  }
+
   /**
    * 清空 `closable` 缓存
    */
   clearClosableCached() {
     this._closableCached = {};
   }
+
   getTruthRoute(route: ActivatedRouteSnapshot) {
     let next = route;
     while (next.firstChild) next = next.firstChild;
     return next;
   }
+
   /**
    * 根据快照获取URL地址
    */
@@ -303,6 +353,7 @@ export class ReuseTabService implements OnDestroy {
         .join('/');
 
     let q = '';
+    // tslint:disable-next-line: forin
     for (const k in route.queryParams) {
       if (!q) {
         q = '?';
@@ -315,6 +366,7 @@ export class ReuseTabService implements OnDestroy {
 
     // return url + ':' + _.values(route.queryParams).join('-');
   }
+
   /**
    * 检查快照是否允许被复用
    */
@@ -347,33 +399,10 @@ export class ReuseTabService implements OnDestroy {
   refresh(data?: any) {
     this._cachedChange.next({ active: 'refresh', data });
   }
-  // #endregion
-
-  // #region privates
-
-  private destroy(_handle: any) {
-    if (_handle && _handle.componentRef && _handle.componentRef.destroy) _handle.componentRef.destroy();
-  }
-
-  private di(...args: NzSafeAny[]) {
-    if (!this.debug) return;
-    // tslint:disable-next-line:no-console
-    console.warn(...args);
-  }
-
-  // #endregion
-
-  constructor(private injector: Injector, @Optional() private menuService: MenuService) {}
 
   init() {
     // this.initScroll();
     this._inited = true;
-  }
-
-  private getMenu(url: string) {
-    const menus = this.menuService.getPathByUrl(url);
-    if (!menus || menus.length === 0) return null;
-    return menus.pop();
   }
 
   runHook(method: ReuseHookTypes, comp: ReuseComponentRef | number) {
@@ -389,14 +418,9 @@ export class ReuseTabService implements OnDestroy {
     }
   }
 
-  private hasInValidRoute(route: ActivatedRouteSnapshot) {
-    return (
-      !route.routeConfig ||
-      route.routeConfig.loadChildren ||
-      route.routeConfig.children ||
-      (route.component && (route.component as any).componentName === 'EmptyComponent')
-    );
-  }
+  // #endregion
+
+  //#region 路由复用
 
   /**
    * 决定是否允许路由复用，若 `true` 会触发 `store`
@@ -418,6 +442,7 @@ export class ReuseTabService implements OnDestroy {
     const item: ReuseTabCached = {
       title: this.getTitle(url, _snapshot),
       closable: this.getClosable(url, _snapshot),
+      icon: this.getIcon(url, _snapshot),
       position: this.getKeepingScroll(url, _snapshot) ? this.positionBuffer[url] : null,
       url,
       _snapshot,
@@ -510,6 +535,8 @@ export class ReuseTabService implements OnDestroy {
     return ret;
   }
 
+  //#endregion
+
   // #region scroll
 
   /**
@@ -563,16 +590,50 @@ export class ReuseTabService implements OnDestroy {
       }
     });
   }
+
   // #endregion
 
-  ngOnDestroy(): void {
-    const { _cachedChange, _router$ } = this;
-    this.clear();
-    this._cached = [];
-    _cachedChange.complete();
+  // #region privates
 
-    if (_router$) {
-      _router$.unsubscribe();
-    }
+  private remove(url: string | number, includeNonCloseable: boolean): boolean {
+    const idx = typeof url === 'string' ? this.index(url) : url;
+    const item = idx !== -1 ? this._cached[idx] : null;
+    if (!item || (!includeNonCloseable && !item.closable)) return false;
+
+    this.destroy(item._handle);
+
+    this._cached.splice(idx, 1);
+    delete this._titleCached[url];
+    return true;
   }
+
+  private getMenu(url: string) {
+    const menus = this.menuService.getPathByUrl(url);
+    if (!menus || menus.length === 0) return null;
+    return menus.pop();
+  }
+
+  private hasInValidRoute(route: ActivatedRouteSnapshot) {
+    const url = this.getUrl(route);
+
+    return (
+      !route.routeConfig ||
+      route.routeConfig.loadChildren ||
+      route.routeConfig.children ||
+      url === this._currentClosedUrl ||
+      (route.component && (route.component as any).componentName === 'EmptyComponent')
+    );
+  }
+
+  private destroy(_handle: any) {
+    if (_handle && _handle.componentRef && _handle.componentRef.destroy) _handle.componentRef.destroy();
+  }
+
+  private di(...args: NzSafeAny[]) {
+    if (!this.debug) return;
+    // tslint:disable-next-line:no-console
+    log(...args);
+  }
+
+  // #endregion
 }

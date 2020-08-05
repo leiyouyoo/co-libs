@@ -21,7 +21,6 @@ export class DevPageComponent extends CoPageBase implements OnInit {
     const session = this.$session.user;
 
     console.log(`coOnInit${JSON.stringify(session)}`);
-    debugger
     this.$titleSrvice.setTitle('aaaaaaaaaaaaaaaaa');
   }
 

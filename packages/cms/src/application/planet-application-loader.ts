@@ -442,4 +442,8 @@ export class PlanetApplicationLoader {
       return of(getPlanetApplicationRef(app.name));
     }
   }
+
+  clear() {
+    this.appsStatus.clear();
+  }
 }

@@ -82,6 +82,15 @@ export class Planet {
     pas.unregister(name);
   }
 
+  clear() {
+    this.planetApplicationLoader?.clear();
+
+    const apps = this.getApps();
+    apps.forEach(app => {
+      this.unregisterApp(app.name);
+    });
+  }
+
   getApps() {
     const pas: any = getApplicationService();
     return pas.getApps();

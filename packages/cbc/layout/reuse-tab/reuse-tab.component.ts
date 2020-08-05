@@ -39,6 +39,9 @@ import { ReuseTabService } from './reuse-tab.service';
 
 declare var window: any;
 
+/**
+ * 多标签路由复用组件
+ */
 @Component({
   selector: 'reuse-tab, [reuse-tab]',
   exportAs: 'reuseTab',
@@ -54,6 +57,8 @@ declare var window: any;
   encapsulation: ViewEncapsulation.None,
 })
 export class ReuseTabComponent implements OnInit, OnChanges, OnDestroy {
+  //#region 私有变量
+
   @ViewChild('tabset') private tabset: NzTabSetComponent;
   private unsubscribe$ = new Subject<void>();
   private updatePos$ = new Subject<void>();
@@ -62,7 +67,9 @@ export class ReuseTabComponent implements OnInit, OnChanges, OnDestroy {
   item: ReuseItem;
   pos = 0;
 
-  // #region fields
+  //#endregion
+
+  // #region 输入输出参数
 
   @Input() mode: ReuseTabMatchMode = ReuseTabMatchMode.Menu;
   @Input() i18n: ReuseContextI18n;
@@ -88,6 +95,8 @@ export class ReuseTabComponent implements OnInit, OnChanges, OnDestroy {
 
   // #endregion
 
+  //#region 页面生命周期
+
   constructor(
     private srv: ReuseTabService,
     private cdr: ChangeDetectorRef,
@@ -96,175 +105,6 @@ export class ReuseTabComponent implements OnInit, OnChanges, OnDestroy {
     @Optional() @Inject(CO_I18N_TOKEN) private i18nSrv: CoI18NService,
     @Inject(DOCUMENT) private doc: any,
   ) {}
-
-  private genTit(title: ReuseTitle): string {
-    let i18nName = title.i18n;
-    const segs = _.split(i18nName || '', ':');
-    const module = window.planet?.apps[segs.length > 0 ? segs[0] : ''];
-    let tIl8nSrv = this.i18nSrv;
-    if (module) {
-      i18nName = segs[1];
-      // tIl8nSrv = module.appModuleRef.injector.r.get(CO_I18N_TOKEN);
-      // tIl8nSrv = _.find(module.appModuleRef.injector._r3Injector.records,(item)=>{
-      //     return item[0].name=='I18NService'
-      // });
-
-      // TODO:优化此处代码
-      for (const item of module.appModuleRef.injector._r3Injector.records) {
-        if (item[0].serviceName === 'I18NService') {
-          tIl8nSrv = item[1].value;
-          break;
-        }
-      }
-    }
-
-    return i18nName && tIl8nSrv ? tIl8nSrv.fanyi(i18nName) : title.text || i18nName!;
-  }
-
-  private get curUrl() {
-    return this.srv.getUrl(this.route.snapshot);
-  }
-
-  private genCurItem(): ReuseItem {
-    const url = this.curUrl;
-    const snapshotTrue = this.srv.getTruthRoute(this.route.snapshot);
-    return {
-      url,
-      title: this.genTit(this.srv.getTitle(url, snapshotTrue)),
-      closable: this.allowClose && this.srv.count > 0 && this.srv.getClosable(url, snapshotTrue),
-      active: false,
-      last: false,
-      icon: '',
-      index: 0,
-    };
-  }
-
-  private genList(notify: ReuseTabNotify | null): void {
-    const ls = this.srv.items.map(
-      (item: ReuseTabCached, index: number) =>
-        ({
-          url: item.url,
-          title: this.genTit(item.title),
-          closable: this.allowClose && item.closable && this.srv.count > 0,
-          index,
-          active: false,
-          last: false,
-        } as ReuseItem),
-    );
-
-    const url = this.curUrl;
-    let addCurrent = ls.findIndex(w => w.url === url) === -1;
-    if (notify && notify.active === 'close' && notify.url === url) {
-      addCurrent = false;
-      let toPos = 0;
-      const curItem = this.list.find(w => w.url === url)!;
-      if (curItem.index === ls.length) {
-        // When closed is last
-        toPos = ls.length - 1;
-      } else if (curItem.index < ls.length) {
-        // Should be actived next tab when closed is middle
-        toPos = Math.max(0, curItem.index);
-      }
-      this.router.navigateByUrl(ls[toPos].url);
-    }
-
-    if (addCurrent) {
-      ls.push(this.genCurItem());
-    }
-
-    ls.forEach((item, index) => (item.index = index));
-    if (ls.length === 1) {
-      ls[0].closable = false;
-    }
-    this.list = ls;
-    this.cdr.detectChanges();
-    this.updatePos$.next();
-  }
-
-  private updateTitle(res: ReuseTabNotify): void {
-    const item = this.list.find(w => w.url === res!.url);
-    if (!item) return;
-    item.title = this.genTit(res!.title!);
-    this.cdr.detectChanges();
-  }
-
-  private refresh(item: ReuseItem): void {
-    this.srv.runHook('coOnActived', this.pos === item.index ? this.srv.componentRef : item.index);
-  }
-
-  // #region UI
-
-  contextMenuChange(res: ReuseContextCloseEvent) {
-    let fn: (() => void) | null = null;
-    switch (res.type) {
-      case 'refresh':
-        this.refresh(res.item);
-        break;
-      case 'close':
-        this._close(null, res.item.index, res.includeNonCloseable);
-        break;
-      case 'closeRight':
-        fn = () => {
-          this.srv.closeRight(res.item.url, res.includeNonCloseable);
-          this.close.emit(null);
-        };
-        break;
-      case 'closeOther':
-        fn = () => {
-          this.srv.clear(res.includeNonCloseable);
-          this.close.emit(null);
-        };
-        break;
-    }
-    if (!fn) {
-      return;
-    }
-    if (!res.item.active && res.item.index <= this.list.find(w => w.active)!.index) {
-      this._to(res.item.index, fn);
-    } else {
-      fn();
-    }
-  }
-
-  _to(index: number, cb?: () => void) {
-    index = Math.max(0, Math.min(index, this.list.length - 1));
-    const item = this.list[index];
-    this.router.navigateByUrl(item.url).then(res => {
-      if (!res) return;
-      this.item = item;
-      this.change.emit(item);
-      if (cb) {
-        cb();
-      }
-    });
-  }
-
-  _close(e: Event | null, idx: number, includeNonCloseable: boolean) {
-    if (e != null) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-    const item = this.list[idx];
-    if (this.srv.componentRef && this.srv.componentRef.instance.coOnClosing) {
-      this.srv.componentRef.instance.coOnClosing().then(v => {
-        this.srv.close(item.url, includeNonCloseable);
-        this.close.emit(item);
-        this.cdr.detectChanges();
-      });
-    } else {
-      this.srv.close(item.url, includeNonCloseable);
-      this.close.emit(item);
-      this.cdr.detectChanges();
-    }
-
-    return false;
-  }
-
-  activate(instance: any): void {
-    this.srv.componentRef = { instance };
-  }
-
-  // #endregion
 
   ngOnInit(): void {
     this.updatePos$.pipe(takeUntil(this.unsubscribe$), debounceTime(50)).subscribe(() => {
@@ -331,4 +171,184 @@ export class ReuseTabComponent implements OnInit, OnChanges, OnDestroy {
     unsubscribe$.next();
     unsubscribe$.complete();
   }
+
+  //#endregion
+
+  // #region 公共方法
+
+  activate(instance: any): void {
+    this.srv.componentRef = { instance };
+  }
+
+  // #endregion
+
+  //#region 事件处理
+
+  contextMenuChange(res: ReuseContextCloseEvent) {
+    let fn: (() => void) | null = null;
+    switch (res.type) {
+      case 'refresh':
+        this.refresh(res.item);
+        break;
+      case 'close':
+        this._close(null, res.item.index, res.includeNonCloseable);
+        break;
+      case 'closeRight':
+        fn = () => {
+          this.srv.closeRight(res.item.url, res.includeNonCloseable);
+          this.close.emit(null);
+        };
+        break;
+      case 'closeOther':
+        fn = () => {
+          this.srv.clear(res.includeNonCloseable);
+          this.close.emit(null);
+        };
+        break;
+    }
+    if (!fn) {
+      return;
+    }
+    if (!res.item.active && res.item.index <= this.list.find(w => w.active)!.index) {
+      this._to(res.item.index, fn);
+    } else {
+      fn();
+    }
+  }
+
+  //#endregion
+
+  //#region 私有方法
+
+  _to(index: number, cb?: () => void) {
+    index = Math.max(0, Math.min(index, this.list.length - 1));
+    const item = this.list[index];
+    this.router.navigateByUrl(item.url).then(res => {
+      if (!res) return;
+      this.item = item;
+      this.change.emit(item);
+      if (cb) {
+        cb();
+      }
+    });
+  }
+
+  _close(e: Event | null, idx: number, includeNonCloseable: boolean) {
+    if (e != null) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    const item = this.list[idx];
+    if (this.srv.componentRef && this.srv.componentRef.instance.coOnClosing) {
+      this.srv.componentRef.instance.coOnClosing().then(v => {
+        this.srv.close(item.url, includeNonCloseable);
+        this.close.emit(item);
+        this.cdr.detectChanges();
+      });
+    } else {
+      this.srv.close(item.url, includeNonCloseable);
+      this.close.emit(item);
+      this.cdr.detectChanges();
+    }
+
+    return false;
+  }
+
+  private genTit(title: ReuseTitle): string {
+    let i18nName = title.i18n;
+    const segs = _.split(i18nName || '', ':');
+    const module = window.planet?.apps[segs.length > 0 ? segs[0] : ''];
+    let tIl8nSrv = this.i18nSrv;
+    if (module) {
+      i18nName = segs[1];
+      // tIl8nSrv = module.appModuleRef.injector.r.get(CO_I18N_TOKEN);
+      // tIl8nSrv = _.find(module.appModuleRef.injector._r3Injector.records,(item)=>{
+      //     return item[0].name=='I18NService'
+      // });
+
+      // TODO:优化此处代码
+      for (const item of module.appModuleRef.injector._r3Injector.records) {
+        if (item[0].serviceName === 'I18NService') {
+          tIl8nSrv = item[1].value;
+          break;
+        }
+      }
+    }
+
+    return i18nName && tIl8nSrv ? tIl8nSrv.fanyi(i18nName) : title.text || i18nName!;
+  }
+
+  private get curUrl() {
+    return this.srv.getUrl(this.route.snapshot);
+  }
+
+  private genCurItem(): ReuseItem {
+    const url = this.curUrl;
+    const snapshotTrue = this.srv.getTruthRoute(this.route.snapshot);
+    return {
+      url,
+      title: this.genTit(this.srv.getTitle(url, snapshotTrue)),
+      closable: this.allowClose && this.srv.count > 0 && this.srv.getClosable(url, snapshotTrue),
+      active: false,
+      last: false,
+      icon: this.srv.getIcon(url, snapshotTrue),
+      index: 0,
+    };
+  }
+
+  private genList(notify: ReuseTabNotify | null): void {
+    const ls = this.srv.items.map(
+      (item: ReuseTabCached, index: number) =>
+        ({
+          url: item.url,
+          title: this.genTit(item.title),
+          closable: this.allowClose && item.closable && this.srv.count > 0,
+          icon: item.icon,
+          index,
+          active: false,
+          last: false,
+        } as ReuseItem),
+    );
+
+    const url = this.curUrl;
+    let addCurrent = ls.findIndex(w => w.url === url) === -1;
+    if (notify && notify.active === 'close' && notify.url === url) {
+      addCurrent = false;
+      let toPos = 0;
+      const curItem = this.list.find(w => w.url === url)!;
+      if (curItem.index === ls.length) {
+        // When closed is last
+        toPos = ls.length - 1;
+      } else if (curItem.index < ls.length) {
+        // Should be actived next tab when closed is middle
+        toPos = Math.max(0, curItem.index);
+      }
+      this.router.navigateByUrl(ls[toPos].url);
+    }
+
+    if (addCurrent) {
+      ls.push(this.genCurItem());
+    }
+
+    ls.forEach((item, index) => (item.index = index));
+    if (ls.length === 1) {
+      ls[0].closable = false;
+    }
+    this.list = ls;
+    this.cdr.detectChanges();
+    this.updatePos$.next();
+  }
+
+  private updateTitle(res: ReuseTabNotify): void {
+    const item = this.list.find(w => w.url === res!.url);
+    if (!item) return;
+    item.title = this.genTit(res!.title!);
+    this.cdr.detectChanges();
+  }
+
+  private refresh(item: ReuseItem): void {
+    this.srv.runHook('coOnActived', this.pos === item.index ? this.srv.componentRef : item.index);
+  }
+
+  //#endregion
 }
