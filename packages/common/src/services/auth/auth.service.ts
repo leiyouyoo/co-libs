@@ -171,7 +171,7 @@ export class CoAuthService {
 
   private saveUser(data: { username: string; password: string }, isSave = false) {
     if (!isSave) {
-      return localStorage.setItem(this.userStorageKey, 'null');
+      return localStorage.removeItem(this.userStorageKey);
     }
 
     let dataStr = JSON.stringify(data);
