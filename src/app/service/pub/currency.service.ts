@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { CurrencyDto,PagedResultDto,CurrencyCheckDto,ChangeCurrencyStateInput,GetAllForUiPickerInput,CurrencyUiPickerDto, } from './pub.types';
+import { PUBCurrencyDto,PUBPagedResultDto,PUBCurrencyCheckDto,PUBChangeCurrencyStateInput,PUBGetAllForUiPickerInput,PUBCurrencyUiPickerDto, } from './pub.types';
 
 @BaseUrl('/pub/Currency')
 @Injectable({ providedIn: 'root' })
-export class CurrencyService extends BaseApi {
+export class PUBCurrencyService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class CurrencyService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<CurrencyDto> {
+    ): Observable<PUBCurrencyDto> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class CurrencyService extends BaseApi {
         @Payload
         _req: {code?:string,name?:string,regionId?:string,isValid?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<CurrencyDto>> {
+    ): Observable<PUBPagedResultDto<PUBCurrencyDto>> {
         return null as any
     }
 
@@ -49,7 +49,7 @@ export class CurrencyService extends BaseApi {
     @POST('check')
     check(
         @Payload
-        _req:CurrencyCheckDto
+        _req:PUBCurrencyCheckDto
 
     ): Observable<any> {
         return null as any
@@ -64,9 +64,9 @@ export class CurrencyService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:CurrencyDto
+        _req:PUBCurrencyDto
 
-    ): Observable<CurrencyDto> {
+    ): Observable<PUBCurrencyDto> {
         return null as any
     }
 
@@ -79,9 +79,9 @@ export class CurrencyService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:CurrencyDto
+        _req:PUBCurrencyDto
 
-    ): Observable<CurrencyDto> {
+    ): Observable<PUBCurrencyDto> {
         return null as any
     }
 
@@ -94,9 +94,9 @@ export class CurrencyService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:CurrencyDto
+        _req:PUBCurrencyDto
 
-    ): Observable<CurrencyDto> {
+    ): Observable<PUBCurrencyDto> {
         return null as any
     }
 
@@ -109,9 +109,9 @@ export class CurrencyService extends BaseApi {
     @POST('changeCurrencyState')
     changeCurrencyState(
         @Payload
-        _req:ChangeCurrencyStateInput
+        _req:PUBChangeCurrencyStateInput
 
-    ): Observable<CurrencyDto> {
+    ): Observable<PUBCurrencyDto> {
         return null as any
     }
 
@@ -139,9 +139,9 @@ export class CurrencyService extends BaseApi {
     @POST('getAllForUiPicker')
     getAllForUiPicker(
         @Payload
-        _req:GetAllForUiPickerInput
+        _req:PUBGetAllForUiPickerInput
 
-    ): Observable<PagedResultDto<CurrencyUiPickerDto>> {
+    ): Observable<PUBPagedResultDto<PUBCurrencyUiPickerDto>> {
         return null as any
     }
 

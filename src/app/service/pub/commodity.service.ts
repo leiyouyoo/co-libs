@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { CommodityDto,ListResultDto,CommodityCheckInputDto,GetAllCommodityForUiPickerInput,CommodityUiPickerDto,PagedResultDto, } from './pub.types';
+import { PUBCommodityDto,PUBListResultDto,PUBCommodityCheckInputDto,PUBGetAllCommodityForUiPickerInput,PUBCommodityUiPickerDto,PUBPagedResultDto, } from './pub.types';
 
 @BaseUrl('/pub/Commodity')
 @Injectable({ providedIn: 'root' })
-export class CommodityService extends BaseApi {
+export class PUBCommodityService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class CommodityService extends BaseApi {
         @Payload
         _req: {isValid?:boolean,text?:string,isRecursion?:boolean,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<ListResultDto<CommodityDto>> {
+    ): Observable<PUBListResultDto<PUBCommodityDto>> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class CommodityService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<CommodityDto> {
+    ): Observable<PUBCommodityDto> {
         return null as any
     }
 
@@ -49,7 +49,7 @@ export class CommodityService extends BaseApi {
     @POST('check')
     check(
         @Payload
-        _req:CommodityCheckInputDto
+        _req:PUBCommodityCheckInputDto
 
     ): Observable<any> {
         return null as any
@@ -64,9 +64,9 @@ export class CommodityService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:CommodityDto
+        _req:PUBCommodityDto
 
-    ): Observable<CommodityDto> {
+    ): Observable<PUBCommodityDto> {
         return null as any
     }
 
@@ -79,9 +79,9 @@ export class CommodityService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:CommodityDto
+        _req:PUBCommodityDto
 
-    ): Observable<CommodityDto> {
+    ): Observable<PUBCommodityDto> {
         return null as any
     }
 
@@ -109,9 +109,9 @@ export class CommodityService extends BaseApi {
     @POST('getAllForUiPicker')
     getAllForUiPicker(
         @Payload
-        _req:GetAllCommodityForUiPickerInput
+        _req:PUBGetAllCommodityForUiPickerInput
 
-    ): Observable<PagedResultDto<CommodityUiPickerDto>> {
+    ): Observable<PUBPagedResultDto<PUBCommodityUiPickerDto>> {
         return null as any
     }
 

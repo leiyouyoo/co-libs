@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { RegionDto,ListResultDto,GetByAreaInput,RegionCheckDto,GetAllCountryForUiPickerInput,CountryUiPickerDto,PagedResultDto,GetAllRegionForUiPickerInput,RegionUiPickerDto, } from './pub.types';
+import { PUBRegionDto,PUBListResultDto,PUBGetByAreaInput,PUBRegionCheckDto,PUBGetAllCountryForUiPickerInput,PUBCountryUiPickerDto,PUBPagedResultDto,PUBGetAllRegionForUiPickerInput,PUBRegionUiPickerDto, } from './pub.types';
 
 @BaseUrl('/pub/Region')
 @Injectable({ providedIn: 'root' })
-export class RegionService extends BaseApi {
+export class PUBRegionService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class RegionService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<RegionDto> {
+    ): Observable<PUBRegionDto> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class RegionService extends BaseApi {
         @Payload
         _req: {code?:string,name?:string,parentId?:string,isValid?:boolean,isRecursion?:boolean,id?:string} 
 
-    ): Observable<ListResultDto<RegionDto>> {
+    ): Observable<PUBListResultDto<PUBRegionDto>> {
         return null as any
     }
 
@@ -49,9 +49,9 @@ export class RegionService extends BaseApi {
     @POST('getByAreaIds')
     getByAreaIds(
         @Payload
-        _req:GetByAreaInput
+        _req:PUBGetByAreaInput
 
-    ): Observable<ListResultDto<RegionDto>> {
+    ): Observable<PUBListResultDto<PUBRegionDto>> {
         return null as any
     }
 
@@ -64,7 +64,7 @@ export class RegionService extends BaseApi {
     @POST('check')
     check(
         @Payload
-        _req:RegionCheckDto
+        _req:PUBRegionCheckDto
 
     ): Observable<any> {
         return null as any
@@ -79,9 +79,9 @@ export class RegionService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:RegionDto
+        _req:PUBRegionDto
 
-    ): Observable<RegionDto> {
+    ): Observable<PUBRegionDto> {
         return null as any
     }
 
@@ -94,9 +94,9 @@ export class RegionService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:RegionDto
+        _req:PUBRegionDto
 
-    ): Observable<RegionDto> {
+    ): Observable<PUBRegionDto> {
         return null as any
     }
 
@@ -109,9 +109,9 @@ export class RegionService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:RegionDto
+        _req:PUBRegionDto
 
-    ): Observable<RegionDto> {
+    ): Observable<PUBRegionDto> {
         return null as any
     }
 
@@ -139,7 +139,7 @@ export class RegionService extends BaseApi {
     @POST('bulkCreateAsync')
     bulkCreateAsync(
         @Payload
-        _req:RegionDto
+        _req:PUBRegionDto
 
     ): Observable<any> {
         return null as any
@@ -154,9 +154,9 @@ export class RegionService extends BaseApi {
     @POST('getAllCountryForUiPicker')
     getAllCountryForUiPicker(
         @Payload
-        _req:GetAllCountryForUiPickerInput
+        _req:PUBGetAllCountryForUiPickerInput
 
-    ): Observable<PagedResultDto<CountryUiPickerDto>> {
+    ): Observable<PUBPagedResultDto<PUBCountryUiPickerDto>> {
         return null as any
     }
 
@@ -169,9 +169,9 @@ export class RegionService extends BaseApi {
     @POST('getAllRegionForUiPicker')
     getAllRegionForUiPicker(
         @Payload
-        _req:GetAllRegionForUiPickerInput
+        _req:PUBGetAllRegionForUiPickerInput
 
-    ): Observable<PagedResultDto<RegionUiPickerDto>> {
+    ): Observable<PUBPagedResultDto<PUBRegionUiPickerDto>> {
         return null as any
     }
 

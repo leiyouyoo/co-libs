@@ -2,7 +2,7 @@
     /**
      * 片区Dto
      */
-    export class AreaDto {
+    export class PUBAreaDto {
         
          
             /* 片区名称-英文 */ 
@@ -20,6 +20,9 @@
             /* 片区包含或所属国家 */ 
             countryIds?: any[];
          
+            /* 中文名称 */ 
+            chineseName?: string;
+         
             
             id?: string;
         
@@ -29,7 +32,7 @@
     /**
      *  No Remark 
      */
-    export class ListResultDto<T> {
+    export class PUBListResultDto<T> {
         
          
             
@@ -41,7 +44,7 @@
     /**
      * 片区重复校验-传输对象模型
      */
-    export class AreaCheckDto {
+    export class PUBAreaCheckDto {
         
          
             /* 名称 */ 
@@ -56,7 +59,7 @@
     /**
      * GetAllAreaForUiPickerInput
      */
-    export class GetAllAreaForUiPickerInput {
+    export class PUBGetAllAreaForUiPickerInput {
         
          
             /* 是否包含无效数据 */ 
@@ -86,7 +89,7 @@
     /**
      * AreaUiPickerDto
      */
-    export class AreaUiPickerDto {
+    export class PUBAreaUiPickerDto {
         
          
             /* 片区名称 */ 
@@ -113,7 +116,7 @@
     /**
      *  No Remark 
      */
-    export class PagedResultDto<T> {
+    export class PUBPagedResultDto<T> {
         
          
             
@@ -128,7 +131,7 @@
     /**
      *  No Remark 
      */
-    export class ChargingCodeDto {
+    export class PUBChargingCodeDto {
         
          
             /* 费用组Id */ 
@@ -146,12 +149,6 @@
             /* 是否有效 */ 
             isValid?: boolean;
          
-            /* 是特殊费用（特殊费用名称：profit\cuf，新增提示：是否加到baseport rates? 。
-默认加到base,可以勾选不添加到基本港费用。）
-0 = OtherCharging
-1 = ManagerCharging */ 
-            type?: number;
-         
             
             id?: string;
         
@@ -161,7 +158,7 @@
     /**
      *  No Remark 
      */
-    export class ChangeChargingCodeStateInput {
+    export class PUBChangeChargingCodeStateInput {
         
          
             
@@ -176,7 +173,7 @@
     /**
      *  No Remark 
      */
-    export class GetAllChargingCodeForUiPickerInput {
+    export class PUBGetAllChargingCodeForUiPickerInput {
         
          
             /* 分组Id */ 
@@ -209,7 +206,7 @@
     /**
      *  No Remark 
      */
-    export class ChargingCodeUiPickerDto {
+    export class PUBChargingCodeUiPickerDto {
         
          
             /* 费用组Id */ 
@@ -242,7 +239,7 @@
     /**
      * 品名管理
      */
-    export class CommodityDto {
+    export class PUBCommodityDto {
         
          
             /* 名称 */ 
@@ -278,7 +275,7 @@
     /**
      * 品名校验
      */
-    export class CommodityCheckInputDto {
+    export class PUBCommodityCheckInputDto {
         
          
             /* 校验类型 
@@ -302,7 +299,7 @@
     /**
      *  No Remark 
      */
-    export class GetAllCommodityForUiPickerInput {
+    export class PUBGetAllCommodityForUiPickerInput {
         
          
             /* 是否包含子级 */ 
@@ -335,7 +332,7 @@
     /**
      *  No Remark 
      */
-    export class CommodityUiPickerDto {
+    export class PUBCommodityUiPickerDto {
         
          
             /* 名称 */ 
@@ -371,7 +368,7 @@
     /**
      * 箱型管理
      */
-    export class ContainerDto {
+    export class PUBContainerDto {
         
          
             /* 代码 */ 
@@ -407,7 +404,7 @@
     /**
      *  No Remark 
      */
-    export class ContainerGroupDto {
+    export class PUBContainerGroupDto {
         
          
             /* 箱型分组名 */ 
@@ -422,7 +419,7 @@
     /**
      * 箱型校验
      */
-    export class ContainerCheckInputDto {
+    export class PUBContainerCheckInputDto {
         
          
             /* 校验类型
@@ -457,7 +454,7 @@
     /**
      *  No Remark 
      */
-    export class ChangeContainerStateInput {
+    export class PUBChangeContainerStateInput {
         
          
             
@@ -472,7 +469,7 @@
     /**
      *  No Remark 
      */
-    export class GetAllContainerForUiPickerInput {
+    export class PUBGetAllContainerForUiPickerInput {
         
          
             /* 箱型代码 */ 
@@ -505,7 +502,7 @@
     /**
      *  No Remark 
      */
-    export class ContainerUiPickerDto {
+    export class PUBContainerUiPickerDto {
         
          
             /* 创建人 */ 
@@ -541,7 +538,7 @@
     /**
      * 费用代码-传输对象模型
      */
-    export class CostItemDto {
+    export class PUBCostItemDto {
         
          
             /* 费用代码 */ 
@@ -580,7 +577,7 @@
     /**
      * 费用代码重复校验-传输对象模型
      */
-    export class CostItemCheckDto {
+    export class PUBCostItemCheckDto {
         
          
             /* 费用代码 */ 
@@ -601,7 +598,7 @@
     /**
      * 费用代码扁平列表
      */
-    export class CostItemFlatDto {
+    export class PUBCostItemFlatDto {
         
          
             /* 费用代码 */ 
@@ -634,7 +631,7 @@
     /**
      * 区县镇
      */
-    export class CountyDto {
+    export class PUBCountyDto {
         
          
             /* 地区名称-英文 */ 
@@ -694,7 +691,7 @@
     /**
      * 币种管理
      */
-    export class CurrencyDto {
+    export class PUBCurrencyDto {
         
          
             /* 国家Id */ 
@@ -730,7 +727,7 @@
     /**
      * 币种重复校验-传输对象模型
      */
-    export class CurrencyCheckDto {
+    export class PUBCurrencyCheckDto {
         
          
             /* 币种代码 */ 
@@ -754,7 +751,7 @@
     /**
      *  No Remark 
      */
-    export class ChangeCurrencyStateInput {
+    export class PUBChangeCurrencyStateInput {
         
          
             
@@ -769,7 +766,7 @@
     /**
      * 币种过滤条件
      */
-    export class GetAllForUiPickerInput {
+    export class PUBGetAllForUiPickerInput {
         
          
             
@@ -796,7 +793,7 @@
     /**
      * 币种列表
      */
-    export class CurrencyUiPickerDto {
+    export class PUBCurrencyUiPickerDto {
         
          
             /* 币种代码 */ 
@@ -823,7 +820,7 @@
     /**
      * 数据字典-传输对象模型
      */
-    export class DataDictionaryDto {
+    export class PUBDataDictionaryDto {
         
          
             /* 类型Id */ 
@@ -859,7 +856,7 @@
     /**
      * 数据字典重复校验-传输对象模型
      */
-    export class DataDictionaryCheckDto {
+    export class PUBDataDictionaryCheckDto {
         
          
             /* 字典类型 */ 
@@ -880,7 +877,7 @@
     /**
      *  No Remark 
      */
-    export class ChangeDataDictionnaryStateInput {
+    export class PUBChangeDataDictionnaryStateInput {
         
          
             
@@ -895,7 +892,7 @@
     /**
      *  No Remark 
      */
-    export class GetAllDataDictionaryForUiPickerInput {
+    export class PUBGetAllDataDictionaryForUiPickerInput {
         
          
             /* 是否包含无效数据 */ 
@@ -931,7 +928,7 @@
     /**
      *  No Remark 
      */
-    export class DataDictionaryUiPickerDto {
+    export class PUBDataDictionaryUiPickerDto {
         
          
             /* 类型Id */ 
@@ -970,7 +967,7 @@
     /**
      * 字典类型-传输对象模型
      */
-    export class DictionaryTypeDto {
+    export class PUBDictionaryTypeDto {
         
          
             /* 类型代码 */ 
@@ -1006,7 +1003,7 @@
     /**
      * 数据字典类型重复校验-传输对象模型
      */
-    export class DictionaryTypeCheckDto {
+    export class PUBDictionaryTypeCheckDto {
         
          
             /* 名称 */ 
@@ -1021,7 +1018,7 @@
     /**
      * 航班管理
      */
-    export class FlightDto {
+    export class PUBFlightDto {
         
          
             /* 航空公司ID */ 
@@ -1048,7 +1045,7 @@
     /**
      * 航班校验
      */
-    export class FlightCheckInputDto {
+    export class PUBFlightCheckInputDto {
         
          
             /* 校验类型
@@ -1072,7 +1069,7 @@
     /**
      *  No Remark 
      */
-    export class GetAllFlightForUiPickerInput {
+    export class PUBGetAllFlightForUiPickerInput {
         
          
             /* 是否包含无效数据 */ 
@@ -1105,7 +1102,7 @@
     /**
      *  No Remark 
      */
-    export class FlightUiPickerDto {
+    export class PUBFlightUiPickerDto {
         
          
             /* 创建人姓名 */ 
@@ -1135,7 +1132,7 @@
     /**
      * 地点-传输对象模型
      */
-    export class PlaceDto {
+    export class PUBPlaceDto {
         
          
             /* 地点代码 */ 
@@ -1177,6 +1174,9 @@
             /* 创建时间 */ 
             creationTime?: string;
          
+            /* 中文名称 */ 
+            chineseName?: string;
+         
             
             id?: string;
         
@@ -1186,7 +1186,7 @@
     /**
      * 获取列表-传输对象模型
      */
-    export class GetPlaceListByRegionsInput {
+    export class PUBGetPlaceListByRegionsInput {
         
          
             /* 城市id */ 
@@ -1234,7 +1234,7 @@
     /**
      * 港口或区县Dto
      */
-    export class PlaceOrCountyDto {
+    export class PUBPlaceOrCountyDto {
         
          
             /* 0为place,1为Country区县 */ 
@@ -1264,7 +1264,7 @@
     /**
      * 地点重复性校验-传输对象模型
      */
-    export class PlaceCheckDto {
+    export class PUBPlaceCheckDto {
         
          
             /* 地点代码 */ 
@@ -1282,7 +1282,7 @@
     /**
      *  No Remark 
      */
-    export class ChangePlaceStateInput {
+    export class PUBChangePlaceStateInput {
         
          
             
@@ -1297,7 +1297,7 @@
     /**
      *  No Remark 
      */
-    export class GetPlaceMapInput {
+    export class PUBGetPlaceMapInput {
         
          
             
@@ -1309,7 +1309,7 @@
     /**
      *  No Remark 
      */
-    export class PlaceView {
+    export class PUBPlaceView {
         
          
             
@@ -1363,7 +1363,7 @@
     /**
      *  No Remark 
      */
-    export class FromToDto {
+    export class PUBFromToDto {
         
          
             /* 国家Id */ 
@@ -1390,7 +1390,7 @@
     /**
      * 根据港口Id获取港口信息(含逆向检索省州片区)
      */
-    export class GetByPortIdsOutput {
+    export class PUBGetByPortIdsOutput {
         
          
             /* 港口 */ 
@@ -1408,7 +1408,7 @@
     /**
      * 根据城市信息返回港口数据
      */
-    export class GetPortByCityInput {
+    export class PUBGetPortByCityInput {
         
          
             /* 城市Id */ 
@@ -1429,7 +1429,7 @@
     /**
      * 根据城市信息返回港口数据
      */
-    export class GetPortByCityDto {
+    export class PUBGetPortByCityDto {
         
          
             /* 是否有值 */ 
@@ -1444,7 +1444,7 @@
     /**
      * 地点UI选择器
      */
-    export class GetAllPlaceForUiPickerInput {
+    export class PUBGetAllPlaceForUiPickerInput {
         
          
             /* 地区Id */ 
@@ -1498,7 +1498,7 @@
     /**
      *  No Remark 
      */
-    export class PlaceUiPickerDto {
+    export class PUBPlaceUiPickerDto {
         
          
             /* 地点代码 */ 
@@ -1540,7 +1540,7 @@
     /**
      * 树形地区-传输对象模型
      */
-    export class RegionDto {
+    export class PUBRegionDto {
         
          
             /* 地区名称-英文 */ 
@@ -1567,6 +1567,9 @@
             /* 创建时间 */ 
             creationTime?: string;
          
+            /* 中文名称 */ 
+            chineseName?: string;
+         
             
             id?: string;
         
@@ -1576,7 +1579,7 @@
     /**
      *  No Remark 
      */
-    export class GetByAreaInput {
+    export class PUBGetByAreaInput {
         
          
             /* 片区id */ 
@@ -1591,7 +1594,7 @@
     /**
      * 地区重复校验-传输对象模型
      */
-    export class RegionCheckDto {
+    export class PUBRegionCheckDto {
         
          
             /* 上级Id */ 
@@ -1612,7 +1615,7 @@
     /**
      * 国家UI组件过滤
      */
-    export class GetAllCountryForUiPickerInput {
+    export class PUBGetAllCountryForUiPickerInput {
         
          
             /* 是否包含无效数据 */ 
@@ -1645,7 +1648,7 @@
     /**
      *  No Remark 
      */
-    export class CountryUiPickerDto {
+    export class PUBCountryUiPickerDto {
         
          
             /* 地区名称-英文 */ 
@@ -1681,7 +1684,7 @@
     /**
      * 地区（省份）UI组件过滤
      */
-    export class GetAllRegionForUiPickerInput {
+    export class PUBGetAllRegionForUiPickerInput {
         
          
             /* 是否包含无效数据 */ 
@@ -1720,7 +1723,7 @@
     /**
      *  No Remark 
      */
-    export class RegionUiPickerDto {
+    export class PUBRegionUiPickerDto {
         
          
             /* 地区名称-英文 */ 
@@ -1756,7 +1759,7 @@
     /**
      * 传入参数
      */
-    export class SailingSchedulesInput {
+    export class PUBSailingSchedulesInput {
         
          
             /* 起始港代码 */ 
@@ -1795,7 +1798,7 @@
     /**
      *  No Remark 
      */
-    export class SailingSchedulesDto {
+    export class PUBSailingSchedulesDto {
         
          
             /* 图片网址 */ 
@@ -1834,7 +1837,7 @@
     /**
      * 航线管理
      */
-    export class ShippingLineDto {
+    export class PUBShippingLineDto {
         
          
             /* 代码 */ 
@@ -1861,6 +1864,9 @@
             /* 父Id */ 
             parentId?: string;
          
+            /* 中文名称 */ 
+            chineseName?: string;
+         
             
             id?: string;
         
@@ -1870,7 +1876,7 @@
     /**
      * 航线校验
      */
-    export class ShippingLineCheckInputDto {
+    export class PUBShippingLineCheckInputDto {
         
          
             /* 校验类型 
@@ -1898,7 +1904,7 @@
     /**
      *  No Remark 
      */
-    export class ChangeShippingLineStateInput {
+    export class PUBChangeShippingLineStateInput {
         
          
             
@@ -1913,7 +1919,7 @@
     /**
      * 国家航线关系Dto
      */
-    export class CountryReationShippingDto {
+    export class PUBCountryReationShippingDto {
         
          
             /* 国家Id */ 
@@ -1931,7 +1937,7 @@
     /**
      * 港口航线关系Dto
      */
-    export class PortReationCountryDto {
+    export class PUBPortReationCountryDto {
         
          
             /* 港口 */ 
@@ -1949,7 +1955,7 @@
     /**
      *  No Remark 
      */
-    export class GetAllShippingLineForUiPickerInput {
+    export class PUBGetAllShippingLineForUiPickerInput {
         
          
             /* 是否包含子级 */ 
@@ -1982,7 +1988,7 @@
     /**
      *  No Remark 
      */
-    export class ShippingLineUiPickerDto {
+    export class PUBShippingLineUiPickerDto {
         
          
             /* 名称 */ 
@@ -2018,7 +2024,7 @@
     /**
      * 运输条款-传输对象模型
      */
-    export class TransportClauseDto {
+    export class PUBTransportClauseDto {
         
          
             /* 起始地类型 */ 
@@ -2054,7 +2060,7 @@
     /**
      * 运输条款重复校验-传输对象模型
      */
-    export class TransportClauseCheckDto {
+    export class PUBTransportClauseCheckDto {
         
          
             /* 起始地 */ 
@@ -2072,7 +2078,7 @@
     /**
      *  No Remark 
      */
-    export class ChangeTransportClauseStateInput {
+    export class PUBChangeTransportClauseStateInput {
         
          
             
@@ -2087,7 +2093,7 @@
     /**
      *  No Remark 
      */
-    export class GetAllTransportClauseForUiPickerInput {
+    export class PUBGetAllTransportClauseForUiPickerInput {
         
          
             /* 是否包含无效数据 */ 
@@ -2117,7 +2123,7 @@
     /**
      *  No Remark 
      */
-    export class TransportClauseUiPickerDto {
+    export class PUBTransportClauseUiPickerDto {
         
          
             /* 起始地类型 */ 
@@ -2153,7 +2159,7 @@
     /**
      * 船名管理
      */
-    export class VesselDto {
+    export class PUBVesselDto {
         
          
             /* 代码 */ 
@@ -2192,7 +2198,7 @@
     /**
      * 船名校验
      */
-    export class VesselCheckInputDto {
+    export class PUBVesselCheckInputDto {
         
          
             /* 校验类型 
@@ -2220,7 +2226,7 @@
     /**
      *  No Remark 
      */
-    export class GetAllVesselForUiPickerInput {
+    export class PUBGetAllVesselForUiPickerInput {
         
          
             /* 是否包含无效数据 */ 
@@ -2253,7 +2259,7 @@
     /**
      *  No Remark 
      */
-    export class VesselUiPickerDto {
+    export class PUBVesselUiPickerDto {
         
          
             /* 创建人姓名 */ 
@@ -2292,7 +2298,7 @@
     /**
      *  No Remark 
      */
-    export class VesselInfosDto {
+    export class PUBVesselInfosDto {
         
          
             
@@ -2331,14 +2337,14 @@
     /**
      *  No Remark 
      */
-    export class GetShipTrackInfoOutput {
+    export class PUBGetShipTrackInfoOutput {
         
          
             
             shipTracePoints?: any[];
          
             /* 当前坐标点 */ 
-            currentPosition?: VesselInfosDto;
+            currentPosition?: PUBVesselInfosDto;
         
         
     }
@@ -2346,7 +2352,7 @@
     /**
      *  No Remark 
      */
-    export class AddingVesselInfosTaskInput {
+    export class PUBAddingVesselInfosTaskInput {
         
          
             /* 船名Id */ 
@@ -2364,7 +2370,7 @@
     /**
      * 航次管理
      */
-    export class VoyageDto {
+    export class PUBVoyageDto {
         
          
             /* 船名Id */ 
@@ -2391,7 +2397,7 @@
     /**
      * 航次校验
      */
-    export class VoyageCheckInputDto {
+    export class PUBVoyageCheckInputDto {
         
          
             /* 校验类型 
@@ -2415,7 +2421,7 @@
     /**
      *  No Remark 
      */
-    export class GetAllVoyageForUiPickerInput {
+    export class PUBGetAllVoyageForUiPickerInput {
         
          
             /* 是否包含无效数据 */ 
@@ -2448,7 +2454,7 @@
     /**
      *  No Remark 
      */
-    export class VoyageUiPickerDto {
+    export class PUBVoyageUiPickerDto {
         
          
             /* 创建人姓名 */ 

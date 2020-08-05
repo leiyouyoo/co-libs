@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PermissionDto,ListResultDto,MovePermissionItemInput,GrantFunctionPermissionsToUserInput,RevokeUserFunctionPermissionsInput,GrantFunctionPermissionsToRoleInput,RevokeRoleFunctionPermissionsInput,DataPermissionDto,GrantDataPermissionsToUserInput,RevokeUserDataPermissionsInput,GrantDataPermissionsToRoleInput,RevokeRoleDataPermissionsInput, } from './platform.types';
+import { PlatformPermissionDto,PlatformListResultDto,PlatformMovePermissionItemInput,PlatformGrantFunctionPermissionsToUserInput,PlatformRevokeUserFunctionPermissionsInput,PlatformGrantFunctionPermissionsToRoleInput,PlatformRevokeRoleFunctionPermissionsInput,PlatformDataPermissionDto,PlatformGrantDataPermissionsToUserInput,PlatformRevokeUserDataPermissionsInput,PlatformGrantDataPermissionsToRoleInput,PlatformRevokeRoleDataPermissionsInput, } from './platform.types';
 
 @BaseUrl('/platform/Permission')
 @Injectable({ providedIn: 'root' })
-export class PermissionService extends BaseApi {
+export class PlatformPermissionService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class PermissionService extends BaseApi {
         @Payload
         _req: {parentId?:string,isRecursion?:boolean,type?:number} 
 
-    ): Observable<ListResultDto<PermissionDto>> {
+    ): Observable<PlatformListResultDto<PlatformPermissionDto>> {
         return null as any
     }
 
@@ -34,9 +34,9 @@ export class PermissionService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:PermissionDto
+        _req:PlatformPermissionDto
 
-    ): Observable<PermissionDto> {
+    ): Observable<PlatformPermissionDto> {
         return null as any
     }
 
@@ -64,7 +64,7 @@ export class PermissionService extends BaseApi {
     @POST('move')
     move(
         @Payload
-        _req:MovePermissionItemInput
+        _req:PlatformMovePermissionItemInput
 
     ): Observable<any> {
         return null as any
@@ -81,7 +81,7 @@ export class PermissionService extends BaseApi {
         @Payload
         _req: {userId?:number} 
 
-    ): Observable<ListResultDto<PermissionDto>> {
+    ): Observable<PlatformListResultDto<PlatformPermissionDto>> {
         return null as any
     }
 
@@ -94,7 +94,7 @@ export class PermissionService extends BaseApi {
     @POST('grantFunctionPermissionsToUser')
     grantFunctionPermissionsToUser(
         @Payload
-        _req:GrantFunctionPermissionsToUserInput
+        _req:PlatformGrantFunctionPermissionsToUserInput
 
     ): Observable<any> {
         return null as any
@@ -109,7 +109,7 @@ export class PermissionService extends BaseApi {
     @POST('revokeUserFunctionPermissions')
     revokeUserFunctionPermissions(
         @Payload
-        _req:RevokeUserFunctionPermissionsInput
+        _req:PlatformRevokeUserFunctionPermissionsInput
 
     ): Observable<any> {
         return null as any
@@ -126,7 +126,7 @@ export class PermissionService extends BaseApi {
         @Payload
         _req: {roleId?:number} 
 
-    ): Observable<ListResultDto<PermissionDto>> {
+    ): Observable<PlatformListResultDto<PlatformPermissionDto>> {
         return null as any
     }
 
@@ -139,7 +139,7 @@ export class PermissionService extends BaseApi {
     @POST('grantFunctionPermissionsToRole')
     grantFunctionPermissionsToRole(
         @Payload
-        _req:GrantFunctionPermissionsToRoleInput
+        _req:PlatformGrantFunctionPermissionsToRoleInput
 
     ): Observable<any> {
         return null as any
@@ -154,7 +154,7 @@ export class PermissionService extends BaseApi {
     @POST('revokeRoleFunctionPermissions')
     revokeRoleFunctionPermissions(
         @Payload
-        _req:RevokeRoleFunctionPermissionsInput
+        _req:PlatformRevokeRoleFunctionPermissionsInput
 
     ): Observable<any> {
         return null as any
@@ -171,7 +171,7 @@ export class PermissionService extends BaseApi {
         @Payload
         _req: {userId?:number} 
 
-    ): Observable<ListResultDto<DataPermissionDto>> {
+    ): Observable<PlatformListResultDto<PlatformDataPermissionDto>> {
         return null as any
     }
 
@@ -184,7 +184,7 @@ export class PermissionService extends BaseApi {
     @POST('grantDataPermissionsToUser')
     grantDataPermissionsToUser(
         @Payload
-        _req:GrantDataPermissionsToUserInput
+        _req:PlatformGrantDataPermissionsToUserInput
 
     ): Observable<any> {
         return null as any
@@ -199,7 +199,7 @@ export class PermissionService extends BaseApi {
     @POST('revokeUserDataPermissions')
     revokeUserDataPermissions(
         @Payload
-        _req:RevokeUserDataPermissionsInput
+        _req:PlatformRevokeUserDataPermissionsInput
 
     ): Observable<any> {
         return null as any
@@ -216,7 +216,7 @@ export class PermissionService extends BaseApi {
         @Payload
         _req: {roleId?:number} 
 
-    ): Observable<ListResultDto<DataPermissionDto>> {
+    ): Observable<PlatformListResultDto<PlatformDataPermissionDto>> {
         return null as any
     }
 
@@ -229,7 +229,7 @@ export class PermissionService extends BaseApi {
     @POST('grantDataPermissionsToRole')
     grantDataPermissionsToRole(
         @Payload
-        _req:GrantDataPermissionsToRoleInput
+        _req:PlatformGrantDataPermissionsToRoleInput
 
     ): Observable<any> {
         return null as any
@@ -244,7 +244,7 @@ export class PermissionService extends BaseApi {
     @POST('revokeRoleDataPermissions')
     revokeRoleDataPermissions(
         @Payload
-        _req:RevokeRoleDataPermissionsInput
+        _req:PlatformRevokeRoleDataPermissionsInput
 
     ): Observable<any> {
         return null as any

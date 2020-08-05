@@ -5,7 +5,7 @@ import {  } from './storage.types';
 
 @BaseUrl('/storage/ExcelTemplate')
 @Injectable({ providedIn: 'root' })
-export class ExcelTemplateService extends BaseApi {
+export class StorageExcelTemplateService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }

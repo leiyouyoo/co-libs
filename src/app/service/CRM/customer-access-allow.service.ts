@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { CustomerAccessAllowOutput,PagedResultDto, } from './crm.types';
+import { CRMCustomerAccessAllowOutput,CRMPagedResultDto, } from './crm.types';
 
 @BaseUrl('/crm/CustomerAccessAllow')
 @Injectable({ providedIn: 'root' })
-export class CustomerAccessAllowService extends BaseApi {
+export class CRMCustomerAccessAllowService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class CustomerAccessAllowService extends BaseApi {
         @Payload
         _req: {customerId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<CustomerAccessAllowOutput>> {
+    ): Observable<CRMPagedResultDto<CRMCustomerAccessAllowOutput>> {
         return null as any
     }
 

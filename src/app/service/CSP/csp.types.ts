@@ -2,7 +2,7 @@
     /**
      *  No Remark 
      */
-    export class TestDtoValidateInput {
+    export class CSPTestDtoValidateInput {
         
          
             
@@ -20,7 +20,7 @@
     /**
      *  No Remark 
      */
-    export class Version {
+    export class CSPVersion {
         
          
             
@@ -47,7 +47,7 @@
     /**
      *  No Remark 
      */
-    export class HttpContent {
+    export class CSPHttpContent {
         
          
             
@@ -59,7 +59,7 @@
     /**
      *  No Remark 
      */
-    export class HttpMethod {
+    export class CSPHttpMethod {
         
          
             
@@ -71,17 +71,17 @@
     /**
      *  No Remark 
      */
-    export class HttpRequestMessage {
+    export class CSPHttpRequestMessage {
         
          
             
-            version?: Version;
+            version?: CSPVersion;
          
             
-            content?: HttpContent;
+            content?: CSPHttpContent;
          
             
-            method?: HttpMethod;
+            method?: CSPHttpMethod;
          
             
             requestUri?: string;
@@ -98,14 +98,14 @@
     /**
      *  No Remark 
      */
-    export class HttpResponseMessage {
+    export class CSPHttpResponseMessage {
         
          
             
-            version?: Version;
+            version?: CSPVersion;
          
             
-            content?: HttpContent;
+            content?: CSPHttpContent;
          
             /* 
 100 = Continue
@@ -183,7 +183,7 @@
             headers?: any[];
          
             
-            requestMessage?: HttpRequestMessage;
+            requestMessage?: CSPHttpRequestMessage;
          
             
             isSuccessStatusCode?: boolean;
@@ -194,8 +194,11 @@
     /**
      * 用于附件列表显示的 Dto
      */
-    export class AttachmentListDto {
+    export class CSPAttachmentListDto {
         
+         
+            /* 附件类型 */ 
+            attachmentType?: string;
          
             /* 上传人 */ 
             uploadBy?: string;
@@ -221,52 +224,6 @@
 5 = Billing */ 
             businessType?: number;
          
-            /* 附件类型
-1 = OSO
-2 = TRK
-3 = CF
-4 = SI
-5 = ARR
-6 = MBL
-7 = HBL
-8 = SID
-9 = ISF
-10 = Other
-11 = AR
-12 = AP
-13 = DC
-14 = ASO
-15 = BKG
-16 = LGTLX
-17 = LGPKG
-18 = LGDC
-19 = LGPBL
-20 = LGABL
-21 = LGMBL
-22 = LGPKG1
-23 = LGDC1
-24 = LGABL1
-25 = LGMBL1
-26 = LGTLX1
-27 = AMS
-28 = AN
-29 = SIMBL
-30 = SIHBL
-31 = AN_C
-32 = NRAS
-33 = QuotedPrice
-34 = POD
-35 = AC
-36 = BR
-37 = WFF
-38 = CI
-39 = PL
-40 = PO
-41 = DM
-43 = SideMarks
-44 = WarehouseRecipt */ 
-            attachmentType?: number;
-         
             /* 文件id(上传到文件服务器后返回) */ 
             fileId?: string;
          
@@ -282,7 +239,7 @@
     /**
      *  No Remark 
      */
-    export class ListResultDto<T> {
+    export class CSPListResultDto<T> {
         
          
             
@@ -294,13 +251,14 @@
     /**
      *  No Remark 
      */
-    export class GetAllAttachmentListInput {
+    export class CSPGetAllAttachmentListInput {
         
          
             /* 业务Id集合 */ 
             businessIds?: any[];
          
             /* 附件类型
+0 = Other
 1 = OSO
 2 = TRK
 3 = CF
@@ -310,7 +268,6 @@
 7 = HBL
 8 = SID
 9 = ISF
-10 = Other
 11 = AR
 12 = AP
 13 = DC
@@ -343,7 +300,9 @@
 40 = PO
 41 = DM
 43 = SideMarks
-44 = WarehouseRecipt */ 
+44 = WarehouseRecipt
+45 = TaxBill
+46 = SignReceipt */ 
             attachmentType?: number;
         
         
@@ -352,7 +311,7 @@
     /**
      * 附件基本信息 Dto
      */
-    export class AttachmentDto {
+    export class CSPAttachmentDto {
         
          
             /* Id */ 
@@ -371,6 +330,7 @@
             businessType?: number;
          
             /* 附件类型
+0 = Other
 1 = OSO
 2 = TRK
 3 = CF
@@ -380,7 +340,6 @@
 7 = HBL
 8 = SID
 9 = ISF
-10 = Other
 11 = AR
 12 = AP
 13 = DC
@@ -413,7 +372,9 @@
 40 = PO
 41 = DM
 43 = SideMarks
-44 = WarehouseRecipt */ 
+44 = WarehouseRecipt
+45 = TaxBill
+46 = SignReceipt */ 
             attachmentType?: number;
          
             /* 文件id(上传到文件服务器后返回) */ 
@@ -431,7 +392,7 @@
     /**
      * 用于批量创建附件的 Dto
      */
-    export class BatchCreateAttachmentInput {
+    export class CSPBatchCreateAttachmentInput {
         
          
             /* Gets or sets the items. */ 
@@ -443,7 +404,7 @@
     /**
      * 创建附件输入
      */
-    export class CreateAttachmentInput {
+    export class CSPCreateAttachmentInput {
         
          
             /* 是否来自ICP，如果 true 则不必再调用同步文档到 ICP 的接口 */ 
@@ -471,6 +432,7 @@
             businessType?: number;
          
             /* 附件类型
+0 = Other
 1 = OSO
 2 = TRK
 3 = CF
@@ -480,7 +442,6 @@
 7 = HBL
 8 = SID
 9 = ISF
-10 = Other
 11 = AR
 12 = AP
 13 = DC
@@ -513,7 +474,9 @@
 40 = PO
 41 = DM
 43 = SideMarks
-44 = WarehouseRecipt */ 
+44 = WarehouseRecipt
+45 = TaxBill
+46 = SignReceipt */ 
             attachmentType?: number;
          
             /* 文件id(上传到文件服务器后返回) */ 
@@ -531,7 +494,7 @@
     /**
      *  No Remark 
      */
-    export class ShareableContactModel {
+    export class CSPShareableContactModel {
         
          
             
@@ -564,7 +527,7 @@
     /**
      * 文档模型
      */
-    export class AttachmentForIcpDto {
+    export class CSPAttachmentForIcpDto {
         
          
             /* 上传人 */ 
@@ -592,6 +555,7 @@
             businessType?: number;
          
             /* 附件类型
+0 = Other
 1 = OSO
 2 = TRK
 3 = CF
@@ -601,7 +565,6 @@
 7 = HBL
 8 = SID
 9 = ISF
-10 = Other
 11 = AR
 12 = AP
 13 = DC
@@ -634,7 +597,9 @@
 40 = PO
 41 = DM
 43 = SideMarks
-44 = WarehouseRecipt */ 
+44 = WarehouseRecipt
+45 = TaxBill
+46 = SignReceipt */ 
             attachmentType?: number;
          
             /* 文件id(上传到文件服务器后返回) */ 
@@ -652,7 +617,7 @@
     /**
      *  No Remark 
      */
-    export class UserIdentifier {
+    export class CSPUserIdentifier {
         
          
             
@@ -667,7 +632,7 @@
     /**
      * 获取账单列表的输入
      */
-    export class GetBillListInput {
+    export class CSPGetBillListInput {
         
          
             /* 运单Id */ 
@@ -700,7 +665,7 @@
     /**
      *  No Remark 
      */
-    export class NameValueDto {
+    export class CSPNameValueDto {
         
          
             
@@ -715,7 +680,7 @@
     /**
      * 账单详情
      */
-    export class BillOutput {
+    export class CSPBillOutput {
         
          
             /* 关联的运单业务Id */ 
@@ -725,7 +690,7 @@
             shipmentNo?: string;
          
             /* 账单收件人信息 */ 
-            recipient?: NameValueDto;
+            recipient?: CSPNameValueDto;
          
             /* 总额 */ 
             amount?: any[];
@@ -781,7 +746,7 @@
     /**
      *  No Remark 
      */
-    export class PagedResultDto<T> {
+    export class CSPPagedResultDto<T> {
         
          
             
@@ -796,7 +761,7 @@
     /**
      * Bill Dto
      */
-    export class BillDto {
+    export class CSPBillDto {
         
          
             /* 关联的运单业务Id */ 
@@ -844,7 +809,7 @@
     /**
      * 指定主键类型的数据传输对象基类
      */
-    export class CoEntityDto<T> {
+    export class CSPCoEntityDto<T> {
         
          
             
@@ -856,7 +821,7 @@
     /**
      * Class ChangeBillStatusInput.
      */
-    export class ChangeBillStatusInput {
+    export class CSPChangeBillStatusInput {
         
          
             /* Creates new status.
@@ -880,7 +845,7 @@
     /**
      * 确认账单输入
      */
-    export class ConfirmBillsInput {
+    export class CSPConfirmBillsInput {
         
          
             /* 选中的确认账单 */ 
@@ -892,7 +857,7 @@
     /**
      * 导出账单输入
      */
-    export class ExportBillInput {
+    export class CSPExportBillInput {
         
          
             /* 账单Id */ 
@@ -904,7 +869,7 @@
     /**
      * 导出账单输出
      */
-    export class ExportBillOutput {
+    export class CSPExportBillOutput {
         
          
             /* Gets or sets the token. */ 
@@ -916,7 +881,7 @@
     /**
      *  No Remark 
      */
-    export class SynchronizeBillsInput {
+    export class CSPSynchronizeBillsInput {
         
          
             
@@ -934,7 +899,7 @@
     /**
      * 用于创建或更新收费记录
      */
-    export class CreateOrUpdatePaymentRecordsInput {
+    export class CSPCreateOrUpdatePaymentRecordsInput {
         
          
             /* 支付记录条目集合 */ 
@@ -946,7 +911,7 @@
     /**
      * 付款历史
      */
-    export class PaymentRecordDto {
+    export class CSPPaymentRecordDto {
         
          
             /* ICP 销账记录Id */ 
@@ -994,7 +959,7 @@
     /**
      * 用户创建或更新收费项的输入参数
      */
-    export class CreateOrUpdateChargeItemsInput {
+    export class CSPCreateOrUpdateChargeItemsInput {
         
          
             /* 收费项集合 */ 
@@ -1006,7 +971,7 @@
     /**
      * 收费条目
      */
-    export class ChargeItemDto {
+    export class CSPChargeItemDto {
         
          
             /* 关联的账单Id */ 
@@ -1056,7 +1021,7 @@
     /**
      * Class BankAccountDto.
      */
-    export class BankAccountDto {
+    export class CSPBankAccountDto {
         
          
             /* 户名 */ 
@@ -1080,7 +1045,7 @@
     /**
      * 获取Billings统计信息
      */
-    export class BillingStatisticsOutput {
+    export class CSPBillingStatisticsOutput {
         
          
             /* 按状态统计 */ 
@@ -1092,7 +1057,7 @@
     /**
      * 为CRM获取全部分页列表输入条件组
      */
-    export class SearchModel {
+    export class CSPSearchModel {
         
          
             /* 类型
@@ -1115,14 +1080,14 @@
     /**
      * 为CRM获取全部分页列表输入
      */
-    export class GetAllListForCRMInput {
+    export class CSPGetAllListForCRMInput {
         
          
             /* 订舱单业务号或订舱单名称 */ 
-            bookingNoOrName?: SearchModel;
+            bookingNoOrName?: CSPSearchModel;
          
             /* 委托客户或联系人 */ 
-            customerOrContact?: SearchModel;
+            customerOrContact?: CSPSearchModel;
          
             /* 预订状态(枚举)
 0 = BookingDraft
@@ -1157,7 +1122,7 @@
     /**
      *  No Remark 
      */
-    export class NetWorkLocationModel {
+    export class CSPNetWorkLocationModel {
         
          
             
@@ -1196,7 +1161,7 @@
     /**
      * 为CRM获取全部分页列表输出
      */
-    export class GetAllListForCRMOutput {
+    export class CSPGetAllListForCRMOutput {
         
          
             /* 创建人Id */ 
@@ -1245,10 +1210,10 @@
             serviceCompanyId?: string;
          
             /* 起始地址 */ 
-            originAddress?: NetWorkLocationModel;
+            originAddress?: CSPNetWorkLocationModel;
          
             /* 目的地址 */ 
-            destinationAddress?: NetWorkLocationModel;
+            destinationAddress?: CSPNetWorkLocationModel;
          
             /* 重量 */ 
             totalWeightDisplay?: string;
@@ -1268,7 +1233,7 @@
     /**
      * CRM补全路线
      */
-    export class UpdateRoutesForCRMInput {
+    export class CSPUpdateRoutesForCRMInput {
         
          
             /* 服务商存储电商货物的国内仓库地址
@@ -1294,7 +1259,7 @@
     /**
      * 确定出货口岸请求体
      */
-    export class SureServiceCompanyInput {
+    export class CSPSureServiceCompanyInput {
         
          
             /* 出货口岸 */ 
@@ -1315,7 +1280,7 @@
     /**
      *  No Remark 
      */
-    export class PubLocation {
+    export class CSPPubLocation {
         
          
             
@@ -1360,20 +1325,20 @@
     /**
      * 变化前数据
      */
-    export class BookingOldData {
+    export class CSPBookingOldData {
         
          
             /* 发货港 */ 
-            originPort?: PubLocation;
+            originPort?: CSPPubLocation;
          
             /* 目的港 */ 
-            destinationPort?: PubLocation;
+            destinationPort?: CSPPubLocation;
          
             /* 起始地址 */ 
-            originAddress?: NetWorkLocationModel;
+            originAddress?: CSPNetWorkLocationModel;
          
             /* 目的地址 */ 
-            destinationAddress?: NetWorkLocationModel;
+            destinationAddress?: CSPNetWorkLocationModel;
          
             /* 货好日期 */ 
             cargoReadyDate?: string;
@@ -1429,7 +1394,7 @@
     /**
      *  No Remark 
      */
-    export class FBALocationModel {
+    export class CSPFBALocationModel {
         
          
             
@@ -1486,7 +1451,7 @@
     /**
      * 订舱单Dto模型
      */
-    export class BookingDto {
+    export class CSPBookingDto {
         
          
             /* 订舱单号 */ 
@@ -1545,7 +1510,7 @@
             isContainsSpecialGoods?: boolean;
          
             /* CRM查看变更属性历史值（仅显示上一次的） */ 
-            lastData?: BookingOldData;
+            lastData?: CSPBookingOldData;
          
             /* 模板Id */ 
             bookingTemplateId?: string;
@@ -1575,19 +1540,19 @@
             volumeUnitCode?: string;
          
             /* 发货港 */ 
-            originPort?: PubLocation;
+            originPort?: CSPPubLocation;
          
             /* 目的港 */ 
-            destinationPort?: PubLocation;
+            destinationPort?: CSPPubLocation;
          
             /* 起始仓库 */ 
-            deliveryWarehouse?: FBALocationModel;
+            deliveryWarehouse?: CSPFBALocationModel;
          
             /* 起始地址 */ 
-            originAddress?: NetWorkLocationModel;
+            originAddress?: CSPNetWorkLocationModel;
          
             /* 目的地址 */ 
-            destinationAddress?: NetWorkLocationModel;
+            destinationAddress?: CSPNetWorkLocationModel;
          
             /* Delivery  goods by myself 时间范围 */ 
             deliveryTimeRange?: string;
@@ -1802,7 +1767,7 @@
     /**
      * CRM订舱绑定报价入口获取报价接受客户与用户联动关系
      */
-    export class GetCustomerBindUserForCRMOutput {
+    export class CSPGetCustomerBindUserForCRMOutput {
         
          
             /* 客户联动数据源 */ 
@@ -1820,7 +1785,7 @@
     /**
      * CRM订舱绑定报价
      */
-    export class CRMBookingBindQuoteInput {
+    export class CSPCRMBookingBindQuoteInput {
         
          
             /* 订舱单Id */ 
@@ -1838,7 +1803,7 @@
     /**
      * 重复校验传输模型
      */
-    export class BookingCheckIsExistsInputDto {
+    export class CSPBookingCheckIsExistsInputDto {
         
          
             /* 采购单Id */ 
@@ -1868,7 +1833,7 @@
     /**
      * Class UpdateBookingForIcpInput.
      */
-    export class UpdateBookingForIcpInput {
+    export class CSPUpdateBookingForIcpInput {
         
          
             /* BookingId */ 
@@ -1901,7 +1866,7 @@
     /**
      * Class PurchaseOrderItemForIcpDto.
      */
-    export class PurchaseOrderItemForIcpDto {
+    export class CSPPurchaseOrderItemForIcpDto {
         
          
             /* Gets or sets the po no. */ 
@@ -1955,7 +1920,7 @@
     /**
      * Class BookingForIcpDto.
      */
-    export class BookingForIcpDto {
+    export class CSPBookingForIcpDto {
         
          
             /* 客户名称 */ 
@@ -2050,7 +2015,7 @@
             isContainsSpecialGoods?: boolean;
          
             /* CRM查看变更属性历史值（仅显示上一次的） */ 
-            lastData?: BookingOldData;
+            lastData?: CSPBookingOldData;
          
             /* 模板Id */ 
             bookingTemplateId?: string;
@@ -2292,7 +2257,7 @@
     /**
      * 清关发票上传解析返回
      */
-    export class ClearanceInviocesUploadOutput {
+    export class CSPClearanceInviocesUploadOutput {
         
          
             /* 映射 */ 
@@ -2307,7 +2272,7 @@
     /**
      * 生成导出数据
      */
-    export class ClearanceInviocesDownloadOutput {
+    export class CSPClearanceInviocesDownloadOutput {
         
          
             
@@ -2319,14 +2284,14 @@
     /**
      * Booking 最近使用一条记录
      */
-    export class BookingRecentlyUsedOutput {
+    export class CSPBookingRecentlyUsedOutput {
         
          
             /* 客户的上一个 （常规或电商）Booking
 Shipper：显示最近一次选中的信息；
 FBM Address：默认显示最近一次选中的信息；
 Destination location：默认显示最近一次选中的信息； */ 
-            recentBooking?: BookingDto;
+            recentBooking?: CSPBookingDto;
          
             /* 显示最近使用过的起始港口数据(5条)； */ 
             originPorts?: any[];
@@ -2346,7 +2311,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 获取Booking统计信息
      */
-    export class BookingStatisticsOutput {
+    export class CSPBookingStatisticsOutput {
         
          
             /* 按状态统计 */ 
@@ -2358,7 +2323,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * Class ChangeBookingStatusInput.
      */
-    export class ChangeBookingStatusInput {
+    export class CSPChangeBookingStatusInput {
         
          
             /* Creates new status.
@@ -2391,7 +2356,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      *  No Remark 
      */
-    export class CancelBookingInput {
+    export class CSPCancelBookingInput {
         
          
             /* 
@@ -2413,7 +2378,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 获取Booking关联业务Id
      */
-    export class GetRelatedBusinessOutput {
+    export class CSPGetRelatedBusinessOutput {
         
          
             /* ShipmentId */ 
@@ -2428,8 +2393,14 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      *  No Remark 
      */
-    export class GetChannelListOutput {
+    export class CSPGetChannelListOutput {
         
+         
+            /* 
+0 = Unknown
+1 = Ocean
+2 = Air */ 
+            freightMethodType?: number;
          
             /* 组合字符串 */ 
             channelGroupStr?: string;
@@ -2449,7 +2420,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 预报单列表查询入口参数
      */
-    export class GetBookingListInputForFcm {
+    export class CSPGetBookingListInputForFcm {
         
          
             /* 操作进度
@@ -2524,7 +2495,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 列表返回的单条记录
      */
-    export class BookingForFcmDto {
+    export class CSPBookingForFcmDto {
         
          
             /* 创建人Id */ 
@@ -2623,10 +2594,10 @@ Destination location：默认显示最近一次选中的信息； */
             deliveryMethodType?: number;
          
             /* 送货地址 */ 
-            destinationAddress?: NetWorkLocationModel;
+            destinationAddress?: CSPNetWorkLocationModel;
          
             /* 起始地址 */ 
-            originAddress?: NetWorkLocationModel;
+            originAddress?: CSPNetWorkLocationModel;
          
             /* FBA No，可能存在多个 */ 
             fbaNos?: any[];
@@ -2643,7 +2614,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 设置 Bookings 为已受理状态
      */
-    export class SetBookingAcceptedInput {
+    export class CSPSetBookingAcceptedInput {
         
          
             
@@ -2655,7 +2626,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 更新状态后的返回值
      */
-    export class SetBookingAcceptedOutput {
+    export class CSPSetBookingAcceptedOutput {
         
         
         
@@ -2664,7 +2635,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      *  No Remark 
      */
-    export class GetClearanceInvoicesForFcmOutput {
+    export class CSPGetClearanceInvoicesForFcmOutput {
         
          
             
@@ -2679,17 +2650,23 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 由 FCM端 操作创建或更新 Booking 的输入参数
      */
-    export class CreateOrUpdateForFcmInput {
+    export class CSPCreateOrUpdateForFcmInput {
         
          
             /* Id */ 
             id?: string;
+         
+            /* FCM 对应的 ShipmentNo */ 
+            shipmentNo?: string;
          
             /* 主客户Id */ 
             customerId?: string;
          
             /* 业务员id */ 
             serviceUserId?: number;
+         
+            /* 操作客服 */ 
+            customerServiceUserId?: number;
          
             /* 业务类型（运输方式）
 0 = Unknown
@@ -2706,6 +2683,9 @@ Destination location：默认显示最近一次选中的信息； */
          
             /* 运输条款，port_to_door、port_to_port、door_to_door、door_to_port ... */ 
             freightType?: string;
+         
+            /* 贸易条款，可以是 EXW, FCA, FAS, FOB, CPT, CFR, CIF, CIP, DAT, DAP, DDP, or DPU. */ 
+            incoterm?: string;
          
             /* 出货口岸 */ 
             serviceCompanyId?: string;
@@ -2771,7 +2751,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 更新booking后返回
      */
-    export class CreateOrUpdateForFcmOutput {
+    export class CSPCreateOrUpdateForFcmOutput {
         
          
             
@@ -2786,7 +2766,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      *  No Remark 
      */
-    export class CreateOrUpdateClearanceInvoicesForFcmInput {
+    export class CSPCreateOrUpdateClearanceInvoicesForFcmInput {
         
          
             /* 映射 */ 
@@ -2807,7 +2787,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      *  No Remark 
      */
-    export class DeleteBookingForFcmInput {
+    export class CSPDeleteBookingForFcmInput {
         
          
             
@@ -2819,7 +2799,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      *  No Remark 
      */
-    export class GetBookingListForFcmInput {
+    export class CSPGetBookingListForFcmInput {
         
          
             
@@ -2831,7 +2811,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      *  No Remark 
      */
-    export class BookingListItemDtoForFcm {
+    export class CSPBookingListItemDtoForFcm {
         
          
             /* Id */ 
@@ -2928,38 +2908,38 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 订舱模板（仅用于全返回）
      */
-    export class BookingTemplateOutput {
+    export class CSPBookingTemplateOutput {
         
          
             /* 是否包含特殊品 */ 
             isContainsSpecialGoods?: boolean;
          
             /* 发货港 */ 
-            originPort?: PubLocation;
+            originPort?: CSPPubLocation;
          
             /* 目的港 */ 
-            destinationPort?: PubLocation;
+            destinationPort?: CSPPubLocation;
          
             /* 贸易条款显示字符 */ 
             incotermsString?: string;
          
             /* 发货方地址 */ 
-            shipperAddress?: NetWorkLocationModel;
+            shipperAddress?: CSPNetWorkLocationModel;
          
             /* 收货方地址 */ 
-            consigneeAddress?: NetWorkLocationModel;
+            consigneeAddress?: CSPNetWorkLocationModel;
          
             /* 起始仓库 */ 
-            deliveryWarehouse?: FBALocationModel;
+            deliveryWarehouse?: CSPFBALocationModel;
          
             /* FBA/FBM 上门提货地址（取件详细地址） */ 
-            pickUpAddress?: NetWorkLocationModel;
+            pickUpAddress?: CSPNetWorkLocationModel;
          
             /* 起始地址 */ 
-            originAddress?: NetWorkLocationModel;
+            originAddress?: CSPNetWorkLocationModel;
          
             /* 目的地址 */ 
-            destinationAddress?: NetWorkLocationModel;
+            destinationAddress?: CSPNetWorkLocationModel;
          
             /* Gets or sets the name of the consignee customer. */ 
             consigneeCustomerName?: string;
@@ -3147,7 +3127,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 订舱单模板
      */
-    export class BookingTemplateDto {
+    export class CSPBookingTemplateDto {
         
          
             /* 运输方式，freight默认为空，有选用提交后根据提交结果进行填充
@@ -3157,25 +3137,25 @@ Destination location：默认显示最近一次选中的信息； */
             freightMethodType?: number;
          
             /* 发货港 */ 
-            originPort?: PubLocation;
+            originPort?: CSPPubLocation;
          
             /* 目的港 */ 
-            destinationPort?: PubLocation;
+            destinationPort?: CSPPubLocation;
          
             /* 贸易条款显示字符 */ 
             incotermsString?: string;
          
             /* 发货方地址 */ 
-            shipperAddress?: NetWorkLocationModel;
+            shipperAddress?: CSPNetWorkLocationModel;
          
             /* 收货方地址 */ 
-            consigneeAddress?: NetWorkLocationModel;
+            consigneeAddress?: CSPNetWorkLocationModel;
          
             /* 起始仓库 */ 
-            deliveryWarehouse?: FBALocationModel;
+            deliveryWarehouse?: CSPFBALocationModel;
          
             /* FBA/FBM 上门提货地址（取件详细地址） */ 
-            pickUpAddress?: NetWorkLocationModel;
+            pickUpAddress?: CSPNetWorkLocationModel;
          
             /* 是否包含特殊品 */ 
             isContainsSpecialGoods?: boolean;
@@ -3360,7 +3340,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 重复校验传输模型
      */
-    export class BookingTemplateCheckInputDto {
+    export class CSPBookingTemplateCheckInputDto {
         
          
             /* 模板名称 */ 
@@ -3375,7 +3355,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 客服团队Dto
      */
-    export class ServiceUserGroupDto {
+    export class CSPServiceUserGroupDto {
         
          
             /* 公司名称 */ 
@@ -3390,7 +3370,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 危险品-传输对象模型
      */
-    export class DangerousGoodDto {
+    export class CSPDangerousGoodDto {
         
          
             /* 代码 */ 
@@ -3435,7 +3415,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * H.S. Code - 传输对象模型
      */
-    export class HsCodeDto {
+    export class CSPHsCodeDto {
         
          
             /* H.S. Number */ 
@@ -3471,7 +3451,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      *  No Remark 
      */
-    export class MayInviteUserModel {
+    export class CSPMayInviteUserModel {
         
          
             
@@ -3507,7 +3487,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * Class CreateImGroupInput.
      */
-    export class CreateImGroupInput {
+    export class CSPCreateImGroupInput {
         
          
             /* 业务类型
@@ -3534,7 +3514,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * Class CreateImGroupForCustomerInput.
      */
-    export class CreateImGroupForCustomerInput {
+    export class CSPCreateImGroupForCustomerInput {
         
          
             /* 业务类型
@@ -3555,7 +3535,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      *  No Remark 
      */
-    export class AddDeleteGroupInput {
+    export class CSPAddDeleteGroupInput {
         
          
             
@@ -3573,7 +3553,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      *  No Remark 
      */
-    export class ErrorInfo {
+    export class CSPErrorInfo {
         
          
             
@@ -3594,7 +3574,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      *  No Remark 
      */
-    export class AjaxResponse {
+    export class CSPAjaxResponse {
         
          
             
@@ -3607,7 +3587,7 @@ Destination location：默认显示最近一次选中的信息； */
             success?: boolean;
          
             
-            error?: ErrorInfo;
+            error?: CSPErrorInfo;
          
             
             unAuthorizedRequest?: boolean;
@@ -3621,7 +3601,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 产品-传输对象模型
      */
-    export class ProductDto {
+    export class CSPProductDto {
         
          
             /* 产品名称 */ 
@@ -3655,7 +3635,7 @@ Destination location：默认显示最近一次选中的信息； */
             dangerousGoodId?: string;
          
             /* 危险品对象-仅明细使用 */ 
-            dangerousGoodDto?: DangerousGoodDto;
+            dangerousGoodDto?: CSPDangerousGoodDto;
          
             /* 产品属性 */ 
             properties?: any[];
@@ -3675,7 +3655,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 产品列表-传输对象模型
      */
-    export class ProductListDto {
+    export class CSPProductListDto {
         
          
             /* 产品名称 */ 
@@ -3714,7 +3694,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 导入结果
      */
-    export class ImportResult {
+    export class CSPImportResult {
         
          
             /* 验证错误 */ 
@@ -3741,7 +3721,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 产品导出
      */
-    export class ProductExportInput {
+    export class CSPProductExportInput {
         
          
             /* 国家Id */ 
@@ -3759,7 +3739,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 获取产品Sku列表
      */
-    export class ProductSkuListOutput {
+    export class CSPProductSkuListOutput {
         
          
             /* 产品名称 */ 
@@ -3786,7 +3766,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      *  No Remark 
      */
-    export class CurrentUserProfileEditDto {
+    export class CSPCurrentUserProfileEditDto {
         
          
             
@@ -3798,7 +3778,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 采购订单-传输对象模型
      */
-    export class PurchaseOrderDto {
+    export class CSPPurchaseOrderDto {
         
          
             /* 订单号 */ 
@@ -3864,7 +3844,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 采购订单明细-传输对象模型
      */
-    export class PurchaseOrderDetailOutput {
+    export class CSPPurchaseOrderDetailOutput {
         
          
             /* 订单号 */ 
@@ -3896,16 +3876,16 @@ Destination location：默认显示最近一次选中的信息； */
             products?: any[];
          
             /* 最新记录 */ 
-            current?: PurchaseOrderDto;
+            current?: CSPPurchaseOrderDto;
          
             /* 变更记录 */ 
             modified?: any[];
          
             /* 原始记录 */ 
-            original?: PurchaseOrderDto;
+            original?: CSPPurchaseOrderDto;
          
             /* 最后的修改记录 */ 
-            lastChange?: PurchaseOrderDto;
+            lastChange?: CSPPurchaseOrderDto;
          
             /* 最新的修改中涉及到的 OrderItem 数量 */ 
             orderItemNewChangeCount?: number;
@@ -3973,7 +3953,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 获取订单列表-传输对象模型
      */
-    export class GetPurchaseOrderListInput {
+    export class CSPGetPurchaseOrderListInput {
         
          
             /* 全局搜索关键字 */ 
@@ -4006,7 +3986,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 采购订单列表-传输对象模型
      */
-    export class PurchaseOrderListDto {
+    export class CSPPurchaseOrderListDto {
         
          
             /* 订单号 */ 
@@ -4088,7 +4068,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 获取采购订单列表供Product模块使用
      */
-    export class PurchaseOrderListToProductDto {
+    export class CSPPurchaseOrderListToProductDto {
         
          
             /* 订单号 */ 
@@ -4122,7 +4102,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 采购订单列表明细-传输对象模型
      */
-    export class PurchaseOrderListDetailOutput {
+    export class CSPPurchaseOrderListDetailOutput {
         
          
             /* 订单号 */ 
@@ -4149,17 +4129,17 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 获取采购订单修改明细-传输对象模型
      */
-    export class PurchaseOrderChangeDetailOutput {
+    export class CSPPurchaseOrderChangeDetailOutput {
         
          
             /* 最新记录 */ 
-            current?: PurchaseOrderDto;
+            current?: CSPPurchaseOrderDto;
          
             /* 变更记录 */ 
             modified?: any[];
          
             /* 原始记录 */ 
-            original?: PurchaseOrderDto;
+            original?: CSPPurchaseOrderDto;
         
         
     }
@@ -4167,7 +4147,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 查看修改记录
      */
-    export class ViewChangeInput {
+    export class CSPViewChangeInput {
         
          
             
@@ -4179,7 +4159,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 确认采购订单-传输对象模型
      */
-    export class PurchaseOrderConfirmInput {
+    export class CSPPurchaseOrderConfirmInput {
         
          
             /* 需要创建Booking的采购订单Id */ 
@@ -4191,7 +4171,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 拒绝采购订单-传输对象模型
      */
-    export class PurchaseOrderRejectInput {
+    export class CSPPurchaseOrderRejectInput {
         
          
             
@@ -4203,7 +4183,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 创建Booking-传输对象模型
      */
-    export class PurchaseOrderBookingInput {
+    export class CSPPurchaseOrderBookingInput {
         
          
             /* 是否转换为 Booking，如果是 true，则返回带有预生成 Booking 的数据，否则只返回PO信息 */ 
@@ -4224,7 +4204,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 创建Booking返回结果-传输对象模型
      */
-    export class PurchaseOrderBookingOutput {
+    export class CSPPurchaseOrderBookingOutput {
         
          
             /* 采购商名称数组 */ 
@@ -4243,7 +4223,7 @@ Destination location：默认显示最近一次选中的信息； */
             orders?: any[];
          
             
-            bookingOrder?: BookingDto;
+            bookingOrder?: CSPBookingDto;
         
         
     }
@@ -4251,7 +4231,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * Booking创建搜索关联-传输对象模型
      */
-    export class PurchaseOrderBookingSearchInput {
+    export class CSPPurchaseOrderBookingSearchInput {
         
          
             /* 查询关键字-PO# */ 
@@ -4263,7 +4243,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * Booking创建搜索关联-传输对象模型
      */
-    export class PurchaseOrderBookingSearchOutput {
+    export class CSPPurchaseOrderBookingSearchOutput {
         
          
             /* 订单号 */ 
@@ -4287,7 +4267,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 导入采购订单
      */
-    export class PurchaseOrderImportInput {
+    export class CSPPurchaseOrderImportInput {
         
          
             /* 订单数据 */ 
@@ -4299,7 +4279,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 下载采购订单-传输对象模型
      */
-    export class PurchaseOrderExportInput {
+    export class CSPPurchaseOrderExportInput {
         
          
             /* 采购订单Id集合 */ 
@@ -4311,7 +4291,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      *  No Remark 
      */
-    export class ConditionItemAttribute {
+    export class CSPConditionItemAttribute {
         
          
             
@@ -4353,7 +4333,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 采购订单统一返回下拉数据模型
      */
-    export class PurchaseOrderFilterDto {
+    export class CSPPurchaseOrderFilterDto {
         
          
             /* 显示名称 */ 
@@ -4368,7 +4348,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 移除OrderItem
      */
-    export class DeleteByItemIdInput {
+    export class CSPDeleteByItemIdInput {
         
          
             /* 订单Id */ 
@@ -4383,7 +4363,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 自定义日程Dto
      */
-    export class ScheduleDto {
+    export class CSPScheduleDto {
         
          
             /* 提醒开始时间 */ 
@@ -4425,7 +4405,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 日程发送
      */
-    export class ScheduleSentInput {
+    export class CSPScheduleSentInput {
         
          
             /* 日程Id */ 
@@ -4437,7 +4417,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      *  No Remark 
      */
-    export class NewsAndUpdatesSettingsEditDto {
+    export class CSPNewsAndUpdatesSettingsEditDto {
         
          
             
@@ -4452,7 +4432,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 基本设置参数
      */
-    export class GeneralSettingsEditDto {
+    export class CSPGeneralSettingsEditDto {
         
          
             /* 币种 */ 
@@ -4464,14 +4444,14 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * Settings Dto
      */
-    export class SettingsEditDto {
+    export class CSPSettingsEditDto {
         
          
             /* 基础设置 */ 
-            general?: GeneralSettingsEditDto;
+            general?: CSPGeneralSettingsEditDto;
          
             /* Gets or sets the news and updates. */ 
-            newsAndUpdates?: NewsAndUpdatesSettingsEditDto;
+            newsAndUpdates?: CSPNewsAndUpdatesSettingsEditDto;
         
         
     }
@@ -4479,7 +4459,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 获取传输模型
      */
-    export class GetShipmentListInput {
+    export class CSPGetShipmentListInput {
         
          
             /* 搜索关键字 */ 
@@ -4512,7 +4492,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 路线详情
      */
-    export class RouteDetails {
+    export class CSPRouteDetails {
         
          
             /* 多发货人信息 */ 
@@ -4537,7 +4517,7 @@ Destination location：默认显示最近一次选中的信息； */
             lastFreeDate?: string;
          
             /* 起始港 */ 
-            originPort?: PubLocation;
+            originPort?: CSPPubLocation;
          
             /* 预计拖车到达起始港时间 */ 
             estTruckDeliveryOrignDate?: string;
@@ -4576,7 +4556,7 @@ Destination location：默认显示最近一次选中的信息； */
             actualPickUpTruckDestinationDate?: string;
          
             /* 目的港 */ 
-            destinationPort?: PubLocation;
+            destinationPort?: CSPPubLocation;
          
             /* 港后拖车公司 */ 
             truckCustomerName?: string;
@@ -4596,7 +4576,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 运输单主页List
      */
-    export class ShipmentListOutput {
+    export class CSPShipmentListOutput {
         
          
             /* Gets or sets the customer identifier. */ 
@@ -4644,13 +4624,13 @@ Destination location：默认显示最近一次选中的信息； */
             vessel?: string;
          
             /* 大船航次信息 */ 
-            vesselVoyage?: NameValueDto;
+            vesselVoyage?: CSPNameValueDto;
          
             /* 大船/航次 */ 
             preVessel?: string;
          
             /* 驳船航次信息 */ 
-            preVesselVoyage?: NameValueDto;
+            preVesselVoyage?: CSPNameValueDto;
          
             /* 运输条款 来自基础数据（用来判断显示路径door to door） */ 
             transportClausesId?: string;
@@ -4670,7 +4650,7 @@ Destination location：默认显示最近一次选中的信息； */
             totalVolumeString?: string;
          
             /* 路线详情 */ 
-            routeDetails?: RouteDetails;
+            routeDetails?: CSPRouteDetails;
          
             /* 事件分组，包括异常正常 */ 
             shipmentEventGroups?: any[];
@@ -4706,10 +4686,10 @@ Destination location：默认显示最近一次选中的信息； */
             specialInstructions?: string;
          
             /* 装货港 */ 
-            portOfLoading?: PubLocation;
+            portOfLoading?: CSPPubLocation;
          
             /* 卸货港 */ 
-            portOfDischarge?: PubLocation;
+            portOfDischarge?: CSPPubLocation;
          
             /* 预计到达时间 */ 
             eta?: string;
@@ -4726,7 +4706,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 为产品提供Shipment列表返回
      */
-    export class GetAllForProductOutput {
+    export class CSPGetAllForProductOutput {
         
          
             /* shipment业务号 */ 
@@ -4772,13 +4752,13 @@ Destination location：默认显示最近一次选中的信息； */
             poNumbers?: string;
          
             /* 起始港 */ 
-            originPort?: PubLocation;
+            originPort?: CSPPubLocation;
          
             /* 起始港 */ 
             originPortString?: string;
          
             /* 目的港 */ 
-            destinationPort?: PubLocation;
+            destinationPort?: CSPPubLocation;
          
             /* 目的港 */ 
             destinationPortString?: string;
@@ -4801,7 +4781,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 运单详情仅用于展示模型
      */
-    export class ShipmentDetailOutput {
+    export class CSPShipmentDetailOutput {
         
          
             /* 产品包装数 */ 
@@ -4855,13 +4835,13 @@ Destination location：默认显示最近一次选中的信息； */
             vessel?: string;
          
             /* 大船航次信息 */ 
-            vesselVoyage?: NameValueDto;
+            vesselVoyage?: CSPNameValueDto;
          
             /* 大船/航次 */ 
             preVessel?: string;
          
             /* 驳船航次信息 */ 
-            preVesselVoyage?: NameValueDto;
+            preVesselVoyage?: CSPNameValueDto;
          
             /* 运输条款 来自基础数据（用来判断显示路径door to door） */ 
             transportClausesId?: string;
@@ -4881,7 +4861,7 @@ Destination location：默认显示最近一次选中的信息； */
             totalVolumeString?: string;
          
             /* 路线详情 */ 
-            routeDetails?: RouteDetails;
+            routeDetails?: CSPRouteDetails;
          
             /* 事件分组，包括异常正常 */ 
             shipmentEventGroups?: any[];
@@ -4917,10 +4897,10 @@ Destination location：默认显示最近一次选中的信息； */
             specialInstructions?: string;
          
             /* 装货港 */ 
-            portOfLoading?: PubLocation;
+            portOfLoading?: CSPPubLocation;
          
             /* 卸货港 */ 
-            portOfDischarge?: PubLocation;
+            portOfDischarge?: CSPPubLocation;
          
             /* 预计到达时间 */ 
             eta?: string;
@@ -4937,7 +4917,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * Class ShipmentEventGroupDto.
      */
-    export class ShipmentEventGroupDto {
+    export class CSPShipmentEventGroupDto {
         
          
             /* 关联的 Shipment Id */ 
@@ -5001,7 +4981,7 @@ Destination location：默认显示最近一次选中的信息； */
     /**
      * 运输单基本信息
      */
-    export class CreateOrUpdateShipmentInput {
+    export class CSPCreateOrUpdateShipmentInput {
         
          
             /* 业务服务人员列表 */ 
@@ -5131,7 +5111,7 @@ Destination location：默认显示最近一次选中的信息； */
      * Class CloseShipmentInput.
 Implements the CO.Platform.Core.Application.Dto.CoEntityDto
      */
-    export class CloseShipmentInput {
+    export class CSPCloseShipmentInput {
         
          
             /* 是否由于还空柜已完成而关闭，如果 false 则是因为其它原因取消 Shipment */ 
@@ -5146,7 +5126,7 @@ Implements the CO.Platform.Core.Application.Dto.CoEntityDto
     /**
      * Class ShipmentOrderItemDto.
      */
-    export class ShipmentOrderItemDto {
+    export class CSPShipmentOrderItemDto {
         
          
             /* ShipmentId */ 
@@ -5206,7 +5186,7 @@ Implements the CO.Platform.Core.Application.Dto.CoEntityDto
     /**
      *  No Remark 
      */
-    export class ImportShipmentOrderItemsInput {
+    export class CSPImportShipmentOrderItemsInput {
         
          
             
@@ -5222,7 +5202,7 @@ Implements the CO.Platform.Core.Application.Dto.CoEntityDto
      * Class UpdatePostPortEstDateInput.
 Implements the CO.Platform.Core.Application.Dto.CoEntityDto
      */
-    export class UpdatePostPortEstDateInput {
+    export class CSPUpdatePostPortEstDateInput {
         
          
             /* 预计最终到达时间 */ 
@@ -5246,7 +5226,7 @@ Implements the CO.Platform.Core.Application.Dto.CoEntityDto
     /**
      * Shipment相关状态统计
      */
-    export class ShipmentsStatisticsOutput {
+    export class CSPShipmentsStatisticsOutput {
         
          
             
@@ -5258,7 +5238,7 @@ Implements the CO.Platform.Core.Application.Dto.CoEntityDto
     /**
      * 运输异常事件Dto
      */
-    export class ShipmentEventDto {
+    export class CSPShipmentEventDto {
         
          
             /* 事件代码 */ 
@@ -5316,7 +5296,7 @@ Implements the CO.Platform.Core.Application.Dto.CoEntityDto
     /**
      * shipment提单
      */
-    export class ShipmentItemDto {
+    export class CSPShipmentItemDto {
         
          
             /* 运输条款 来自基础数据 */ 
@@ -5435,7 +5415,7 @@ General format:
      * Class ShipmentItemContainerDto.
 Implements the CO.Platform.Core.Domain.Entities.CoEntity
      */
-    export class ShipmentItemContainerDto {
+    export class CSPShipmentItemContainerDto {
         
          
             /* 提单Id */ 
@@ -5474,7 +5454,7 @@ Implements the CO.Platform.Core.Domain.Entities.CoEntity
     /**
      * Class OrderItemInShipmentItemContainerDto.
      */
-    export class OrderItemInShipmentItemContainerDto {
+    export class CSPOrderItemInShipmentItemContainerDto {
         
          
             
@@ -5489,7 +5469,7 @@ Implements the CO.Platform.Core.Domain.Entities.CoEntity
     /**
      *  No Remark 
      */
-    export class ShipmentOrderItemInContainerDto {
+    export class CSPShipmentOrderItemInContainerDto {
         
          
             /* ShipmentId */ 
@@ -5561,7 +5541,7 @@ Implements the CO.Platform.Core.Domain.Entities.CoEntity
     /**
      * 分享链接
      */
-    export class ShipmentShareLinkDto {
+    export class CSPShipmentShareLinkDto {
         
          
             /* shipment详情 */ 
@@ -5597,7 +5577,7 @@ Implements the CO.Platform.Core.Domain.Entities.CoEntity
     /**
      * 分享详情页
      */
-    export class ShipmentShareLinkDetailOutput {
+    export class CSPShipmentShareLinkDetailOutput {
         
          
             /* 是否已过期 */ 
@@ -5628,13 +5608,13 @@ Implements the CO.Platform.Core.Domain.Entities.CoEntity
             freightMethodType?: number;
          
             /* 详情 */ 
-            details?: ShipmentDetailOutput;
+            details?: CSPShipmentDetailOutput;
          
             /* 事件时间轴 */ 
             eventTimeAxis?: any[];
          
             /* 路线详情 */ 
-            routeDetails?: RouteDetails;
+            routeDetails?: CSPRouteDetails;
         
         
     }

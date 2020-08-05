@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ShipmentEventDto, } from './csp.types';
+import { CSPShipmentEventDto, } from './csp.types';
 
 @BaseUrl('/csp/ShipmentEvent')
 @Injectable({ providedIn: 'root' })
-export class ShipmentEventService extends BaseApi {
+export class CSPShipmentEventService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -34,7 +34,7 @@ export class ShipmentEventService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:ShipmentEventDto
+        _req:CSPShipmentEventDto
 
     ): Observable<any> {
         return null as any

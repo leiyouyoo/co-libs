@@ -1,13 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-
-import { JobDto,PagedResultDto,EntityDto,CheckedRepeatForJobInput, } from './platform.types';
+import { PlatformJobDto,PlatformPagedResultDto,PlatformEntityDto,PlatformCheckedRepeatForJobInput, } from './platform.types';
 
 @BaseUrl('/platform/Job')
 @Injectable({ providedIn: 'root' })
-export class JobService extends BaseApi {
+export class PlatformJobService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -23,7 +21,7 @@ export class JobService extends BaseApi {
         @Payload
         _req: {id?:string,jobTypeId?:string,searchText?:string,isValid?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<JobDto>> {
+    ): Observable<PlatformPagedResultDto<PlatformJobDto>> {
         return null as any
     }
 
@@ -38,7 +36,7 @@ export class JobService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<JobDto> {
+    ): Observable<PlatformJobDto> {
         return null as any
     }
 
@@ -51,9 +49,9 @@ export class JobService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:JobDto
+        _req:PlatformJobDto
 
-    ): Observable<JobDto> {
+    ): Observable<PlatformJobDto> {
         return null as any
     }
 
@@ -66,9 +64,9 @@ export class JobService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:JobDto
+        _req:PlatformJobDto
 
-    ): Observable<JobDto> {
+    ): Observable<PlatformJobDto> {
         return null as any
     }
 
@@ -81,9 +79,9 @@ export class JobService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:JobDto
+        _req:PlatformJobDto
 
-    ): Observable<JobDto> {
+    ): Observable<PlatformJobDto> {
         return null as any
     }
 
@@ -111,7 +109,7 @@ export class JobService extends BaseApi {
     @POST('checkIsBindPosition')
     checkIsBindPosition(
         @Payload
-        _req:EntityDto<any>
+        _req:PlatformEntityDto<any>
 
     ): Observable<any> {
         return null as any
@@ -126,7 +124,7 @@ export class JobService extends BaseApi {
     @POST('recover')
     recover(
         @Payload
-        _req:EntityDto<any>
+        _req:PlatformEntityDto<any>
 
     ): Observable<any> {
         return null as any
@@ -141,7 +139,7 @@ export class JobService extends BaseApi {
     @POST('cancel')
     cancel(
         @Payload
-        _req:EntityDto<any>
+        _req:PlatformEntityDto<any>
 
     ): Observable<any> {
         return null as any
@@ -150,13 +148,13 @@ export class JobService extends BaseApi {
 
     /**
      * @param url /Platform/Job/CheckedRepeat
-     * 校验重复(职务只验证英文名称)
+     * 校验重复(职务验证英文名称,本地名称)
      */
 
     @POST('checkedRepeat')
     checkedRepeat(
         @Payload
-        _req:CheckedRepeatForJobInput
+        _req:PlatformCheckedRepeatForJobInput
 
     ): Observable<any> {
         return null as any

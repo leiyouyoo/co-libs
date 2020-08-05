@@ -4,7 +4,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import { PickerComponentBase } from '@co/cbc/core';
-import { CurrencyService } from '@co/cds';
+import { PUBCurrencyService } from '@co/cds';
 
 /**
  * 客户选择器控件
@@ -28,7 +28,7 @@ import { CurrencyService } from '@co/cds';
 export class CurrencyPickerComponent extends PickerComponentBase {
   //#region  构造函数
 
-  constructor(cdr: ChangeDetectorRef, private currencyService: CurrencyService) {
+  constructor(cdr: ChangeDetectorRef, private currencyService: PUBCurrencyService) {
     super(cdr);
 
     this.coLabelMember = 'name';

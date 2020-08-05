@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { CreateOrUpdateLocationInput,LocationListDto,PagedResultDto,ListResultDto,AssignUsersToLocationDto,AssignLocationsToUserDto,UnbindUsersLocationDto, } from './crm.types';
+import { CRMCreateOrUpdateLocationInput,CRMLocationListDto,CRMPagedResultDto,CRMListResultDto,CRMAssignUsersToLocationDto,CRMAssignLocationsToUserDto,CRMUnbindUsersLocationDto, } from './crm.types';
 
 @BaseUrl('/crm/Location')
 @Injectable({ providedIn: 'root' })
-export class LocationService extends BaseApi {
+export class CRMLocationService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class LocationService extends BaseApi {
         @Payload
         _req: {id?:string,partnerId?:string} 
 
-    ): Observable<CreateOrUpdateLocationInput> {
+    ): Observable<CRMCreateOrUpdateLocationInput> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class LocationService extends BaseApi {
         @Payload
         _req: {customerId?:string,partnerId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<LocationListDto>> {
+    ): Observable<CRMPagedResultDto<CRMLocationListDto>> {
         return null as any
     }
 
@@ -51,7 +51,7 @@ export class LocationService extends BaseApi {
         @Payload
         _req: {customerId?:string,partnerId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<ListResultDto<LocationListDto>> {
+    ): Observable<CRMListResultDto<CRMLocationListDto>> {
         return null as any
     }
 
@@ -66,7 +66,7 @@ export class LocationService extends BaseApi {
         @Payload
         _req: {contactId?:string} 
 
-    ): Observable<ListResultDto<LocationListDto>> {
+    ): Observable<CRMListResultDto<CRMLocationListDto>> {
         return null as any
     }
 
@@ -79,7 +79,7 @@ export class LocationService extends BaseApi {
     @POST('createCustomerLocation')
     createCustomerLocation(
         @Payload
-        _req:CreateOrUpdateLocationInput
+        _req:CRMCreateOrUpdateLocationInput
 
     ): Observable<any> {
         return null as any
@@ -94,7 +94,7 @@ export class LocationService extends BaseApi {
     @POST('createPartnerLocation')
     createPartnerLocation(
         @Payload
-        _req:CreateOrUpdateLocationInput
+        _req:CRMCreateOrUpdateLocationInput
 
     ): Observable<any> {
         return null as any
@@ -109,7 +109,7 @@ export class LocationService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:CreateOrUpdateLocationInput
+        _req:CRMCreateOrUpdateLocationInput
 
     ): Observable<any> {
         return null as any
@@ -124,7 +124,7 @@ export class LocationService extends BaseApi {
     @POST('assignUsersToLocation')
     assignUsersToLocation(
         @Payload
-        _req:AssignUsersToLocationDto
+        _req:CRMAssignUsersToLocationDto
 
     ): Observable<any> {
         return null as any
@@ -139,7 +139,7 @@ export class LocationService extends BaseApi {
     @POST('assignLocationsToUser')
     assignLocationsToUser(
         @Payload
-        _req:AssignLocationsToUserDto
+        _req:CRMAssignLocationsToUserDto
 
     ): Observable<any> {
         return null as any
@@ -154,7 +154,7 @@ export class LocationService extends BaseApi {
     @POST('unbindUserLocation')
     unbindUserLocation(
         @Payload
-        _req:UnbindUsersLocationDto
+        _req:CRMUnbindUsersLocationDto
 
     ): Observable<any> {
         return null as any

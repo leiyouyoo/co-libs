@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { NameValueDto,ListResultDto, } from './platform.types';
+import { PlatformNameValueDto,PlatformListResultDto, } from './platform.types';
 
 @BaseUrl('/platform/Timing')
 @Injectable({ providedIn: 'root' })
-export class TimingService extends BaseApi {
+export class PlatformTimingService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class TimingService extends BaseApi {
         @Payload
         _req: {defaultTimezoneScope?:number} 
 
-    ): Observable<ListResultDto<NameValueDto>> {
+    ): Observable<PlatformListResultDto<PlatformNameValueDto>> {
         return null as any
     }
 

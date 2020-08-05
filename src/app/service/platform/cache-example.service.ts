@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { CacheExampleDto,PagedResultDto,EntityHistorySnapshot, } from './platform.types';
+import { PlatformCacheExampleDto,PlatformPagedResultDto,PlatformEntityHistorySnapshot, } from './platform.types';
 
 @BaseUrl('/platform/CacheExample')
 @Injectable({ providedIn: 'root' })
-export class CacheExampleService extends BaseApi {
+export class PlatformCacheExampleService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class CacheExampleService extends BaseApi {
         @Payload
         _req: {name?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<CacheExampleDto>> {
+    ): Observable<PlatformPagedResultDto<PlatformCacheExampleDto>> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class CacheExampleService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<CacheExampleDto> {
+    ): Observable<PlatformCacheExampleDto> {
         return null as any
     }
 
@@ -49,9 +49,9 @@ export class CacheExampleService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:CacheExampleDto
+        _req:PlatformCacheExampleDto
 
-    ): Observable<CacheExampleDto> {
+    ): Observable<PlatformCacheExampleDto> {
         return null as any
     }
 
@@ -79,9 +79,9 @@ export class CacheExampleService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:CacheExampleDto
+        _req:PlatformCacheExampleDto
 
-    ): Observable<CacheExampleDto> {
+    ): Observable<PlatformCacheExampleDto> {
         return null as any
     }
 
@@ -96,7 +96,7 @@ export class CacheExampleService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<EntityHistorySnapshot> {
+    ): Observable<PlatformEntityHistorySnapshot> {
         return null as any
     }
 

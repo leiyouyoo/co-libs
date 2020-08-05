@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { DangerousGoodDto,ListResultDto, } from './csp.types';
+import { CSPDangerousGoodDto,CSPListResultDto, } from './csp.types';
 
 @BaseUrl('/csp/DangerousGood')
 @Injectable({ providedIn: 'root' })
-export class DangerousGoodService extends BaseApi {
+export class CSPDangerousGoodService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class DangerousGoodService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<DangerousGoodDto> {
+    ): Observable<CSPDangerousGoodDto> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class DangerousGoodService extends BaseApi {
         @Payload
         _req: {searchKeyword?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<ListResultDto<DangerousGoodDto>> {
+    ): Observable<CSPListResultDto<CSPDangerousGoodDto>> {
         return null as any
     }
 

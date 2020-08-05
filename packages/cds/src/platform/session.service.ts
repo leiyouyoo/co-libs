@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { UserConfigurationDto, } from './platform.types';
+import { PlatformUserConfigurationDto, } from './platform.types';
 
 @BaseUrl('/platform/Session')
 @Injectable({ providedIn: 'root' })
-export class SessionService extends BaseApi {
+export class PlatformSessionService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -19,9 +19,9 @@ export class SessionService extends BaseApi {
     @GET('getCurrentUserConfiguration')
     getCurrentUserConfiguration(
         @Payload
-        _req: {} 
+        _req: {client?:string} 
 
-    ): Observable<UserConfigurationDto> {
+    ): Observable<PlatformUserConfigurationDto> {
         return null as any
     }
 

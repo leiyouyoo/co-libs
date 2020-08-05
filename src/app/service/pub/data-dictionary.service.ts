@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { DataDictionaryDto,PagedResultDto,DataDictionaryCheckDto,ChangeDataDictionnaryStateInput,GetAllDataDictionaryForUiPickerInput,DataDictionaryUiPickerDto, } from './pub.types';
+import { PUBDataDictionaryDto,PUBPagedResultDto,PUBDataDictionaryCheckDto,PUBChangeDataDictionnaryStateInput,PUBGetAllDataDictionaryForUiPickerInput,PUBDataDictionaryUiPickerDto, } from './pub.types';
 
 @BaseUrl('/pub/DataDictionary')
 @Injectable({ providedIn: 'root' })
-export class DataDictionaryService extends BaseApi {
+export class PUBDataDictionaryService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class DataDictionaryService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<DataDictionaryDto> {
+    ): Observable<PUBDataDictionaryDto> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class DataDictionaryService extends BaseApi {
         @Payload
         _req: {code?:string,name?:string,typeId?:string,typeCode?:string,isValid?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<DataDictionaryDto>> {
+    ): Observable<PUBPagedResultDto<PUBDataDictionaryDto>> {
         return null as any
     }
 
@@ -49,7 +49,7 @@ export class DataDictionaryService extends BaseApi {
     @POST('check')
     check(
         @Payload
-        _req:DataDictionaryCheckDto
+        _req:PUBDataDictionaryCheckDto
 
     ): Observable<any> {
         return null as any
@@ -64,9 +64,9 @@ export class DataDictionaryService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:DataDictionaryDto
+        _req:PUBDataDictionaryDto
 
-    ): Observable<DataDictionaryDto> {
+    ): Observable<PUBDataDictionaryDto> {
         return null as any
     }
 
@@ -79,9 +79,9 @@ export class DataDictionaryService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:DataDictionaryDto
+        _req:PUBDataDictionaryDto
 
-    ): Observable<DataDictionaryDto> {
+    ): Observable<PUBDataDictionaryDto> {
         return null as any
     }
 
@@ -94,9 +94,9 @@ export class DataDictionaryService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:DataDictionaryDto
+        _req:PUBDataDictionaryDto
 
-    ): Observable<DataDictionaryDto> {
+    ): Observable<PUBDataDictionaryDto> {
         return null as any
     }
 
@@ -154,9 +154,9 @@ export class DataDictionaryService extends BaseApi {
     @POST('changeDataDictionnaryState')
     changeDataDictionnaryState(
         @Payload
-        _req:ChangeDataDictionnaryStateInput
+        _req:PUBChangeDataDictionnaryStateInput
 
-    ): Observable<DataDictionaryDto> {
+    ): Observable<PUBDataDictionaryDto> {
         return null as any
     }
 
@@ -169,9 +169,9 @@ export class DataDictionaryService extends BaseApi {
     @POST('getAllForUiPicker')
     getAllForUiPicker(
         @Payload
-        _req:GetAllDataDictionaryForUiPickerInput
+        _req:PUBGetAllDataDictionaryForUiPickerInput
 
-    ): Observable<PagedResultDto<DataDictionaryUiPickerDto>> {
+    ): Observable<PUBPagedResultDto<PUBDataDictionaryUiPickerDto>> {
         return null as any
     }
 

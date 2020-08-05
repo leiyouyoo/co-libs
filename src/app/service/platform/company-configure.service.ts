@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { CompanyConfigureDto,PagedResultDto,OrganizationUnitDto,ListResultDto, } from './platform.types';
+import { PlatformCompanyConfigureDto,PlatformPagedResultDto,PlatformOrganizationUnitDto,PlatformListResultDto, } from './platform.types';
 
 @BaseUrl('/platform/CompanyConfigure')
 @Injectable({ providedIn: 'root' })
-export class CompanyConfigureService extends BaseApi {
+export class PlatformCompanyConfigureService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class CompanyConfigureService extends BaseApi {
         @Payload
         _req: {isActive?:boolean} 
 
-    ): Observable<PagedResultDto<CompanyConfigureDto>> {
+    ): Observable<PlatformPagedResultDto<PlatformCompanyConfigureDto>> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class CompanyConfigureService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<CompanyConfigureDto> {
+    ): Observable<PlatformCompanyConfigureDto> {
         return null as any
     }
 
@@ -51,7 +51,7 @@ export class CompanyConfigureService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<CompanyConfigureDto> {
+    ): Observable<PlatformCompanyConfigureDto> {
         return null as any
     }
 
@@ -66,7 +66,7 @@ export class CompanyConfigureService extends BaseApi {
         @Payload
         _req: {userId?:number} 
 
-    ): Observable<CompanyConfigureDto> {
+    ): Observable<PlatformCompanyConfigureDto> {
         return null as any
     }
 
@@ -79,9 +79,9 @@ export class CompanyConfigureService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:CompanyConfigureDto
+        _req:PlatformCompanyConfigureDto
 
-    ): Observable<CompanyConfigureDto> {
+    ): Observable<PlatformCompanyConfigureDto> {
         return null as any
     }
 
@@ -94,9 +94,9 @@ export class CompanyConfigureService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:CompanyConfigureDto
+        _req:PlatformCompanyConfigureDto
 
-    ): Observable<CompanyConfigureDto> {
+    ): Observable<PlatformCompanyConfigureDto> {
         return null as any
     }
 
@@ -109,9 +109,9 @@ export class CompanyConfigureService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:CompanyConfigureDto
+        _req:PlatformCompanyConfigureDto
 
-    ): Observable<CompanyConfigureDto> {
+    ): Observable<PlatformCompanyConfigureDto> {
         return null as any
     }
 
@@ -156,7 +156,7 @@ export class CompanyConfigureService extends BaseApi {
         @Payload
         _req: {isActive?:boolean,placeId?:string,locationId?:string} 
 
-    ): Observable<ListResultDto<OrganizationUnitDto>> {
+    ): Observable<PlatformListResultDto<PlatformOrganizationUnitDto>> {
         return null as any
     }
 

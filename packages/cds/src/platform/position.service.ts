@@ -1,13 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-
-import { PositionDto,PagedResultDto,PositionAndOrganizationUnitDto,CreatePositionDto,ResMsgDto,UpdatePositionDto,AddUsersToPositionInput,SetUserDefaultPositionInput,IsInPositionInput,EntityDto, } from './platform.types';
+import { PlatformPositionDto,PlatformPagedResultDto,PlatformPositionAndOrganizationUnitDto,PlatformCreatePositionDto,PlatformResMsgDto,PlatformUpdatePositionDto,PlatformAddUsersToPositionInput,PlatformSetUserDefaultPositionInput,PlatformIsInPositionInput,PlatformEntityDto, } from './platform.types';
 
 @BaseUrl('/platform/Position')
 @Injectable({ providedIn: 'root' })
-export class PositionService extends BaseApi {
+export class PlatformPositionService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -23,7 +21,7 @@ export class PositionService extends BaseApi {
         @Payload
         _req: {organizationUnitId?:string,parentId?:string,searchText?:string,isRecursion?:boolean,isValid?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<PositionDto>> {
+    ): Observable<PlatformPagedResultDto<PlatformPositionDto>> {
         return null as any
     }
 
@@ -38,7 +36,7 @@ export class PositionService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<PositionDto> {
+    ): Observable<PlatformPositionDto> {
         return null as any
     }
 
@@ -53,7 +51,7 @@ export class PositionService extends BaseApi {
         @Payload
         _req: {userId?:number} 
 
-    ): Observable<PositionAndOrganizationUnitDto> {
+    ): Observable<PlatformPositionAndOrganizationUnitDto> {
         return null as any
     }
 
@@ -66,9 +64,9 @@ export class PositionService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:PositionDto
+        _req:PlatformPositionDto
 
-    ): Observable<PositionDto> {
+    ): Observable<PlatformPositionDto> {
         return null as any
     }
 
@@ -81,9 +79,9 @@ export class PositionService extends BaseApi {
     @POST('createAsync')
     createAsync(
         @Payload
-        _req:CreatePositionDto
+        _req:PlatformCreatePositionDto
 
-    ): Observable<ResMsgDto> {
+    ): Observable<PlatformResMsgDto> {
         return null as any
     }
 
@@ -96,9 +94,9 @@ export class PositionService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:PositionDto
+        _req:PlatformPositionDto
 
-    ): Observable<PositionDto> {
+    ): Observable<PlatformPositionDto> {
         return null as any
     }
 
@@ -111,9 +109,9 @@ export class PositionService extends BaseApi {
     @PUT('updateAsync')
     updateAsync(
         @Payload
-        _req:UpdatePositionDto
+        _req:PlatformUpdatePositionDto
 
-    ): Observable<ResMsgDto> {
+    ): Observable<PlatformResMsgDto> {
         return null as any
     }
 
@@ -126,9 +124,9 @@ export class PositionService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:PositionDto
+        _req:PlatformPositionDto
 
-    ): Observable<PositionDto> {
+    ): Observable<PlatformPositionDto> {
         return null as any
     }
 
@@ -156,7 +154,7 @@ export class PositionService extends BaseApi {
     @POST('addUsersToPosition')
     addUsersToPosition(
         @Payload
-        _req:AddUsersToPositionInput
+        _req:PlatformAddUsersToPositionInput
 
     ): Observable<any> {
         return null as any
@@ -171,7 +169,7 @@ export class PositionService extends BaseApi {
     @POST('setUserDefaultPosition')
     setUserDefaultPosition(
         @Payload
-        _req:SetUserDefaultPositionInput
+        _req:PlatformSetUserDefaultPositionInput
 
     ): Observable<any> {
         return null as any
@@ -231,7 +229,7 @@ export class PositionService extends BaseApi {
     @POST('isUserInPosition')
     isUserInPosition(
         @Payload
-        _req:IsInPositionInput
+        _req:PlatformIsInPositionInput
 
     ): Observable<any> {
         return null as any
@@ -261,7 +259,7 @@ export class PositionService extends BaseApi {
     @POST('recover')
     recover(
         @Payload
-        _req:EntityDto<any>
+        _req:PlatformEntityDto<any>
 
     ): Observable<any> {
         return null as any
@@ -276,7 +274,7 @@ export class PositionService extends BaseApi {
     @POST('cancel')
     cancel(
         @Payload
-        _req:EntityDto<any>
+        _req:PlatformEntityDto<any>
 
     ): Observable<any> {
         return null as any

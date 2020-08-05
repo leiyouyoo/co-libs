@@ -5,7 +5,7 @@ import {  } from './fcm.types';
 
 @BaseUrl('/fcm/ShipmentEvent')
 @Injectable({ providedIn: 'root' })
-export class ShipmentEventService extends BaseApi {
+export class FCMShipmentEventService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -27,14 +27,14 @@ export class ShipmentEventService extends BaseApi {
 
 
     /**
-     * @param url /FCM/ShipmentEvent/GetEventsAsync
-     * 获取操作事件
+     * @param url /FCM/ShipmentEvent/BatchCreateOrUpdateForIcp
+     * ICP新增或更新操作事件接口
      */
 
-    @GET('getEventsAsync')
-    getEventsAsync(
+    @POST('batchCreateOrUpdateForIcp')
+    batchCreateOrUpdateForIcp(
         @Payload
-        _req: {id?:string} 
+        _req: {} 
 
     ): Observable<any> {
         return null as any
@@ -42,14 +42,14 @@ export class ShipmentEventService extends BaseApi {
 
 
     /**
-     * @param url /FCM/ShipmentEvent/GetEventCodes
-     * 查看eventcode事件码对应的中英文
+     * @param url /FCM/ShipmentEvent/GetEventsAsync
+     * 获取操作事件
      */
 
-    @GET('getEventCodes')
-    getEventCodes(
+    @GET('getEventsAsync')
+    getEventsAsync(
         @Payload
-        _req: {} 
+        _req: {deliveryId?:string,shipmentId?:string} 
 
     ): Observable<any> {
         return null as any

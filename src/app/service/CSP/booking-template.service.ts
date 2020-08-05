@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { BookingTemplateOutput,PagedResultDto,BookingTemplateDto,BookingTemplateCheckInputDto, } from './csp.types';
+import { CSPBookingTemplateOutput,CSPPagedResultDto,CSPBookingTemplateDto,CSPBookingTemplateCheckInputDto, } from './csp.types';
 
 @BaseUrl('/csp/BookingTemplate')
 @Injectable({ providedIn: 'root' })
-export class BookingTemplateService extends BaseApi {
+export class CSPBookingTemplateService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class BookingTemplateService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<BookingTemplateOutput> {
+    ): Observable<CSPBookingTemplateOutput> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class BookingTemplateService extends BaseApi {
         @Payload
         _req: {sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<BookingTemplateOutput>> {
+    ): Observable<CSPPagedResultDto<CSPBookingTemplateOutput>> {
         return null as any
     }
 
@@ -49,9 +49,9 @@ export class BookingTemplateService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:BookingTemplateDto
+        _req:CSPBookingTemplateDto
 
-    ): Observable<BookingTemplateDto> {
+    ): Observable<CSPBookingTemplateDto> {
         return null as any
     }
 
@@ -64,9 +64,9 @@ export class BookingTemplateService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:BookingTemplateDto
+        _req:CSPBookingTemplateDto
 
-    ): Observable<BookingTemplateDto> {
+    ): Observable<CSPBookingTemplateDto> {
         return null as any
     }
 
@@ -79,7 +79,7 @@ export class BookingTemplateService extends BaseApi {
     @POST('check')
     check(
         @Payload
-        _req:BookingTemplateCheckInputDto
+        _req:CSPBookingTemplateCheckInputDto
 
     ): Observable<any> {
         return null as any

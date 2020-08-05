@@ -5,7 +5,7 @@ import {  } from './crm.types';
 
 @BaseUrl('/crm/CustomerTask')
 @Injectable({ providedIn: 'root' })
-export class CustomerTaskService extends BaseApi {
+export class CRMCustomerTaskService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }

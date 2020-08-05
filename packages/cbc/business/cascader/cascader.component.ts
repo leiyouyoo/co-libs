@@ -11,7 +11,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { OrganizationUnitService } from '@co/cds';
+import { PlatformOrganizationUnitService } from '@co/cds';
 import { NzCascaderOption, NzSafeAny, OnChangeType, OnTouchedType } from 'ng-zorro-antd';
 
 /**
@@ -44,7 +44,7 @@ export class CoCascaderComponent implements OnInit, ControlValueAccessor {
   onChange: OnChangeType = () => {};
   onTouched: OnTouchedType = () => {};
 
-  constructor(private organizationUnitService: OrganizationUnitService) {} // private organizationUnitService: OrganizationUnitService
+  constructor(private organizationUnitService: PlatformOrganizationUnitService) {} // private organizationUnitService: OrganizationUnitService
 
   ngOnInit(): void {
     this.getData();

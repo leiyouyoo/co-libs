@@ -5,7 +5,7 @@ import {  } from './storage.types';
 
 @BaseUrl('/storage/ICPExcel')
 @Injectable({ providedIn: 'root' })
-export class ICPExcelService extends BaseApi {
+export class StorageICPExcelService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }

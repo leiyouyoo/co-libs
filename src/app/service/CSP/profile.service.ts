@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { CurrentUserProfileEditDto, } from './csp.types';
+import { CSPCurrentUserProfileEditDto, } from './csp.types';
 
 @BaseUrl('/csp/Profile')
 @Injectable({ providedIn: 'root' })
-export class ProfileService extends BaseApi {
+export class CSPProfileService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class ProfileService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<CurrentUserProfileEditDto> {
+    ): Observable<CSPCurrentUserProfileEditDto> {
         return null as any
     }
 
@@ -34,7 +34,7 @@ export class ProfileService extends BaseApi {
     @PUT('updateCurrentUserProfile')
     updateCurrentUserProfile(
         @Payload
-        _req:CurrentUserProfileEditDto
+        _req:CSPCurrentUserProfileEditDto
 
     ): Observable<any> {
         return null as any

@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { UploadResultDto,GetFileInfoDto,PagedResultDto,ChunkUploadResultDto, } from './storage.types';
+import { StorageUploadResultDto,StorageGetFileInfoDto,StoragePagedResultDto,StorageChunkUploadResultDto, } from './storage.types';
 
 @BaseUrl('/storage/File')
 @Injectable({ providedIn: 'root' })
-export class FileService extends BaseApi {
+export class StorageFileService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class FileService extends BaseApi {
         @Payload
         _req: {file?:File,fileName?:string} 
 
-    ): Observable<UploadResultDto> {
+    ): Observable<StorageUploadResultDto> {
         return null as any
     }
 
@@ -36,14 +36,14 @@ export class FileService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<GetFileInfoDto> {
+    ): Observable<StorageGetFileInfoDto> {
         return null as any
     }
 
 
     /**
      * @param url /Storage/File/GetFileInfos
-     * 
+     * 批量获取文件详情
      */
 
     @GET('getFileInfos')
@@ -51,7 +51,7 @@ export class FileService extends BaseApi {
         @Payload
         _req: {ids?:any[]} 
 
-    ): Observable<PagedResultDto<GetFileInfoDto>> {
+    ): Observable<StoragePagedResultDto<StorageGetFileInfoDto>> {
         return null as any
     }
 
@@ -66,7 +66,7 @@ export class FileService extends BaseApi {
         @Payload
         _req: {lastModified?:string,totalChunk?:number,chunkIndex?:number,file?:File,fileName?:string} 
 
-    ): Observable<ChunkUploadResultDto> {
+    ): Observable<StorageChunkUploadResultDto> {
         return null as any
     }
 
@@ -103,7 +103,7 @@ export class FileService extends BaseApi {
 
     /**
      * @param url /Storage/File/Delete
-     * 
+     * 删除物理文件
      */
 
     @DELETE('delete')
@@ -118,7 +118,7 @@ export class FileService extends BaseApi {
 
     /**
      * @param url /Storage/File/BulkDelete
-     * 
+     * 批量删除
      */
 
     @POST('bulkDelete')

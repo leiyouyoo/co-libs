@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { OrganizationUnitDto,ListResultDto,UserInfo,PagedResultDto,IMContactGroupDto,ContactUserDto,OrganizationUnitUserDto,MoveOrganizationUnitInput, } from './platform.types';
+import { PlatformOrganizationUnitDto,PlatformListResultDto,PlatformUserInfo,PlatformPagedResultDto,PlatformIMContactGroupDto,PlatformContactUserDto,PlatformOrganizationUnitUserDto,PlatformMoveOrganizationUnitInput, } from './platform.types';
 
 @BaseUrl('/platform/OrganizationUnit')
 @Injectable({ providedIn: 'root' })
-export class OrganizationUnitService extends BaseApi {
+export class PlatformOrganizationUnitService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,14 +21,14 @@ export class OrganizationUnitService extends BaseApi {
         @Payload
         _req: {userId?:number} 
 
-    ): Observable<ListResultDto<OrganizationUnitDto>> {
+    ): Observable<PlatformListResultDto<PlatformOrganizationUnitDto>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/OrganizationUnit/GetGroupOrganizationUnits
-     * 
+     * 获取所有组织机构（分层级）
      */
 
     @GET('getGroupOrganizationUnits')
@@ -36,7 +36,7 @@ export class OrganizationUnitService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<ListResultDto<OrganizationUnitDto>> {
+    ): Observable<PlatformListResultDto<PlatformOrganizationUnitDto>> {
         return null as any
     }
 
@@ -51,14 +51,14 @@ export class OrganizationUnitService extends BaseApi {
         @Payload
         _req: {searchText?:string,organizationUnitId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<UserInfo>> {
+    ): Observable<PlatformPagedResultDto<PlatformUserInfo>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/OrganizationUnit/GetSaleUsers
-     * 
+     * 获取业务员
      */
 
     @GET('getSaleUsers')
@@ -66,14 +66,29 @@ export class OrganizationUnitService extends BaseApi {
         @Payload
         _req: {searchText?:string,isOwnDepartment?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<UserInfo>> {
+    ): Observable<PlatformPagedResultDto<PlatformUserInfo>> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Platform/OrganizationUnit/GetCustomerServiceUsers
+     * 获取客服人员
+     */
+
+    @GET('getCustomerServiceUsers')
+    getCustomerServiceUsers(
+        @Payload
+        _req: {searchText?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
+
+    ): Observable<PlatformPagedResultDto<PlatformUserInfo>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/OrganizationUnit/GetUsersAndOrganizationUnit
-     * 
+     * 获取组织机构下的用户带上组织机构、职位信息（用于IM ）
      */
 
     @GET('getUsersAndOrganizationUnit')
@@ -81,14 +96,14 @@ export class OrganizationUnitService extends BaseApi {
         @Payload
         _req: {input?:object} 
 
-    ): Observable<ListResultDto<IMContactGroupDto>> {
+    ): Observable<PlatformListResultDto<PlatformIMContactGroupDto>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/OrganizationUnit/GetUserDetail
-     * 
+     * 获取 用户详情带职位、组织机构
      */
 
     @GET('getUserDetail')
@@ -96,14 +111,14 @@ export class OrganizationUnitService extends BaseApi {
         @Payload
         _req: {userId?:number} 
 
-    ): Observable<ContactUserDto> {
+    ): Observable<PlatformContactUserDto> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/OrganizationUnit/GetOrganizationUnitUsers
-     * 
+     * 获取组织机构下的用户
      */
 
     @GET('getOrganizationUnitUsers')
@@ -111,14 +126,14 @@ export class OrganizationUnitService extends BaseApi {
         @Payload
         _req: {organizationUnitId?:string,organizationUnitName?:string} 
 
-    ): Observable<ListResultDto<OrganizationUnitUserDto>> {
+    ): Observable<PlatformListResultDto<PlatformOrganizationUnitUserDto>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/OrganizationUnit/GetPositionUserDetail
-     * 
+     * 获取用户详情
      */
 
     @GET('getPositionUserDetail')
@@ -126,7 +141,7 @@ export class OrganizationUnitService extends BaseApi {
         @Payload
         _req: {userId?:number} 
 
-    ): Observable<OrganizationUnitUserDto> {
+    ): Observable<PlatformOrganizationUnitUserDto> {
         return null as any
     }
 
@@ -141,14 +156,14 @@ export class OrganizationUnitService extends BaseApi {
         @Payload
         _req: {parentId?:string,isRecursion?:boolean,type?:number} 
 
-    ): Observable<ListResultDto<OrganizationUnitDto>> {
+    ): Observable<PlatformListResultDto<PlatformOrganizationUnitDto>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/OrganizationUnit/GetAllListAsync
-     * 
+     * 获取全部组织节点集合
      */
 
     @GET('getAllListAsync')
@@ -156,7 +171,7 @@ export class OrganizationUnitService extends BaseApi {
         @Payload
         _req: {searchText?:string} 
 
-    ): Observable<ListResultDto<OrganizationUnitDto>> {
+    ): Observable<PlatformListResultDto<PlatformOrganizationUnitDto>> {
         return null as any
     }
 
@@ -169,9 +184,9 @@ export class OrganizationUnitService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:OrganizationUnitDto
+        _req:PlatformOrganizationUnitDto
 
-    ): Observable<OrganizationUnitDto> {
+    ): Observable<PlatformOrganizationUnitDto> {
         return null as any
     }
 
@@ -184,7 +199,7 @@ export class OrganizationUnitService extends BaseApi {
     @POST('move')
     move(
         @Payload
-        _req:MoveOrganizationUnitInput
+        _req:PlatformMoveOrganizationUnitInput
 
     ): Observable<any> {
         return null as any

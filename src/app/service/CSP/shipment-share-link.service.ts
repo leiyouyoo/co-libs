@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ShipmentShareLinkDto,PagedResultDto,CoEntityDto,ShipmentShareLinkDetailOutput, } from './csp.types';
+import { CSPShipmentShareLinkDto,CSPPagedResultDto,CSPCoEntityDto,CSPShipmentShareLinkDetailOutput, } from './csp.types';
 
 @BaseUrl('/csp/ShipmentShareLink')
 @Injectable({ providedIn: 'root' })
-export class ShipmentShareLinkService extends BaseApi {
+export class CSPShipmentShareLinkService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -19,9 +19,9 @@ export class ShipmentShareLinkService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:ShipmentShareLinkDto
+        _req:CSPShipmentShareLinkDto
 
-    ): Observable<ShipmentShareLinkDto> {
+    ): Observable<CSPShipmentShareLinkDto> {
         return null as any
     }
 
@@ -34,9 +34,9 @@ export class ShipmentShareLinkService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:ShipmentShareLinkDto
+        _req:CSPShipmentShareLinkDto
 
-    ): Observable<ShipmentShareLinkDto> {
+    ): Observable<CSPShipmentShareLinkDto> {
         return null as any
     }
 
@@ -51,7 +51,7 @@ export class ShipmentShareLinkService extends BaseApi {
         @Payload
         _req: {shipmentId:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<ShipmentShareLinkDto>> {
+    ): Observable<CSPPagedResultDto<CSPShipmentShareLinkDto>> {
         return null as any
     }
 
@@ -64,9 +64,9 @@ export class ShipmentShareLinkService extends BaseApi {
     @POST('cancel')
     cancel(
         @Payload
-        _req:CoEntityDto<any>
+        _req:CSPCoEntityDto<any>
 
-    ): Observable<ShipmentShareLinkDto> {
+    ): Observable<CSPShipmentShareLinkDto> {
         return null as any
     }
 
@@ -81,7 +81,7 @@ export class ShipmentShareLinkService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<ShipmentShareLinkDetailOutput> {
+    ): Observable<CSPShipmentShareLinkDetailOutput> {
         return null as any
     }
 

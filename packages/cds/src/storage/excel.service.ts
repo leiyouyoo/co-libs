@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { FileDto, } from './storage.types';
+import { StorageFileDto, } from './storage.types';
 
 @BaseUrl('/storage/Excel')
 @Injectable({ providedIn: 'root' })
-export class ExcelService extends BaseApi {
+export class StorageExcelService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class ExcelService extends BaseApi {
         @Payload
         _req: {sheetName?:string,templateName?:string,headers?:any[],apiTypes?:number,url:string,parametersJsonStr?:string,isBackgroundJob?:boolean} 
 
-    ): Observable<FileDto> {
+    ): Observable<StorageFileDto> {
         return null as any
     }
 

@@ -1,8 +1,38 @@
  
     /**
+     * 用于表格设置的 Dto
+     */
+    export class FCMDataTableSettingDto {
+        
+         
+            /* 针对的数据表格
+0 = PreShipment
+1 = Shipment
+2 = DeliveryInfo */ 
+            type?: number;
+         
+            /* 表格设置值，Json 字符串 */ 
+            value?: string;
+        
+        
+    }
+ 
+    /**
      *  No Remark 
      */
-    export class QuantityDto {
+    export class FCMListResultDto<T> {
+        
+         
+            
+            items: T[];
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class FCMQuantityDto {
         
          
             /* 值 */ 
@@ -19,8 +49,11 @@
     /**
      *  No Remark 
      */
-    export class ShipmentDto {
+    export class FCMShipmentDto {
         
+         
+            
+            customerId?: string;
          
             
             customerBookingId?: string;
@@ -113,16 +146,19 @@
             commodity?: string;
          
             /* 装运的产品总数 */ 
-            totalQuantity?: QuantityDto;
+            totalQuantity?: FCMQuantityDto;
          
             /* 装运的产品总重量 */ 
-            totalWeight?: QuantityDto;
+            totalWeight?: FCMQuantityDto;
          
             /* 装运的产品总体积 */ 
-            totalVolume?: QuantityDto;
+            totalVolume?: FCMQuantityDto;
          
             /* 备注  todo:暂时不知道哪个 */ 
             remark?: string;
+         
+            
+            legs?: any[];
          
             
             id?: string;
@@ -133,7 +169,7 @@
     /**
      * 预报单查询模型
      */
-    export class PreShipmentListInput {
+    export class FCMGetPreShipmentListInput {
         
          
             /* 是否是CSP的客户创建的 */ 
@@ -216,7 +252,7 @@
     /**
      * shipment列表模型
      */
-    export class PreShipmentListItemDto {
+    export class FCMPreShipmentListItemDto {
         
          
             /* 运单编号 */ 
@@ -288,13 +324,13 @@
             commodity?: string;
          
             /* 总数量 */ 
-            quantity?: QuantityDto;
+            quantity?: FCMQuantityDto;
          
             /* 总重量 */ 
-            weight?: QuantityDto;
+            weight?: FCMQuantityDto;
          
             /* 总体积 */ 
-            volume?: QuantityDto;
+            volume?: FCMQuantityDto;
          
             /* 渠道 */ 
             channel?: string;
@@ -326,7 +362,7 @@
     /**
      *  No Remark 
      */
-    export class PagedResultDto<T> {
+    export class FCMPagedResultDto<T> {
         
          
             
@@ -341,7 +377,7 @@
     /**
      * booking相关信息
      */
-    export class BookingDetailDto {
+    export class FCMBookingDetailDto {
         
          
             /* 出货口岸 */ 
@@ -402,7 +438,7 @@
     /**
      *  No Remark 
      */
-    export class OceanShipmentDetailDto {
+    export class FCMOceanShipmentDetailDto {
         
          
             /* SO 号，船东订舱号 */ 
@@ -414,7 +450,7 @@
     /**
      * FBA信息Dto  （受理才填）
      */
-    export class FbaShipmentDetailDto {
+    export class FCMFbaShipmentDetailDto {
         
          
             /* 快递单号 */ 
@@ -458,7 +494,7 @@
     /**
      * 创建或编辑shipment
      */
-    export class CreateOrUpdateShipmentInput {
+    export class FCMCreateOrUpdateShipmentInput {
         
          
             /* 主客户Id */ 
@@ -475,8 +511,29 @@
             /* 客户名（无需提交，用于编辑显示） */ 
             customer?: string;
          
+            /* 客户类型（无需提交，用于编辑显示）
+1 = Carrier
+2 = AirLine
+3 = Forwarding
+4 = DirectClient
+5 = Trucker
+6 = CustomsBroker
+7 = WareHouse
+8 = Storage
+9 = RailWay
+10 = Express
+11 = Terminal
+12 = Other */ 
+            customerType?: number;
+         
             /* 业务员id */ 
             serviceUserId?: number;
+         
+            /* 客服人员 */ 
+            customerServiceUserId?: number;
+         
+            
+            customerServiceUser?: string;
          
             /* 承运人（代理）客户Id，如 Cityocean ... */ 
             agentCustomerId?: string;
@@ -513,13 +570,13 @@
             customsClearanceCustomerId?: string;
          
             /* booking相关信息 */ 
-            booking?: BookingDetailDto;
+            booking?: FCMBookingDetailDto;
          
             /* 海运业务明细 */ 
-            oceanShipment?: OceanShipmentDetailDto;
+            oceanShipment?: FCMOceanShipmentDetailDto;
          
             /* FBA信息 */ 
-            fbaShipment?: FbaShipmentDetailDto;
+            fbaShipment?: FCMFbaShipmentDetailDto;
          
             /* Shipment 中的产品信息 */ 
             lineItems?: any[];
@@ -536,7 +593,7 @@
     /**
      * 入仓模型
      */
-    export class WarehousingDto {
+    export class FCMWarehousingDto {
         
          
             /* 入仓时间 */ 
@@ -551,7 +608,7 @@
     /**
      * 用于作废或取消作废多个Shipment的输入参数
      */
-    export class ChangeShipmentInvalidStatusInput {
+    export class FCMChangeShipmentInvalidStatusInput {
         
          
             /* 需要变更的 ShipmentId 集合 */ 
@@ -566,7 +623,7 @@
     /**
      *  No Remark 
      */
-    export class SetShipmentPostAgentCustomerInput {
+    export class FCMSetPostAgentCustomerInput {
         
          
             /* 设置后段代理的 ShipmentId 集合 */ 
@@ -581,7 +638,7 @@
     /**
      *  No Remark 
      */
-    export class GetShipmentListInput {
+    export class FCMGetShipmentListInput {
         
          
             /* 搜索关键字 */ 
@@ -598,6 +655,9 @@
          
             /* 结束时间 */ 
             endTime?: string;
+         
+            /* 是否作废，null 时获取全部，false 时只获取未作废，true 时只获取已作废 */ 
+            isInvalid?: boolean;
          
             
             ids?: any[];
@@ -620,7 +680,7 @@
     /**
      * 平铺的event事件时间
      */
-    export class ShipmentEventDetailDto {
+    export class FCMShipmentEventDetailDto {
         
          
             /* 订单预受理 */ 
@@ -671,6 +731,9 @@
             /* FBA预约日期 */ 
             fbaAppointmentDate?: string;
          
+            /* FBA实际送货日期 */ 
+            fbaActualDeliveryDate?: string;
+         
             /* POD提供日期 */ 
             podDate?: string;
          
@@ -683,7 +746,7 @@
     /**
      *  No Remark 
      */
-    export class ShipmentListItemDto {
+    export class FCMShipmentListItemDto {
         
          
             /* 操作状态
@@ -824,7 +887,7 @@
             events?: any[];
          
             /* 事件平铺时间Dto */ 
-            eventDetail?: ShipmentEventDetailDto;
+            eventDetail?: FCMShipmentEventDetailDto;
          
             /* 运单编号 */ 
             shipmentNo?: string;
@@ -895,13 +958,13 @@
             commodity?: string;
          
             /* 总数量 */ 
-            quantity?: QuantityDto;
+            quantity?: FCMQuantityDto;
          
             /* 总重量 */ 
-            weight?: QuantityDto;
+            weight?: FCMQuantityDto;
          
             /* 总体积 */ 
-            volume?: QuantityDto;
+            volume?: FCMQuantityDto;
          
             /* 渠道 */ 
             channel?: string;
@@ -933,7 +996,7 @@
     /**
      *  No Remark 
      */
-    export class GetDeliveryInfoListInput {
+    export class FCMGetDeliveryInfoListInput {
         
          
             /* 搜索关键字 */ 
@@ -947,6 +1010,9 @@
          
             /* 结束时间 */ 
             endTime?: string;
+         
+            /* 是否作废，null 时获取全部，false 时只获取未作废，true 时只获取已作废 */ 
+            isInvalid?: boolean;
          
             
             ids?: any[];
@@ -969,37 +1035,7 @@
     /**
      *  No Remark 
      */
-    export class AddressDto {
-        
-         
-            
-            id?: string;
-         
-            
-            isForeign?: boolean;
-         
-            
-            name?: string;
-         
-            /* 城市 */ 
-            city?: string;
-         
-            /* 省/洲 */ 
-            province?: string;
-         
-            /* 国家 */ 
-            country?: string;
-         
-            /* 如果是港口，则为UN/LOCODE（联合国贸易和运输地点代码） */ 
-            unlocode?: string;
-        
-        
-    }
- 
-    /**
-     *  No Remark 
-     */
-    export class DeliveryInfoListItemDto {
+    export class FCMDeliveryInfoListItemDto {
         
          
             
@@ -1008,8 +1044,38 @@
             /* 清关行客户Id */ 
             customsClearanceCustomerId?: string;
          
-            /* 配送地址 */ 
-            address?: AddressDto;
+            /* 预计时效 */ 
+            estimatedTime?: string;
+         
+            /* 清关行客户 */ 
+            customsClearanceCustomerName?: string;
+         
+            /* 目的地送货地址(item里取) */ 
+            destinationAddress?: string;
+         
+            /* 自定义引用id（取item所有斜杠/分隔） */ 
+            referenceId?: string;
+         
+            /* FBA编号组（取item所有斜杠/分隔） */ 
+            fbano?: string;
+         
+            /* 数量 */ 
+            quantity?: any[];
+         
+            /* 重量 */ 
+            weight?: any[];
+         
+            /* 体积 */ 
+            volume?: any[];
+         
+            /* 拼接后的件数显示 */ 
+            quantityString?: string;
+         
+            /* 拼接后的重量显示 */ 
+            weightString?: string;
+         
+            /* 拼接后的体积显示 */ 
+            volumeString?: string;
          
             /* 操作状态
 0 = NoSet
@@ -1033,9 +1099,6 @@
             /* 自定义引用编号 */ 
             referenceNo?: string;
          
-            /* 自定义引用id */ 
-            referenceId?: string;
-         
             /* 美国海关使用的过境编号 */ 
             itNo?: string;
          
@@ -1047,9 +1110,6 @@
          
             /* 报关行客户Id */ 
             customsCustomerName?: string;
-         
-            /* 清关行客户 */ 
-            customsClearanceCustomerName?: string;
          
             /* 运输条款，port_to_door、port_to_port、door_to_door、door_to_port ... */ 
             freightType?: string;
@@ -1149,7 +1209,7 @@
             events?: any[];
          
             /* 事件平铺时间Dto */ 
-            eventDetail?: ShipmentEventDetailDto;
+            eventDetail?: FCMShipmentEventDetailDto;
          
             /* 运单编号 */ 
             shipmentNo?: string;
@@ -1189,9 +1249,6 @@
             /* 联系人 */ 
             contactName?: string;
          
-            /* 目的地送货地址(item里取) */ 
-            destinationAddress?: string;
-         
             /* 交货方式, 客户自送、Cityocean上门取件
 0 = NotSet
 1 = DeliveryGoodsByMyself
@@ -1219,15 +1276,6 @@
             /* 品名 */ 
             commodity?: string;
          
-            /* 总数量 */ 
-            quantity?: QuantityDto;
-         
-            /* 总重量 */ 
-            weight?: QuantityDto;
-         
-            /* 总体积 */ 
-            volume?: QuantityDto;
-         
             /* 渠道 */ 
             channel?: string;
          
@@ -1236,9 +1284,6 @@
          
             /* 操作口岸 */ 
             serviceCompany?: string;
-         
-            /* FBA编号组（取item所有斜杠/分隔） */ 
-            fbano?: string;
          
             /* 承运人 */ 
             agentCustomer?: string;
@@ -1258,7 +1303,7 @@
     /**
      * 申请订舱
      */
-    export class ApplyBookingsInput {
+    export class FCMApplyBookingsInput {
         
          
             /* 需要申请订舱的Id列表 */ 
@@ -1273,11 +1318,8 @@
     /**
      *  No Remark 
      */
-    export class DeliveryInfoDto {
+    export class FCMDeliveryInfoEditDto {
         
-         
-            /* 关联的 Shipment */ 
-            shipmentId?: string;
          
             /* 清关行客户Id */ 
             customsClearanceCustomerId?: string;
@@ -1302,8 +1344,83 @@
             /* 自定义引用编号 */ 
             referenceNo?: string;
          
-            /* 配送地址 */ 
-            address?: AddressDto;
+            /* 预计时效 */ 
+            estimatedTime?: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class FCMDeliveryInfoDetailDto {
+        
+         
+            /* 关联的运单 */ 
+            shipmentId?: string;
+         
+            
+            customerId?: string;
+         
+            /* 关联的 CSP 的 BookingId */ 
+            customerBookingId?: string;
+         
+            /* 主要运输方式
+0 = NotSet
+1 = Ocean
+2 = Air
+3 = Truck
+4 = Rail */ 
+            transportationMode?: number;
+         
+            /* 贸易类型
+0 = NotSet
+1 = General
+2 = Fba
+3 = Fbm */ 
+            tradeType?: number;
+         
+            /* 渠道 */ 
+            channel?: string;
+         
+            /* FBA编号组（取item所有斜杠/分隔） */ 
+            fbano?: string;
+         
+            /* 自定义引用编号 */ 
+            referenceId?: string;
+         
+            /* 快递单号 */ 
+            expressNo?: string;
+         
+            /* 柜号 */ 
+            containerNos?: string;
+         
+            /* 柜型 */ 
+            containerCounts?: string;
+         
+            /* 大船名称 */ 
+            vesselName?: string;
+         
+            /* 航次 */ 
+            voyageNo?: string;
+         
+            /* 品名 */ 
+            commodity?: string;
+         
+            /* 装运的产品总数 */ 
+            totalQuantity?: FCMQuantityDto;
+         
+            /* 装运的产品总重量 */ 
+            totalWeight?: FCMQuantityDto;
+         
+            /* 装运的产品总体积 */ 
+            totalVolume?: FCMQuantityDto;
+         
+            /* 备注  todo:暂时不知道哪个 */ 
+            remark?: string;
          
             
             id?: string;
@@ -1314,7 +1431,7 @@
     /**
      * 需要导出侧唛的Id
      */
-    export class ExportSideMarksReportInput {
+    export class FCMExportSideMarksReportInput {
         
          
             
@@ -1330,7 +1447,7 @@
     /**
      * 导出的文件列表
      */
-    export class ExportSideMarksReportOutput {
+    export class FCMExportSideMarksReportOutput {
         
          
             
@@ -1340,41 +1457,60 @@
     }
  
     /**
-     * 侧唛数据
+     * 报表绑定的数据源
      */
-    export class SideMarksData {
+    export class FCMSidMarkdReportData {
         
          
-            
-            id?: string;
+            /* 唯一的报表id */ 
+            reportId?: string;
          
-            /* 仓库Id */ 
+            
+            customerBookingId?: string;
+         
+            
+            bookingId?: string;
+         
+            /* 地址Id */ 
+            addressId?: string;
+         
+            /* shipmentId */ 
+            shipmentId?: string;
+         
+            /* 分公司对应的侧唛模板文件名称 */ 
+            templateFileName?: string;
+         
+            /* 二维码地址 */ 
+            url?: string;
+         
+            /* 显示一票业务对应的总件数；格式：CTNS +件数 */ 
+            quantity?: string;
+         
+            /* 送货地址，此处显示的是仓库
+01：如果是亚马逊仓库地址，显示仓库代码；
+02 如果非亚马逊仓库地址，显示"国家"+“海外仓”； */ 
+            warehouse?: string;
+         
+            
+            deliveryAddr?: string;
+         
+            
+            addressDetail?: string;
+         
+            
+            warehouseCode?: string;
+         
+            
             warehouseId?: string;
          
-            /* 件数 */ 
-            quantity?: number;
+            /* FBA单号 */ 
+            fbaNo?: string;
          
-            
+            /* 运单号 */ 
             shipmentNo?: string;
-         
-            /* 仓库地址 */ 
-            warehouse?: string;
          
             /* 国家 */ 
             country?: string;
-         
-            /* 仓库代码 */ 
-            warehouseCode?: string;
-         
-            /* 交易类型
-0 = NotSet
-1 = General
-2 = Fba
-3 = Fbm */ 
-            tradeType?: number;
-         
-            /* FBA No */ 
-            fbaNo?: string;
          
             /* 客服 */ 
             customerService?: string;
@@ -1385,11 +1521,18 @@
             /* 业务所属公司 */ 
             customerServiceCompany?: string;
          
-            /* 送货地址 */ 
-            deliveryAddr?: string;
+            
+            exportFileName?: string;
          
-            /* 详细地址 */ 
-            addressDetail?: string;
+            /* 是否深圳仓库 */ 
+            isShenzhen?: boolean;
+         
+            /* 交易类型
+0 = NotSet
+1 = General
+2 = Fba
+3 = Fbm */ 
+            tradeType?: number;
         
         
     }
@@ -1397,7 +1540,7 @@
     /**
      * 生成入仓单输入
      */
-    export class GenerateWarehouseReciptInput {
+    export class FCMGenerateWarehouseReciptInput {
         
          
             
@@ -1409,7 +1552,7 @@
     /**
      * 生成入仓单输出
      */
-    export class GenerateWarehouseReciptOutput {
+    export class FCMGenerateWarehouseReciptOutput {
         
          
             

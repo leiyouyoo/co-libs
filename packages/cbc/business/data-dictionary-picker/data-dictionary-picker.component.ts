@@ -4,7 +4,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { PickerComponentBase } from '@co/cbc/core';
 import { NzSafeAny } from 'ng-zorro-antd';
-import { DataDictionaryService } from '@co/cds';
+import { PUBDataDictionaryService } from '@co/cds';
 import { switchMap, takeUntil } from 'rxjs/operators';
 import * as _ from 'lodash';
 
@@ -33,7 +33,7 @@ export class DataDictionaryPickerComponent extends PickerComponentBase {
 
   //#region  构造函数
 
-  constructor(private _cdr: ChangeDetectorRef, private dataDictionaryService: DataDictionaryService) {
+  constructor(private _cdr: ChangeDetectorRef, private dataDictionaryService: PUBDataDictionaryService) {
     super(_cdr);
 
     this.coLabelMember = 'name';

@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ShipmentItemDto,ListResultDto,ShipmentItemContainerDto,OrderItemInShipmentItemContainerDto,ShipmentOrderItemInContainerDto,CoEntityDto, } from './csp.types';
+import { CSPShipmentItemDto,CSPListResultDto,CSPShipmentItemContainerDto,CSPOrderItemInShipmentItemContainerDto,CSPShipmentOrderItemInContainerDto,CSPCoEntityDto, } from './csp.types';
 
 @BaseUrl('/csp/ShipmentItem')
 @Injectable({ providedIn: 'root' })
-export class ShipmentItemService extends BaseApi {
+export class CSPShipmentItemService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -34,7 +34,7 @@ export class ShipmentItemService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:ShipmentItemDto
+        _req:CSPShipmentItemDto
 
     ): Observable<any> {
         return null as any
@@ -49,7 +49,7 @@ export class ShipmentItemService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:ShipmentItemDto
+        _req:CSPShipmentItemDto
 
     ): Observable<any> {
         return null as any
@@ -64,7 +64,7 @@ export class ShipmentItemService extends BaseApi {
     @POST('update')
     update(
         @Payload
-        _req:ShipmentItemDto
+        _req:CSPShipmentItemDto
 
     ): Observable<any> {
         return null as any
@@ -79,7 +79,7 @@ export class ShipmentItemService extends BaseApi {
     @POST('updatePostPortEstDate')
     updatePostPortEstDate(
         @Payload
-        _req:ShipmentItemDto
+        _req:CSPShipmentItemDto
 
     ): Observable<any> {
         return null as any
@@ -96,7 +96,7 @@ export class ShipmentItemService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<ListResultDto<ShipmentItemDto>> {
+    ): Observable<CSPListResultDto<CSPShipmentItemDto>> {
         return null as any
     }
 
@@ -111,7 +111,7 @@ export class ShipmentItemService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<ShipmentItemDto> {
+    ): Observable<CSPShipmentItemDto> {
         return null as any
     }
 
@@ -139,9 +139,9 @@ export class ShipmentItemService extends BaseApi {
     @POST('createOrUpdateShipmentItemContainer')
     createOrUpdateShipmentItemContainer(
         @Payload
-        _req:ShipmentItemContainerDto
+        _req:CSPShipmentItemContainerDto
 
-    ): Observable<ShipmentItemContainerDto> {
+    ): Observable<CSPShipmentItemContainerDto> {
         return null as any
     }
 
@@ -154,7 +154,7 @@ export class ShipmentItemService extends BaseApi {
     @POST('createOrderItemInContainers')
     createOrderItemInContainers(
         @Payload
-        _req:OrderItemInShipmentItemContainerDto
+        _req:CSPOrderItemInShipmentItemContainerDto
 
     ): Observable<any> {
         return null as any
@@ -171,7 +171,7 @@ export class ShipmentItemService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<ListResultDto<ShipmentOrderItemInContainerDto>> {
+    ): Observable<CSPListResultDto<CSPShipmentOrderItemInContainerDto>> {
         return null as any
     }
 
@@ -184,7 +184,7 @@ export class ShipmentItemService extends BaseApi {
     @POST('delete')
     delete(
         @Payload
-        _req:CoEntityDto<any>
+        _req:CSPCoEntityDto<any>
 
     ): Observable<any> {
         return null as any

@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { CustomerDto,CustomerBindCoUserDto,ListResultDto,GetByCustomerIdsOutput,GetCustomerAndPartnerOutput,CustomerAndContactDto,CustomerListDto,PagedResultDto,BecomeCooperationInput, } from './crm.types';
+import { CRMCustomerDto,CRMCustomerBindCoUserDto,CRMListResultDto,CRMGetByCustomerIdsOutput,CRMGetCustomerAndPartnerOutput,CRMCustomerAndContactDto,CRMCustomerListDto,CRMPagedResultDto,CRMBecomeCooperationInput, } from './crm.types';
 
 @BaseUrl('/crm/CustomerExternal')
 @Injectable({ providedIn: 'root' })
-export class CustomerExternalService extends BaseApi {
+export class CRMCustomerExternalService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class CustomerExternalService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<CustomerDto> {
+    ): Observable<CRMCustomerDto> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class CustomerExternalService extends BaseApi {
         @Payload
         _req: {customerId?:string} 
 
-    ): Observable<CustomerBindCoUserDto> {
+    ): Observable<CRMCustomerBindCoUserDto> {
         return null as any
     }
 
@@ -51,7 +51,7 @@ export class CustomerExternalService extends BaseApi {
         @Payload
         _req: {customerId?:string} 
 
-    ): Observable<ListResultDto<CustomerBindCoUserDto>> {
+    ): Observable<CRMListResultDto<CRMCustomerBindCoUserDto>> {
         return null as any
     }
 
@@ -66,7 +66,7 @@ export class CustomerExternalService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<ListResultDto<GetByCustomerIdsOutput>> {
+    ): Observable<CRMListResultDto<CRMGetByCustomerIdsOutput>> {
         return null as any
     }
 
@@ -81,7 +81,7 @@ export class CustomerExternalService extends BaseApi {
         @Payload
         _req: {customerId?:string,isRegistered?:boolean} 
 
-    ): Observable<ListResultDto<GetCustomerAndPartnerOutput>> {
+    ): Observable<CRMListResultDto<CRMGetCustomerAndPartnerOutput>> {
         return null as any
     }
 
@@ -96,7 +96,7 @@ export class CustomerExternalService extends BaseApi {
         @Payload
         _req: {searchText?:string} 
 
-    ): Observable<ListResultDto<CustomerAndContactDto>> {
+    ): Observable<CRMListResultDto<CRMCustomerAndContactDto>> {
         return null as any
     }
 
@@ -111,7 +111,7 @@ export class CustomerExternalService extends BaseApi {
         @Payload
         _req: {name?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<CustomerListDto>> {
+    ): Observable<CRMPagedResultDto<CRMCustomerListDto>> {
         return null as any
     }
 
@@ -124,7 +124,7 @@ export class CustomerExternalService extends BaseApi {
     @POST('becomeCooperation')
     becomeCooperation(
         @Payload
-        _req:BecomeCooperationInput
+        _req:CRMBecomeCooperationInput
 
     ): Observable<any> {
         return null as any

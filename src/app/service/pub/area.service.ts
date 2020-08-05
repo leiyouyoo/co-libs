@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { AreaDto,ListResultDto,AreaCheckDto,GetAllAreaForUiPickerInput,AreaUiPickerDto,PagedResultDto, } from './pub.types';
+import { PUBAreaDto,PUBListResultDto,PUBAreaCheckDto,PUBGetAllAreaForUiPickerInput,PUBAreaUiPickerDto,PUBPagedResultDto, } from './pub.types';
 
 @BaseUrl('/pub/Area')
 @Injectable({ providedIn: 'root' })
-export class AreaService extends BaseApi {
+export class PUBAreaService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class AreaService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<AreaDto> {
+    ): Observable<PUBAreaDto> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class AreaService extends BaseApi {
         @Payload
         _req: {name?:string,isValid?:boolean} 
 
-    ): Observable<ListResultDto<AreaDto>> {
+    ): Observable<PUBListResultDto<PUBAreaDto>> {
         return null as any
     }
 
@@ -49,9 +49,9 @@ export class AreaService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:AreaDto
+        _req:PUBAreaDto
 
-    ): Observable<AreaDto> {
+    ): Observable<PUBAreaDto> {
         return null as any
     }
 
@@ -64,7 +64,7 @@ export class AreaService extends BaseApi {
     @POST('check')
     check(
         @Payload
-        _req:AreaCheckDto
+        _req:PUBAreaCheckDto
 
     ): Observable<any> {
         return null as any
@@ -94,9 +94,9 @@ export class AreaService extends BaseApi {
     @POST('getAllForUiPicker')
     getAllForUiPicker(
         @Payload
-        _req:GetAllAreaForUiPickerInput
+        _req:PUBGetAllAreaForUiPickerInput
 
-    ): Observable<PagedResultDto<AreaUiPickerDto>> {
+    ): Observable<PUBPagedResultDto<PUBAreaUiPickerDto>> {
         return null as any
     }
 

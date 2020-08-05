@@ -4,7 +4,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import { PickerComponentBase } from '@co/cbc/core';
-import { CompanyConfigureService } from '@co/cds';
+import { PlatformCompanyConfigureService } from '@co/cds';
 import * as _ from 'lodash';
 
 /**
@@ -29,7 +29,7 @@ import * as _ from 'lodash';
 export class PortOfficePickerComponent extends PickerComponentBase {
   static readonly SELECTOR = `co-port-office-picker`;
 
-  constructor(cdr: ChangeDetectorRef, private companyConfigureService: CompanyConfigureService) {
+  constructor(cdr: ChangeDetectorRef, private companyConfigureService: PlatformCompanyConfigureService) {
     super(cdr);
 
     this.coLabelMember = 'displayName';

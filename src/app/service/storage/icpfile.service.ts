@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ICPUploadFileInput,UploadResultDto,ICPBatchDownloadInput,ICPBatchDownloadResult,ListResultDto, } from './storage.types';
+import { StorageICPUploadFileInput,StorageUploadResultDto,StorageICPBatchDownloadInput,StorageICPBatchDownloadResult,StorageListResultDto, } from './storage.types';
 
 @BaseUrl('/storage/ICPFile')
 @Injectable({ providedIn: 'root' })
-export class ICPFileService extends BaseApi {
+export class StorageICPFileService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -19,9 +19,9 @@ export class ICPFileService extends BaseApi {
     @POST('upload')
     upload(
         @Payload
-        _req:ICPUploadFileInput
+        _req:StorageICPUploadFileInput
 
-    ): Observable<UploadResultDto> {
+    ): Observable<StorageUploadResultDto> {
         return null as any
     }
 
@@ -34,9 +34,9 @@ export class ICPFileService extends BaseApi {
     @POST('batchDownload')
     batchDownload(
         @Payload
-        _req:ICPBatchDownloadInput
+        _req:StorageICPBatchDownloadInput
 
-    ): Observable<ListResultDto<ICPBatchDownloadResult>> {
+    ): Observable<StorageListResultDto<StorageICPBatchDownloadResult>> {
         return null as any
     }
 

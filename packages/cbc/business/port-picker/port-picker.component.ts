@@ -4,7 +4,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import { PickerComponentBase } from '@co/cbc/core';
-import { PlaceService } from '@co/cds';
+import { PUBPlaceService } from '@co/cds';
 import * as _ from 'lodash';
 
 /**
@@ -30,7 +30,7 @@ export class PortPickerComponent extends PickerComponentBase {
   @Input() portReq: any;
   //#region  构造函数
 
-  constructor(cdr: ChangeDetectorRef, private portService: PlaceService) {
+  constructor(cdr: ChangeDetectorRef, private portService: PUBPlaceService) {
     super(cdr);
 
     this.coLabelMember = 'name';

@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ChargingCodeDto,PagedResultDto,ChangeChargingCodeStateInput,GetAllChargingCodeForUiPickerInput,ChargingCodeUiPickerDto, } from './pub.types';
+import { PUBChargingCodeDto,PUBPagedResultDto,PUBChangeChargingCodeStateInput,PUBGetAllChargingCodeForUiPickerInput,PUBChargingCodeUiPickerDto, } from './pub.types';
 
 @BaseUrl('/pub/ChargingCode')
 @Injectable({ providedIn: 'root' })
-export class ChargingCodeService extends BaseApi {
+export class PUBChargingCodeService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class ChargingCodeService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<ChargingCodeDto> {
+    ): Observable<PUBChargingCodeDto> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class ChargingCodeService extends BaseApi {
         @Payload
         _req: {groupId?:string,text?:string,isValid?:boolean} 
 
-    ): Observable<PagedResultDto<ChargingCodeDto>> {
+    ): Observable<PUBPagedResultDto<PUBChargingCodeDto>> {
         return null as any
     }
 
@@ -49,9 +49,9 @@ export class ChargingCodeService extends BaseApi {
     @POST('changeChargingCodeState')
     changeChargingCodeState(
         @Payload
-        _req:ChangeChargingCodeStateInput
+        _req:PUBChangeChargingCodeStateInput
 
-    ): Observable<ChargingCodeDto> {
+    ): Observable<PUBChargingCodeDto> {
         return null as any
     }
 
@@ -64,9 +64,9 @@ export class ChargingCodeService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:ChargingCodeDto
+        _req:PUBChargingCodeDto
 
-    ): Observable<ChargingCodeDto> {
+    ): Observable<PUBChargingCodeDto> {
         return null as any
     }
 
@@ -79,9 +79,9 @@ export class ChargingCodeService extends BaseApi {
     @POST('getAllForUiPicker')
     getAllForUiPicker(
         @Payload
-        _req:GetAllChargingCodeForUiPickerInput
+        _req:PUBGetAllChargingCodeForUiPickerInput
 
-    ): Observable<PagedResultDto<ChargingCodeUiPickerDto>> {
+    ): Observable<PUBPagedResultDto<PUBChargingCodeUiPickerDto>> {
         return null as any
     }
 
@@ -94,7 +94,7 @@ export class ChargingCodeService extends BaseApi {
     @POST('check')
     check(
         @Payload
-        _req:ChargingCodeDto
+        _req:PUBChargingCodeDto
 
     ): Observable<any> {
         return null as any
@@ -109,9 +109,9 @@ export class ChargingCodeService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:ChargingCodeDto
+        _req:PUBChargingCodeDto
 
-    ): Observable<ChargingCodeDto> {
+    ): Observable<PUBChargingCodeDto> {
         return null as any
     }
 
@@ -124,9 +124,9 @@ export class ChargingCodeService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:ChargingCodeDto
+        _req:PUBChargingCodeDto
 
-    ): Observable<ChargingCodeDto> {
+    ): Observable<PUBChargingCodeDto> {
         return null as any
     }
 

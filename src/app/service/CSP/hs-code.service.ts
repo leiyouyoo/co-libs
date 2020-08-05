@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { HsCodeDto,ListResultDto, } from './csp.types';
+import { CSPHsCodeDto,CSPListResultDto, } from './csp.types';
 
 @BaseUrl('/csp/HsCode')
 @Injectable({ providedIn: 'root' })
-export class HsCodeService extends BaseApi {
+export class CSPHsCodeService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class HsCodeService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<HsCodeDto> {
+    ): Observable<CSPHsCodeDto> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class HsCodeService extends BaseApi {
         @Payload
         _req: {searchKeyword?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<ListResultDto<HsCodeDto>> {
+    ): Observable<CSPListResultDto<CSPHsCodeDto>> {
         return null as any
     }
 

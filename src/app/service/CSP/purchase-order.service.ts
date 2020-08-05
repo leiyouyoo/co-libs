@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PurchaseOrderDetailOutput,GetPurchaseOrderListInput,PurchaseOrderListDto,PagedResultDto,PurchaseOrderListToProductDto,ProductDto,PurchaseOrderListDetailOutput,ListResultDto,PurchaseOrderChangeDetailOutput,ViewChangeInput,PurchaseOrderDto,PurchaseOrderConfirmInput,PurchaseOrderRejectInput,PurchaseOrderBookingInput,PurchaseOrderBookingOutput,PurchaseOrderBookingSearchInput,PurchaseOrderBookingSearchOutput,PurchaseOrderImportInput,ImportResult,PurchaseOrderExportInput,ConditionItemAttribute,PurchaseOrderFilterDto,DeleteByItemIdInput, } from './csp.types';
+import { CSPPurchaseOrderDetailOutput,CSPGetPurchaseOrderListInput,CSPPurchaseOrderListDto,CSPPagedResultDto,CSPPurchaseOrderListToProductDto,CSPProductDto,CSPPurchaseOrderListDetailOutput,CSPListResultDto,CSPPurchaseOrderChangeDetailOutput,CSPViewChangeInput,CSPPurchaseOrderDto,CSPPurchaseOrderConfirmInput,CSPPurchaseOrderRejectInput,CSPPurchaseOrderBookingInput,CSPPurchaseOrderBookingOutput,CSPPurchaseOrderBookingSearchInput,CSPPurchaseOrderBookingSearchOutput,CSPPurchaseOrderImportInput,CSPImportResult,CSPPurchaseOrderExportInput,CSPConditionItemAttribute,CSPPurchaseOrderFilterDto,CSPDeleteByItemIdInput, } from './csp.types';
 
 @BaseUrl('/csp/PurchaseOrder')
 @Injectable({ providedIn: 'root' })
-export class PurchaseOrderService extends BaseApi {
+export class CSPPurchaseOrderService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class PurchaseOrderService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<PurchaseOrderDetailOutput> {
+    ): Observable<CSPPurchaseOrderDetailOutput> {
         return null as any
     }
 
@@ -34,9 +34,9 @@ export class PurchaseOrderService extends BaseApi {
     @POST('getAll')
     getAll(
         @Payload
-        _req:GetPurchaseOrderListInput
+        _req:CSPGetPurchaseOrderListInput
 
-    ): Observable<PagedResultDto<PurchaseOrderListDto>> {
+    ): Observable<CSPPagedResultDto<CSPPurchaseOrderListDto>> {
         return null as any
     }
 
@@ -51,7 +51,7 @@ export class PurchaseOrderService extends BaseApi {
         @Payload
         _req: {productId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<PurchaseOrderListToProductDto>> {
+    ): Observable<CSPPagedResultDto<CSPPurchaseOrderListToProductDto>> {
         return null as any
     }
 
@@ -66,7 +66,7 @@ export class PurchaseOrderService extends BaseApi {
         @Payload
         _req: {productId?:string,id?:string} 
 
-    ): Observable<ListResultDto<PurchaseOrderListDetailOutput>> {
+    ): Observable<CSPListResultDto<CSPPurchaseOrderListDetailOutput>> {
         return null as any
     }
 
@@ -81,7 +81,7 @@ export class PurchaseOrderService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<ListResultDto<PurchaseOrderListDetailOutput>> {
+    ): Observable<CSPListResultDto<CSPPurchaseOrderListDetailOutput>> {
         return null as any
     }
 
@@ -96,7 +96,7 @@ export class PurchaseOrderService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<PurchaseOrderChangeDetailOutput> {
+    ): Observable<CSPPurchaseOrderChangeDetailOutput> {
         return null as any
     }
 
@@ -109,7 +109,7 @@ export class PurchaseOrderService extends BaseApi {
     @POST('viewChange')
     viewChange(
         @Payload
-        _req:ViewChangeInput
+        _req:CSPViewChangeInput
 
     ): Observable<any> {
         return null as any
@@ -126,7 +126,7 @@ export class PurchaseOrderService extends BaseApi {
         @Payload
         _req: {productIds?:any[]} 
 
-    ): Observable<ListResultDto<ProductDto>> {
+    ): Observable<CSPListResultDto<CSPProductDto>> {
         return null as any
     }
 
@@ -141,7 +141,7 @@ export class PurchaseOrderService extends BaseApi {
         @Payload
         _req: {orderIds?:any[]} 
 
-    ): Observable<ListResultDto<PurchaseOrderDto>> {
+    ): Observable<CSPListResultDto<CSPPurchaseOrderDto>> {
         return null as any
     }
 
@@ -154,9 +154,9 @@ export class PurchaseOrderService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:PurchaseOrderDto
+        _req:CSPPurchaseOrderDto
 
-    ): Observable<PurchaseOrderDto> {
+    ): Observable<CSPPurchaseOrderDto> {
         return null as any
     }
 
@@ -169,9 +169,9 @@ export class PurchaseOrderService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:PurchaseOrderDto
+        _req:CSPPurchaseOrderDto
 
-    ): Observable<PurchaseOrderDto> {
+    ): Observable<CSPPurchaseOrderDto> {
         return null as any
     }
 
@@ -184,7 +184,7 @@ export class PurchaseOrderService extends BaseApi {
     @POST('confirm')
     confirm(
         @Payload
-        _req:PurchaseOrderConfirmInput
+        _req:CSPPurchaseOrderConfirmInput
 
     ): Observable<any> {
         return null as any
@@ -199,7 +199,7 @@ export class PurchaseOrderService extends BaseApi {
     @POST('reject')
     reject(
         @Payload
-        _req:PurchaseOrderRejectInput
+        _req:CSPPurchaseOrderRejectInput
 
     ): Observable<any> {
         return null as any
@@ -214,9 +214,9 @@ export class PurchaseOrderService extends BaseApi {
     @POST('booking')
     booking(
         @Payload
-        _req:PurchaseOrderBookingInput
+        _req:CSPPurchaseOrderBookingInput
 
-    ): Observable<PurchaseOrderBookingOutput> {
+    ): Observable<CSPPurchaseOrderBookingOutput> {
         return null as any
     }
 
@@ -229,9 +229,9 @@ export class PurchaseOrderService extends BaseApi {
     @POST('bookingSearch')
     bookingSearch(
         @Payload
-        _req:PurchaseOrderBookingSearchInput
+        _req:CSPPurchaseOrderBookingSearchInput
 
-    ): Observable<ListResultDto<PurchaseOrderBookingSearchOutput>> {
+    ): Observable<CSPListResultDto<CSPPurchaseOrderBookingSearchOutput>> {
         return null as any
     }
 
@@ -244,9 +244,9 @@ export class PurchaseOrderService extends BaseApi {
     @POST('import')
     import(
         @Payload
-        _req:PurchaseOrderImportInput
+        _req:CSPPurchaseOrderImportInput
 
-    ): Observable<ImportResult> {
+    ): Observable<CSPImportResult> {
         return null as any
     }
 
@@ -259,7 +259,7 @@ export class PurchaseOrderService extends BaseApi {
     @POST('export')
     export(
         @Payload
-        _req:PurchaseOrderExportInput
+        _req:CSPPurchaseOrderExportInput
 
     ): Observable<any> {
         return null as any
@@ -276,7 +276,7 @@ export class PurchaseOrderService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<ListResultDto<ConditionItemAttribute>> {
+    ): Observable<CSPListResultDto<CSPConditionItemAttribute>> {
         return null as any
     }
 
@@ -291,7 +291,7 @@ export class PurchaseOrderService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<ListResultDto<PurchaseOrderFilterDto>> {
+    ): Observable<CSPListResultDto<CSPPurchaseOrderFilterDto>> {
         return null as any
     }
 
@@ -306,7 +306,7 @@ export class PurchaseOrderService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<ListResultDto<PurchaseOrderFilterDto>> {
+    ): Observable<CSPListResultDto<CSPPurchaseOrderFilterDto>> {
         return null as any
     }
 
@@ -321,7 +321,7 @@ export class PurchaseOrderService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<ListResultDto<PurchaseOrderFilterDto>> {
+    ): Observable<CSPListResultDto<CSPPurchaseOrderFilterDto>> {
         return null as any
     }
 
@@ -336,7 +336,7 @@ export class PurchaseOrderService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<ListResultDto<PurchaseOrderFilterDto>> {
+    ): Observable<CSPListResultDto<CSPPurchaseOrderFilterDto>> {
         return null as any
     }
 
@@ -351,7 +351,7 @@ export class PurchaseOrderService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<ListResultDto<PurchaseOrderFilterDto>> {
+    ): Observable<CSPListResultDto<CSPPurchaseOrderFilterDto>> {
         return null as any
     }
 
@@ -364,7 +364,7 @@ export class PurchaseOrderService extends BaseApi {
     @POST('deleteByItemId')
     deleteByItemId(
         @Payload
-        _req:DeleteByItemIdInput
+        _req:CSPDeleteByItemIdInput
 
     ): Observable<any> {
         return null as any

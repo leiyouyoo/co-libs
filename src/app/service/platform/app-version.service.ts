@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { AppVersionDto,PagedResultDto, } from './platform.types';
+import { PlatformAppVersionDto,PlatformPagedResultDto, } from './platform.types';
 
 @BaseUrl('/platform/AppVersion')
 @Injectable({ providedIn: 'root' })
-export class AppVersionService extends BaseApi {
+export class PlatformAppVersionService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class AppVersionService extends BaseApi {
         @Payload
         _req: {input?:number} 
 
-    ): Observable<AppVersionDto> {
+    ): Observable<PlatformAppVersionDto> {
         return null as any
     }
 
@@ -34,7 +34,7 @@ export class AppVersionService extends BaseApi {
     @POST('checkVersion')
     checkVersion(
         @Payload
-        _req:AppVersionDto
+        _req:PlatformAppVersionDto
 
     ): Observable<any> {
         return null as any
@@ -49,9 +49,9 @@ export class AppVersionService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:AppVersionDto
+        _req:PlatformAppVersionDto
 
-    ): Observable<AppVersionDto> {
+    ): Observable<PlatformAppVersionDto> {
         return null as any
     }
 
@@ -66,7 +66,7 @@ export class AppVersionService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<AppVersionDto> {
+    ): Observable<PlatformAppVersionDto> {
         return null as any
     }
 
@@ -81,7 +81,7 @@ export class AppVersionService extends BaseApi {
         @Payload
         _req: {sorting?:string,skipCount?:number,maxResultCount?:number} 
 
-    ): Observable<PagedResultDto<AppVersionDto>> {
+    ): Observable<PlatformPagedResultDto<PlatformAppVersionDto>> {
         return null as any
     }
 
@@ -94,9 +94,9 @@ export class AppVersionService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:AppVersionDto
+        _req:PlatformAppVersionDto
 
-    ): Observable<AppVersionDto> {
+    ): Observable<PlatformAppVersionDto> {
         return null as any
     }
 
@@ -109,9 +109,9 @@ export class AppVersionService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:AppVersionDto
+        _req:PlatformAppVersionDto
 
-    ): Observable<AppVersionDto> {
+    ): Observable<PlatformAppVersionDto> {
         return null as any
     }
 

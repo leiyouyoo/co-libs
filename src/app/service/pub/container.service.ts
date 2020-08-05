@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ContainerDto,PagedResultDto,ContainerGroupDto,ListResultDto,ContainerCheckInputDto,ChangeContainerStateInput,GetAllContainerForUiPickerInput,ContainerUiPickerDto, } from './pub.types';
+import { PUBContainerDto,PUBPagedResultDto,PUBContainerGroupDto,PUBListResultDto,PUBContainerCheckInputDto,PUBChangeContainerStateInput,PUBGetAllContainerForUiPickerInput,PUBContainerUiPickerDto, } from './pub.types';
 
 @BaseUrl('/pub/Container')
 @Injectable({ providedIn: 'root' })
-export class ContainerService extends BaseApi {
+export class PUBContainerService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class ContainerService extends BaseApi {
         @Payload
         _req: {isValid?:boolean,code?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<ContainerDto>> {
+    ): Observable<PUBPagedResultDto<PUBContainerDto>> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class ContainerService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<ListResultDto<ContainerGroupDto>> {
+    ): Observable<PUBListResultDto<PUBContainerGroupDto>> {
         return null as any
     }
 
@@ -51,7 +51,7 @@ export class ContainerService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<ContainerDto> {
+    ): Observable<PUBContainerDto> {
         return null as any
     }
 
@@ -64,7 +64,7 @@ export class ContainerService extends BaseApi {
     @POST('check')
     check(
         @Payload
-        _req:ContainerCheckInputDto
+        _req:PUBContainerCheckInputDto
 
     ): Observable<any> {
         return null as any
@@ -79,9 +79,9 @@ export class ContainerService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:ContainerDto
+        _req:PUBContainerDto
 
-    ): Observable<ContainerDto> {
+    ): Observable<PUBContainerDto> {
         return null as any
     }
 
@@ -94,9 +94,9 @@ export class ContainerService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:ContainerDto
+        _req:PUBContainerDto
 
-    ): Observable<ContainerDto> {
+    ): Observable<PUBContainerDto> {
         return null as any
     }
 
@@ -124,9 +124,9 @@ export class ContainerService extends BaseApi {
     @POST('changeContainerState')
     changeContainerState(
         @Payload
-        _req:ChangeContainerStateInput
+        _req:PUBChangeContainerStateInput
 
-    ): Observable<ContainerDto> {
+    ): Observable<PUBContainerDto> {
         return null as any
     }
 
@@ -139,9 +139,9 @@ export class ContainerService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:ContainerDto
+        _req:PUBContainerDto
 
-    ): Observable<ContainerDto> {
+    ): Observable<PUBContainerDto> {
         return null as any
     }
 
@@ -154,9 +154,9 @@ export class ContainerService extends BaseApi {
     @POST('getAllForUiPicker')
     getAllForUiPicker(
         @Payload
-        _req:GetAllContainerForUiPickerInput
+        _req:PUBGetAllContainerForUiPickerInput
 
-    ): Observable<PagedResultDto<ContainerUiPickerDto>> {
+    ): Observable<PUBPagedResultDto<PUBContainerUiPickerDto>> {
         return null as any
     }
 

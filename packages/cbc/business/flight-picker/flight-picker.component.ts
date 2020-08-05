@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, ViewEncapsulation, OnInit } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { PickerComponentBase } from '@co/cbc/core';
-import { FlightService } from '@co/cds';
+import { PUBFlightService } from '@co/cds';
 import { Observable } from 'rxjs';
 
 /**
@@ -24,7 +24,7 @@ import { Observable } from 'rxjs';
   encapsulation: ViewEncapsulation.None,
 })
 export class FlightPickerComponent extends PickerComponentBase implements OnInit {
-  constructor(cdr: ChangeDetectorRef, private flightService: FlightService) {
+  constructor(cdr: ChangeDetectorRef, private flightService: PUBFlightService) {
     super(cdr);
     this.coLabelMember = 'no';
   }

@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { FileDto,ImportResultDto,ProductExportInput,OrderExportInput, } from './storage.types';
+import { StorageFileDto,StorageImportResultDto,StorageProductExportInput,StorageOrderExportInput, } from './storage.types';
 
 @BaseUrl('/storage/CSPExcel')
 @Injectable({ providedIn: 'root' })
-export class CSPExcelService extends BaseApi {
+export class StorageCSPExcelService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -36,7 +36,7 @@ export class CSPExcelService extends BaseApi {
         @Payload
         _req: {sheetName?:string,templateName?:string,headers?:any[],apiTypes?:number,url:string,parametersJsonStr?:string,isBackgroundJob?:boolean} 
 
-    ): Observable<FileDto> {
+    ): Observable<StorageFileDto> {
         return null as any
     }
 
@@ -51,7 +51,7 @@ export class CSPExcelService extends BaseApi {
         @Payload
         _req: {file?:File} 
 
-    ): Observable<ImportResultDto> {
+    ): Observable<StorageImportResultDto> {
         return null as any
     }
 
@@ -64,9 +64,9 @@ export class CSPExcelService extends BaseApi {
     @POST('productExport')
     productExport(
         @Payload
-        _req:ProductExportInput
+        _req:StorageProductExportInput
 
-    ): Observable<FileDto> {
+    ): Observable<StorageFileDto> {
         return null as any
     }
 
@@ -81,7 +81,7 @@ export class CSPExcelService extends BaseApi {
         @Payload
         _req: {file?:File} 
 
-    ): Observable<ImportResultDto> {
+    ): Observable<StorageImportResultDto> {
         return null as any
     }
 
@@ -94,9 +94,9 @@ export class CSPExcelService extends BaseApi {
     @POST('orderExport')
     orderExport(
         @Payload
-        _req:OrderExportInput
+        _req:StorageOrderExportInput
 
-    ): Observable<FileDto> {
+    ): Observable<StorageFileDto> {
         return null as any
     }
 

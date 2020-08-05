@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { CustomerDto,CustomerListDto,PagedResultDto,MergeCustomerListInput,GetAllForUiPickerInput,ExternalPartnerAndCustomerDto,ListResultDto,OwnerLessPagedResultDto,SearchCustomerOutput,CustomerOutput,CreateOrUpdateCustomerInput,GetCustomerByNameInput,CheckDeleteOutput,FollowCustomerInput,AssignCustomerInput,CustomerAndPartnerListDto,CustomerAuthenticateDto,AuditCustomerInput,MergeCustomerInput, } from './crm.types';
+import { CRMCustomerDto,CRMCustomerListDto,CRMPagedResultDto,CRMMergeCustomerListInput,CRMGetAllForUiPickerInput,CRMExternalPartnerAndCustomerDto,CRMListResultDto,CRMOwnerLessPagedResultDto,CRMSearchCustomerOutput,CRMCustomerOutput,CRMCreateOrUpdateCustomerInput,CRMGetCustomerByNameInput,CRMCheckDeleteOutput,CRMFollowCustomerInput,CRMAssignCustomerInput,CRMCustomerAndPartnerListDto,CRMCustomerAuthenticateDto,CRMAuditCustomerInput,CRMMergeCustomerInput, } from './crm.types';
 
 @BaseUrl('/crm/Customer')
 @Injectable({ providedIn: 'root' })
-export class CustomerService extends BaseApi {
+export class CRMCustomerService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class CustomerService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<CustomerDto> {
+    ): Observable<CRMCustomerDto> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class CustomerService extends BaseApi {
         @Payload
         _req: {searchText?:string,customerOwnerIds?:any[],isCooperation?:boolean,includeTaxes?:boolean,includeContacts?:boolean,includeShareOwner?:boolean,isUserContact?:boolean,isOwn?:boolean,customerId?:string,isPassedAudit?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<CustomerListDto>> {
+    ): Observable<CRMPagedResultDto<CRMCustomerListDto>> {
         return null as any
     }
 
@@ -49,9 +49,9 @@ export class CustomerService extends BaseApi {
     @POST('getAllForMerge')
     getAllForMerge(
         @Payload
-        _req:MergeCustomerListInput
+        _req:CRMMergeCustomerListInput
 
-    ): Observable<PagedResultDto<CustomerListDto>> {
+    ): Observable<CRMPagedResultDto<CRMCustomerListDto>> {
         return null as any
     }
 
@@ -64,9 +64,9 @@ export class CustomerService extends BaseApi {
     @POST('getAllForUiPicker')
     getAllForUiPicker(
         @Payload
-        _req:GetAllForUiPickerInput
+        _req:CRMGetAllForUiPickerInput
 
-    ): Observable<PagedResultDto<CustomerListDto>> {
+    ): Observable<CRMPagedResultDto<CRMCustomerListDto>> {
         return null as any
     }
 
@@ -81,7 +81,7 @@ export class CustomerService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<ListResultDto<ExternalPartnerAndCustomerDto>> {
+    ): Observable<CRMListResultDto<CRMExternalPartnerAndCustomerDto>> {
         return null as any
     }
 
@@ -96,7 +96,7 @@ export class CustomerService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<ListResultDto<CustomerListDto>> {
+    ): Observable<CRMListResultDto<CRMCustomerListDto>> {
         return null as any
     }
 
@@ -111,7 +111,7 @@ export class CustomerService extends BaseApi {
         @Payload
         _req: {searchText?:string,customerOwnerIds?:any[],isCooperation?:boolean,includeTaxes?:boolean,includeContacts?:boolean,includeShareOwner?:boolean,isUserContact?:boolean,isOwn?:boolean,customerId?:string,isPassedAudit?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<CustomerListDto>> {
+    ): Observable<CRMPagedResultDto<CRMCustomerListDto>> {
         return null as any
     }
 
@@ -126,7 +126,7 @@ export class CustomerService extends BaseApi {
         @Payload
         _req: {searchText?:string,customerOwnerIds?:any[],isCooperation?:boolean,includeTaxes?:boolean,includeContacts?:boolean,includeShareOwner?:boolean,isUserContact?:boolean,isOwn?:boolean,customerId?:string,isPassedAudit?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<CustomerListDto>> {
+    ): Observable<CRMPagedResultDto<CRMCustomerListDto>> {
         return null as any
     }
 
@@ -141,7 +141,7 @@ export class CustomerService extends BaseApi {
         @Payload
         _req: {searchText?:string,customerOwnerIds?:any[],isCooperation?:boolean,includeTaxes?:boolean,includeContacts?:boolean,includeShareOwner?:boolean,isUserContact?:boolean,isOwn?:boolean,customerId?:string,isPassedAudit?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<OwnerLessPagedResultDto<CustomerListDto>> {
+    ): Observable<CRMOwnerLessPagedResultDto<CRMCustomerListDto>> {
         return null as any
     }
 
@@ -156,7 +156,7 @@ export class CustomerService extends BaseApi {
         @Payload
         _req: {userId?:number} 
 
-    ): Observable<ListResultDto<CustomerListDto>> {
+    ): Observable<CRMListResultDto<CRMCustomerListDto>> {
         return null as any
     }
 
@@ -171,7 +171,7 @@ export class CustomerService extends BaseApi {
         @Payload
         _req: {userId?:number,isRegistered?:boolean} 
 
-    ): Observable<ListResultDto<CustomerDto>> {
+    ): Observable<CRMListResultDto<CRMCustomerDto>> {
         return null as any
     }
 
@@ -186,7 +186,7 @@ export class CustomerService extends BaseApi {
         @Payload
         _req: {name?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<CustomerListDto>> {
+    ): Observable<CRMPagedResultDto<CRMCustomerListDto>> {
         return null as any
     }
 
@@ -201,7 +201,7 @@ export class CustomerService extends BaseApi {
         @Payload
         _req: {customerType?:number,name?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<CustomerListDto>> {
+    ): Observable<CRMPagedResultDto<CRMCustomerListDto>> {
         return null as any
     }
 
@@ -216,7 +216,7 @@ export class CustomerService extends BaseApi {
         @Payload
         _req: {searchText?:string,includeDefault?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<SearchCustomerOutput>> {
+    ): Observable<CRMPagedResultDto<CRMSearchCustomerOutput>> {
         return null as any
     }
 
@@ -231,7 +231,7 @@ export class CustomerService extends BaseApi {
         @Payload
         _req: {customerId?:string} 
 
-    ): Observable<ListResultDto<CustomerListDto>> {
+    ): Observable<CRMListResultDto<CRMCustomerListDto>> {
         return null as any
     }
 
@@ -246,7 +246,7 @@ export class CustomerService extends BaseApi {
         @Payload
         _req: {name?:string,customerId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<CustomerListDto>> {
+    ): Observable<CRMPagedResultDto<CRMCustomerListDto>> {
         return null as any
     }
 
@@ -261,7 +261,7 @@ export class CustomerService extends BaseApi {
         @Payload
         _req: {searchText?:string,customerStatus?:number,isShared?:boolean,isOwnerLess?:boolean} 
 
-    ): Observable<ListResultDto<CustomerListDto>> {
+    ): Observable<CRMListResultDto<CRMCustomerListDto>> {
         return null as any
     }
 
@@ -276,7 +276,7 @@ export class CustomerService extends BaseApi {
         @Payload
         _req: {customerId?:string} 
 
-    ): Observable<CreateOrUpdateCustomerInput> {
+    ): Observable<CRMCreateOrUpdateCustomerInput> {
         return null as any
     }
 
@@ -289,9 +289,9 @@ export class CustomerService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:CreateOrUpdateCustomerInput
+        _req:CRMCreateOrUpdateCustomerInput
 
-    ): Observable<CustomerOutput> {
+    ): Observable<CRMCustomerOutput> {
         return null as any
     }
 
@@ -304,9 +304,9 @@ export class CustomerService extends BaseApi {
     @POST('checkDuplicateName')
     checkDuplicateName(
         @Payload
-        _req:GetCustomerByNameInput
+        _req:CRMGetCustomerByNameInput
 
-    ): Observable<PagedResultDto<CustomerListDto>> {
+    ): Observable<CRMPagedResultDto<CRMCustomerListDto>> {
         return null as any
     }
 
@@ -319,9 +319,9 @@ export class CustomerService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:CreateOrUpdateCustomerInput
+        _req:CRMCreateOrUpdateCustomerInput
 
-    ): Observable<CustomerOutput> {
+    ): Observable<CRMCustomerOutput> {
         return null as any
     }
 
@@ -336,7 +336,7 @@ export class CustomerService extends BaseApi {
         @Payload
         _req: {customerId?:string} 
 
-    ): Observable<CheckDeleteOutput> {
+    ): Observable<CRMCheckDeleteOutput> {
         return null as any
     }
 
@@ -364,7 +364,7 @@ export class CustomerService extends BaseApi {
     @POST('claimCustomer')
     claimCustomer(
         @Payload
-        _req:FollowCustomerInput
+        _req:CRMFollowCustomerInput
 
     ): Observable<any> {
         return null as any
@@ -379,7 +379,7 @@ export class CustomerService extends BaseApi {
     @POST('followCustomer')
     followCustomer(
         @Payload
-        _req:FollowCustomerInput
+        _req:CRMFollowCustomerInput
 
     ): Observable<any> {
         return null as any
@@ -394,7 +394,7 @@ export class CustomerService extends BaseApi {
     @POST('transferCustomer')
     transferCustomer(
         @Payload
-        _req:AssignCustomerInput
+        _req:CRMAssignCustomerInput
 
     ): Observable<any> {
         return null as any
@@ -411,7 +411,7 @@ export class CustomerService extends BaseApi {
         @Payload
         _req: {customerType:number,name?:string,customerId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<ListResultDto<CustomerListDto>> {
+    ): Observable<CRMListResultDto<CRMCustomerListDto>> {
         return null as any
     }
 
@@ -426,7 +426,7 @@ export class CustomerService extends BaseApi {
         @Payload
         _req: {customerType:number,name?:string,customerId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<CustomerListDto>> {
+    ): Observable<CRMPagedResultDto<CRMCustomerListDto>> {
         return null as any
     }
 
@@ -441,7 +441,7 @@ export class CustomerService extends BaseApi {
         @Payload
         _req: {name?:string,customerId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<CustomerListDto>> {
+    ): Observable<CRMPagedResultDto<CRMCustomerListDto>> {
         return null as any
     }
 
@@ -456,7 +456,7 @@ export class CustomerService extends BaseApi {
         @Payload
         _req: {includePartner?:boolean} 
 
-    ): Observable<ListResultDto<CustomerAndPartnerListDto>> {
+    ): Observable<CRMListResultDto<CRMCustomerAndPartnerListDto>> {
         return null as any
     }
 
@@ -471,20 +471,20 @@ export class CustomerService extends BaseApi {
         @Payload
         _req: {customerId?:string} 
 
-    ): Observable<CustomerAuthenticateDto> {
+    ): Observable<CRMCustomerAuthenticateDto> {
         return null as any
     }
 
 
     /**
      * @param url /CRM/Customer/CustomerConfigure
-     * 客户配置\开通租户
+     * 客户配置\开通主账号
      */
 
     @POST('customerConfigure')
     customerConfigure(
         @Payload
-        _req:CustomerAuthenticateDto
+        _req:CRMCustomerAuthenticateDto
 
     ): Observable<any> {
         return null as any
@@ -499,7 +499,7 @@ export class CustomerService extends BaseApi {
     @PUT('updateCustomerConfigure')
     updateCustomerConfigure(
         @Payload
-        _req:CustomerAuthenticateDto
+        _req:CRMCustomerAuthenticateDto
 
     ): Observable<any> {
         return null as any
@@ -514,7 +514,7 @@ export class CustomerService extends BaseApi {
     @POST('auditCustomer')
     auditCustomer(
         @Payload
-        _req:AuditCustomerInput
+        _req:CRMAuditCustomerInput
 
     ): Observable<any> {
         return null as any
@@ -529,7 +529,7 @@ export class CustomerService extends BaseApi {
     @POST('mergeCustomer')
     mergeCustomer(
         @Payload
-        _req:MergeCustomerInput
+        _req:CRMMergeCustomerInput
 
     ): Observable<any> {
         return null as any

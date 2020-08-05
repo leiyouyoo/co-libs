@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { ConditionGroupInfo,ListResultDto, } from './platform.types';
+import { PlatformConditionGroupInfo,PlatformListResultDto, } from './platform.types';
 
 @BaseUrl('/platform/BusinessFilter')
 @Injectable({ providedIn: 'root' })
-export class BusinessFilterService extends BaseApi {
+export class PlatformBusinessFilterService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class BusinessFilterService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<ConditionGroupInfo> {
+    ): Observable<PlatformConditionGroupInfo> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class BusinessFilterService extends BaseApi {
         @Payload
         _req: {businessType?:string} 
 
-    ): Observable<ListResultDto<ConditionGroupInfo>> {
+    ): Observable<PlatformListResultDto<PlatformConditionGroupInfo>> {
         return null as any
     }
 
@@ -49,9 +49,9 @@ export class BusinessFilterService extends BaseApi {
     @POST('createOrUpdateConditionGroup')
     createOrUpdateConditionGroup(
         @Payload
-        _req:ConditionGroupInfo
+        _req:PlatformConditionGroupInfo
 
-    ): Observable<ConditionGroupInfo> {
+    ): Observable<PlatformConditionGroupInfo> {
         return null as any
     }
 

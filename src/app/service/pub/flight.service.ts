@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { FlightDto,PagedResultDto,FlightCheckInputDto,GetAllFlightForUiPickerInput,FlightUiPickerDto, } from './pub.types';
+import { PUBFlightDto,PUBPagedResultDto,PUBFlightCheckInputDto,PUBGetAllFlightForUiPickerInput,PUBFlightUiPickerDto, } from './pub.types';
 
 @BaseUrl('/pub/Flight')
 @Injectable({ providedIn: 'root' })
-export class FlightService extends BaseApi {
+export class PUBFlightService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class FlightService extends BaseApi {
         @Payload
         _req: {isValid?:boolean,airlineId?:string,no?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<FlightDto>> {
+    ): Observable<PUBPagedResultDto<PUBFlightDto>> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class FlightService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<FlightDto> {
+    ): Observable<PUBFlightDto> {
         return null as any
     }
 
@@ -49,7 +49,7 @@ export class FlightService extends BaseApi {
     @POST('check')
     check(
         @Payload
-        _req:FlightCheckInputDto
+        _req:PUBFlightCheckInputDto
 
     ): Observable<any> {
         return null as any
@@ -64,9 +64,9 @@ export class FlightService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:FlightDto
+        _req:PUBFlightDto
 
-    ): Observable<FlightDto> {
+    ): Observable<PUBFlightDto> {
         return null as any
     }
 
@@ -79,9 +79,9 @@ export class FlightService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:FlightDto
+        _req:PUBFlightDto
 
-    ): Observable<FlightDto> {
+    ): Observable<PUBFlightDto> {
         return null as any
     }
 
@@ -109,9 +109,9 @@ export class FlightService extends BaseApi {
     @POST('getAllForUiPicker')
     getAllForUiPicker(
         @Payload
-        _req:GetAllFlightForUiPickerInput
+        _req:PUBGetAllFlightForUiPickerInput
 
-    ): Observable<PagedResultDto<FlightUiPickerDto>> {
+    ): Observable<PUBPagedResultDto<PUBFlightUiPickerDto>> {
         return null as any
     }
 
@@ -124,9 +124,9 @@ export class FlightService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:FlightDto
+        _req:PUBFlightDto
 
-    ): Observable<FlightDto> {
+    ): Observable<PUBFlightDto> {
         return null as any
     }
 

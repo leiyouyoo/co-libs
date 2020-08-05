@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { VesselDto,PagedResultDto,VesselCheckInputDto,GetAllVesselForUiPickerInput,VesselUiPickerDto, } from './pub.types';
+import { PUBVesselDto,PUBPagedResultDto,PUBVesselCheckInputDto,PUBGetAllVesselForUiPickerInput,PUBVesselUiPickerDto, } from './pub.types';
 
 @BaseUrl('/pub/Vessel')
 @Injectable({ providedIn: 'root' })
-export class VesselService extends BaseApi {
+export class PUBVesselService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class VesselService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<VesselDto> {
+    ): Observable<PUBVesselDto> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class VesselService extends BaseApi {
         @Payload
         _req: {isValid?:boolean,code?:string,name?:string,carrierId?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<VesselDto>> {
+    ): Observable<PUBPagedResultDto<PUBVesselDto>> {
         return null as any
     }
 
@@ -49,7 +49,7 @@ export class VesselService extends BaseApi {
     @POST('check')
     check(
         @Payload
-        _req:VesselCheckInputDto
+        _req:PUBVesselCheckInputDto
 
     ): Observable<any> {
         return null as any
@@ -64,9 +64,9 @@ export class VesselService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:VesselDto
+        _req:PUBVesselDto
 
-    ): Observable<VesselDto> {
+    ): Observable<PUBVesselDto> {
         return null as any
     }
 
@@ -79,9 +79,9 @@ export class VesselService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:VesselDto
+        _req:PUBVesselDto
 
-    ): Observable<VesselDto> {
+    ): Observable<PUBVesselDto> {
         return null as any
     }
 
@@ -109,9 +109,9 @@ export class VesselService extends BaseApi {
     @POST('getAllForUiPicker')
     getAllForUiPicker(
         @Payload
-        _req:GetAllVesselForUiPickerInput
+        _req:PUBGetAllVesselForUiPickerInput
 
-    ): Observable<PagedResultDto<VesselUiPickerDto>> {
+    ): Observable<PUBPagedResultDto<PUBVesselUiPickerDto>> {
         return null as any
     }
 
@@ -124,9 +124,9 @@ export class VesselService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:VesselDto
+        _req:PUBVesselDto
 
-    ): Observable<VesselDto> {
+    ): Observable<PUBVesselDto> {
         return null as any
     }
 

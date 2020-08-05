@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { GetNotificationsOutput,EntityDto,GetNotificationSettingsOutput,UpdateNotificationSettingsInput,SendMessageModel, } from './platform.types';
+import { PlatformGetNotificationsOutput,PlatformEntityDto,PlatformGetNotificationSettingsOutput,PlatformUpdateNotificationSettingsInput,PlatformSendMessageModel, } from './platform.types';
 
 @BaseUrl('/platform/Notification')
 @Injectable({ providedIn: 'root' })
-export class NotificationService extends BaseApi {
+export class PlatformNotificationService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class NotificationService extends BaseApi {
         @Payload
         _req: {dataTypeNameFilter?:string,state?:number,startDate?:string,endDate?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<GetNotificationsOutput> {
+    ): Observable<PlatformGetNotificationsOutput> {
         return null as any
     }
 
@@ -49,7 +49,7 @@ export class NotificationService extends BaseApi {
     @POST('setNotificationAsRead')
     setNotificationAsRead(
         @Payload
-        _req:EntityDto<any>
+        _req:PlatformEntityDto<any>
 
     ): Observable<any> {
         return null as any
@@ -66,7 +66,7 @@ export class NotificationService extends BaseApi {
         @Payload
         _req: {tenantId?:number,userId?:number} 
 
-    ): Observable<GetNotificationSettingsOutput> {
+    ): Observable<PlatformGetNotificationSettingsOutput> {
         return null as any
     }
 
@@ -79,7 +79,7 @@ export class NotificationService extends BaseApi {
     @POST('updateNotificationSettings')
     updateNotificationSettings(
         @Payload
-        _req:UpdateNotificationSettingsInput
+        _req:PlatformUpdateNotificationSettingsInput
 
     ): Observable<any> {
         return null as any
@@ -124,7 +124,7 @@ export class NotificationService extends BaseApi {
     @POST('sendMessage')
     sendMessage(
         @Payload
-        _req:SendMessageModel
+        _req:PlatformSendMessageModel
 
     ): Observable<any> {
         return null as any

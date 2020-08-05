@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { CountyDto,ListResultDto,PagedResultDto, } from './pub.types';
+import { PUBCountyDto,PUBListResultDto,PUBPagedResultDto, } from './pub.types';
 
 @BaseUrl('/pub/County')
 @Injectable({ providedIn: 'root' })
-export class CountyService extends BaseApi {
+export class PUBCountyService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class CountyService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<CountyDto> {
+    ): Observable<PUBCountyDto> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class CountyService extends BaseApi {
         @Payload
         _req: {code?:string,name?:string,parentId?:string,isRecursion?:boolean,id?:string} 
 
-    ): Observable<ListResultDto<CountyDto>> {
+    ): Observable<PUBListResultDto<PUBCountyDto>> {
         return null as any
     }
 
@@ -51,7 +51,7 @@ export class CountyService extends BaseApi {
         @Payload
         _req: {id?:string,code?:string,name?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PagedResultDto<CountyDto>> {
+    ): Observable<PUBPagedResultDto<PUBCountyDto>> {
         return null as any
     }
 
@@ -64,9 +64,9 @@ export class CountyService extends BaseApi {
     @POST('createOrUpdate')
     createOrUpdate(
         @Payload
-        _req:CountyDto
+        _req:PUBCountyDto
 
-    ): Observable<CountyDto> {
+    ): Observable<PUBCountyDto> {
         return null as any
     }
 
@@ -79,9 +79,9 @@ export class CountyService extends BaseApi {
     @POST('create')
     create(
         @Payload
-        _req:CountyDto
+        _req:PUBCountyDto
 
-    ): Observable<CountyDto> {
+    ): Observable<PUBCountyDto> {
         return null as any
     }
 
@@ -94,9 +94,9 @@ export class CountyService extends BaseApi {
     @PUT('update')
     update(
         @Payload
-        _req:CountyDto
+        _req:PUBCountyDto
 
-    ): Observable<CountyDto> {
+    ): Observable<PUBCountyDto> {
         return null as any
     }
 

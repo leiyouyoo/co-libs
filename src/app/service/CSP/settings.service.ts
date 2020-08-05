@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { NewsAndUpdatesSettingsEditDto,SettingsEditDto, } from './csp.types';
+import { CSPNewsAndUpdatesSettingsEditDto,CSPSettingsEditDto, } from './csp.types';
 
 @BaseUrl('/csp/Settings')
 @Injectable({ providedIn: 'root' })
-export class SettingsService extends BaseApi {
+export class CSPSettingsService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class SettingsService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<NewsAndUpdatesSettingsEditDto> {
+    ): Observable<CSPNewsAndUpdatesSettingsEditDto> {
         return null as any
     }
 
@@ -34,7 +34,7 @@ export class SettingsService extends BaseApi {
     @PUT('updateNewsAndUpdates')
     updateNewsAndUpdates(
         @Payload
-        _req:NewsAndUpdatesSettingsEditDto
+        _req:CSPNewsAndUpdatesSettingsEditDto
 
     ): Observable<any> {
         return null as any
@@ -51,7 +51,7 @@ export class SettingsService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<SettingsEditDto> {
+    ): Observable<CSPSettingsEditDto> {
         return null as any
     }
 
@@ -64,7 +64,7 @@ export class SettingsService extends BaseApi {
     @PUT('updateAll')
     updateAll(
         @Payload
-        _req:SettingsEditDto
+        _req:CSPSettingsEditDto
 
     ): Observable<any> {
         return null as any

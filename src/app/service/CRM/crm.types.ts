@@ -2,7 +2,7 @@
     /**
      * 客户绑定的业务员Dto
      */
-    export class CustomerBindCoUserDto {
+    export class CRMCustomerBindCoUserDto {
         
          
             
@@ -59,7 +59,7 @@
     /**
      * 联系人Dto
      */
-    export class ContactDto {
+    export class CRMContactDto {
         
          
             /* 姓 */ 
@@ -120,7 +120,7 @@
             isMainAccount?: boolean;
          
             /* 用户信息 */ 
-            userInfo?: CustomerBindCoUserDto;
+            userInfo?: CRMCustomerBindCoUserDto;
          
             
             id?: string;
@@ -131,7 +131,7 @@
     /**
      *  No Remark 
      */
-    export class ListResultDto<T> {
+    export class CRMListResultDto<T> {
         
          
             
@@ -143,7 +143,7 @@
     /**
      *  No Remark 
      */
-    export class UserListResponse {
+    export class CRMUserListResponse {
         
          
             
@@ -191,7 +191,7 @@
     /**
      * 联系人列表Dto
      */
-    export class ContactListDto {
+    export class CRMContactListDto {
         
          
             /* 姓 */ 
@@ -237,7 +237,7 @@
             userId?: number;
          
             /* 用户信息 */ 
-            userInfo?: UserListResponse;
+            userInfo?: CRMUserListResponse;
          
             /* 地点集合 */ 
             locations?: any[];
@@ -251,7 +251,7 @@
     /**
      *  No Remark 
      */
-    export class PagedResultDto<T> {
+    export class CRMPagedResultDto<T> {
         
          
             
@@ -266,7 +266,7 @@
     /**
      *  No Remark 
      */
-    export class CheckContactEmailInput {
+    export class CRMCheckContactEmailInput {
         
          
             /* 如果是编辑联系人，则传联系人id */ 
@@ -290,7 +290,7 @@
     /**
      *  No Remark 
      */
-    export class CheckContactEmailOutput {
+    export class CRMCheckContactEmailOutput {
         
          
             /* 是否成功通过验证 */ 
@@ -314,7 +314,7 @@
     /**
      * 验证主联系人Dto
      */
-    export class CheckMainContact {
+    export class CRMCheckMainContact {
         
          
             /* 客户Id */ 
@@ -329,7 +329,7 @@
     /**
      *  No Remark 
      */
-    export class CommonResponse {
+    export class CRMCommonResponse {
         
          
             
@@ -344,7 +344,7 @@
     /**
      * 创建或编辑联系人Dto
      */
-    export class CreateOrUpdateContactInput {
+    export class CRMCreateOrUpdateContactInput {
         
          
             /* 名 */ 
@@ -416,7 +416,7 @@
     /**
      * 重置密码
      */
-    export class ResetUserPasswordInput {
+    export class CRMResetUserPasswordInput {
         
          
             /* 要修改的用户id */ 
@@ -431,7 +431,7 @@
     /**
      * 联系人列表Dto
      */
-    export class ExternalContactListDto {
+    export class CRMExternalContactListDto {
         
          
             /* 姓 */ 
@@ -480,7 +480,7 @@
             locations?: any[];
          
             /* 用户信息 */ 
-            userInfo?: UserListResponse;
+            userInfo?: CRMUserListResponse;
          
             
             id?: string;
@@ -491,7 +491,7 @@
     /**
      *  No Remark 
      */
-    export class GetByCustomerIdsInput {
+    export class CRMGetByCustomerIdsInput {
         
          
             
@@ -503,7 +503,7 @@
     /**
      * 外部-客户联系人dto
      */
-    export class ExternalCustomerContactInput {
+    export class CRMExternalCustomerContactInput {
         
          
             /* 名 */ 
@@ -554,7 +554,7 @@
     /**
      *  No Remark 
      */
-    export class SSOUser {
+    export class CRMSSOUser {
         
          
             
@@ -611,7 +611,7 @@
     /**
      *  No Remark 
      */
-    export class ContactAndSaleOutput {
+    export class CRMContactAndSaleOutput {
         
          
             /* 业务员id */ 
@@ -644,7 +644,7 @@
     /**
      *  No Remark 
      */
-    export class IMContactGroupDto {
+    export class CRMIMContactGroupDto {
         
          
             /* 是否开通了主账号 */ 
@@ -662,7 +662,7 @@
     /**
      * IM联系人Dto
      */
-    export class IMContactDto {
+    export class CRMIMContactDto {
         
          
             /* 用户id */ 
@@ -710,7 +710,7 @@
     /**
      * 客户dto
      */
-    export class CustomerDto {
+    export class CRMCustomerDto {
         
          
             /* 全称 */ 
@@ -844,7 +844,7 @@
     /**
      * 客户列表dto
      */
-    export class CustomerListDto {
+    export class CRMCustomerListDto {
         
          
             /* 创建时间 */ 
@@ -978,7 +978,7 @@
     /**
      *  No Remark 
      */
-    export class MergeCustomerListInput {
+    export class CRMMergeCustomerListInput {
         
          
             /* 关键字 */ 
@@ -1002,7 +1002,7 @@
     /**
      * 获取选择器客户列表条件
      */
-    export class GetAllForUiPickerInput {
+    export class CRMGetAllForUiPickerInput {
         
          
             /* 客户搜索范围
@@ -1036,7 +1036,7 @@
     /**
      * 本公司客户及绑定了客户的合作伙伴
      */
-    export class ExternalPartnerAndCustomerDto {
+    export class CRMExternalPartnerAndCustomerDto {
         
          
             /* 合作伙伴Id(本公司客户则为空) */ 
@@ -1057,7 +1057,7 @@
     /**
      * 无主客户Dto
      */
-    export class OwnerLessPagedResultDto<T> {
+    export class CRMOwnerLessPagedResultDto<T> {
         
          
             /* 是否是上司 */ 
@@ -1075,7 +1075,7 @@
     /**
      * 用于搜索客户输出(一般用于下拉框)
      */
-    export class SearchCustomerOutput {
+    export class CRMSearchCustomerOutput {
         
          
             /* 全称 */ 
@@ -1111,7 +1111,7 @@
     /**
      * 创建或更新客户
      */
-    export class CreateOrUpdateCustomerInput {
+    export class CRMCreateOrUpdateCustomerInput {
         
          
             /* 全称 */ 
@@ -1201,7 +1201,7 @@
     /**
      *  No Remark 
      */
-    export class CustomerOutput {
+    export class CRMCustomerOutput {
         
          
             /* 全称 */ 
@@ -1276,7 +1276,7 @@
     /**
      *  No Remark 
      */
-    export class GetCustomerByNameInput {
+    export class CRMGetCustomerByNameInput {
         
          
             
@@ -1300,7 +1300,7 @@
     /**
      *  No Remark 
      */
-    export class CheckDeleteOutput {
+    export class CRMCheckDeleteOutput {
         
          
             /* ErrorType=1时显示：开通CSP账号数 */ 
@@ -1324,7 +1324,7 @@
     /**
      *  No Remark 
      */
-    export class FollowCustomerInput {
+    export class CRMFollowCustomerInput {
         
          
             /* 客户id */ 
@@ -1342,7 +1342,7 @@
     /**
      * 指派/转让 客户dto
      */
-    export class AssignCustomerInput {
+    export class CRMAssignCustomerInput {
         
          
             /* 转让的对象（用户id） */ 
@@ -1357,7 +1357,7 @@
     /**
      * 客户、合作伙伴列表
      */
-    export class CustomerAndPartnerListDto {
+    export class CRMCustomerAndPartnerListDto {
         
          
             /* 公司名称 */ 
@@ -1381,7 +1381,7 @@
     /**
      * 客户配置
      */
-    export class CustomerConfigureDto {
+    export class CRMCustomerConfigureDto {
         
          
             /* 客户级别
@@ -1401,7 +1401,7 @@
     /**
      *  No Remark 
      */
-    export class CustomerAuthenticateDto {
+    export class CRMCustomerAuthenticateDto {
         
          
             /* 客户id */ 
@@ -1413,20 +1413,29 @@
             /* 用户版本角色 */ 
             editionRoleId?: number;
          
-            /* 用户版本角色名称(新建编辑可不传) */ 
-            editionRoleName?: string;
-         
             /* 联系人id */ 
             contactId?: string;
          
-            /* 联系人姓名(新建编辑可不传) */ 
+            /* 是否创建联系人 */ 
+            isCreateContact?: boolean;
+         
+            /* 联系人名称 */ 
+            contactName?: string;
+         
+            /* 联系人姓 */ 
+            contactSurName?: string;
+         
+            /* 联系人手机 */ 
+            contactPhone?: string;
+         
+            /* 用户版本角色名称 */ 
+            editionRoleName?: string;
+         
+            /* 联系人姓名(详情页面显示用，不用提交) */ 
             contactFullName?: string;
          
-            /* 联系人姓名本地化(新建编辑可不传) */ 
-            contactFullNameLocalization?: string;
-         
             /* 客户配置 */ 
-            customerConfigure?: CustomerConfigureDto;
+            customerConfigure?: CRMCustomerConfigureDto;
          
             /* 在分布式事务中，该字段会自动设置为本地事务ID */ 
             txId?: string;
@@ -1437,7 +1446,7 @@
     /**
      * 认证客户输入
      */
-    export class AuditCustomerInput {
+    export class CRMAuditCustomerInput {
         
          
             
@@ -1452,7 +1461,7 @@
     /**
      *  No Remark 
      */
-    export class MergeCustomerInput {
+    export class CRMMergeCustomerInput {
         
          
             /* 选择合并的客户id */ 
@@ -1467,7 +1476,7 @@
     /**
      *  No Remark 
      */
-    export class CustomerAccessAllowOutput {
+    export class CRMCustomerAccessAllowOutput {
         
          
             /* 客户id */ 
@@ -1488,7 +1497,7 @@
     /**
      * 根据客户获取租户输出
      */
-    export class GetByCustomerIdsOutput {
+    export class CRMGetByCustomerIdsOutput {
         
          
             
@@ -1506,7 +1515,7 @@
     /**
      *  No Remark 
      */
-    export class GetCustomerAndPartnerOutput {
+    export class CRMGetCustomerAndPartnerOutput {
         
          
             /* 客户Id(如果是合作伙伴，则表示合作伙伴绑定的customerId) */ 
@@ -1530,7 +1539,7 @@
     /**
      *  No Remark 
      */
-    export class CustomerAndContactDto {
+    export class CRMCustomerAndContactDto {
         
          
             /* 客户id或询价人id */ 
@@ -1548,7 +1557,7 @@
     /**
      * 转为客户Dto
      */
-    export class BecomeCooperationInput {
+    export class CRMBecomeCooperationInput {
         
          
             /* 客户id */ 
@@ -1560,7 +1569,7 @@
     /**
      * 创建或更新客户
      */
-    export class IcpCreateOrUpdateCustomerInput {
+    export class CRMIcpCreateOrUpdateCustomerInput {
         
          
             /* 全称 */ 
@@ -1657,7 +1666,7 @@
     /**
      * 创建或更新客户
      */
-    export class IcpUpdateCustomerCodeInput {
+    export class CRMIcpUpdateCustomerCodeInput {
         
          
             /* 代码 */ 
@@ -1680,7 +1689,7 @@
     /**
      * 地点附加属性dto
      */
-    export class LocationAdditionDto {
+    export class CRMLocationAdditionDto {
         
          
             /* 港口贸易代码 */ 
@@ -1722,7 +1731,7 @@
     /**
      * 创建或更新地点Dto
      */
-    export class CreateOrUpdateLocationInput {
+    export class CRMCreateOrUpdateLocationInput {
         
          
             /* 地点名称 */ 
@@ -1759,7 +1768,7 @@
             viewableType?: number;
          
             /* 地点附加属性 */ 
-            locationAddition?: LocationAdditionDto;
+            locationAddition?: CRMLocationAdditionDto;
          
             /* 如果是为合作伙伴创建才需要传值 */ 
             partnerId?: string;
@@ -1779,7 +1788,7 @@
     /**
      * 地点列表输出
      */
-    export class LocationListDto {
+    export class CRMLocationListDto {
         
          
             /* 邮政编码 */ 
@@ -1816,7 +1825,7 @@
             viewableType?: number;
          
             /* 地点附加属性 */ 
-            locationAddition?: LocationAdditionDto;
+            locationAddition?: CRMLocationAdditionDto;
          
             /* 关联的联系人 */ 
             contacts?: any[];
@@ -1830,7 +1839,7 @@
     /**
      * 赋值地点到用户dto
      */
-    export class AssignUsersToLocationDto {
+    export class CRMAssignUsersToLocationDto {
         
          
             /* 地点id */ 
@@ -1845,7 +1854,7 @@
     /**
      * 赋值地点给用户Dto
      */
-    export class AssignLocationsToUserDto {
+    export class CRMAssignLocationsToUserDto {
         
          
             /* 联系人Id */ 
@@ -1860,7 +1869,7 @@
     /**
      *  No Remark 
      */
-    export class UnbindUsersLocationDto {
+    export class CRMUnbindUsersLocationDto {
         
          
             /* 地点Id */ 
@@ -1875,7 +1884,7 @@
     /**
      * 地点列表输出
      */
-    export class ExternalLocationListDto {
+    export class CRMExternalLocationListDto {
         
          
             /* 邮政编码 */ 
@@ -1956,7 +1965,7 @@
     /**
      * 地点Dto
      */
-    export class ExternalLocationDto {
+    export class CRMExternalLocationDto {
         
          
             /* 邮政编码 */ 
@@ -1996,7 +2005,7 @@
             viewableType?: number;
          
             /* 地点附加属性 */ 
-            locationAddition?: LocationAdditionDto;
+            locationAddition?: CRMLocationAdditionDto;
          
             /* 如果是为合作伙伴创建才需要传值 */ 
             partnerId?: string;
@@ -2016,7 +2025,7 @@
     /**
      *  No Remark 
      */
-    export class FBALocationListDto {
+    export class CRMFBALocationListDto {
         
          
             /* 邮政编码 */ 
@@ -2055,7 +2064,7 @@
     /**
      * 创建或更新地点Dto
      */
-    export class CreateOrUpdateLocationExternalInput {
+    export class CRMCreateOrUpdateLocationExternalInput {
         
          
             /* 邮政编码 */ 
@@ -2086,7 +2095,7 @@
             viewableType?: number;
          
             /* 地点附加属性 */ 
-            locationAddition?: LocationAdditionDto;
+            locationAddition?: CRMLocationAdditionDto;
          
             /* 如果是CRM给客户创建地址，则需要传 */ 
             customerId?: string;
@@ -2109,7 +2118,7 @@
     /**
      *  No Remark 
      */
-    export class GlobalSearchInput {
+    export class CRMGlobalSearchInput {
         
          
             /* 关键字 */ 
@@ -2121,7 +2130,7 @@
     /**
      *  No Remark 
      */
-    export class GlobalSearchOutput {
+    export class CRMGlobalSearchOutput {
         
          
             /* 邮政编码 */ 
@@ -2175,7 +2184,7 @@
     /**
      * 合作伙伴Dto
      */
-    export class PartnerDto {
+    export class CRMPartnerDto {
         
          
             /* 合作伙伴名称 */ 
@@ -2188,7 +2197,7 @@
             contactCount?: number;
          
             /* 合作伙伴所属客户 */ 
-            partnerCustomer?: CustomerDto;
+            partnerCustomer?: CRMCustomerDto;
          
             /* 当前账号是否为合作伙伴所属客户的拥有者 */ 
             isOwner?: boolean;
@@ -2202,7 +2211,7 @@
     /**
      * 合作伙伴列表Dto
      */
-    export class PartnerListDto {
+    export class CRMPartnerListDto {
         
          
             /* 合作伙伴名称 */ 
@@ -2241,7 +2250,7 @@
     /**
      * 创建或更新合作伙伴dto
      */
-    export class CreateOrUpdatePartnerDto {
+    export class CRMCreateOrUpdatePartnerDto {
         
          
             /* 合作伙伴名称 */ 
@@ -2254,7 +2263,7 @@
             partnerId?: string;
          
             
-            partnerCustomer?: CreateOrUpdateCustomerInput;
+            partnerCustomer?: CRMCreateOrUpdateCustomerInput;
          
             /* 是否创建合作伙伴所绑定客户下的合作伙伴 */ 
             isCreatePartner?: boolean;
@@ -2268,7 +2277,7 @@
     /**
      * 合作伙伴绑定客户Dto
      */
-    export class PartnerBindCustomerInput {
+    export class CRMPartnerBindCustomerInput {
         
          
             /* 要绑定的客户Id */ 
@@ -2292,7 +2301,7 @@
     /**
      * 解除绑定Dto
      */
-    export class UnBindCustomerInput {
+    export class CRMUnBindCustomerInput {
         
          
             /* 要解除绑定的合作伙伴Id */ 
@@ -2304,7 +2313,7 @@
     /**
      * 合作伙伴Dto
      */
-    export class ExternalPartnerDto {
+    export class CRMExternalPartnerDto {
         
          
             /* 合作伙伴名称 */ 
@@ -2319,7 +2328,7 @@
     /**
      *  No Remark 
      */
-    export class ExternalPartnerListDto {
+    export class CRMExternalPartnerListDto {
         
          
             /* 合作伙伴公司名称 */ 
@@ -2346,7 +2355,7 @@
     /**
      *  No Remark 
      */
-    export class AddressModel {
+    export class CRMAddressModel {
         
          
             
@@ -2385,7 +2394,7 @@
     /**
      *  No Remark 
      */
-    export class PortModel {
+    export class CRMPortModel {
         
          
             
@@ -2421,7 +2430,7 @@
     /**
      * 询价Dto
      */
-    export class QuoteEnquiryDto {
+    export class CRMQuoteEnquiryDto {
         
          
             /* 询价业务号 */ 
@@ -2566,16 +2575,16 @@
             creationTime?: string;
          
             /* 起始地 */ 
-            originAddress?: AddressModel;
+            originAddress?: CRMAddressModel;
          
             /* 目的地 */ 
-            destinationAddress?: AddressModel;
+            destinationAddress?: CRMAddressModel;
          
             /* 起始港口 */ 
-            originPort?: PortModel;
+            originPort?: CRMPortModel;
          
             /* 目的港口 */ 
-            destinationPort?: PortModel;
+            destinationPort?: CRMPortModel;
          
             /* 数量显示 */ 
             quantityDisplay?: string;
@@ -2604,14 +2613,14 @@
     /**
      *  No Remark 
      */
-    export class AddressGroupModel {
+    export class CRMAddressGroupModel {
         
          
             
-            addressModel?: AddressModel;
+            addressModel?: CRMAddressModel;
          
             
-            portModel?: PortModel;
+            portModel?: CRMPortModel;
         
         
     }
@@ -2619,7 +2628,7 @@
     /**
      * 为CRM提供的询价列表Dto
      */
-    export class QuoteEnquiryListForCRMOutput {
+    export class CRMQuoteEnquiryListForCRMOutput {
         
          
             /* 询价业务号 */ 
@@ -2652,13 +2661,13 @@
             deliveryDate?: string;
          
             /* 出发地 */ 
-            from?: AddressGroupModel;
+            from?: CRMAddressGroupModel;
          
             /* 拖车起始地址手输部分/地图DIY查询 */ 
             truckOriginAddressName?: string;
          
             /* 目的地 */ 
-            to?: AddressGroupModel;
+            to?: CRMAddressGroupModel;
          
             /* 拖车起始地址手输部分/地图DIY查询 */ 
             truckDestinationAddressName?: string;
@@ -2683,7 +2692,7 @@
     /**
      * CRM获取询价列表
      */
-    export class QuoteEnquiryListForCRMInput {
+    export class CRMQuoteEnquiryListForCRMInput {
         
          
             /* 状态
@@ -2730,7 +2739,7 @@
     /**
      *  No Remark 
      */
-    export class CustomerListModel {
+    export class CRMCustomerListModel {
         
          
             
@@ -2751,7 +2760,7 @@
     /**
      * CRM获取相关的报价（询价路线和订舱路线全匹配），用来选择报价（只有沟通中、已接受的）
      */
-    export class GetRelatedQuoteForCRMOutput {
+    export class CRMGetRelatedQuoteForCRMOutput {
         
          
             /* 相关询报价列表 */ 
@@ -2764,9 +2773,58 @@
     }
  
     /**
+     *  No Remark 
+     */
+    export class CRMGetListByRouteForCRMOutput {
+        
+         
+            /* 询价业务号 */ 
+            quoteNo?: string;
+         
+            /* 询价归属客户名称 */ 
+            ownerCustomerName?: string;
+         
+            /* 询价归属用户名称 */ 
+            ownerUserName?: string;
+         
+            /* 运输方式
+0 = NotSet
+1 = Ocean
+2 = Air */ 
+            freightMethodType?: number;
+         
+            /* 运输条款
+0 = NotSet
+1 = CY_CY
+2 = CY_DOOR
+3 = DOOR_CY
+4 = DOOR_DOOR */ 
+            freightType?: number;
+         
+            /* 始发装载时间/FBA时  Pick Up / Delivery Time */ 
+            cargoReadyDate?: string;
+         
+            /* 预计交货时间 */ 
+            deliveryDate?: string;
+         
+            /* 状态
+0 = NoSet
+1 = Active
+2 = Accepted
+3 = Expired
+4 = Rejected */ 
+            status?: number;
+         
+            /* 主键 */ 
+            id?: string;
+        
+        
+    }
+ 
+    /**
      * CSP询价检索数据源
      */
-    export class QueryLocationSourceModel {
+    export class CRMQueryLocationSourceModel {
         
          
             /* 地点LocationId */ 
@@ -2806,7 +2864,7 @@
     /**
      * 为CSP提供的询价列表请求Dto
      */
-    export class QuoteEnquiryListForCSPInput {
+    export class CRMQuoteEnquiryListForCSPInput {
         
          
             /* 状态数组 */ 
@@ -2816,7 +2874,7 @@
             freightMethodTypes?: string;
          
             /* 地点参数 */ 
-            location?: QueryLocationSourceModel;
+            location?: CRMQueryLocationSourceModel;
          
             /* 创建人Id数组 */ 
             ownerIds?: any[];
@@ -2839,7 +2897,7 @@
     /**
      * 为CSP提供的询价列表Dto
      */
-    export class QuoteEnquiryListForCSPOutput {
+    export class CRMQuoteEnquiryListForCSPOutput {
         
          
             /* 询价业务号 */ 
@@ -2863,13 +2921,13 @@
             cargoReadyDate?: string;
          
             /* 出发地 */ 
-            from?: AddressGroupModel;
+            from?: CRMAddressGroupModel;
          
             /* 拖车起始地址手输部分/地图DIY查询 */ 
             truckOriginAddressName?: string;
          
             /* 目的地 */ 
-            to?: AddressGroupModel;
+            to?: CRMAddressGroupModel;
          
             /* 拖车起始地址手输部分/地图DIY查询 */ 
             truckDestinationAddressName?: string;
@@ -2912,14 +2970,14 @@
     /**
      *  No Remark 
      */
-    export class Object {
+    export class CRMObject {
         
     }
  
     /**
      * 报价Dto
      */
-    export class QuoteReplyDto {
+    export class CRMQuoteReplyDto {
         
          
             /* 报价业务号 */ 
@@ -2975,7 +3033,7 @@
     /**
      * 主键类型默认为整形的数据传输对象基类
      */
-    export class CoEntityDto {
+    export class CRMCoEntityDto {
         
          
             
@@ -2987,7 +3045,7 @@
     /**
      * 日志列表Dto
      */
-    export class TraceLogListDto {
+    export class CRMTraceLogListDto {
         
          
             /* 内容 */ 
@@ -3029,7 +3087,7 @@
     /**
      * 创建跟进日志
      */
-    export class CreateTraceLogInput {
+    export class CRMCreateTraceLogInput {
         
          
             /* 内容 */ 
@@ -3056,7 +3114,7 @@
     /**
      * 评论列表dto
      */
-    export class TraceLogCommentListDto {
+    export class CRMTraceLogCommentListDto {
         
          
             /* 日志Id */ 
@@ -3080,7 +3138,7 @@
     /**
      * 发表评论
      */
-    export class CreateTraceLogCommentInput {
+    export class CRMCreateTraceLogCommentInput {
         
          
             /* 日志Id */ 

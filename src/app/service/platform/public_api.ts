@@ -12,7 +12,10 @@ export * from './organization-unit.service';
 export * from './permission.service';
 export * from './position.service';
 export * from './session.service';
+export * from './setting.service';
 export * from './tfs-webhook-proxy.service';
 export * from './timing.service';
 
+
 export * from './platform.types';
+

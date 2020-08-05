@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { MayInviteUserModel,ListResultDto,CreateImGroupInput,CreateImGroupForCustomerInput,AddDeleteGroupInput,AjaxResponse, } from './csp.types';
+import { CSPMayInviteUserModel,CSPListResultDto,CSPCreateImGroupInput,CSPCreateImGroupForCustomerInput,CSPAddDeleteGroupInput,CSPAjaxResponse, } from './csp.types';
 
 @BaseUrl('/csp/IM')
 @Injectable({ providedIn: 'root' })
-export class IMService extends BaseApi {
+export class CSPIMService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -21,7 +21,7 @@ export class IMService extends BaseApi {
         @Payload
         _req: {businessType:number,businessId:string} 
 
-    ): Observable<ListResultDto<MayInviteUserModel>> {
+    ): Observable<CSPListResultDto<CSPMayInviteUserModel>> {
         return null as any
     }
 
@@ -34,7 +34,7 @@ export class IMService extends BaseApi {
     @POST('createImGroup')
     createImGroup(
         @Payload
-        _req:CreateImGroupInput
+        _req:CSPCreateImGroupInput
 
     ): Observable<any> {
         return null as any
@@ -49,7 +49,7 @@ export class IMService extends BaseApi {
     @POST('createImGroupForCustomer')
     createImGroupForCustomer(
         @Payload
-        _req:CreateImGroupForCustomerInput
+        _req:CSPCreateImGroupForCustomerInput
 
     ): Observable<any> {
         return null as any
@@ -64,9 +64,9 @@ export class IMService extends BaseApi {
     @POST('addDeleteGroupTask')
     addDeleteGroupTask(
         @Payload
-        _req:AddDeleteGroupInput
+        _req:CSPAddDeleteGroupInput
 
-    ): Observable<AjaxResponse> {
+    ): Observable<CSPAjaxResponse> {
         return null as any
     }
 

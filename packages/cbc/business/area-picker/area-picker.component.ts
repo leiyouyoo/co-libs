@@ -3,7 +3,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 
-import { AreaService } from '@co/cds';
+import { PUBAreaService } from '@co/cds';
 import { PickerComponentBase } from '@co/cbc/core';
 
 /**
@@ -28,7 +28,7 @@ import { PickerComponentBase } from '@co/cbc/core';
 export class AreaPickerComponent extends PickerComponentBase {
   //#region  构造函数
 
-  constructor(cdr: ChangeDetectorRef, private areaService: AreaService) {
+  constructor(cdr: ChangeDetectorRef, private areaService: PUBAreaService) {
     super(cdr);
     this.coLabelMember = 'name';
   }
