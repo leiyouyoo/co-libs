@@ -21,7 +21,7 @@ export class PlatformJobService extends BaseApi {
         @Payload
         _req: {id?:string,jobTypeId?:string,searchText?:string,isValid?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PlatformPagedResultDto<JobDto>> {
+    ): Observable<PlatformPagedResultDto<PlatformJobDto>> {
         return null as any
     }
 

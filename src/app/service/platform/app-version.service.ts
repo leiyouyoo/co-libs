@@ -81,7 +81,7 @@ export class PlatformAppVersionService extends BaseApi {
         @Payload
         _req: {sorting?:string,skipCount?:number,maxResultCount?:number} 
 
-    ): Observable<PlatformPagedResultDto<AppVersionDto>> {
+    ): Observable<PlatformPagedResultDto<PlatformAppVersionDto>> {
         return null as any
     }
 

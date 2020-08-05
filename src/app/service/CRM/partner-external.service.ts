@@ -36,7 +36,7 @@ export class CRMPartnerExternalService extends BaseApi {
         @Payload
         _req: {sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<CRMPagedResultDto<ExternalPartnerListDto>> {
+    ): Observable<CRMPagedResultDto<CRMExternalPartnerListDto>> {
         return null as any
     }
 
@@ -51,7 +51,7 @@ export class CRMPartnerExternalService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<CRMListResultDto<ExternalPartnerAndCustomerDto>> {
+    ): Observable<CRMListResultDto<CRMExternalPartnerAndCustomerDto>> {
         return null as any
     }
 
@@ -66,7 +66,7 @@ export class CRMPartnerExternalService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<CRMListResultDto<ExternalPartnerListDto>> {
+    ): Observable<CRMListResultDto<CRMExternalPartnerListDto>> {
         return null as any
     }
 

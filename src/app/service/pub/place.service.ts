@@ -36,7 +36,7 @@ export class PUBPlaceService extends BaseApi {
         @Payload
         _req: {id?:string,name?:string,regionId?:string,isOcean?:boolean,isAir?:boolean,isAirOrOcean?:boolean,isRail?:boolean,isOther?:boolean,isCity?:boolean,isRamp?:boolean,isValid?:boolean,isMultiple?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PUBPagedResultDto<PlaceDto>> {
+    ): Observable<PUBPagedResultDto<PUBPlaceDto>> {
         return null as any
     }
 
@@ -51,7 +51,7 @@ export class PUBPlaceService extends BaseApi {
         @Payload
         _req:PUBGetPlaceListByRegionsInput
 
-    ): Observable<PUBPagedResultDto<PlaceDto>> {
+    ): Observable<PUBPagedResultDto<PUBPlaceDto>> {
         return null as any
     }
 
@@ -66,7 +66,7 @@ export class PUBPlaceService extends BaseApi {
         @Payload
         _req: {placeId?:string,name?:string,regionIds?:any[],isOcean?:boolean,isAir?:boolean,isAirOrOcean?:boolean,isOther?:boolean,isCity?:boolean,isValid?:boolean,isPaged?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PUBPagedResultDto<PlaceDto>> {
+    ): Observable<PUBPagedResultDto<PUBPlaceDto>> {
         return null as any
     }
 
@@ -81,7 +81,7 @@ export class PUBPlaceService extends BaseApi {
         @Payload
         _req: {code?:string,name?:string,type?:number,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PUBPagedResultDto<PlaceOrCountyDto>> {
+    ): Observable<PUBPagedResultDto<PUBPlaceOrCountyDto>> {
         return null as any
     }
 
@@ -186,7 +186,7 @@ export class PUBPlaceService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<PUBListResultDto<PlaceDto>> {
+    ): Observable<PUBListResultDto<PUBPlaceDto>> {
         return null as any
     }
 
@@ -216,7 +216,7 @@ export class PUBPlaceService extends BaseApi {
         @Payload
         _req: {searchText?:string,id?:string,isPort?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PUBPagedResultDto<FromToDto>> {
+    ): Observable<PUBPagedResultDto<PUBFromToDto>> {
         return null as any
     }
 
@@ -276,7 +276,7 @@ export class PUBPlaceService extends BaseApi {
         @Payload
         _req:PUBGetAllPlaceForUiPickerInput
 
-    ): Observable<PUBPagedResultDto<PlaceUiPickerDto>> {
+    ): Observable<PUBPagedResultDto<PUBPlaceUiPickerDto>> {
         return null as any
     }
 

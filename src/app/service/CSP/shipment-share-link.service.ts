@@ -51,7 +51,7 @@ export class CSPShipmentShareLinkService extends BaseApi {
         @Payload
         _req: {shipmentId:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<CSPPagedResultDto<ShipmentShareLinkDto>> {
+    ): Observable<CSPPagedResultDto<CSPShipmentShareLinkDto>> {
         return null as any
     }
 

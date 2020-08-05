@@ -21,7 +21,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
         @Payload
         _req: {userId?:number} 
 
-    ): Observable<PlatformListResultDto<OrganizationUnitDto>> {
+    ): Observable<PlatformListResultDto<PlatformOrganizationUnitDto>> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<PlatformListResultDto<OrganizationUnitDto>> {
+    ): Observable<PlatformListResultDto<PlatformOrganizationUnitDto>> {
         return null as any
     }
 
@@ -51,7 +51,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
         @Payload
         _req: {searchText?:string,organizationUnitId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PlatformPagedResultDto<UserInfo>> {
+    ): Observable<PlatformPagedResultDto<PlatformUserInfo>> {
         return null as any
     }
 
@@ -66,7 +66,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
         @Payload
         _req: {searchText?:string,isOwnDepartment?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PlatformPagedResultDto<UserInfo>> {
+    ): Observable<PlatformPagedResultDto<PlatformUserInfo>> {
         return null as any
     }
 
@@ -81,7 +81,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
         @Payload
         _req: {searchText?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PlatformPagedResultDto<UserInfo>> {
+    ): Observable<PlatformPagedResultDto<PlatformUserInfo>> {
         return null as any
     }
 
@@ -96,7 +96,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
         @Payload
         _req: {input?:object} 
 
-    ): Observable<PlatformListResultDto<IMContactGroupDto>> {
+    ): Observable<PlatformListResultDto<PlatformIMContactGroupDto>> {
         return null as any
     }
 
@@ -126,7 +126,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
         @Payload
         _req: {organizationUnitId?:string,organizationUnitName?:string} 
 
-    ): Observable<PlatformListResultDto<OrganizationUnitUserDto>> {
+    ): Observable<PlatformListResultDto<PlatformOrganizationUnitUserDto>> {
         return null as any
     }
 
@@ -156,7 +156,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
         @Payload
         _req: {parentId?:string,isRecursion?:boolean,type?:number} 
 
-    ): Observable<PlatformListResultDto<OrganizationUnitDto>> {
+    ): Observable<PlatformListResultDto<PlatformOrganizationUnitDto>> {
         return null as any
     }
 
@@ -171,7 +171,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
         @Payload
         _req: {searchText?:string} 
 
-    ): Observable<PlatformListResultDto<OrganizationUnitDto>> {
+    ): Observable<PlatformListResultDto<PlatformOrganizationUnitDto>> {
         return null as any
     }
 

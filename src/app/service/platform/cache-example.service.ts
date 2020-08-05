@@ -21,7 +21,7 @@ export class PlatformCacheExampleService extends BaseApi {
         @Payload
         _req: {name?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PlatformPagedResultDto<CacheExampleDto>> {
+    ): Observable<PlatformPagedResultDto<PlatformCacheExampleDto>> {
         return null as any
     }
 

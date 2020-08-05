@@ -36,7 +36,7 @@ export class PlatformBusinessFilterService extends BaseApi {
         @Payload
         _req: {businessType?:string} 
 
-    ): Observable<PlatformListResultDto<ConditionGroupInfo>> {
+    ): Observable<PlatformListResultDto<PlatformConditionGroupInfo>> {
         return null as any
     }
 

@@ -21,7 +21,7 @@ export class CRMQuoteReplyService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<CRMListResultDto<QuoteReplyDto>> {
+    ): Observable<CRMListResultDto<CRMQuoteReplyDto>> {
         return null as any
     }
 
@@ -156,7 +156,7 @@ export class CRMQuoteReplyService extends BaseApi {
         @Payload
         _req: {replyNo?:string,carrierId?:string,transitTime?:string,sailSchedule?:string,validStartDate?:string,validEndDate?:string,creationTime?:string,status?:number,quoteEnquiryId?:string,quoteReplyItems?:any[],carrierName?:string,totalCharge?:string,unifiedTotalCharge?:number,id?:string} 
 
-    ): Observable<CRMPagedResultDto<QuoteReplyDto>> {
+    ): Observable<CRMPagedResultDto<CRMQuoteReplyDto>> {
         return null as any
     }
 

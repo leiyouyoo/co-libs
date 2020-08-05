@@ -36,7 +36,7 @@ export class CRMPartnerService extends BaseApi {
         @Payload
         _req: {customerId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<CRMPagedResultDto<PartnerListDto>> {
+    ): Observable<CRMPagedResultDto<CRMPartnerListDto>> {
         return null as any
     }
 

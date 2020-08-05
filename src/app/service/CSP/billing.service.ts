@@ -36,7 +36,7 @@ export class CSPBillingService extends BaseApi {
         @Payload
         _req:CSPGetBillListInput
 
-    ): Observable<CSPPagedResultDto<BillOutput>> {
+    ): Observable<CSPPagedResultDto<CSPBillOutput>> {
         return null as any
     }
 
@@ -51,7 +51,7 @@ export class CSPBillingService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<CSPListResultDto<BillOutput>> {
+    ): Observable<CSPListResultDto<CSPBillOutput>> {
         return null as any
     }
 
@@ -321,7 +321,7 @@ export class CSPBillingService extends BaseApi {
         @Payload
         _req: {billId?:string} 
 
-    ): Observable<CSPListResultDto<BankAccountDto>> {
+    ): Observable<CSPListResultDto<CSPBankAccountDto>> {
         return null as any
     }
 

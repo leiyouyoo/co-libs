@@ -21,7 +21,7 @@ export class PlatformCompanyConfigureService extends BaseApi {
         @Payload
         _req: {isActive?:boolean} 
 
-    ): Observable<PlatformPagedResultDto<CompanyConfigureDto>> {
+    ): Observable<PlatformPagedResultDto<PlatformCompanyConfigureDto>> {
         return null as any
     }
 
@@ -156,7 +156,7 @@ export class PlatformCompanyConfigureService extends BaseApi {
         @Payload
         _req: {isActive?:boolean,placeId?:string,locationId?:string} 
 
-    ): Observable<PlatformListResultDto<OrganizationUnitDto>> {
+    ): Observable<PlatformListResultDto<PlatformOrganizationUnitDto>> {
         return null as any
     }
 

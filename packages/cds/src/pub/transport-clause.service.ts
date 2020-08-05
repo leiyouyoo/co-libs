@@ -36,7 +36,7 @@ export class PUBTransportClauseService extends BaseApi {
         @Payload
         _req: {originalId?:string,destinationId?:string,isValid?:boolean} 
 
-    ): Observable<PUBPagedResultDto<TransportClauseDto>> {
+    ): Observable<PUBPagedResultDto<PUBTransportClauseDto>> {
         return null as any
     }
 
@@ -141,7 +141,7 @@ export class PUBTransportClauseService extends BaseApi {
         @Payload
         _req:PUBGetAllTransportClauseForUiPickerInput
 
-    ): Observable<PUBPagedResultDto<TransportClauseUiPickerDto>> {
+    ): Observable<PUBPagedResultDto<PUBTransportClauseUiPickerDto>> {
         return null as any
     }
 

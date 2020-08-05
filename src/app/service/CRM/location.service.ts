@@ -36,7 +36,7 @@ export class CRMLocationService extends BaseApi {
         @Payload
         _req: {customerId?:string,partnerId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<CRMPagedResultDto<LocationListDto>> {
+    ): Observable<CRMPagedResultDto<CRMLocationListDto>> {
         return null as any
     }
 
@@ -51,7 +51,7 @@ export class CRMLocationService extends BaseApi {
         @Payload
         _req: {customerId?:string,partnerId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<CRMListResultDto<LocationListDto>> {
+    ): Observable<CRMListResultDto<CRMLocationListDto>> {
         return null as any
     }
 
@@ -66,7 +66,7 @@ export class CRMLocationService extends BaseApi {
         @Payload
         _req: {contactId?:string} 
 
-    ): Observable<CRMListResultDto<LocationListDto>> {
+    ): Observable<CRMListResultDto<CRMLocationListDto>> {
         return null as any
     }
 

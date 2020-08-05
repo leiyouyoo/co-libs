@@ -36,7 +36,7 @@ export class PUBDataDictionaryService extends BaseApi {
         @Payload
         _req: {code?:string,name?:string,typeId?:string,typeCode?:string,isValid?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PUBPagedResultDto<DataDictionaryDto>> {
+    ): Observable<PUBPagedResultDto<PUBDataDictionaryDto>> {
         return null as any
     }
 
@@ -171,7 +171,7 @@ export class PUBDataDictionaryService extends BaseApi {
         @Payload
         _req:PUBGetAllDataDictionaryForUiPickerInput
 
-    ): Observable<PUBPagedResultDto<DataDictionaryUiPickerDto>> {
+    ): Observable<PUBPagedResultDto<PUBDataDictionaryUiPickerDto>> {
         return null as any
     }
 

@@ -36,7 +36,7 @@ export class PUBDictionaryTypeService extends BaseApi {
         @Payload
         _req: {code?:string,name?:string,isValid?:boolean} 
 
-    ): Observable<PUBPagedResultDto<DictionaryTypeDto>> {
+    ): Observable<PUBPagedResultDto<PUBDictionaryTypeDto>> {
         return null as any
     }
 

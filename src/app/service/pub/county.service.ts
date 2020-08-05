@@ -36,7 +36,7 @@ export class PUBCountyService extends BaseApi {
         @Payload
         _req: {code?:string,name?:string,parentId?:string,isRecursion?:boolean,id?:string} 
 
-    ): Observable<PUBListResultDto<CountyDto>> {
+    ): Observable<PUBListResultDto<PUBCountyDto>> {
         return null as any
     }
 
@@ -51,7 +51,7 @@ export class PUBCountyService extends BaseApi {
         @Payload
         _req: {id?:string,code?:string,name?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PUBPagedResultDto<CountyDto>> {
+    ): Observable<PUBPagedResultDto<PUBCountyDto>> {
         return null as any
     }
 

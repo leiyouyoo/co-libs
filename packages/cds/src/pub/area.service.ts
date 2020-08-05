@@ -36,7 +36,7 @@ export class PUBAreaService extends BaseApi {
         @Payload
         _req: {name?:string,isValid?:boolean} 
 
-    ): Observable<PUBListResultDto<AreaDto>> {
+    ): Observable<PUBListResultDto<PUBAreaDto>> {
         return null as any
     }
 
@@ -96,7 +96,7 @@ export class PUBAreaService extends BaseApi {
         @Payload
         _req:PUBGetAllAreaForUiPickerInput
 
-    ): Observable<PUBPagedResultDto<AreaUiPickerDto>> {
+    ): Observable<PUBPagedResultDto<PUBAreaUiPickerDto>> {
         return null as any
     }
 

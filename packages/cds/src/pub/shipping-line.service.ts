@@ -36,7 +36,7 @@ export class PUBShippingLineService extends BaseApi {
         @Payload
         _req: {isValid?:boolean,parentId?:string,isRecursion?:boolean} 
 
-    ): Observable<PUBListResultDto<ShippingLineDto>> {
+    ): Observable<PUBListResultDto<PUBShippingLineDto>> {
         return null as any
     }
 
@@ -141,7 +141,7 @@ export class PUBShippingLineService extends BaseApi {
         @Payload
         _req: {shippingLineId?:string} 
 
-    ): Observable<PUBListResultDto<CountryReationShippingDto>> {
+    ): Observable<PUBListResultDto<PUBCountryReationShippingDto>> {
         return null as any
     }
 
@@ -171,7 +171,7 @@ export class PUBShippingLineService extends BaseApi {
         @Payload
         _req: {shippingLineId?:string} 
 
-    ): Observable<PUBListResultDto<PortReationCountryDto>> {
+    ): Observable<PUBListResultDto<PUBPortReationCountryDto>> {
         return null as any
     }
 
@@ -216,7 +216,7 @@ export class PUBShippingLineService extends BaseApi {
         @Payload
         _req:PUBGetAllShippingLineForUiPickerInput
 
-    ): Observable<PUBPagedResultDto<ShippingLineUiPickerDto>> {
+    ): Observable<PUBPagedResultDto<PUBShippingLineUiPickerDto>> {
         return null as any
     }
 

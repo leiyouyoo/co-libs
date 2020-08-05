@@ -66,7 +66,7 @@ export class PUBSailingSchedulesService extends BaseApi {
         @Payload
         _req:PUBSailingSchedulesInput
 
-    ): Observable<PUBPagedResultDto<SailingSchedulesDto>> {
+    ): Observable<PUBPagedResultDto<PUBSailingSchedulesDto>> {
         return null as any
     }
 

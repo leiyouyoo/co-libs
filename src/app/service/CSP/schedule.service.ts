@@ -21,7 +21,7 @@ export class CSPScheduleService extends BaseApi {
         @Payload
         _req: {searchMonthOrDay:string} 
 
-    ): Observable<CSPListResultDto<ScheduleDto>> {
+    ): Observable<CSPListResultDto<CSPScheduleDto>> {
         return null as any
     }
 
@@ -141,7 +141,7 @@ export class CSPScheduleService extends BaseApi {
         @Payload
         _req: {sorting?:string,skipCount?:number,maxResultCount?:number} 
 
-    ): Observable<CSPPagedResultDto<ScheduleDto>> {
+    ): Observable<CSPPagedResultDto<CSPScheduleDto>> {
         return null as any
     }
 

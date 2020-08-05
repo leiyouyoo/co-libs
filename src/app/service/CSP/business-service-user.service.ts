@@ -21,7 +21,7 @@ export class CSPBusinessServiceUserService extends BaseApi {
         @Payload
         _req: {customerId?:string} 
 
-    ): Observable<CSPListResultDto<ServiceUserGroupDto>> {
+    ): Observable<CSPListResultDto<CSPServiceUserGroupDto>> {
         return null as any
     }
 

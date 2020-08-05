@@ -21,7 +21,7 @@ export class CSPIMService extends BaseApi {
         @Payload
         _req: {businessType:number,businessId:string} 
 
-    ): Observable<CSPListResultDto<MayInviteUserModel>> {
+    ): Observable<CSPListResultDto<CSPMayInviteUserModel>> {
         return null as any
     }
 

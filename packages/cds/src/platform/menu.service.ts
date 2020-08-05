@@ -21,7 +21,7 @@ export class PlatformMenuService extends BaseApi {
         @Payload
         _req: {parentId?:string,isRecursion?:boolean} 
 
-    ): Observable<PlatformListResultDto<MenuItemDto>> {
+    ): Observable<PlatformListResultDto<PlatformMenuItemDto>> {
         return null as any
     }
 

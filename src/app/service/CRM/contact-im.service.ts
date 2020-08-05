@@ -21,7 +21,7 @@ export class CRMContactIMService extends BaseApi {
         @Payload
         _req: {customerId?:string,searchText?:string} 
 
-    ): Observable<CRMListResultDto<IMContactGroupDto>> {
+    ): Observable<CRMListResultDto<CRMIMContactGroupDto>> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class CRMContactIMService extends BaseApi {
         @Payload
         _req: {customerId?:string,searchText?:string} 
 
-    ): Observable<CRMListResultDto<IMContactDto>> {
+    ): Observable<CRMListResultDto<CRMIMContactDto>> {
         return null as any
     }
 
@@ -51,7 +51,7 @@ export class CRMContactIMService extends BaseApi {
         @Payload
         _req: {customerId?:string,searchText?:string} 
 
-    ): Observable<CRMListResultDto<IMContactGroupDto>> {
+    ): Observable<CRMListResultDto<CRMIMContactGroupDto>> {
         return null as any
     }
 

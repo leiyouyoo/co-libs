@@ -36,7 +36,7 @@ export class CSPHsCodeService extends BaseApi {
         @Payload
         _req: {searchKeyword?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<CSPListResultDto<HsCodeDto>> {
+    ): Observable<CSPListResultDto<CSPHsCodeDto>> {
         return null as any
     }
 

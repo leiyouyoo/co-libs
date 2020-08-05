@@ -36,7 +36,7 @@ export class CSPShipmentService extends BaseApi {
         @Payload
         _req:CSPGetShipmentListInput
 
-    ): Observable<CSPPagedResultDto<ShipmentListOutput>> {
+    ): Observable<CSPPagedResultDto<CSPShipmentListOutput>> {
         return null as any
     }
 
@@ -51,7 +51,7 @@ export class CSPShipmentService extends BaseApi {
         @Payload
         _req:CSPGetShipmentListInput
 
-    ): Observable<CSPPagedResultDto<ShipmentListOutput>> {
+    ): Observable<CSPPagedResultDto<CSPShipmentListOutput>> {
         return null as any
     }
 
@@ -66,7 +66,7 @@ export class CSPShipmentService extends BaseApi {
         @Payload
         _req: {isFromBooking?:boolean,isFromShipment?:boolean,isFromOrigin?:boolean,isFromDestination?:boolean} 
 
-    ): Observable<CSPListResultDto<PubLocation>> {
+    ): Observable<CSPListResultDto<CSPPubLocation>> {
         return null as any
     }
 
@@ -81,7 +81,7 @@ export class CSPShipmentService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<CSPListResultDto<NameValueDto>> {
+    ): Observable<CSPListResultDto<CSPNameValueDto>> {
         return null as any
     }
 
@@ -96,7 +96,7 @@ export class CSPShipmentService extends BaseApi {
         @Payload
         _req: {isFromBooking?:boolean,isFromShipment?:boolean,isFromOrigin?:boolean,isFromDestination?:boolean} 
 
-    ): Observable<CSPListResultDto<NetWorkLocationModel>> {
+    ): Observable<CSPListResultDto<CSPNetWorkLocationModel>> {
         return null as any
     }
 
@@ -111,7 +111,7 @@ export class CSPShipmentService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<CSPListResultDto<GetAllForProductOutput>> {
+    ): Observable<CSPListResultDto<CSPGetAllForProductOutput>> {
         return null as any
     }
 
@@ -156,7 +156,7 @@ export class CSPShipmentService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<CSPListResultDto<ShipmentEventGroupDto>> {
+    ): Observable<CSPListResultDto<CSPShipmentEventGroupDto>> {
         return null as any
     }
 
@@ -246,7 +246,7 @@ export class CSPShipmentService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<CSPListResultDto<ShipmentOrderItemDto>> {
+    ): Observable<CSPListResultDto<CSPShipmentOrderItemDto>> {
         return null as any
     }
 
@@ -306,7 +306,7 @@ export class CSPShipmentService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<CSPListResultDto<ConditionItemAttribute>> {
+    ): Observable<CSPListResultDto<CSPConditionItemAttribute>> {
         return null as any
     }
 
@@ -321,7 +321,7 @@ export class CSPShipmentService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<CSPListResultDto<ConditionItemAttribute>> {
+    ): Observable<CSPListResultDto<CSPConditionItemAttribute>> {
         return null as any
     }
 
@@ -351,7 +351,7 @@ export class CSPShipmentService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<CSPListResultDto<NameValueDto>> {
+    ): Observable<CSPListResultDto<CSPNameValueDto>> {
         return null as any
     }
 

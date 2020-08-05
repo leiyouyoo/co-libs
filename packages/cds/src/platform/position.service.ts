@@ -21,7 +21,7 @@ export class PlatformPositionService extends BaseApi {
         @Payload
         _req: {organizationUnitId?:string,parentId?:string,searchText?:string,isRecursion?:boolean,isValid?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PlatformPagedResultDto<PositionDto>> {
+    ): Observable<PlatformPagedResultDto<PlatformPositionDto>> {
         return null as any
     }
 

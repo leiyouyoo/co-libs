@@ -96,7 +96,7 @@ export class CSPShipmentItemService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<CSPListResultDto<ShipmentItemDto>> {
+    ): Observable<CSPListResultDto<CSPShipmentItemDto>> {
         return null as any
     }
 
@@ -171,7 +171,7 @@ export class CSPShipmentItemService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<CSPListResultDto<ShipmentOrderItemInContainerDto>> {
+    ): Observable<CSPListResultDto<CSPShipmentOrderItemInContainerDto>> {
         return null as any
     }
 

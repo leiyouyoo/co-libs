@@ -21,7 +21,7 @@ export class PlatformTimingService extends BaseApi {
         @Payload
         _req: {defaultTimezoneScope?:number} 
 
-    ): Observable<PlatformListResultDto<NameValueDto>> {
+    ): Observable<PlatformListResultDto<PlatformNameValueDto>> {
         return null as any
     }
 

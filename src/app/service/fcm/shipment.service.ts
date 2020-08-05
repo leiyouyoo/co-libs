@@ -36,7 +36,7 @@ export class FCMShipmentService extends BaseApi {
         @Payload
         _req:FCMGetPreShipmentListInput
 
-    ): Observable<FCMPagedResultDto<PreShipmentListItemDto>> {
+    ): Observable<FCMPagedResultDto<FCMPreShipmentListItemDto>> {
         return null as any
     }
 
@@ -141,7 +141,7 @@ export class FCMShipmentService extends BaseApi {
         @Payload
         _req:FCMGetShipmentListInput
 
-    ): Observable<FCMPagedResultDto<ShipmentListItemDto>> {
+    ): Observable<FCMPagedResultDto<FCMShipmentListItemDto>> {
         return null as any
     }
 
@@ -156,7 +156,7 @@ export class FCMShipmentService extends BaseApi {
         @Payload
         _req:FCMGetDeliveryInfoListInput
 
-    ): Observable<FCMPagedResultDto<DeliveryInfoListItemDto>> {
+    ): Observable<FCMPagedResultDto<FCMDeliveryInfoListItemDto>> {
         return null as any
     }
 

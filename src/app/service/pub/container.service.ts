@@ -21,7 +21,7 @@ export class PUBContainerService extends BaseApi {
         @Payload
         _req: {isValid?:boolean,code?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PUBPagedResultDto<ContainerDto>> {
+    ): Observable<PUBPagedResultDto<PUBContainerDto>> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class PUBContainerService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<PUBListResultDto<ContainerGroupDto>> {
+    ): Observable<PUBListResultDto<PUBContainerGroupDto>> {
         return null as any
     }
 
@@ -156,7 +156,7 @@ export class PUBContainerService extends BaseApi {
         @Payload
         _req:PUBGetAllContainerForUiPickerInput
 
-    ): Observable<PUBPagedResultDto<ContainerUiPickerDto>> {
+    ): Observable<PUBPagedResultDto<PUBContainerUiPickerDto>> {
         return null as any
     }
 

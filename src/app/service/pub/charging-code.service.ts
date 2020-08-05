@@ -36,7 +36,7 @@ export class PUBChargingCodeService extends BaseApi {
         @Payload
         _req: {groupId?:string,text?:string,isValid?:boolean} 
 
-    ): Observable<PUBPagedResultDto<ChargingCodeDto>> {
+    ): Observable<PUBPagedResultDto<PUBChargingCodeDto>> {
         return null as any
     }
 
@@ -81,7 +81,7 @@ export class PUBChargingCodeService extends BaseApi {
         @Payload
         _req:PUBGetAllChargingCodeForUiPickerInput
 
-    ): Observable<PUBPagedResultDto<ChargingCodeUiPickerDto>> {
+    ): Observable<PUBPagedResultDto<PUBChargingCodeUiPickerDto>> {
         return null as any
     }
 

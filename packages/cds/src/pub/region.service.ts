@@ -36,7 +36,7 @@ export class PUBRegionService extends BaseApi {
         @Payload
         _req: {code?:string,name?:string,parentId?:string,isValid?:boolean,isRecursion?:boolean,id?:string} 
 
-    ): Observable<PUBListResultDto<RegionDto>> {
+    ): Observable<PUBListResultDto<PUBRegionDto>> {
         return null as any
     }
 
@@ -51,7 +51,7 @@ export class PUBRegionService extends BaseApi {
         @Payload
         _req:PUBGetByAreaInput
 
-    ): Observable<PUBListResultDto<RegionDto>> {
+    ): Observable<PUBListResultDto<PUBRegionDto>> {
         return null as any
     }
 
@@ -156,7 +156,7 @@ export class PUBRegionService extends BaseApi {
         @Payload
         _req:PUBGetAllCountryForUiPickerInput
 
-    ): Observable<PUBPagedResultDto<CountryUiPickerDto>> {
+    ): Observable<PUBPagedResultDto<PUBCountryUiPickerDto>> {
         return null as any
     }
 
@@ -171,7 +171,7 @@ export class PUBRegionService extends BaseApi {
         @Payload
         _req:PUBGetAllRegionForUiPickerInput
 
-    ): Observable<PUBPagedResultDto<RegionUiPickerDto>> {
+    ): Observable<PUBPagedResultDto<PUBRegionUiPickerDto>> {
         return null as any
     }
 

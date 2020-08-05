@@ -21,7 +21,7 @@ export class FCMSettingsService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<FCMListResultDto<DataTableSettingDto>> {
+    ): Observable<FCMListResultDto<FCMDataTableSettingDto>> {
         return null as any
     }
 

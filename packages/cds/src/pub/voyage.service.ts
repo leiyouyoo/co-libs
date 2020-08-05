@@ -36,7 +36,7 @@ export class PUBVoyageService extends BaseApi {
         @Payload
         _req: {isValid?:boolean,vesselId?:string,no?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PUBPagedResultDto<VoyageDto>> {
+    ): Observable<PUBPagedResultDto<PUBVoyageDto>> {
         return null as any
     }
 
@@ -111,7 +111,7 @@ export class PUBVoyageService extends BaseApi {
         @Payload
         _req:PUBGetAllVoyageForUiPickerInput
 
-    ): Observable<PUBPagedResultDto<VoyageUiPickerDto>> {
+    ): Observable<PUBPagedResultDto<PUBVoyageUiPickerDto>> {
         return null as any
     }
 

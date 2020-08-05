@@ -66,7 +66,7 @@ export class CSPAttachmentService extends BaseApi {
         @Payload
         _req: {businessId?:string,businessType?:number,attachmentType?:number} 
 
-    ): Observable<CSPListResultDto<AttachmentListDto>> {
+    ): Observable<CSPListResultDto<CSPAttachmentListDto>> {
         return null as any
     }
 
@@ -81,7 +81,7 @@ export class CSPAttachmentService extends BaseApi {
         @Payload
         _req:CSPGetAllAttachmentListInput
 
-    ): Observable<CSPListResultDto<AttachmentListDto>> {
+    ): Observable<CSPListResultDto<CSPAttachmentListDto>> {
         return null as any
     }
 
@@ -156,7 +156,7 @@ export class CSPAttachmentService extends BaseApi {
         @Payload
         _req: {input?:any[]} 
 
-    ): Observable<CSPListResultDto<AttachmentListDto>> {
+    ): Observable<CSPListResultDto<CSPAttachmentListDto>> {
         return null as any
     }
 
@@ -171,7 +171,7 @@ export class CSPAttachmentService extends BaseApi {
         @Payload
         _req:CSPBatchCreateAttachmentInput
 
-    ): Observable<CSPListResultDto<AttachmentDto>> {
+    ): Observable<CSPListResultDto<CSPAttachmentDto>> {
         return null as any
     }
 
@@ -201,7 +201,7 @@ export class CSPAttachmentService extends BaseApi {
         @Payload
         _req: {businessType?:number,businessId?:string} 
 
-    ): Observable<CSPListResultDto<ShareableContactModel>> {
+    ): Observable<CSPListResultDto<CSPShareableContactModel>> {
         return null as any
     }
 
@@ -216,7 +216,7 @@ export class CSPAttachmentService extends BaseApi {
         @Payload
         _req: {businessId?:string,businessType?:number,attachmentType?:number} 
 
-    ): Observable<CSPListResultDto<AttachmentForIcpDto>> {
+    ): Observable<CSPListResultDto<CSPAttachmentForIcpDto>> {
         return null as any
     }
 

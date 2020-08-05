@@ -36,7 +36,7 @@ export class CSPBookingTemplateService extends BaseApi {
         @Payload
         _req: {sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<CSPPagedResultDto<BookingTemplateOutput>> {
+    ): Observable<CSPPagedResultDto<CSPBookingTemplateOutput>> {
         return null as any
     }
 

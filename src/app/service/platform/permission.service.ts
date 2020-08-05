@@ -21,7 +21,7 @@ export class PlatformPermissionService extends BaseApi {
         @Payload
         _req: {parentId?:string,isRecursion?:boolean,type?:number} 
 
-    ): Observable<PlatformListResultDto<PermissionDto>> {
+    ): Observable<PlatformListResultDto<PlatformPermissionDto>> {
         return null as any
     }
 
@@ -81,7 +81,7 @@ export class PlatformPermissionService extends BaseApi {
         @Payload
         _req: {userId?:number} 
 
-    ): Observable<PlatformListResultDto<PermissionDto>> {
+    ): Observable<PlatformListResultDto<PlatformPermissionDto>> {
         return null as any
     }
 
@@ -126,7 +126,7 @@ export class PlatformPermissionService extends BaseApi {
         @Payload
         _req: {roleId?:number} 
 
-    ): Observable<PlatformListResultDto<PermissionDto>> {
+    ): Observable<PlatformListResultDto<PlatformPermissionDto>> {
         return null as any
     }
 
@@ -171,7 +171,7 @@ export class PlatformPermissionService extends BaseApi {
         @Payload
         _req: {userId?:number} 
 
-    ): Observable<PlatformListResultDto<DataPermissionDto>> {
+    ): Observable<PlatformListResultDto<PlatformDataPermissionDto>> {
         return null as any
     }
 
@@ -216,7 +216,7 @@ export class PlatformPermissionService extends BaseApi {
         @Payload
         _req: {roleId?:number} 
 
-    ): Observable<PlatformListResultDto<DataPermissionDto>> {
+    ): Observable<PlatformListResultDto<PlatformDataPermissionDto>> {
         return null as any
     }
 

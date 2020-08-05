@@ -21,7 +21,7 @@ export class CRMLocationExternalService extends BaseApi {
         @Payload
         _req: {customerId?:string} 
 
-    ): Observable<CRMListResultDto<ExternalLocationListDto>> {
+    ): Observable<CRMListResultDto<CRMExternalLocationListDto>> {
         return null as any
     }
 
@@ -36,7 +36,7 @@ export class CRMLocationExternalService extends BaseApi {
         @Payload
         _req: {customerId?:string} 
 
-    ): Observable<CRMListResultDto<ExternalLocationListDto>> {
+    ): Observable<CRMListResultDto<CRMExternalLocationListDto>> {
         return null as any
     }
 
@@ -81,7 +81,7 @@ export class CRMLocationExternalService extends BaseApi {
         @Payload
         _req: {partnerId?:string,customerId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<CRMPagedResultDto<ExternalLocationListDto>> {
+    ): Observable<CRMPagedResultDto<CRMExternalLocationListDto>> {
         return null as any
     }
 
@@ -96,7 +96,7 @@ export class CRMLocationExternalService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<CRMListResultDto<ExternalLocationListDto>> {
+    ): Observable<CRMListResultDto<CRMExternalLocationListDto>> {
         return null as any
     }
 
@@ -111,7 +111,7 @@ export class CRMLocationExternalService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<CRMListResultDto<ExternalLocationListDto>> {
+    ): Observable<CRMListResultDto<CRMExternalLocationListDto>> {
         return null as any
     }
 
@@ -126,7 +126,7 @@ export class CRMLocationExternalService extends BaseApi {
         @Payload
         _req: {sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<CRMPagedResultDto<ExternalLocationListDto>> {
+    ): Observable<CRMPagedResultDto<CRMExternalLocationListDto>> {
         return null as any
     }
 
@@ -141,7 +141,7 @@ export class CRMLocationExternalService extends BaseApi {
         @Payload
         _req: {isCityocean?:boolean} 
 
-    ): Observable<CRMListResultDto<ExternalLocationListDto>> {
+    ): Observable<CRMListResultDto<CRMExternalLocationListDto>> {
         return null as any
     }
 
@@ -156,7 +156,7 @@ export class CRMLocationExternalService extends BaseApi {
         @Payload
         _req: {customerId?:string} 
 
-    ): Observable<CRMListResultDto<ExternalLocationListDto>> {
+    ): Observable<CRMListResultDto<CRMExternalLocationListDto>> {
         return null as any
     }
 
@@ -171,7 +171,7 @@ export class CRMLocationExternalService extends BaseApi {
         @Payload
         _req: {customerId?:string} 
 
-    ): Observable<CRMListResultDto<FBALocationListDto>> {
+    ): Observable<CRMListResultDto<CRMFBALocationListDto>> {
         return null as any
     }
 
@@ -246,7 +246,7 @@ export class CRMLocationExternalService extends BaseApi {
         @Payload
         _req: {contactId?:string} 
 
-    ): Observable<CRMListResultDto<ExternalLocationListDto>> {
+    ): Observable<CRMListResultDto<CRMExternalLocationListDto>> {
         return null as any
     }
 
@@ -321,7 +321,7 @@ export class CRMLocationExternalService extends BaseApi {
         @Payload
         _req:CRMGlobalSearchInput
 
-    ): Observable<CRMListResultDto<GlobalSearchOutput>> {
+    ): Observable<CRMListResultDto<CRMGlobalSearchOutput>> {
         return null as any
     }
 

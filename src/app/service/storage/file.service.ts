@@ -51,7 +51,7 @@ export class StorageFileService extends BaseApi {
         @Payload
         _req: {ids?:any[]} 
 
-    ): Observable<StoragePagedResultDto<GetFileInfoDto>> {
+    ): Observable<StoragePagedResultDto<StorageGetFileInfoDto>> {
         return null as any
     }
 

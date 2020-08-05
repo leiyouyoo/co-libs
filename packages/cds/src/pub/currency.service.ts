@@ -36,7 +36,7 @@ export class PUBCurrencyService extends BaseApi {
         @Payload
         _req: {code?:string,name?:string,regionId?:string,isValid?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PUBPagedResultDto<CurrencyDto>> {
+    ): Observable<PUBPagedResultDto<PUBCurrencyDto>> {
         return null as any
     }
 
@@ -141,7 +141,7 @@ export class PUBCurrencyService extends BaseApi {
         @Payload
         _req:PUBGetAllForUiPickerInput
 
-    ): Observable<PUBPagedResultDto<CurrencyUiPickerDto>> {
+    ): Observable<PUBPagedResultDto<PUBCurrencyUiPickerDto>> {
         return null as any
     }
 

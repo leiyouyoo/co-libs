@@ -250,7 +250,7 @@ function setResponseName(ref) {
       ? entityName.substring(entityName.lastIndexOf('+') + 1)
       : entityName.substring(entityName.lastIndexOf('.') + 1);
     setGeneric(ref, `${entityName}`, true);
-    return `${entityName}<${name ? name : 'any'}>`;
+    return `${entityName}<${name ? entityTitle + name : 'any'}>`;
   } else {
     bindEntity(ref);
     entityName = ref.includes('+') ? ref.substring(ref.lastIndexOf('+') + 1) : ref.substring(ref.lastIndexOf('.') + 1);
@@ -377,7 +377,7 @@ function setEntityName(ref, isEntity = false) {
       }
       return `${entityName}<any>`;
     } else {
-      return `${entityName}<${name ? name : 'any'}>`;
+      return `${entityName}<${name ? entityTitle + name : 'any'}>`;
     }
   } else {
     entityName = ref.includes('+') ? ref.substring(ref.lastIndexOf('+') + 1) : ref.substring(ref.lastIndexOf('.') + 1);

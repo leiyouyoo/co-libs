@@ -36,7 +36,7 @@ export class StorageICPFileService extends BaseApi {
         @Payload
         _req:StorageICPBatchDownloadInput
 
-    ): Observable<StorageListResultDto<ICPBatchDownloadResult>> {
+    ): Observable<StorageListResultDto<StorageICPBatchDownloadResult>> {
         return null as any
     }
 

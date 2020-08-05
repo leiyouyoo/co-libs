@@ -21,7 +21,7 @@ export class PUBCommodityService extends BaseApi {
         @Payload
         _req: {isValid?:boolean,text?:string,isRecursion?:boolean,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PUBListResultDto<CommodityDto>> {
+    ): Observable<PUBListResultDto<PUBCommodityDto>> {
         return null as any
     }
 
@@ -111,7 +111,7 @@ export class PUBCommodityService extends BaseApi {
         @Payload
         _req:PUBGetAllCommodityForUiPickerInput
 
-    ): Observable<PUBPagedResultDto<CommodityUiPickerDto>> {
+    ): Observable<PUBPagedResultDto<PUBCommodityUiPickerDto>> {
         return null as any
     }
 

@@ -36,7 +36,7 @@ export class CRMQuoteEnquiryService extends BaseApi {
         @Payload
         _req: {status?:number,tradeTypes?:string,quoteNo?:string,historyDataType?:number,userId?:number,customerId?:string,name?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<CRMPagedResultDto<QuoteEnquiryListForCRMOutput>> {
+    ): Observable<CRMPagedResultDto<CRMQuoteEnquiryListForCRMOutput>> {
         return null as any
     }
 
@@ -51,7 +51,7 @@ export class CRMQuoteEnquiryService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<CRMListResultDto<QuoteEnquiryListForCRMInput>> {
+    ): Observable<CRMListResultDto<CRMQuoteEnquiryListForCRMInput>> {
         return null as any
     }
 
@@ -66,7 +66,7 @@ export class CRMQuoteEnquiryService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<CRMListResultDto<CustomerListModel>> {
+    ): Observable<CRMListResultDto<CRMCustomerListModel>> {
         return null as any
     }
 
@@ -96,7 +96,7 @@ export class CRMQuoteEnquiryService extends BaseApi {
         @Payload
         _req: {id?:string,destinationAddressId?:string,originAddressId?:string,destinationPortId?:string,originPortId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<CRMPagedResultDto<GetListByRouteForCRMOutput>> {
+    ): Observable<CRMPagedResultDto<CRMGetListByRouteForCRMOutput>> {
         return null as any
     }
 
@@ -111,7 +111,7 @@ export class CRMQuoteEnquiryService extends BaseApi {
         @Payload
         _req:CRMQuoteEnquiryListForCSPInput
 
-    ): Observable<CRMPagedResultDto<QuoteEnquiryDto>> {
+    ): Observable<CRMPagedResultDto<CRMQuoteEnquiryDto>> {
         return null as any
     }
 
@@ -156,7 +156,7 @@ export class CRMQuoteEnquiryService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<CRMListResultDto<QuoteEnquiryDto>> {
+    ): Observable<CRMListResultDto<CRMQuoteEnquiryDto>> {
         return null as any
     }
 
@@ -186,7 +186,7 @@ export class CRMQuoteEnquiryService extends BaseApi {
         @Payload
         _req:CRMQuoteEnquiryListForCSPInput
 
-    ): Observable<CRMPagedResultDto<QuoteEnquiryListForCSPOutput>> {
+    ): Observable<CRMPagedResultDto<CRMQuoteEnquiryListForCSPOutput>> {
         return null as any
     }
 
@@ -201,7 +201,7 @@ export class CRMQuoteEnquiryService extends BaseApi {
         @Payload
         _req: {historyDataType?:number,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<CRMPagedResultDto<Object>> {
+    ): Observable<CRMPagedResultDto<CRMObject>> {
         return null as any
     }
 

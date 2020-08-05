@@ -21,7 +21,7 @@ export class PlatformBizCodeRuleService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<PlatformPagedResultDto<UserInfo>> {
+    ): Observable<PlatformPagedResultDto<PlatformUserInfo>> {
         return null as any
     }
 
@@ -96,7 +96,7 @@ export class PlatformBizCodeRuleService extends BaseApi {
         @Payload
         _req: {groupId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PlatformPagedResultDto<BizCodeRuleTemplateDto>> {
+    ): Observable<PlatformPagedResultDto<PlatformBizCodeRuleTemplateDto>> {
         return null as any
     }
 

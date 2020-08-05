@@ -36,7 +36,7 @@ export class PUBCostItemService extends BaseApi {
         @Payload
         _req: {code?:string,name?:string,property?:boolean,isValid?:boolean,parentId?:string} 
 
-    ): Observable<PUBPagedResultDto<CostItemDto>> {
+    ): Observable<PUBPagedResultDto<PUBCostItemDto>> {
         return null as any
     }
 
@@ -126,7 +126,7 @@ export class PUBCostItemService extends BaseApi {
         @Payload
         _req: {parentId?:string} 
 
-    ): Observable<PUBListResultDto<CostItemDto>> {
+    ): Observable<PUBListResultDto<PUBCostItemDto>> {
         return null as any
     }
 
@@ -141,7 +141,7 @@ export class PUBCostItemService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<PUBListResultDto<CostItemFlatDto>> {
+    ): Observable<PUBListResultDto<PUBCostItemFlatDto>> {
         return null as any
     }
 
@@ -156,7 +156,7 @@ export class PUBCostItemService extends BaseApi {
         @Payload
         _req: {parentId?:string} 
 
-    ): Observable<PUBListResultDto<CostItemFlatDto>> {
+    ): Observable<PUBListResultDto<PUBCostItemFlatDto>> {
         return null as any
     }
 

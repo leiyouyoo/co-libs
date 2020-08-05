@@ -36,7 +36,7 @@ export class CSPPurchaseOrderService extends BaseApi {
         @Payload
         _req:CSPGetPurchaseOrderListInput
 
-    ): Observable<CSPPagedResultDto<PurchaseOrderListDto>> {
+    ): Observable<CSPPagedResultDto<CSPPurchaseOrderListDto>> {
         return null as any
     }
 
@@ -51,7 +51,7 @@ export class CSPPurchaseOrderService extends BaseApi {
         @Payload
         _req: {productId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<CSPPagedResultDto<PurchaseOrderListToProductDto>> {
+    ): Observable<CSPPagedResultDto<CSPPurchaseOrderListToProductDto>> {
         return null as any
     }
 
@@ -66,7 +66,7 @@ export class CSPPurchaseOrderService extends BaseApi {
         @Payload
         _req: {productId?:string,id?:string} 
 
-    ): Observable<CSPListResultDto<PurchaseOrderListDetailOutput>> {
+    ): Observable<CSPListResultDto<CSPPurchaseOrderListDetailOutput>> {
         return null as any
     }
 
@@ -81,7 +81,7 @@ export class CSPPurchaseOrderService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<CSPListResultDto<PurchaseOrderListDetailOutput>> {
+    ): Observable<CSPListResultDto<CSPPurchaseOrderListDetailOutput>> {
         return null as any
     }
 
@@ -126,7 +126,7 @@ export class CSPPurchaseOrderService extends BaseApi {
         @Payload
         _req: {productIds?:any[]} 
 
-    ): Observable<CSPListResultDto<ProductDto>> {
+    ): Observable<CSPListResultDto<CSPProductDto>> {
         return null as any
     }
 
@@ -141,7 +141,7 @@ export class CSPPurchaseOrderService extends BaseApi {
         @Payload
         _req: {orderIds?:any[]} 
 
-    ): Observable<CSPListResultDto<PurchaseOrderDto>> {
+    ): Observable<CSPListResultDto<CSPPurchaseOrderDto>> {
         return null as any
     }
 
@@ -231,7 +231,7 @@ export class CSPPurchaseOrderService extends BaseApi {
         @Payload
         _req:CSPPurchaseOrderBookingSearchInput
 
-    ): Observable<CSPListResultDto<PurchaseOrderBookingSearchOutput>> {
+    ): Observable<CSPListResultDto<CSPPurchaseOrderBookingSearchOutput>> {
         return null as any
     }
 
@@ -276,7 +276,7 @@ export class CSPPurchaseOrderService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<CSPListResultDto<ConditionItemAttribute>> {
+    ): Observable<CSPListResultDto<CSPConditionItemAttribute>> {
         return null as any
     }
 
@@ -291,7 +291,7 @@ export class CSPPurchaseOrderService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<CSPListResultDto<PurchaseOrderFilterDto>> {
+    ): Observable<CSPListResultDto<CSPPurchaseOrderFilterDto>> {
         return null as any
     }
 
@@ -306,7 +306,7 @@ export class CSPPurchaseOrderService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<CSPListResultDto<PurchaseOrderFilterDto>> {
+    ): Observable<CSPListResultDto<CSPPurchaseOrderFilterDto>> {
         return null as any
     }
 
@@ -321,7 +321,7 @@ export class CSPPurchaseOrderService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<CSPListResultDto<PurchaseOrderFilterDto>> {
+    ): Observable<CSPListResultDto<CSPPurchaseOrderFilterDto>> {
         return null as any
     }
 
@@ -336,7 +336,7 @@ export class CSPPurchaseOrderService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<CSPListResultDto<PurchaseOrderFilterDto>> {
+    ): Observable<CSPListResultDto<CSPPurchaseOrderFilterDto>> {
         return null as any
     }
 
@@ -351,7 +351,7 @@ export class CSPPurchaseOrderService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<CSPListResultDto<PurchaseOrderFilterDto>> {
+    ): Observable<CSPListResultDto<CSPPurchaseOrderFilterDto>> {
         return null as any
     }
 

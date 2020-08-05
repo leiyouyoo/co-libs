@@ -21,7 +21,7 @@ export class PUBFlightService extends BaseApi {
         @Payload
         _req: {isValid?:boolean,airlineId?:string,no?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PUBPagedResultDto<FlightDto>> {
+    ): Observable<PUBPagedResultDto<PUBFlightDto>> {
         return null as any
     }
 
@@ -111,7 +111,7 @@ export class PUBFlightService extends BaseApi {
         @Payload
         _req:PUBGetAllFlightForUiPickerInput
 
-    ): Observable<PUBPagedResultDto<FlightUiPickerDto>> {
+    ): Observable<PUBPagedResultDto<PUBFlightUiPickerDto>> {
         return null as any
     }
 

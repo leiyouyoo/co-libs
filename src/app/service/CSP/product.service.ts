@@ -36,7 +36,7 @@ export class CSPProductService extends BaseApi {
         @Payload
         _req: {regionId?:string,searchText?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<CSPPagedResultDto<ProductListDto>> {
+    ): Observable<CSPPagedResultDto<CSPProductListDto>> {
         return null as any
     }
 
@@ -111,7 +111,7 @@ export class CSPProductService extends BaseApi {
         @Payload
         _req: {searchText?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<CSPPagedResultDto<ProductSkuListOutput>> {
+    ): Observable<CSPPagedResultDto<CSPProductSkuListOutput>> {
         return null as any
     }
 

@@ -21,7 +21,7 @@ export class PlatformEditionService extends BaseApi {
         @Payload
         _req: {searchText?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PlatformPagedResultDto<EditionDto>> {
+    ): Observable<PlatformPagedResultDto<PlatformEditionDto>> {
         return null as any
     }
 

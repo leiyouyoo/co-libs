@@ -21,7 +21,7 @@ export class CSPBookingService extends BaseApi {
         @Payload
         _req:CSPGetAllListForCRMInput
 
-    ): Observable<CSPPagedResultDto<GetAllListForCRMOutput>> {
+    ): Observable<CSPPagedResultDto<CSPGetAllListForCRMOutput>> {
         return null as any
     }
 
@@ -96,7 +96,7 @@ export class CSPBookingService extends BaseApi {
         @Payload
         _req: {isRequiredBookingNo?:boolean,isRequiredBookingName?:boolean,isRequiredCustomer?:boolean,isRequiredContact?:boolean} 
 
-    ): Observable<CSPListResultDto<SearchModel>> {
+    ): Observable<CSPListResultDto<CSPSearchModel>> {
         return null as any
     }
 
@@ -156,7 +156,7 @@ export class CSPBookingService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<CSPListResultDto<BookingDto>> {
+    ): Observable<CSPListResultDto<CSPBookingDto>> {
         return null as any
     }
 
@@ -186,7 +186,7 @@ export class CSPBookingService extends BaseApi {
         @Payload
         _req: {bookingStatus?:string,searchKey?:string,serviceCompanyId?:string,freightMethodType?:number,tradeType?:number,shipmentType?:number,isEnglish?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<CSPPagedResultDto<BookingDto>> {
+    ): Observable<CSPPagedResultDto<CSPBookingDto>> {
         return null as any
     }
 
@@ -261,7 +261,7 @@ export class CSPBookingService extends BaseApi {
         @Payload
         _req: {bookingIds?:string} 
 
-    ): Observable<CSPListResultDto<PurchaseOrderItemForIcpDto>> {
+    ): Observable<CSPListResultDto<CSPPurchaseOrderItemForIcpDto>> {
         return null as any
     }
 
@@ -276,7 +276,7 @@ export class CSPBookingService extends BaseApi {
         @Payload
         _req: {bookingStatus?:string,searchKey?:string,serviceCompanyId?:string,freightMethodType?:number,tradeType?:number,shipmentType?:number,isEnglish?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<CSPPagedResultDto<BookingForIcpDto>> {
+    ): Observable<CSPPagedResultDto<CSPBookingForIcpDto>> {
         return null as any
     }
 
@@ -411,7 +411,7 @@ export class CSPBookingService extends BaseApi {
         @Payload
         _req: {freightMethodType?:number} 
 
-    ): Observable<CSPListResultDto<GetChannelListOutput>> {
+    ): Observable<CSPListResultDto<CSPGetChannelListOutput>> {
         return null as any
     }
 
@@ -426,7 +426,7 @@ export class CSPBookingService extends BaseApi {
         @Payload
         _req:CSPGetBookingListInputForFcm
 
-    ): Observable<CSPPagedResultDto<BookingForFcmDto>> {
+    ): Observable<CSPPagedResultDto<CSPBookingForFcmDto>> {
         return null as any
     }
 
@@ -516,7 +516,7 @@ export class CSPBookingService extends BaseApi {
         @Payload
         _req:CSPGetBookingListForFcmInput
 
-    ): Observable<CSPListResultDto<BookingListItemDtoForFcm>> {
+    ): Observable<CSPListResultDto<CSPBookingListItemDtoForFcm>> {
         return null as any
     }
 

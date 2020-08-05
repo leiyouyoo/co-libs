@@ -21,7 +21,7 @@ export class CRMTraceLogCommentService extends BaseApi {
         @Payload
         _req: {traceLogId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<CRMPagedResultDto<TraceLogCommentListDto>> {
+    ): Observable<CRMPagedResultDto<CRMTraceLogCommentListDto>> {
         return null as any
     }
 

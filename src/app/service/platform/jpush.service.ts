@@ -66,7 +66,7 @@ export class PlatformJPushService extends BaseApi {
         @Payload
         _req: {sorting?:string,skipCount?:number,maxResultCount?:number} 
 
-    ): Observable<PlatformPagedResultDto<JPushUserIdBindRegistrationIdDto>> {
+    ): Observable<PlatformPagedResultDto<PlatformJPushUserIdBindRegistrationIdDto>> {
         return null as any
     }
 

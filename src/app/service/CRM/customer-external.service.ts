@@ -51,7 +51,7 @@ export class CRMCustomerExternalService extends BaseApi {
         @Payload
         _req: {customerId?:string} 
 
-    ): Observable<CRMListResultDto<CustomerBindCoUserDto>> {
+    ): Observable<CRMListResultDto<CRMCustomerBindCoUserDto>> {
         return null as any
     }
 
@@ -66,7 +66,7 @@ export class CRMCustomerExternalService extends BaseApi {
         @Payload
         _req: {} 
 
-    ): Observable<CRMListResultDto<GetByCustomerIdsOutput>> {
+    ): Observable<CRMListResultDto<CRMGetByCustomerIdsOutput>> {
         return null as any
     }
 
@@ -81,7 +81,7 @@ export class CRMCustomerExternalService extends BaseApi {
         @Payload
         _req: {customerId?:string,isRegistered?:boolean} 
 
-    ): Observable<CRMListResultDto<GetCustomerAndPartnerOutput>> {
+    ): Observable<CRMListResultDto<CRMGetCustomerAndPartnerOutput>> {
         return null as any
     }
 
@@ -96,7 +96,7 @@ export class CRMCustomerExternalService extends BaseApi {
         @Payload
         _req: {searchText?:string} 
 
-    ): Observable<CRMListResultDto<CustomerAndContactDto>> {
+    ): Observable<CRMListResultDto<CRMCustomerAndContactDto>> {
         return null as any
     }
 
@@ -111,7 +111,7 @@ export class CRMCustomerExternalService extends BaseApi {
         @Payload
         _req: {name?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<CRMPagedResultDto<CustomerListDto>> {
+    ): Observable<CRMPagedResultDto<CRMCustomerListDto>> {
         return null as any
     }
 

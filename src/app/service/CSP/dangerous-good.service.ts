@@ -36,7 +36,7 @@ export class CSPDangerousGoodService extends BaseApi {
         @Payload
         _req: {searchKeyword?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<CSPListResultDto<DangerousGoodDto>> {
+    ): Observable<CSPListResultDto<CSPDangerousGoodDto>> {
         return null as any
     }
 
