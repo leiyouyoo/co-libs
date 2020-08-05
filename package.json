@@ -44,6 +44,7 @@
     "gen:platform": "ng g co-cli:swagger --name platform --url http://192.168.1.5:8000/swagger/Platform/swagger.json",
     "gen:pub": "ng g co-cli:swagger --name pub --url http://192.168.1.5:8000/swagger/PUB/swagger.json",
     "analyze": "node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod --stats-json",
+    "sonar": "sonar-scanner",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s --pkg package.json",
     "sync-scaffold-version": "node scripts/publish/sync-scaffold-version.js"
   },
@@ -150,6 +151,7 @@
     "protractor": "~5.4.3",
     "readline-sync": "^1.4.10",
     "screenfull": "^5.0.2",
+    "sonarqube-scanner": "^2.7.0",
     "stream": "0.0.2",
     "stylelint": "^13.3.1",
     "stylelint-config-prettier": "^8.0.1",
