@@ -39,7 +39,7 @@
   </ng-container>
   <span [innerHTML]="_btnText(i, btn)" [ngClass]="{ 'pl-xs': btn.icon }"></span>
   <nz-spin *ngIf="btn._delay$" nzSimple [nzIndicator]="indicatorTemplate" class="st__btn-loading"></nz-spin>
-  <ng-template #indicatorTemplate><i nz-icon nzType="loading"></i></ng-template>
+  <ng-template #indicatorTemplate><i class="st__delay-icon anticon-spin"></i></ng-template>
   <nz-spin *ngIf="btn.loading" nzSimple [nzIndicator]="indicatorTemplate" class="st__btn-loading"></nz-spin>
   <ng-template #indicatorTemplate><i nz-icon nzType="loading"></i></ng-template>
 </ng-template>
