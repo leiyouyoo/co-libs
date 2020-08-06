@@ -31,7 +31,7 @@ import { SettingOutline, DeleteOutline, EllipsisOutline } from '@ant-design/icon
 import { CalcScrollDirective } from './calc-scroll.directive';
 import { CoSTWidgetHostDirective } from './co-st-va-widget-host.directive';
 import { LoadOnScrollDirective } from './load-on-scroll.directive';
-import { ColumnConfigComponent } from '@co/cbc/web/st/column-config.component';
+import { ColumnConfigComponent } from './column-config.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 const COMPONENTS = [STComponent];
