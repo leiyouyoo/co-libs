@@ -161,7 +161,9 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() data: string | STData[] | Observable<STData[]>;
   @Input() columns: STColumn[] = [];
   @Input() @InputNumber() ps = 10;
+  @Output() psChange = new EventEmitter<number>();
   @Input() @InputNumber() pi = 1;
+  @Output() piChange = new EventEmitter<number>();
   @Input() @InputNumber() total = 0;
   @Input() loading: boolean | null = null;
   @Input() @InputNumber() loadingDelay = 0;

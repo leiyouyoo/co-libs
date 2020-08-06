@@ -63,9 +63,9 @@
   #table
   [nzData]="_data"
   [(nzPageIndex)]="pi"
-  (nzPageIndexChange)="_change('pi')"
+  (nzPageIndexChange)="_change('pi');piChange.emit($event)"
   [(nzPageSize)]="ps"
-  (nzPageSizeChange)="_change('ps')"
+  (nzPageSizeChange)="_change('ps');psChange.emit($event)"
   [nzTotal]="total"
   [nzShowPagination]="loadOnScroll ? false : _isPagination"
   [nzFrontPagination]="false"

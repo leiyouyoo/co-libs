@@ -49,8 +49,8 @@ module: import { CoSTModule } from '@co/cbc';
 | `[data]` | 数据源 | `string, STData[], Observable<STData[]>` | - |
 | `[req]` | 请求体配置 | `STReq` | - |
 | `[res]` | 返回体配置 | `STRes` | - |
-| `[pi]` | 当前页码 | `number` | `1` |
-| `[ps]` | 每页数量，当设置为 `0` 表示不分页，默认：`10` | `number` | `10` |
+| `[(pi)]` | 当前页码 | `number` | `1` |
+| `[(ps)]` | 每页数量，当设置为 `0` 表示不分页，默认：`10` | `number` | `10` |
 | `[total]` | 当前总数据，在服务器渲染时需要传入，默认：`0` | `number` | `0` |
 | `[page]` | 分页器配置 | `STPage` | - |
 | `[noResult]` | 无数据时显示内容 | `string,TemplateRef<void>` | - |
