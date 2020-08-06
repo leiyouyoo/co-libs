@@ -16,16 +16,17 @@ import { Component } from '@angular/core';
   selector: 'app-demo',
   template: `
   <div>
-    <co-cascader [coShowSearch]="true" (coModelChange)="onChanges($event)"></co-cascader>
+    <co-cascader [coValue]="value" [coShowSearch]="true" (coModelChange)="onChanges($event)"></co-cascader>
  
-    <p>{{value}}</p>
+    <p>{{v}}</p>
   </div>
   `
 })
 export class CascaderBasicComponent {
-    value;
+    value = '1584502c-9d33-e611-8547-0026551ca878';
+    v ;
    onChanges($event){
-      this.value = $event;
+      this.v = $event;
   } 
 
 }

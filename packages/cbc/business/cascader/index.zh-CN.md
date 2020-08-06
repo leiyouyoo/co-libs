@@ -16,6 +16,7 @@ module: import { CoCasccderModule } from '@co/cbc/date-picker';
 | 成员 | 说明 | 类型 | 默认值 |
 |----|----|----|-----|
 | `[(ngModel)]` | 指定选中项 | `any[]` | - |  
+| `[coValue]` | 可传入的子id 查找所有父级 | `string` | - |  
 | `[coAllowClear]` | 指定选中项 | `any[]` | - |  
 | `[coShowInput]` | 	显示输入框 | `boolean` | true |  
 | `[coShowSearch]` | 	是否支持搜索，默认情况下对 label 进行全匹配搜索，不能和 [nzLoadData] 同时使用 | `boolean/NzShowSearchOptions` | false |  

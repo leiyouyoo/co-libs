@@ -28,12 +28,12 @@ import { NzCascaderOption, NzSafeAny, OnChangeType, OnTouchedType } from 'ng-zor
       useExisting: forwardRef(() => CoCascaderComponent),
     },
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
 export class CoCascaderComponent implements OnInit, ControlValueAccessor {
-  coOption: any[] | null = null;
-  @Input() values: any[] | null = null;
+
+  @Input() coValue: any[] | null = null;
   @Input() coAllowClear: boolean = true;
   @Input() coShowSearch: boolean = false;
   @Input() coShowInput: boolean = true;
@@ -44,9 +44,15 @@ export class CoCascaderComponent implements OnInit, ControlValueAccessor {
   onChange: OnChangeType = () => {};
   onTouched: OnTouchedType = () => {};
 
+  coOption: NzCascaderOption[] | null = null;
+  value: any[] | null = null;
+  optionList;
+  valueList:any[] =[];
+
   constructor(private organizationUnitService: PlatformOrganizationUnitService) {} // private organizationUnitService: OrganizationUnitService
 
   ngOnInit(): void {
+    //console.log(this.values);
     this.getData();
   }
 
@@ -67,29 +73,57 @@ export class CoCascaderComponent implements OnInit, ControlValueAccessor {
       res.items.forEach(data => {
         option.push(this.getChildData(data));
       });
-      this.coOption = option;
+      this.optionList =  option;
+      //this.coOption = option;
+
+      if( this.coValue ){
+        this.getAllParentID( option , this.coValue );
+        this.coOption = this.optionList;
+        this.value = this.valueList.reverse();
+      }else {
+        this.coOption = option;
+      }
+      //console.log(this.valueList);
+
     });
   }
 
-  getChildData(data) {
+  getChildData(data , parentId?) {
     const newList: any = {};
     newList.value = data.id;
     newList.label = data.displayNameLocalization;
+    parentId ? newList.parentId = parentId : "";
     if (data.childrenDto && data.childrenDto.length > 0) {
       newList.children = [];
       data.childrenDto.forEach(dto => {
-        newList.children.push(this.getChildData(dto));
+        newList.children.push(this.getChildData(dto , newList.value ));
       });
-    } else {
-      newList.isLeaf = true;
+    }else {
+      newList["isLeaf"] = true;
     }
     return newList;
+  }
+  //如果有传入的value值 需要重新更改option 初始化
+  getAllParentID ( option , childrenID ) {
+    option.forEach( item =>{
+      if( item.value == childrenID){
+        this.valueList.push(item.value);
+        //如果有父级  需要传入完整的option
+        if( item.parentId ){
+          this.getAllParentID( this.optionList , item.parentId);
+        }
+      }else{
+        if (item.children && item.children.length > 0) {
+          this.getAllParentID(item.children, childrenID);
+        }
+      }
+    })
   }
 
   //#region ngModel实现
 
   writeValue(modelValue: NzSafeAny | NzSafeAny[]): void {
-    this.values = modelValue;
+    this.value = modelValue;
   }
 
   registerOnChange(fn: OnChangeType): void {
