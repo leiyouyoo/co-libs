@@ -133,9 +133,20 @@
             <ng-container *ngSwitchCase="'action'">
               <div class="d-flex justify-content-between">
                 <span>{{ 'Action' | translate }}</span>
-                <!--<div>
-                  <i nz-icon nzType="setting" nzTheme="outline"></i>
-                </div>-->
+                <div *ngIf="columnSettingName">
+                  <i nz-icon nzType="setting" nzTheme="outline"
+                     #columnSettingPopover="nzPopover"
+                     nz-popover
+                     nzPopoverTrigger="click"
+                     nzPopoverPlacement="bottomRight"
+                     [nzPopoverTitle]="'设置列表内容'"
+                     [nzPopoverContent]="columnSettingTpl"
+                     nzPopoverOverlayClassName="st-column-setting-popover"
+                  ></i>
+                  <ng-template #columnSettingTpl>
+                    <column-config [configName]="columnSettingName" (closed)="columnSettingPopover.hide()"></column-config>
+                  </ng-template>
+                </div>
               </div>
             </ng-container>
             <ng-container *ngSwitchDefault>

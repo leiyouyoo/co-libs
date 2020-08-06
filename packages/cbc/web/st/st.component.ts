@@ -49,7 +49,7 @@ import {
   STColumn,
   STColumnButton,
   STColumnFilterMenu,
-  STColumnSelection,
+  STColumnSelection, STColumnSetting,
   STData,
   STError,
   STExportOptions,
@@ -66,6 +66,7 @@ import {
 } from './st.interfaces';
 import remove from 'lodash/remove';
 import { generateModel } from './utils';
+import { PlatformSettingService } from '@co/cds';
 
 @Component({
   selector: 'co-st',
@@ -107,6 +108,8 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   _columns: STColumn[] = [];
   _showFilters = false;
   _filterRow: STColumn[] = [];
+  columnSetting: STColumnSetting;
+
   @ViewChild('table', { static: false }) readonly orgTable: NzTableComponent;
   private expandSTChangeList$: Subscription[] = [];
   private _expandSTList: QueryList<STComponent>;
@@ -240,6 +243,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() checkboxSelections = [];
   @Input() @InputBoolean() buttonPropagation = false;
   @Input() @InputBoolean() loadOnScroll = false;
+  @Input() columnSettingName: string;
 
   /**
    * Get the number of the current page
@@ -272,6 +276,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     private columnSource: STColumnSource,
     private dataSource: STDataSource,
     private delonI18n: CoLocaleService,
+    private platformSettingService: PlatformSettingService,
     configSrv: CoConfigService,
   ) {
     this.setCog(configSrv.merge('st', ST_DEFULAT_CONFIG)!);
@@ -990,6 +995,19 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     }
   }
 
+  /**
+   * 根据配置的列显示
+   */
+  getEnabledColumns(columns: STColumn[]): STColumn[] {
+    const disabledIndexList = this.columnSetting?.disabledColumnIndexList;
+    if (!disabledIndexList?.length) return columns;
+
+    return columns.filter(c => {
+      return !c.index || !disabledIndexList.includes(c.index as string);
+    });
+  }
+
+
   ngAfterViewInit() {
     this.columnSource.restoreAllRender(this._columns);
   }
@@ -1004,6 +1022,16 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     }
     if (changes.loading) {
       this._loading = changes.loading.currentValue;
+    }
+    if (changes.columnSettingName) {
+      this.platformSettingService.getCurrentUserSetting({ key: changes.columnSettingName.currentValue })
+        .subscribe(data => {
+          try {
+            this.columnSetting = JSON.parse(data);
+          } catch (e) {
+            console.error(e);
+          }
+        });
     }
   }
 
