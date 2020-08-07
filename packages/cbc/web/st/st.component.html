@@ -120,6 +120,7 @@
         [nzWidth]="h.column.width"
         [nzLeft]="!!h.column._left"
         [nzRight]="!!h.column._right"
+        [class.st-column-action]="h.column.type === 'action'"
         [ngClass]="h.column.className"
         [attr.data-col]="h.column.indexKey"
         [nzShowSort]="h.column._sort.enabled"
