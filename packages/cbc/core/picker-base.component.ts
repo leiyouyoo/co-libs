@@ -1,18 +1,31 @@
-import { OnInit, ChangeDetectorRef, OnDestroy, EventEmitter, Input, Output, TemplateRef, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, EventEmitter, Input, OnDestroy, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 
 import * as _ from 'lodash';
 
+import { InputBoolean, NzSafeAny, NzSelectComponent, NzSelectModeType, NzSelectSizeType, OnChangeType, OnTouchedType } from 'ng-zorro-antd';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { debounceTime, filter, distinctUntilChanged, switchMap, takeUntil } from 'rxjs/operators';
-import { InputBoolean, NzSelectModeType, NzSafeAny, NzSelectSizeType, OnChangeType, OnTouchedType, NzSelectComponent } from 'ng-zorro-antd';
+import { debounceTime, distinctUntilChanged, filter, switchMap, takeUntil } from 'rxjs/operators';
 
-import { LoadMode, DropdownMode, DropdownColumn } from './index';
+import { DropdownColumn, DropdownMode, LoadMode } from './index';
 
 /**
  * 客户选择器控件
  */
 export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDestroy {
+  //#endregion
+
+  //#region  构造函数
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  //#endregion
+
+  //#region 公共方法
+
+  get isSearching() {
+    return this.nzSelectComponent.nzShowSearch;
+  }
   //#region 输入输出参数
 
   @Input() coSize: NzSelectSizeType = 'default';
@@ -36,7 +49,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   @Input() coItemRender: TemplateRef<NzSafeAny> | null = null;
   @Input() coDropdownRender: TemplateRef<NzSafeAny> | null = null;
 
-  @Input() coDebounceInputCharCount: number = 3;
+  @Input() coDebounceInputCharCount: number = 2;
   @Input() coDebounceTime: number = 500;
   @Input() coPageSize: number = 20;
   @Input() coFilter: any = { includeDeleted: false };
@@ -53,9 +66,6 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   dropdownStyle: { [key: string]: string } | null = null;
   value: NzSafeAny | NzSafeAny[];
   destroy$ = new Subject();
-  onChange: OnChangeType = () => { };
-  onTouched: OnTouchedType = () => { };
-  coFilterOption = () => true;
   optionList: Array<{ value: string; text: string }> = [];
   isLoading = false;
   loadingMode: LoadMode = 'more';
@@ -64,12 +74,9 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   skipCount = 0;
   hasLoadedByids = false;
   searchChange$: any = new BehaviorSubject({});
-
-  //#endregion
-
-  //#region  构造函数
-
-  constructor(private cdr: ChangeDetectorRef) { }
+  onChange: OnChangeType = () => {};
+  onTouched: OnTouchedType = () => {};
+  coFilterOption = () => true;
 
   //#endregion
 
@@ -92,7 +99,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
           skipCount: this.skipCount,
           maxResultCount: this.coPageSize,
           ...this.coFilter,
-        }
+        };
         // return this.customerService.getAllBySearch(condition);
         return this.fetchRemoteData(condition);
       }),
@@ -151,7 +158,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
 
   writeValue(modelValue: NzSafeAny | NzSafeAny[]): void {
     if (this.value !== modelValue) {
-      if (modelValue && this.coValueMember == 'id' && !this.hasLoadedByids) {
+      if (modelValue && this.coValueMember !== this.coLabelMember && !this.hasLoadedByids) {
         this.loadByIds(modelValue);
         this.hasLoadedByids = true;
       }
@@ -166,14 +173,6 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
 
   registerOnTouched(fn: OnTouchedType): void {
     this.onTouched = fn;
-  }
-
-  //#endregion
-
-  //#region 公共方法
-
-  get isSearching() {
-    return this.nzSelectComponent.nzShowSearch;
   }
 
   focus(): void {
@@ -198,11 +197,11 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   //#region 事件处理
 
   onBlur(e: any) {
-    this.coBlur && this.coBlur.emit(e);
+    this.coBlur.emit(e);
   }
 
   onFocus(e: any) {
-    this.coFocus && this.coFocus.emit(e);
+    this.coFocus.emit(e);
   }
 
   onChanged(e: any) {
@@ -214,7 +213,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
       this.loadDownList(null);
     }
 
-    this.coOpenChange && this.coOpenChange.emit(e);
+    this.coOpenChange.emit(e);
   }
 
   onSearch(value: string): void {
@@ -234,7 +233,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   //#region 私有方法
 
   private loadByIds(value: any): void {
-    if (this.coValueMember !== "id") return;
+    // if (this.coValueMember !== 'id') return;
 
     this.loadingMode = 'more';
     this.skipCount = 0;
@@ -250,6 +249,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
     };
 
     this.searchChange$.next({
+      keyName: this.coValueMember,
       ids: covertModelToList(value, this.coMode),
     });
   }
@@ -286,7 +286,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   }
 
   private loadDownList(value: any) {
-    let val = value || this.value;
+    const val = value || this.value;
 
     if (this.optionList.length === 0) {
       if (val) {
