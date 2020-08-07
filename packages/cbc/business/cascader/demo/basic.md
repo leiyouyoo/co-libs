@@ -10,29 +10,31 @@ order: 0
 基础用法。
 
 ```ts
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-demo',
+  selector: 'app-ComponentsCascaderBasicComponent',
   template: `
   <div>
-    <co-cascader [coValue]="value" [coShowSearch]="true" (coModelChange)="onChanges($event)"></co-cascader>
- 
+    <co-cascader [ngModel]="value" [coShowSearch]="true" (ngModelChange)="onChanges($event)"></co-cascader>
+
     <p>{{v}}</p>
   </div>
   `
 })
-export class CascaderBasicComponent {
-    value = '1584502c-9d33-e611-8547-0026551ca878';
+export class ComponentsCascaderBasicComponentComponent {
+    value;
     v ;
+    constructor(private cdr: ChangeDetectorRef,) {
+      setTimeout(() => {
+        this.value = '1584502c-9d33-e611-8547-0026551ca878'
+        this.cdr.detectChanges();
+      }, 2e3)
+    }
    onChanges($event){
       this.v = $event;
-  } 
+  }
 
 }
-
-
-
-
 
 ```
