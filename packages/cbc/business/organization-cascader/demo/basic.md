@@ -16,7 +16,7 @@ import { ChangeDetectorRef, Component } from '@angular/core';
   selector: 'app-ComponentsCascaderBasicComponent',
   template: `
   <div>
-    <co-cascader [ngModel]="value" [coShowSearch]="true" (ngModelChange)="onChanges($event)"></co-cascader>
+    <co-organization-cascader [ngModel]="value" [coShowSearch]="true" (ngModelChange)="onChanges($event)"></co-organization-cascader>
 
     <p>{{v}}</p>
   </div>

@@ -1,26 +1,24 @@
 ---
 type: Business
-title: cascader
-subtitle: 级联选择
+title: organization-cascader
+subtitle: 组织架构级联选择
 order: 10
 cols: 1
-module: import { CoCasccderModule } from '@co/cbc/date-picker';
+module: import { CoOrganizationCasccderModule } from '@co/cbc';
 ---
 
 
 
 ## API
 
-### cascader
+### organization-cascader
 
 | 成员 | 说明 | 类型 | 默认值 |
 |----|----|----|-----|
 | `[(ngModel)]` | 指定选中项 | `any[]` | - |  
-| `[coValue]` | 可传入的子id 查找所有父级 | `string` | - |  
 | `[coAllowClear]` | 指定选中项 | `any[]` | - |  
 | `[coShowInput]` | 	显示输入框 | `boolean` | true |  
 | `[coShowSearch]` | 	是否支持搜索，默认情况下对 label 进行全匹配搜索，不能和 [nzLoadData] 同时使用 | `boolean/NzShowSearchOptions` | false |  
-| `(coModelChange)` | 	值发生变化时触发 | `EventEmitter<any[]>` | - |  
 | `(coSelectionChange)` | 	值发生变化时触发 | `EventEmitter<any[]>` | - |  
 
 ### coShowSearch 为对象时需遵守 NzShowSearchOptions 接口：

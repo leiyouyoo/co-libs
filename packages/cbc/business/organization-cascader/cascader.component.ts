@@ -18,8 +18,8 @@ import { NzCascaderOption, NzSafeAny, OnChangeType, OnTouchedType } from 'ng-zor
  *  级联选择
  */
 @Component({
-  selector: 'co-cascader',
-  exportAs: 'coCascader',
+  selector: 'co-organization-cascader',
+  exportAs: 'coOrganizationCascader',
   templateUrl: './cascader.component.html',
   providers: [
     {
@@ -134,9 +134,5 @@ export class CoCascaderComponent implements OnInit, ControlValueAccessor {
 
   registerOnTouched(fn: OnTouchedType): void {
     this.onTouched = fn;
-  }
-
-  ngDoCheck() {
-    console.log('2');
   }
 }
