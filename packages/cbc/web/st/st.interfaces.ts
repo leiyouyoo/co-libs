@@ -1082,3 +1082,7 @@ export interface STColumnViewValue {
   index?: string[];
   type?: string;
 }
+
+export interface STColumnSetting {
+  disabledColumnIndexList?: string[];
+}

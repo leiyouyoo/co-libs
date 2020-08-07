@@ -18,14 +18,24 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { STRowDirective } from './st-row.directive';
 import { STWidgetHostDirective } from './st-widget-host.directive';
 import { STComponent } from './st.component';
-import { NzAutocompleteModule, NzDatePickerModule, NzSelectModule, NzSpinModule } from 'ng-zorro-antd';
+import {
+  NzAutocompleteModule,
+  NzButtonModule,
+  NzDatePickerModule,
+  NzPopoverModule,
+  NzSelectModule,
+  NzSpinModule,
+} from 'ng-zorro-antd';
 import { TranslateModule } from '@ngx-translate/core';
 import { SettingOutline, DeleteOutline, EllipsisOutline } from '@ant-design/icons-angular/icons';
 import { CalcScrollDirective } from './calc-scroll.directive';
 import { CoSTWidgetHostDirective } from './co-st-va-widget-host.directive';
 import { LoadOnScrollDirective } from './load-on-scroll.directive';
+import { ColumnConfigComponent } from './column-config.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 const COMPONENTS = [STComponent];
+const internalComponents = [ ColumnConfigComponent, ];
 const DIRECTIVES = [STRowDirective, STWidgetHostDirective, CalcScrollDirective, CoSTWidgetHostDirective, LoadOnScrollDirective, ];
 const icons = [SettingOutline, DeleteOutline, EllipsisOutline];
 
@@ -52,8 +62,11 @@ const icons = [SettingOutline, DeleteOutline, EllipsisOutline];
     NzIconModule,
     NzDatePickerModule,
     NzSpinModule,
+    NzButtonModule,
+    NzPopoverModule,
+    DragDropModule,
   ],
-  declarations: [...COMPONENTS, ...DIRECTIVES],
+  declarations: [...internalComponents, ...COMPONENTS, ...DIRECTIVES],
   exports: [...COMPONENTS, ...DIRECTIVES],
 })
 export class CoSTModule {
