@@ -3,7 +3,7 @@ import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import { STComponent } from './st.component';
 import { PlatformSettingService } from '@co/cds';
 import { STColumn, STColumnSetting } from './st.interfaces';
-import cloneDeep from 'lodash/cloneDeep';
+import { cloneDeep } from 'lodash';
 
 @Component({
   selector: 'column-config',
