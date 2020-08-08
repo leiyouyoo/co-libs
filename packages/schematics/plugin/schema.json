@@ -30,7 +30,7 @@
     },
     "defaultLanguage": {
       "type": "string",
-      "description": "Specify default language [https://ng-alain.com/docs/i18n]."
+      "description": "Specify default language [https://www.cityocean.com/docs/i18n]."
     }
   },
   "required": [],

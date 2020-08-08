@@ -4,7 +4,7 @@ import { DelonMockModule } from '@co/mock';
 import { AlainThemeModule } from '@co/common';
 import { AlainConfig, ALAIN_CONFIG } from '@co/core';
 
-// Please refer to: https://ng-alain.com/docs/global-config
+// Please refer to: https://www.cityocean.com/docs/global-config
 // #region NG-ALAIN Config
 
 import { DelonACLModule } from '@co/acl';
@@ -27,7 +27,7 @@ if (!environment.production) {
 
 // #region reuse-tab
 /**
- * 若需要[路由复用](https://ng-alain.com/components/reuse-tab)需要：
+ * 若需要[路由复用](https://www.cityocean.com/components/reuse-tab)需要：
  * 1、在 \`shared-delon.module.ts\` 导入 \`ReuseTabModule\` 模块
  * 2、注册 \`RouteReuseStrategy\`
  * 3、在 \`src/app/layout/default/default.component.html\` 修改：

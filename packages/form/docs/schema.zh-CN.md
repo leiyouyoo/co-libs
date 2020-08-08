@@ -94,7 +94,7 @@ JSON Schema 有完整的对每个属性的规范描述，`@co/form` 当前是基
 
 **关于exclusiveMinimum和exclusiveMaximum**
 
-`sf` 的实现机制导致无法很好的处理 `type` 类型的错误捕获，因此默认情况下 `sf` 是忽略了所有 `type` （见 [config.ts](https://github.com/ng-alain/delon/blob/master/packages/form/src/config.ts#L12)）类型错误，而这两种都错误都会被认为 `type` 类型错误，从而导致触发无效检查的原因。（更多细节请参考 [#676](https://github.com/ng-alain/ng-alain/issues/676#issuecomment-420208459)）
+`sf` 的实现机制导致无法很好的处理 `type` 类型的错误捕获，因此默认情况下 `sf` 是忽略了所有 `type` （见 [config.ts](https://github.com/ng-alain/delon/blob/master/packages/form/src/config.ts#L12)）类型错误，而这两种都错误都会被认为 `type` 类型错误，从而导致触发无效检查的原因。（更多细节请参考 [#676]( http://comail:8888/tfs/Cityocean/CO.Platform/_git/co-libs/issues/676#issuecomment-420208459)）
 
 ### 字符串类型
 

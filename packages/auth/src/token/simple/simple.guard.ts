@@ -5,7 +5,7 @@ import { DA_SERVICE_TOKEN, ITokenService } from '../interface';
 import { SimpleTokenModel } from './simple.model';
 
 /**
- * Simple 路由守卫, [ACL Document](https://ng-alain.com/auth/guard).
+ * Simple 路由守卫, [ACL Document](https://www.cityocean.com/auth/guard).
  *
  * ```ts
  * data: {

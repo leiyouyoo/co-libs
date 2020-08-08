@@ -40,7 +40,7 @@ export class Walker extends ComponentWalker {
         end: node.getStart() + list.offset + list.attr.length,
         message:
           `Found removed @Output() "${chalk.red(list.attr)}" on "${chalk.bold('st(simple-table)')}". ` +
-          `Use "${chalk.green('(change)')}" instead, Document: https://ng-alain.com/components/table#STChange`,
+          `Use "${chalk.green('(change)')}" instead, Document: https://www.cityocean.com/components/table#STChange`,
       });
     });
 
@@ -60,7 +60,7 @@ export class Walker extends ComponentWalker {
         end: node.getStart() + list.offset + list.attr.length,
         message:
           `Found deprecated @Input() "${chalk.red(list.attr)}" on "${chalk.bold('sv(desc-list-item)')}". ` +
-          `Use "${chalk.green('[type]')}" instead, Document: https://ng-alain.com/components/view#sv`,
+          `Use "${chalk.green('[type]')}" instead, Document: https://www.cityocean.com/components/view#sv`,
       });
     });
 
@@ -70,7 +70,7 @@ export class Walker extends ComponentWalker {
         end: node.getStart() + offset + 'standard-form-row'.length,
         message: `Found deprecated component "${chalk.red('[standard-form-row]')}" which has been removed, you can use "${chalk.green(
           '[se]',
-        )}" instead, Document: https://ng-alain.com/components/edit`,
+        )}" instead, Document: https://www.cityocean.com/components/edit`,
       });
     });
 

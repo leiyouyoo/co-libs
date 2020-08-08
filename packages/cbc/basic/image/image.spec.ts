@@ -63,7 +63,7 @@ describe('abc: _src', () => {
     });
 
     it('should be ingore https', () => {
-      context.src = `https://ng-alain.com/1.png`;
+      context.src = `https://www.cityocean.com/1.png`;
       fixture.detectChanges();
       expect(getEl().src).toBe(`//ng-alain.com/1.png`);
     });

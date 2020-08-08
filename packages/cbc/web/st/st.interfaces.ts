@@ -72,15 +72,15 @@ export interface STReq {
 export interface STRequestOptions {
   body?: any;
   headers?:
-  | HttpHeaders
-  | {
-    [header: string]: string | string[];
-  };
+    | HttpHeaders
+    | {
+        [header: string]: string | string[];
+      };
   params?:
-  | HttpParams
-  | {
-    [param: string]: string | string[];
-  };
+    | HttpParams
+    | {
+        [param: string]: string | string[];
+      };
   observe?: 'body' | 'events' | 'response';
   reportProgress?: boolean;
   responseType?: 'arraybuffer' | 'blob' | 'json' | 'text';
@@ -237,11 +237,25 @@ export interface STColumn {
    * - `number` 数字且居右(若 `className` 存在则优先)
    * - `currency` 货币且居右(若 `className` 存在则优先)
    * - `date` 日期格式且居中(若 `className` 存在则优先)，使用 `dateFormat` 自定义格式
-   * - `yn` 将`boolean`类型徽章化 [document](https://ng-alain.com/docs/data-render#yn)
+   * - `yn` 将`boolean`类型徽章化 [document](https://www.cityocean.com/docs/data-render#yn)
    * - `widget` 使用自定义小部件动态创建
    * - `action` 操作区
    */
-  type?: 'checkbox' | 'link' | 'badge' | 'tag' | 'enum' | 'radio' | 'img' | 'currency' | 'number' | 'date' | 'yn' | 'no' | 'widget' | 'action';
+  type?:
+    | 'checkbox'
+    | 'link'
+    | 'badge'
+    | 'tag'
+    | 'enum'
+    | 'radio'
+    | 'img'
+    | 'currency'
+    | 'number'
+    | 'date'
+    | 'yn'
+    | 'no'
+    | 'widget'
+    | 'action';
   /**
    * 链接回调，若返回一个字符串表示导航URL会自动触发 `router.navigateByUrl`
    */
@@ -319,7 +333,7 @@ export interface STColumn {
    */
   exported?: boolean;
   /**
-   * 权限，等同 [ACLCanType](https://ng-alain.com/acl/getting-started/#ACLCanType) 参数值
+   * 权限，等同 [ACLCanType](https://www.cityocean.com/acl/getting-started/#ACLCanType) 参数值
    */
   acl?: any;
   /** 当不存在数据时以默认值替代 */
@@ -362,7 +376,7 @@ export interface STColumn {
 
   widget?: STWidgetColumn;
 
-  enum?: { [key: string]: string;[key: number]: string };
+  enum?: { [key: string]: string; [key: number]: string };
 
   /**
    * 分组表头
@@ -547,7 +561,7 @@ export interface STColumnFilter {
   /**
    * 过滤器选项，select, autocomplete
    */
-  optionList?: { label: string, value: any }[];
+  optionList?: { label: string; value: any }[];
 }
 
 export interface STColumnFilterMenu {
@@ -565,7 +579,7 @@ export interface STColumnFilterMenu {
    */
   checked?: boolean;
   /**
-   * 权限，等同 [ACLCanType](https://ng-alain.com/acl/getting-started/#ACLCanType) 参数值
+   * 权限，等同 [ACLCanType](https://www.cityocean.com/acl/getting-started/#ACLCanType) 参数值
    */
   acl?: any;
   /**
@@ -697,7 +711,7 @@ export interface STColumnButton {
    */
   _className?: string;
   /**
-   * 权限，等同 [ACLCanType](https://ng-alain.com/acl/getting-started/#ACLCanType) 参数值
+   * 权限，等同 [ACLCanType](https://www.cityocean.com/acl/getting-started/#ACLCanType) 参数值
    */
   acl?: any;
   /**
@@ -827,18 +841,18 @@ export interface STColumnButtonPop {
    * The position of the popover relative to the target, default: `top`
    */
   placement?:
-  | 'top'
-  | 'left'
-  | 'right'
-  | 'bottom'
-  | 'topLeft'
-  | 'topRight'
-  | 'bottomLeft'
-  | 'bottomRight'
-  | 'leftTop'
-  | 'leftBottom'
-  | 'rightTop'
-  | 'rightBottom';
+    | 'top'
+    | 'left'
+    | 'right'
+    | 'bottom'
+    | 'topLeft'
+    | 'topRight'
+    | 'bottomLeft'
+    | 'bottomRight'
+    | 'leftTop'
+    | 'leftBottom'
+    | 'rightTop'
+    | 'rightBottom';
 
   /**
    * Class name of the popover card
@@ -1070,7 +1084,6 @@ export interface STColumnGroupType {
 
 export interface STRowOptions {
   showFilter: boolean;
-
 }
 
 export interface STColumnViewValue {

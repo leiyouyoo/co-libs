@@ -95,7 +95,7 @@ export function pluginIE(options: PluginOptions): Rule {
 
     context.logger.info(
       colors.yellow(
-        `  ⚠  If you encounter [No provider for AlainConfigService], please refer to https://github.com/ng-alain/ng-alain/issues/1624#issuecomment-623071468`,
+        `  ⚠  If you encounter [No provider for AlainConfigService], please refer to  http://comail:8888/tfs/Cityocean/CO.Platform/_git/co-libs/issues/1624#issuecomment-623071468`,
       ),
     );
   };

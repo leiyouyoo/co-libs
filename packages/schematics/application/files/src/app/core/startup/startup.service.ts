@@ -56,11 +56,11 @@ export class StartupService {
     this.settingService.setApp(res.app);
     // User information: including name, avatar, email address
     this.settingService.setUser(res.user);
-    // ACL: Set the permissions to full, https://ng-alain.com/acl/getting-started
+    // ACL: Set the permissions to full, https://www.cityocean.com/acl/getting-started
     this.aclService.setFull(true);
-    // Menu data, https://ng-alain.com/theme/menu
+    // Menu data, https://www.cityocean.com/theme/menu
     this.menuService.add(res.menu);
-    // Can be set page suffix title, https://ng-alain.com/theme/title
+    // Can be set page suffix title, https://www.cityocean.com/theme/title
     this.titleService.suffix = res.app.name;
   },
   () => { },
@@ -102,9 +102,9 @@ export class StartupService {
   this.settingService.setApp(app);
   // User information: including name, avatar, email address
   this.settingService.setUser(user);
-  // ACL: Set the permissions to full, https://ng-alain.com/acl/getting-started
+  // ACL: Set the permissions to full, https://www.cityocean.com/acl/getting-started
   this.aclService.setFull(true);
-  // Menu data, https://ng-alain.com/theme/menu
+  // Menu data, https://www.cityocean.com/theme/menu
   this.menuService.add([
     {
       text: 'Main',
@@ -123,7 +123,7 @@ export class StartupService {
       ]
     }
   ]);
-  // Can be set page suffix title, https://ng-alain.com/theme/title
+  // Can be set page suffix title, https://www.cityocean.com/theme/title
   this.titleService.suffix = app.name;
 
   resolve({});

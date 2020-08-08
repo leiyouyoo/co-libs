@@ -90,7 +90,7 @@ function addGlobalConfigModule(tree: Tree, context: SchematicContext) {
   overwriteFile(tree, `${project.sourceRoot}/app/global-config.module.ts`, stWidgetModuleTS, true, true);
   context.logger.info(
     colors.red(
-      `  ⚠  Using [global-config.module.ts] instead of [delon.module.ts], But you must manually modify global config (please refer to https://ng-alain.com/docs/global-config) and remove [delon.module.ts]`,
+      `  ⚠  Using [global-config.module.ts] instead of [delon.module.ts], But you must manually modify global config (please refer to https://www.cityocean.com/docs/global-config) and remove [delon.module.ts]`,
     ),
   );
 }
@@ -108,7 +108,7 @@ export function v9Rule(): Rule {
 
     context.logger.info(
       colors.yellow(
-        `  ✓  你还需要手工处理，请仔细阅读：https://github.com/ng-alain/ng-alain/issues/1569 \nYou still need to do it manually, please refer to the details: https://github.com/ng-alain/ng-alain/issues/1569`,
+        `  ✓  你还需要手工处理，请仔细阅读： http://comail:8888/tfs/Cityocean/CO.Platform/_git/co-libs/issues/1569 \nYou still need to do it manually, please refer to the details:  http://comail:8888/tfs/Cityocean/CO.Platform/_git/co-libs/issues/1569`,
       ),
     );
   };

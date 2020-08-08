@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // #region default language
-// Reference: https://ng-alain.com/docs/i18n
+// Reference: https://www.cityocean.com/docs/i18n
 import { default as ngLang } from '@angular/common/locales/zh';
 import { CO_LOCALE, zh_CN as delonLang } from '@co/common';
 import { zhCN as dateLang } from 'date-fns/locale';

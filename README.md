@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://ng-alain.com">
-    <img width="100" src="https://ng-alain.com/assets/img/logo-color.svg">
+  <a href="https://www.cityocean.com">
+    <img width="100" src="https://www.cityocean.com/assets/img/logo-color.svg">
   </a>
 </p>
 
@@ -10,7 +10,7 @@ CO-Libs
 
 <div align="center">
 
-  CO-Libs is a set of essential modules for [ng-alain](https://ng-alain.com).
+  CO-Libs is a set of essential modules for [ng-alain](https://www.cityocean.com).
 
   [![Build Status](https://dev.azure.com/ng-alain/delon/_apis/build/status/delon-CI?branchName=master)](https://dev.azure.com/ng-alain/delon/_build/latest?definitionId=1&branchName=master)
   [![Codecov](https://img.shields.io/codecov/c/github/ng-alain/delon.svg?style=flat-square)](https://codecov.io/gh/ng-alain/delon)
@@ -26,7 +26,7 @@ CO-Libs
 
 ## Links
 
-+ [Document](https://ng-alain.com) ([Surge Mirror](https://ng-alain-doc.surge.sh))
++ [Document](https://www.cityocean.com) ([Surge Mirror](https://ng-alain-doc.surge.sh))
 + [@co Source](https://github.com/ng-alain/delon)
 + [DEMO](https://ng-alain.surge.sh) ([国内镜像](https://ng-alain.gitee.io/))
 

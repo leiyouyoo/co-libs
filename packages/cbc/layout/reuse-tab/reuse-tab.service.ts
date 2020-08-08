@@ -43,10 +43,6 @@ export class ReuseTabService implements OnDestroy {
   /** 排除规则，限 `mode=URL` */
   excludes: RegExp[] = [];
 
-  private get snapshot() {
-    return this.injector.get(ActivatedRoute).snapshot;
-  }
-
   constructor(private injector: Injector, @Optional() private menuService: MenuService) {}
 
   ngOnDestroy(): void {
@@ -61,10 +57,6 @@ export class ReuseTabService implements OnDestroy {
   }
 
   // #region public
-
-  get inited() {
-    return this._inited;
-  }
 
   /** 当前路由地址 */
   get curUrl() {
@@ -96,6 +88,10 @@ export class ReuseTabService implements OnDestroy {
   /** 获取当前缓存的路由总数 */
   get count() {
     return this._cached.length;
+  }
+
+  get inited() {
+    return this._inited;
   }
 
   /** 订阅缓存变更通知 */
@@ -414,7 +410,11 @@ export class ReuseTabService implements OnDestroy {
       return;
     }
     if (comp.instance && typeof comp.instance[method] === 'function') {
-      comp.instance[method]();
+      try {
+        comp.instance[method]();
+      } catch {
+        log(`【${method}】- 执行异常!`);
+      }
     }
   }
 
@@ -555,6 +555,10 @@ export class ReuseTabService implements OnDestroy {
     return this.keepingScroll;
   }
 
+  // #endregion
+
+  // #region privates
+
   private get isDisabledInRouter(): boolean {
     const routerConfig = this.injector.get<ExtraOptions>(ROUTER_CONFIGURATION, {} as any);
     return routerConfig.scrollPositionRestoration === 'disabled';
@@ -591,9 +595,9 @@ export class ReuseTabService implements OnDestroy {
     });
   }
 
-  // #endregion
-
-  // #region privates
+  private get snapshot() {
+    return this.injector.get(ActivatedRoute).snapshot;
+  }
 
   private remove(url: string | number, includeNonCloseable: boolean): boolean {
     const idx = typeof url === 'string' ? this.index(url) : url;

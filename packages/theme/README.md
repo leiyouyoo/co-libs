@@ -4,7 +4,7 @@ ng-alain theme system library.
 
 ## Links
 
-+ [Document](https://ng-alain.com) ([Surge Mirror](https://ng-alain-doc.surge.sh))
++ [Document](https://www.cityocean.com) ([Surge Mirror](https://ng-alain-doc.surge.sh))
 + [@co Source](https://github.com/ng-alain/delon)
 + [DEMO](https://ng-alain.surge.sh) ([国内镜像](https://ng-alain.gitee.io/))
 

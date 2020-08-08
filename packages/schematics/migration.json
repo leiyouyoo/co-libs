@@ -8,7 +8,7 @@
     },
     "migration-v9": {
       "version": "0.0.0-PLACEHOLDER",
-      "description": "Updates ng-alain to v9 [https://github.com/ng-alain/ng-alain/issues/1569]",
+      "description": "Updates ng-alain to v9 [ http://comail:8888/tfs/Cityocean/CO.Platform/_git/co-libs/issues/1569]",
       "factory": "./ng-update/index#updateToV9"
     },
     "ng-post-update": {

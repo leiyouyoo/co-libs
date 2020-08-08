@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 /**
- * @see https://ng-alain.com/theme/keys
+ * @see https://www.cityocean.com/theme/keys
  */
 @Pipe({ name: 'keys' })
 export class KeysPipe implements PipeTransform {

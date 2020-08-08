@@ -1,6 +1,5 @@
 import { Injectable, InjectionToken } from '@angular/core';
 
-
 export interface ITitleService {
   /** 设置分隔符 */
   separator(value: string);
@@ -15,7 +14,7 @@ export interface ITitleService {
   reverse(value: boolean);
 
   /**
-   * Set the document title, will be delay `25ms`, pls refer to [#1261](https://github.com/ng-alain/ng-alain/issues/1261)
+   * Set the document title, will be delay `25ms`, pls refer to [#1261]( http://comail:8888/tfs/Cityocean/CO.Platform/_git/co-libs/issues/1261)
    */
   setTitle(title?: string | string[]);
 
@@ -24,8 +23,6 @@ export interface ITitleService {
    */
   setTitleByI18n(key: string, params?: {});
 }
-
-
 
 export const CO_TITLE_TOKEN = new InjectionToken<ITitleService>('coTitleToken', {
   providedIn: 'root',
@@ -39,35 +36,24 @@ export function CO_TITLE_TOKEN_FACTORY() {
 @Injectable({ providedIn: 'root' })
 export class CoTitleServiceFake implements ITitleService {
   /** 设置分隔符 */
-  separator(value: string) {
-  }
+  separator(value: string) {}
 
   /** 设置前缀 */
-  prefix(value: string) {
-
-  }
+  prefix(value: string) {}
 
   /** 设置后缀 */
-  suffix(value: string) {
-
-  }
+  suffix(value: string) {}
 
   /** 设置是否反转 */
-  reverse(value: boolean) {
-
-  }
+  reverse(value: boolean) {}
 
   /**
-   * Set the document title, will be delay `25ms`, pls refer to [#1261](https://github.com/ng-alain/ng-alain/issues/1261)
+   * Set the document title, will be delay `25ms`, pls refer to [#1261]( http://comail:8888/tfs/Cityocean/CO.Platform/_git/co-libs/issues/1261)
    */
-  setTitle(title?: string | string[]) {
-
-  }
+  setTitle(title?: string | string[]) {}
 
   /**
    * Set i18n key of the document title
    */
-  setTitleByI18n(key: string, params?: {}) {
-
-  }
+  setTitleByI18n(key: string, params?: {}) {}
 }

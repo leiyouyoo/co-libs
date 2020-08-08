@@ -6,7 +6,7 @@ import { ACLService } from './acl.service';
 import { ACLCanType } from './acl.type';
 
 /**
- * Routing guard prevent unauthorized users visit the page, [ACL Document](https://ng-alain.com/acl).
+ * Routing guard prevent unauthorized users visit the page, [ACL Document](https://www.cityocean.com/acl).
  *
  * ```ts
  * data: {

@@ -36,8 +36,18 @@ export abstract class CoComponentBase extends LifeCycleComponent {
   }
 
   public $navigate(commands: any[], extras?: NavigationExtras): void {
-    window.planet.portalApplication.navigate(commands, extras);
+    if (window.planet) {
+      window.planet.portalApplication.navigate(commands, extras);
+    } else {
+      this.$logger.warn('Planet 未实例化');
+    }
   }
 
-  public $close() {}
+  public $close() {
+    // if (window.planet && window.planet.mainTabService) {
+    //   window.planet.mainTabService.
+    // } else {
+    //   this.$logger.warn('Planet 未实例化');
+    // }
+  }
 }

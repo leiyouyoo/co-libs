@@ -3,7 +3,7 @@ IM消息相关组件库
 
 ## Links
 
-+ [Document](https://ng-alain.com/util) ([Surge Mirror](https://ng-alain-doc.surge.sh/util))
++ [Document](https://www.cityocean.com/util) ([Surge Mirror](https://ng-alain-doc.surge.sh/util))
 + [@co Source](https://github.com/ng-alain/delon)
 + [DEMO](https://ng-alain.surge.sh) ([国内镜像](https://ng-alain.gitee.io/))
 

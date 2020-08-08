@@ -6,7 +6,7 @@ import { CoI18NService, CO_I18N_TOKEN } from '@co/core';
 import { Menu, MenuIcon } from './interface';
 
 /**
- * 菜单服务，[在线文档](https://ng-alain.com/theme/menu)
+ * 菜单服务，[在线文档](https://www.cityocean.com/theme/menu)
  */
 @Injectable({ providedIn: 'platform' })
 export class MenuService implements OnDestroy {

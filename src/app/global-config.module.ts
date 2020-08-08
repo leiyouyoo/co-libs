@@ -3,7 +3,7 @@ import { CoMockModule } from '@co/mock';
 import { CoCommonModule } from '@co/common';
 import { CoConfig, CO_CONFIG } from '@co/core';
 
-// Please refer to: https://ng-alain.com/docs/global-config
+// Please refer to: https://www.cityocean.com/docs/global-config
 // #region NG-ALAIN Config
 
 import { CoACLModule } from '@co/acl';
@@ -15,15 +15,15 @@ const coConfig: CoConfig = {
   //   license: `A59B099A586B3851E0F0D7FDBF37B603`,
   //   licenseA: `C94CEE276DB2187AE6B65D56B3FC2848`,
   // },
-  mock: { data: MOCKDATA, executeOtherInterceptors: false, },
-  auth: { token_invalid_redirect: false, }
+  mock: { data: MOCKDATA, executeOtherInterceptors: false },
+  auth: { token_invalid_redirect: false },
 };
 
 const coModules = [CoCommonModule.forRoot({ environment: { SERVER_URL: '' } }), CoACLModule.forRoot(), CoMockModule.forRoot()];
 const coProvides = [{ provide: CO_CONFIG, useValue: coConfig }];
 
 /**
- * 若需要[路由复用](https://ng-alain.com/components/reuse-tab)需要：
+ * 若需要[路由复用](https://www.cityocean.com/components/reuse-tab)需要：
  * 1、增加 `REUSETAB_PROVIDES`
  * 2、在 `src/app/layout/default/default.component.html` 修改：
  *  ```html

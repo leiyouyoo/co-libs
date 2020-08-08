@@ -4,7 +4,7 @@ MAINTAINER authors="cipchk <cipchk@qq.com>"
 
 WORKDIR /usr/src
 
-RUN git clone --depth 1 --branch gh-pages https://github.com/ng-alain/delon.git dist \
+RUN git clone --depth 1 --branch gh-pages  http://comail:8888/tfs/Cityocean/CO.Platform/_git/co-libs dist \
     && sed -i 's/\/delon\//\//g' /usr/src/dist/index.html \
     && sed -i 's/\/delon\//\//g' /usr/src/dist/404.html
 

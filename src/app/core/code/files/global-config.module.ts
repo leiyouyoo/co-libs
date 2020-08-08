@@ -3,7 +3,7 @@ import { DelonMockModule } from '@co/mock';
 import { AlainThemeModule } from '@co/common';
 import { AlainConfig, ALAIN_CONFIG, AlainConfigService } from '@co/core';
 
-// Please refer to: https://ng-alain.com/docs/global-config
+// Please refer to: https://www.cityocean.com/docs/global-config
 // #region NG-ALAIN Config
 
 import { DelonACLModule } from '@co/acl';

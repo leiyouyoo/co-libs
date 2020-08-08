@@ -7,7 +7,7 @@ import { ToLogin } from './helper';
 import { ITokenModel } from './interface';
 
 class HttpAuthInterceptorHandler implements HttpHandler {
-  constructor(private next: HttpHandler, private interceptor: HttpInterceptor) { }
+  constructor(private next: HttpHandler, private interceptor: HttpInterceptor) {}
 
   handle(req: HttpRequest<any>): Observable<HttpEvent<any>> {
     return this.interceptor.intercept(req, this.next);
@@ -16,7 +16,7 @@ class HttpAuthInterceptorHandler implements HttpHandler {
 
 @Injectable()
 export abstract class BaseInterceptor implements HttpInterceptor {
-  constructor(@Optional() protected injector: Injector) { }
+  constructor(@Optional() protected injector: Injector) {}
 
   protected model: ITokenModel;
 
@@ -25,7 +25,6 @@ export abstract class BaseInterceptor implements HttpInterceptor {
   abstract setReq(req: HttpRequest<any>, options: CoAuthConfig): HttpRequest<any>;
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
     const options = mergeConfig(this.injector.get(CoConfigService));
     if (options.ignores) {
       for (const item of options.ignores as RegExp[]) {
@@ -50,7 +49,7 @@ export abstract class BaseInterceptor implements HttpInterceptor {
           url: req.url,
           headers: req.headers,
           status: 401,
-          statusText: `来自 @co/auth 的拦截，所请求URL未授权，若是登录API可加入 [url?_allow_anonymous=true] 来表示忽略校验，更多方法请参考： https://ng-alain.com/auth/getting-started#AlainAuthConfig\nThe interception from @co/auth, the requested URL is not authorized. If the login API can add [url?_allow_anonymous=true] to ignore the check, please refer to: https://ng-alain.com/auth/getting-started#AlainAuthConfig`,
+          statusText: `来自 @co/auth 的拦截，所请求URL未授权，若是登录API可加入 [url?_allow_anonymous=true] 来表示忽略校验，更多方法请参考： https://www.cityocean.com/auth/getting-started#AlainAuthConfig\nThe interception from @co/auth, the requested URL is not authorized. If the login API can add [url?_allow_anonymous=true] to ignore the check, please refer to: https://www.cityocean.com/auth/getting-started#AlainAuthConfig`,
         });
         observer.error(res);
       });

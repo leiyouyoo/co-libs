@@ -11,7 +11,7 @@ export function DA_SERVICE_TOKEN_FACTORY(): ITokenService {
 }
 
 /**
- * 维护Token信息服务，[在线文档](https://ng-alain.com/auth)
+ * 维护Token信息服务，[在线文档](https://www.cityocean.com/auth)
  */
 export class TokenService implements ITokenService {
   private change$ = new BehaviorSubject<ITokenModel | null>(null);
@@ -23,7 +23,7 @@ export class TokenService implements ITokenService {
   }
 
   /**
-   * 授权失败后跳转路由路径（支持外部链接地址），通过设置[全局配置](https://ng-alain.com/docs/global-config)来改变
+   * 授权失败后跳转路由路径（支持外部链接地址），通过设置[全局配置](https://www.cityocean.com/docs/global-config)来改变
    */
   get login_url(): string | undefined {
     return this._options.login_url;

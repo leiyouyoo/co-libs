@@ -1,6 +1,6 @@
 {
-  "name": "co-libs",
-  "version": "0.1.61",
+  "name": "@co/libs",
+  "version": "0.1.66",
   "description": "co-libs 是一组用于前端开发的公共模块集合",
   "keywords": [
     "co-libs",
@@ -42,6 +42,8 @@
     "publish:schematics": "bash scripts/publish/publish.sh  -schematics",
     "publish:prev": "node scripts/publish/publish.js && node scripts/publish/publish-scaffold.js && bash ../ng-alain/scripts/_ci/fix-mock.sh",
     "publish:next": "bash scripts/publish/publish.sh -next",
+    "link:npm": "bash scripts/publish/link.sh",
+    "unlink:npm": "bash scripts/publish/link.sh -u",
     "gen:platform": "ng g co-cli:swagger --name platform --url http://192.168.1.5:8000/swagger/Platform/swagger.json",
     "gen:pub": "ng g co-cli:swagger --name pub --url http://192.168.1.5:8000/swagger/PUB/swagger.json",
     "analyze": "node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod --stats-json",

@@ -8,7 +8,7 @@ Angular CLI Schematics of ng-alain.
 
 ## Links
 
-+ [Document](https://ng-alain.com) ([Surge Mirror](https://ng-alain-doc.surge.sh))
++ [Document](https://www.cityocean.com) ([Surge Mirror](https://ng-alain-doc.surge.sh))
 + [@cource](https://github.com/ng-alain/delon)
 + [DEMO](https://ng-alain.surge.sh) ([国内镜像](https://ng-alain.gitee.io/))
 
@@ -16,7 +16,7 @@ Angular CLI Schematics of ng-alain.
 
 Please follow this guidelines when reporting bugs and feature requests:
 
-1. Use [GitHub Issues](https://github.com/ng-alain/ng-alain/issues) board to report bugs and feature requests (not our email address)
+1. Use [GitHub Issues]( http://comail:8888/tfs/Cityocean/CO.Platform/_git/co-libs/issues) board to report bugs and feature requests (not our email address)
 2. Please **always** write steps to reproduce the error. That way we can focus on fixing the bug, not scratching our heads trying to reproduce it.
 
 Thanks for understanding!

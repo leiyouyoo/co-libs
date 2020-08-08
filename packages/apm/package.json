@@ -5,12 +5,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ng-alain/delon.git"
+    "url": "git+ http://comail:8888/tfs/Cityocean/CO.Platform/_git/co-libs"
   },
   "bugs": {
-    "url": "https://github.com/ng-alain/ng-alain/issues"
+    "url": " http://comail:8888/tfs/Cityocean/CO.Platform/_git/co-libs/issues"
   },
-  "homepage": "https://ng-alain.com",
+  "homepage": "https://www.cityocean.com",
   "keywords": [
     "apm"
   ],

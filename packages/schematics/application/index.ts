@@ -439,8 +439,8 @@ function installPackages() {
 function tips() {
   return (_host: Tree) => {
     console.warn(``);
-    console.warn(`Don't use cnpm to install dependencies, pls refer to: https://ng-alain.com/docs/faq#Installation`);
-    console.warn(`Don't use cnpm to install dependencies, pls refer to: https://ng-alain.com/docs/faq#Installation`);
+    console.warn(`Don't use cnpm to install dependencies, pls refer to: https://www.cityocean.com/docs/faq#Installation`);
+    console.warn(`Don't use cnpm to install dependencies, pls refer to: https://www.cityocean.com/docs/faq#Installation`);
   };
 }
 

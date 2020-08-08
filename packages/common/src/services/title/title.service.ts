@@ -108,7 +108,7 @@ export class TitleService implements OnDestroy {
   }
 
   /**
-   * Set the document title, will be delay `25ms`, pls refer to [#1261](https://github.com/ng-alain/ng-alain/issues/1261)
+   * Set the document title, will be delay `25ms`, pls refer to [#1261]( http://comail:8888/tfs/Cityocean/CO.Platform/_git/co-libs/issues/1261)
    */
   setTitle(title?: string | string[]) {
     setTimeout(() => this._setTitle(title), this.DELAY_TIME);

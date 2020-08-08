@@ -4,7 +4,7 @@ Cache the dictionary, city data etc.
 
 ## Links
 
-+ [Document](https://ng-alain.com/chart) ([Surge Mirror](https://ng-alain-doc.surge.sh/chart))
++ [Document](https://www.cityocean.com/chart) ([Surge Mirror](https://ng-alain-doc.surge.sh/chart))
 + [@cource](https://github.com/ng-alain/delon)
 + [DEMO](https://ng-alain.surge.sh) ([国内镜像](https://ng-alain.gitee.io/))
 

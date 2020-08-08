@@ -86,15 +86,15 @@
   // 修复 `st` 会导致内嵌表格的BUG
   .@{ant-prefix}-table-tbody > tr {
     &@{st-prefix}-row-odd {
-      background:rgba(0,0,0,0.02);
+      background: rgba(0, 0, 0, 0.02);
     }
     &@{st-prefix}-row-red {
-      background: #FFA39E;
+      background: #ffa39e;
     }
     &@{st-prefix}-row-selected {
-      background:rgba(230,247,255,1);
+      background: rgba(230, 247, 255, 1);
       &:hover td {
-        background:rgba(230,247,255,1);
+        background: rgba(230, 247, 255, 1);
       }
     }
     &@{st-prefix}-row-line-through td:not(.no-line-through) {
@@ -103,11 +103,11 @@
     }
 
     .@{ant-prefix}-table-wrapper:only-child {
-      // 修复 https://github.com/ng-alain/ng-alain/issues/1619
+      // 修复  http://comail:8888/tfs/Cityocean/CO.Platform/_git/co-libs/issues/1619
       .ant-table-tbody > tr:last-child > td {
         border-bottom: @border-width-base @border-style-base @border-color-split;
       }
-      // 额外产生边距 https://github.com/ng-alain/ng-alain/issues/1608
+      // 额外产生边距  http://comail:8888/tfs/Cityocean/CO.Platform/_git/co-libs/issues/1608
       .@{ant-prefix}-table {
         margin: 0;
       }
@@ -126,9 +126,9 @@
   }
 
   tr {
-      .co-picker {
-        width: 100%;
-      }
+    .co-picker {
+      width: 100%;
+    }
   }
 
   &-bordered {
@@ -146,8 +146,9 @@
       }
     }
 
-    th, td {
-      border: 1px solid rgba(231,231,231,1);
+    th,
+    td {
+      border: 1px solid rgba(231, 231, 231, 1);
 
       &:first-of-type {
         border-left: none;

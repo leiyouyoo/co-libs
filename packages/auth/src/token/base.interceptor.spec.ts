@@ -119,7 +119,7 @@ describe('auth: base.interceptor', () => {
       it(`in params (full url)`, (done: () => void) => {
         genModule({}, genModel(SimpleTokenModel, null));
         http
-          .get('https://ng-alain.com/api/user', {
+          .get('https://www.cityocean.com/api/user', {
             responseType: 'text',
             params: { _allow_anonymous: '' },
           })
@@ -137,7 +137,7 @@ describe('auth: base.interceptor', () => {
       });
       it(`in url (full url)`, (done: () => void) => {
         genModule({}, genModel(SimpleTokenModel, null));
-        http.get('https://ng-alain.com/api/user?_allow_anonymous=1', { responseType: 'text' }).subscribe(done);
+        http.get('https://www.cityocean.com/api/user?_allow_anonymous=1', { responseType: 'text' }).subscribe(done);
         const ret = httpBed.expectOne(() => true);
         expect(ret.request.headers.get('Authorization')).toBeNull();
         ret.flush('ok!');
@@ -164,7 +164,7 @@ describe('auth: base.interceptor', () => {
         );
       });
       it('with location', (done: () => void) => {
-        const login_url = 'https://ng-alain.com/login';
+        const login_url = 'https://www.cityocean.com/login';
         genModule({ login_url }, genModel(SimpleTokenModel, null));
         http.get('/test', { responseType: 'text' }).subscribe(
           () => {

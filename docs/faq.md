@@ -100,7 +100,7 @@ ng config -g cli.packageManager yarn
 我们提供一份在线快照：
 
 ```barsh
-git clone --depth 1 --branch gh-pages https://github.com/ng-alain/delon.git docs
+git clone --depth 1 --branch gh-pages  http://comail:8888/tfs/Cityocean/CO.Platform/_git/co-libs docs
 ```
 
 你可以简单的创建一个 Docker 容器来快速部署 ng-alain.com 相同的文档站点。

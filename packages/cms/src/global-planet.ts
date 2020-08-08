@@ -1,3 +1,4 @@
+import { ElementRef } from '@angular/core';
 import { PlanetApplicationLoader } from './application/planet-application-loader';
 import { BootstrapAppModule, PlanetApplicationRef } from './application/planet-application-ref';
 import { PlanetApplicationService } from './application/planet-application.service';
@@ -10,6 +11,8 @@ export interface GlobalPlanet {
   portalApplication?: PlanetPortalApplication;
   applicationLoader?: PlanetApplicationLoader;
   applicationService?: PlanetApplicationService;
+  mainTab: ElementRef<any>;
+  mainTabService: any;
 }
 
 export const globalPlanet: GlobalPlanet = (window.planet = window.planet || {
@@ -62,9 +65,27 @@ export function getApplicationService() {
   return globalPlanet.applicationService;
 }
 
+export function setMainTab(mainTab: ElementRef<any>) {
+  globalPlanet.mainTab = mainTab;
+}
+
+export function getMainTab() {
+  return globalPlanet.mainTab;
+}
+
+export function setMainTabSerivcce(mainTabService: any) {
+  globalPlanet.mainTabService = mainTabService;
+}
+
+export function getMainTabService() {
+  return globalPlanet.mainTabService;
+}
+
 export function clearGlobalPlanet() {
   window.planet.apps = {};
   window.planet.portalApplication = null;
   window.planet.applicationLoader = null;
   window.planet.applicationService = null;
+  window.planet.mainTab = null;
+  window.planet.mainTabService = null;
 }
