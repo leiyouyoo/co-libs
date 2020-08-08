@@ -13,4 +13,4 @@ const COMPONENTS = [CoCascaderComponent];
   declarations: [...COMPONENTS],
   exports: [...COMPONENTS],
 })
-export class CascaderModule { }
+export class OrganizationCascaderModule { }

@@ -2,9 +2,9 @@
   [nzShowInput] = "coShowInput"
   [nzAllowClear] = "coAllowClear"
   [nzShowSearch] = "coShowSearch"
-  [nzOptions]="coOption"
-  [(ngModel)]="value"
-  (ngModelChange)="onChanges($event)"
+  [nzOptions]="coOptionList"
+  [(ngModel)]="cascaderValue"
+  (ngModelChange)="onCascaderChange($event)"
   (nzSelectionChange)="onSelectionChange($event)"
 >
 

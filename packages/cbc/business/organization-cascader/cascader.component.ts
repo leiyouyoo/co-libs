@@ -1,5 +1,5 @@
 import {
-  ChangeDetectionStrategy,
+  ChangeDetectionStrategy, ChangeDetectorRef,
   Component,
   EventEmitter,
   forwardRef,
@@ -18,8 +18,8 @@ import { NzCascaderOption, NzSafeAny, OnChangeType, OnTouchedType } from 'ng-zor
  *  级联选择
  */
 @Component({
-  selector: 'co-cascader',
-  exportAs: 'coCascader',
+  selector: 'co-organization-cascader',
+  exportAs: 'coOrganizationCascader',
   templateUrl: './cascader.component.html',
   providers: [
     {
@@ -28,36 +28,34 @@ import { NzCascaderOption, NzSafeAny, OnChangeType, OnTouchedType } from 'ng-zor
       useExisting: forwardRef(() => CoCascaderComponent),
     },
   ],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.Default,
   encapsulation: ViewEncapsulation.None,
 })
 export class CoCascaderComponent implements OnInit, ControlValueAccessor {
-
-  @Input() coValue: any[] | null = null;
   @Input() coAllowClear: boolean = true;
   @Input() coShowSearch: boolean = false;
   @Input() coShowInput: boolean = true;
-
   @Output() coSelectionChange = new EventEmitter<any>();
-  @Output() coModelChange = new EventEmitter<any>();
 
   onChange: OnChangeType = () => {};
   onTouched: OnTouchedType = () => {};
 
-  coOption: NzCascaderOption[] | null = null;
+  coOptionList: NzCascaderOption[] | null = null;
   value: any[] | null = null;
-  optionList;
+  cascaderValue: any[] | null = null;
   valueList:any[] =[];
 
-  constructor(private organizationUnitService: PlatformOrganizationUnitService) {} // private organizationUnitService: OrganizationUnitService
+  constructor(private organizationUnitService: PlatformOrganizationUnitService,
+              private cdr: ChangeDetectorRef,
+              ) {} // private organizationUnitService: OrganizationUnitService
 
   ngOnInit(): void {
     //console.log(this.values);
     this.getData();
   }
 
-  onChanges(values: any): void {
-    this.coModelChange.emit(values);
+  onCascaderChange(values: any[]): void {
+    this.onChange(values?.length ? values[values.length - 1] : null);
   }
 
   onSelectionChange(selectedOptions: NzCascaderOption[]): void {
@@ -73,16 +71,9 @@ export class CoCascaderComponent implements OnInit, ControlValueAccessor {
       res.items.forEach(data => {
         option.push(this.getChildData(data));
       });
-      this.optionList =  option;
-      //this.coOption = option;
+      this.coOptionList =  option;
 
-      if( this.coValue ){
-        this.getAllParentID( option , this.coValue );
-        this.coOption = this.optionList;
-        this.value = this.valueList.reverse();
-      }else {
-        this.coOption = option;
-      }
+      this.bindCascaderValue();
       //console.log(this.valueList);
 
     });
@@ -93,13 +84,13 @@ export class CoCascaderComponent implements OnInit, ControlValueAccessor {
     newList.value = data.id;
     newList.label = data.displayNameLocalization;
     parentId ? newList.parentId = parentId : "";
-    if (data.childrenDto && data.childrenDto.length > 0) {
+    if (data.childrenDto?.length) {
       newList.children = [];
       data.childrenDto.forEach(dto => {
         newList.children.push(this.getChildData(dto , newList.value ));
       });
     }else {
-      newList["isLeaf"] = true;
+      newList.isLeaf = true;
     }
     return newList;
   }
@@ -110,7 +101,7 @@ export class CoCascaderComponent implements OnInit, ControlValueAccessor {
         this.valueList.push(item.value);
         //如果有父级  需要传入完整的option
         if( item.parentId ){
-          this.getAllParentID( this.optionList , item.parentId);
+          this.getAllParentID( this.coOptionList , item.parentId);
         }
       }else{
         if (item.children && item.children.length > 0) {
@@ -122,8 +113,19 @@ export class CoCascaderComponent implements OnInit, ControlValueAccessor {
 
   //#region ngModel实现
 
+  bindCascaderValue() {
+    if( this.value ){
+      this.getAllParentID( this.coOptionList , this.value );
+      this.cascaderValue = this.valueList.reverse();
+    } else {
+      this.cascaderValue = []
+    }
+  }
+
   writeValue(modelValue: NzSafeAny | NzSafeAny[]): void {
+    console.log(modelValue);
     this.value = modelValue;
+    this.bindCascaderValue();
   }
 
   registerOnChange(fn: OnChangeType): void {

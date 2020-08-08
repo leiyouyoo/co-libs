@@ -3,8 +3,8 @@
 
 @{st-prefix} {
   position: relative;
-
   display: block;
+
   &__p-left {
     .@{ant-prefix}-table-pagination {
       display: block;
@@ -12,6 +12,7 @@
       text-align: left;
     }
   }
+
   &__p-center {
     .@{ant-prefix}-table-pagination {
       display: block;
@@ -19,35 +20,40 @@
       text-align: center;
     }
   }
+
   // 修复按钮block
   &__btn {
     &--red &-text {
       color: red;
     }
+
     &-sub {
       @{st-prefix}__btn-text {
         color: inherit;
       }
     }
+
     &-disabled {
       @{st-prefix}__btn-text {
         color: @st-btn-disabled-color;
         pointer-events: none;
       }
     }
-    &-loading {
-      margin-left: 4px;
 
+    &-loading {
       display: inline-flex;
+      margin-left: 4px;
       line-height: 1;
       vertical-align: 0.125em;
+
       .ant-spin {
         line-height: 1;
       }
     }
   }
+
   // 清除页码底部间距，在大部分列表中会包裹 `nz-card` 导致底部间距过大，若有需求可自行使用 `mb-md` 来调整
-  .@{ant-prefix}-table ~ nz-pagination > .@{ant-prefix}-pagination {
+  .@{ant-prefix}-table~nz-pagination>.@{ant-prefix}-pagination {
     margin-bottom: 0;
   }
 
@@ -56,69 +62,89 @@
       padding: @layout-gutter;
     }
   }
+
   // Title
   .@{ant-prefix}-table-column-title {
     display: flex;
     align-items: center;
   }
+
   &__head {
+
     &-optional,
     &-tip {
       margin-left: 2px;
       color: @st-title-optional-color;
     }
   }
+
   // 过滤器行
   &-thead-row-filter {
     .co-picker {
       min-width: initial;
     }
   }
+
   // 修复自动定义图标无法高亮问题
-  .@{ant-prefix}-table-thead > tr > th .@{ant-prefix}-table-filter-selected.@{ant-prefix}-table-filter-icon {
+  .@{ant-prefix}-table-thead>tr>th .@{ant-prefix}-table-filter-selected.@{ant-prefix}-table-filter-icon {
     color: @primary-color;
   }
+
   // 修复全选与快捷的间距
   &__checkall-selection {
     display: inline-block;
     margin-left: 4px;
   }
+
   // 修复 `st` 会导致内嵌表格的BUG
-  .@{ant-prefix}-table-tbody > tr {
+  .@{ant-prefix}-table-tbody>tr {
     &@{st-prefix}-row-odd {
       background: rgba(0, 0, 0, 0.02);
     }
-    &@{st-prefix}-row-red {
-      background: #ffa39e;
+
+    &@{st-prefix}-row-error {
+      background: #FFA39E;
     }
+
+    &@{st-prefix}-row-secondary {
+      background: #d8dffa;
+    }
+
     &@{st-prefix}-row-selected {
       background: rgba(230, 247, 255, 1);
+
       &:hover td {
         background: rgba(230, 247, 255, 1);
       }
     }
+
     &@{st-prefix}-row-line-through td:not(.no-line-through) {
       color: rgba(0, 0, 0, 0.25);
       text-decoration: line-through;
     }
 
     .@{ant-prefix}-table-wrapper:only-child {
+
       // 修复  http://comail:8888/tfs/Cityocean/CO.Platform/_git/co-libs/issues/1619
-      .ant-table-tbody > tr:last-child > td {
+      .ant-table-tbody>tr:last-child>td {
         border-bottom: @border-width-base @border-style-base @border-color-split;
       }
+
       // 额外产生边距  http://comail:8888/tfs/Cityocean/CO.Platform/_git/co-libs/issues/1608
       .@{ant-prefix}-table {
         margin: 0;
       }
     }
   }
+
   // 修复无法显示阴影问题
   .@{ant-prefix}-table {
+
     &-cell-fix-left-first::after,
     &-cell-fix-left-last::after {
       transform: translateX(80%);
     }
+
     &-cell-fix-right-first::after,
     &-cell-fix-right-last::after {
       transform: translateX(-80%);
@@ -153,30 +179,30 @@
       &:first-of-type {
         border-left: none;
       }
+
       &:last-of-type {
         border-right: none;
       }
     }
   }
+
   &__scroll-loading {
     position: absolute;
     bottom: 10px;
-
     left: 50%;
-    height: 40px;
-
-    pointer-events: none;
     display: flex;
     align-items: center;
+    height: 40px;
+    pointer-events: none;
   }
+
   &__delay-icon {
+    display: inline-block;
     width: 14px;
     height: 14px;
-
     background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAADqADAAQAAAABAAAADgAAAAC98Dn6AAAB0klEQVQoFVVSTWsTQRh+582WTb9MwYMBkYWmX+JBaI8VhFLorf0POXsMtj9BJUcPnvojcixtfoMKhR4WJLQFwQiltfkyO6/PM7sLcTazmZ15vt6ZcTLT3l/Z8u+rm9bg18PhZDRZW3+zISqWmpPOSnWhfbzlHkq4KwfvLvp7/fTn6Xg4Scy8mJmsv30JokjFOamI600rrvnh9XyXHM4LSbeX1+ej4TiQxDCJ7tFNnGQQmYpP1Pvzk2/DPXKU8egElIMNfxjS0YsHIAOV5CCCQZTZ6UdwItY0GoyTYEEHEOjGRiIjszEunaGR3I0GLf3Tvz/iAgElqKyRwBAV79KZc87kMJoO/zb+J1CmECoiKtwYlVEU25mZrEW6sypz+IBKiOMwUBCAlR9n3/MkHjUHMf7DUVU0Uk3z3StqCi4Ghzy6BRLhxQNwvBinuqDWoRo3guAMCwY71paTitgU4BqeWn2lo0+fLLUrIr2SjEMJAsGRMB5NiJmT4mrce7690dZPuEb1eK7pUWUg45VH57GSiF7GxUey3WiSE27O55357os42p91DttAUuFKp83dV/tfDupdBEAhMy1c8vtB69HbUeZ94+7iq8RL1bT2rNZhPDqV8H8wkkgj8BoDRAAAAABJRU5ErkJggg==');
-
-    display: inline-block;
   }
+
   &-column-setting-popover {
     .ant-popover-inner-content {
       padding: 0;
@@ -187,7 +213,7 @@
     &__width {
       &-strict {
         .ant-table-content {
-          > table {
+          >table {
             word-wrap: break-word !important;
             table-layout: fixed !important;
           }

@@ -38,10 +38,10 @@
     <i *ngIf="btn.icon.iconfont" nz-icon [nzIconfont]="btn.icon.iconfont"></i>
   </ng-container>
   <span [innerHTML]="_btnText(i, btn)" [ngClass]="{ 'pl-xs': btn.icon }"></span>
-  <nz-spin *ngIf="btn._delay$" nzSimple [nzIndicator]="indicatorTemplate" class="st__btn-loading"></nz-spin>
-  <ng-template #indicatorTemplate><i class="st__delay-icon anticon-spin"></i></ng-template>
-  <nz-spin *ngIf="btn.loading" nzSimple [nzIndicator]="indicatorTemplate" class="st__btn-loading"></nz-spin>
-  <ng-template #indicatorTemplate><i nz-icon nzType="loading"></i></ng-template>
+  <nz-spin *ngIf="btn._delay$" nzSimple [nzIndicator]="btnDelayLoadingTpl" class="st__btn-loading"></nz-spin>
+  <ng-template #btnDelayLoadingTpl><i class="st__delay-icon anticon-spin"></i></ng-template>
+  <nz-spin *ngIf="btn.loading" nzSimple [nzIndicator]="btnLoadingTpl" class="st__btn-loading"></nz-spin>
+  <ng-template #btnLoadingTpl><i nz-icon nzType="loading"></i></ng-template>
 </ng-template>
 <ng-template #titleTpl let-i>
   <span [innerHTML]="i._text"></span>
@@ -120,6 +120,7 @@
         [nzWidth]="h.column.width"
         [nzLeft]="!!h.column._left"
         [nzRight]="!!h.column._right"
+        [class.st-column-action]="h.column.type === 'action'"
         [ngClass]="h.column.className"
         [attr.data-col]="h.column.indexKey"
         [nzShowSort]="h.column._sort.enabled"

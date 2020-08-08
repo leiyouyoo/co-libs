@@ -10,7 +10,8 @@ title:
 `[rowClassName]` 的使用及已内置的样式
 
 已有class: 
-`.st-row-red`  红色
+`.st-row-error`  红色
+`.st-row--secondary` 蓝色
 
 `.st-row-line-through` 删除样式，如果个别列需排除需要在columns 定义里加上 `className: 'no-line-through'`
 
@@ -53,9 +54,11 @@ export class ComponentsStRowClassComponentComponent {
   getRowClassName(record: STData, index: number, ) {
     switch (index) {
       case 0:
-        return `st-row-red`;
+        return `st-row-error`;
       case 1:
         return `st-row-line-through`;
+      case 2:
+        return `st-row-secondary`;
       default:
         return ``;
     }
