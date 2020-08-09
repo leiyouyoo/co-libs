@@ -1,4 +1,7 @@
 import { InjectionToken } from '@angular/core';
+import { CoACLConfig } from './acl/acl.type';
+import { CoAuthConfig } from './auth/auth.type';
+import { CoCacheConfig } from './cache/cache.type';
 import {
   CoDateRangePickerConfig,
   CoImageConfig,
@@ -6,19 +9,16 @@ import {
   CoPageHeaderConfig,
   CoSEConfig,
   CoSGConfig,
-  CoXlsxConfig,
   CoSTConfig,
   CoSVConfig,
+  CoXlsxConfig,
 } from './cbc/index';
-import { CoACLConfig } from './acl/acl.type';
+import { CoCdsConfig } from './cds/cds.type';
+import { CoChartConfig } from './chart/chart.type';
+import { CoCommonConfig } from './common/common.type';
 import { CoIMConfig } from './im/im.type';
 import { CoMapConfig } from './map/map.type';
-import { CoCdsConfig } from './cds/cds.type';
-import { CoAuthConfig } from './auth/auth.type';
-import { CoCacheConfig } from './cache/cache.type';
-import { CoChartConfig } from './chart/chart.type';
 import { CoMockConfig } from './mock/mock.type';
-import { CoCommonConfig } from './common/common.type';
 import { CoSFConfig } from './sf/sf.type';
 import { CoThemeHttpClientConfig, CoThemeResponsiveConfig } from './theme/index';
 import { CoUtilArrayConfig } from './util/array.type';

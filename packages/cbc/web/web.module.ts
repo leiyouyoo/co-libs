@@ -1,18 +1,11 @@
 import { NgModule } from '@angular/core';
-import { CoSTModule } from '@co/cbc/web/st';
-import { SEModule } from '@co/cbc/web/se';
-import { CoNzSelectExtraModule } from '@co/cbc/web/nz-select-extra';
+import { CoNzSelectExtraModule } from './nz-select-extra';
+import { SEModule } from './se';
+import { CoSTModule } from './st';
 
-const MODULES: any[] = [
-  CoSTModule,
-  SEModule,
-  CoNzSelectExtraModule,
-];
+const MODULES: any[] = [CoSTModule, SEModule, CoNzSelectExtraModule];
 
-/**@co/cbc/basic/down-file
- */
 @NgModule({ exports: MODULES })
 export class CbcWebComponentsModule {
-  constructor() {
-  }
+  constructor() {}
 }

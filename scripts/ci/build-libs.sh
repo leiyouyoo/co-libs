@@ -5,7 +5,11 @@ set -u -e -o pipefail
 
 cd $(dirname $0)/../..
 
+DIST="$(pwd)/dist/@co"
 DEBUG=false
+TARGET="$(pwd)/target"
+ALL=true
+ISBUILDLESS=false
 PACKAGES=(core
   testing
   acl
@@ -28,6 +32,10 @@ for ARG in "$@"; do
   case "$ARG" in
     -n)
       PACKAGES=($2)
+      ALL=false
+      ;;
+    -t)
+      TARGET=($4)
       ;;
     -debug)
       DEBUG=true
@@ -98,7 +106,8 @@ build() {
     LICENSE_BANNER=${SOURCE}/license-banner.txt
 
     if ! containsElement "${NAME}" "${NODE_PACKAGES[@]}"; then
-echo " node --max_old_space_size=4096 ${PWD}/scripts/build/packing ${NAME}"
+      
+      echo " node --max_old_space_size=4096 ${PWD}/scripts/build/packing ${NAME}"
 
       # packaging
       node --max_old_space_size=4096 ${PWD}/scripts/build/packing ${NAME}
@@ -108,30 +117,43 @@ echo " node --max_old_space_size=4096 ${PWD}/scripts/build/packing ${NAME}"
       cp ${PWD}/LICENSE ${DIST}/${NAME}/LICENSE
       # package version
       updateVersionReferences ${DIST}/${NAME}
+
+      if [[ ${NAME} == theme  ||  ${NAME} == cbc ||  ${NAME} == chart ]]; then
+        ISBUILDLESS=true
+      fi
+
     else
       echo "not yet!!!"
     fi
 
   done
 
-  buildLess
+  if [[ ${ISBUILDLESS} == true || ${ALL} == true ]]; then
+     buildLess
+  fi
 }
 
-build
+debug(){
+  if [[ ${DEBUG} == false  ]]; then
+    return
+  fi
 
-echo 'FINISHED!'
+  echo "====== debug ${DEBUG} ${ALL} " 
 
-# TODO: just debug
-# clear | bash ./scripts/ci/build-delon.sh -debug
-# clear | bash ./scripts/ci/build-delon.sh -n chart -debug
-if [[ ${DEBUG} == true ]]; then
-  cd ../../
-  DEBUG_FROM=${PWD}/dist/@co/*
-  DEBUG_TO=${PWD}/node_modules/@co/
-  echo "DEBUG_FROM:${DEBUG_FROM}"
-  echo "DEBUG_TO:${DEBUG_TO}"
-  rm -rf ${DEBUG_TO}
-  mkdir -p ${DEBUG_TO}
-  rsync -a ${DEBUG_FROM} ${DEBUG_TO}
-  echo "DEBUG FINISHED~!"
+  if [[ ${ALL} == true ]]; then
+         ./scripts/ci/copy-npm.sh -t ${TARGET}
+  fi
+
+  for NAME in ${PACKAGES[@]}
+  do
+    echo "====== PACKAGING ${NAME}"
+    ./scripts/ci/copy-npm.sh -m ${NAME} -t ${TARGET}
+  done
+}
+
+if [[ ${ALL} == true ]]; then
+  rm -rf ${DIST}
 fi
+
+build
+debug

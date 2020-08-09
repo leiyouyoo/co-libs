@@ -37,7 +37,7 @@ async function genCss(name, min) {
 }
 
 function runCss(min) {
-  ['default', 'dark', 'compact'].forEach(async name => {
+  ['default'].forEach(async name => {
     console.log(`开始生成 ${name} ${min ? 'min' : ''}版本`);
     await genCss(name, min);
   });

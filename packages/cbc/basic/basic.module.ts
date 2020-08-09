@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 
 // #region all modules
-import { CoDatePickerModule } from '@co/cbc/basic/date-picker';
-import { CoDatetimeRangePickerModule } from '@co/cbc/basic/datetime-range-picker';
-import { CoDelayModule } from '@co/cbc/basic/delay';
-import { CoEllipsisModule } from '@co/cbc/basic/ellipsis';
-import { CoImageModule } from '@co/cbc/basic/image';
-import { CoLoadingModule } from '@co/cbc/basic/loading';
-import { CoMasonryModule } from '@co/cbc/basic/masonry';
-import { CoMouseFocusModule } from '@co/cbc/basic/mouse-focus';
-import { CoNoticeIconModule } from '@co/cbc/basic/notice-icon';
-import { CoScrollbarModule } from '@co/cbc/basic/scrollbar';
-import { CoStatusLabelModule } from '@co/cbc/basic/status-label';
+import { CoDatePickerModule } from './date-picker';
+import { CoDatetimeRangePickerModule } from './datetime-range-picker';
+import { CoDelayModule } from './delay';
+import { CoEllipsisModule } from './ellipsis';
+import { CoImageModule } from './image';
+import { CoLoadingModule } from './loading';
+import { CoMasonryModule } from './masonry';
+import { CoMouseFocusModule } from './mouse-focus';
+import { CoNoticeIconModule } from './notice-icon';
+import { CoScrollbarModule } from './scrollbar';
+import { CoStatusLabelModule } from './status-label';
 
 const MODULES = [
   CoImageModule,
