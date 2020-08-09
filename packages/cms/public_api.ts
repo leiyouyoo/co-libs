@@ -12,3 +12,4 @@ export { PlanetComponent, PlanetComponentLoader } from './src/component/planet-c
 export { PlanetComponentRef } from './src/component/planet-component-ref';
 export { PlantComponentConfig } from './src/component/plant-component.config';
 export * from './src/empty/empty.component';
+export * from './src/reuse-tab';

@@ -31,8 +31,11 @@ NODE_PACKAGES=(cli)
 for ARG in "$@"; do
   case "$ARG" in
     -n)
-      PACKAGES=($2)
-      ALL=false
+      TEMPPACKAGES=($2)
+      if [[ ${TEMPPACKAGES} != ALL  ]]; then
+        PACKAGES=($2)
+        ALL=false
+      fi
       ;;
     -t)
       TARGET=($4)
@@ -118,7 +121,7 @@ build() {
       # package version
       updateVersionReferences ${DIST}/${NAME}
 
-      if [[ ${NAME} == theme  ||  ${NAME} == cbc ||  ${NAME} == chart ]]; then
+      if [[ ${NAME} == theme  ||  ${NAME} == cbc ||  ${NAME} == chart ||  ${NAME} == cms ||  ${NAME} == map ||  ${NAME} == im ]]; then
         ISBUILDLESS=true
       fi
 
@@ -153,6 +156,8 @@ debug(){
 
 if [[ ${ALL} == true ]]; then
   rm -rf ${DIST}
+else
+  rm -rf ${DIST}/PACKAGES
 fi
 
 build

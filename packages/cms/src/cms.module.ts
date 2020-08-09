@@ -3,7 +3,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 
 import { EmptyComponent } from './empty/empty.component';
 import { PlanetApplication, PLANET_APPLICATIONS } from './planet.types';
-
+import { ReuseTabModule } from './reuse-tab';
 /**
  * 微服务模块
  */
@@ -12,7 +12,7 @@ import { PlanetApplication, PLANET_APPLICATIONS } from './planet.types';
   entryComponents: [EmptyComponent],
   imports: [HttpClientModule],
   providers: [],
-  exports: [HttpClientModule, EmptyComponent],
+  exports: [ReuseTabModule, EmptyComponent],
 })
 export class CoCmsModule {
   static forRoot(apps: PlanetApplication[]): ModuleWithProviders<CoCmsModule> {

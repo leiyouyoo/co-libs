@@ -3,20 +3,11 @@ import { NgModule } from '@angular/core';
 import { FullContentModule } from './full-content';
 import { PageHeaderModule } from './page-header';
 import { PageLayoutModule } from './page-layout';
-import { ReuseTabModule } from './reuse-tab';
 import { SearchAreaLayoutModule } from './search-area-layout';
 import { SidebarNavModule } from './sidebar-nav';
 import { ToolbarModule } from './toolbar';
 
-const MODULES = [
-  SidebarNavModule,
-  ReuseTabModule,
-  PageHeaderModule,
-  FullContentModule,
-  PageLayoutModule,
-  SearchAreaLayoutModule,
-  ToolbarModule,
-];
+const MODULES = [SidebarNavModule, PageHeaderModule, FullContentModule, PageLayoutModule, SearchAreaLayoutModule, ToolbarModule];
 
 /**
  * 业务组件模块

@@ -1,5 +1,4 @@
 import { Injector, NgZone, Optional } from '@angular/core';
-import { NavigationExtras } from '@angular/router';
 
 import { CoI18NService, CO_I18N_TOKEN } from '../interface/i18n.interface';
 import { CO_LOGGER_TOKEN, ILogger } from '../interface/logger.interface';
@@ -9,7 +8,6 @@ import { CO_SESSIONSERVICE_TOKEN, ISessionService } from '../interface/session.i
 import { CO_TITLE_TOKEN, ITitleService } from '../interface/title.interface';
 import { LifeCycleComponent } from './life-cycle-component';
 
-declare var window: any;
 /**
  * 业务组件基类
  */
@@ -31,23 +29,10 @@ export abstract class CoComponentBase extends LifeCycleComponent {
     this.$i18n = injector.get(CO_I18N_TOKEN);
   }
 
+  /**
+   * 本地化翻译
+   */
   public $L(key: string, params?: {}, isSafe?: boolean) {
     return this.$i18n.fanyi(key, params, isSafe);
-  }
-
-  public $navigate(commands: any[], extras?: NavigationExtras): void {
-    if (window.planet) {
-      window.planet.portalApplication.navigate(commands, extras);
-    } else {
-      this.$logger.warn('Planet 未实例化');
-    }
-  }
-
-  public $close() {
-    // if (window.planet && window.planet.mainTabService) {
-    //   window.planet.mainTabService.
-    // } else {
-    //   this.$logger.warn('Planet 未实例化');
-    // }
   }
 }

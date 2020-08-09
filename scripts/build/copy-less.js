@@ -22,8 +22,17 @@ function copyLess(name) {
       fse.copySync(`${sourcePath}/${name}/style`, `${targetPath}/${name}/style`);
     }
 
-    const basicReg = /(cbc)$/g;
-    if (basicReg.test(sourcePath)) {
+    const cmsReg = /(cms)$/g;
+    if (cmsReg.test(sourcePath)) {
+      fs.readdirSync(`${sourcePath}/src`).forEach(cname => {
+        if (fs.existsSync(`${sourcePath}/src/${cname}/style/index.less`)) {
+          fse.copySync(`${sourcePath}/src/${cname}/style`, `${targetPath}/src/${cname}/style`);
+        }
+      });
+    }
+
+    const cbcReg = /(cbc)$/g;
+    if (cbcReg.test(sourcePath)) {
       fs.readdirSync(`${targetPath}/basic`).forEach(cname => {
         if (fs.existsSync(`${sourcePath}/basic/${cname}/style/index.less`)) {
           fse.copySync(`${sourcePath}/basic/${cname}/style`, `${targetPath}/basic/${cname}/style`);
@@ -67,6 +76,6 @@ function copyTheme() {
   });
 }
 
-['cbc', 'chart', 'im', 'map'].forEach(name => copyLess(name));
+['cbc', 'cms', 'chart', 'im', 'map'].forEach(name => copyLess(name));
 
 copyTheme();

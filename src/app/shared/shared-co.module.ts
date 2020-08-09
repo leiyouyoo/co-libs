@@ -3,7 +3,6 @@ import { CoEllipsisModule } from '@co/cbc/basic/ellipsis';
 import { CoImageModule } from '@co/cbc/basic/image';
 import { CoNoticeIconModule } from '@co/cbc/basic/notice-icon';
 import { PageHeaderModule } from '@co/cbc/layout/page-header';
-import { ReuseTabModule } from '@co/cbc/layout/reuse-tab';
 import { SidebarNavModule } from '@co/cbc/layout/sidebar-nav';
 import { G2BarModule } from '@co/chart/bar';
 import { G2CardModule } from '@co/chart/card';
@@ -20,6 +19,7 @@ import { G2TagCloudModule } from '@co/chart/tag-cloud';
 import { G2TimelineModule } from '@co/chart/timeline';
 import { TrendModule } from '@co/chart/trend';
 import { G2WaterWaveModule } from '@co/chart/water-wave';
+import { ReuseTabModule } from '@co/cms';
 
 import { CbcWebComponentsModule, CoBasicCompoentsModule, CoBusinessComponentsModule, CoLayoutComponentsModule } from '@co/cbc';
 import { CdsModule } from '@co/cds';

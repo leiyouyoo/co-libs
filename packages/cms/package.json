@@ -15,7 +15,8 @@
     "cms"
   ],
   "dependencies": {
-    "@co/core": "PEER-0.0.0-PLACEHOLDER"
+    "@co/core": "PEER-0.0.0-PLACEHOLDER",
+    "@co/common": "PEER-0.0.0-PLACEHOLDER"
   },
   "sideEffects": false
 }

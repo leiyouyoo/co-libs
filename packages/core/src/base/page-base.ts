@@ -1,6 +1,9 @@
 import { AfterViewInit, Injector, OnChanges, OnDestroy, OnInit, Optional, SimpleChanges } from '@angular/core';
+import { NavigationExtras } from '@angular/router';
 
 import { CoComponentBase } from './component-base';
+
+declare var window: any;
 
 /**
  * 页面基类
@@ -46,5 +49,28 @@ export abstract class CoPageBase extends CoComponentBase implements OnInit, OnCh
   ngAfterViewInit(): void {
     this.coAfterViewInit();
     super.ngAfterViewInit();
+  }
+
+  /**
+   * 导航
+   */
+  public $navigate(commands: any[], extras?: NavigationExtras): void {
+    if (window.planet) {
+      window.planet.portalApplication.navigate(commands, extras);
+    } else {
+      this.$logger.warn('Planet 未实例化');
+    }
+  }
+
+  /**
+   * 关闭当前页面
+   */
+  public $close() {
+    // TODO: 需要处理抽屉，模态弹框，标签页面关闭
+    if (window.planet && window.planet.mainTabService) {
+      window.planet.mainTabService.closeCurrent();
+    } else {
+      this.$logger.warn('Planet 未实例化');
+    }
   }
 }

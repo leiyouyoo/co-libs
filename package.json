@@ -22,6 +22,7 @@
     "lint": "bash scripts/ci/lint.sh -ts -less",
     "tslint": "tslint-config-prettier-check ./tslint.json",
     "build:libs": "bash scripts/ci/build-libs.sh",
+    "build:libs:debug": "bash scripts/ci/build-libs.sh -n ALL -t D:\\src\\co\\new\\co-portal\\ -debug",
     "build:libs:core": "bash scripts/ci/build-libs.sh -n core",
     "build:libs:core:debug": "bash scripts/ci/build-libs.sh  -n core -t D:\\src\\co\\new\\co-portal\\ -debug",
     "build:libs:chart": "bash scripts/ci/build-libs.sh -n chart",

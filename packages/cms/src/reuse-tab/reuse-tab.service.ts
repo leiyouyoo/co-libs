@@ -141,6 +141,14 @@ export class ReuseTabService implements OnDestroy {
   }
 
   /**
+   * 关闭当前页
+   */
+  closeCurrent() {
+    const url = window.location.hash.replace('#', '');
+    this.close(url, true);
+  }
+
+  /**
    * 根据URL移除标签
    *
    * @param [includeNonCloseable=false] 是否强制包含不可关闭

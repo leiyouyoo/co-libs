@@ -1,8 +1,10 @@
 <div class="alain-default__header">
   <div class="alain-default__header-logo">
     <a [routerLink]="['/dev']" class="alain-default__header-logo-link">
-      <img class="alain-default__header-logo-expanded" src="./assets/img/logo-full.svg" alt="{{ settings.app.name }}" style="max-height: 40px;" />
-      <img class="alain-default__header-logo-collapsed" src="./assets/img/logo.svg" alt="{{ settings.app.name }}" style="max-height: 30px;" />
+      <img class="alain-default__header-logo-expanded" src="./assets/img/logo-full.svg" alt="{{ settings.app.name }}"
+        style="max-height: 40px;" />
+      <img class="alain-default__header-logo-collapsed" src="./assets/img/logo.svg" alt="{{ settings.app.name }}"
+        style="max-height: 30px;" />
     </a>
   </div>
   <div class="alain-default__nav-wrap">
@@ -40,6 +42,6 @@
   </div>
 </div>
 <section class="alain-default__content">
-  <reuse-tab [mode]="2" [customContextMenu]="customContextMenu"></reuse-tab>
+  <!-- <reuse-tab [mode]="2" [customContextMenu]="customContextMenu"></reuse-tab> -->
   <router-outlet></router-outlet>
 </section>

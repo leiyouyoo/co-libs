@@ -16,9 +16,8 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { ReuseTabService } from '@co/cbc/layout/reuse-tab';
 import { MenuService, SettingsService, TitleService } from '@co/common';
-import { CoI18NService, CO_I18N_TOKEN, CoConfigService, CoPageHeaderConfig, InputBoolean, InputNumber, isEmpty } from '@co/core';
+import { CoConfigService, CoI18NService, CoPageHeaderConfig, CO_I18N_TOKEN, InputBoolean, InputNumber, isEmpty } from '@co/core';
 import { NzAffixComponent } from 'ng-zorro-antd/affix';
 import { merge, Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
@@ -92,7 +91,6 @@ export class PageHeaderComponent implements OnInit, OnChanges, AfterViewInit, On
     private menuSrv: MenuService,
     @Optional() @Inject(CO_I18N_TOKEN) private i18nSrv: CoI18NService,
     @Optional() @Inject(TitleService) private titleSrv: TitleService,
-    @Optional() @Inject(ReuseTabService) private reuseSrv: ReuseTabService,
     private cdr: ChangeDetectorRef,
     configSrv: CoConfigService,
   ) {
@@ -159,9 +157,6 @@ export class PageHeaderComponent implements OnInit, OnChanges, AfterViewInit, On
     if (this._titleVal && this.syncTitle) {
       if (this.titleSrv) {
         this.titleSrv.setTitle(this._titleVal);
-      }
-      if (this.reuseSrv) {
-        this.reuseSrv.title = this._titleVal;
       }
     }
 

@@ -25,7 +25,6 @@ import {
   SettingOutline,
   UserOutline,
 } from '@ant-design/icons-angular/icons';
-import { ReuseCustomContextMenu } from '@co/cbc/layout/reuse-tab';
 import { I18NService, LangType } from 'app/core/i18n/service';
 
 const ICONS = [
@@ -117,24 +116,6 @@ export class DevLayoutComponent implements OnInit {
           ],
         },
       ],
-    },
-  ];
-
-  customContextMenu: ReuseCustomContextMenu[] = [
-    {
-      id: 'custom1',
-      title: '自定义1',
-      fn: (item, m) => {
-        console.log('自定义1', item, m);
-      },
-    },
-    {
-      id: 'custom2',
-      title: '自定义2',
-      disabled: () => true,
-      fn: (item, m) => {
-        console.log('自定义2', item, m);
-      },
     },
   ];
 

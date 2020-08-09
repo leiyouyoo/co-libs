@@ -323,7 +323,12 @@ export class ReuseTabComponent implements OnInit, OnChanges, OnDestroy {
         // Should be actived next tab when closed is middle
         toPos = Math.max(0, curItem.index);
       }
-      this.router.navigateByUrl(ls[toPos].url);
+
+      if (toPos < 0) {
+        this.router.navigateByUrl('/');
+      } else {
+        this.router.navigateByUrl(ls[toPos].url);
+      }
     }
 
     if (addCurrent) {
