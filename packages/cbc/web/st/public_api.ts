@@ -10,4 +10,5 @@ export * from './st.config';
 export * from './calc-scroll.directive';
 export * from './co-st-va-widget-host.directive';
 export * from './load-on-scroll.directive';
+export * from './column-config.component'
 export { CoSTModule } from './co-s-t.module';
