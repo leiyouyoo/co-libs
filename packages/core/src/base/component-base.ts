@@ -1,4 +1,5 @@
 import { Injector, NgZone, Optional } from '@angular/core';
+import { NzMessageService } from 'ng-zorro-antd';
 
 import { CoI18NService, CO_I18N_TOKEN } from '../interface/i18n.interface';
 import { CO_LOGGER_TOKEN, ILogger } from '../interface/logger.interface';
@@ -14,6 +15,7 @@ import { LifeCycleComponent } from './life-cycle-component';
 export abstract class CoComponentBase extends LifeCycleComponent {
   protected $i18n: CoI18NService;
   protected $session: ISessionService;
+  protected $message: NzMessageService;
   protected $permissionChecker: IPermissionCheckerService;
   protected $modalHelper: IModalHelper;
   protected $titleSrvice: ITitleService;
@@ -27,6 +29,7 @@ export abstract class CoComponentBase extends LifeCycleComponent {
     this.$titleSrvice = injector.get(CO_TITLE_TOKEN);
     this.$logger = injector.get(CO_LOGGER_TOKEN);
     this.$i18n = injector.get(CO_I18N_TOKEN);
+    this.$message = injector.get(NzMessageService);
   }
 
   /**
