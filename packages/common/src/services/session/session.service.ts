@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { ISessionService, User } from '@co/core';
+import { ISessionService, Tenant, User } from '@co/core';
 import * as _ from 'lodash';
 
 @Injectable({ providedIn: 'root' })
@@ -31,10 +31,17 @@ export class CoSessionService implements ISessionService {
   }
 
   /**
-   * 令牌
+   * 获取令牌
    */
   get token(): string | any {
     return localStorage.getItem('token');
+  }
+
+  /**
+   * 设置令牌
+   */
+  setToken(token: string) {
+    localStorage.setItem('token', token);
   }
 
   /**
@@ -46,9 +53,32 @@ export class CoSessionService implements ISessionService {
   }
 
   /**
+   * 租户信息
+   */
+  get tenant(): Tenant {
+    const tenant = _.get(this.data, 'session.tenant');
+    return tenant;
+  }
+
+  /**
+   * 平台信息
+   */
+  get platform(): any {
+    const tenant = _.get(this.data, 'session.platform');
+    return tenant;
+  }
+
+  /**
    * 当前语言
    */
-  get lang(): string | any {
-    return _.get(this.data, 'localization.currentLanguage.name');
+  get lang(): string {
+    return _.get(this.data, 'localization.currentLanguage.name') || 'zh-CN';
+  }
+
+  /**
+   * 用户自定义设置
+   */
+  get settings(): any {
+    return _.get(this.data, 'setting.values');
   }
 }

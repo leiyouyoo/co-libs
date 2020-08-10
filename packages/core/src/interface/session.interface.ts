@@ -5,6 +5,11 @@ import { Injectable, InjectionToken } from '@angular/core';
  */
 export type User = {
   /**
+   * id
+   */
+  id: string;
+
+  /**
    * 账号
    */
   userName?: string;
@@ -48,6 +53,26 @@ export type User = {
    * 角色集合
    */
   roles?: Role[];
+};
+
+/**
+ * 用户信息
+ */
+export type Tenant = {
+  /**
+   * 账号
+   */
+  tenancyName?: string;
+
+  /**
+   * 名
+   */
+  name?: string;
+
+  /**
+   * 昵称
+   */
+  id?: string;
 };
 
 /**
@@ -116,19 +141,46 @@ export type Position = {
 
 export interface ISessionService {
   /**
-   * 令牌
-   */
-  readonly token?: string;
-
-  /**
-   * 姓
-   */
-  readonly user?: User;
-
-  /**
    * 当前语言
    */
   readonly lang?: string;
+
+  /**
+   * 获取令牌
+   */
+  readonly token: string;
+
+  /**
+   * 用户信息
+   */
+  readonly user: User | any;
+
+  /**
+   * 租户信息
+   */
+  readonly tenant: User | any;
+
+  /**
+   * 用户自定义设置
+   */
+  readonly settings: any;
+
+  /**
+   * 平台信息
+   */
+  readonly platform: any;
+
+  /**
+   * 设置令牌
+   */
+  setToken(token: string): void;
+
+  /**
+   * 设置会话信息
+   *
+   * @param data 会话数据
+   */
+  set(data): void;
 }
 
 export const CO_SESSIONSERVICE_TOKEN = new InjectionToken<ISessionService>('coSessionServiceToken', {
@@ -143,23 +195,56 @@ export function CO_SESSIONSERVICE_TOKEN_FACTORY() {
 @Injectable({ providedIn: 'root' })
 export class CoSessionServiceFake implements ISessionService {
   /**
-   * 令牌
+   * 设置会话信息
+   *
+   * @param data 会话数据
    */
-  get token(): string | undefined {
-    return undefined;
+  set(data) {}
+
+  /**
+   * 获取令牌
+   */
+  get token(): string | any {
+    return null;
   }
+
+  /**
+   * 设置令牌
+   */
+  setToken(token: string) {}
 
   /**
    * 用户信息
    */
-  get user(): User | undefined {
-    return undefined;
+  get user(): User | any {
+    return null;
+  }
+
+  /**
+   * 租户信息
+   */
+  get tenant(): User | any {
+    return null;
+  }
+
+  /**
+   * 平台信息
+   */
+  get platform(): any {
+    return null;
   }
 
   /**
    * 当前语言
    */
-  get lang(): string | undefined {
+  get lang(): string | any {
     return 'zh-CN';
+  }
+
+  /**
+   * 用户自定义设置
+   */
+  get settings(): any {
+    return null;
   }
 }

@@ -1,10 +1,6 @@
 {
   "name": "co-libs",
-<<<<<<< HEAD
-  "version": "0.1.64",
-=======
-  "version": "0.1.65",
->>>>>>> 7272b31b089a784b68419eedbab53ca13dddbe6e
+  "version": "0.1.66",
   "description": "co-libs 是一组用于前端开发的公共模块集合",
   "keywords": [
     "co-libs",
