@@ -6,8 +6,8 @@
     "baseUrl": ".",
     "paths": {
       // "@co/*": ["../*"],
-      // "@co/cbc": ["./"],
-      // "@co/cbc/*": ["./*"]
+       "@co/cbc": ["./"],
+       "@co/cbc/*": ["./*"]
     }
   },
   "files": ["public_api.ts"],
