@@ -209,7 +209,7 @@ export class CoAuthService {
 
   workWechatLogin() {
     const uri = window.encodeURIComponent(location.origin + '/#/passport/login/thirdLogin?loginType=workwechat');
-    const urlAddress = `https://open.work.weixin.qq.com/wwopen/sso/qrConnect?appid=${this.config.work_wechat_id}&agentid=${this.config.work_agent_id}&redirect_uri=uri&state=STATE`;
+    const urlAddress = `https://open.work.weixin.qq.com/wwopen/sso/qrConnect?appid=${this.config.work_wechat_id}&agentid=${this.config.work_agent_id}&redirect_uri=${uri}&state=STATE`;
     window.location.href = urlAddress;
   }
 
