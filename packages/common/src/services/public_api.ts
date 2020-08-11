@@ -5,6 +5,7 @@ export * from './scroll/scroll.service';
 export * from './title/title.service';
 export * from './settings/interface';
 export * from './settings/settings.service';
+export * from './settings/user-custom-config.service';
 export * from './responsive/responsive';
 export { TitleService } from './title/title.service';
 export * from './modal/modal.helper';
