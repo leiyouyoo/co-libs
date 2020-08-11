@@ -43,4 +43,12 @@ export interface CoAuthConfig {
    * 是否校验失效时命中后继续调用后续拦截器的 `intercept` 方法，默认：`true`
    */
   executeOtherInterceptors?: boolean;
+
+  wechat_appid?: string;
+
+  work_wechat_id?: string;
+
+  work_agent_id?: number;
+
+  facebook_appid?: string;
 }

@@ -1,9 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { DA_SERVICE_TOKEN, ITokenService } from '@co/auth';
-import { log } from '@co/core';
+import { SsoBindExternalUserDto } from '@co/cds/src/sso';
+import { CoAuthConfig, log } from '@co/core';
+// tslint:disable-next-line: no-duplicate-imports
+import { LazyService } from '@co/core';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { _HttpClient } from '../http/http.client';
 
+declare const FB: any;
 interface LoginOption {
   grant_type?: string;
   scope?: string;
@@ -31,7 +36,14 @@ export class CoAuthService {
   refreshTokenTimer;
   headers: HttpHeaders;
 
-  constructor(public _httpClient: _HttpClient, public http: HttpClient, @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService) {
+  constructor(
+    public options: CoAuthConfig,
+    public _httpClient: _HttpClient,
+    private lazy: LazyService,
+    public http: HttpClient,
+    @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService,
+    private messageService: NzMessageService,
+  ) {
     this.startRefreshTokenTimer();
   }
 
@@ -134,7 +146,6 @@ export class CoAuthService {
   ) {
     return new Promise(deferred => {
       const url = '/sso/User/GetUsers';
-      // let params = new URLSearchParams();
       const params = {
         Role,
         Filter,
@@ -185,13 +196,55 @@ export class CoAuthService {
     return dataStr ? JSON.parse(dataStr) : null;
   }
 
-  bindExternalUser(param: { userId: string; externalAccessCode: string; externalProvider: string }) {
+  bindExternalUser(param: SsoBindExternalUserDto) {
     const url = `/SSO/User/BindExternalUser`;
     return this._httpClient.post(url, param);
   }
 
-  logout(option: { redirectUrl?: string } = {}) {
-    this.tokenService.clear();
-    window.location.href = `/#/login${option.redirectUrl ? '?redirectUrl=' + option.redirectUrl : ''}`;
+  wechatLogin() {
+    const uri = window.encodeURIComponent(location.origin + '/#/passport/login/thirdLogin?loginType=wechat');
+    const appid = this.options.wechat_appid;
+    const urlAddress = `https://open.weixin.qq.com/connect/qrconnect?appid=${appid}&redirect_uri=${uri}&response_type=code&scope=snsapi_login&state=STATE#wechat_redirect`;
+    window.location.href = urlAddress;
+  }
+
+  workWechatLogin() {
+    const uri = window.encodeURIComponent(location.origin + '/#/passport/login/thirdLogin?loginType=workwechat');
+    const appid = this.options.work_wechat_id;
+    const agentid = this.options.work_agent_id;
+    const urlAddress = `https://open.work.weixin.qq.com/wwopen/sso/qrConnect?appid=${appid}&agentid=${agentid}&redirect_uri=uri&state=STATE`;
+    window.location.href = urlAddress;
+  }
+
+  faceBookLogin() {
+    try {
+      FB.login((response: any) => {
+        if (response.status === 'connected') {
+          this.thirdLogin({
+            externalProvider: 'FaceBook',
+            externalAccessCode: response.authResponse.accessToken,
+          });
+        } else {
+          console.log(response);
+        }
+      });
+    } catch (e) {
+      this.messageService.warning('login faild,Please check your network');
+    }
+  }
+
+  fbLibrary() {
+    this.lazy.load([`https://connect.facebook.net/en_US/sdk.js`]).then(() => {
+      // tslint:disable-next-line: no-string-literal
+      window['FB'].init({
+        appId: this.options.facebook_appid,
+        cookie: true,
+        xfbml: true,
+        version: 'v7.0',
+      });
+
+      // tslint:disable-next-line: no-string-literal
+      window['FB'].AppEvents.logPageView();
+    });
   }
 }
