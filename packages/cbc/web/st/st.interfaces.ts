@@ -402,6 +402,11 @@ export interface STColumn {
    */
   indexKey?: string;
 
+  /**
+   * 是否显示
+   */
+  columnShow?: boolean;
+
   [key: string]: any;
 }
 

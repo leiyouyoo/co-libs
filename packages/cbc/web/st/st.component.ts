@@ -28,10 +28,11 @@ import {
   LocaleData,
   ModalHelper,
   YNPipe,
+  UserCustomConfigService,
 } from '@co/common';
 import {
   CoI18NService,
-  CO_I18N_TOKEN,
+  CO_I18N_TOKEN, mergeSorted,
 } from '@co/core';
 import { CoConfigService, CoSTConfig, deepCopy, deepMergeKey, InputBoolean, InputNumber, toBoolean } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
@@ -67,12 +68,13 @@ import {
 import remove from 'lodash/remove';
 import { generateModel } from './utils';
 import { PlatformSettingService } from '@co/cds';
+import { StUserSettingService } from './st-user-setting.service';
 
 @Component({
   selector: 'co-st',
   exportAs: 'coSt',
   templateUrl: './st.component.html',
-  providers: [STDataSource, STRowSource, STColumnSource, STExport, CNCurrencyPipe, DatePipe, YNPipe, DecimalPipe],
+  providers: [STDataSource, STRowSource, STColumnSource, STExport, StUserSettingService, CNCurrencyPipe, DatePipe, YNPipe, DecimalPipe],
   host: {
     '[class.st]': `true`,
     '[class.st__p-left]': `page.placement === 'left'`,
@@ -108,7 +110,6 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   _columns: STColumn[] = [];
   _showFilters = false;
   _filterRow: STColumn[] = [];
-  columnSetting: STColumnSetting;
 
   @ViewChild('table', { static: false }) readonly orgTable: NzTableComponent;
   private expandSTChangeList$: Subscription[] = [];
@@ -162,7 +163,6 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     this.updateTotalTpl();
   }
   @Input() data: string | STData[] | Observable<STData[]>;
-  @Input() columns: STColumn[] = [];
   @Input() @InputNumber() ps = 10;
   @Output() psChange = new EventEmitter<number>();
   @Input() @InputNumber() pi = 1;
@@ -217,6 +217,18 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   get showFilters(): boolean {
     return this._showFilters;
   }
+  _originColumns: STColumn[] = []
+  _sortedColumns: STColumn[] = []
+  @Input() set columns(val: STColumn[]) {
+    this._originColumns = val;
+    this._sortedColumns = val;
+    this.sortColumns();
+    this.refreshColumns().optimizeData();
+  };
+  get columns(): STColumn[] {
+    return this._sortedColumns;
+  }
+
   @Input() header: string | TemplateRef<void>;
   @Input() footer: string | TemplateRef<void>;
   @Input() bodyHeader: TemplateRef<STStatisticalResults>;
@@ -243,7 +255,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() checkboxSelections = [];
   @Input() @InputBoolean() buttonPropagation = false;
   @Input() @InputBoolean() loadOnScroll = false;
-  @Input() columnSettingName: string;
+  @Input() columnSettingName: string = 'st';
 
   /**
    * Get the number of the current page
@@ -276,7 +288,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     private columnSource: STColumnSource,
     private dataSource: STDataSource,
     private delonI18n: CoLocaleService,
-    private platformSettingService: PlatformSettingService,
+    private userCustomConfigService: UserCustomConfigService,
     configSrv: CoConfigService,
   ) {
     this.setCog(configSrv.merge('st', ST_DEFULAT_CONFIG)!);
@@ -998,40 +1010,47 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   /**
    * 根据配置的列显示
    */
-  getEnabledColumns(columns: STColumn[]): STColumn[] {
-    const disabledIndexList = this.columnSetting?.disabledColumnIndexList;
-    if (!disabledIndexList?.length) return columns;
-
-    return columns.filter(c => {
-      return !c.index || !disabledIndexList.includes(c.index as string);
+  getEnabledColumns(columns: STColumn[], mapKey = '', debugName?: string): STColumn[] {
+    return columns.filter(o => {
+      o = mapKey ? o[mapKey] : o;
+      return o.columnShow !== false;
     });
   }
 
+  sortColumns() {
+    const settingColumns = this.userCustomConfigService.getByPath([this.columnSettingName, 'columns']);
+    if (!settingColumns?.length) return;
+    const columns = this._originColumns;
+    const result  = mergeSorted(
+      columns,
+      settingColumns,
+      'index'
+    ).map(o => {
+        const index = columns.findIndex(p => {
+            return p === o;
+        });
+        return columns[index];
+      });
+    this._sortedColumns = result;
+  }
+
+  resortColumns() {
+    this.sortColumns();
+    this.refreshColumns().optimizeData();
+    this.cd();
+  }
 
   ngAfterViewInit() {
     this.columnSource.restoreAllRender(this._columns);
   }
 
   ngOnChanges(changes: { [P in keyof this]?: SimpleChange } & SimpleChanges): void {
-    if (changes.columns) {
-      this.refreshColumns().optimizeData();
-    }
     const changeData = changes.data;
     if (changeData && changeData.currentValue && !(this.req.lazyLoad && changeData.firstChange)) {
       this.loadPageData();
     }
     if (changes.loading) {
       this._loading = changes.loading.currentValue;
-    }
-    if (changes.columnSettingName) {
-      this.platformSettingService.getCurrentUserSetting({ key: changes.columnSettingName.currentValue })
-        .subscribe(data => {
-          try {
-            this.columnSetting = JSON.parse(data);
-          } catch (e) {
-            console.error(e);
-          }
-        });
     }
   }
 

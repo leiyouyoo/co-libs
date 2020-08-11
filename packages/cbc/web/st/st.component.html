@@ -114,7 +114,7 @@
       </th>
       <th *ngIf="rowFirst && expand" nzWidth="50px" [attr.rowspan]="_headers.length"></th>
       <th
-        *ngFor="let h of row; let index = index"
+        *ngFor="let h of getEnabledColumns(row, 'column', 'header'); let index = index"
         [attr.colspan]="h.colSpan"
         [attr.rowspan]="h.column.type === 'action' ? _headers.length + (showFilters ? 1 : 0) : h.rowSpan"
         [nzWidth]="h.column.width"
@@ -134,20 +134,7 @@
             <ng-container *ngSwitchCase="'action'">
               <div class="d-flex justify-content-between">
                 <span>{{ 'Action' | translate }}</span>
-                <div *ngIf="columnSettingName">
-                  <i nz-icon nzType="setting" nzTheme="outline"
-                     #columnSettingPopover="nzPopover"
-                     nz-popover
-                     nzPopoverTrigger="click"
-                     nzPopoverPlacement="bottomRight"
-                     [nzPopoverTitle]="'设置列表内容'"
-                     [nzPopoverContent]="columnSettingTpl"
-                     nzPopoverOverlayClassName="st-column-setting-popover"
-                  ></i>
-                  <ng-template #columnSettingTpl>
-                    <column-config [configName]="columnSettingName" (closed)="columnSettingPopover.hide()"></column-config>
-                  </ng-template>
-                </div>
+                <column-config [configName]="columnSettingName"></column-config>
               </div>
             </ng-container>
             <ng-container *ngSwitchDefault>
@@ -157,9 +144,10 @@
         </ng-container>
       </th>
     </tr>
-    <tr class="st-thead-row-filter" *ngIf="showFilters && _filterRow?.length">
+    <tr class="st-thead-row-filter" *ngIf="showFilters && getEnabledColumns(_filterRow, 'column', 'filter')?.length">
       <th *ngIf="showCheckbox" nzWidth="50px"></th>
-      <th *ngFor="let i of _filterRow; index as index" (keyup.enter)="_filterConfirm(i.column)">
+      <th *ngIf="expand" nzWidth="50px"></th>
+      <th *ngFor="let i of getEnabledColumns(_filterRow, 'column', 'filter'); index as index" (keyup.enter)="_filterConfirm(i.column)">
         <ng-container [ngSwitch]="i.column.filter?.type">
           <ng-container *ngSwitchCase="i.column.filter?.type === null ? null : 'nevermatch'"></ng-container>
           <ng-container *ngSwitchCase="'select'">
@@ -224,7 +212,8 @@
           nzWidth="50px"
         ></td>
         <!-- 展示状态 -->
-        <td *ngFor="let c of _columns; let cIdx = index" [nzLeft]="!!c._left" [nzRight]="!!c._right" [ngClass]="columnClass(c)" [attr.colspan]="c.colSpan">
+        <ng-container *ngFor="let c of _columns; let cIdx = index">
+        <td *ngIf="c.columnShow !== false" [nzLeft]="!!c._left" [nzRight]="!!c._right" [ngClass]="columnClass(c)" [attr.colspan]="c.colSpan">
           <span *ngIf="responsive" class="ant-table-rep__title">
             <ng-template [ngTemplateOutlet]="titleTpl" [ngTemplateOutletContext]="{ $implicit: c.title }"></ng-template>
           </span>
@@ -291,6 +280,7 @@
             </ng-container>
           </span>
         </td>
+        </ng-container>
       </tr>
       <tr [nzExpand]="i.expand">
         <ng-template [ngTemplateOutlet]="expand" [ngTemplateOutletContext]="{ $implicit: i, index: index }"></ng-template>

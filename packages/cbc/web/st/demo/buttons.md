@@ -30,7 +30,7 @@ import { timer } from 'rxjs';
   selector: 'app-demo',
   template: `
     <button nz-button (click)="stComponent.addNewRow()">Add</button>
-    <co-st #stComponent [data]="users" [columns]="columns" checkOnLoad></co-st>
+    <co-st #stComponent [data]="users" [columns]="columns" checkOnLoad columnSettingName="co-libs-st-button"></co-st>
   `,
 })
 export class DemoComponent {
