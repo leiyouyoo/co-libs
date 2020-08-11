@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { DA_SERVICE_TOKEN, ITokenService } from '@co/auth';
-import { SsoBindExternalUserDto } from '@co/cds/src/sso';
 import { CoAuthConfig, log } from '@co/core';
 // tslint:disable-next-line: no-duplicate-imports
 import { LazyService } from '@co/core';
@@ -196,7 +195,7 @@ export class CoAuthService {
     return dataStr ? JSON.parse(dataStr) : null;
   }
 
-  bindExternalUser(param: SsoBindExternalUserDto) {
+  bindExternalUser(param: { externalProvider?: string; externalAccessCode?: string }) {
     const url = `/SSO/User/BindExternalUser`;
     return this._httpClient.post(url, param);
   }

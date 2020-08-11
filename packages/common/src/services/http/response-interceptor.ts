@@ -3,7 +3,7 @@ import { Inject, Injectable, Injector } from '@angular/core';
 import { HttpInterceptor, HttpHandler, HttpRequest, HttpEvent, HttpResponse, HttpHeaders } from '@angular/common/http';
 
 import { DA_SERVICE_TOKEN, ITokenService } from '@co/auth';
-import { Planet, ReuseTabService } from '@co/cms';
+// import { Planet, ReuseTabService } from '@co/cms';
 // import { MODAL_SERVICE, ModalService } from '../ModalService.injector';
 import { CoCommonConfig, CoConfigService } from '@co/core';
 import * as _ from 'lodash';
@@ -41,12 +41,9 @@ const loginUrl = `/#/passport/login`;
 })
 export class AbpHttpConfiguration {
   loginUrl: string;
-  constructor(
-    private messageService: NzMessageService,
-    private injector: Injector,
-    private reuseTabService: ReuseTabService,
-    private planet: Planet,
-  ) {}
+  constructor(private messageService: NzMessageService, private injector: Injector) // private reuseTabService: ReuseTabService,
+  // private planet: Planet,
+  {}
 
   defaultError = {
     message: 'An error has occurred!',
@@ -96,8 +93,8 @@ export class AbpHttpConfiguration {
     localStorage.removeItem('_token');
 
     (this.injector.get(DA_SERVICE_TOKEN) as ITokenService).clear();
-    this.reuseTabService.clear(true);
-    this.planet.clear();
+    // this.reuseTabService.clear(true);
+    // this.planet.clear();
 
     if (location.hash.includes('isForShare=true')) {
       const authService = this.injector.get(CoAuthService);
