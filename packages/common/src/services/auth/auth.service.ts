@@ -34,15 +34,16 @@ export class CoAuthService {
   readonly loginUrl = 'sso/connect/token';
   refreshTokenTimer;
   headers: HttpHeaders;
-
+  config: any;
   constructor(
     public _httpClient: _HttpClient,
     private lazy: LazyService,
     public http: HttpClient,
-    private options: CoConfigService,
+    coConfigService: CoConfigService,
     @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService,
     private messageService: NzMessageService,
   ) {
+    this.config = coConfigService.get('auth');
     this.startRefreshTokenTimer();
   }
 
@@ -202,16 +203,13 @@ export class CoAuthService {
 
   wechatLogin() {
     const uri = window.encodeURIComponent(location.origin + '/#/passport/login/thirdLogin?loginType=wechat');
-    const auth = this.options.get('auth');
-    const urlAddress = `https://open.weixin.qq.com/connect/qrconnect?appid=${auth?.wechat_appid}&redirect_uri=${uri}&response_type=code&scope=snsapi_login&state=STATE#wechat_redirect`;
+    const urlAddress = `https://open.weixin.qq.com/connect/qrconnect?appid=${this.config.wechat_appid}&redirect_uri=${uri}&response_type=code&scope=snsapi_login&state=STATE#wechat_redirect`;
     window.location.href = urlAddress;
   }
 
   workWechatLogin() {
     const uri = window.encodeURIComponent(location.origin + '/#/passport/login/thirdLogin?loginType=workwechat');
-    const auth = this.options.get('auth');
-
-    const urlAddress = `https://open.work.weixin.qq.com/wwopen/sso/qrConnect?appid=${auth?.work_wechat_id}&agentid=${auth?.work_agent_id}&redirect_uri=uri&state=STATE`;
+    const urlAddress = `https://open.work.weixin.qq.com/wwopen/sso/qrConnect?appid=${this.config.work_wechat_id}&agentid=${this.config.work_agent_id}&redirect_uri=uri&state=STATE`;
     window.location.href = urlAddress;
   }
 
@@ -233,11 +231,10 @@ export class CoAuthService {
   }
 
   fbLibrary() {
-    const auth = this.options.get('auth');
     this.lazy.load([`https://connect.facebook.net/en_US/sdk.js`]).then(() => {
       // tslint:disable-next-line: no-string-literal
       window['FB'].init({
-        appId: this.options.get('auth')?.facebook_appid,
+        appId: this.config.facebook_appid,
         cookie: true,
         xfbml: true,
         version: 'v7.0',
