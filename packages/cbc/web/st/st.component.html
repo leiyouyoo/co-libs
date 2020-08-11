@@ -88,8 +88,8 @@
   [nzShowTotal]="totalTpl"
   [nzWidthConfig]="widthConfig"
 >
-  <thead class="st__head" [class.st-has-filter]="showFilters">
-    <tr *ngFor="let row of _headers; let rowFirst = first">
+  <thead class="st__head">
+    <tr *ngFor="let row of _headers; let rowFirst = first"  [class.st-has-filter]="showFilters">
       <th *ngIf="rowFirst && showCheckbox" nzWidth="50px" [attr.rowspan]="_headers.length">
         <ng-container *ngIf="checkboxSelections.length === 0">
           <ng-template [ngTemplateOutlet]="chkAllTpl" [ngTemplateOutletContext]="{ $implicit: false }"> </ng-template>
@@ -126,7 +126,6 @@
         [nzShowSort]="h.column._sort.enabled"
         [nzSortOrder]="h.column._sort.default"
         (nzSortOrderChange)="sort(h.column, index, $event)"
-        [nzCustomFilter]="h.column.filter"
       >
         <ng-template #renderTitle [ngTemplateOutlet]="h.column.__renderTitle" [ngTemplateOutletContext]="{ $implicit: h.column, index: index }"></ng-template>
         <ng-container *ngIf="!h.column.__renderTitle; else renderTitle">
@@ -144,7 +143,8 @@
         </ng-container>
       </th>
     </tr>
-    <tr class="st-thead-row-filter" *ngIf="showFilters && getEnabledColumns(_filterRow, 'column', 'filter')?.length">
+    <tr class="st-thead-row-filter st-has-filter"
+        *ngIf="showFilters && getEnabledColumns(_filterRow, 'column', 'filter')?.length">
       <th *ngIf="showCheckbox" nzWidth="50px"></th>
       <th *ngIf="expand" nzWidth="50px"></th>
       <th *ngFor="let i of getEnabledColumns(_filterRow, 'column', 'filter'); index as index" (keyup.enter)="_filterConfirm(i.column)">
@@ -158,6 +158,7 @@
               nzShowSearch
               [nzOptions]="getFilterOptions(i.column, index)"
               nzAllowClear
+              nzSize="small"
             ></nz-select>
           </ng-container>
           <ng-container *ngSwitchCase="'autocomplete'">
@@ -168,11 +169,12 @@
               [(ngModel)]="(i.column.filter?.menus)[0].value"
               (ngModelChange)="_filterConfirm(i.column)"
               nz-input
+              nzSize="small"
             />
             <nz-autocomplete [nzDataSource]="getFilterOptions(i.column, index, autocompleteInput.value)" nzBackfill #auto></nz-autocomplete>
           </ng-container>
           <ng-container *ngSwitchCase="'date'">
-            <nz-date-picker class="width-100" [(ngModel)]="(i.column.filter?.menus)[0].value" (ngModelChange)="_filterConfirm(i.column)"></nz-date-picker>
+            <nz-date-picker nzSize="small" class="width-100" [(ngModel)]="(i.column.filter?.menus)[0].value" (ngModelChange)="_filterConfirm(i.column)"></nz-date-picker>
           </ng-container>
           <ng-template
             *ngSwitchCase="'widget'"
@@ -183,7 +185,10 @@
           ></ng-template>
           <!-- 'keyword' type treat as default filter -->
           <ng-container *ngSwitchDefault>
-            <input type="text" nz-input [(ngModel)]="(i.column.filter?.menus)[0].value" (ngModelChange)="_filterConfirm(i.column)" />
+            <input type="text" nz-input
+                   nzSize="small"
+                   [(ngModel)]="(i.column.filter?.menus)[0].value"
+                   (ngModelChange)="_filterConfirm(i.column)" />
           </ng-container>
         </ng-container>
       </th>

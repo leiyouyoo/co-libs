@@ -69,12 +69,22 @@
     align-items: center;
   }
 
+  .ant-table-thead tr th {
+    background: rgba(0,0,0,0.04);
+  }
+
   &__head {
 
     &-optional,
     &-tip {
       margin-left: 2px;
       color: @st-title-optional-color;
+    }
+  }
+
+  &-has-filter {
+    tr& th, .ant-table-column-sorters {
+      padding: 5px 12px !important;
     }
   }
 
