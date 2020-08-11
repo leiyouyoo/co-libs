@@ -35,6 +35,6 @@
     "templates/*.ts"
   ],
   "angularCompilerOptions": {
-    "enableIvy": false
+    "enableIvy": true
   }
 }
