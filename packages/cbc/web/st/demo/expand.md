@@ -53,6 +53,7 @@ export class ComponentsStExpandComponentComponent {
     { title: '姓名', index: 'name' },
     { title: '年龄', index: 'age' },
     {
+      type: 'action',
       buttons: [
         {
           text: 'Button',

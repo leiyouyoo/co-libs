@@ -16,7 +16,7 @@ import { SharedModule } from './shared/shared.module';
 
 import { CoBusinessComponentsModule } from '@co/cbc';
 import { CO_I18N_TOKEN } from '@co/core';
-import { ResponseInterceptor, CoCommonModule } from '@co/common';
+import { ResponseInterceptor, CoCommonModule, UserCustomConfigService } from '@co/common';
 import { I18NService } from './core/i18n/service';
 import { StartupService } from './core/startup.service';
 
@@ -37,6 +37,11 @@ import { JWTInterceptor } from '@co/auth';
 
 export function StartupServiceFactory(startupService: StartupService) {
   return () => startupService.load();
+}
+export function UserCustomConfigServiceFactory(userCustomConfigService: UserCustomConfigService) {
+  return () =>
+    userCustomConfigService.getCurrentUserSetting()
+      .catch(() => Promise.resolve());
 }
 
 @NgModule({
@@ -79,6 +84,12 @@ export function StartupServiceFactory(startupService: StartupService) {
       provide: APP_INITIALIZER,
       useFactory: StartupServiceFactory,
       deps: [StartupService],
+      multi: true,
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: UserCustomConfigServiceFactory,
+      deps: [UserCustomConfigService],
       multi: true,
     },
   ],
