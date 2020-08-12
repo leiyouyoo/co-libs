@@ -87,6 +87,21 @@
     }
  
     /**
+     * 账单导出
+     */
+    export class StorageBillExportInput {
+        
+         
+            /* 是否英文 */ 
+            isEnglish?: boolean;
+         
+            /* 账单Id集合 */ 
+            ids?: any[];
+        
+        
+    }
+ 
+    /**
      * 预报单查询模型
      */
     export class StoragePreShipmentExportInput {
@@ -240,6 +255,48 @@
          
             /* 跳过指定条数 */ 
             skipCount?: number;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class StorageIFormFile {
+        
+         
+            
+            contentType?: string;
+         
+            
+            contentDisposition?: string;
+         
+            
+            headers?: object;
+         
+            
+            length?: number;
+         
+            
+            name?: string;
+         
+            
+            fileName?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class StoragePurchaseOrderImportExcelInput {
+        
+         
+            /* 业务id */ 
+            shipmentId: string;
+         
+            
+            file: StorageIFormFile;
         
         
     }
