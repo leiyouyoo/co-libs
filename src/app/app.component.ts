@@ -28,10 +28,7 @@ export class AppComponent {
     router: Router,
     mobileSrv: MobileService,
     breakpointObserver: BreakpointObserver,
-    authService: CoAuthService,
   ) {
-    // api auth
-    authService.login('sarafu', 'co@123');
     renderer.setAttribute(el.nativeElement, 'ng-alain-version', VERSION_ALAIN.full);
     renderer.setAttribute(el.nativeElement, 'ng-zorro-version', VERSION_ZORRO.full);
 
