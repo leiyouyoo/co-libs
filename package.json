@@ -29,7 +29,7 @@
     "build:libs:cbc": "bash scripts/ci/build-libs.sh -n cbc",
     "build:libs:cbc:debug": "bash scripts/ci/build-libs.sh  -n cbc -t D:\\src\\co\\new\\co-portal\\ -debug",
     "build:libs:cms": "bash scripts/ci/build-libs.sh -n cms",
-    "build:libs:cms:debug":"bash scripts/ci/build-libs.sh  -n cms -t D:\\src\\co\\new\\co-portal\\ -debug",
+    "build:libs:cms:debug": "bash scripts/ci/build-libs.sh  -n cms -t D:\\src\\co\\new\\co-portal\\ -debug",
     "build:libs:cds": "bash scripts/ci/build-libs.sh -n cds",
     "build:libs:theme": "bash scripts/ci/build-libs.sh -n theme",
     "build:libs:theme:debug": "bash scripts/ci/build-libs.sh  -n theme -t D:\\src\\co\\new\\co-portal\\ -debug",

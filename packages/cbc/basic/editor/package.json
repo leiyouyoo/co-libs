@@ -1,0 +1,12 @@
+{
+  "ngPackage": {
+    "lib": {
+      "flatModuleFile": "coEditorIcon",
+      "entryFile": "public_api.ts",
+      "umdModuleIds": {
+        "@co/common": "co.common",
+        "@co/core": "co.core"
+      }
+    }
+  }
+}

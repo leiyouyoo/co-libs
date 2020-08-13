@@ -72,5 +72,4 @@ const routes: Routes = [
   imports: [SharedModule, RouterModule.forChild(routes)],
   declarations: COMPONENTS,
 })
-export class DevTestModule {
-}
+export class DevTestModule {}
