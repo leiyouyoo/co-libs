@@ -65,10 +65,10 @@ import {
   STStatisticalResults,
   STWidthMode,
 } from './st.interfaces';
-import remove from 'lodash/remove';
 import { generateModel } from './utils';
 import { PlatformSettingService } from '@co/cds';
 import { StUserSettingService } from './st-user-setting.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'co-st',
@@ -804,16 +804,21 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
       }
       return;
     } else if (btn.type === 'delay') {
-      if (btn._delay$) {
-        btn._delay$.unsubscribe();
-        btn._delay$ = void 0;
+      /* 如果text 为空存在bug */
+      const recordDelayPath = ['_button', btn.text, 'delay'] as string[];
+      const delay$ = _.get(record, recordDelayPath);
+
+      if (delay$) {
+        delay$.unsubscribe();
+        _.set(record, recordDelayPath, void 0);
       } else {
-        btn._delay$ = timer(3e3)
+        const newDelay$ = timer(3e3)
           .subscribe(() => {
-            btn._delay$ = void 0;
+            _.set(record, recordDelayPath, void 0);
             this.btnCallback(record, btn);
             this.cd();
           })
+        _.set(record, recordDelayPath, newDelay$);
       }
       return;
     } else if (btn.type === 'edit') {
@@ -860,10 +865,16 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
       // callback 类型
       const result = btn.click(record, modal, this);
       if (result instanceof Promise) {
-        // 如果是promise，设置loading，并判断返回值是否有action
-        btn.loading = true;
+        // todo loading
+        /* 如果text 为空存在bug */
+        const recordLoadingPath = ['_button', btn.text, 'loading'] as string[];
+        _.set(record, recordLoadingPath, true);
+
         return result
-          .finally(() => btn.loading = false)
+          .finally(() => {
+            _.set(record, recordLoadingPath, false);
+            this.cd();
+          })
           .then(data => {
             switch (data?.action) {
               case 'delete':

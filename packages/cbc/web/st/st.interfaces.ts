@@ -197,6 +197,11 @@ export interface STData {
    */
   expandSelectedList?: STData[];
 
+  /**
+   * 存放button 数据，如状态
+   */
+  _button?: { [key: string]: any };
+
   [key: string]: any;
 }
 
@@ -731,13 +736,6 @@ export interface STColumnButton {
   iifBehavior?: IifBehaviorType;
 
   tooltip?: string;
-
-  /**
-   * 加载中
-   */
-  loading?: boolean;
-
-  _delay$?: Subscription;
 
   [key: string]: any;
 }

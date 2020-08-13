@@ -38,9 +38,9 @@
     <i *ngIf="btn.icon.iconfont" nz-icon [nzIconfont]="btn.icon.iconfont"></i>
   </ng-container>
   <span [innerHTML]="_btnText(i, btn)" [ngClass]="{ 'pl-xs': btn.icon }"></span>
-  <nz-spin *ngIf="btn._delay$" nzSimple [nzIndicator]="btnDelayLoadingTpl" class="st__btn-loading"></nz-spin>
+  <nz-spin *ngIf="i._button && i._button[btn.text] && i._button[btn.text].delay" nzSimple [nzIndicator]="btnDelayLoadingTpl" class="st__btn-loading"></nz-spin>
   <ng-template #btnDelayLoadingTpl><i class="st__delay-icon anticon-spin"></i></ng-template>
-  <nz-spin *ngIf="btn.loading" nzSimple [nzIndicator]="btnLoadingTpl" class="st__btn-loading"></nz-spin>
+  <nz-spin *ngIf="i._button && i._button[btn.text] && i._button[btn.text].loading" nzSimple [nzIndicator]="btnLoadingTpl" class="st__btn-loading"></nz-spin>
   <ng-template #btnLoadingTpl><i nz-icon nzType="loading"></i></ng-template>
 </ng-template>
 <ng-template #titleTpl let-i>
