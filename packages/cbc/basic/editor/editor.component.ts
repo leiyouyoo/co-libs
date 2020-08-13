@@ -16,8 +16,7 @@ export class CoEditorComponent implements OnInit {
     this.setData();
   }
   @Input() config: any = {};
-  @Output() ready = new EventEmitter<any>();
-  $event: any;
+
   CKEDITOR: any;
   constructor(private lazy: LazyService) {}
 
