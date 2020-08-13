@@ -388,7 +388,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   private loadData(options?: STDataSourceOptions): Promise<STDataSourceResult> {
-    const { pi, ps, data, req, res, page, total, singleSort, multiSort, rowClassName, checkOnLoad } = this;
+    const { pi, ps, data, req, res, page, total, singleSort, multiSort, rowClassName, checkOnLoad, showFilters } = this;
     return new Promise((resolvePromise, rejectPromise) => {
       if (this.data$) {
         this.data$.unsubscribe();
@@ -409,6 +409,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
           rowClassName,
           checkOnLoad,
           paginator: true,
+          showFilters,
           ...options,
         })
         .pipe(takeUntil(this.unsubscribe$))

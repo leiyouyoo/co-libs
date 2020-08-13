@@ -39,6 +39,7 @@ export interface STDataSourceOptions {
   multiSort?: STMultiSort;
   rowClassName?: STRowClassName;
   checkOnLoad?: boolean;
+  showFilters?: boolean;
 }
 
 export interface STDataSourceResult {
@@ -280,7 +281,7 @@ export class STDataSource {
       ...params,
       ...req.params,
       ...this.getReqSortMap(singleSort, multiSort, columns),
-      ...this.getReqFilterMap(columns),
+      ...(options.showFilters ? this.getReqFilterMap(columns) : {}),
     };
 
     let reqOptions: STRequestOptions = {
