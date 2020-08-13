@@ -141,6 +141,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
   set req(value: STReq) {
     this._req = deepMergeKey({}, true, this.cog.req, value);
+    this._req.params = value.params;
   }
   /** 返回体配置 */
   @Input()
