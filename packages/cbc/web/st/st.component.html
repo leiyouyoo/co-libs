@@ -16,7 +16,7 @@
     [nzCancelText]="btn.pop.cancelText"
     [nzOkText]="btn.pop.okText"
     [nzOkType]="btn.pop.okType"
-    (nzOnConfirm)="_btnClick(i, btn, $event)"
+    (nzOnConfirm)="_btnClick(i, btn)"
     class="st__btn-text"
   >
     <ng-template [ngTemplateOutlet]="btnTextTpl" [ngTemplateOutletContext]="{ $implicit: i, btn: btn }"></ng-template>
