@@ -37,7 +37,7 @@ export class SalespersonPickerComponent extends PickerComponentBase {
   //#endregion
 
   fetchRemoteData(_condition: any): Observable<any> {
-      return this.organizationUnitService.getSaleUsers(_condition);
+      return this.organizationUnitService.getSaleUsers({ ..._condition, userId: _condition?.ids });
   }
 
   ngOnChanges(changes: SimpleChanges) {

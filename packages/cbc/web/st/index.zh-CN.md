@@ -332,7 +332,6 @@ class TestComponent {
 | `[iifBehavior]` | 表达式 `false` 值时渲染方式 | `hide,disabled` | `hide` |
 | `[tooltip]` | 按钮文字提示 | `string` | - |
 | `[className]` | button 样式 | `string | (data: STData) => string` | - |
-| `[loading]` | button 状态，加载中 | `boolean` | - |
 
 ### STIcon
 

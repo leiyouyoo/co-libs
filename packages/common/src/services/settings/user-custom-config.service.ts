@@ -50,11 +50,12 @@ export class UserCustomConfigService {
 
     const preValue = cloneDeep(this.value);
     const mergedValue = deepMergeKey(preValue || {}, true, _Set({}, path, value));
+    const mergedValueStr = JSON.stringify(mergedValue);
 
-    return this.http.post('/platform/Setting/setCurrentUserSetting', { name: this.currentRouteUrl, value: JSON.stringify(mergedValue) } )
+    return this.http.post('/platform/Setting/setCurrentUserSetting', { name: this.currentRouteUrl, value: mergedValueStr } )
       .pipe(
         tap(() => {
-          this.sessionService.settings[this.currentRouteUrl] = mergedValue;
+          this.sessionService.settings[this.currentRouteUrl] = mergedValueStr;
         })
       ).toPromise()
   }
