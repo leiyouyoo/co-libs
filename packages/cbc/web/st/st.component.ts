@@ -1031,20 +1031,25 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   sortColumns() {
-    const settingColumns = this.userCustomConfigService.getByPath([this.columnSettingName, 'columns']);
-    if (!settingColumns?.length) return;
-    const columns = this._originColumns;
-    const result  = mergeSorted(
-      columns,
-      settingColumns,
-      'index'
-    ).map(o => {
+    try {
+      const settingColumns = this.userCustomConfigService.getByPath([this.columnSettingName, 'columns']);
+      if (!settingColumns?.length) return;
+      const columns = this._originColumns;
+      const result = mergeSorted(
+        columns,
+        settingColumns,
+        'index'
+      ).map(o => {
         const index = columns.findIndex(p => {
-            return p === o;
+          return p === o;
         });
         return columns[index];
       });
-    this._sortedColumns = result;
+      this._sortedColumns = result;
+    } catch (e) {
+      console.error(e);
+      this._sortedColumns = [...this._originColumns];
+    }
   }
 
   resortColumns() {
