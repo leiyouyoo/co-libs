@@ -181,6 +181,8 @@ export interface ISessionService {
    * @param data 会话数据
    */
   set(data): void;
+
+  readonly data: any;
 }
 
 export const CO_SESSIONSERVICE_TOKEN = new InjectionToken<ISessionService>('coSessionServiceToken', {
@@ -194,6 +196,7 @@ export function CO_SESSIONSERVICE_TOKEN_FACTORY() {
 
 @Injectable({ providedIn: 'root' })
 export class CoSessionServiceFake implements ISessionService {
+  readonly data: any;
   /**
    * 设置会话信息
    *

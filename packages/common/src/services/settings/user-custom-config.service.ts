@@ -4,7 +4,7 @@ import { _HttpClient } from '../http/http.client';
 import { CO_SESSIONSERVICE_TOKEN, deepGet, deepMergeKey, ISessionService } from '@co/core';
 import { map, tap } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
-import { set as _Set, cloneDeep } from 'lodash';
+import { set as _Set, get as _Get, cloneDeep } from 'lodash';
 
 @Injectable({ providedIn: 'root' })
 export class UserCustomConfigService {
@@ -59,7 +59,9 @@ export class UserCustomConfigService {
     return this.http.post('/platform/Setting/setCurrentUserSetting', { name: this.currentRouteUrl, value: mergedValueStr } )
       .pipe(
         tap(() => {
-          this.sessionService.settings[this.currentRouteUrl] = mergedValueStr;
+          const data = this.sessionService.data;
+          _Set(data, ['setting', 'values', this.currentRouteUrl], mergedValueStr);
+          this.sessionService.set(data);
         })
       ).toPromise()
   }
