@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { ISessionService, Tenant, User } from '@co/core';
 import * as _ from 'lodash';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: 'platform' })
 export class CoSessionService implements ISessionService {
   _data: any;
   constructor() {}

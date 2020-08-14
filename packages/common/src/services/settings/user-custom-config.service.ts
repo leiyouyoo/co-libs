@@ -8,8 +8,12 @@ import { set as _Set, cloneDeep } from 'lodash';
 
 @Injectable({ providedIn: 'root' })
 export class UserCustomConfigService {
-  get value(): string {
-    return this.sessionService.settings[this.currentRouteUrl];
+  get value(): object {
+    try {
+      return JSON.parse(this.sessionService.settings[this.currentRouteUrl]);
+    }catch (e) {
+      return {};
+    }
   }
   get currentRouteUrl() {
     return this.router.url.split('#')[0];
@@ -23,9 +27,9 @@ export class UserCustomConfigService {
   }
 
   getByPath(path: string | string[], defaultValue?: any): any {
-    const config: string = this.value;
+    const config: object = this.value;
     if (config) {
-      return deepGet(JSON.parse(config), this.pathFactory(path), defaultValue);
+      return deepGet(config, this.pathFactory(path), defaultValue);
     } else {
       return defaultValue;
     }
