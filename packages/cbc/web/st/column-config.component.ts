@@ -75,12 +75,12 @@ export class ColumnConfigComponent implements OnInit {
     this.loading = true;
     const cols = this.listData.map(o => ({ index: o.index, columnShow: o.columnShow, }));
     this.userCustomConfigService.setCurrentUserSetting([this.stComponent.columnSettingName, 'columns'], cols)
+      .finally(() => this.loading = false)
       .then(() => {
         popover?.hide();
         this.stComponent.resortColumns();
         this.closed.emit(true);
       })
-      .finally(() => this.loading = false)
   }
 
   cancel() {
