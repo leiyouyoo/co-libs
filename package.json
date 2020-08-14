@@ -53,7 +53,8 @@
     "analyze": "node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod --stats-json",
     "sonar": "sonar-scanner",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s --pkg package.json",
-    "sync-scaffold-version": "node scripts/publish/sync-scaffold-version.js"
+    "sync-scaffold-version": "node scripts/publish/sync-scaffold-version.js",
+    "tfs-check-need-publish": "bash scripts/ci/check-need-publish.sh"
   },
   "dependencies": {
     "@angular-devkit/schematics-cli": "^0.901.9",
