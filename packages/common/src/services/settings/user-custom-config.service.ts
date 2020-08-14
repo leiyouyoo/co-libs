@@ -16,7 +16,7 @@ export class UserCustomConfigService {
     }
   }
   get currentRouteUrl() {
-    return this.router.url.split('#')[0];
+    return this.router.url.split('#')[0].replace('/', '.');
   }
 
   constructor(private http: _HttpClient,
