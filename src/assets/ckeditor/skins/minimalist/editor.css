@@ -1689,3 +1689,6 @@ legend.cke_voice_label {
   opacity: 1;
   filter: alpha(opacity = 100);
 }
+.cke_focus:focus {
+  outline: transparent auto 1px !important;
+}

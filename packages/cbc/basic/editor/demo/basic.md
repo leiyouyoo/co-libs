@@ -15,7 +15,7 @@ import { Component } from '@angular/core';
   `
 })
 export class DemoComponent {
-  html = `<p style="color:#e55354">test</p>`;
+  html = `<div style="color:#e55354">test</div>`;
 
     constructor() {}
 

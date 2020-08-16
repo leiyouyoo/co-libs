@@ -39,6 +39,7 @@ export class CoEditorComponent implements OnInit {
   initData() {
     CKEDITOR.inline('editor', {
       extraPlugins: 'print,exportpdf',
+      allowedContent: true,
       toolbar: [
         {
           name: 'various',
@@ -82,7 +83,7 @@ export class CoEditorComponent implements OnInit {
           items: ['PageBreak', 'Source'],
         },
       ],
-      bodyClass: 'document-editor',
+      bodyClass: 'co-editor',
     });
     this.setData();
   }
