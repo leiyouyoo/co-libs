@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 import { LazyService } from '@co/core';
 
 declare var CKEDITOR: any;
+
 @Component({
   selector: 'coeditor',
   templateUrl: './editor.component.html',
@@ -10,20 +11,29 @@ declare var CKEDITOR: any;
   encapsulation: ViewEncapsulation.None,
 })
 export class CoEditorComponent implements OnInit {
-  _html: string;
+  _html: string = '';
+  _load = false;
+
   @Input() set html(e: string) {
     this._html = e;
     this.setData();
   }
-  @Input() config: any = {};
+  @Input() coConfig: any = {};
+  @Output() coChange = new EventEmitter<any>();
 
-  CKEDITOR: any;
   constructor(private lazy: LazyService) {}
 
   ngOnInit() {
-    this.lazy.load([`/assets/ckeditor/ckeditor.js`]).then(data => {
-      this.initData();
-    });
+    if (!(window as any).CKEDITOR) {
+      this.lazy.load([`/assets/ckeditor/ckeditor.js`]).then(data => {
+        this._load = true;
+        this.initData();
+
+        CKEDITOR.instances.editor.on('change', e => {
+          this.coChange.emit(e);
+        });
+      });
+    }
   }
 
   initData() {
@@ -78,7 +88,13 @@ export class CoEditorComponent implements OnInit {
   }
 
   setData() {
-    CKEDITOR.instances.editor.setData(this._html);
+    if (this._load) {
+      CKEDITOR.instances.editor.setData(this._html);
+    }
+  }
+
+  getData() {
+    return CKEDITOR.instances.editor.getData();
   }
 
   getSelection() {
