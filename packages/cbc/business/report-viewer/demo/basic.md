@@ -27,6 +27,7 @@ export class ReportViewerBasicComponent {
     type : 'order' ,
     width:'600',
     height:'800',
+    style:'height:100vh',
     getReportUrl : 'http://192.168.1.5:8002/FCM/WarehouseReceipt/GetWarehouseRecipt?Id=',
     ids : [
       "acb02823-fc44-46ed-b776-08d832954101",
