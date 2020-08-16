@@ -33,6 +33,9 @@ export class CoEditorComponent implements OnInit {
           this.coChange.emit(e);
         });
       });
+    } else {
+      this._load = true;
+      this.initData();
     }
   }
 
