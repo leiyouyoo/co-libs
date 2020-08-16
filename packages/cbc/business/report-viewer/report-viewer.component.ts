@@ -28,7 +28,8 @@ export class ReportViewerComponent {
 
   @Input() coParam:any = {
     width :600 ,
-    height : 600
+    height : 600 ,
+    style:''
   };
 
   @ViewChild('reportIframe' , {static:true} ) reportIframe : ElementRef;
@@ -77,7 +78,8 @@ export class ReportViewerComponent {
    * @param idx
    */
   getReportData( idx ){
-
+    console.log(this.coParam.style);
+    this.reportIframe.nativeElement.setAttribute("style",this.coParam.style);
     this.reportIframe.nativeElement.setAttribute("width",this.coParam.width);
     this.reportIframe.nativeElement.setAttribute("height",this.coParam.height);
     this.reportIframe.nativeElement.setAttribute("src", this.coParam.getReportUrl + this.coParam.ids[idx] );
