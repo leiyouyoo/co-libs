@@ -241,7 +241,7 @@
         [attr.data-index]="index"
         (click)="_rowClick($event, i, index)"
         [class.st-row-odd]="index % 2 === 1"
-        [class.st-row-selected]="i.checked"
+        [class.st-row-selected]="i.checked || isRowActivated(i, index)"
         [ngClass]="i._rowClassName"
       >
         <td *ngIf="showCheckbox">

@@ -111,6 +111,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   _columns: STColumn[] = [];
   _showFilters = false;
   _filterRow: STColumn[] = [];
+  activatedRowValue: any;
 
   @ViewChild('table', { static: false }) readonly orgTable: NzTableComponent;
   private expandSTChangeList$: Subscription[] = [];
@@ -258,6 +259,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() @InputBoolean() buttonPropagation = false;
   @Input() @InputBoolean() loadOnScroll = false;
   @Input() columnSettingName: string = 'st';
+  @Input() activatedRowKey: string = 'id';
 
   /**
    * Get the number of the current page
@@ -553,6 +555,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     this._data.filter(i => i !== item).forEach(i => (i.expand = false));
   }
   _rowClick(e: Event, item: STData, index: number) {
+    this.setRowActivatedValue(item, index);
     if ((e.target as HTMLElement).nodeName === 'INPUT') return;
     const { expand, expandRowByClick, rowClickTime } = this;
     if (!!expand && item.showExpand !== false && expandRowByClick) {
@@ -1065,6 +1068,25 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
 
     this.refreshColumns().optimizeData();
     this.cd();
+  }
+
+  isRowActivated(data: STData, index: number): boolean {
+    const key = this.activatedRowKey;
+    const value = this.activatedRowValue;
+    if (key === 'index') {
+      return index === value;
+    } else {
+      return !!data[key] && data[key] === value;
+    }
+  }
+
+  setRowActivatedValue(data: STData, index: number) {
+    const key = this.activatedRowKey;
+    if (key === 'index') {
+      this.activatedRowValue = index;
+    } else if (data[key]) {
+      this.activatedRowValue = data[key];
+    }
   }
 
   ngAfterViewInit() {

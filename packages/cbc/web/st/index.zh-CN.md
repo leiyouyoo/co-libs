@@ -82,6 +82,7 @@ module: import { CoSTModule } from '@co/cbc';
 | `[responsiveHideHeaderFooter]` | 是否在小屏幕下才显示顶部与底部 | `boolean` | `false` |
 | `[checkOnLoad]` | 多选框是否在每次数据加载时选中 | `boolean` | `false` |
 | `[buttonPropagation]` | 是否启用按钮click 冒泡 | `boolean` | `false` |
+| `[activatedRowKey]` | 点击高亮当前行，默认根据id 判断，设置成index 的话就是根据数组下标 | `string` | 'id' |
 | `(change)` | 变化时回调，包括：`pi`、`ps`、`checkbox`、`radio`、`sort`、`filter`、`click`、`dblClick`、`expand` 变动 | `EventEmitter<STChange>` | - |
 | `(error)` | 异常时回调 | `EventEmitter<STError>` | - |
 
