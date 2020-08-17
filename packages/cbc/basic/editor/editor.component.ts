@@ -12,7 +12,6 @@ declare var CKEDITOR: any;
 })
 export class CoEditorComponent implements OnInit {
   _html: string = '';
-  _load = false;
   id: any;
   @Input() set html(e: string) {
     this._html = e;
@@ -26,19 +25,7 @@ export class CoEditorComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.guid();
-    if (!(window as any).CKEDITOR) {
-      this.lazy.load([`/assets/ckeditor/ckeditor.js`]).then(data => {
-        this._load = true;
-        this.initData();
-
-        CKEDITOR.instances[this.id].on('change', e => {
-          this.coChange.emit(e);
-        });
-      });
-    } else {
-      this._load = true;
-      this.initData();
-    }
+    this.initData();
   }
 
   // Generate four random hex digits.
@@ -51,7 +38,7 @@ export class CoEditorComponent implements OnInit {
   }
 
   initData() {
-    CKEDITOR.inline(this.id, {
+    CKEDITOR.replace(this.id, {
       title: 'CITYOCEAN EDITOR',
       extraPlugins: 'print,exportpdf',
       allowedContent: true,
@@ -105,7 +92,7 @@ export class CoEditorComponent implements OnInit {
   }
 
   setData() {
-    if (this._load) {
+    if (this.id) {
       CKEDITOR.instances[this.id].setData(this._html);
     }
   }
