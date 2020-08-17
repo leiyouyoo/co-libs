@@ -9,10 +9,21 @@ subtitle: 富文本编辑器
 
 ## API
 
+### editor方法
+
+| 名称 | 说明 |
+| --- | --- |
+| getData() | 获取富文本数据 |
+| getSelection() | 获取焦点 |
+| getText() | 获取富文本编辑器中的文本 |
+| print() | 打印功能 |
+
 ### editor
 
 | 参数 | 说明 | 类型 | 默认值 |
 |----|----|----|-----|
-| `[html]` | 用于生成的html | `string` | - |
-| `[config]` | 配置文件 | `any` | - |
+| `[coPDFName]` | 用于导出的PDF名称 | `string` | - |
+| `[html]` | 用于生成在文本框的html | `string` | - |
+
+| `(coChange)` | 文本框编辑后返回的内容的回调（返回editor） | `any` | - |
 

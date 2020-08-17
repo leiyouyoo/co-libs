@@ -13,23 +13,25 @@ declare var CKEDITOR: any;
 export class CoEditorComponent implements OnInit {
   _html: string = '';
   _load = false;
-
+  id: any;
   @Input() set html(e: string) {
     this._html = e;
     this.setData();
   }
   @Input() coConfig: any = {};
+  @Input() coPDFName: string;
   @Output() coChange = new EventEmitter<any>();
 
   constructor(private lazy: LazyService) {}
 
   ngOnInit() {
+    this.id = this.guid();
     if (!(window as any).CKEDITOR) {
       this.lazy.load([`/assets/ckeditor/ckeditor.js`]).then(data => {
         this._load = true;
         this.initData();
 
-        CKEDITOR.instances.editor.on('change', e => {
+        CKEDITOR.instances[this.id].on('change', e => {
           this.coChange.emit(e);
         });
       });
@@ -39,8 +41,18 @@ export class CoEditorComponent implements OnInit {
     }
   }
 
+  // Generate four random hex digits.
+  S4() {
+    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+  }
+  // Generate a pseudo-GUID by concatenating random hexadecimal.
+  guid() {
+    return this.S4() + this.S4() + '-' + this.S4() + '-' + this.S4() + '-' + this.S4() + '-' + this.S4() + this.S4() + this.S4();
+  }
+
   initData() {
-    CKEDITOR.inline('editor', {
+    CKEDITOR.inline(this.id, {
+      title: 'CITYOCEAN EDITOR',
       extraPlugins: 'print,exportpdf',
       allowedContent: true,
       toolbar: [
@@ -88,28 +100,25 @@ export class CoEditorComponent implements OnInit {
       ],
       bodyClass: 'co-editor',
     });
+    CKEDITOR.instances[this.id].config.exportPdf_fileName = this.coPDFName || 'CITYOCEAN';
     this.setData();
   }
 
   setData() {
     if (this._load) {
-      CKEDITOR.instances.editor.setData(this._html);
+      CKEDITOR.instances[this.id].setData(this._html);
     }
   }
 
   getData() {
-    return CKEDITOR.instances.editor.getData();
-  }
-
-  getSelection() {
-    return CKEDITOR.instances.editor.getSelection();
+    return CKEDITOR.instances[this.id].getData();
   }
 
   getText() {
-    CKEDITOR.instances.editor.document.getBody().getText();
+    CKEDITOR.instances[this.id].document.getBody().getText();
   }
 
   print() {
-    CKEDITOR.instances.editor.execCommand('print');
+    CKEDITOR.instances[this.id].execCommand('print');
   }
 }
