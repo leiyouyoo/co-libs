@@ -32,7 +32,7 @@ import {
 } from '@co/common';
 import {
   CoI18NService,
-  CO_I18N_TOKEN, mergeSorted,
+  CO_I18N_TOKEN, mergeSorted, debounce,
 } from '@co/core';
 import { CoConfigService, CoSTConfig, deepCopy, deepMergeKey, InputBoolean, InputNumber, toBoolean } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
@@ -65,10 +65,11 @@ import {
   STStatisticalResults,
   STWidthMode,
 } from './st.interfaces';
-import remove from 'lodash/remove';
 import { generateModel } from './utils';
 import { PlatformSettingService } from '@co/cds';
 import { StUserSettingService } from './st-user-setting.service';
+import * as _ from 'lodash';
+import { NzResizeEvent } from 'ng-zorro-antd/resizable';
 
 @Component({
   selector: 'co-st',
@@ -141,6 +142,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
   set req(value: STReq) {
     this._req = deepMergeKey({}, true, this.cog.req, value);
+    this._req.params = value.params;
   }
   /** 返回体配置 */
   @Input()
@@ -337,7 +339,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   isTruncate(column: STColumn): boolean {
-    return !!column.width && this.widthMode.strictBehavior === 'truncate' && column.type !== 'img';
+    return !!column.width && this.widthMode.strictBehavior === 'truncate' && column.type !== 'img' && column.strictBehavior !== 'wrap';
   }
 
   columnClass(column: STColumn): string | null {
@@ -387,7 +389,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   private loadData(options?: STDataSourceOptions): Promise<STDataSourceResult> {
-    const { pi, ps, data, req, res, page, total, singleSort, multiSort, rowClassName, checkOnLoad } = this;
+    const { pi, ps, data, req, res, page, total, singleSort, multiSort, rowClassName, checkOnLoad, showFilters } = this;
     return new Promise((resolvePromise, rejectPromise) => {
       if (this.data$) {
         this.data$.unsubscribe();
@@ -408,6 +410,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
           rowClassName,
           checkOnLoad,
           paginator: true,
+          showFilters,
           ...options,
         })
         .pipe(takeUntil(this.unsubscribe$))
@@ -804,16 +807,21 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
       }
       return;
     } else if (btn.type === 'delay') {
-      if (btn._delay$) {
-        btn._delay$.unsubscribe();
-        btn._delay$ = void 0;
+      /* 如果text 为空存在bug */
+      const recordDelayPath = ['_button', btn.text, 'delay'] as string[];
+      const delay$ = _.get(record, recordDelayPath);
+
+      if (delay$) {
+        delay$.unsubscribe();
+        _.set(record, recordDelayPath, void 0);
       } else {
-        btn._delay$ = timer(3e3)
+        const newDelay$ = timer(3e3)
           .subscribe(() => {
-            btn._delay$ = void 0;
+            _.set(record, recordDelayPath, void 0);
             this.btnCallback(record, btn);
             this.cd();
           })
+        _.set(record, recordDelayPath, newDelay$);
       }
       return;
     } else if (btn.type === 'edit') {
@@ -860,10 +868,16 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
       // callback 类型
       const result = btn.click(record, modal, this);
       if (result instanceof Promise) {
-        // 如果是promise，设置loading，并判断返回值是否有action
-        btn.loading = true;
+        // todo loading
+        /* 如果text 为空存在bug */
+        const recordLoadingPath = ['_button', btn.text, 'loading'] as string[];
+        _.set(record, recordLoadingPath, true);
+
         return result
-          .finally(() => btn.loading = false)
+          .finally(() => {
+            _.set(record, recordLoadingPath, false);
+            this.cd();
+          })
           .then(data => {
             switch (data?.action) {
               case 'delete':
@@ -1018,24 +1032,37 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   sortColumns() {
-    const settingColumns = this.userCustomConfigService.getByPath([this.columnSettingName, 'columns']);
-    if (!settingColumns?.length) return;
-    const columns = this._originColumns;
-    const result  = mergeSorted(
-      columns,
-      settingColumns,
-      'index'
-    ).map(o => {
+    try {
+      const settingColumns = this.userCustomConfigService.getByPath([this.columnSettingName, 'columns']);
+      if (!settingColumns?.length) return;
+      const columns = this._originColumns;
+      const result = mergeSorted(
+        columns,
+        settingColumns,
+        'index'
+      ).map(o => {
         const index = columns.findIndex(p => {
-            return p === o;
+          return p === o;
         });
         return columns[index];
       });
-    this._sortedColumns = result;
+      this._sortedColumns = result;
+    } catch (e) {
+      console.error(e);
+      this._sortedColumns = [...this._originColumns];
+    }
   }
 
   resortColumns() {
     this.sortColumns();
+    this.refreshColumns().optimizeData();
+    this.cd();
+  }
+
+  onResize({ width }: NzResizeEvent, col: STColumn) {
+    const x = this._sortedColumns.find(o => o.title === col._oriColumn!.title && o.index === col._oriColumn!.index);
+    x!.width = width;
+
     this.refreshColumns().optimizeData();
     this.cd();
   }

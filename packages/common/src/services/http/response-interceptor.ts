@@ -41,9 +41,10 @@ const loginUrl = `/#/passport/login`;
 })
 export class AbpHttpConfiguration {
   loginUrl: string;
-  constructor(private messageService: NzMessageService, private injector: Injector) // private reuseTabService: ReuseTabService,
-  // private planet: Planet,
-  {}
+  constructor(
+    private messageService: NzMessageService,
+    private injector: Injector, // private reuseTabService: ReuseTabService, // private planet: Planet,
+  ) {}
 
   defaultError = {
     message: 'An error has occurred!',
@@ -93,8 +94,6 @@ export class AbpHttpConfiguration {
     localStorage.removeItem('_token');
 
     (this.injector.get(DA_SERVICE_TOKEN) as ITokenService).clear();
-    // this.reuseTabService.clear(true);
-    // this.planet.clear();
 
     if (location.hash.includes('isForShare=true')) {
       const authService = this.injector.get(CoAuthService);

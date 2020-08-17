@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { CoDatePickerModule } from '@co/cbc/basic/date-picker';
 import { CoDatetimeRangePickerModule } from '@co/cbc/basic/datetime-range-picker';
 import { CoDelayModule } from '@co/cbc/basic/delay';
+import { CoEditorModule } from '@co/cbc/basic/editor';
 import { CoEllipsisModule } from '@co/cbc/basic/ellipsis';
 import { CoImageModule } from '@co/cbc/basic/image';
 import { CoLoadingModule } from '@co/cbc/basic/loading';
@@ -24,6 +25,7 @@ const MODULES = [
   CoMasonryModule,
   CoMouseFocusModule,
   CoScrollbarModule,
+  CoEditorModule,
   CoStatusLabelModule,
 ];
 

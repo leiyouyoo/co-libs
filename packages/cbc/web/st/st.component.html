@@ -16,7 +16,7 @@
     [nzCancelText]="btn.pop.cancelText"
     [nzOkText]="btn.pop.okText"
     [nzOkType]="btn.pop.okType"
-    (nzOnConfirm)="_btnClick(i, btn, $event)"
+    (nzOnConfirm)="_btnClick(i, btn)"
     class="st__btn-text"
   >
     <ng-template [ngTemplateOutlet]="btnTextTpl" [ngTemplateOutletContext]="{ $implicit: i, btn: btn }"></ng-template>
@@ -38,9 +38,9 @@
     <i *ngIf="btn.icon.iconfont" nz-icon [nzIconfont]="btn.icon.iconfont"></i>
   </ng-container>
   <span [innerHTML]="_btnText(i, btn)" [ngClass]="{ 'pl-xs': btn.icon }"></span>
-  <nz-spin *ngIf="btn._delay$" nzSimple [nzIndicator]="btnDelayLoadingTpl" class="st__btn-loading"></nz-spin>
+  <nz-spin *ngIf="i._button && i._button[btn.text] && i._button[btn.text].delay" nzSimple [nzIndicator]="btnDelayLoadingTpl" class="st__btn-loading"></nz-spin>
   <ng-template #btnDelayLoadingTpl><i class="st__delay-icon anticon-spin"></i></ng-template>
-  <nz-spin *ngIf="btn.loading" nzSimple [nzIndicator]="btnLoadingTpl" class="st__btn-loading"></nz-spin>
+  <nz-spin *ngIf="i._button && i._button[btn.text] && i._button[btn.text].loading" nzSimple [nzIndicator]="btnLoadingTpl" class="st__btn-loading"></nz-spin>
   <ng-template #btnLoadingTpl><i nz-icon nzType="loading"></i></ng-template>
 </ng-template>
 <ng-template #titleTpl let-i>
@@ -87,9 +87,10 @@
   [nzPaginationPosition]="page.position"
   [nzShowTotal]="totalTpl"
   [nzWidthConfig]="widthConfig"
+  nz-resizable
 >
-  <thead class="st__head" [class.st-has-filter]="showFilters">
-    <tr *ngFor="let row of _headers; let rowFirst = first">
+  <thead class="st__head">
+    <tr *ngFor="let row of _headers; let rowFirst = first"  [class.st-has-filter]="showFilters">
       <th *ngIf="rowFirst && showCheckbox" nzWidth="50px" [attr.rowspan]="_headers.length">
         <ng-container *ngIf="checkboxSelections.length === 0">
           <ng-template [ngTemplateOutlet]="chkAllTpl" [ngTemplateOutletContext]="{ $implicit: false }"> </ng-template>
@@ -113,38 +114,75 @@
         </div>
       </th>
       <th *ngIf="rowFirst && expand" nzWidth="50px" [attr.rowspan]="_headers.length"></th>
-      <th
-        *ngFor="let h of getEnabledColumns(row, 'column', 'header'); let index = index"
-        [attr.colspan]="h.colSpan"
-        [attr.rowspan]="h.column.type === 'action' ? _headers.length + (showFilters ? 1 : 0) : h.rowSpan"
-        [nzWidth]="h.column.width"
-        [nzLeft]="!!h.column._left"
-        [nzRight]="!!h.column._right"
-        [class.st-column-action]="h.column.type === 'action'"
-        [ngClass]="h.column.className"
-        [attr.data-col]="h.column.indexKey"
-        [nzShowSort]="h.column._sort.enabled"
-        [nzSortOrder]="h.column._sort.default"
-        (nzSortOrderChange)="sort(h.column, index, $event)"
-        [nzCustomFilter]="h.column.filter"
-      >
-        <ng-template #renderTitle [ngTemplateOutlet]="h.column.__renderTitle" [ngTemplateOutletContext]="{ $implicit: h.column, index: index }"></ng-template>
-        <ng-container *ngIf="!h.column.__renderTitle; else renderTitle">
-          <ng-container [ngSwitch]="h.column.type">
-            <ng-container *ngSwitchCase="'action'">
-              <div class="d-flex justify-content-between">
-                <span>{{ 'Action' | translate }}</span>
-                <column-config [configName]="columnSettingName"></column-config>
-              </div>
-            </ng-container>
-            <ng-container *ngSwitchDefault>
-              <ng-template [ngTemplateOutlet]="titleTpl" [ngTemplateOutletContext]="{ $implicit: h.column.title }"></ng-template>
+      <ng-container *ngFor="let h of getEnabledColumns(row, 'column', 'header'); let index = index">
+        <th
+          *ngIf="h?.column?.type !== 'action'; else notResizable"
+          [attr.colspan]="h.colSpan"
+          [attr.rowspan]="h.column.type === 'action' ? _headers.length + (showFilters ? 1 : 0) : h.rowSpan"
+          [nzWidth]="h.column.width"
+          [nzLeft]="!!h.column._left"
+          [nzRight]="!!h.column._right"
+          [class.st-column-action]="h.column.type === 'action'"
+          [ngClass]="h.column.className"
+          [attr.data-col]="h.column.indexKey"
+          [nzShowSort]="h.column._sort.enabled"
+          [nzSortOrder]="h.column._sort.default"
+          (nzSortOrderChange)="sort(h.column, index, $event)"
+          nz-resizable
+          (nzResizeEnd)="onResize($event, h.column)"
+        >
+          <ng-template #renderTitle [ngTemplateOutlet]="h.column.__renderTitle" [ngTemplateOutletContext]="{ $implicit: h.column, index: index }"></ng-template>
+          <ng-container *ngIf="!h.column.__renderTitle; else renderTitle">
+            <ng-container [ngSwitch]="h.column.type">
+              <ng-container *ngSwitchCase="'action'">
+                <div class="d-flex justify-content-between">
+                  <span>{{ 'Action' | translate }}</span>
+                  <column-config [configName]="columnSettingName"></column-config>
+                </div>
+              </ng-container>
+              <ng-container *ngSwitchDefault>
+                <ng-template [ngTemplateOutlet]="titleTpl" [ngTemplateOutletContext]="{ $implicit: h.column.title }"></ng-template>
+              </ng-container>
             </ng-container>
           </ng-container>
-        </ng-container>
-      </th>
+          <nz-resize-handle nzDirection="right">
+            <div class="resize-trigger"></div>
+          </nz-resize-handle>
+        </th>
+        <ng-template #notResizable>
+          <th
+            [attr.colspan]="h.colSpan"
+            [attr.rowspan]="h.column.type === 'action' ? _headers.length + (showFilters ? 1 : 0) : h.rowSpan"
+            [nzWidth]="h.column.width"
+            [nzLeft]="!!h.column._left"
+            [nzRight]="!!h.column._right"
+            [class.st-column-action]="h.column.type === 'action'"
+            [ngClass]="h.column.className"
+            [attr.data-col]="h.column.indexKey"
+            [nzShowSort]="h.column._sort.enabled"
+            [nzSortOrder]="h.column._sort.default"
+            (nzSortOrderChange)="sort(h.column, index, $event)"
+          >
+            <ng-template #renderTitle [ngTemplateOutlet]="h.column.__renderTitle" [ngTemplateOutletContext]="{ $implicit: h.column, index: index }"></ng-template>
+            <ng-container *ngIf="!h.column.__renderTitle; else renderTitle">
+              <ng-container [ngSwitch]="h.column.type">
+                <ng-container *ngSwitchCase="'action'">
+                  <div class="d-flex justify-content-between">
+                    <span>{{ 'Action' | translate }}</span>
+                    <column-config [configName]="columnSettingName"></column-config>
+                  </div>
+                </ng-container>
+                <ng-container *ngSwitchDefault>
+                  <ng-template [ngTemplateOutlet]="titleTpl" [ngTemplateOutletContext]="{ $implicit: h.column.title }"></ng-template>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </th>
+        </ng-template>
+      </ng-container>
     </tr>
-    <tr class="st-thead-row-filter" *ngIf="showFilters && getEnabledColumns(_filterRow, 'column', 'filter')?.length">
+    <tr class="st-thead-row-filter st-has-filter"
+        *ngIf="showFilters && getEnabledColumns(_filterRow, 'column', 'filter')?.length">
       <th *ngIf="showCheckbox" nzWidth="50px"></th>
       <th *ngIf="expand" nzWidth="50px"></th>
       <th *ngFor="let i of getEnabledColumns(_filterRow, 'column', 'filter'); index as index" (keyup.enter)="_filterConfirm(i.column)">
@@ -158,6 +196,7 @@
               nzShowSearch
               [nzOptions]="getFilterOptions(i.column, index)"
               nzAllowClear
+              nzSize="small"
             ></nz-select>
           </ng-container>
           <ng-container *ngSwitchCase="'autocomplete'">
@@ -168,11 +207,12 @@
               [(ngModel)]="(i.column.filter?.menus)[0].value"
               (ngModelChange)="_filterConfirm(i.column)"
               nz-input
+              nzSize="small"
             />
             <nz-autocomplete [nzDataSource]="getFilterOptions(i.column, index, autocompleteInput.value)" nzBackfill #auto></nz-autocomplete>
           </ng-container>
           <ng-container *ngSwitchCase="'date'">
-            <nz-date-picker class="width-100" [(ngModel)]="(i.column.filter?.menus)[0].value" (ngModelChange)="_filterConfirm(i.column)"></nz-date-picker>
+            <nz-date-picker nzSize="small" class="width-100" [(ngModel)]="(i.column.filter?.menus)[0].value" (ngModelChange)="_filterConfirm(i.column)"></nz-date-picker>
           </ng-container>
           <ng-template
             *ngSwitchCase="'widget'"
@@ -183,7 +223,10 @@
           ></ng-template>
           <!-- 'keyword' type treat as default filter -->
           <ng-container *ngSwitchDefault>
-            <input type="text" nz-input [(ngModel)]="(i.column.filter?.menus)[0].value" (ngModelChange)="_filterConfirm(i.column)" />
+            <input type="text" nz-input
+                   nzSize="small"
+                   [(ngModel)]="(i.column.filter?.menus)[0].value"
+                   (ngModelChange)="_filterConfirm(i.column)" />
           </ng-container>
         </ng-container>
       </th>
@@ -197,7 +240,7 @@
       <tr
         [attr.data-index]="index"
         (click)="_rowClick($event, i, index)"
-        [class.st-row-odd]="index % 2 === 0"
+        [class.st-row-odd]="index % 2 === 1"
         [class.st-row-selected]="i.checked"
         [ngClass]="i._rowClassName"
       >

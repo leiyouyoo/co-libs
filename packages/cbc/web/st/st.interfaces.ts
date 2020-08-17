@@ -15,7 +15,7 @@ export interface STWidthMode {
    */
   type?: 'strict' | 'default';
   /**
-   * 严格模式的处理行为
+   * 严格模式的处理行为, 可被column 的配置覆盖
    * - `wrap` 强制换行
    * - `truncate` 截短
    */
@@ -196,6 +196,11 @@ export interface STData {
    * expand 嵌套的co-st 选中数据
    */
   expandSelectedList?: STData[];
+
+  /**
+   * 存放button 数据，如状态
+   */
+  _button?: { [key: string]: any };
 
   [key: string]: any;
 }
@@ -406,6 +411,18 @@ export interface STColumn {
    * 是否显示
    */
   columnShow?: boolean;
+
+  /**
+   * 严格模式的处理行为
+   * - `wrap` 强制换行
+   * - `truncate` 截短
+   */
+  strictBehavior?: 'wrap' | 'truncate';
+
+  /**
+   * 原始对象，因为st 会对column 处理，后续数据处理不好匹配列
+   */
+  _oriColumn?: STColumn;
 
   [key: string]: any;
 }
@@ -731,13 +748,6 @@ export interface STColumnButton {
   iifBehavior?: IifBehaviorType;
 
   tooltip?: string;
-
-  /**
-   * 加载中
-   */
-  loading?: boolean;
-
-  _delay$?: Subscription;
 
   [key: string]: any;
 }

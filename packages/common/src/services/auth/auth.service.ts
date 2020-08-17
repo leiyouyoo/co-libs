@@ -231,17 +231,19 @@ export class CoAuthService {
   }
 
   fbLibrary() {
-    this.lazy.load([`https://connect.facebook.net/en_US/sdk.js`]).then(() => {
-      // tslint:disable-next-line: no-string-literal
-      window['FB'].init({
-        appId: this.config.facebook_appid,
-        cookie: true,
-        xfbml: true,
-        version: 'v7.0',
-      });
+    this.lazy.loadScript(`https://connect.facebook.net/en_US/sdk.js`).then(e => {
+      if (e.status === 'ok') {
+        // tslint:disable-next-line: no-string-literal
+        window['FB'].init({
+          appId: this.config.facebook_appid,
+          cookie: true,
+          xfbml: true,
+          version: 'v7.0',
+        });
 
-      // tslint:disable-next-line: no-string-literal
-      window['FB'].AppEvents.logPageView();
+        // tslint:disable-next-line: no-string-literal
+        window['FB'].AppEvents.logPageView();
+      }
     });
   }
 }

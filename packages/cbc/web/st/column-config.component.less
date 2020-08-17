@@ -29,16 +29,21 @@
   box-shadow: 3px 3px 6px -4px rgba(0, 0, 0, .12), 3px 3px 16px 0 rgba(0, 0, 0, .08);
   overflow  : hidden;
 
-  &_head {
-    border-bottom: 2px solid #F0F0F0;
-    margin-bottom: 5px;
-    font-weight  : 600;
-    padding      : 5px;
+  &_header {
+    border: 1px solid #E2E2E2;
+    border-bottom: none;
+    margin  : 5px 5px 0;
+    padding      : 5px 8px;
+
+    input {
+      margin-right: 5px;
+    }
   }
 
   &_main {
     width   : calc(100% - 10px);
     margin  : 5px auto;
+    margin-top: 0;
     border  : 1px solid #E2E2E2;
     height  : 250px;
     overflow: auto;
@@ -47,7 +52,7 @@
       display      : flex;
       align-items  : center;
       height       : 30px;
-      padding      : 0px 5px;
+      padding      : 0px 8px;
       overflow     : hidden;
       white-space  : nowrap;
       text-overflow: ellipsis;

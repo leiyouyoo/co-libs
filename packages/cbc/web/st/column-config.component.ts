@@ -18,24 +18,33 @@ import { mergeSorted } from '@co/core';
          nz-popover
          nzPopoverTrigger="click"
          nzPopoverPlacement="bottomRight"
-         [nzPopoverTitle]="'设置列表内容'"
+         [nzPopoverTitle]="'stSetting' | internalI18n"
          [nzPopoverContent]="columnSettingTpl"
          nzPopoverOverlayClassName="st-column-setting-popover"
          (nzPopoverVisibleChange)="$event && process()"
       ></i>
       <ng-template #columnSettingTpl>
         <div class="container">
+          <div class="container_header">
+            <label nz-checkbox
+                   [nzIndeterminate]="getIndeterminate()"
+                   [ngModel]="getCheckAll()"
+                   (ngModelChange)="onCheckAllChange($event)" >
+            {{ getCountByStatus(true) }}/{{ listData?.length || 0 }} {{ 'Columns' | internalI18n }}
+            </label>
+          </div>
           <div class="container_main">
             <div cdkDropList (cdkDropListDropped)="drop($event)">
               <div *ngFor="let i of listData" class="container_main_item" cdkDrag style="cursor: move;">
-                <input type="checkbox" [(ngModel)]="i.columnShow">
-                {{i.title}}
+                <label nz-checkbox [(ngModel)]="i.columnShow">
+                {{i.title | translate}}
+                  </label>
               </div>
             </div>
           </div>
           <div class="container_btn">
-            <button nz-button [nzSize]="'small'" nzType="primary" [nzLoading]="loading" (click)="save(columnSettingPopover)" style="margin-right: 5px;">保存</button>
-            <button nz-button [nzSize]="'small'" nzType="default" (click)="columnSettingPopover.hide()" style="margin-right: 5px;">取消</button>
+            <button nz-button [nzSize]="'small'" nzType="primary" [nzLoading]="loading" (click)="save(columnSettingPopover)" style="margin-right: 5px;">{{ 'Save' | internalI18n }}</button>
+            <button nz-button [nzSize]="'small'" nzType="default" (click)="columnSettingPopover.hide()" style="margin-right: 5px;">{{ 'Cancel'|internalI18n }}</button>
           </div>
         </div>
       </ng-template>
@@ -75,12 +84,12 @@ export class ColumnConfigComponent implements OnInit {
     this.loading = true;
     const cols = this.listData.map(o => ({ index: o.index, columnShow: o.columnShow, }));
     this.userCustomConfigService.setCurrentUserSetting([this.stComponent.columnSettingName, 'columns'], cols)
+      .finally(() => this.loading = false)
       .then(() => {
         popover?.hide();
         this.stComponent.resortColumns();
         this.closed.emit(true);
       })
-      .finally(() => this.loading = false)
   }
 
   cancel() {
@@ -89,5 +98,21 @@ export class ColumnConfigComponent implements OnInit {
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.listData, event.previousIndex, event.currentIndex);
+  }
+
+  onCheckAllChange(e: boolean) {
+    this.listData?.forEach(o => o.columnShow = e)
+  }
+
+  getCountByStatus(e: boolean): number {
+    return this.listData?.filter(o => o.columnShow === e).length;
+  }
+
+  getCheckAll(): boolean {
+    return this.getCountByStatus(true) === this.listData?.length;
+  }
+
+  getIndeterminate(): boolean {
+    return !this.getCheckAll() && this.getCountByStatus(false) !== 0;
   }
 }

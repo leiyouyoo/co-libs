@@ -267,6 +267,7 @@ class TestComponent {
 | `[statistical]` | 统计信息 | `STStatisticalType,STStatistical` | - |
 | `[children]` | 多表头 | `STColumn[]` | - |
 | `[disableI18n]` | 表头I18n，默认false 即开启 | `boolean` | false |
+| `[strictBehavior]` | `strict` 的行为类型 | `wrap,truncate` | `truncate` |
 
 ### STColumnTitle
 
@@ -332,7 +333,6 @@ class TestComponent {
 | `[iifBehavior]` | 表达式 `false` 值时渲染方式 | `hide,disabled` | `hide` |
 | `[tooltip]` | 按钮文字提示 | `string` | - |
 | `[className]` | button 样式 | `string | (data: STData) => string` | - |
-| `[loading]` | button 状态，加载中 | `boolean` | - |
 
 ### STIcon
 
@@ -411,7 +411,7 @@ class TestComponent {
 | 成员 | 说明 | 类型 | 默认值 |
 |----|----|----|-----|
 | `[type]` | 类型 | `strict,default` | `default` |
-| `[strictBehavior]` | `strict` 的行为类型 | `wrap,truncate` | `truncate` |
+| `[strictBehavior]` | `strict` 的行为类型，可被column 的配置覆盖 | `wrap,truncate` | `truncate` |
 
 ### STStatistical
 

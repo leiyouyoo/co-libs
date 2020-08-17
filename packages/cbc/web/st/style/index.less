@@ -1,4 +1,6 @@
 @import '../../../../theme/theme-default.less';
+@import "~ng-zorro-antd/resizable/style/entry.less";
+
 @st-prefix: ~'.st';
 
 @{st-prefix} {
@@ -69,12 +71,22 @@
     align-items: center;
   }
 
+  .ant-table-thead tr th {
+    background: rgba(245,245,245);
+  }
+
   &__head {
 
     &-optional,
     &-tip {
       margin-left: 2px;
       color: @st-title-optional-color;
+    }
+  }
+
+  &-has-filter {
+    tr& th, .ant-table-column-sorters {
+      padding: 5px 12px !important;
     }
   }
 

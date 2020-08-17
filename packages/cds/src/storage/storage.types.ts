@@ -87,6 +87,21 @@
     }
  
     /**
+     * 账单导出
+     */
+    export class StorageBillExportInput {
+        
+         
+            /* 是否英文 */ 
+            isEnglish?: boolean;
+         
+            /* 账单Id集合 */ 
+            ids?: any[];
+        
+        
+    }
+ 
+    /**
      * 预报单查询模型
      */
     export class StoragePreShipmentExportInput {

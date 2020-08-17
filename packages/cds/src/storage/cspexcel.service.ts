@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { StorageFileDto,StorageImportResultDto,StorageProductExportInput,StorageOrderExportInput, } from './storage.types';
+import { StorageFileDto,StorageImportResultDto,StorageProductExportInput,StorageOrderExportInput,StorageBillExportInput, } from './storage.types';
 
 @BaseUrl('/storage/CSPExcel')
 @Injectable({ providedIn: 'root' })
@@ -95,6 +95,21 @@ export class StorageCSPExcelService extends BaseApi {
     orderExport(
         @Payload
         _req:StorageOrderExportInput
+
+    ): Observable<StorageFileDto> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Storage/CSPExcel/BillExport
+     * 账单导出
+     */
+
+    @POST('billExport')
+    billExport(
+        @Payload
+        _req:StorageBillExportInput
 
     ): Observable<StorageFileDto> {
         return null as any

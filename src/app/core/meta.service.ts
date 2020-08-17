@@ -53,6 +53,9 @@ export class MetaService {
     for (const g of FULLMETAS) {
       for (const item of g.list!) {
         const curTitle = item.meta![i18n.defaultLang].title;
+        if (!curTitle) {
+          continue;
+        }
         item._t =
           typeof curTitle !== 'string'
             ? Object.values(curTitle!)
@@ -122,11 +125,11 @@ export class MetaService {
   }
 
   get github(): string {
-    return this._data.github;
+    return this._data?.github;
   }
 
   get data(): MetaList[] {
-    return this._data.list;
+    return this._data?.list;
   }
 
   get isPages() {
@@ -189,7 +192,7 @@ export class MetaService {
       }
       const entry: any = {
         url: this.convertUrl(meta.url || item.route || `/${category.name}/${item.name}/zh`),
-        title: this.i18n.get(meta.title),
+        title: meta.title ? this.i18n.get(meta.title) : '',
         subtitle: meta.subtitle,
         order: item.order,
         hot: typeof meta.hot === 'boolean' ? meta.hot : false,

@@ -38,11 +38,6 @@ import { JWTInterceptor } from '@co/auth';
 export function StartupServiceFactory(startupService: StartupService) {
   return () => startupService.load();
 }
-export function UserCustomConfigServiceFactory(userCustomConfigService: UserCustomConfigService) {
-  return () =>
-    userCustomConfigService.getCurrentUserSetting()
-      .catch(() => Promise.resolve());
-}
 
 @NgModule({
   imports: [
@@ -84,12 +79,6 @@ export function UserCustomConfigServiceFactory(userCustomConfigService: UserCust
       provide: APP_INITIALIZER,
       useFactory: StartupServiceFactory,
       deps: [StartupService],
-      multi: true,
-    },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: UserCustomConfigServiceFactory,
-      deps: [UserCustomConfigService],
       multi: true,
     },
   ],

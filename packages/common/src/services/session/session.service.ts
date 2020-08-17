@@ -2,16 +2,11 @@ import { Inject, Injectable } from '@angular/core';
 import { ISessionService, Tenant, User } from '@co/core';
 import * as _ from 'lodash';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: 'platform' })
 export class CoSessionService implements ISessionService {
-  _data: any;
   constructor() {}
 
   get data(): any {
-    if (this._data) {
-      return this._data;
-    }
-
     const c = localStorage.getItem('co.session');
     if (!_.isEmpty(c)) {
       return JSON.parse(c || '');
@@ -26,7 +21,6 @@ export class CoSessionService implements ISessionService {
    * @param data 会话数据
    */
   set(data) {
-    this._data = data;
     localStorage.setItem('co.session', JSON.stringify(data));
   }
 
