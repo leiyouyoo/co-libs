@@ -1,5 +1,13 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
-import { LazyService } from '@co/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewEncapsulation,
+} from '@angular/core';
 
 declare var CKEDITOR: any;
 
@@ -21,10 +29,11 @@ export class CoEditorComponent implements OnInit {
   @Input() coPDFName: string;
   @Output() coChange = new EventEmitter<any>();
 
-  constructor(private lazy: LazyService) {}
+  constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.id = this.guid();
+    this.cdr.detectChanges();
     this.initData();
   }
 
