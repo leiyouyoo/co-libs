@@ -87,6 +87,7 @@
   [nzPaginationPosition]="page.position"
   [nzShowTotal]="totalTpl"
   [nzWidthConfig]="widthConfig"
+  nz-resizable
 >
   <thead class="st__head">
     <tr *ngFor="let row of _headers; let rowFirst = first"  [class.st-has-filter]="showFilters">
@@ -113,35 +114,72 @@
         </div>
       </th>
       <th *ngIf="rowFirst && expand" nzWidth="50px" [attr.rowspan]="_headers.length"></th>
-      <th
-        *ngFor="let h of getEnabledColumns(row, 'column', 'header'); let index = index"
-        [attr.colspan]="h.colSpan"
-        [attr.rowspan]="h.column.type === 'action' ? _headers.length + (showFilters ? 1 : 0) : h.rowSpan"
-        [nzWidth]="h.column.width"
-        [nzLeft]="!!h.column._left"
-        [nzRight]="!!h.column._right"
-        [class.st-column-action]="h.column.type === 'action'"
-        [ngClass]="h.column.className"
-        [attr.data-col]="h.column.indexKey"
-        [nzShowSort]="h.column._sort.enabled"
-        [nzSortOrder]="h.column._sort.default"
-        (nzSortOrderChange)="sort(h.column, index, $event)"
-      >
-        <ng-template #renderTitle [ngTemplateOutlet]="h.column.__renderTitle" [ngTemplateOutletContext]="{ $implicit: h.column, index: index }"></ng-template>
-        <ng-container *ngIf="!h.column.__renderTitle; else renderTitle">
-          <ng-container [ngSwitch]="h.column.type">
-            <ng-container *ngSwitchCase="'action'">
-              <div class="d-flex justify-content-between">
-                <span>{{ 'Action' | translate }}</span>
-                <column-config [configName]="columnSettingName"></column-config>
-              </div>
-            </ng-container>
-            <ng-container *ngSwitchDefault>
-              <ng-template [ngTemplateOutlet]="titleTpl" [ngTemplateOutletContext]="{ $implicit: h.column.title }"></ng-template>
+      <ng-container *ngFor="let h of getEnabledColumns(row, 'column', 'header'); let index = index">
+        <th
+          *ngIf="h?.column?.type !== 'action'; else notResizable"
+          [attr.colspan]="h.colSpan"
+          [attr.rowspan]="h.column.type === 'action' ? _headers.length + (showFilters ? 1 : 0) : h.rowSpan"
+          [nzWidth]="h.column.width"
+          [nzLeft]="!!h.column._left"
+          [nzRight]="!!h.column._right"
+          [class.st-column-action]="h.column.type === 'action'"
+          [ngClass]="h.column.className"
+          [attr.data-col]="h.column.indexKey"
+          [nzShowSort]="h.column._sort.enabled"
+          [nzSortOrder]="h.column._sort.default"
+          (nzSortOrderChange)="sort(h.column, index, $event)"
+          nz-resizable
+          (nzResizeEnd)="onResize($event, h.column)"
+        >
+          <ng-template #renderTitle [ngTemplateOutlet]="h.column.__renderTitle" [ngTemplateOutletContext]="{ $implicit: h.column, index: index }"></ng-template>
+          <ng-container *ngIf="!h.column.__renderTitle; else renderTitle">
+            <ng-container [ngSwitch]="h.column.type">
+              <ng-container *ngSwitchCase="'action'">
+                <div class="d-flex justify-content-between">
+                  <span>{{ 'Action' | translate }}</span>
+                  <column-config [configName]="columnSettingName"></column-config>
+                </div>
+              </ng-container>
+              <ng-container *ngSwitchDefault>
+                <ng-template [ngTemplateOutlet]="titleTpl" [ngTemplateOutletContext]="{ $implicit: h.column.title }"></ng-template>
+              </ng-container>
             </ng-container>
           </ng-container>
-        </ng-container>
-      </th>
+          <nz-resize-handle nzDirection="right">
+            <div class="resize-trigger"></div>
+          </nz-resize-handle>
+        </th>
+        <ng-template #notResizable>
+          <th
+            [attr.colspan]="h.colSpan"
+            [attr.rowspan]="h.column.type === 'action' ? _headers.length + (showFilters ? 1 : 0) : h.rowSpan"
+            [nzWidth]="h.column.width"
+            [nzLeft]="!!h.column._left"
+            [nzRight]="!!h.column._right"
+            [class.st-column-action]="h.column.type === 'action'"
+            [ngClass]="h.column.className"
+            [attr.data-col]="h.column.indexKey"
+            [nzShowSort]="h.column._sort.enabled"
+            [nzSortOrder]="h.column._sort.default"
+            (nzSortOrderChange)="sort(h.column, index, $event)"
+          >
+            <ng-template #renderTitle [ngTemplateOutlet]="h.column.__renderTitle" [ngTemplateOutletContext]="{ $implicit: h.column, index: index }"></ng-template>
+            <ng-container *ngIf="!h.column.__renderTitle; else renderTitle">
+              <ng-container [ngSwitch]="h.column.type">
+                <ng-container *ngSwitchCase="'action'">
+                  <div class="d-flex justify-content-between">
+                    <span>{{ 'Action' | translate }}</span>
+                    <column-config [configName]="columnSettingName"></column-config>
+                  </div>
+                </ng-container>
+                <ng-container *ngSwitchDefault>
+                  <ng-template [ngTemplateOutlet]="titleTpl" [ngTemplateOutletContext]="{ $implicit: h.column.title }"></ng-template>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </th>
+        </ng-template>
+      </ng-container>
     </tr>
     <tr class="st-thead-row-filter st-has-filter"
         *ngIf="showFilters && getEnabledColumns(_filterRow, 'column', 'filter')?.length">
@@ -202,7 +240,7 @@
       <tr
         [attr.data-index]="index"
         (click)="_rowClick($event, i, index)"
-        [class.st-row-odd]="index % 2 === 0"
+        [class.st-row-odd]="index % 2 === 1"
         [class.st-row-selected]="i.checked"
         [ngClass]="i._rowClassName"
       >

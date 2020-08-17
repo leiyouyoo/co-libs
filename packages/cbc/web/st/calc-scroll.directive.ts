@@ -61,7 +61,7 @@ export class CalcScrollDirective implements AfterContentInit, AfterViewChecked {
       // const pagination
       this.nzTableComponent.nzScroll = {
         x: this.disableCalcX ? this.nzTableComponent.scrollX : `${tableContent!.clientWidth}px`,
-        y: `${this.el.clientHeight - thead!.clientHeight - paginatorOuterHeight}px`,
+        y: this.disableCalcY ? this.nzTableComponent.scrollY : `${this.el.clientHeight - thead!.clientHeight - paginatorOuterHeight}px`,
       };
       this.nzTableComponent.ngOnChanges({ nzScroll: this.nzTableComponent.nzScroll } as any);
       // hack

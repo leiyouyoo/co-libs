@@ -33,9 +33,11 @@ import { CoSTWidgetHostDirective } from './co-st-va-widget-host.directive';
 import { LoadOnScrollDirective } from './load-on-scroll.directive';
 import { ColumnConfigComponent } from './column-config.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { InternalI18nPipe } from './internal-i18n.pipe';
+import { NzResizableModule } from 'ng-zorro-antd/resizable';
 
 const COMPONENTS = [STComponent];
-const internalComponents = [ ColumnConfigComponent, ];
+const internalDeclaration = [ ColumnConfigComponent, InternalI18nPipe ];
 const DIRECTIVES = [STRowDirective, STWidgetHostDirective, CalcScrollDirective, CoSTWidgetHostDirective, LoadOnScrollDirective, ];
 const icons = [SettingOutline, DeleteOutline, EllipsisOutline];
 
@@ -65,8 +67,9 @@ const icons = [SettingOutline, DeleteOutline, EllipsisOutline];
     NzButtonModule,
     NzPopoverModule,
     DragDropModule,
+    NzResizableModule,
   ],
-  declarations: [...internalComponents, ...COMPONENTS, ...DIRECTIVES],
+  declarations: [...internalDeclaration, ...COMPONENTS, ...DIRECTIVES, ],
   exports: [...COMPONENTS, ...DIRECTIVES],
 })
 export class CoSTModule {
