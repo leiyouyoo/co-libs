@@ -15,7 +15,7 @@ export interface STWidthMode {
    */
   type?: 'strict' | 'default';
   /**
-   * 严格模式的处理行为
+   * 严格模式的处理行为, 可被column 的配置覆盖
    * - `wrap` 强制换行
    * - `truncate` 截短
    */
@@ -411,6 +411,18 @@ export interface STColumn {
    * 是否显示
    */
   columnShow?: boolean;
+
+  /**
+   * 严格模式的处理行为
+   * - `wrap` 强制换行
+   * - `truncate` 截短
+   */
+  strictBehavior?: 'wrap' | 'truncate';
+
+  /**
+   * 原始对象，因为st 会对column 处理，后续数据处理不好匹配列
+   */
+  _oriColumn?: STColumn;
 
   [key: string]: any;
 }

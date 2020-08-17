@@ -355,8 +355,9 @@ export class STColumnSource {
 
   private cleanCond(list: STColumn[]): STColumn[] {
     const res: STColumn[] = [];
-    const copyList = deepCopy(list);
+    const copyList: STColumn[] = deepCopy(list);
     for (const item of copyList) {
+      item._oriColumn = deepCopy(item);
       if (item.iif && !item.iif(item)) {
         continue;
       }

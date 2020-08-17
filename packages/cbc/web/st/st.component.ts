@@ -32,7 +32,7 @@ import {
 } from '@co/common';
 import {
   CoI18NService,
-  CO_I18N_TOKEN, mergeSorted,
+  CO_I18N_TOKEN, mergeSorted, debounce,
 } from '@co/core';
 import { CoConfigService, CoSTConfig, deepCopy, deepMergeKey, InputBoolean, InputNumber, toBoolean } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
@@ -69,6 +69,7 @@ import { generateModel } from './utils';
 import { PlatformSettingService } from '@co/cds';
 import { StUserSettingService } from './st-user-setting.service';
 import * as _ from 'lodash';
+import { NzResizeEvent } from 'ng-zorro-antd/resizable';
 
 @Component({
   selector: 'co-st',
@@ -338,7 +339,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   isTruncate(column: STColumn): boolean {
-    return !!column.width && this.widthMode.strictBehavior === 'truncate' && column.type !== 'img';
+    return !!column.width && this.widthMode.strictBehavior === 'truncate' && column.type !== 'img' && column.strictBehavior !== 'wrap';
   }
 
   columnClass(column: STColumn): string | null {
@@ -1058,6 +1059,14 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     this.cd();
   }
 
+  onResize({ width }: NzResizeEvent, col: STColumn) {
+    const x = this._sortedColumns.find(o => o.title === col._oriColumn!.title && o.index === col._oriColumn!.index);
+    x!.width = width;
+
+    this.refreshColumns().optimizeData();
+    this.cd();
+  }
+
   ngAfterViewInit() {
     this.columnSource.restoreAllRender(this._columns);
   }
@@ -1070,6 +1079,10 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     if (changes.loading) {
       this._loading = changes.loading.currentValue;
     }
+  }
+
+  ngDoCheck() {
+    console.log('2222');
   }
 
   ngOnDestroy(): void {

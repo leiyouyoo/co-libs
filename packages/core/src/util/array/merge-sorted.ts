@@ -5,11 +5,17 @@ export function mergeSorted(origin: any[], sorted: any[], key, insertAfter = tru
   if (!sorted) return [...origin];
 
   const groups = _.groupBy(origin, key);
-  const result = _.map(sorted, function (i) { return Object.assign(groups[i[key]][0], i); });
+  const result = _.map(sorted, function (i) {
+    if (groups[i[key]]) {
+      return Object.assign(groups[i[key]][0], i);
+    } else {
+      return null;
+    }
+  }).filter(o => !!o);
   {
     const arr: any[] = [];
     origin.forEach(o => {
-      const hit = sorted.find(p => o[key] && p[key] !== o[key]);
+      const hit = sorted.find(p => o[key] && p[key] === o[key]);
       if (!hit) {
         arr.push(o);
       }
