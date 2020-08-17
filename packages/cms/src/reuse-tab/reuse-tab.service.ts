@@ -8,7 +8,7 @@ import {
   Router,
   ROUTER_CONFIGURATION,
 } from '@angular/router';
-import { MenuService, ScrollService } from '@co/common';
+import { Menu, MenuService, ScrollService } from '@co/common';
 import { log } from '@co/core';
 import * as _ from 'lodash';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
@@ -316,7 +316,7 @@ export class ReuseTabService implements OnDestroy {
   getIcon(url: string, route?: ActivatedRouteSnapshot): any {
     if (route && route.data && route.data.icon) return route.data.icon;
 
-    const menu = this.getMenu(url);
+    const menu = this.getLikeMenu(url);
     if (!menu || !menu.icon) return null;
 
     if (typeof menu.icon === 'string') {
@@ -324,6 +324,30 @@ export class ReuseTabService implements OnDestroy {
     } else {
       return menu.icon.value;
     }
+  }
+
+  private getLikeMenu(url: string, recursive = true): Menu | null {
+    let item: Menu | null = null;
+
+    const menus = this.menuService.menus;
+
+    while (!item && url) {
+      this.menuService.visit(menus, i => {
+        if (i.link != null && i.link.startsWith(url)) {
+          item = i;
+        }
+      });
+
+      if (!recursive) break;
+
+      if (/[?;]/g.test(url)) {
+        url = url.split(/[?;]/g)[0];
+      } else {
+        url = url.split('/').slice(0, -1).join('/');
+      }
+    }
+
+    return item;
   }
 
   /**
