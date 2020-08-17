@@ -1081,10 +1081,6 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     }
   }
 
-  ngDoCheck() {
-    console.log('2222');
-  }
-
   ngOnDestroy(): void {
     const { unsubscribe$ } = this;
     unsubscribe$.next();
