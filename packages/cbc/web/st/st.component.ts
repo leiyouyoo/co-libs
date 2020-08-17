@@ -774,7 +774,8 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
 
   // #region buttons
 
-  _btnClick(record: STData, btn: STColumnButton, e?: Event) {
+  _btnClick(record: STData, btn: STColumnButton, e: Event, index: number) {
+    this.setRowActivatedValue(record, index);
     // should be stop propagation when expandRowByClick is true
     if (e && this.expandRowByClick === true) {
       e.stopPropagation();
