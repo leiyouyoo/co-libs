@@ -25,6 +25,7 @@ export class CoEditorComponent implements OnInit {
     this._html = e;
     this.setData();
   }
+  @Input() coType: string = 'inline';
   @Input() coConfig: any = {};
   @Input() coPDFName: string;
   @Output() coChange = new EventEmitter<any>();
@@ -47,7 +48,7 @@ export class CoEditorComponent implements OnInit {
   }
 
   initData() {
-    CKEDITOR.replace(this.id, {
+    CKEDITOR[this.coType](this.id, {
       title: 'CITYOCEAN EDITOR',
       extraPlugins: 'print,exportpdf',
       allowedContent: true,
@@ -95,6 +96,7 @@ export class CoEditorComponent implements OnInit {
         },
       ],
       bodyClass: 'co-editor',
+      ...this.coConfig,
     });
     CKEDITOR.instances[this.id].config.exportPdf_fileName = this.coPDFName || 'CITYOCEAN';
     this.setData();

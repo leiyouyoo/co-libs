@@ -1,6 +1,6 @@
 ---
 order: 123
-title: 富文本编辑器
+title: 富文本内联编辑器
 ---
 
 用于生成打印HTML文件
@@ -15,7 +15,7 @@ import { Component } from '@angular/core';
   `
 })
 export class DemoComponent {
-  html = `<div style="color:#e55354">test</div>`;
+  html = `<div style="color:#1890ff">the gone with the sin</div>`;
 
     constructor() {}
 
