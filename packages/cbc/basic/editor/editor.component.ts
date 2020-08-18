@@ -4,6 +4,7 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnDestroy,
   OnInit,
   Output,
   ViewEncapsulation,
@@ -18,7 +19,7 @@ declare var CKEDITOR: any;
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class CoEditorComponent implements OnInit {
+export class CoEditorComponent implements OnInit, OnDestroy {
   _html: string = '';
   id: any;
   @Input() set html(e: string) {
@@ -118,5 +119,9 @@ export class CoEditorComponent implements OnInit {
 
   print() {
     CKEDITOR.instances[this.id].execCommand('print');
+  }
+
+  ngOnDestroy() {
+    CKEDITOR.instances[this.id].destroy(true);
   }
 }
