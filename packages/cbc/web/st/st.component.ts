@@ -915,13 +915,13 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
         btn._className = typeof btn.className === 'string' ? btn.className : btn.className(item);
       }
       /* 根据编辑状态显示按钮 */
-      let showByEdit: boolean;
+      let showOnEdit: boolean;
       if (item._editing) {
-        showByEdit = btn.type !== 'edit';
+        showOnEdit = btn.type !== 'edit';
       } else {
-        showByEdit = !['save', 'cancel'].includes(btn.type as string);
+        showOnEdit = !['save', 'cancel'].includes(btn.type as string);
       }
-      return (result || isRenderDisabled) && showByEdit;
+      return (result || isRenderDisabled) && showOnEdit;
     });
   }
 

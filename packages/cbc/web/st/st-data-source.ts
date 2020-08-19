@@ -230,6 +230,8 @@ export class STDataSource {
         text = this.ynPipe.transform(value === col.yn!.truth, col.yn!.yes!, col.yn!.no!, col.yn!.mode!, false);
         break;
       case 'enum':
+        // todo maybe all columns can be i18n
+        col.indexI18n = col.indexI18n !== false;
         text = col.enum![value];
         break;
       case 'tag':
