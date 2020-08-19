@@ -1,5 +1,14 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
-import { LazyService } from '@co/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  ViewEncapsulation,
+} from '@angular/core';
 
 declare var CKEDITOR: any;
 
@@ -10,21 +19,23 @@ declare var CKEDITOR: any;
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class CoEditorComponent implements OnInit {
+export class CoEditorComponent implements OnInit, OnDestroy {
   _html: string = '';
   id: any;
   @Input() set html(e: string) {
     this._html = e;
     this.setData();
   }
+  @Input() coType: string = 'inline';
   @Input() coConfig: any = {};
   @Input() coPDFName: string;
   @Output() coChange = new EventEmitter<any>();
 
-  constructor(private lazy: LazyService) {}
+  constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.id = this.guid();
+    this.cdr.detectChanges();
     this.initData();
   }
 
@@ -38,7 +49,7 @@ export class CoEditorComponent implements OnInit {
   }
 
   initData() {
-    CKEDITOR.replace(this.id, {
+    CKEDITOR[this.coType](this.id, {
       title: 'CITYOCEAN EDITOR',
       extraPlugins: 'print,exportpdf',
       allowedContent: true,
@@ -86,6 +97,7 @@ export class CoEditorComponent implements OnInit {
         },
       ],
       bodyClass: 'co-editor',
+      ...this.coConfig,
     });
     CKEDITOR.instances[this.id].config.exportPdf_fileName = this.coPDFName || 'CITYOCEAN';
     this.setData();
@@ -107,5 +119,9 @@ export class CoEditorComponent implements OnInit {
 
   print() {
     CKEDITOR.instances[this.id].execCommand('print');
+  }
+
+  ngOnDestroy() {
+    CKEDITOR.instances[this.id].destroy(true);
   }
 }
