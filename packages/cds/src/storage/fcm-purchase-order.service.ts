@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import {  } from './storage.types';
+import { StoragePurchaseOrderImportExcelInput, } from './storage.types';
 
 @BaseUrl('/storage/FcmPurchaseOrder')
 @Injectable({ providedIn: 'root' })
@@ -27,14 +27,14 @@ export class StorageFcmPurchaseOrderService extends BaseApi {
 
 
     /**
-     * @param url /Storage/FcmPurchaseOrder/BatchImportPurchaseOrder
-     * 批量导入PO
+     * @param url /Storage/FcmPurchaseOrder/ParsePurchaseOrderExcel
+     * 解析excel内容
      */
 
-    @FORM('batchImportPurchaseOrder')
-    batchImportPurchaseOrder(
+    @POST('parsePurchaseOrderExcel')
+    parsePurchaseOrderExcel(
         @Payload
-        _req: {shipmentId:string,file:File} 
+        _req:StoragePurchaseOrderImportExcelInput
 
     ): Observable<any> {
         return null as any
