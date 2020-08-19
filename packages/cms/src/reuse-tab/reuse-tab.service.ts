@@ -526,7 +526,12 @@ export class ReuseTabService implements OnDestroy {
         //   };
         // }
 
+        // 在挂载dom后再触发coOnActived事件
         this.runHook('coOnActived', compRef);
+        // const timerId = window.setTimeout(() => {
+        //   window.clearTimeout(timerId);
+        //   this.runHook('coOnActived', compRef);
+        // });
       }
     } else {
       this._cachedChange.next({ active: 'add', url, list: this._cached });
