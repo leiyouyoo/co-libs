@@ -68,6 +68,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   destroy$ = new Subject();
   optionList: Array<{ value: string; text: string }> = [];
   isLoading = false;
+  isFirst = true;
   loadingMode: LoadMode = 'more';
   hasMore = true;
   searchText = '';
@@ -157,6 +158,11 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   //#region ngModel实现
 
   writeValue(modelValue: NzSafeAny | NzSafeAny[]): void {
+    if ((modelValue == null || typeof modelValue === 'undefined') && this.isFirst) {
+      this.isFirst = false;
+      return;
+    }
+
     if (this.value !== modelValue) {
       if (modelValue && this.coValueMember !== this.coLabelMember && !this.hasLoadedByids) {
         this.loadByIds(modelValue);
