@@ -31,7 +31,7 @@ export class StorageFcmPurchaseOrderService extends BaseApi {
      * 解析excel内容
      */
 
-    @POST('parsePurchaseOrderExcel')
+    @FORM('parsePurchaseOrderExcel')
     parsePurchaseOrderExcel(
         @Payload
         _req:StoragePurchaseOrderImportExcelInput
