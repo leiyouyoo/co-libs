@@ -1,0 +1,359 @@
+<form class="co-form" autocomplete="off" nz-form nzLayout="vertical" data-validate-on-submit [formGroup]="validateForm">
+  <div nz-row nzGutter="16" class="location-form-body">
+    <div nz-col [nzSpan]="24">
+      <h3>{{ (withPartners ? 'Company' : 'Location') | translate }}</h3>
+    </div>
+    <div nz-row nzGutter="16" style="padding: 0 12px;">
+      <div *ngIf="withPartners" nz-col [nzSpan]="6">
+        <nz-form-item>
+          <nz-form-label nzRequired nzFor="companyId"
+            ><b>{{ 'Which company owns this location' | translate }}?</b>
+          </nz-form-label>
+          <nz-form-control>
+            <nz-select
+              formControlName="partnerId"
+              nzShowSearch
+              nzAllowClear
+              [nzPlaceHolder]="'Select a company' | translate"
+              style="margin: 0;"
+            >
+              <nz-option
+                *ngFor="let option of customerPartnerList"
+                [nzValue]="option.partnerId"
+                [nzLabel]="option.companyName"
+                nzCustomContent
+              >
+                <div (click)="onCompanyChange(option)">{{ option.companyName }}</div>
+                <div class="select-company-info" (click)="onCompanyChange(option)">
+                  <i class="iconfont icon-company"> {{ option?.locationCount }} locations</i>
+                  <i class="iconfont icon-user-login" style="margin-left: 8px;"> {{ option?.contactCount }} contacts</i>
+                </div>
+              </nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="6">
+        <nz-form-item>
+          <nz-form-label nzRequired nzFor="name">{{ 'Location Name' | translate }}</nz-form-label>
+          <nz-form-control [nzErrorTip]="'Location Name' | i18nRequired">
+            <input
+              id="name"
+              type="text"
+              nz-input
+              formControlName="name"
+              [placeholder]="'Please input your location name' | translate"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="6">
+        <nz-form-item>
+          <nz-form-label nzRequired nzFor="countryId">{{ 'Country/Region' | translate }}</nz-form-label>
+          <nz-form-control [nzErrorTip]="'Country/Region' | i18nRequired">
+            <nz-select
+              #countrySelect
+              formControlName="countryId"
+              nzShowSearch
+              nzAllowClear
+              [nzPlaceHolder]="'Select a country/region' | translate"
+              (appNzOptionExtraChange)="searchMap.country = $event.code"
+              [appSearchByExtraKey]="['chineseName', 'name']"
+              (ngModelChange)="regionChange($event, false, countrySelect)"
+            >
+              <nz-option
+                [appNzOptionExtra]="option"
+                *ngFor="let option of regions"
+                [nzValue]="option.id"
+                [nzLabel]="option.nameLocalization"
+              ></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="6">
+        <nz-form-item>
+          <nz-form-label [nzRequired]="stateRequired" nzFor="state"
+            >{{ 'Province' | translate }}/{{ 'State' | translate }}</nz-form-label
+          >
+          <nz-form-control [nzErrorTip]="'State' | i18nRequired">
+            <nz-select
+              nzShowSearch
+              nzAllowClear
+              formControlName="provinceId"
+              (ngModelChange)="getCityList($event); validateForm.controls.cityId.setValue(null)"
+              [appSearchByExtraKey]="['chineseName', 'name']"
+              [nzPlaceHolder]="'Select a state' | translate"
+            >
+              <nz-option
+                [appNzOptionExtra]="option"
+                *ngFor="let option of states"
+                [nzValue]="option.id"
+                [nzLabel]="option.nameLocalization"
+              ></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="6">
+        <nz-form-item>
+          <nz-form-label nzRequired nzFor="zip">{{ 'Zip Code' | translate }}</nz-form-label>
+          <nz-form-control [nzErrorTip]="'Please input your zip Code' | translate">
+            <input
+              id="zip"
+              type="text"
+              nz-input
+              formControlName="zip"
+              [placeholder]="'Please input your zip Code' | translate"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="6">
+        <nz-form-item>
+          <nz-form-label nzRequired>{{ 'City' | translate }}</nz-form-label>
+          <nz-form-control [nzErrorTip]="'City' | i18nRequired">
+            <nz-select
+              [appSearchByExtraKey]="['chineseName', 'name']"
+              formControlName="cityId"
+              nzShowSearch
+              nzAllowClear
+              [nzPlaceHolder]="'City.' | translate"
+            >
+              <nz-option
+                [appNzOptionExtra]="option"
+                *ngFor="let option of cityList"
+                [nzValue]="option.id"
+                [nzLabel]="option.nameLocalization"
+              ></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="6">
+        <nz-form-item>
+          <nz-form-label nzRequired>{{ 'Address' | translate }}</nz-form-label>
+          <nz-form-control [nzErrorTip]="'Please input street and number, P.O. box' | translate">
+            <!--          <input formControlName="streetAddress" nz-input placeholder="Please input address." />-->
+            <app-search-map #searchMap formControlName="streetAddress"> </app-search-map>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="6">
+        <nz-form-item>
+          <nz-form-label>{{ 'Address 2' | translate }}</nz-form-label>
+          <nz-form-control [nzErrorTip]="'Please input address 2' | translate">
+            <input formControlName="streetAddress2" nz-input [placeholder]="'Please input address 2' | translate" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="6">
+        <nz-form-item formGroupName="locationAddition">
+          <nz-form-label nzFor="unlocode">{{ 'Unlocode' | translate }}</nz-form-label>
+          <nz-form-control>
+            <input
+              id="unlocode"
+              type="text"
+              nz-input
+              formControlName="unlocode"
+              [placeholder]="'Please input your unlocode' | translate"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="24">
+        <nz-form-item>
+          <nz-form-label nzFor="streetAddressLocalization">{{
+            'Location Address in Local Language' | translate
+          }}</nz-form-label>
+          <nz-form-control>
+            <textarea
+              id="streetAddressLocalization"
+              type="text"
+              nz-input
+              formControlName="streetAddressLocalization"
+            ></textarea>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <ng-container *ngIf="showCustomerOwnFields()">
+        <div nz-col [nzSpan]="18">
+          <nz-form-item>
+            <nz-form-label nzRequired nzFor="viewableType">{{ 'Location is viewable by' | translate }}</nz-form-label>
+            <nz-form-control>
+              <nz-radio-group
+                nzButtonStyle="solid"
+                formControlName="viewableType"
+                style="display: flex;"
+                class="no-margin"
+              >
+                <label nz-radio-button [ngStyle]="style" [nzValue]="ViewableType.OnlyMyOrganization">{{
+                  'Only my organization' | translate
+                }}</label>
+                <label nz-radio-button [ngStyle]="style" [nzValue]="ViewableType.MyConnections">{{
+                  'My connections' | translate
+                }}</label>
+                <label nz-radio-button [ngStyle]="style" [nzValue]="ViewableType.SpecificConnections">{{
+                  'Specific connections' | translate
+                }}</label>
+              </nz-radio-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="6">
+          <nz-form-label style="height: 36px;"></nz-form-label>
+          <nz-form-item *ngIf="validateForm.controls.viewableType.value === ViewableType.SpecificConnections">
+            <nz-select
+              nzShowSearch
+              nzAllowClear
+              nzMode="multiple"
+              formControlName="partnerIds"
+              [nzPlaceHolder]="'Select connections' | translate"
+            >
+              <nz-option
+                [nzCustomContent]="true"
+                *ngFor="let item of partnerList"
+                [nzValue]="item.id"
+                [nzLabel]="item.name"
+              >
+                <span>{{ item.name }}</span>
+              </nz-option>
+            </nz-select>
+          </nz-form-item>
+        </div>
+      </ng-container>
+    </div>
+    <div style="margin-top: 12px;" nz-row nzGutter="16">
+      <div nz-col [nzSpan]="24">
+        <h3>
+          {{ 'Details' | translate }} <span class="text-gray">- {{ 'Optional' | translate }}</span>
+        </h3>
+      </div>
+      <div nz-col [nzSpan]="24">
+        <div style="padding: 0 12px;" nz-row nzGutter="16" formGroupName="locationAddition">
+          <div nz-col [nzSpan]="24">
+            <div nz-row nzGutter="16">
+              <div nz-col [nzSpan]="6">
+                <nz-form-item>
+                  <nz-form-label nzFor="contacts">{{ 'Contacts' | translate }}</nz-form-label>
+                  <nz-form-control>
+                    <nz-select
+                      #contactSelect
+                      nzShowSearch
+                      nzAllowClear
+                      nzMode="multiple"
+                      formControlName="contactIds"
+                      [nzDropdownRender]="render"
+                      [nzPlaceHolder]="'Select all that apply' | translate"
+                      [nzMaxTagCount]="5"
+                      [nzMaxTagPlaceholder]="tagPlaceHolder"
+                    >
+                      <nz-option
+                        *ngFor="let contact of contacts"
+                        [nzValue]="contact.id"
+                        [nzLabel]="contact.name"
+                        nzCustomContent
+                      >
+                        <div>{{ contact.name }}</div>
+                        <div>{{ contact.phone }}</div>
+                        <div>{{ contact.email }}</div>
+                      </nz-option>
+                    </nz-select>
+                    <ng-template #tagPlaceHolder let-selectedList>
+                      and {{ selectedList.length }} more selected
+                    </ng-template>
+                    <ng-template #render>
+                      <ng-container *ngIf="withPartners ? validateForm.controls.partnerId.value : true">
+                        <nz-divider style="margin: 4px 0;"></nz-divider>
+                        <div
+                          style="padding: 8px; cursor: pointer"
+                          (click)="
+                            userModal.show(null, null, contacts[0]?.customerId); contactSelect.setOpenState(false)
+                          "
+                        >
+                          <i nz-icon nzType="plus"></i> {{ 'Create new contact' | translate }}
+                        </div>
+                      </ng-container>
+                    </ng-template>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col [nzSpan]="6">
+                <nz-form-item>
+                  <nz-form-label nzFor="timezone">{{ 'Receiving Hours' | translate }}</nz-form-label>
+                  <nz-form-control>
+                    <input
+                      nz-input
+                      formControlName="timezone"
+                      [placeholder]="'Please input your Receiving Hours!(8AM-5AM)' | translate"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+          </div>
+          <div nz-col [nzSpan]="6">
+            <nz-form-item>
+              <nz-form-label nzFor="isResidential">{{ 'Is this a residential location' | translate }}?</nz-form-label>
+              <nz-form-control>
+                <nz-radio-group formControlName="isResidential">
+                  <label nz-radio [nzValue]="true">{{ 'Yes' | translate }}</label>
+                  <label nz-radio [nzValue]="false">{{ 'No' | translate }}</label>
+                </nz-radio-group>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col [nzSpan]="6">
+            <nz-form-item>
+              <nz-form-label nzFor="isDock">{{ 'Is there a loading dock' | translate }}?</nz-form-label>
+              <nz-form-control>
+                <nz-radio-group formControlName="isDock">
+                  <label nz-radio [nzValue]="true">{{ 'Yes' | translate }}</label>
+                  <label nz-radio [nzValue]="false">{{ 'No' | translate }}</label>
+                </nz-radio-group>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col [nzSpan]="6">
+            <nz-form-item>
+              <nz-form-label nzFor="isUnloading">{{ 'Requires help unloading' | translate }}?</nz-form-label>
+              <nz-form-control>
+                <nz-radio-group formControlName="isUnloading">
+                  <label nz-radio [nzValue]="true">{{ 'Yes' | translate }}</label>
+                  <label nz-radio [nzValue]="false">{{ 'No' | translate }}</label>
+                </nz-radio-group>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col [nzSpan]="6">
+            <nz-form-item>
+              <nz-form-label nzFor="isAppointment">{{ 'Needs Appointment' | translate }}?</nz-form-label>
+              <nz-form-control>
+                <nz-radio-group formControlName="isAppointment">
+                  <label nz-radio [nzValue]="true">{{ 'Yes' | translate }}</label>
+                  <label nz-radio [nzValue]="false">{{ 'No' | translate }}</label>
+                </nz-radio-group>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col [nzSpan]="24">
+            <nz-form-item>
+              <nz-form-label>{{ 'Additional Notes' | translate }}</nz-form-label>
+              <nz-form-control nzErrorTip="Plaese input city.">
+                <textarea nz-input formControlName="description" [nzAutosize]="{ minRows: 2, maxRows: 6 }"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button #submitButton type="submit" hidden></button>
+</form>
+<app-user-form-modal
+  #userModal
+  [partnerId]="selectpartnerId"
+  (modalClose)="onCreateContactClose($event)"
+  [locationCustomerId]="selectcustomerId"
+  [type]="locationToAdress"
+></app-user-form-modal>

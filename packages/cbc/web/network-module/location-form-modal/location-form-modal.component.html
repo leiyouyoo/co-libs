@@ -1,0 +1,6 @@
+<nz-modal [nzStyle]="{ top: '20px' }" [nzVisible]="createLocationModalVisible"
+  [nzTitle]="locationId ? 'Edit Location' : 'Create New Location'" (nzOnCancel)="createLocationModalVisible = false"
+  (nzOnOk)="saveLocation()" [nzBodyStyle]="{ 'padding-top': '12px' }" nzWidth="70%">
+  <location-form *ngIf="createLocationModalVisible" [locationDto]="locationDto" [withPartners]="withPartners"
+    [customerId]="customerId" [partnerId]="partnerId"></location-form>
+</nz-modal>
