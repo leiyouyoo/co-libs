@@ -2,7 +2,7 @@ import { Injectable, Injector } from '@angular/core';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 import { Observable } from 'rxjs';
 
-@BaseUrl('/fcm/Role')
+@BaseUrl('/sso/Role')
 @Injectable({ providedIn: 'root' })
 export class SSORoleService extends BaseApi {
   constructor(injector: Injector) {
