@@ -13,7 +13,11 @@ import {
   Tree,
   url,
 } from '@angular-devkit/schematics';
+import { addProviderToModule } from '@schematics/angular/utility/ast-utils';
+import { InsertChange } from '@schematics/angular/utility/change';
 import { getWorkspace } from '@schematics/angular/utility/config';
+import { buildRelativePath } from '@schematics/angular/utility/find-module';
+import * as ts from 'typescript';
 // You don't have to export the function as default. You can also have more than one rule factory
 // per file.
 
