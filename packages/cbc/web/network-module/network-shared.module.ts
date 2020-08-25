@@ -6,7 +6,7 @@ import { LocationFormComponent } from './location-form/location-form.component';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { SearchMapComponent } from '../search-map/search-map.component';
+import { SearchMapComponent } from './search-map/search-map.component';
 
 
 @NgModule({
@@ -31,7 +31,3 @@ import { SearchMapComponent } from '../search-map/search-map.component';
   ],
 })
 export class NetworkSharedModule { }
-
-export * from './location-form/location-form.component'
-export * from './location-form-modal/location-form-modal.component'
-export * from './user-form-modal/user-form-modal.component'

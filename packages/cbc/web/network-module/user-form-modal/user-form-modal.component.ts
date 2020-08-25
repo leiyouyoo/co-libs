@@ -2,7 +2,7 @@ import { Component, ElementRef, EventEmitter, Inject, Input, OnInit, Output, Vie
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { InputBoolean } from 'ng-zorro-antd';
 import { finalize } from 'rxjs/operators';
-import { I18nMessageService } from '../../../i18n-message.service';
+import { I18nMessageService } from '@co/common';
 import { CRMCustomerExternalService, CRMContactExternalService } from '../crm';
 import { SSORoleService } from '@co/cds';
 import { CO_SESSIONSERVICE_TOKEN, ISessionService } from '@co/core';
