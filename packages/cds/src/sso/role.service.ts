@@ -1,9 +1,8 @@
 import { Injectable, Injector } from '@angular/core';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 import { Observable } from 'rxjs';
-import { SsoCreateOrUpdateRoleInput, SsoGetRoleForEditOutput, SsoListResultDto, SsoRoleEditDto } from './sso.types';
 
-@BaseUrl('/sso/Role')
+@BaseUrl('/fcm/Role')
 @Injectable({ providedIn: 'root' })
 export class SSORoleService extends BaseApi {
   constructor(injector: Injector) {
@@ -19,9 +18,11 @@ export class SSORoleService extends BaseApi {
   getAll(
     @Payload
     _req: {
+      isValid?: boolean;
+      searchText?: string;
       permission?: string;
     },
-  ): Observable<SsoListResultDto[]> {
+  ): Observable<any> {
     return null as any;
   }
 
@@ -37,7 +38,7 @@ export class SSORoleService extends BaseApi {
       parentId?: number;
       type?: number;
     },
-  ): Observable<SsoListResultDto[]> {
+  ): Observable<any> {
     return null as any;
   }
 
@@ -53,7 +54,7 @@ export class SSORoleService extends BaseApi {
       parentId?: number;
       type?: number;
     },
-  ): Observable<SsoListResultDto[]> {
+  ): Observable<any> {
     return null as any;
   }
 
@@ -68,7 +69,7 @@ export class SSORoleService extends BaseApi {
     _req: {
       id?: number;
     },
-  ): Observable<SsoRoleEditDto> {
+  ): Observable<any> {
     return null as any;
   }
 
@@ -83,7 +84,7 @@ export class SSORoleService extends BaseApi {
     _req: {
       id?: number;
     },
-  ): Observable<SsoGetRoleForEditOutput> {
+  ): Observable<any> {
     return null as any;
   }
 
@@ -110,7 +111,7 @@ export class SSORoleService extends BaseApi {
   @PUT('update')
   update(
     @Payload
-    _req: SsoCreateOrUpdateRoleInput,
+    _req: any,
   ): Observable<any> {
     return null as any;
   }
@@ -123,7 +124,46 @@ export class SSORoleService extends BaseApi {
   @POST('create')
   create(
     @Payload
-    _req: SsoCreateOrUpdateRoleInput,
+    _req: any,
+  ): Observable<any> {
+    return null as any;
+  }
+
+  /**
+   * @param url /SSO/Role/CheckedRepeat
+   * 校验重复(角色验证英文名称,本地名称)
+   */
+
+  @POST('checkedRepeat')
+  checkedRepeat(
+    @Payload
+    _req: any,
+  ): Observable<any> {
+    return null as any;
+  }
+
+  /**
+   * @param url /SSO/Role/Recover
+   * 恢复角色
+   */
+
+  @POST('recover')
+  recover(
+    @Payload
+    _req: any,
+  ): Observable<any> {
+    return null as any;
+  }
+
+  /**
+   * @param url /SSO/Role/Cancel
+   * 作废角色
+   */
+
+  @POST('cancel')
+  cancel(
+    @Payload
+    _req: any,
   ): Observable<any> {
     return null as any;
   }
