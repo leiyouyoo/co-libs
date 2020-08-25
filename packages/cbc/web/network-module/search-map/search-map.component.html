@@ -1,0 +1,20 @@
+<input
+  nz-input
+  #input
+  [placeholder]="placeholder"
+  [(ngModel)]="inputMap"
+  (ngModelChange)="searchMap()"
+  [nzAutocomplete]="auto"
+/>
+<nz-autocomplete #auto nzBackfill [compareWith]="compareFun">
+  <nz-auto-option
+    (click)="updateValue(option.name)"
+    *ngFor="let option of autoCompleteList"
+    [nzValue]="option.name"
+    [nzLabel]="option.name"
+  >
+    <div [title]="option.name">
+      {{ option.name }}
+    </div>
+  </nz-auto-option>
+</nz-autocomplete>

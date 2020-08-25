@@ -1,0 +1,79 @@
+<nz-modal [nzVisible]="visible" [nzTitle]="(id ? 'Edit' : createOnly ? 'Create' : 'Invite') + ' User' | translate"
+  (nzOnCancel)="visible = false"
+  [nzOkText]="id ? ('Save'| translate) : createOnly ? ('Create'| translate) : ('Invite' | translate)"
+  [nzOkLoading]="loading" (nzOnOk)="confirm()">
+  <ng-container>
+    <ng-template [ngTemplateOutlet]="userTemplate"></ng-template>
+  </ng-container>
+  <nz-tabset *ngIf="false" [(nzSelectedIndex)]="tabIndex" style="margin-top: -24px;">
+    <nz-tab [nzTitle]="'User' | translate">
+      <ng-template [ngTemplateOutlet]="userTemplate"></ng-template>
+    </nz-tab>
+  </nz-tabset>
+</nz-modal>
+
+<ng-template #userTemplate>
+  <form nz-form [formGroup]="validateForm" autocomplete="off" nzLayout="vertical" class="co-form"
+    data-validate-on-submit>
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="name">{{ 'First Name' | translate }}</nz-form-label>
+      <nz-form-control [nzErrorTip]="'First Name' | i18nRequired">
+        <input nz-input formControlName="name" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="surname">{{ 'Last Name' | translate }}</nz-form-label>
+      <nz-form-control [nzErrorTip]="'Last Name' | i18nRequired">
+        <input nz-input formControlName="surname" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="phone">{{ 'Phone' | translate }}</nz-form-label>
+      <nz-form-control [nzErrorTip]="phoneErrorTpl" nzDisableAutoTips="">
+        <input nz-input formControlName="phone" />
+        <ng-template #phoneErrorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            {{ 'Contact phone' | i18nRequired }}
+          </ng-container>
+          <ng-container *ngIf="control.hasError('mobile')">
+            {{ 'Contact phone is not valid' | translate }}
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="email">{{ 'Email' | translate }}</nz-form-label>
+      <nz-form-control [nzErrorTip]="emailErrorTpl">
+        <input nz-input formControlName="email" />
+        <ng-template #emailErrorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            {{ 'Contact email is required' | translate }}
+          </ng-container>
+          <ng-container *ngIf="control.hasError('email')">
+            {{ 'Contact email is not valid' | translate }}
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+    <ng-container *ngIf="!createOnly">
+      <nz-form-item>
+        <nz-form-label nzFor="roles">{{ 'Job Capacity (Optional)' | translate }}</nz-form-label>
+        <nz-form-control nzErrorTip="The input is not valid job">
+          <nz-select name="select-position" formControlName="position" [nzAllowClear]="true">
+            <nz-option nzValue="CEO" nzLabel="CEO"></nz-option>
+            <nz-option nzValue="COO" nzLabel="COO"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzFor="roles">{{ 'Role (Optional)' | translate }}</nz-form-label>
+        <nz-form-control nzErrorTip="The input is not valid role">
+          <nz-select nzMode="multiple" [nzMaxMultipleCount]="1" name="select-error" formControlName="roles">
+            <nz-option *ngFor="let item of roleList" [nzLabel]="item.name" [nzValue]="item.name"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </ng-container>
+    <button type="submit" #submitButton hidden></button>
+  </form>
+</ng-template>

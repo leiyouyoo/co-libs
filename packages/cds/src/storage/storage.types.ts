@@ -262,6 +262,48 @@
     /**
      *  No Remark 
      */
+    export class StorageIFormFile {
+        
+         
+            
+            contentType?: string;
+         
+            
+            contentDisposition?: string;
+         
+            
+            headers?: object;
+         
+            
+            length?: number;
+         
+            
+            name?: string;
+         
+            
+            fileName?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class StoragePurchaseOrderImportExcelInput {
+        
+         
+            /* 业务id */ 
+            shipmentId: string;
+         
+            
+            file: StorageIFormFile;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
     export class StorageUploadResultDto {
         
          

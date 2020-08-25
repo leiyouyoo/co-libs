@@ -56,6 +56,10 @@ const routes: Routes = [
         path: 'report-viewer',
         loadChildren: () => import('./cbc/business/report-viewer/report-viewer.module').then(m => m.ReportViewerDemoModule),
       },
+      {
+        path: 'theme',
+        loadChildren: () => import('./theme/theme.module').then(m => m.ThemeModule),
+      },
     ],
   },
   {
