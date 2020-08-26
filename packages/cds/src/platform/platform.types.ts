@@ -86,6 +86,9 @@
             /* 用户拥有的角色集合 */ 
             roles?: any[];
          
+            
+            organizationUnits?: any[];
+         
             /* 用户归属租户信息 */ 
             tenant?: PlatformTenantInfo;
         
@@ -361,6 +364,9 @@
      */
     export class PlatformOrganizationUnitDto {
         
+         
+            
+            isDefault?: boolean;
          
             /* 显示名称 */ 
             displayName?: string;
@@ -859,6 +865,9 @@
          
             /* 组织机构路径 */ 
             fullOrganizationUnit?: string;
+         
+            
+            organizationUnitId?: string;
         
         
     }
@@ -894,6 +903,15 @@
 1 = Function
 2 = Data */ 
             type?: number;
+         
+            
+            isValid?: boolean;
+         
+            
+            creatorUserName?: string;
+         
+            
+            children?: any[];
          
             /* 名称 */ 
             name?: string;
@@ -1013,6 +1031,15 @@
 1 = Function
 2 = Data */ 
             type?: number;
+         
+            
+            isValid?: boolean;
+         
+            
+            creatorUserName?: string;
+         
+            
+            children?: any[];
          
             /* 名称 */ 
             name?: string;
@@ -1256,6 +1283,21 @@
          
             /* 是否默认职位 */ 
             isDefault?: boolean;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformAddPositionsToUserInput {
+        
+         
+            
+            userId?: number;
+         
+            
+            positionIds?: any[];
         
         
     }

@@ -139,7 +139,7 @@ export class PlatformCompanyConfigureService extends BaseApi {
     @GET('getCompanies')
     getCompanies(
         @Payload
-        _req: {isActive?:boolean,placeId?:string,locationId?:string} 
+        _req: {isActive?:boolean,isMarkDefault?:boolean} 
 
     ): Observable<any> {
         return null as any
@@ -148,13 +148,13 @@ export class PlatformCompanyConfigureService extends BaseApi {
 
     /**
      * @param url /Platform/CompanyConfigure/GetByPlaceOrLocation
-     * 根据港口或仓库获取口岸公司配置
+     * 
      */
 
     @GET('getByPlaceOrLocation')
     getByPlaceOrLocation(
         @Payload
-        _req: {isActive?:boolean,placeId?:string,locationId?:string} 
+        _req: {placeId?:string,locationId?:string} 
 
     ): Observable<PlatformListResultDto<PlatformOrganizationUnitDto>> {
         return null as any

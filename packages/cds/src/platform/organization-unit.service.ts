@@ -64,7 +64,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
     @GET('getSaleUsers')
     getSaleUsers(
         @Payload
-        _req: {searchText?:string,isOwnDepartment?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
+        _req: {userId?:number,searchText?:string,isOwnDepartment?:boolean,includeOrganization?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
     ): Observable<PlatformPagedResultDto<PlatformUserInfo>> {
         return null as any
@@ -79,7 +79,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
     @GET('getCustomerServiceUsers')
     getCustomerServiceUsers(
         @Payload
-        _req: {searchText?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
+        _req: {ids?:any[],searchText?:string,type?:number,isOwnDepartment?:boolean,organizationUnitId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
     ): Observable<PlatformPagedResultDto<PlatformUserInfo>> {
         return null as any
