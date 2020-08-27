@@ -177,7 +177,7 @@ export class SsoGetRoleForEditOutput {
 export class SsoCreateOrUpdateRoleInput {
   role: SsoRoleEditDto;
 
-  grantedPermissionNames: any[];
+  permissionIds: any[];
 }
 
 /**
