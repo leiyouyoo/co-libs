@@ -538,11 +538,11 @@ export class RoleListDto {
 
   description?: string;
 
-  parentId?: number;
+  parentId?: string;
 
   parentLocalizationName?: string;
 
   childrenDto?: any[];
 
-  id?: number;
+  id?: string;
 }
