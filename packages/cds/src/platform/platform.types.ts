@@ -395,8 +395,17 @@
             /* 子节点数 */ 
             childCount?: number;
          
+            
+            creationTime?: string;
+         
+            
+            creatorUserName?: string;
+         
             /* 子集 */ 
             childrenDto?: any[];
+         
+            
+            positionIds?: any[];
          
             /* 名称 */ 
             name?: string;

@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PlatformPermissionDto,PlatformPagedResultDto,PlatformEntityDto,PlatformMovePermissionItemInput,PlatformListResultDto,PlatformGrantFunctionPermissionsToUserInput,PlatformRevokeUserFunctionPermissionsInput,PlatformGrantFunctionPermissionsToRoleInput,PlatformRevokeRoleFunctionPermissionsInput,PlatformDataPermissionDto,PlatformGrantDataPermissionsToUserInput,PlatformRevokeUserDataPermissionsInput,PlatformGrantDataPermissionsToRoleInput,PlatformRevokeRoleDataPermissionsInput, } from './platform.types';
+import { PlatformPermissionDto,PlatformListResultDto,PlatformEntityDto,PlatformMovePermissionItemInput,PlatformGrantFunctionPermissionsToUserInput,PlatformRevokeUserFunctionPermissionsInput,PlatformGrantFunctionPermissionsToRoleInput,PlatformRevokeRoleFunctionPermissionsInput,PlatformDataPermissionDto,PlatformGrantDataPermissionsToUserInput,PlatformRevokeUserDataPermissionsInput,PlatformGrantDataPermissionsToRoleInput,PlatformRevokeRoleDataPermissionsInput, } from './platform.types';
 
 @BaseUrl('/platform/Permission')
 @Injectable({ providedIn: 'root' })
@@ -19,9 +19,9 @@ export class PlatformPermissionService extends BaseApi {
     @GET('getAll')
     getAll(
         @Payload
-        _req: {searchText?:string,parentId?:string,isRecursion?:boolean,type?:number,id?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
+        _req: {searchText?:string,parentId?:string,isRecursion?:boolean,type?:number,id?:string} 
 
-    ): Observable<PlatformPagedResultDto<PlatformPermissionDto>> {
+    ): Observable<PlatformListResultDto<PlatformPermissionDto>> {
         return null as any
     }
 
