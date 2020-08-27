@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PlatformPermissionDto,PlatformPagedResultDto,PlatformMovePermissionItemInput,PlatformListResultDto,PlatformGrantFunctionPermissionsToUserInput,PlatformRevokeUserFunctionPermissionsInput,PlatformGrantFunctionPermissionsToRoleInput,PlatformRevokeRoleFunctionPermissionsInput,PlatformDataPermissionDto,PlatformGrantDataPermissionsToUserInput,PlatformRevokeUserDataPermissionsInput,PlatformGrantDataPermissionsToRoleInput,PlatformRevokeRoleDataPermissionsInput, } from './platform.types';
+import { PlatformPermissionDto,PlatformPagedResultDto,PlatformEntityDto,PlatformMovePermissionItemInput,PlatformListResultDto,PlatformGrantFunctionPermissionsToUserInput,PlatformRevokeUserFunctionPermissionsInput,PlatformGrantFunctionPermissionsToRoleInput,PlatformRevokeRoleFunctionPermissionsInput,PlatformDataPermissionDto,PlatformGrantDataPermissionsToUserInput,PlatformRevokeUserDataPermissionsInput,PlatformGrantDataPermissionsToRoleInput,PlatformRevokeRoleDataPermissionsInput, } from './platform.types';
 
 @BaseUrl('/platform/Permission')
 @Injectable({ providedIn: 'root' })
@@ -19,7 +19,7 @@ export class PlatformPermissionService extends BaseApi {
     @GET('getAll')
     getAll(
         @Payload
-        _req: {searchText?:string,parentId?:string,isRecursion?:boolean,type?:number,sorting?:string,maxResultCount?:number,skipCount?:number} 
+        _req: {searchText?:string,parentId?:string,isRecursion?:boolean,type?:number,id?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
     ): Observable<PlatformPagedResultDto<PlatformPermissionDto>> {
         return null as any
@@ -50,6 +50,36 @@ export class PlatformPermissionService extends BaseApi {
     delete(
         @Payload
         _req: {id?:string} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Platform/Permission/Recover
+     * 
+     */
+
+    @POST('recover')
+    recover(
+        @Payload
+        _req:PlatformEntityDto<any>
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Platform/Permission/Cancel
+     * 
+     */
+
+    @POST('cancel')
+    cancel(
+        @Payload
+        _req:PlatformEntityDto<any>
 
     ): Observable<any> {
         return null as any

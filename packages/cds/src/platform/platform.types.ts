@@ -386,6 +386,12 @@
 32 = Head */ 
             type?: number;
          
+            
+            isValid?: boolean;
+         
+            
+            description?: string;
+         
             /* 子节点数 */ 
             childCount?: number;
          
@@ -617,6 +623,9 @@
          
             /* 是否激活 */ 
             isActive?: boolean;
+         
+            
+            description?: string;
          
             /* 名称 */ 
             name?: string;
@@ -908,6 +917,9 @@
             isValid?: boolean;
          
             
+            description?: string;
+         
+            
             creatorUserName?: string;
          
             
@@ -1034,6 +1046,9 @@
          
             
             isValid?: boolean;
+         
+            
+            description?: string;
          
             
             creatorUserName?: string;
