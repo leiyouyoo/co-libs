@@ -27,6 +27,19 @@ export class SSORoleService extends BaseApi {
   }
 
   /**
+   * @param url /SSO/Role/GetAllIncludeChildrenAsync
+   *
+   */
+
+  @GET('GetAllIncludeChildrenAsync')
+  getAllIncludeChildrenAsync(
+    @Payload
+    _req: {},
+  ): Observable<any> {
+    return null as any;
+  }
+
+  /**
    * @param url /SSO/Role/GetParentRoles
    * 获取父级（顶级）角色
    */
