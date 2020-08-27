@@ -508,3 +508,41 @@ export class SsoGetRecentUserLoginAttemptsInput {
 
   skipCount?: number;
 }
+
+/**
+ *  No Remark
+ */
+export class ListResultDto<T> {
+  items: T[];
+}
+
+/**
+ *  No Remark
+ */
+export class RoleListDto {
+  /* 用户归属的客户id */
+
+  name?: string;
+
+  displayName?: number;
+
+  isStatic?: boolean;
+
+  isDefault?: boolean;
+
+  creationTime?: string;
+
+  isValid?: boolean;
+
+  localizationName?: string;
+
+  description?: string;
+
+  parentId?: number;
+
+  parentLocalizationName?: string;
+
+  childrenDto?: any[];
+
+  id?: number;
+}

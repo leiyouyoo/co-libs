@@ -1,6 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 import { Observable } from 'rxjs';
+import { ListResultDto, RoleListDto } from './sso.types';
 
 @BaseUrl('/sso/Role')
 @Injectable({ providedIn: 'root' })
@@ -35,7 +36,7 @@ export class SSORoleService extends BaseApi {
   getAllIncludeChildrenAsync(
     @Payload
     _req: {},
-  ): Observable<any> {
+  ): Observable<ListResultDto<RoleListDto>> {
     return null as any;
   }
 
