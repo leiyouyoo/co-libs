@@ -15,6 +15,7 @@ export * from './http/http.decorator';
 export * from './http/response-interceptor';
 export * from './http/environment';
 export * from './i18n/i18n.pipe';
+export * from './i18n/i18n-message.service';
 export * from './auth/auth.service';
 export * from './logger/logger';
 export * from './session/session.service';

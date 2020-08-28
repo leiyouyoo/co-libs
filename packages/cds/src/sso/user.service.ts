@@ -75,7 +75,7 @@ export class SSOUserService extends BaseApi {
       maxResultCount?: number;
       skipCount?: number;
     },
-  ): Observable<SsoPagedResultDto[]> {
+  ): Observable<SsoPagedResultDto> {
     return null as any;
   }
 
@@ -350,6 +350,16 @@ export class SSOUserService extends BaseApi {
     @Payload
     _req: SsoCreateOrUpdateUserInput,
   ): Observable<SsoCreateOrUpdateUserOutput> {
+    return null as any;
+  }
+
+  @POST('setValid')
+  setValid(@Payload _req: { isValid: boolean, id: number }): Observable<any> {
+    return null as any;
+  }
+
+  @POST('setRoles')
+  setRoles(@Payload _req: { assignedRoleNames: string[], id: number }): Observable<any> {
     return null as any;
   }
 }

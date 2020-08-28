@@ -39,7 +39,7 @@ export function buildCOSwagger(options: any): Rule {
     if (options.path) {
       path = options.path;
     }
-    options.path = `${project.root}/${path}/${options.name}`;
+    options.path = `${project.sourceRoot}/${path}/${options.name}`;
 
     [`${options.path}/index.ts`, `${options.path}/public_api.ts`, `${options.path}/${options.name}.types.ts`]
       .filter(p => tree.exists(p))
