@@ -636,6 +636,15 @@
             
             description?: string;
          
+            
+            creationTime?: string;
+         
+            
+            creatorUserName?: string;
+         
+            
+            childrenDto?: any[];
+         
             /* 名称 */ 
             name?: string;
          
@@ -934,6 +943,18 @@
             
             children?: any[];
          
+            
+            roleIds?: any[];
+         
+            
+            userIds?: any[];
+         
+            
+            organizationUnitIds?: any[];
+         
+            
+            creationTime?: string;
+         
             /* 名称 */ 
             name?: string;
          
@@ -1064,6 +1085,18 @@
          
             
             children?: any[];
+         
+            
+            roleIds?: any[];
+         
+            
+            userIds?: any[];
+         
+            
+            organizationUnitIds?: any[];
+         
+            
+            creationTime?: string;
          
             /* 名称 */ 
             name?: string;
