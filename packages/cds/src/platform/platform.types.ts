@@ -395,8 +395,17 @@
             /* 子节点数 */ 
             childCount?: number;
          
+            
+            creationTime?: string;
+         
+            
+            creatorUserName?: string;
+         
             /* 子集 */ 
             childrenDto?: any[];
+         
+            
+            positionIds?: any[];
          
             /* 名称 */ 
             name?: string;
@@ -626,6 +635,15 @@
          
             
             description?: string;
+         
+            
+            creationTime?: string;
+         
+            
+            creatorUserName?: string;
+         
+            
+            childrenDto?: any[];
          
             /* 名称 */ 
             name?: string;
@@ -925,6 +943,18 @@
             
             children?: any[];
          
+            
+            roleIds?: any[];
+         
+            
+            userIds?: any[];
+         
+            
+            organizationUnitIds?: any[];
+         
+            
+            creationTime?: string;
+         
             /* 名称 */ 
             name?: string;
          
@@ -1055,6 +1085,18 @@
          
             
             children?: any[];
+         
+            
+            roleIds?: any[];
+         
+            
+            userIds?: any[];
+         
+            
+            organizationUnitIds?: any[];
+         
+            
+            creationTime?: string;
          
             /* 名称 */ 
             name?: string;

@@ -27,6 +27,21 @@ export class PlatformMenuService extends BaseApi {
 
 
     /**
+     * @param url /Platform/Menu/GetAllIncludeChildrenAsync
+     * 
+     */
+
+    @GET('getAllIncludeChildrenAsync')
+    getAllIncludeChildrenAsync(
+        @Payload
+        _req: {} 
+
+    ): Observable<PlatformListResultDto<PlatformMenuItemDto>> {
+        return null as any
+    }
+
+
+    /**
      * @param url /Platform/Menu/CreateOrUpdate
      * 保存菜单项
      */
