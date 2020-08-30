@@ -158,6 +158,14 @@ export class SsoRoleEditDto {
   parentId?: number;
 
   isDefault?: boolean;
+
+  isValid?: boolean;
+
+  localizationName: string;
+
+  description: string;
+
+  parentLocalizationName: string;
 }
 
 /**
