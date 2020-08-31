@@ -19,7 +19,7 @@ export class PlatformMenuService extends BaseApi {
     @GET('getAll')
     getAll(
         @Payload
-        _req: {parentId?:string,isRecursion?:boolean} 
+        _req: {searchText?:string} 
 
     ): Observable<PlatformListResultDto<PlatformMenuItemDto>> {
         return null as any

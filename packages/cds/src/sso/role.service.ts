@@ -157,6 +157,19 @@ export class SSORoleService extends BaseApi {
   }
 
   /**
+   * @param url /SSO/Role/CheckedIsExistsBindUser
+   * 校验是否存在绑定关系
+   */
+
+  @POST('checkedIsExistsBindUser')
+  checkedIsExistsBindUser(
+    @Payload
+    _req: any,
+  ): Observable<any> {
+    return null as any;
+  }
+
+  /**
    * @param url /SSO/Role/Recover
    * 恢复角色
    */
