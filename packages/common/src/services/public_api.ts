@@ -14,8 +14,10 @@ export { _HttpClient } from './http/http.client';
 export * from './http/http.decorator';
 export * from './http/response-interceptor';
 export * from './http/environment';
+export * from './http/pure-http.service';
 export * from './i18n/i18n.pipe';
 export * from './i18n/i18n-message.service';
 export * from './auth/auth.service';
 export * from './logger/logger';
 export * from './session/session.service';
+export * from './google/google-map.service'
