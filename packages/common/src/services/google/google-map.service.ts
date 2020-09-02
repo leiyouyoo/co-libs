@@ -49,14 +49,14 @@ interface NetworkLocation {
 })
 export class GoogleMapService {
   apiPrefix = CoConfigManager.getValue('serverUrl') ||
-    `https://api.cityocean.com:20001/`;
+    `https://api.cityocean.com:20001`;
   googleKey = 'AIzaSyAEdT5BA0MmANhrmcnR4QrXu08gLtgvhqI';
   // private amapHttp: any;
   constructor(private amapHttp: PureHttpService) { }
 
   //地图搜索地址
   autocomplete(input: any, language = 'en', options = {}): Observable<any> {
-    let url = `${this.apiPrefix}place/maps/api/place/autocomplete/json`;
+    let url = `${this.apiPrefix}/place/maps/api/place/autocomplete/json`;
     let params = {
       input,
       key: this.googleKey,
@@ -67,7 +67,7 @@ export class GoogleMapService {
   }
 
   getPlaceDetail(placeId: string, options = {}) {
-    const url = `${this.apiPrefix}place/maps/api/place/details/json`
+    const url = `${this.apiPrefix}/place/maps/api/place/details/json`
     const params = {
       key: this.googleKey,
       place_id: placeId,
@@ -78,7 +78,7 @@ export class GoogleMapService {
 
   googleGeo(address): Observable<GeoResult> {
     // const url = `https://maps.googleapis.com/maps/api/js/GeocodeService.Search?4ssichuan2&7sUS&9szh-CN&callback=_xdc_._s18ps3&key=AIzaSyDIJ9XX2ZvRKCJcFRrl-lRanEtFUow4piM&token=28858`
-    const url = `${this.apiPrefix}geo/maps/api/geocode/json?address=${address}&key=${this.googleKey}`
+    const url = `${this.apiPrefix}/geo/maps/api/geocode/json?address=${address}&key=${this.googleKey}`
 
     return new Observable<GeoResult>(ob => {
       this.amapHttp.get(url)
