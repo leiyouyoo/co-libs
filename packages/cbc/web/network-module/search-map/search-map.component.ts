@@ -10,9 +10,8 @@ import {
   Injector,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { AmapService } from './amap.service';
 import { debounce } from '@co/core';
-import { CoLocaleService } from '@co/common';
+import { CoLocaleService, GoogleMapService } from '@co/common';
 interface Option {
   placeId: string;
   name: string;
@@ -48,22 +47,22 @@ export class SearchMapComponent implements ControlValueAccessor, OnInit {
   autoCompleteList = [];
   onChange: (value: string | string[]) => void = () => null;
   onTouched: () => void = () => null;
-  amapService: any;
+  amapService: GoogleMapService;
   constructor(private injector: Injector,
               private coLocaleService: CoLocaleService,
   ) {
-    this.amapService = this.injector.get(AmapService);
+    this.amapService = this.injector.get(GoogleMapService);
   }
 
   ngOnInit() {}
   //搜索地图
-  @debounce()
+  @debounce(500)
   searchMap() {
     // //输入提示
     this.updateValue(this.inputMap);
     let params = this.fromType == 'netWork' ? { components: `country:${this.country}` } : {};
     this.amapService
-      .mapSearch(
+      .autocomplete(
         this.inputMap,
         this.coLocaleService.locale.abbr ? this.coLocaleService.locale.abbr.split('-')[0] : 'en',
         params,
