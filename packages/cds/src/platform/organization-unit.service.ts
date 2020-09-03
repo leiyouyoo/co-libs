@@ -72,6 +72,21 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
 
     /**
+     * @param url /Platform/OrganizationUnit/GetAllUsersByOrganizationUnitId
+     * 
+     */
+
+    @GET('getAllUsersByOrganizationUnitId')
+    getAllUsersByOrganizationUnitId(
+        @Payload
+        _req: {id?:string} 
+
+    ): Observable<PlatformListResultDto<PlatformUserInfo>> {
+        return null as any
+    }
+
+
+    /**
      * @param url /Platform/OrganizationUnit/GetCustomerServiceUsers
      * 获取客服人员
      */
@@ -245,6 +260,21 @@ export class PlatformOrganizationUnitService extends BaseApi {
     cancel(
         @Payload
         _req:PlatformEntityDto<any>
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Platform/OrganizationUnit/GetOrganizationUnitsByUserName
+     * 
+     */
+
+    @GET('getOrganizationUnitsByUserName')
+    getOrganizationUnitsByUserName(
+        @Payload
+        _req: {searchText?:string} 
 
     ): Observable<any> {
         return null as any
