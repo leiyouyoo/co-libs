@@ -10,7 +10,7 @@
   <a
     *ngIf="btn.pop"
     nz-popconfirm
-    [nzPopconfirmTitle]="btn.pop.title"
+    [nzPopconfirmTitle]="isFunction(btn.pop.title) ? btn.pop.title(i, index) : btn.pop.title"
     [nzIcon]="btn.pop.icon"
     [nzCondition]="btn.pop.condition(i)"
     [nzCancelText]="btn.pop.cancelText"

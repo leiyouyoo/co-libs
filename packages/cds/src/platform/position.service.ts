@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PlatformPositionDto,PlatformPagedResultDto,PlatformPositionAndOrganizationUnitDto,PlatformCreatePositionDto,PlatformResMsgDto,PlatformUpdatePositionDto,PlatformAddUsersToPositionInput,PlatformSetUserDefaultPositionInput,PlatformIsInPositionInput,PlatformEntityDto, } from './platform.types';
+import { PlatformPositionDto,PlatformPagedResultDto,PlatformPositionAndOrganizationUnitDto,PlatformCreatePositionDto,PlatformResMsgDto,PlatformUpdatePositionDto,PlatformAddUsersToPositionInput,PlatformAddPositionsToUserInput,PlatformSetUserDefaultPositionInput,PlatformIsInPositionInput,PlatformEntityDto, } from './platform.types';
 
 @BaseUrl('/platform/Position')
 @Injectable({ providedIn: 'root' })
@@ -162,6 +162,21 @@ export class PlatformPositionService extends BaseApi {
 
 
     /**
+     * @param url /Platform/Position/SetUserPositions
+     * 
+     */
+
+    @POST('setUserPositions')
+    setUserPositions(
+        @Payload
+        _req:PlatformAddPositionsToUserInput
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
      * @param url /Platform/Position/SetUserDefaultPosition
      * 设置默认用户职位
      */
@@ -192,6 +207,21 @@ export class PlatformPositionService extends BaseApi {
 
 
     /**
+     * @param url /Platform/Position/RemovePositionsFromUser
+     * 
+     */
+
+    @DELETE('removePositionsFromUser')
+    removePositionsFromUser(
+        @Payload
+        _req: {userId?:number} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
      * @param url /Platform/Position/GetUsersFromPosition
      * 获取指定职位下用户集合
      */
@@ -215,6 +245,21 @@ export class PlatformPositionService extends BaseApi {
     getBatchUserPositions(
         @Payload
         _req: {userIds?:any[]} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Platform/Position/GetPositionByUserId
+     * 
+     */
+
+    @GET('getPositionByUserId')
+    getPositionByUserId(
+        @Payload
+        _req: {id?:number} 
 
     ): Observable<any> {
         return null as any

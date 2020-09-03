@@ -158,6 +158,14 @@ export class SsoRoleEditDto {
   parentId?: number;
 
   isDefault?: boolean;
+
+  isValid?: boolean;
+
+  localizationName: string;
+
+  description: string;
+
+  parentLocalizationName: string;
 }
 
 /**
@@ -177,7 +185,7 @@ export class SsoGetRoleForEditOutput {
 export class SsoCreateOrUpdateRoleInput {
   role: SsoRoleEditDto;
 
-  grantedPermissionNames: any[];
+  permissionIds: any[];
 }
 
 /**
@@ -247,6 +255,28 @@ export class SsoUpdateUserInfoInput {
  */
 export class SsoCreateOrUpdateUserOutput {
   id?: number;
+  /* 是否发送激活邮件 */
+  sendActivationEmail?: boolean;
+  /* 是否使用随机密码 */
+  setRandomPassword?: boolean;
+  /* 在分布式事务中，该字段会自动设置为本地事务ID */
+  txId?: string;
+  name: string;
+  surname: string;
+  nameLocalization: string;
+  surnameLocalization: string;
+  sex: boolean;
+  emailAddress: string;
+  phoneNumber: string;
+  tel: string;
+  fax: string;
+  profilePictureId: string;
+  password: string;
+  isActive: boolean;
+  isValid: boolean;
+  shouldChangePasswordOnNextLogin: boolean;
+  roleIds: number[];
+  positionIds: string[];
 }
 
 /**
@@ -473,27 +503,30 @@ export class SsoBindExternalUserDto {
  *  No Remark
  */
 export class SsoCreateOrUpdateUserInput {
-  user: SsoUserEditDto;
-
-  /* 角色名称数组 */
-
-  assignedRoleNames: any[];
-
-  /* 父级角色Id */
-
-  parentRoleId?: number;
-
+  /*id,新建的时不用填，编辑必须传*/
+  id?: number;
   /* 是否发送激活邮件 */
-
   sendActivationEmail?: boolean;
-
   /* 是否使用随机密码 */
-
   setRandomPassword?: boolean;
-
   /* 在分布式事务中，该字段会自动设置为本地事务ID */
-
   txId?: string;
+  name: string;
+  surname: string;
+  nameLocalization: string;
+  surnameLocalization: string;
+  sex: boolean;
+  emailAddress: string;
+  phoneNumber: string;
+  tel: string;
+  fax: string;
+  profilePictureId: string;
+  password: string;
+  isActive: boolean;
+  isValid: boolean;
+  shouldChangePasswordOnNextLogin: boolean;
+  roleIds: number[];
+  positionIds: string[];
 }
 
 /**
@@ -507,4 +540,42 @@ export class SsoGetRecentUserLoginAttemptsInput {
   maxResultCount?: number;
 
   skipCount?: number;
+}
+
+/**
+ *  No Remark
+ */
+export class ListResultDto<T> {
+  items: T[];
+}
+
+/**
+ *  No Remark
+ */
+export class RoleListDto {
+  /* 用户归属的客户id */
+
+  name?: string;
+
+  displayName?: number;
+
+  isStatic?: boolean;
+
+  isDefault?: boolean;
+
+  creationTime?: string;
+
+  isValid?: boolean;
+
+  localizationName?: string;
+
+  description?: string;
+
+  parentId?: string;
+
+  parentLocalizationName?: string;
+
+  childrenDto?: any[];
+
+  id?: string;
 }

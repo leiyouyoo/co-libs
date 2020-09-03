@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PlatformOrganizationUnitDto,PlatformListResultDto,PlatformUserInfo,PlatformPagedResultDto,PlatformIMContactGroupDto,PlatformContactUserDto,PlatformOrganizationUnitUserDto,PlatformMoveOrganizationUnitInput, } from './platform.types';
+import { PlatformOrganizationUnitDto,PlatformListResultDto,PlatformUserInfo,PlatformPagedResultDto,PlatformIMContactGroupDto,PlatformContactUserDto,PlatformOrganizationUnitUserDto,PlatformMoveOrganizationUnitInput,PlatformEntityDto, } from './platform.types';
 
 @BaseUrl('/platform/OrganizationUnit')
 @Injectable({ providedIn: 'root' })
@@ -42,6 +42,21 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
 
     /**
+     * @param url /Platform/OrganizationUnit/GetAsync
+     * 
+     */
+
+    @GET('getAsync')
+    getAsync(
+        @Payload
+        _req: {id?:string} 
+
+    ): Observable<PlatformOrganizationUnitDto> {
+        return null as any
+    }
+
+
+    /**
      * @param url /Platform/OrganizationUnit/GetUsersByOrganizationUnitId
      * 获取组织机构下的用户
      */
@@ -64,9 +79,24 @@ export class PlatformOrganizationUnitService extends BaseApi {
     @GET('getSaleUsers')
     getSaleUsers(
         @Payload
-        _req: {searchText?:string,isOwnDepartment?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
+        _req: {userId?:number,searchText?:string,isOwnDepartment?:boolean,includeOrganization?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
     ): Observable<PlatformPagedResultDto<PlatformUserInfo>> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Platform/OrganizationUnit/GetAllUsersByOrganizationUnitId
+     * 
+     */
+
+    @GET('getAllUsersByOrganizationUnitId')
+    getAllUsersByOrganizationUnitId(
+        @Payload
+        _req: {id?:string} 
+
+    ): Observable<PlatformListResultDto<PlatformUserInfo>> {
         return null as any
     }
 
@@ -79,7 +109,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
     @GET('getCustomerServiceUsers')
     getCustomerServiceUsers(
         @Payload
-        _req: {searchText?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
+        _req: {ids?:any[],searchText?:string,type?:number,isOwnDepartment?:boolean,organizationUnitId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
     ): Observable<PlatformPagedResultDto<PlatformUserInfo>> {
         return null as any
@@ -215,6 +245,51 @@ export class PlatformOrganizationUnitService extends BaseApi {
     delete(
         @Payload
         _req: {id?:string} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Platform/OrganizationUnit/Recover
+     * 
+     */
+
+    @POST('recover')
+    recover(
+        @Payload
+        _req:PlatformEntityDto<any>
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Platform/OrganizationUnit/Cancel
+     * 
+     */
+
+    @POST('cancel')
+    cancel(
+        @Payload
+        _req:PlatformEntityDto<any>
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Platform/OrganizationUnit/GetOrganizationUnitsByUserName
+     * 
+     */
+
+    @GET('getOrganizationUnitsByUserName')
+    getOrganizationUnitsByUserName(
+        @Payload
+        _req: {searchText?:string} 
 
     ): Observable<any> {
         return null as any

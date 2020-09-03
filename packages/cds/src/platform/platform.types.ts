@@ -86,6 +86,9 @@
             /* 用户拥有的角色集合 */ 
             roles?: any[];
          
+            
+            organizationUnits?: any[];
+         
             /* 用户归属租户信息 */ 
             tenant?: PlatformTenantInfo;
         
@@ -362,6 +365,9 @@
     export class PlatformOrganizationUnitDto {
         
          
+            
+            isDefault?: boolean;
+         
             /* 显示名称 */ 
             displayName?: string;
          
@@ -380,11 +386,26 @@
 32 = Head */ 
             type?: number;
          
+            
+            isValid?: boolean;
+         
+            
+            description?: string;
+         
             /* 子节点数 */ 
             childCount?: number;
          
+            
+            creationTime?: string;
+         
+            
+            creatorUserName?: string;
+         
             /* 子集 */ 
             childrenDto?: any[];
+         
+            
+            positionIds?: any[];
          
             /* 名称 */ 
             name?: string;
@@ -611,6 +632,18 @@
          
             /* 是否激活 */ 
             isActive?: boolean;
+         
+            
+            description?: string;
+         
+            
+            creationTime?: string;
+         
+            
+            creatorUserName?: string;
+         
+            
+            childrenDto?: any[];
          
             /* 名称 */ 
             name?: string;
@@ -859,6 +892,9 @@
          
             /* 组织机构路径 */ 
             fullOrganizationUnit?: string;
+         
+            
+            organizationUnitId?: string;
         
         
     }
@@ -894,6 +930,30 @@
 1 = Function
 2 = Data */ 
             type?: number;
+         
+            
+            isValid?: boolean;
+         
+            
+            description?: string;
+         
+            
+            creatorUserName?: string;
+         
+            
+            children?: any[];
+         
+            
+            roleIds?: any[];
+         
+            
+            userIds?: any[];
+         
+            
+            organizationUnitIds?: any[];
+         
+            
+            creationTime?: string;
          
             /* 名称 */ 
             name?: string;
@@ -1013,6 +1073,30 @@
 1 = Function
 2 = Data */ 
             type?: number;
+         
+            
+            isValid?: boolean;
+         
+            
+            description?: string;
+         
+            
+            creatorUserName?: string;
+         
+            
+            children?: any[];
+         
+            
+            roleIds?: any[];
+         
+            
+            userIds?: any[];
+         
+            
+            organizationUnitIds?: any[];
+         
+            
+            creationTime?: string;
          
             /* 名称 */ 
             name?: string;
@@ -1256,6 +1340,21 @@
          
             /* 是否默认职位 */ 
             isDefault?: boolean;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformAddPositionsToUserInput {
+        
+         
+            
+            userId?: number;
+         
+            
+            positionIds?: any[];
         
         
     }

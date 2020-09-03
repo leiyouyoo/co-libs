@@ -7,6 +7,8 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { SearchMapComponent } from './search-map/search-map.component';
+import { CoCommonModule } from '@co/common';
+import { CoNzSelectExtraModule } from '@co/cbc/web/nz-select-extra';
 
 
 @NgModule({
@@ -23,6 +25,8 @@ import { SearchMapComponent } from './search-map/search-map.component';
     NgZorroAntdModule,
     TranslateModule,
     ReactiveFormsModule,
+    CoCommonModule,
+    CoNzSelectExtraModule
   ],
   exports: [
     LocationFormComponent,

@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PlatformMenuItemDto,PlatformListResultDto,PlatformMoveMenuItemInput,PlatformAddToFavoritesInput,PlatformChangeStateInput, } from './platform.types';
+import { PlatformMenuItemDto,PlatformListResultDto,PlatformEntityDto,PlatformMoveMenuItemInput,PlatformAddToFavoritesInput,PlatformChangeStateInput, } from './platform.types';
 
 @BaseUrl('/platform/Menu')
 @Injectable({ providedIn: 'root' })
@@ -19,7 +19,22 @@ export class PlatformMenuService extends BaseApi {
     @GET('getAll')
     getAll(
         @Payload
-        _req: {parentId?:string,isRecursion?:boolean} 
+        _req: {searchText?:string} 
+
+    ): Observable<PlatformListResultDto<PlatformMenuItemDto>> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Platform/Menu/GetAllIncludeChildrenAsync
+     * 
+     */
+
+    @GET('getAllIncludeChildrenAsync')
+    getAllIncludeChildrenAsync(
+        @Payload
+        _req: {} 
 
     ): Observable<PlatformListResultDto<PlatformMenuItemDto>> {
         return null as any
@@ -50,6 +65,36 @@ export class PlatformMenuService extends BaseApi {
     delete(
         @Payload
         _req: {id?:string} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Platform/Menu/Recover
+     * 
+     */
+
+    @POST('recover')
+    recover(
+        @Payload
+        _req:PlatformEntityDto<any>
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Platform/Menu/Cancel
+     * 
+     */
+
+    @POST('cancel')
+    cancel(
+        @Payload
+        _req:PlatformEntityDto<any>
 
     ): Observable<any> {
         return null as any

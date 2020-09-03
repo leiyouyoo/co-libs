@@ -4,7 +4,7 @@ import { HttpBackend, HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class AmapHttpService {
+export class PureHttpService {
   private http: HttpClient;
 
   constructor(private handler: HttpBackend) {

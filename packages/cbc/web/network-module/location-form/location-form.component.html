@@ -57,12 +57,12 @@
               nzShowSearch
               nzAllowClear
               [nzPlaceHolder]="'Select a country/region' | translate"
-              (appNzOptionExtraChange)="searchMap.country = $event.code"
-              [appSearchByExtraKey]="['chineseName', 'name']"
+              (coNzOptionExtraChange)="searchMap.country = $event.code"
+              [coSearchByExtraKey]="['chineseName', 'name']"
               (ngModelChange)="regionChange($event, false, countrySelect)"
             >
               <nz-option
-                [appNzOptionExtra]="option"
+                [coNzOptionExtra]="option"
                 *ngFor="let option of regions"
                 [nzValue]="option.id"
                 [nzLabel]="option.nameLocalization"
@@ -82,11 +82,11 @@
               nzAllowClear
               formControlName="provinceId"
               (ngModelChange)="getCityList($event); validateForm.controls.cityId.setValue(null)"
-              [appSearchByExtraKey]="['chineseName', 'name']"
+              [coSearchByExtraKey]="['chineseName', 'name']"
               [nzPlaceHolder]="'Select a state' | translate"
             >
               <nz-option
-                [appNzOptionExtra]="option"
+                [coNzOptionExtra]="option"
                 *ngFor="let option of states"
                 [nzValue]="option.id"
                 [nzLabel]="option.nameLocalization"
@@ -114,14 +114,14 @@
           <nz-form-label nzRequired>{{ 'City' | translate }}</nz-form-label>
           <nz-form-control [nzErrorTip]="'City' | i18nRequired">
             <nz-select
-              [appSearchByExtraKey]="['chineseName', 'name']"
+              [coSearchByExtraKey]="['chineseName', 'name']"
               formControlName="cityId"
               nzShowSearch
               nzAllowClear
               [nzPlaceHolder]="'City.' | translate"
             >
               <nz-option
-                [appNzOptionExtra]="option"
+                [coNzOptionExtra]="option"
                 *ngFor="let option of cityList"
                 [nzValue]="option.id"
                 [nzLabel]="option.nameLocalization"

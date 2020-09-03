@@ -1,6 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 import { Observable } from 'rxjs';
+import { ListResultDto, RoleListDto } from './sso.types';
 
 @BaseUrl('/sso/Role')
 @Injectable({ providedIn: 'root' })
@@ -23,6 +24,19 @@ export class SSORoleService extends BaseApi {
       permission?: string;
     },
   ): Observable<any> {
+    return null as any;
+  }
+
+  /**
+   * @param url /SSO/Role/GetAllIncludeChildrenAsync
+   *
+   */
+
+  @GET('GetAllIncludeChildrenAsync')
+  getAllIncludeChildrenAsync(
+    @Payload
+    _req: {},
+  ): Observable<ListResultDto<RoleListDto>> {
     return null as any;
   }
 
@@ -136,6 +150,19 @@ export class SSORoleService extends BaseApi {
 
   @POST('checkedRepeat')
   checkedRepeat(
+    @Payload
+    _req: any,
+  ): Observable<any> {
+    return null as any;
+  }
+
+  /**
+   * @param url /SSO/Role/CheckedIsExistsBindUser
+   * 校验是否存在绑定关系
+   */
+
+  @POST('checkedIsExistsBindUser')
+  checkedIsExistsBindUser(
     @Payload
     _req: any,
   ): Observable<any> {
