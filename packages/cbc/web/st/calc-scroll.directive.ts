@@ -24,6 +24,12 @@ function outerHeight(el, defaultValue?) {
   selector: 'co-st[calcScroll],nz-table[calcScroll]'
 })
 export class CalcScrollDirective implements AfterContentInit, AfterViewChecked {
+  @Input() set data(val: any[]) {
+    this.calc();
+  }
+  @Input() set nzData(val: any[]) {
+    this.calc();
+  }
   @Input() @InputBoolean() disableCalcX = false;
   @Input() @InputBoolean() disableCalcY = false;
   el: HTMLElement;
