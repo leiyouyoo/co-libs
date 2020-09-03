@@ -42,6 +42,21 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
 
     /**
+     * @param url /Platform/OrganizationUnit/GetAsync
+     * 
+     */
+
+    @GET('getAsync')
+    getAsync(
+        @Payload
+        _req: {id?:string} 
+
+    ): Observable<PlatformOrganizationUnitDto> {
+        return null as any
+    }
+
+
+    /**
      * @param url /Platform/OrganizationUnit/GetUsersByOrganizationUnitId
      * 获取组织机构下的用户
      */
@@ -67,6 +82,21 @@ export class PlatformOrganizationUnitService extends BaseApi {
         _req: {userId?:number,searchText?:string,isOwnDepartment?:boolean,includeOrganization?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
     ): Observable<PlatformPagedResultDto<PlatformUserInfo>> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Platform/OrganizationUnit/GetAllUsersByOrganizationUnitId
+     * 
+     */
+
+    @GET('getAllUsersByOrganizationUnitId')
+    getAllUsersByOrganizationUnitId(
+        @Payload
+        _req: {id?:string} 
+
+    ): Observable<PlatformListResultDto<PlatformUserInfo>> {
         return null as any
     }
 
@@ -245,6 +275,21 @@ export class PlatformOrganizationUnitService extends BaseApi {
     cancel(
         @Payload
         _req:PlatformEntityDto<any>
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Platform/OrganizationUnit/GetOrganizationUnitsByUserName
+     * 
+     */
+
+    @GET('getOrganizationUnitsByUserName')
+    getOrganizationUnitsByUserName(
+        @Payload
+        _req: {searchText?:string} 
 
     ): Observable<any> {
         return null as any

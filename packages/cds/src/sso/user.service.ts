@@ -70,6 +70,7 @@ export class SSOUserService extends BaseApi {
       permission?: string;
       role?: number;
       onlyLockedUsers?: boolean;
+      status?: number;
       tenantId?: number;
       sorting?: string;
       maxResultCount?: number;
@@ -353,13 +354,37 @@ export class SSOUserService extends BaseApi {
     return null as any;
   }
 
+  /**
+   * @param url /SSO/User/SetValid
+   *
+   */
   @POST('setValid')
   setValid(@Payload _req: { isValid: boolean, id: number }): Observable<any> {
     return null as any;
   }
 
+
+  /**
+   * @param url /SSO/User/SetRoles
+   *
+   */
   @POST('setRoles')
   setRoles(@Payload _req: { assignedRoleNames: string[], id: number }): Observable<any> {
+    return null as any;
+  }
+
+  /**
+   * @param url /SSO/User/GetDetail
+   *
+   */
+
+  @GET('getDetail')
+  getDetail(
+    @Payload
+      _req: {
+      userId?: number;
+    },
+  ): Observable<SsoCreateOrUpdateUserOutput> {
     return null as any;
   }
 }

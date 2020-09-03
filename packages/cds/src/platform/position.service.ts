@@ -214,7 +214,7 @@ export class PlatformPositionService extends BaseApi {
     @DELETE('removePositionsFromUser')
     removePositionsFromUser(
         @Payload
-        _req: {userId?:number,positionIds?:any[]} 
+        _req: {userId?:number} 
 
     ): Observable<any> {
         return null as any
@@ -245,6 +245,21 @@ export class PlatformPositionService extends BaseApi {
     getBatchUserPositions(
         @Payload
         _req: {userIds?:any[]} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Platform/Position/GetPositionByUserId
+     * 
+     */
+
+    @GET('getPositionByUserId')
+    getPositionByUserId(
+        @Payload
+        _req: {id?:number} 
 
     ): Observable<any> {
         return null as any

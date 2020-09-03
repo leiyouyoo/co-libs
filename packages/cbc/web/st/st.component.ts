@@ -1090,6 +1090,10 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     }
   }
 
+  isFunction(func): boolean {
+    return typeof func === 'function';
+  }
+
   ngAfterViewInit() {
     this.columnSource.restoreAllRender(this._columns);
   }
