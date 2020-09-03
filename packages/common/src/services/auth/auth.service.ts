@@ -122,13 +122,12 @@ export class CoAuthService {
   refreshToken() {
     const refresh_token = localStorage.getItem('refresh_token');
     const url = this.loginUrl;
-    const obj = {
-      refresh_token,
-      grant_type: 'refresh_token',
-      client_id: 'cityOcean',
-      client_secret: '282F4E3E-AD56-4FE1-BAF3-FE99BBC11AD2',
-    };
-    this._httpClient.post(url, obj).subscribe((res: any) => {
+    const form = new FormData();
+    form.append('refresh_token', refresh_token ? refresh_token : '');
+    form.append('grant_type', 'refresh_token');
+    form.append('client_id', 'cityOcean');
+    form.append('client_secret', '282F4E3E-AD56-4FE1-BAF3-FE99BBC11AD2');
+    this._httpClient.post(url, form).subscribe((res: any) => {
       this.saveToken(res);
     });
   }
