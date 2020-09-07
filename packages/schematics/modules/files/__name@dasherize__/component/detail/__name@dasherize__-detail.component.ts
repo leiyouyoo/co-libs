@@ -1,4 +1,4 @@
-import { Component, Injector } from '@angular/core';
+import { Component, Injector, SimpleChanges } from '@angular/core';
 import { CoPageBase } from '@co/core';
 import { NzMessageService } from 'ng-zorro-antd';
 /**
@@ -12,14 +12,13 @@ import { NzMessageService } from 'ng-zorro-antd';
 export class <%= classify(name) %>DetailComponent extends CoPageBase {
   //#region 私有变量
 
-  isEnglish: boolean = true;
-  isSubmit: boolean = false;
-
   //#endregion
+
 
   //#region  输入输出参数
 
   //#endregion
+
 
   //#region 页面生命周期
 
@@ -29,11 +28,34 @@ export class <%= classify(name) %>DetailComponent extends CoPageBase {
 
   coOnInit(): void {}
 
+  coOnActived(): void{}
+
+  coOnDeactived(): void{}
+
+  coOnClosing(): Promise<any>{}
+
+  coOnChanges(changes: SimpleChanges): void{}
+
+  coAfterViewInit(): void{}
+
+  coOnDestroy(): void{}
+
   //#endregion
+
 
   //#region 事件处理
 
   
-
   //#endregion
 }
+
+  //#region 公共方法
+
+  //#endregion
+
+
+  //#region 私有方法
+
+  //#endregionegion
+}
+

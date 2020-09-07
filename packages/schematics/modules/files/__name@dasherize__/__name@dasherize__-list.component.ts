@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Injector } from '@angular/core';
+import {  Component, Injector, SimpleChanges } from '@angular/core';
 import { CoPageBase } from '@co/core';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -12,25 +12,51 @@ import { TranslateService } from '@ngx-translate/core';
 })
 
 export class <%= classify(name) %>ListComponent extends CoPageBase {
-  //#region  私有变量
+  //#region 私有变量
 
-  //#region  生命周期
+  //#endregion
 
-  constructor(
-    injector: Injector,
-    private cdr: ChangeDetectorRef,
-    private translate: TranslateService,
-  ) {
+
+  //#region  输入输出参数
+
+  //#endregion
+
+
+  //#region 页面生命周期
+
+  constructor(injector: Injector,  private message: NzMessageService) {
     super(injector);
   }
 
-  coOnInit() {
+  coOnInit(): void {}
 
-  }
+  coOnActived(): void{}
+
+  coOnDeactived(): void{}
+
+  coOnClosing(): Promise<any>{}
+
+  coOnChanges(changes: SimpleChanges): void{}
+
+  coAfterViewInit(): void{}
+
+  coOnDestroy(): void{}
 
   //#endregion
+
 
   //#region 事件处理
 
+  
   //#endregion
+}
+
+  //#region 公共方法
+
+  //#endregion
+
+
+  //#region 私有方法
+
+  //#endregionegion
 }
