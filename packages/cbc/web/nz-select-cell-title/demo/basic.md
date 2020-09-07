@@ -1,8 +1,6 @@
 ---
 order: 1
 title:
-  zh-CN: 基础 (coNzOptionExtraChange)
-  en-US: Basic (coNzOptionExtraChange)
   zh-CN: 基础 
   en-US: Basic
 ---
@@ -37,7 +35,6 @@ export class ComponentsNzSelectExtraBasicComponentComponent {
   options = new Array(6)
     .fill({})
     .map((o, i) => ( { name: `option${i}`, value: i, } ))
-  changeValue;
   changeValue = 0;
 
   constructor() {}
