@@ -1,7 +1,7 @@
-<div class="co-page-layout__toolbar" *ngIf="toolbarComponent">
+<div class="co-page-layout__toolbar" *ngIf="toolbarComponents.length">
   <ng-content select="co-toolbar"></ng-content>
 </div>
-<div class="co-page-layout__searchArea" *ngIf="searchAreaLayoutComponent">
+<div class="co-page-layout__searchArea" *ngIf="searchAreaLayoutComponents.length">
   <ng-content select="co-search-area-layout"></ng-content>
 </div>
 <div class="co-page-layout__content">

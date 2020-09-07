@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'co-page-main',
@@ -9,6 +9,8 @@ import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@
   encapsulation: ViewEncapsulation.None,
 })
 export class PageMainComponent implements OnInit {
+
+  @HostBinding('style.max-width') @Input() coMaxWidth: string = '100%';
 
   constructor() {
   }

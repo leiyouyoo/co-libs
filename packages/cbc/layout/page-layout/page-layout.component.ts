@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, ContentChild, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ContentChildren, HostBinding, Input, OnInit, QueryList, ViewEncapsulation } from '@angular/core';
 import { CoSizeType } from '@co/cbc/core';
-import { PageSideComponent } from './page-side.component';
 import { SearchAreaLayoutComponent } from '@co/cbc/layout/search-area-layout';
 import { ToolbarComponent } from '@co/cbc/layout/toolbar';
+import { PageSideComponent } from './page-side.component';
 
 @Component({
   selector: 'co-page-layout',
@@ -15,9 +15,14 @@ export class PageLayoutComponent implements OnInit {
 
   @Input() coSize: CoSizeType = 'default';
 
-  @ContentChild(ToolbarComponent) toolbarComponent: ToolbarComponent;
-  @ContentChild(SearchAreaLayoutComponent) searchAreaLayoutComponent: SearchAreaLayoutComponent;
-  @ContentChild(PageSideComponent) pageSideComponent: PageSideComponent;
+  @ContentChildren(ToolbarComponent, { descendants: false }) toolbarComponents: QueryList<ToolbarComponent>;
+  @ContentChildren(SearchAreaLayoutComponent, { descendants: false }) searchAreaLayoutComponents: QueryList<SearchAreaLayoutComponent>;
+  @ContentChildren(PageSideComponent, { descendants: false }) pageSideComponents: QueryList<PageSideComponent>;
+  @ContentChildren(PageLayoutComponent, { descendants: true }) pageLayoutComponents: QueryList<PageLayoutComponent>;
+
+  @HostBinding('class.co-page-layout__topWrapper') get noPadding(): boolean {
+    return this.pageLayoutComponents.length > 0;
+  }
 
   constructor() {
   }

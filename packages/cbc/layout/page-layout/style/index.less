@@ -1,27 +1,30 @@
 @import '../../../../theme/theme-default.less';
 
 @page-layout-prefix: ~'.co-page-layout';
-@page-layout-padding: 24px;
+@page-layout-padding: 16px;
 
 @page-main-prefix: ~'.co-page-main';
-@page-main-width: 80%;
 
 @page-side-prefix: ~'.co-page-side';
-@page-side-width: 20%;
 
 @{page-layout-prefix} {
   display: flex;
   flex: auto;
   flex-direction: column;
-  width: 100%;
+  height: 100%;
   min-height: 0;
   background-color: #ffffff;
-  padding: @page-layout-padding @page-layout-padding 0;
+  padding: @page-layout-padding;
+
+  &__topWrapper {
+    padding: 0;
+    background-color: transparent;
+  }
 
   &__toolbar, &__searchArea {
     flex: none;
     width: 100%;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
   }
 
   &__content {
@@ -48,16 +51,43 @@
 
 }
 
-@{page-main-prefix} {
+@{page-main-prefix}, @{page-side-prefix} {
   flex: auto;
-  width: @page-main-width;
   min-height: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
 
 }
 
 @{page-side-prefix} {
-  flex: none;
-  width: @page-side-width;
-  min-height: 0;
+  margin-left: 16px;
 
+  &-resize-handle {
+    position: absolute;
+    user-select: none;
+    z-index: 9;
+    width: 10px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: ew-resize;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #e6f7ff;
+    padding: 10% 1px;
+    opacity: 0;
+    transition: all 0.5s;
+
+    &:hover, &__resizing {
+      opacity: 0.8;
+    }
+
+    &-pointer {
+      height: 100%;
+      width: 1px;
+      background: #AAA;
+    }
+  }
 }
