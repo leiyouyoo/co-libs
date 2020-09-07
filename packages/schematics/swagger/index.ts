@@ -35,11 +35,18 @@ export function buildCOSwagger(options: any): Rule {
 
     const projectName = options.project as string;
     const project = workspace.projects[projectName];
-    let path = 'app/service';
-    if (options.path) {
-      path = options.path;
+    const path = 'app/service';
+
+    // 路由
+    let requireUrl = process.cwd();
+    if (!options.path) {
+      if (requireUrl.includes('apps')) {
+        requireUrl = requireUrl.substring(requireUrl.lastIndexOf('apps'));
+        options.path = requireUrl;
+      } else {
+        options.path = `${project.sourceRoot}/`;
+      }
     }
-    options.path = `${project.sourceRoot}/${path}/${options.name}`;
 
     [`${options.path}/index.ts`, `${options.path}/public_api.ts`, `${options.path}/${options.name}.types.ts`]
       .filter(p => tree.exists(p))

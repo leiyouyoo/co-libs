@@ -1,0 +1,29 @@
+<co-page-layout>
+    <co-toolbar>
+      <co-toolbar-item>
+        <button nz-button nzType="primary"><i nz-icon nzType="plus" nzTheme="outline"></i>{{ 'Add' | translate }}</button>
+      </co-toolbar-item>
+    </co-toolbar>
+  
+    <co-search-area-layout>
+      <co-search-area-item coWidth="auto">
+        <nz-input-group style="width: 320px;" [nzSuffix]="suffixIconSearch">
+          <input type="text" nz-input placeholder="{{'Search' | translate}}" />
+          <ng-template #suffixIconSearch>
+            <i nz-icon nzType="search"></i>
+          </ng-template>
+        </nz-input-group>
+      </co-search-area-item>
+  
+      <co-search-area-item coWidth="auto">
+        <nz-radio-group style="min-width: 260px;" [nzButtonStyle]="'solid'" class="tradeTypeGroup nz-radio-group-button-quote">
+          <label class="job-list-status" nz-radio-button [nzValue]="null">{{ 'All' | translate }}</label>
+          <label class="job-list-status" nz-radio-button [nzValue]="true">{{ 'Enable Status' | translate }}</label>
+          <label class="job-list-status" nz-radio-button [nzValue]="false">{{ 'Abolish Status' | translate }}</label>
+        </nz-radio-group>
+      </co-search-area-item>
+    </co-search-area-layout>
+  
+    <co-page-main> </co-page-main>
+  </co-page-layout>
+  

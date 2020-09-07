@@ -64,11 +64,15 @@ export class CalcScrollDirective implements AfterContentInit, AfterViewChecked {
         this.el.querySelector('.ant-table-thead');
       const tableContent = this.el.querySelector('.ant-table-content table');
       const paginatorOuterHeight = outerHeight(this.el.querySelector('.ant-table-pagination'), 0);
-      // const pagination
-      this.nzTableComponent.nzScroll = {
+      const nzScroll = {
         x: this.disableCalcX ? this.nzTableComponent.scrollX : `${tableContent!.clientWidth}px`,
         y: this.disableCalcY ? this.nzTableComponent.scrollY : `${this.el.clientHeight - thead!.clientHeight - paginatorOuterHeight}px`,
       };
+      if (this.stComponent) {
+        this.stComponent.scroll = nzScroll as any;
+      } else if (this.nzTableComponent) {
+        this.nzTableComponent.nzScroll = nzScroll;
+      }
       this.nzTableComponent.ngOnChanges({ nzScroll: this.nzTableComponent.nzScroll } as any);
       // hack
       //@ts-ignore
