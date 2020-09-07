@@ -1,6 +1,6 @@
 ---
 order: 40
-title: 生成服务
+title: 生成组件
 type: Documents
 ---
 
