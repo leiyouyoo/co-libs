@@ -32,8 +32,6 @@ export class <%= classify(name) %>DetailComponent extends CoPageBase {
 
   coOnDeactived(): void{}
 
-  coOnClosing(): Promise<any>{}
-
   coOnChanges(changes: SimpleChanges): void{}
 
   coAfterViewInit(): void{}
@@ -47,7 +45,7 @@ export class <%= classify(name) %>DetailComponent extends CoPageBase {
 
   
   //#endregion
-}
+
 
   //#region 公共方法
 
