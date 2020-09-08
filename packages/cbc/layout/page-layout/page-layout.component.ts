@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, ContentChildren, HostBinding, Input
 import { CoSizeType } from '@co/cbc/core';
 import { SearchAreaLayoutComponent } from '@co/cbc/layout/search-area-layout';
 import { ToolbarComponent } from '@co/cbc/layout/toolbar';
-import { PageSideComponent } from './page-side.component';
 
 @Component({
   selector: 'co-page-layout',
@@ -17,7 +16,6 @@ export class PageLayoutComponent implements OnInit {
 
   @ContentChildren(ToolbarComponent, { descendants: false }) toolbarComponents: QueryList<ToolbarComponent>;
   @ContentChildren(SearchAreaLayoutComponent, { descendants: false }) searchAreaLayoutComponents: QueryList<SearchAreaLayoutComponent>;
-  @ContentChildren(PageSideComponent, { descendants: false }) pageSideComponents: QueryList<PageSideComponent>;
   @ContentChildren(PageLayoutComponent, { descendants: true }) pageLayoutComponents: QueryList<PageLayoutComponent>;
 
   @HostBinding('class.co-page-layout__topWrapper') get noPadding(): boolean {

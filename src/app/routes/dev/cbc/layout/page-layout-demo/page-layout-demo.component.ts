@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -7,6 +7,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./page-layout-demo.component.css'],
 })
 export class PageLayoutDemoComponent implements OnInit {
+
+  @Input() id;
 
   customer = 2;
   container = [3, 9];
