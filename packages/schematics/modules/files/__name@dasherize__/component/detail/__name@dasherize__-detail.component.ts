@@ -1,6 +1,7 @@
 import { Component, Injector, SimpleChanges } from '@angular/core';
 import { CoPageBase } from '@co/core';
 import { NzMessageService } from 'ng-zorro-antd';
+
 /**
  * 样例明细页
  */
@@ -9,6 +10,7 @@ import { NzMessageService } from 'ng-zorro-antd';
   templateUrl: './<%= name %>-detail.component.html',
   styleUrls: ['./<%= name %>-detail.component.less'],
 })
+
 export class <%= classify(name) %>DetailComponent extends CoPageBase {
   //#region 私有变量
 

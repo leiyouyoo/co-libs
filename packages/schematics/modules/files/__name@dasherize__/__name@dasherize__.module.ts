@@ -11,7 +11,10 @@ const COMPONENTS_NOROUNT = [];
 /**
  * 示例路由配置
  */
-const routes: Routes = [{ path: '', component:  <%= classify(name) %>ListComponent, data: { titleI18n: '<%= name %>:<%= name %>List', reuse: true } }];
+const routes: Routes = [
+  { path: '', component:  <%= classify(name) %>ListComponent, data: { titleI18n: '<%= name %>:<%= name %>List', reuse: true } },
+  { path: 'detail', component: <%= classify(name) %>DetailComponent, data: { titleI18n: '<%= name %>:<%= name %>Detail', reuse: true } },
+];
 
 /**
  * 示例特性模块

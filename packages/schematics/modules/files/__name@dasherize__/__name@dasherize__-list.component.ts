@@ -1,6 +1,7 @@
 import {  Component, Injector, SimpleChanges } from '@angular/core';
 import { CoPageBase } from '@co/core';
 import { TranslateService } from '@ngx-translate/core';
+import { NzMessageService } from 'ng-zorro-antd';
 
 /**
  * 样例列表页
@@ -34,8 +35,6 @@ export class <%= classify(name) %>ListComponent extends CoPageBase {
 
   coOnDeactived(): void{}
 
-  coOnClosing(): Promise<any>{}
-
   coOnChanges(changes: SimpleChanges): void{}
 
   coAfterViewInit(): void{}
@@ -49,7 +48,7 @@ export class <%= classify(name) %>ListComponent extends CoPageBase {
 
   
   //#endregion
-}
+
 
   //#region 公共方法
 
