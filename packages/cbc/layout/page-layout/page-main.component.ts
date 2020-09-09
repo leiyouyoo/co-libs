@@ -11,7 +11,7 @@ import { InputNumber } from 'ng-zorro-antd';
 })
 export class PageMainComponent implements OnInit {
 
-  @HostBinding('style.max-width.px') @Input() coMaxWidth: number;
+  @HostBinding('style.max-width.px') @Input() @InputNumber() coMaxWidth: number;
   @HostBinding('style.min-width.px') @Input() @InputNumber() coMinWidth: number | null = 800;
 
   constructor(@Optional() @SkipSelf() private parentMainComponent: PageMainComponent,
@@ -20,7 +20,7 @@ export class PageMainComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.parentMainComponent && this.parentMainComponent.coMinWidth === this.coMinWidth) {
-      this.coMinWidth = null; // 内层的最小宽度不设默认值
+      this.coMinWidth = 0; // 内层的最小宽度不设默认值
     }
     const parent = this.renderer.parentNode(this.elementRef.nativeElement);
     this.renderer.setStyle(parent, '--left-min-width', `${this.coMinWidth}px`, RendererStyleFlags2.DashCase);
