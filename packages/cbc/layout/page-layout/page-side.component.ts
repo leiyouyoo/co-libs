@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input, ViewEncapsulation } from '@angular/core';
 import { InputBoolean, InputNumber } from 'ng-zorro-antd';
 import { LifeCycleComponent } from '@co/core';
 
@@ -11,7 +11,7 @@ import { LifeCycleComponent } from '@co/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class PageSideComponent extends LifeCycleComponent implements OnInit {
+export class PageSideComponent extends LifeCycleComponent {
 
   @Input() @InputBoolean() coWidthResizable = false;
   @HostBinding('style.margin-left.px') @Input() @InputNumber() marginLeft = 16;
@@ -25,9 +25,6 @@ export class PageSideComponent extends LifeCycleComponent implements OnInit {
 
   constructor(public elementRef: ElementRef<HTMLElement>) {
     super();
-  }
-
-  ngOnInit(): void {
   }
 
 }

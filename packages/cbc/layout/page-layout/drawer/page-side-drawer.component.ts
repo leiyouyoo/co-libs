@@ -2,19 +2,21 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  ElementRef, EventEmitter,
+  ElementRef,
+  EventEmitter,
   forwardRef,
   Injector,
   Input,
   OnDestroy,
-  OnInit, Output,
+  OnInit,
+  Output,
   TemplateRef,
   Type,
   ViewChild,
   ViewContainerRef,
   ViewEncapsulation,
 } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { CdkPortalOutlet, ComponentPortal, DomPortal, Portal, PortalInjector, TemplatePortal } from '@angular/cdk/portal';
 import { InputBoolean } from 'ng-zorro-antd';
 import { PageSideComponent } from '../page-side.component';
@@ -45,8 +47,16 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
 
   portal: Portal<any> | null = null;
 
-  coAfterOpen = new Subject<void>();
-  coAfterClose = new Subject<R>();
+  readonly coAfterOpen = new Subject<void>();
+  readonly coAfterClose = new Subject<R>();
+
+  get afterOpen(): Observable<void> {
+    return this.coAfterOpen.asObservable();
+  }
+
+  get afterClose(): Observable<R> {
+    return this.coAfterClose.asObservable();
+  }
 
   isOpen = false;
 
@@ -86,7 +96,7 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
     this.coAfterClose.complete();
   }
 
-  destroy() {
+  destroy(): void {
     this.close();
     this.bodyPortalOutlet!.dispose();
     this.portal?.detach();
@@ -96,6 +106,10 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
 
   closeClick(): void {
     this.coOnClose.emit(this);
+  }
+
+  getContentComponent(): T | null {
+    return this.componentInstance;
   }
 
   private attachPortal(portalContent, templateContext?): void {

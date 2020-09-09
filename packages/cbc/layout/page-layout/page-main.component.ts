@@ -11,7 +11,7 @@ import { InputNumber } from 'ng-zorro-antd';
 })
 export class PageMainComponent implements OnInit {
 
-  @HostBinding('style.max-width.px') @Input() @InputNumber() coMaxWidth: number;
+  @HostBinding('style.max-width.px') @Input() coMaxWidth: number | 'none';
   @HostBinding('style.min-width.px') @Input() @InputNumber() coMinWidth: number | null = 800;
 
   constructor(@Optional() @SkipSelf() private parentMainComponent: PageMainComponent,
