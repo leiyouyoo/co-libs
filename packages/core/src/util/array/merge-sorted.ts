@@ -28,7 +28,7 @@ export function mergeSorted(origin: any[], sorted: any[], key, insertAfter = tru
         result.push(o);
       } else {
         const resultIndex = result.indexOf(origin[originIndex - 1])
-        result.splice(resultIndex, 0, o);
+        result.splice(resultIndex + 1, 0, o);
       }
     });
   }
