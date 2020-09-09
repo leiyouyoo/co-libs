@@ -1,6 +1,6 @@
 {
   "name": "co-libs",
-  "version": "0.2.32",
+  "version": "0.2.33",
   "description": "co-libs 是一组用于前端开发的公共模块集合",
   "keywords": [
     "co-libs",
@@ -60,6 +60,7 @@
   "dependencies": {
     "@angular-devkit/schematics-cli": "^0.901.9",
     "@angular/animations": "~9.1.9",
+    "@angular/cdk": "~9.2.1",
     "@angular/common": "~9.1.9",
     "@angular/compiler": "~9.1.9",
     "@angular/core": "~9.1.9",
