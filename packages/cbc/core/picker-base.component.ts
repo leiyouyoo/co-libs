@@ -50,7 +50,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   @Input() coDropdownRender: TemplateRef<NzSafeAny> | null = null;
 
   @Input() coDebounceInputCharCount: number = 2;
-  @Input() coDebounceTime: number = 500;
+  @Input() coDebounceTime: number = 200;
   @Input() coPageSize: number = 20;
   @Input() coFilter: any = { includeDeleted: false };
 
