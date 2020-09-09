@@ -9,12 +9,10 @@ import { PageSideComponent } from './page-side.component';
 @Component({
   selector: 'co-page-side-resize-handle',
   template: `
-    <div class="co-page-side-resize-handle-pointer"></div>
-    <div class="co-page-side-resize-handle-pointer"></div>
+    <i nz-icon nzType="caret-left" nzTheme="outline" class="co-page-side-resize-handle-pointer"></i>
   `,
   host: {
     '[class.co-page-side-resize-handle]': 'true',
-    '[class.co-page-side-resize-handle__resizing]': 'resizing',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,

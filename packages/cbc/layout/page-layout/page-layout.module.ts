@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NzIconModule } from 'ng-zorro-antd/icon';
-import { MoreOutline } from '@ant-design/icons-angular/icons';
+import { CaretLeftOutline, MoreOutline } from '@ant-design/icons-angular/icons';
 import { NzOutletModule } from 'ng-zorro-antd';
 import { PortalModule } from '@angular/cdk/portal';
 import { PageLayoutComponent } from './page-layout.component';
@@ -22,7 +22,7 @@ const COMPONENTS = [PageLayoutComponent,
   declarations: [...COMPONENTS],
   imports: [
     CommonModule,
-    NzIconModule.forRoot([MoreOutline]),
+    NzIconModule.forRoot([MoreOutline, CaretLeftOutline]),
     NzOutletModule,
     PortalModule,
   ],

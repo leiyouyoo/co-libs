@@ -39,7 +39,7 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
   @Input() coContent!: TemplateRef<{ $implicit: D; }> | Type<T>;
   @Input() coContentParams?: D;
 
-  @Output() readonly coOnClose = new EventEmitter<MouseEvent>();
+  @Output() readonly coOnClose = new EventEmitter<PageSideDrawerComponent>();
 
   @ViewChild(CdkPortalOutlet, { static: false }) bodyPortalOutlet?: CdkPortalOutlet;
 
@@ -95,7 +95,7 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
   }
 
   closeClick(): void {
-    this.coOnClose.emit();
+    this.coOnClose.emit(this);
   }
 
   private attachPortal(portalContent, templateContext?): void {

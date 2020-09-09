@@ -62,10 +62,9 @@
 
 @{page-side-prefix} {
   &-resize-handle {
-    position: absolute;
     user-select: none;
     z-index: 9;
-    width: 10px;
+    width: 16px;
     height: 100%;
     top: 0;
     left: 0;
@@ -73,19 +72,13 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background: #e6f7ff;
+    background: #E6E6E6;
     padding: 10% 1px;
-    opacity: 0;
     transition: all 0.5s;
 
-    &:hover, &__resizing {
-      opacity: 0.8;
-    }
-
     &-pointer {
-      height: 100%;
-      width: 1px;
-      background: #AAA;
+      font-size: 14px;
+      color: rgba(0,0,0,0.25);
     }
   }
 
@@ -101,7 +94,7 @@
     animation: max-width ease 0.5s;
 
     &__show {
-      display: block;
+      display: flex;
     }
 
     &-content {
