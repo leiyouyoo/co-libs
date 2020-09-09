@@ -9,6 +9,5 @@ export { _Validators } from './validate/validators';
 
 export * from './other/index';
 export * from './array/array.service';
-export * from './array/merge-sorted';
 
 export * from './decorators'
