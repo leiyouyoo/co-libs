@@ -358,6 +358,7 @@ export class STColumnSource {
     const copyList: STColumn[] = deepCopy(list);
     for (const item of copyList) {
       item._oriColumn = deepCopy(item);
+      item?.children?.forEach(child => child._oriColumn = deepCopy(child))
       if (item.iif && !item.iif(item)) {
         continue;
       }

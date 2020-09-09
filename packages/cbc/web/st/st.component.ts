@@ -32,7 +32,7 @@ import {
 } from '@co/common';
 import {
   CoI18NService,
-  CO_I18N_TOKEN, mergeSorted, debounce,
+  CO_I18N_TOKEN, debounce,
 } from '@co/core';
 import { CoConfigService, CoSTConfig, deepCopy, deepMergeKey, InputBoolean, InputNumber, toBoolean } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
@@ -65,7 +65,7 @@ import {
   STStatisticalResults,
   STWidthMode,
 } from './st.interfaces';
-import { generateModel } from './utils';
+import { generateModel, mergeSorted } from './utils';
 import { PlatformSettingService } from '@co/cds';
 import { StUserSettingService } from './st-user-setting.service';
 import * as _ from 'lodash';
@@ -225,8 +225,6 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() set columns(val: STColumn[]) {
     this._originColumns = val;
     this._sortedColumns = val;
-    this.sortColumns();
-    this.refreshColumns().optimizeData();
   };
   get columns(): STColumn[] {
     return this._sortedColumns;
@@ -675,6 +673,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     this.changeEmit('filter', col);
   }
 
+  @debounce(5e2)
   _filterConfirm(col: STColumn) {
     this.handleFilter(col);
   }
@@ -1064,8 +1063,14 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   onResize({ width }: NzResizeEvent, col: STColumn) {
-    const x = this._sortedColumns.find(o => o.title === col._oriColumn!.title && o.index === col._oriColumn!.index);
-    x!.width = width;
+    let x = this._sortedColumns.find(o => o.title === col._oriColumn!.title && o.index === col._oriColumn!.index);
+    if (!x) {
+      this._sortedColumns?.some(o => {
+        x = o.children?.find(child => child.title === col._oriColumn!.title && child.index === col._oriColumn!.index)
+        return !!x;
+      });
+    }
+    (x as any).width = width;
 
     this.refreshColumns().optimizeData();
     this.cd();
@@ -1094,6 +1099,14 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     return typeof func === 'function';
   }
 
+  resetFilters() {
+    this._filterRow?.forEach(filter => {
+      filter?.column?.filter?.menus?.forEach(m => {
+        m.value = null;
+      })
+    });
+  }
+
   ngAfterViewInit() {
     this.columnSource.restoreAllRender(this._columns);
   }
@@ -1105,6 +1118,10 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     }
     if (changes.loading) {
       this._loading = changes.loading.currentValue;
+    }
+    if (changes.columnSettingName || changes.columns) {
+      this.sortColumns();
+      this.refreshColumns().optimizeData();
     }
   }
 

@@ -137,7 +137,10 @@
               <ng-container *ngSwitchCase="'action'">
                 <div class="d-flex justify-content-between">
                   <span>{{ 'Action' | translate }}</span>
-                  <column-config [configName]="columnSettingName"></column-config>
+                  <div class="d-flex align-items-center">
+                    <a nz-button [nzSize]="size" nzType="link" (click)="resetFilters()">Reset</a>
+                    <column-config [configName]="columnSettingName"></column-config>
+                  </div>
                 </div>
               </ng-container>
               <ng-container *ngSwitchDefault>
@@ -169,7 +172,10 @@
                 <ng-container *ngSwitchCase="'action'">
                   <div class="d-flex justify-content-between">
                     <span>{{ 'Action' | translate }}</span>
-                    <column-config [configName]="columnSettingName"></column-config>
+                    <div class="d-flex align-items-center">
+                      <a nz-button [nzSize]="size" nzType="link" (click)="resetFilters()">Reset</a>
+                      <column-config [configName]="columnSettingName"></column-config>
+                    </div>
                   </div>
                 </ng-container>
                 <ng-container *ngSwitchDefault>
@@ -213,6 +219,12 @@
           </ng-container>
           <ng-container *ngSwitchCase="'date'">
             <nz-date-picker nzSize="small" class="width-100" [(ngModel)]="(i.column.filter?.menus)[0].value" (ngModelChange)="_filterConfirm(i.column)"></nz-date-picker>
+          </ng-container>
+          <ng-container *ngSwitchCase="'date-range'">
+            <nz-range-picker nzFormat="yyyy-MM-dd" class="width-100" [(ngModel)]="(i.column.filter?.menus)[0].value" (ngModelChange)="_filterConfirm(i.column)"></nz-range-picker>
+          </ng-container>
+          <ng-container *ngSwitchCase="'number'">
+            <co-st-number-input [(ngModel)]="(i.column.filter?.menus)[0].value" (ngModelChange)="_filterConfirm(i.column)"></co-st-number-input>
           </ng-container>
           <ng-template
             *ngSwitchCase="'widget'"
