@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
-import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
+import { BaseApi, BaseUrl, DELETE, GET, Payload, POST, PUT } from '@co/common';
 import { Observable } from 'rxjs';
-import { SsoCreateTenantDto, SsoPagedResultDto, SsoTenantDto } from './sso.types';
+import { SsoCreateAsyncTenantDto, SsoCreateTenantDto, SsoPagedResultDto, SsoTenantDto } from './sso.types';
 
 @BaseUrl('/sso/Tenant')
 @Injectable({ providedIn: 'root' })
@@ -96,4 +96,53 @@ export class v1TenantService extends BaseApi {
   ): Observable<SsoTenantDto> {
     return null as any;
   }
+
+  @POST('recover')
+  recover(
+    @Payload
+      _req: { id: number },
+  ): Observable<any> {
+    return null as any;
+  }
+
+  @POST('cancel')
+  cancel(
+    @Payload
+      _req: { id: number },
+  ): Observable<any> {
+    return null as any;
+  }
+
+  @POST('createAsync')
+  createAsync(
+    @Payload
+      _req: SsoCreateAsyncTenantDto,
+  ): Observable<Required<SsoCreateAsyncTenantDto>> {
+    return null as any;
+  }
+
+  @PUT('updateAsync')
+  updateAsync(
+    @Payload
+      _req: SsoCreateAsyncTenantDto,
+  ): Observable<Required<SsoCreateAsyncTenantDto>> {
+    return null as any;
+  }
+
+  @GET('getAsync')
+  getAsync(
+    @Payload
+      _req: { id: number },
+  ): Observable<Required<SsoCreateAsyncTenantDto>> {
+    return null as any;
+  }
+
+  @GET('getAllAsync')
+  getAllAsync(
+    @Payload
+      _req: { searchText: string, IsActive: boolean },
+  ): Observable<{ items: Required<SsoCreateAsyncTenantDto>[] }> {
+    return null as any;
+  }
+
 }
