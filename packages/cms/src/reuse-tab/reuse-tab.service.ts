@@ -273,6 +273,11 @@ export class ReuseTabService implements OnDestroy {
       return this._titleCached[url];
     }
 
+    const menu = this.getMenu(url);
+    if (menu) {
+      return { text: menu.text, i18n: menu.i18n };
+    }
+
     const paramTitle = route?.queryParams?._title;
     if (route && route.data && (route.data.titleI18n || route.data.title)) {
       return {
@@ -281,8 +286,7 @@ export class ReuseTabService implements OnDestroy {
       } as ReuseTitle;
     }
 
-    const menu = this.getMenu(url);
-    return menu ? { text: menu.text, i18n: menu.i18n } : { text: paramTitle || url };
+    return { text: paramTitle || url };
   }
 
   /**
