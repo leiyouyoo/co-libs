@@ -404,7 +404,7 @@ export class STColumnSource {
       // no
       if (item.type === 'no') {
         item.noIndex = item.noIndex == null ? noIndex : item.noIndex;
-        if (!item.width) item.width = 50;
+        if (!item.width) item.width = 60;
       }
       // checkbox
       if (item.selections == null) {
@@ -452,7 +452,7 @@ export class STColumnSource {
         item.width = `${item.width}px`;
       }
       if (!item.width) {
-        item.width = 100;
+        item.width = `100px`;
       }
 
       // sorter

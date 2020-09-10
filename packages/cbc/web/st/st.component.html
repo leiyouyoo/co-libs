@@ -70,7 +70,7 @@
   [nzShowPagination]="loadOnScroll ? false : _isPagination"
   [nzFrontPagination]="false"
   [nzSize]="size"
-  [nzLoading]="showLoading('nz-table') || (loadOnScroll && !_data?.length)"
+  [nzLoading]="showLoading('nz-table')"
   [nzLoadingDelay]="loadingDelay"
   [nzLoadingIndicator]="loadingIndicator"
   [nzTitle]="header"
@@ -91,7 +91,7 @@
 >
   <thead class="st__head">
     <tr *ngFor="let row of _headers; let rowFirst = first"  [class.st-has-filter]="showFilters">
-      <th *ngIf="rowFirst && showCheckbox" nzWidth="50px" [attr.rowspan]="_headers.length">
+      <th *ngIf="rowFirst && showCheckbox" nzWidth="50px" [attr.rowspan]="_headers.length" [nzLeft]="true">
         <ng-container *ngIf="checkboxSelections.length === 0">
           <ng-template [ngTemplateOutlet]="chkAllTpl" [ngTemplateOutletContext]="{ $implicit: false }"> </ng-template>
         </ng-container>
@@ -113,7 +113,7 @@
           </nz-dropdown-menu>
         </div>
       </th>
-      <th *ngIf="rowFirst && expand" nzWidth="50px" [attr.rowspan]="_headers.length"></th>
+      <th *ngIf="rowFirst && expand" nzWidth="50px" [attr.rowspan]="_headers.length" [nzLeft]="true"></th>
       <ng-container *ngFor="let h of getEnabledColumns(row, 'column', 'header'); let index = index">
         <th
           *ngIf="h?.column?.type !== 'action'; else notResizable"
@@ -189,8 +189,8 @@
     </tr>
     <tr class="st-thead-row-filter st-has-filter"
         *ngIf="showFilters && getEnabledColumns(_filterRow, 'column', 'filter')?.length">
-      <th *ngIf="showCheckbox" nzWidth="50px"></th>
-      <th *ngIf="expand" nzWidth="50px"></th>
+      <th *ngIf="showCheckbox" nzWidth="50px" [nzLeft]="true"></th>
+      <th *ngIf="expand" nzWidth="50px" [nzLeft]="true"></th>
       <th *ngFor="let i of getEnabledColumns(_filterRow, 'column', 'filter'); index as index" (keyup.enter)="_filterConfirm(i.column)">
         <ng-container [ngSwitch]="i.column.filter?.type">
           <ng-container *ngSwitchCase="i.column.filter?.type === null ? null : 'nevermatch'"></ng-container>
@@ -256,7 +256,9 @@
         [class.st-row-selected]="i.checked || isRowActivated(i, index)"
         [ngClass]="i._rowClassName"
       >
-        <td *ngIf="showCheckbox">
+        <td
+          *ngIf="showCheckbox"
+          [nzLeft]="true">
           <label nz-checkbox [nzDisabled]="i.disabled" [ngModel]="i.checked" (ngModelChange)="_checkSelection(i, $event, index)"></label>
         </td>
         <td
@@ -264,6 +266,7 @@
           [nzShowExpand]="expand && i.showExpand !== false"
           [nzExpand]="i.expand"
           (nzExpandChange)="_expandChange(i, $event)"
+          [nzLeft]="true"
           nzWidth="50px"
         ></td>
         <!-- 展示状态 -->

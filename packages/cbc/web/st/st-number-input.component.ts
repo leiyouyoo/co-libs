@@ -5,7 +5,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   selector: 'co-st-number-input',
   template: `
     <div class="d-flex">
-      <div class="d-flex flex-1 justify-content-between align-items-center">
+      <div class="d-flex flex-1 justify-content-between align-items-center" style="width: calc(100% - 18px);">
         <nz-input-number class="flex-1" [(ngModel)]="value[0]" (ngModelChange)="emitValue()" [nzSize]="'small'"></nz-input-number>
         <ng-container *ngIf="operator === 10">
           <i nz-icon nzType="minus" nzTheme="outline" style="margin: 0 4px;"></i>

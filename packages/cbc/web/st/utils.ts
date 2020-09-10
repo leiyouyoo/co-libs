@@ -82,3 +82,19 @@ export function mergeSorted(origin: any[], sorted: any[], key = 'index', insertA
   return result;
 }
 
+
+
+export function enumToFilterArray(enumme): { label: string, value: any }[] {
+  // Turn enum into object
+  const enumToObj = (enumme) => {
+    const stringIsNumber = value => !isNaN(Number(value));
+    const obj = {};
+    Object.keys(enumme)
+      .filter(stringIsNumber)
+      .map(key => obj[key] = enumme[key]);
+    return obj;
+  }
+
+  return Object.entries(enumToObj(enumme))
+    .map(o => ({ value: o[0], label: o[1] as any, }));
+}

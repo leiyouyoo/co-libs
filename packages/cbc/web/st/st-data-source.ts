@@ -281,7 +281,7 @@ export class STDataSource {
     }
     params = {
       dynamicQuery: {},
-      sorting: {},
+      orderBy: {},
       ...params,
       ...req.params,
       ...this.getReqSortMap(singleSort, multiSort, columns),
@@ -415,8 +415,7 @@ export class STDataSource {
                   return value.toISOString();
                 }
                 return value;
-              })
-              .join(',') || null;
+              }) || null;
         }
         ret = { ...ret, ...obj };
       });
