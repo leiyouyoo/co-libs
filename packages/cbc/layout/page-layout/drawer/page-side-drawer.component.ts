@@ -20,7 +20,6 @@ import { Observable, Subject } from 'rxjs';
 import { CdkPortalOutlet, ComponentPortal, DomPortal, Portal, PortalInjector, TemplatePortal } from '@angular/cdk/portal';
 import { InputBoolean } from 'ng-zorro-antd';
 import { PageSideComponent } from '../page-side.component';
-import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'co-page-side-drawer',
@@ -49,11 +48,11 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
   portal: Portal<any> | null = null;
 
   get afterOpen(): Observable<void> {
-    return this.coAfterOpen.asObservable().pipe(takeUntil(this.onDispose$));
+    return this.coAfterOpen.asObservable();
   }
 
   get afterClose(): Observable<R> {
-    return this.coAfterClose.asObservable().pipe(takeUntil(this.onDispose$));
+    return this.coAfterClose.asObservable();
   }
 
   isOpen = false;
@@ -62,8 +61,6 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
   private readonly coAfterOpen = new Subject<void>();
   private readonly coAfterClose = new Subject<R>();
   private componentInstance: T | null = null;
-  private readonly onDispose = new Subject<void>();
-  readonly onDispose$ = this.onDispose.asObservable();
 
   constructor(public elementRef: ElementRef<HTMLElement>,
               private cdr: ChangeDetectorRef,
@@ -137,7 +134,7 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
 
   private dispose() {
     this.bodyPortalOutlet!.dispose();
-    this.onDispose.next();
+    this.componentInstance = null;
   }
 
 
