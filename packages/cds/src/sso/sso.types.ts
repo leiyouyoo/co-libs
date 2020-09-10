@@ -208,6 +208,8 @@ export class SsoCreateTenantDto {
 }
 
 export class SsoCreateAsyncTenantDto {
+  customerId: string;
+
   tenancyName: string;
 
   name: string;
@@ -223,6 +225,7 @@ export class SsoCreateAsyncTenantDto {
   isActive?: boolean;
 
   id?: number;
+
 }
 
 /**
