@@ -280,6 +280,8 @@ export class STDataSource {
       }
     }
     params = {
+      dynamicQuery: {},
+      sorting: {},
       ...params,
       ...req.params,
       ...this.getReqSortMap(singleSort, multiSort, columns),

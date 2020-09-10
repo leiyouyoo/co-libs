@@ -138,7 +138,7 @@
                 <div class="d-flex justify-content-between">
                   <span>{{ 'Action' | translate }}</span>
                   <div class="d-flex align-items-center">
-                    <a nz-button [nzSize]="size" nzType="link" (click)="resetFilters()">Reset</a>
+                    <a nz-button [nzSize]="size" nzType="link" *ngIf="showFilters" (click)="resetFilters()">Reset</a>
                     <column-config [configName]="columnSettingName"></column-config>
                   </div>
                 </div>
@@ -173,7 +173,7 @@
                   <div class="d-flex justify-content-between">
                     <span>{{ 'Action' | translate }}</span>
                     <div class="d-flex align-items-center">
-                      <a nz-button [nzSize]="size" nzType="link" (click)="resetFilters()">Reset</a>
+                      <a nz-button [nzSize]="size" nzType="link" *ngIf="showFilters" (click)="resetFilters()">Reset</a>
                       <column-config [configName]="columnSettingName"></column-config>
                     </div>
                   </div>
