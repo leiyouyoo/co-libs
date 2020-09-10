@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBSailingSchedulesInput,PUBSailingSchedulesDto,PUBPagedResultDto, } from './pub.types';
+import { PUBSailingSchedulesInput,PUBSailingSchedulesDto,PUBPagedResultDto,PUBGetByVoyageDto, } from './pub.types';
 
 @BaseUrl('/pub/SailingSchedules')
 @Injectable({ providedIn: 'root' })
@@ -10,7 +10,7 @@ export class PUBSailingSchedulesService extends BaseApi {
     super(injector);
   }
 
-  
+
     /**
      * @param url /PUB/SailingSchedules/SaveSchedulesXmlToDataBase
      * 将Xml从Ftp服务获取下来再保存数据库
@@ -19,7 +19,7 @@ export class PUBSailingSchedulesService extends BaseApi {
     @POST('saveSchedulesXmlToDataBase')
     saveSchedulesXmlToDataBase(
         @Payload
-        _req: {} 
+        _req: {}
 
     ): Observable<any> {
         return null as any
@@ -34,7 +34,7 @@ export class PUBSailingSchedulesService extends BaseApi {
     @DELETE('deleteSchedule')
     deleteSchedule(
         @Payload
-        _req: {} 
+        _req: {}
 
     ): Observable<any> {
         return null as any
@@ -49,7 +49,7 @@ export class PUBSailingSchedulesService extends BaseApi {
     @DELETE('deleteOldSchedule')
     deleteOldSchedule(
         @Payload
-        _req: {} 
+        _req: {}
 
     ): Observable<any> {
         return null as any
@@ -67,6 +67,21 @@ export class PUBSailingSchedulesService extends BaseApi {
         _req:PUBSailingSchedulesInput
 
     ): Observable<PUBPagedResultDto<PUBSailingSchedulesDto>> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/SailingSchedules/GetByVoyage
+     * 根据船名航次获取ETD
+     */
+
+    @GET('getByVoyage')
+    getByVoyage(
+        @Payload
+        _req: {vesselName?:string,voyageNo?:string,carrierId?:string,polId?:string,podId?:string}
+
+    ): Observable<PUBGetByVoyageDto> {
         return null as any
     }
 

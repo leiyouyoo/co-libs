@@ -10,7 +10,7 @@ export class PUBVoyageService extends BaseApi {
     super(injector);
   }
 
-  
+
     /**
      * @param url /PUB/Voyage/Get
      * 获取航次详情
@@ -19,7 +19,7 @@ export class PUBVoyageService extends BaseApi {
     @GET('get')
     get(
         @Payload
-        _req: {id?:string} 
+        _req: {id?:string}
 
     ): Observable<PUBVoyageDto> {
         return null as any
@@ -34,7 +34,7 @@ export class PUBVoyageService extends BaseApi {
     @GET('getAll')
     getAll(
         @Payload
-        _req: {isValid?:boolean,vesselId?:string,no?:string,maxResultCount?:number,skipCount?:number} 
+        _req: {isValid?:boolean,vesselId?:string,no?:string,maxResultCount?:number,skipCount?:number}
 
     ): Observable<PUBPagedResultDto<PUBVoyageDto>> {
         return null as any
@@ -94,7 +94,7 @@ export class PUBVoyageService extends BaseApi {
     @DELETE('delete')
     delete(
         @Payload
-        _req: {id?:string} 
+        _req: {id?:string}
 
     ): Observable<any> {
         return null as any
@@ -118,7 +118,7 @@ export class PUBVoyageService extends BaseApi {
 
     /**
      * @param url /PUB/Voyage/CreateOrUpdate
-     * 创建或更新
+     *
      */
 
     @POST('createOrUpdate')

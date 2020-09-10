@@ -10,7 +10,7 @@ export class PUBShippingLineService extends BaseApi {
     super(injector);
   }
 
-  
+
     /**
      * @param url /PUB/ShippingLine/Get
      * 获取航线详情
@@ -19,7 +19,7 @@ export class PUBShippingLineService extends BaseApi {
     @GET('get')
     get(
         @Payload
-        _req: {id?:string} 
+        _req: {id?:string}
 
     ): Observable<PUBShippingLineDto> {
         return null as any
@@ -34,7 +34,7 @@ export class PUBShippingLineService extends BaseApi {
     @GET('getAll')
     getAll(
         @Payload
-        _req: {isValid?:boolean,parentId?:string,isRecursion?:boolean} 
+        _req: {isValid?:boolean,parentId?:string,isRecursion?:boolean}
 
     ): Observable<PUBListResultDto<PUBShippingLineDto>> {
         return null as any
@@ -109,7 +109,7 @@ export class PUBShippingLineService extends BaseApi {
     @DELETE('delete')
     delete(
         @Payload
-        _req: {id?:string} 
+        _req: {id?:string}
 
     ): Observable<any> {
         return null as any
@@ -139,7 +139,7 @@ export class PUBShippingLineService extends BaseApi {
     @GET('getCountryList')
     getCountryList(
         @Payload
-        _req: {shippingLineId?:string} 
+        _req: {shippingLineId?:string}
 
     ): Observable<PUBListResultDto<PUBCountryReationShippingDto>> {
         return null as any
@@ -154,7 +154,7 @@ export class PUBShippingLineService extends BaseApi {
     @POST('saveCountry')
     saveCountry(
         @Payload
-        _req: {} 
+        _req: {}
 
     ): Observable<any> {
         return null as any
@@ -169,7 +169,7 @@ export class PUBShippingLineService extends BaseApi {
     @GET('getPortList')
     getPortList(
         @Payload
-        _req: {shippingLineId?:string} 
+        _req: {shippingLineId?:string}
 
     ): Observable<PUBListResultDto<PUBPortReationCountryDto>> {
         return null as any
@@ -184,7 +184,7 @@ export class PUBShippingLineService extends BaseApi {
     @POST('savePort')
     savePort(
         @Payload
-        _req: {} 
+        _req: {}
 
     ): Observable<any> {
         return null as any
@@ -199,7 +199,22 @@ export class PUBShippingLineService extends BaseApi {
     @GET('getPortsByShippingLine')
     getPortsByShippingLine(
         @Payload
-        _req: {code?:string} 
+        _req: {code?:string}
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/ShippingLine/GetRegionsByShippingLine
+     * 根据航线获取对应的省份
+     */
+
+    @GET('getRegionsByShippingLine')
+    getRegionsByShippingLine(
+        @Payload
+        _req: {code?:string}
 
     ): Observable<any> {
         return null as any
