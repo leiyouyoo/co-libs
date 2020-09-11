@@ -18,12 +18,6 @@ export function ToLogin(options: CoAuthConfig, injector: Injector, url?: string)
   const router = injector.get<Router>(Router);
   (injector.get(DA_SERVICE_TOKEN) as ITokenService).referrer!.url = url || router.url;
   if (options.token_invalid_redirect === true) {
-    setTimeout(() => {
-      if (/^https?:\/\//g.test(options.login_url!)) {
-        injector.get(DOCUMENT).location.href = options.login_url as string;
-      } else {
-        router.navigate([options.login_url]);
-      }
-    });
+    setTimeout(() => injector.get(Router).navigateByUrl(`/passport/login`));
   }
 }
