@@ -25,7 +25,7 @@ declare var window: any;
 @Injectable({ providedIn: 'platform' })
 export class ReuseTabService implements OnDestroy {
   private _inited = false;
-  private _max = 10;
+  private _max = 100;
   private _keepingScroll = false;
   private _cachedChange = new BehaviorSubject<ReuseTabNotify | null>(null);
   private _cached: ReuseTabCached[] = [];
