@@ -9,7 +9,7 @@ import { NzMessageService } from 'ng-zorro-antd';
   templateUrl: './<%= name %>.component.html',
   styleUrls: ['./<%= name %>.component.less'],
 })
-export class <%= classify(name) %>DetailComponent extends CoPageBase {
+export class <%= classify(name) %>Component extends CoPageBase {
   //#region 私有变量
 
   isEnglish: boolean = true;
@@ -46,7 +46,7 @@ export class <%= classify(name) %>DetailComponent extends CoPageBase {
 
   //#region 事件处理
 
-  
+
   //#endregion
 
 
