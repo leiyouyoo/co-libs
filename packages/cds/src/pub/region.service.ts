@@ -10,7 +10,7 @@ export class PUBRegionService extends BaseApi {
     super(injector);
   }
 
-  
+
     /**
      * @param url /PUB/Region/Get
      * 获取地区明细
@@ -19,7 +19,7 @@ export class PUBRegionService extends BaseApi {
     @GET('get')
     get(
         @Payload
-        _req: {id?:string} 
+        _req: {id?:string}
 
     ): Observable<PUBRegionDto> {
         return null as any
@@ -34,7 +34,7 @@ export class PUBRegionService extends BaseApi {
     @GET('getAll')
     getAll(
         @Payload
-        _req: {code?:string,name?:string,parentId?:string,isValid?:boolean,isRecursion?:boolean,id?:string} 
+        _req: {ids?:any[],code?:string,name?:string,parentId?:string,isValid?:boolean,isRecursion?:boolean,id?:string}
 
     ): Observable<PUBListResultDto<PUBRegionDto>> {
         return null as any
@@ -124,7 +124,7 @@ export class PUBRegionService extends BaseApi {
     @DELETE('delete')
     delete(
         @Payload
-        _req: {id?:string} 
+        _req: {id?:string}
 
     ): Observable<any> {
         return null as any
@@ -133,7 +133,7 @@ export class PUBRegionService extends BaseApi {
 
     /**
      * @param url /PUB/Region/BulkCreateAsync
-     * 
+     *
      */
 
     @POST('bulkCreateAsync')

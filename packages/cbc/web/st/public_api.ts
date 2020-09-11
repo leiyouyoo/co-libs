@@ -15,5 +15,6 @@ export { InternalI18nPipe as ɵInternalI18nPipe } from './internal-i18n.pipe';
 export { STRowSource as ɵSTRowSource } from './st-row.directive';
 export { StUserSettingService as ɵStUserSettingService } from './st-user-setting.service';
 export { StNumberInputComponent } from './st-number-input.component';
+export { enumToFilterArray } from './utils'
 
 export { CoSTModule } from './co-s-t.module';

@@ -2,19 +2,21 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  ElementRef, EventEmitter,
+  ElementRef,
+  EventEmitter,
   forwardRef,
   Injector,
   Input,
   OnDestroy,
-  OnInit, Output,
+  OnInit,
+  Output,
   TemplateRef,
   Type,
   ViewChild,
   ViewContainerRef,
   ViewEncapsulation,
 } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { CdkPortalOutlet, ComponentPortal, DomPortal, Portal, PortalInjector, TemplatePortal } from '@angular/cdk/portal';
 import { InputBoolean } from 'ng-zorro-antd';
 import { PageSideComponent } from '../page-side.component';
@@ -45,11 +47,19 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
 
   portal: Portal<any> | null = null;
 
-  coAfterOpen = new Subject<void>();
-  coAfterClose = new Subject<R>();
+  get afterOpen(): Observable<void> {
+    return this.coAfterOpen.asObservable();
+  }
+
+  get afterClose(): Observable<R> {
+    return this.coAfterClose.asObservable();
+  }
 
   isOpen = false;
 
+
+  private readonly coAfterOpen = new Subject<void>();
+  private readonly coAfterClose = new Subject<R>();
   private componentInstance: T | null = null;
 
   constructor(public elementRef: ElementRef<HTMLElement>,
@@ -76,7 +86,9 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
     portalContent && this.attachPortal(portalContent, templateContext);
     this.isOpen = true;
     this.cdr.detectChanges();
-    this.coAfterOpen.next();
+    setTimeout(() => {
+      this.coAfterOpen.next();
+    });
   }
 
   close(result?: R): void {
@@ -86,9 +98,9 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
     this.coAfterClose.complete();
   }
 
-  destroy() {
+  destroy(): void {
     this.close();
-    this.bodyPortalOutlet!.dispose();
+    this.dispose();
     this.portal?.detach();
     this.portal = null;
     this.componentInstance = null;
@@ -98,8 +110,12 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
     this.coOnClose.emit(this);
   }
 
+  getContentComponent(): T | null {
+    return this.componentInstance;
+  }
+
   private attachPortal(portalContent, templateContext?): void {
-    this.bodyPortalOutlet!.dispose();
+    this.dispose();
     if (portalContent instanceof ElementRef || portalContent instanceof HTMLElement) { // html
       this.portal = new DomPortal(portalContent);
       this.bodyPortalOutlet!.attach(this.portal);
@@ -114,6 +130,11 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
       Object.assign(componentRef.instance, templateContext);
       componentRef.changeDetectorRef.detectChanges();
     }
+  }
+
+  private dispose() {
+    this.bodyPortalOutlet!.dispose();
+    this.componentInstance = null;
   }
 
 

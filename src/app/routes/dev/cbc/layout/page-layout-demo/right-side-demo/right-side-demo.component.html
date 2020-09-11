@@ -74,6 +74,14 @@
         </co-page-side>
       </co-page-layout>
     </co-page-main>
-    <co-page-side-drawer style="background: #8f8f88;" coWidthResizable></co-page-side-drawer>
+    <co-page-side-drawer [coTitle]="drawerTitle" coWidthResizable></co-page-side-drawer>
   </co-page-layout>
 </div>
+<ng-template #drawerTitle>
+  <div style="display: flex; align-items: center;">
+    <span style=" margin-right: 8px;margin-left: 14px;">
+      New User
+    </span>
+    <nz-tag nzColor="processing" >激活</nz-tag>
+  </div>
+</ng-template>

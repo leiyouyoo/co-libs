@@ -140,7 +140,7 @@ export class v1TenantService extends BaseApi {
   @GET('getAllAsync')
   getAllAsync(
     @Payload
-      _req: { searchText: string, IsActive: boolean },
+      _req: { searchText?: string, isActive?: boolean },
   ): Observable<{ items: Required<SsoCreateAsyncTenantDto>[] }> {
     return null as any;
   }

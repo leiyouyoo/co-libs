@@ -280,6 +280,8 @@ export class STDataSource {
       }
     }
     params = {
+      dynamicQuery: {},
+      orderBy: {},
       ...params,
       ...req.params,
       ...this.getReqSortMap(singleSort, multiSort, columns),
@@ -383,7 +385,20 @@ export class STDataSource {
       }
       ret[sortFiled as string] = sortValue as string;
     }
-    return ret;
+    const mapOrderBy = (obj) => {
+      const map = {
+        descend: 'desc',
+        ascend: 'asc',
+      }
+      for (const key in obj) {
+        const mapValue = map[obj[key]];
+        if (mapValue) {
+          obj[key] = mapValue
+        }
+      }
+      return obj;
+    }
+    return { orderBy: { ...mapOrderBy(ret) } as any, };
   }
 
   // #endregion
@@ -405,7 +420,7 @@ export class STDataSource {
         if (filter.reName) {
           obj = filter.reName!(filter.menus!, col);
         } else {
-          obj[filter.key!] =
+          const val =
             values
               .map(i => {
                 let value = i.value;
@@ -413,12 +428,20 @@ export class STDataSource {
                   return value.toISOString();
                 }
                 return value;
-              })
-              .join(',') || null;
+              });
+          obj[filter.key!] = val.join('') ? val[0] : null;
         }
         ret = { ...ret, ...obj };
       });
-    return ret;
+    const clean = (obj): any => {
+      for (var propName in obj) {
+        if (obj[propName] === null || obj[propName] === undefined) {
+          delete obj[propName];
+        }
+      }
+      return obj;
+    }
+    return { ...ret, dynamicQuery: clean({ ...ret }), };
   }
 
   // #endregion

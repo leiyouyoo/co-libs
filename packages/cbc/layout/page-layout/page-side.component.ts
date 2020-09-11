@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { InputBoolean } from 'ng-zorro-antd';
+import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input, ViewEncapsulation } from '@angular/core';
+import { InputBoolean, InputNumber } from 'ng-zorro-antd';
 import { LifeCycleComponent } from '@co/core';
 
 @Component({
@@ -11,20 +11,20 @@ import { LifeCycleComponent } from '@co/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class PageSideComponent extends LifeCycleComponent implements OnInit {
+export class PageSideComponent extends LifeCycleComponent {
 
   @Input() @InputBoolean() coWidthResizable = false;
-  @Input() @HostBinding('style.margin-left.px') marginLeft = 16;
+  @HostBinding('style.margin-left.px') @Input() @InputNumber() marginLeft = 16;
 
   @HostBinding('style.width.px') width;
   @HostBinding('style.height.px') height;
-  @HostBinding('style.max-width') maxWidth = `calc(100% - ${this.marginLeft}px - var(--left-min-width))`;
+
+  @HostBinding('style.max-width') get maxWidth() {
+    return `calc(100% - ${this.marginLeft}px - var(--left-min-width))`;
+  }
 
   constructor(public elementRef: ElementRef<HTMLElement>) {
     super();
-  }
-
-  ngOnInit(): void {
   }
 
 }

@@ -90,7 +90,7 @@ export class ColumnConfigComponent implements OnInit {
       return cols?.map(col => {
         if (!col) return col;
         return {
-          title: col.title,
+          title: this.translateService.instant(col.title),
           key: col.index,
           checked: col.columnShow,
           isLeaf: !col?.children?.length,

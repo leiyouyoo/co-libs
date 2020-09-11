@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NzOutletModule } from 'ng-zorro-antd';
+import { NzIconModule, NzOutletModule } from 'ng-zorro-antd';
 import { PortalModule } from '@angular/cdk/portal';
 import { PageLayoutComponent } from './page-layout.component';
 import { PageMainComponent } from './page-main.component';
@@ -21,6 +21,7 @@ const COMPONENTS = [
   declarations: [...COMPONENTS],
   imports: [
     CommonModule,
+    NzIconModule,
     NzOutletModule,
     PortalModule,
   ],

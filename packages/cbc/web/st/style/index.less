@@ -5,6 +5,9 @@
 
 @{st-prefix} {
   position: relative;
+
+  height: 100%;
+
   display: block;
 
   &__p-left {
@@ -85,8 +88,11 @@
   }
 
   &-has-filter {
-    tr& th, .ant-table-column-sorters {
+    tr& th {
       padding: 5px 12px !important;
+    }
+    .ant-table-column-sorters {
+      padding: 0;
     }
   }
 

@@ -10,7 +10,7 @@ export class PUBFlightService extends BaseApi {
     super(injector);
   }
 
-  
+
     /**
      * @param url /PUB/Flight/GetAll
      * 分页获取航班列表
@@ -19,7 +19,7 @@ export class PUBFlightService extends BaseApi {
     @GET('getAll')
     getAll(
         @Payload
-        _req: {isValid?:boolean,airlineId?:string,no?:string,maxResultCount?:number,skipCount?:number} 
+        _req: {isValid?:boolean,airlineId?:string,no?:string,maxResultCount?:number,skipCount?:number}
 
     ): Observable<PUBPagedResultDto<PUBFlightDto>> {
         return null as any
@@ -34,7 +34,7 @@ export class PUBFlightService extends BaseApi {
     @GET('get')
     get(
         @Payload
-        _req: {id?:string} 
+        _req: {id?:string}
 
     ): Observable<PUBFlightDto> {
         return null as any
@@ -94,7 +94,7 @@ export class PUBFlightService extends BaseApi {
     @DELETE('delete')
     delete(
         @Payload
-        _req: {id?:string} 
+        _req: {id?:string}
 
     ): Observable<any> {
         return null as any
@@ -118,7 +118,7 @@ export class PUBFlightService extends BaseApi {
 
     /**
      * @param url /PUB/Flight/CreateOrUpdate
-     * 创建或更新
+     *
      */
 
     @POST('createOrUpdate')
