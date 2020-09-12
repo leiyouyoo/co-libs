@@ -70,6 +70,7 @@ export class SSOUserService extends BaseApi {
       permission?: string;
       role?: number;
       onlyLockedUsers?: boolean;
+      status?: number;
       tenantId?: number;
       sorting?: string;
       maxResultCount?: number;

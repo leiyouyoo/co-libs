@@ -25,7 +25,7 @@ declare var window: any;
 @Injectable({ providedIn: 'platform' })
 export class ReuseTabService implements OnDestroy {
   private _inited = false;
-  private _max = 10;
+  private _max = 100;
   private _keepingScroll = false;
   private _cachedChange = new BehaviorSubject<ReuseTabNotify | null>(null);
   private _cached: ReuseTabCached[] = [];
@@ -273,6 +273,11 @@ export class ReuseTabService implements OnDestroy {
       return this._titleCached[url];
     }
 
+    const menu = this.getMenu(url);
+    if (menu) {
+      return { text: menu.text, i18n: menu.i18n };
+    }
+
     const paramTitle = route?.queryParams?._title;
     if (route && route.data && (route.data.titleI18n || route.data.title)) {
       return {
@@ -281,8 +286,7 @@ export class ReuseTabService implements OnDestroy {
       } as ReuseTitle;
     }
 
-    const menu = this.getMenu(url);
-    return menu ? { text: menu.text, i18n: menu.i18n } : { text: paramTitle || url };
+    return { text: paramTitle || url };
   }
 
   /**
@@ -526,7 +530,12 @@ export class ReuseTabService implements OnDestroy {
         //   };
         // }
 
+        // 在挂载dom后再触发coOnActived事件
         this.runHook('coOnActived', compRef);
+        // const timerId = window.setTimeout(() => {
+        //   window.clearTimeout(timerId);
+        //   this.runHook('coOnActived', compRef);
+        // });
       }
     } else {
       this._cachedChange.next({ active: 'add', url, list: this._cached });

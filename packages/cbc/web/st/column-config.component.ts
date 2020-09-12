@@ -6,7 +6,9 @@ import { STColumn, STColumnSetting } from './st.interfaces';
 import { cloneDeep } from 'lodash';
 import { UserCustomConfigService } from '@co/common';
 import { TranslateService } from '@ngx-translate/core';
-import { mergeSorted } from '@co/core';
+import { NzFormatBeforeDropEvent, NzFormatEmitEvent, NzTreeNodeOptions } from 'ng-zorro-antd';
+import { Observable, of } from 'rxjs';
+import { mergeSorted } from './utils';
 
 @Component({
   selector: 'column-config',
@@ -30,17 +32,23 @@ import { mergeSorted } from '@co/core';
                    [nzIndeterminate]="getIndeterminate()"
                    [ngModel]="getCheckAll()"
                    (ngModelChange)="onCheckAllChange($event)" >
-            {{ getCountByStatus(true) }}/{{ listData?.length || 0 }} {{ 'Columns' | internalI18n }}
+            {{ getCountByStatus(true) }}/{{ nodes?.length || 0 }} {{ 'Columns' | internalI18n }}
             </label>
           </div>
           <div class="container_main">
-            <div cdkDropList (cdkDropListDropped)="drop($event)">
+            <!--<div cdkDropList (cdkDropListDropped)="drop($event)">
               <div *ngFor="let i of listData" class="container_main_item" cdkDrag style="cursor: move;">
                 <label nz-checkbox [(ngModel)]="i.columnShow">
                 {{i.title | translate}}
                   </label>
               </div>
-            </div>
+            </div>-->
+            <nz-tree [nzData]="nodes"
+                     nzDraggable
+                     nzBlockNode
+                     [nzBeforeDrop]="nzBeforeDrop"
+                     (nzOnDrop)="nzOnDrop($event)"
+                     nzCheckable></nz-tree>
           </div>
           <div class="container_btn">
             <button nz-button [nzSize]="'small'" nzType="primary" [nzLoading]="loading" (click)="save(columnSettingPopover)" style="margin-right: 5px;">{{ 'Save' | internalI18n }}</button>
@@ -54,8 +62,8 @@ import { mergeSorted } from '@co/core';
 })
 export class ColumnConfigComponent implements OnInit {
   @Input() configName;
-  listData: STColumn[] = [];
   @Output() closed = new EventEmitter();
+  nodes: NzTreeNodeOptions[] = [];
 
   loading = false;
 
@@ -77,12 +85,34 @@ export class ColumnConfigComponent implements OnInit {
           o.columnShow = true;
           return o;
         });
-    this.listData = mergeSorted(columns, settingColumns, 'index');
+    const listData = mergeSorted(columns, settingColumns, 'index');
+    const buildNodes = (cols: any[]) => {
+      return cols?.map(col => {
+        if (!col) return col;
+        return {
+          title: this.translateService.instant(col.title),
+          key: col.index,
+          checked: col.columnShow,
+          isLeaf: !col?.children?.length,
+          children: buildNodes(col.children),
+        } as NzTreeNodeOptions;
+      })
+    };
+    this.nodes = buildNodes(listData);
   }
 
   save(popover) {
     this.loading = true;
-    const cols = this.listData.map(o => ({ index: o.index, columnShow: o.columnShow, }));
+    const buildParam = (oo: NzTreeNodeOptions[]) => {
+      return oo?.map(o => {
+        const param = { index: o.key, columnShow: o.checked, };
+        if (o.children?.length) {
+          (<any>param).children = buildParam(o.children);
+        }
+        return param;
+      });
+    }
+    const cols = buildParam(this.nodes);
     this.userCustomConfigService.setCurrentUserSetting([this.stComponent.columnSettingName, 'columns'], cols)
       .finally(() => this.loading = false)
       .then(() => {
@@ -96,23 +126,48 @@ export class ColumnConfigComponent implements OnInit {
     this.closed.emit(false);
   }
 
-  drop(event: CdkDragDrop<string[]>) {
+ /* drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.listData, event.previousIndex, event.currentIndex);
-  }
+  }*/
 
   onCheckAllChange(e: boolean) {
-    this.listData?.forEach(o => o.columnShow = e)
+    this.nodes?.forEach(o => o.checked = e)
+    this.nodes = [...this.nodes]
   }
 
   getCountByStatus(e: boolean): number {
-    return this.listData?.filter(o => o.columnShow === e).length;
+    const count = this.nodes?.filter(o => o.checked === e).length
+    // console.log(count);
+    return count;
   }
 
   getCheckAll(): boolean {
-    return this.getCountByStatus(true) === this.listData?.length;
+    const isCheckAll = this.getCountByStatus(true) === this.nodes?.length
+    // console.log(isCheckAll);
+    return isCheckAll;
   }
 
   getIndeterminate(): boolean {
-    return !this.getCheckAll() && this.getCountByStatus(false) !== 0;
+    // console.log(this.getCheckAll());
+    // console.log(this.getCountByStatus(false));
+    const isIndeterminate = !this.getCheckAll() && this.getCountByStatus(true) !== 0;
+    // console.log(isIndeterminate);
+    return isIndeterminate;
+  }
+
+  nzBeforeDrop({ dragNode, node, pos }: NzFormatBeforeDropEvent): Observable<boolean> {
+    if (dragNode.level !== node.level) {
+      return of(false);
+    }
+    return of(true);
+  }
+
+  nzOnDrop(event: NzFormatEmitEvent): void {
+    const { dragNode, node  } = event;
+    if (dragNode?.level === 0) {
+      const dragIndex = this.nodes.findIndex(o => o.key === dragNode.key);
+      const index = this.nodes.findIndex(o => o.key === node!.key);
+      this.nodes.splice(index, 0, this.nodes.splice(dragIndex, 1)[0])
+    }
   }
 }

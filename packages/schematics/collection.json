@@ -1,9 +1,19 @@
 {
   "schematics": {
-    "co-application": {
+    "application": {
       "description": "build application",
       "factory": "./application/index#build",
       "schema": "./application/schema.json"
+    },
+    "component": {
+      "description": "build component",
+      "factory": "./component/index#build",
+      "schema": "./component/schema.json"
+    },
+    "modules": {
+      "description": "build modules",
+      "factory": "./modules/index#build",
+      "schema": "./modules/schema.json"
     },
     "swagger": {
       "description": "build co-service schematic",

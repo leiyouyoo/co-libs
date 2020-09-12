@@ -358,6 +358,7 @@ export class STColumnSource {
     const copyList: STColumn[] = deepCopy(list);
     for (const item of copyList) {
       item._oriColumn = deepCopy(item);
+      item?.children?.forEach(child => child._oriColumn = deepCopy(child))
       if (item.iif && !item.iif(item)) {
         continue;
       }
@@ -403,6 +404,7 @@ export class STColumnSource {
       // no
       if (item.type === 'no') {
         item.noIndex = item.noIndex == null ? noIndex : item.noIndex;
+        if (!item.width) item.width = 60;
       }
       // checkbox
       if (item.selections == null) {
@@ -448,6 +450,9 @@ export class STColumnSource {
       // width
       if (typeof item.width === 'number') {
         item.width = `${item.width}px`;
+      }
+      if (!item.width) {
+        item.width = `100px`;
       }
 
       // sorter

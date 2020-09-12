@@ -1,19 +1,30 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input, ViewEncapsulation } from '@angular/core';
+import { InputBoolean, InputNumber } from 'ng-zorro-antd';
+import { LifeCycleComponent } from '@co/core';
 
 @Component({
   selector: 'co-page-side',
   template: `
+    <co-page-side-resize-handle *ngIf="coWidthResizable"></co-page-side-resize-handle>
     <ng-content></ng-content>`,
   host: { '[class.co-page-side]': 'true' },
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class PageSideComponent implements OnInit {
+export class PageSideComponent extends LifeCycleComponent {
 
-  constructor() {
+  @Input() @InputBoolean() coWidthResizable = false;
+  @HostBinding('style.margin-left.px') @Input() @InputNumber() marginLeft = 16;
+
+  @HostBinding('style.width.px') width;
+  @HostBinding('style.height.px') height;
+
+  @HostBinding('style.max-width') get maxWidth() {
+    return `calc(100% - ${this.marginLeft}px - var(--left-min-width))`;
   }
 
-  ngOnInit(): void {
+  constructor(public elementRef: ElementRef<HTMLElement>) {
+    super();
   }
 
 }

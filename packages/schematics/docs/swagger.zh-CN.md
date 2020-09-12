@@ -24,3 +24,9 @@ ng g co-cli:swagger --name xxx --url http://192.168.1.5:8002/swagger/xxx/swagger
 | `--url`              | 请求接口地址                                           |
 | `--path`             | 指定生成目录                                           |
 | `--entity`           |  指定生成某个实体（不填写默认生成所有）                  |
+
+## 生成路径
+
+```bash
+默认生成在当前路径下
+```

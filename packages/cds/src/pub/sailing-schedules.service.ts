@@ -10,7 +10,7 @@ export class PUBSailingSchedulesService extends BaseApi {
     super(injector);
   }
 
-  
+
     /**
      * @param url /PUB/SailingSchedules/SaveSchedulesXmlToDataBase
      * 将Xml从Ftp服务获取下来再保存数据库
@@ -19,7 +19,7 @@ export class PUBSailingSchedulesService extends BaseApi {
     @POST('saveSchedulesXmlToDataBase')
     saveSchedulesXmlToDataBase(
         @Payload
-        _req: {} 
+        _req: {}
 
     ): Observable<any> {
         return null as any
@@ -34,7 +34,7 @@ export class PUBSailingSchedulesService extends BaseApi {
     @DELETE('deleteSchedule')
     deleteSchedule(
         @Payload
-        _req: {} 
+        _req: {}
 
     ): Observable<any> {
         return null as any
@@ -49,7 +49,7 @@ export class PUBSailingSchedulesService extends BaseApi {
     @DELETE('deleteOldSchedule')
     deleteOldSchedule(
         @Payload
-        _req: {} 
+        _req: {}
 
     ): Observable<any> {
         return null as any
@@ -79,7 +79,11 @@ export class PUBSailingSchedulesService extends BaseApi {
     @GET('getByVoyage')
     getByVoyage(
         @Payload
+<<<<<<< HEAD
         _req: {vesselName?:string,voyageNo?:string,carrierId?:string,polId?:string,podId?:string} 
+=======
+        _req: {vesselName?:string,voyageNo?:string,carrierId?:string,polId?:string,podId?:string}
+>>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
 
     ): Observable<PUBGetByVoyageDto> {
         return null as any

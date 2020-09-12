@@ -1,27 +1,30 @@
 @import '../../../../theme/theme-default.less';
 
 @page-layout-prefix: ~'.co-page-layout';
-@page-layout-padding: 24px;
+@page-layout-padding: 16px;
 
 @page-main-prefix: ~'.co-page-main';
-@page-main-width: 80%;
 
 @page-side-prefix: ~'.co-page-side';
-@page-side-width: 20%;
 
 @{page-layout-prefix} {
   display: flex;
   flex: auto;
   flex-direction: column;
-  width: 100%;
+  height: 100%;
   min-height: 0;
   background-color: #ffffff;
-  padding: @page-layout-padding @page-layout-padding 0;
+  padding: @page-layout-padding;
+
+  &__topWrapper {
+    padding: 0;
+    background-color: transparent;
+  }
 
   &__toolbar, &__searchArea {
     flex: none;
     width: 100%;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
   }
 
   &__content {
@@ -48,16 +51,103 @@
 
 }
 
-@{page-main-prefix} {
+@{page-main-prefix}, @{page-side-prefix} {
   flex: auto;
-  width: @page-main-width;
   min-height: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
 
 }
 
 @{page-side-prefix} {
-  flex: none;
-  width: @page-side-width;
-  min-height: 0;
+  &-resize-handle {
+    user-select: none;
+    z-index: 9;
+    width: 16px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: ew-resize;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #E6E6E6;
+    padding: 10% 1px;
+    transition: all 0.5s;
 
+    &-pointer {
+      font-size: 14px;
+      color: rgba(0,0,0,0.25);
+    }
+  }
+
+  &-drawer {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 0;
+    animation: max-width ease 0.5s;
+
+    &__show {
+      display: flex;
+    }
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    &-header {
+      position: relative;
+      padding: 16px 24px;
+      border-bottom: 1px solid #f0f0f0;
+      border-radius: 2px 2px 0 0;
+    }
+
+    &-body {
+      overflow: auto;
+      padding: 12px;
+    }
+
+    &-title {
+      margin: 0;
+      color: rgba(0, 0, 0, .85);
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 22px;
+    }
+
+    &-close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 10;
+      display: block;
+      padding: 20px;
+      color: rgba(0,0,0,.45);
+      font-weight: 700;
+      font-size: 16px;
+      font-style: normal;
+      line-height: 1;
+      text-align: center;
+      text-transform: none;
+      text-decoration: none;
+      background: 0 0;
+      border: 0;
+      outline: 0;
+      cursor: pointer;
+      transition: color .3s;
+      text-rendering: auto;
+    }
+  }
 }

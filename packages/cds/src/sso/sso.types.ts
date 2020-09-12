@@ -207,6 +207,27 @@ export class SsoCreateTenantDto {
   txId?: string;
 }
 
+export class SsoCreateAsyncTenantDto {
+  customerId: string;
+
+  tenancyName: string;
+
+  name: string;
+
+  description: string;
+
+  permissionIds: string[];
+
+  creatorUserName?: string;
+
+  creationTime?: string;
+
+  isActive?: boolean;
+
+  id?: number;
+
+}
+
 /**
  *  No Remark
  */

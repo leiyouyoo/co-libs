@@ -1,55 +1,50 @@
 import { strings } from '@angular-devkit/core';
-// tslint:disable-next-line: ordered-imports
-import {
-  apply,
-  chain,
-  MergeStrategy,
-  mergeWith,
-  move,
-  Rule,
-  SchematicContext,
-  SchematicsException,
-  template,
-  Tree,
-  url,
-} from '@angular-devkit/schematics';
-import { addProviderToModule } from '@schematics/angular/utility/ast-utils';
-import { InsertChange } from '@schematics/angular/utility/change';
+import { apply, chain, MergeStrategy, mergeWith, move, Rule, template, Tree, url } from '@angular-devkit/schematics';
 import { getWorkspace } from '@schematics/angular/utility/config';
-import { buildRelativePath } from '@schematics/angular/utility/find-module';
-import * as ts from 'typescript';
-// You don't have to export the function as default. You can also have more than one rule factory
-// per file.
 
 export function build(options: any): Rule {
-  return async (tree: Tree, context: SchematicContext) => {
-    console.log('loading....');
-
-    const workspace = getWorkspace(tree);
-    if (!options.name) {
-      throw new SchematicsException('Option (name) is required.');
+  return async (host: Tree) => {
+    console.log('开始构建...');
+    const workspace = getWorkspace(host);
+    if (!options.project) {
+      console.log('Option (project) is required.');
     }
+
     const projectName = options.project as string;
     const project = workspace.projects[projectName];
-    options.path = `${project.root}/apps/`;
 
-    if (tree.exists(options.path + options.name)) {
-      tree.delete(options.path + options.name);
+    // 路由
+    let requireUrl = process.cwd();
+    if (!options.path) {
+      if (requireUrl.includes('apps')) {
+        requireUrl = requireUrl.substring(requireUrl.lastIndexOf('apps'));
+        options.path = requireUrl;
+      } else {
+        options.path = `${project.sourceRoot}/`;
+      }
     }
 
-    const response = mergeWith(
+    // 是否存在
+    [
+      `${requireUrl}/${options.name}/${options.name}.component.ts`,
+      `${requireUrl}/${options.name}/${options.name}.component.less`,
+      `${requireUrl}/${options.name}/${options.name}.component.html`,
+    ]
+      .filter(p => host.exists(p))
+      .forEach(p => host.delete(p));
+
+    const templateSource = mergeWith(
       apply(url('./files'), [
         template({
           ...strings,
           'if-flat': (s: string) => (options.flat ? '' : s),
-          ...{
-            name: options.name,
-          },
+          ...options,
         }),
         move(options.path as string),
       ]),
       MergeStrategy.Default,
     );
-    return chain([response]);
+
+    return chain([templateSource]);
   };
 }

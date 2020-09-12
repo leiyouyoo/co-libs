@@ -10,7 +10,7 @@ export class PUBChargingCodeService extends BaseApi {
     super(injector);
   }
 
-  
+
     /**
      * @param url /PUB/ChargingCode/Get
      * 获取费用代码
@@ -19,7 +19,7 @@ export class PUBChargingCodeService extends BaseApi {
     @GET('get')
     get(
         @Payload
-        _req: {id?:string} 
+        _req: {id?:string}
 
     ): Observable<PUBChargingCodeDto> {
         return null as any
@@ -34,7 +34,7 @@ export class PUBChargingCodeService extends BaseApi {
     @GET('getAll')
     getAll(
         @Payload
-        _req: {groupId?:string,text?:string,isValid?:boolean} 
+        _req: {groupId?:string,text?:string,isValid?:boolean}
 
     ): Observable<PUBPagedResultDto<PUBChargingCodeDto>> {
         return null as any
@@ -88,7 +88,11 @@ export class PUBChargingCodeService extends BaseApi {
 
     /**
      * @param url /PUB/ChargingCode/Check
+<<<<<<< HEAD
      * 
+=======
+     *
+>>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
      */
 
     @POST('check')
@@ -103,7 +107,7 @@ export class PUBChargingCodeService extends BaseApi {
 
     /**
      * @param url /PUB/ChargingCode/Create
-     * 
+     *
      */
 
     @POST('create')
@@ -118,7 +122,7 @@ export class PUBChargingCodeService extends BaseApi {
 
     /**
      * @param url /PUB/ChargingCode/Update
-     * 
+     *
      */
 
     @PUT('update')
@@ -133,13 +137,13 @@ export class PUBChargingCodeService extends BaseApi {
 
     /**
      * @param url /PUB/ChargingCode/Delete
-     * 
+     *
      */
 
     @DELETE('delete')
     delete(
         @Payload
-        _req: {id?:string} 
+        _req: {id?:string}
 
     ): Observable<any> {
         return null as any

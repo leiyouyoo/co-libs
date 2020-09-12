@@ -10,7 +10,7 @@ export class PUBVesselService extends BaseApi {
     super(injector);
   }
 
-  
+
     /**
      * @param url /PUB/Vessel/Get
      * 获取船名详情
@@ -19,7 +19,7 @@ export class PUBVesselService extends BaseApi {
     @GET('get')
     get(
         @Payload
-        _req: {id?:string} 
+        _req: {id?:string}
 
     ): Observable<PUBVesselDto> {
         return null as any
@@ -34,7 +34,7 @@ export class PUBVesselService extends BaseApi {
     @GET('getAll')
     getAll(
         @Payload
-        _req: {isValid?:boolean,code?:string,name?:string,carrierId?:string,maxResultCount?:number,skipCount?:number} 
+        _req: {isValid?:boolean,code?:string,name?:string,carrierId?:string,maxResultCount?:number,skipCount?:number}
 
     ): Observable<PUBPagedResultDto<PUBVesselDto>> {
         return null as any
@@ -94,7 +94,7 @@ export class PUBVesselService extends BaseApi {
     @DELETE('delete')
     delete(
         @Payload
-        _req: {id?:string} 
+        _req: {id?:string}
 
     ): Observable<any> {
         return null as any
@@ -118,7 +118,11 @@ export class PUBVesselService extends BaseApi {
 
     /**
      * @param url /PUB/Vessel/CreateOrUpdate
+<<<<<<< HEAD
      * 
+=======
+     *
+>>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
      */
 
     @POST('createOrUpdate')

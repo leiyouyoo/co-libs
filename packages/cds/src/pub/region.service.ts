@@ -20,6 +20,7 @@ export class PUBRegionService extends BaseApi {
     super(injector);
   }
 
+<<<<<<< HEAD
   /**
    * @param url /PUB/Region/Get
    * 获取地区明细
@@ -34,6 +35,143 @@ export class PUBRegionService extends BaseApi {
   ): Observable<PUBRegionDto> {
     return null as any;
   }
+=======
+
+    /**
+     * @param url /PUB/Region/Get
+     * 获取地区明细
+     */
+
+    @GET('get')
+    get(
+        @Payload
+        _req: {id?:string}
+
+    ): Observable<PUBRegionDto> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/Region/GetAll
+     * 获取地区列表
+     */
+
+    @GET('getAll')
+    getAll(
+        @Payload
+        _req: {ids?:any[],code?:string,name?:string,parentId?:string,isValid?:boolean,isRecursion?:boolean,id?:string}
+
+    ): Observable<PUBListResultDto<PUBRegionDto>> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/Region/GetByAreaIds
+     * 根据片区获取省份地区
+     */
+
+    @POST('getByAreaIds')
+    getByAreaIds(
+        @Payload
+        _req:PUBGetByAreaInput
+
+    ): Observable<PUBListResultDto<PUBRegionDto>> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/Region/Check
+     * 校验重复性数据
+     */
+
+    @POST('check')
+    check(
+        @Payload
+        _req:PUBRegionCheckDto
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/Region/CreateOrUpdate
+     * 创建或更新地区-前端提交只需调用这个方法即可
+     */
+
+    @POST('createOrUpdate')
+    createOrUpdate(
+        @Payload
+        _req:PUBRegionDto
+
+    ): Observable<PUBRegionDto> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/Region/Create
+     * 创建地区
+     */
+
+    @POST('create')
+    create(
+        @Payload
+        _req:PUBRegionDto
+
+    ): Observable<PUBRegionDto> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/Region/Update
+     * 更新地区
+     */
+
+    @PUT('update')
+    update(
+        @Payload
+        _req:PUBRegionDto
+
+    ): Observable<PUBRegionDto> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/Region/Delete
+     * 删除地区
+     */
+
+    @DELETE('delete')
+    delete(
+        @Payload
+        _req: {id?:string}
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/Region/BulkCreateAsync
+     *
+     */
+
+    @POST('bulkCreateAsync')
+    bulkCreateAsync(
+        @Payload
+        _req:PUBRegionDto
+
+    ): Observable<any> {
+        return null as any
+    }
+
+>>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
 
   /**
    * @param url /PUB/Region/GetAll

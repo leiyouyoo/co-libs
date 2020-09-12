@@ -2,6 +2,7 @@ import { Inject, Injectable, Injector } from '@angular/core';
 // tslint:disable-next-line: ordered-imports
 import { HttpInterceptor, HttpHandler, HttpRequest, HttpEvent, HttpResponse, HttpHeaders } from '@angular/common/http';
 
+import { Router } from '@angular/router';
 import { DA_SERVICE_TOKEN, ITokenService } from '@co/auth';
 // import { Planet, ReuseTabService } from '@co/cms';
 // import { MODAL_SERVICE, ModalService } from '../ModalService.injector';
@@ -34,7 +35,7 @@ export interface IAjaxResponse {
   __abp: boolean;
 }
 
-const loginUrl = `/#/passport/login`;
+const loginUrl = `/passport/login`;
 
 @Injectable({
   providedIn: 'root',
@@ -85,7 +86,7 @@ export class AbpHttpConfiguration {
 
   handleTargetUrl(targetUrl?: string): void {
     if (targetUrl) {
-      setTimeout(() => (window.location.href = targetUrl));
+      setTimeout(() => this.injector.get(Router).navigateByUrl(targetUrl));
     }
   }
 

@@ -1,0 +1,22 @@
+<co-page-side-resize-handle *ngIf="coWidthResizable"></co-page-side-resize-handle>
+<div class="co-page-side-drawer-content">
+  <button *ngIf="coClosable" (click)="closeClick()" aria-label="Close" class="co-page-side-drawer-close" style="--scroll-bar: 0px;">
+    <i nz-icon nzType="close"></i>
+  </button>
+  <div class="co-page-side-drawer-header" *ngIf="coTitle">
+    <div class="co-page-side-drawer-title">
+      <ng-container *nzStringTemplateOutlet="coTitle">
+        <div [innerHTML]="coTitle"></div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="co-page-side-drawer-body">
+    <ng-template cdkPortalOutlet></ng-template>
+    <ng-content *ngIf="!coContent"></ng-content>
+  </div>
+  <div *ngIf="coFooter" class="co-page-side-drawer-footer">
+    <ng-container *nzStringTemplateOutlet="coFooter">
+      <div [innerHTML]="coFooter"></div>
+    </ng-container>
+  </div>
+</div>
