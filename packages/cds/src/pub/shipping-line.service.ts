@@ -207,6 +207,21 @@ export class PUBShippingLineService extends BaseApi {
 
 
     /**
+     * @param url /PUB/ShippingLine/GetRegionsByShippingLine
+     * 根据航线获取对应的省份
+     */
+
+    @GET('getRegionsByShippingLine')
+    getRegionsByShippingLine(
+        @Payload
+        _req: {code?:string} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
      * @param url /PUB/ShippingLine/GetAllForUiPicker
      * 提供给UI航线选择器服务接口
      */

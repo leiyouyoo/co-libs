@@ -69,6 +69,9 @@
             ids?: any[];
          
             
+            keyName?: string;
+         
+            
             searchText?: string;
          
             
@@ -77,10 +80,10 @@
             
             sorting?: string;
          
-            /* 页大小 */ 
+            
             maxResultCount?: number;
          
-            /* 跳过指定条数 */ 
+            
             skipCount?: number;
         
         
@@ -149,6 +152,12 @@
             /* 是否有效 */ 
             isValid?: boolean;
          
+            /* 是特殊费用（特殊费用名称：profit\cuf，新增提示：是否加到baseport rates? 。
+默认加到base,可以勾选不添加到基本港费用。）
+0 = OtherCharging
+1 = ManagerCharging */ 
+            type?: number;
+         
             
             id?: string;
         
@@ -186,6 +195,9 @@
             ids?: any[];
          
             
+            keyName?: string;
+         
+            
             searchText?: string;
          
             
@@ -194,10 +206,10 @@
             
             sorting?: string;
          
-            /* 页大小 */ 
+            
             maxResultCount?: number;
          
-            /* 跳过指定条数 */ 
+            
             skipCount?: number;
         
         
@@ -312,6 +324,9 @@
             ids?: any[];
          
             
+            keyName?: string;
+         
+            
             searchText?: string;
          
             
@@ -320,10 +335,10 @@
             
             sorting?: string;
          
-            /* 页大小 */ 
+            
             maxResultCount?: number;
          
-            /* 跳过指定条数 */ 
+            
             skipCount?: number;
         
         
@@ -482,6 +497,9 @@
             ids?: any[];
          
             
+            keyName?: string;
+         
+            
             searchText?: string;
          
             
@@ -490,10 +508,10 @@
             
             sorting?: string;
          
-            /* 页大小 */ 
+            
             maxResultCount?: number;
          
-            /* 跳过指定条数 */ 
+            
             skipCount?: number;
         
         
@@ -604,22 +622,22 @@
             /* 费用代码 */ 
             code?: string;
          
-            /* 名称 */ 
+            
             name?: string;
          
-            /* 全称 */ 
+            
             fullName?: string;
          
-            /* 带有父级Id的全Id */ 
+            
             fullId?: string;
          
-            /* 层级代码 */ 
+            
             levelCode?: string;
          
-            /* 层级 */ 
+            
             level?: number;
          
-            /* 父ID */ 
+            
             parentId?: string;
          
             
@@ -773,6 +791,9 @@
             ids?: any[];
          
             
+            keyName?: string;
+         
+            
             searchText?: string;
          
             
@@ -781,10 +802,10 @@
             
             sorting?: string;
          
-            /* 页大小 */ 
+            
             maxResultCount?: number;
          
-            /* 跳过指定条数 */ 
+            
             skipCount?: number;
         
         
@@ -908,6 +929,9 @@
             ids?: any[];
          
             
+            keyName?: string;
+         
+            
             searchText?: string;
          
             
@@ -916,10 +940,10 @@
             
             sorting?: string;
          
-            /* 页大小 */ 
+            
             maxResultCount?: number;
          
-            /* 跳过指定条数 */ 
+            
             skipCount?: number;
         
         
@@ -1082,6 +1106,9 @@
             ids?: any[];
          
             
+            keyName?: string;
+         
+            
             searchText?: string;
          
             
@@ -1090,10 +1117,10 @@
             
             sorting?: string;
          
-            /* 页大小 */ 
+            
             maxResultCount?: number;
          
-            /* 跳过指定条数 */ 
+            
             skipCount?: number;
         
         
@@ -1219,13 +1246,13 @@
             /* 是否分页 */ 
             isPaged?: boolean;
          
-            /* 排序 */ 
+            
             sorting?: string;
          
-            /* 页大小 */ 
+            
             maxResultCount?: number;
          
-            /* 跳过指定条数 */ 
+            
             skipCount?: number;
         
         
@@ -1369,17 +1396,23 @@
             /* 国家Id */ 
             countryId?: string;
          
+            /* 名称 */ 
+            name?: string;
+         
+            /* 名称-本地化 */ 
+            nameLocalization?: string;
+         
             /* 全称 */ 
             fullName?: string;
-         
-            /* 邮政编码 */ 
-            zipCode?: string;
          
             /* 全称-本地化 */ 
             fullNameLocalization?: string;
          
             /* 多语言 */ 
             localizationText?: string;
+         
+            /* 邮政编码 */ 
+            zipCode?: string;
          
             
             id?: string;
@@ -1478,6 +1511,9 @@
             ids?: any[];
          
             
+            keyName?: string;
+         
+            
             searchText?: string;
          
             
@@ -1486,10 +1522,10 @@
             
             sorting?: string;
          
-            /* 页大小 */ 
+            
             maxResultCount?: number;
          
-            /* 跳过指定条数 */ 
+            
             skipCount?: number;
         
         
@@ -1628,6 +1664,9 @@
             ids?: any[];
          
             
+            keyName?: string;
+         
+            
             searchText?: string;
          
             
@@ -1636,10 +1675,10 @@
             
             sorting?: string;
          
-            /* 页大小 */ 
+            
             maxResultCount?: number;
          
-            /* 跳过指定条数 */ 
+            
             skipCount?: number;
         
         
@@ -1703,6 +1742,9 @@
             ids?: any[];
          
             
+            keyName?: string;
+         
+            
             searchText?: string;
          
             
@@ -1711,10 +1753,10 @@
             
             sorting?: string;
          
-            /* 页大小 */ 
+            
             maxResultCount?: number;
          
-            /* 跳过指定条数 */ 
+            
             skipCount?: number;
         
         
@@ -1780,16 +1822,16 @@
             /* 添加几周的日期 */ 
             week?: number;
          
-            /* 过滤条件 */ 
+            
             filter?: string;
          
-            /* 排序 */ 
+            
             sorting?: string;
          
-            /* 页大小 */ 
+            
             maxResultCount?: number;
          
-            /* 跳过指定条数 */ 
+            
             skipCount?: number;
         
         
@@ -1830,6 +1872,27 @@
          
             /* 航程 */ 
             transitTime?: number;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBGetByVoyageDto {
+        
+         
+            /* 船名 */ 
+            vesselName?: string;
+         
+            /* 航次号 */ 
+            voyageNo?: string;
+         
+            /* 离港日 */ 
+            etd?: string;
+         
+            /* 到港日 */ 
+            eta?: string;
         
         
     }
@@ -1968,6 +2031,9 @@
             ids?: any[];
          
             
+            keyName?: string;
+         
+            
             searchText?: string;
          
             
@@ -1976,10 +2042,10 @@
             
             sorting?: string;
          
-            /* 页大小 */ 
+            
             maxResultCount?: number;
          
-            /* 跳过指定条数 */ 
+            
             skipCount?: number;
         
         
@@ -2103,6 +2169,9 @@
             ids?: any[];
          
             
+            keyName?: string;
+         
+            
             searchText?: string;
          
             
@@ -2111,10 +2180,10 @@
             
             sorting?: string;
          
-            /* 页大小 */ 
+            
             maxResultCount?: number;
          
-            /* 跳过指定条数 */ 
+            
             skipCount?: number;
         
         
@@ -2239,6 +2308,9 @@
             ids?: any[];
          
             
+            keyName?: string;
+         
+            
             searchText?: string;
          
             
@@ -2247,10 +2319,10 @@
             
             sorting?: string;
          
-            /* 页大小 */ 
+            
             maxResultCount?: number;
          
-            /* 跳过指定条数 */ 
+            
             skipCount?: number;
         
         
@@ -2434,6 +2506,9 @@
             ids?: any[];
          
             
+            keyName?: string;
+         
+            
             searchText?: string;
          
             
@@ -2442,10 +2517,10 @@
             
             sorting?: string;
          
-            /* 页大小 */ 
+            
             maxResultCount?: number;
          
-            /* 跳过指定条数 */ 
+            
             skipCount?: number;
         
         

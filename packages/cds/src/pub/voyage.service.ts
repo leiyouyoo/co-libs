@@ -118,7 +118,7 @@ export class PUBVoyageService extends BaseApi {
 
     /**
      * @param url /PUB/Voyage/CreateOrUpdate
-     * 创建或更新
+     * 
      */
 
     @POST('createOrUpdate')
