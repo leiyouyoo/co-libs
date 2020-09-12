@@ -1,7 +1,13 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBVoyageDto,PUBPagedResultDto,PUBVoyageCheckInputDto,PUBGetAllVoyageForUiPickerInput,PUBVoyageUiPickerDto, } from './pub.types';
+import {
+  PUBVoyageDto,
+  PUBPagedResultDto,
+  PUBVoyageCheckInputDto,
+  PUBGetAllVoyageForUiPickerInput,
+  PUBVoyageUiPickerDto,
+} from './pub.types';
 
 @BaseUrl('/pub/Voyage')
 @Injectable({ providedIn: 'root' })
@@ -10,130 +16,117 @@ export class PUBVoyageService extends BaseApi {
     super(injector);
   }
 
+  /**
+   * @param url /PUB/Voyage/Get
+   * 获取航次详情
+   */
 
-    /**
-     * @param url /PUB/Voyage/Get
-     * 获取航次详情
-     */
-
-    @GET('get')
-    get(
-        @Payload
-        _req: {id?:string}
-
-    ): Observable<PUBVoyageDto> {
-        return null as any
-    }
-
-
-    /**
-     * @param url /PUB/Voyage/GetAll
-     * 分页获取航次列表
-     */
-
-    @GET('getAll')
-    getAll(
-        @Payload
-        _req: {isValid?:boolean,vesselId?:string,no?:string,maxResultCount?:number,skipCount?:number}
-
-    ): Observable<PUBPagedResultDto<PUBVoyageDto>> {
-        return null as any
-    }
-
-
-    /**
-     * @param url /PUB/Voyage/Check
-     * 航次重复校验
-     */
-
-    @POST('check')
-    check(
-        @Payload
-        _req:PUBVoyageCheckInputDto
-
-    ): Observable<any> {
-        return null as any
-    }
-
-
-    /**
-     * @param url /PUB/Voyage/Create
-     * 创建航次
-     */
-
-    @POST('create')
-    create(
-        @Payload
-        _req:PUBVoyageDto
-
-    ): Observable<PUBVoyageDto> {
-        return null as any
-    }
-
-
-    /**
-     * @param url /PUB/Voyage/Update
-     * 编辑航次
-     */
-
-    @PUT('update')
-    update(
-        @Payload
-        _req:PUBVoyageDto
-
-    ): Observable<PUBVoyageDto> {
-        return null as any
-    }
-
-
-    /**
-     * @param url /PUB/Voyage/Delete
-     * 删除航次
-     */
-
-    @DELETE('delete')
-    delete(
-        @Payload
-        _req: {id?:string}
-
-    ): Observable<any> {
-        return null as any
-    }
-
-
-    /**
-     * @param url /PUB/Voyage/GetAllForUiPicker
-     * 提供给UI航次选择器的服务接口
-     */
-
-    @POST('getAllForUiPicker')
-    getAllForUiPicker(
-        @Payload
-        _req:PUBGetAllVoyageForUiPickerInput
-
-    ): Observable<PUBPagedResultDto<PUBVoyageUiPickerDto>> {
-        return null as any
-    }
-
-
-    /**
-     * @param url /PUB/Voyage/CreateOrUpdate
-<<<<<<< HEAD
-     * 
-=======
-     *
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
-     */
-
-    @POST('createOrUpdate')
-    createOrUpdate(
-        @Payload
-        _req:PUBVoyageDto
-
-    ): Observable<PUBVoyageDto> {
-        return null as any
-    }
-
-
-
+  @GET('get')
+  get(
+    @Payload
+    _req: {
+      id?: string;
+    },
+  ): Observable<PUBVoyageDto> {
+    return null as any;
   }
+
+  /**
+   * @param url /PUB/Voyage/GetAll
+   * 分页获取航次列表
+   */
+
+  @GET('getAll')
+  getAll(
+    @Payload
+    _req: {
+      isValid?: boolean;
+      vesselId?: string;
+      no?: string;
+      maxResultCount?: number;
+      skipCount?: number;
+    },
+  ): Observable<PUBPagedResultDto<PUBVoyageDto>> {
+    return null as any;
+  }
+
+  /**
+   * @param url /PUB/Voyage/Check
+   * 航次重复校验
+   */
+
+  @POST('check')
+  check(
+    @Payload
+    _req: PUBVoyageCheckInputDto,
+  ): Observable<any> {
+    return null as any;
+  }
+
+  /**
+   * @param url /PUB/Voyage/Create
+   * 创建航次
+   */
+
+  @POST('create')
+  create(
+    @Payload
+    _req: PUBVoyageDto,
+  ): Observable<PUBVoyageDto> {
+    return null as any;
+  }
+
+  /**
+   * @param url /PUB/Voyage/Update
+   * 编辑航次
+   */
+
+  @PUT('update')
+  update(
+    @Payload
+    _req: PUBVoyageDto,
+  ): Observable<PUBVoyageDto> {
+    return null as any;
+  }
+
+  /**
+   * @param url /PUB/Voyage/Delete
+   * 删除航次
+   */
+
+  @DELETE('delete')
+  delete(
+    @Payload
+    _req: {
+      id?: string;
+    },
+  ): Observable<any> {
+    return null as any;
+  }
+
+  /**
+   * @param url /PUB/Voyage/GetAllForUiPicker
+   * 提供给UI航次选择器的服务接口
+   */
+
+  @POST('getAllForUiPicker')
+  getAllForUiPicker(
+    @Payload
+    _req: PUBGetAllVoyageForUiPickerInput,
+  ): Observable<PUBPagedResultDto<PUBVoyageUiPickerDto>> {
+    return null as any;
+  }
+
+  /**
+   * @param url /PUB/Voyage/CreateOrUpdate
+   *
+   */
+
+  @POST('createOrUpdate')
+  createOrUpdate(
+    @Payload
+    _req: PUBVoyageDto,
+  ): Observable<PUBVoyageDto> {
+    return null as any;
+  }
+}

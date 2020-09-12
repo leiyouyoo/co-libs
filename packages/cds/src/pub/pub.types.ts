@@ -67,19 +67,11 @@
 
 
             ids?: any[];
-<<<<<<< HEAD
          
             
             keyName?: string;
          
             
-=======
-
-
-            keyName?: string;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             searchText?: string;
 
 
@@ -87,19 +79,11 @@
 
 
             sorting?: string;
-<<<<<<< HEAD
          
             
             maxResultCount?: number;
          
             
-=======
-
-
-            maxResultCount?: number;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             skipCount?: number;
 
 
@@ -167,7 +151,6 @@
 
             /* 是否有效 */
             isValid?: boolean;
-<<<<<<< HEAD
          
             /* 是特殊费用（特殊费用名称：profit\cuf，新增提示：是否加到baseport rates? 。
 默认加到base,可以勾选不添加到基本港费用。）
@@ -176,16 +159,6 @@
             type?: number;
          
             
-=======
-
-            /* 是特殊费用（特殊费用名称：profit\cuf，新增提示：是否加到baseport rates? 。
-默认加到base,可以勾选不添加到基本港费用。）
-0 = OtherCharging
-1 = ManagerCharging */
-            type?: number;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             id?: string;
 
 
@@ -220,19 +193,11 @@
 
 
             ids?: any[];
-<<<<<<< HEAD
          
             
             keyName?: string;
          
             
-=======
-
-
-            keyName?: string;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             searchText?: string;
 
 
@@ -240,19 +205,11 @@
 
 
             sorting?: string;
-<<<<<<< HEAD
          
             
             maxResultCount?: number;
          
             
-=======
-
-
-            maxResultCount?: number;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             skipCount?: number;
 
 
@@ -365,19 +322,11 @@
 
 
             ids?: any[];
-<<<<<<< HEAD
          
             
             keyName?: string;
          
             
-=======
-
-
-            keyName?: string;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             searchText?: string;
 
 
@@ -385,19 +334,11 @@
 
 
             sorting?: string;
-<<<<<<< HEAD
          
             
             maxResultCount?: number;
          
             
-=======
-
-
-            maxResultCount?: number;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             skipCount?: number;
 
 
@@ -554,19 +495,11 @@
 
 
             ids?: any[];
-<<<<<<< HEAD
          
             
             keyName?: string;
          
             
-=======
-
-
-            keyName?: string;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             searchText?: string;
 
 
@@ -574,19 +507,11 @@
 
 
             sorting?: string;
-<<<<<<< HEAD
          
             
             maxResultCount?: number;
          
             
-=======
-
-
-            maxResultCount?: number;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             skipCount?: number;
 
 
@@ -696,7 +621,6 @@
 
             /* 费用代码 */
             code?: string;
-<<<<<<< HEAD
          
             
             name?: string;
@@ -714,25 +638,6 @@
             level?: number;
          
             
-=======
-
-
-            name?: string;
-
-
-            fullName?: string;
-
-
-            fullId?: string;
-
-
-            levelCode?: string;
-
-
-            level?: number;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             parentId?: string;
 
 
@@ -884,19 +789,11 @@
 
 
             ids?: any[];
-<<<<<<< HEAD
          
             
             keyName?: string;
          
             
-=======
-
-
-            keyName?: string;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             searchText?: string;
 
 
@@ -904,19 +801,11 @@
 
 
             sorting?: string;
-<<<<<<< HEAD
          
             
             maxResultCount?: number;
          
             
-=======
-
-
-            maxResultCount?: number;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             skipCount?: number;
 
 
@@ -1038,19 +927,11 @@
 
 
             ids?: any[];
-<<<<<<< HEAD
          
             
             keyName?: string;
          
             
-=======
-
-
-            keyName?: string;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             searchText?: string;
 
 
@@ -1058,19 +939,11 @@
 
 
             sorting?: string;
-<<<<<<< HEAD
          
             
             maxResultCount?: number;
          
             
-=======
-
-
-            maxResultCount?: number;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             skipCount?: number;
 
 
@@ -1231,19 +1104,11 @@
 
 
             ids?: any[];
-<<<<<<< HEAD
          
             
             keyName?: string;
          
             
-=======
-
-
-            keyName?: string;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             searchText?: string;
 
 
@@ -1251,19 +1116,11 @@
 
 
             sorting?: string;
-<<<<<<< HEAD
          
             
             maxResultCount?: number;
          
             
-=======
-
-
-            maxResultCount?: number;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             skipCount?: number;
 
 
@@ -1388,7 +1245,6 @@
 
             /* 是否分页 */
             isPaged?: boolean;
-<<<<<<< HEAD
          
             
             sorting?: string;
@@ -1397,16 +1253,6 @@
             maxResultCount?: number;
          
             
-=======
-
-
-            sorting?: string;
-
-
-            maxResultCount?: number;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             skipCount?: number;
 
 
@@ -1549,7 +1395,6 @@
 
             /* 国家Id */
             countryId?: string;
-<<<<<<< HEAD
          
             /* 名称 */ 
             name?: string;
@@ -1561,36 +1406,15 @@
             fullName?: string;
          
             /* 全称-本地化 */ 
-=======
-
-            /* 名称 */
-            name?: string;
-
-            /* 名称-本地化 */
-            nameLocalization?: string;
-
-            /* 全称 */
-            fullName?: string;
-
-            /* 全称-本地化 */
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             fullNameLocalization?: string;
 
             /* 多语言 */
             localizationText?: string;
-<<<<<<< HEAD
          
             /* 邮政编码 */ 
             zipCode?: string;
          
             
-=======
-
-            /* 邮政编码 */
-            zipCode?: string;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             id?: string;
 
 
@@ -1685,19 +1509,11 @@
 
 
             ids?: any[];
-<<<<<<< HEAD
          
             
             keyName?: string;
          
             
-=======
-
-
-            keyName?: string;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             searchText?: string;
 
 
@@ -1705,19 +1521,11 @@
 
 
             sorting?: string;
-<<<<<<< HEAD
          
             
             maxResultCount?: number;
          
             
-=======
-
-
-            maxResultCount?: number;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             skipCount?: number;
 
 
@@ -1854,19 +1662,11 @@
 
 
             ids?: any[];
-<<<<<<< HEAD
          
             
             keyName?: string;
          
             
-=======
-
-
-            keyName?: string;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             searchText?: string;
 
 
@@ -1874,19 +1674,11 @@
 
 
             sorting?: string;
-<<<<<<< HEAD
          
             
             maxResultCount?: number;
          
             
-=======
-
-
-            maxResultCount?: number;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             skipCount?: number;
 
 
@@ -1948,19 +1740,11 @@
 
 
             ids?: any[];
-<<<<<<< HEAD
          
             
             keyName?: string;
          
             
-=======
-
-
-            keyName?: string;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             searchText?: string;
 
 
@@ -1968,19 +1752,11 @@
 
 
             sorting?: string;
-<<<<<<< HEAD
          
             
             maxResultCount?: number;
          
             
-=======
-
-
-            maxResultCount?: number;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             skipCount?: number;
 
 
@@ -2045,7 +1821,6 @@
 
             /* 添加几周的日期 */
             week?: number;
-<<<<<<< HEAD
          
             
             filter?: string;
@@ -2057,19 +1832,6 @@
             maxResultCount?: number;
          
             
-=======
-
-
-            filter?: string;
-
-
-            sorting?: string;
-
-
-            maxResultCount?: number;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             skipCount?: number;
 
 
@@ -2288,19 +2050,11 @@
 
 
             ids?: any[];
-<<<<<<< HEAD
          
             
             keyName?: string;
          
             
-=======
-
-
-            keyName?: string;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             searchText?: string;
 
 
@@ -2308,19 +2062,11 @@
 
 
             sorting?: string;
-<<<<<<< HEAD
          
             
             maxResultCount?: number;
          
             
-=======
-
-
-            maxResultCount?: number;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             skipCount?: number;
 
 
@@ -2442,19 +2188,11 @@
 
 
             ids?: any[];
-<<<<<<< HEAD
          
             
             keyName?: string;
          
             
-=======
-
-
-            keyName?: string;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             searchText?: string;
 
 
@@ -2462,19 +2200,11 @@
 
 
             sorting?: string;
-<<<<<<< HEAD
          
             
             maxResultCount?: number;
          
             
-=======
-
-
-            maxResultCount?: number;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             skipCount?: number;
 
 
@@ -2597,19 +2327,11 @@
 
 
             ids?: any[];
-<<<<<<< HEAD
          
             
             keyName?: string;
          
             
-=======
-
-
-            keyName?: string;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             searchText?: string;
 
 
@@ -2617,19 +2339,11 @@
 
 
             sorting?: string;
-<<<<<<< HEAD
          
             
             maxResultCount?: number;
          
             
-=======
-
-
-            maxResultCount?: number;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             skipCount?: number;
 
 
@@ -2811,19 +2525,11 @@
 
 
             ids?: any[];
-<<<<<<< HEAD
          
             
             keyName?: string;
          
             
-=======
-
-
-            keyName?: string;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             searchText?: string;
 
 
@@ -2831,19 +2537,11 @@
 
 
             sorting?: string;
-<<<<<<< HEAD
          
             
             maxResultCount?: number;
          
             
-=======
-
-
-            maxResultCount?: number;
-
-
->>>>>>> 4a631455b52ad5b3d482a985be3bbe3850492a9e
             skipCount?: number;
 
 
