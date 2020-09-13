@@ -1,6 +1,6 @@
 import { Directive, ElementRef, Input, NgZone, OnInit } from '@angular/core';
 import { STComponent } from './st.component';
-import { fromEvent, interval } from 'rxjs';
+import { fromEvent, interval, merge } from 'rxjs';
 import { debounceTime, startWith } from 'rxjs/operators';
 
 @Directive({
@@ -30,9 +30,11 @@ export class LoadOnScrollDirective implements OnInit {
             (<HTMLElement>this.el.nativeElement).querySelector('.cdk-virtual-scroll-viewport');
           if (!tbodyContainer) return;
           sub$.unsubscribe();
-          fromEvent(tbodyContainer, 'scroll')
-            .pipe(
-              debounceTime(50),
+          merge(
+            fromEvent(tbodyContainer, 'scroll'),
+            fromEvent(tbodyContainer, 'wheel'),
+          ).pipe(
+              debounceTime(100),
             )
             .subscribe(async (e: Event) => {
               const element = tbodyContainer;
