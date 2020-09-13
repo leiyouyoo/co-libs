@@ -15,6 +15,7 @@ import {
 import { getWorkspace } from '@schematics/angular/utility/config';
 import axios from 'axios';
 import { groupBy } from 'lodash';
+import { idText } from 'typescript';
 
 // You don't have to export the function as default. You can also have more than one rule factory
 // per file.
@@ -27,6 +28,7 @@ let entityTitle = '';
 export function buildCOSwagger(options: any): Rule {
   return async (tree: Tree, context: SchematicContext) => {
     console.log('loading....');
+
     entityTitle = options.url.substring(options.url.indexOf('swagger/') + 8, options.url.lastIndexOf('/'));
     const workspace = getWorkspace(tree);
     if (!options.project) {
@@ -35,7 +37,8 @@ export function buildCOSwagger(options: any): Rule {
 
     const projectName = options.project as string;
     const project = workspace.projects[projectName];
-    const path = 'app/service';
+
+    const response = await getSwaggerData(options, tree)();
 
     // 路由
     let requireUrl = process.cwd();
@@ -51,8 +54,6 @@ export function buildCOSwagger(options: any): Rule {
     [`${options.path}/index.ts`, `${options.path}/public_api.ts`, `${options.path}/${options.name}.types.ts`]
       .filter(p => tree.exists(p))
       .forEach(p => tree.delete(p));
-
-    const response = await getSwaggerData(options, tree)();
 
     // 导出模板
     let html = '';
@@ -110,7 +111,6 @@ function getSwaggerData(options, tree: Tree): () => Promise<any[]> {
     const chainArr: any[] = [];
 
     // 循环分组处理数据
-    // tslint:disable-next-line: forin
     let i = 0;
     // tslint:disable-next-line: forin
     for (const na in group) {
@@ -265,25 +265,35 @@ function setResponseName(ref) {
   }
 }
 
-function setGeneric(ref, genericName = '', isGeneric = false) {
+function setGeneric(ref, genericName = '', isGeneric = false, isT = false) {
   const entity = serveEntityList[ref.replace('#/definitions/', '')];
   if (isGeneric && entity) {
     // tslint:disable-next-line: forin
     for (const key in entity.properties) {
       const parmDetail = entity.properties[key];
+      parmDetail.type = 'any';
       if (parmDetail?.type === 'integer') {
         parmDetail.type = 'number';
       } else if (parmDetail?.type === 'array') {
-        parmDetail.type = 'T[]';
+        parmDetail.type = 'any[]';
       }
     }
 
-    const className = genericName + '<T>';
-    if (!selectedEntityList.some(e => e.name === className)) {
+    if (!selectedEntityList.some(e => e.name === genericName || e.name === genericName + '<T>')) {
       selectedEntityList.push({
-        name: className,
+        name: genericName,
         value: entity,
       });
+    } else {
+      let className = genericName;
+      if (isT) {
+        className = className + '<T>';
+        const data: any = selectedEntityList.find(e => e.name === genericName);
+        if (data) {
+          data.name = className;
+          data.value = entity;
+        }
+      }
     }
 
     if (!serveSelectedEntityList.some(e => e === genericName)) {
@@ -370,12 +380,16 @@ function setEntityName(ref, isEntity = false) {
       zname = entityValue.substring(0, entityValue.indexOf(','));
       name = zname.includes('+') ? zname.substring(zname.lastIndexOf('+') + 1) : zname.substring(zname.lastIndexOf('.') + 1);
     }
-    const hasEntity = zname.substring(zname.lastIndexOf('[') + 1);
-    const entity = serveEntityList[hasEntity.replace('#/definitions/', '')];
+    const entityRef = zname.substring(zname.lastIndexOf('[') + 1);
+    const entity = serveEntityList[entityRef.replace('#/definitions/', '')];
+    if (entityRef && isEntity) {
+      setGeneric(entityRef, `${name}`, true);
+    }
+
     entityName = entityName.includes('+')
       ? entityName.substring(entityName.lastIndexOf('+') + 1)
       : entityName.substring(entityName.lastIndexOf('.') + 1);
-    setGeneric(ref, `${entityName}`, true);
+    setGeneric(ref, `${entityName}`, true, true);
 
     if (!entity && ref.includes('[')) {
       // 该请求来自实体
@@ -384,6 +398,9 @@ function setEntityName(ref, isEntity = false) {
       }
       return `${entityName}<any>`;
     } else {
+      if (entityRef && isEntity) {
+        return `${entityName}`;
+      }
       return `${entityName}<${name ? entityTitle + name : 'any'}>`;
     }
   } else {
