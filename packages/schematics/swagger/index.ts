@@ -37,14 +37,13 @@ export function buildCOSwagger(options: any): Rule {
     const projectName = options.project as string;
     const project = workspace.projects[projectName];
 
-    const response = await getSwaggerData(options, tree)();
-
     // 路由
     let requireUrl = process.cwd();
     if (!options.path) {
       if (requireUrl.includes('apps')) {
         requireUrl = requireUrl.substring(requireUrl.lastIndexOf('apps'));
         options.path = requireUrl;
+        console.log('生成路径' + options.path);
       } else {
         options.path = `${project.sourceRoot}/`;
       }
@@ -61,6 +60,8 @@ export function buildCOSwagger(options: any): Rule {
       msg += '.service';
       html += `export * from './${msg}';\r\n`;
     }
+
+    const response = await getSwaggerData(options, tree)();
 
     const index_ts = mergeWith(
       apply(url('./index_files'), [

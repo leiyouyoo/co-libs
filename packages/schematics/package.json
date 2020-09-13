@@ -1,6 +1,6 @@
 {
   "name": "co-cli",
-  "version": "0.0.75",
+  "version": "0.0.76",
   "description": "Schematics specific to co-cli",
   "author": "Peln",
   "license": "MIT",
