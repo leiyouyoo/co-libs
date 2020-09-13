@@ -28,7 +28,6 @@ let entityTitle = '';
 export function buildCOSwagger(options: any): Rule {
   return async (tree: Tree, context: SchematicContext) => {
     console.log('loading....');
-
     entityTitle = options.url.substring(options.url.indexOf('swagger/') + 8, options.url.lastIndexOf('/'));
     const workspace = getWorkspace(tree);
     if (!options.project) {
