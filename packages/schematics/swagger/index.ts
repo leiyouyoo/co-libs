@@ -49,6 +49,8 @@ export function buildCOSwagger(options: any): Rule {
       }
     }
 
+    const response = await getSwaggerData(options, tree)();
+
     [`${options.path}/index.ts`, `${options.path}/public_api.ts`, `${options.path}/${options.name}.types.ts`]
       .filter(p => tree.exists(p))
       .forEach(p => tree.delete(p));
@@ -60,8 +62,6 @@ export function buildCOSwagger(options: any): Rule {
       msg += '.service';
       html += `export * from './${msg}';\r\n`;
     }
-
-    const response = await getSwaggerData(options, tree)();
 
     const index_ts = mergeWith(
       apply(url('./index_files'), [
