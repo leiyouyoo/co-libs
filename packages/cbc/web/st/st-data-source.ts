@@ -55,6 +55,8 @@ export interface STDataSourceResult {
   list: STData[];
   /** 统计数据 */
   statistical: STStatisticalResults;
+  /* 原始数据 */
+  rawData: any;
 }
 
 @Injectable()
@@ -192,6 +194,7 @@ export class STDataSource {
           list: retList,
           statistical: this.genStatistical(columns, retList, rawData),
           pageShow: typeof showPage === 'undefined' ? realTotal > realPs : showPage,
+          rawData,
         } as STDataSourceResult;
       }),
     );

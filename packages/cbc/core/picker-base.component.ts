@@ -91,7 +91,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
           !!condition.ids ||
           this.loadingMode === 'more',
       ),
-      debounceTime(this.loadingMode === 'more' ? 0 : this.coDebounceTime),
+      debounceTime(this.loadingMode !== 'search' ? 0 : this.coDebounceTime),
       distinctUntilChanged(),
       switchMap((condition: any) => {
         this.isLoading = true;
@@ -216,7 +216,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
 
   onOpenChanged(e: any) {
     if (!this.coOpen) {
-      this.loadDownList(null);
+      this.loadDownList(this.value);
     }
 
     this.coOpenChange.emit(e);
@@ -241,7 +241,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   private loadByIds(value: any): void {
     // if (this.coValueMember !== 'id') return;
 
-    this.loadingMode = 'more';
+    this.loadingMode = 'loadByIds';
     this.skipCount = 0;
 
     const covertModelToList = (model: NzSafeAny[] | NzSafeAny, mode: NzSelectModeType): NzSafeAny[] => {
@@ -293,24 +293,30 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
 
   private loadDownList(value: any) {
     const val = value || this.value;
-
-    if (this.optionList.length === 0) {
-      if (val) {
-        this.loadByIds(val);
-      } else {
-        this.skipCount = 0;
-        this.loadMore(null);
-      }
+    if (val) {
+      this.loadByIds(val);
     } else {
-      if (val) {
-        if (this.optionList.length === val.length || this.optionList.length === 1) {
-          this.skipCount = 0;
-          this.loadMore(null);
-        } else {
-          this.optionList = this.sortByDownList(this.optionList);
-        }
-      }
+      this.skipCount = 0;
+      this.loadMore(null);
     }
+
+    // if (this.optionList.length === 0) {
+    //   if (val) {
+    //     this.loadByIds(val);
+    //   } else {
+    //     this.skipCount = 0;
+    //     this.loadMore(null);
+    //   }
+    // } else {
+    //   if (val) {
+    //     if (this.optionList.length === val.length || this.optionList.length === 1) {
+    //       this.skipCount = 0;
+    //       this.loadMore(null);
+    //     } else {
+    //       this.optionList = this.sortByDownList(this.optionList);
+    //     }
+    //   }
+    // }
   }
 
   //#endregion

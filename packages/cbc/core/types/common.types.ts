@@ -1,6 +1,6 @@
 export type BooleanInput = boolean | string | undefined | null;
 export type NumberInput = number | string | undefined | null;
-export type LoadMode = 'search' | 'more';
+export type LoadMode = 'search' | 'more' | 'loadByIds';
 export type DropdownMode = 'table' | 'custom' | 'default';
 
 export interface DropdownColumn {

@@ -45,8 +45,6 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
 
   @ViewChild(CdkPortalOutlet, { static: false }) bodyPortalOutlet?: CdkPortalOutlet;
 
-  portal: Portal<any> | null = null;
-
   get afterOpen(): Observable<void> {
     return this.coAfterOpen.asObservable();
   }
@@ -57,9 +55,9 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
 
   isOpen = false;
 
-
   private readonly coAfterOpen = new Subject<void>();
   private readonly coAfterClose = new Subject<R>();
+  private portal: Portal<any> | null = null;
   private componentInstance: T | null = null;
 
   constructor(public elementRef: ElementRef<HTMLElement>,
@@ -69,12 +67,12 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
     super(elementRef);
   }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     if (this.coContent instanceof TemplateRef) {
       this.attachPortal(this.coContent, this.coContentParams);
       this.cdr.detectChanges();
     }
-    super.ngOnInit();
+    super.ngAfterViewInit();
   }
 
   ngOnDestroy(): void {
