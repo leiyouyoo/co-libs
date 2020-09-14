@@ -41,6 +41,9 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
   @Input() coContent!: TemplateRef<{ $implicit: D; }> | Type<T>;
   @Input() coContentParams?: D;
 
+  @Input() @InputBoolean() isOpen = false;
+  @Output() readonly isOpenChange = new EventEmitter<boolean>();
+
   @Output() readonly coOnClose = new EventEmitter<PageSideDrawerComponent>();
 
   @ViewChild(CdkPortalOutlet, { static: false }) bodyPortalOutlet?: CdkPortalOutlet;
@@ -52,8 +55,6 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
   get afterClose(): Observable<R> {
     return this.coAfterClose.asObservable();
   }
-
-  isOpen = false;
 
   private readonly coAfterOpen = new Subject<void>();
   private readonly coAfterClose = new Subject<R>();
@@ -68,7 +69,7 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
   }
 
   ngAfterViewInit(): void {
-    if (this.coContent instanceof TemplateRef) {
+    if (this.coContent) {
       this.attachPortal(this.coContent, this.coContentParams);
       this.cdr.detectChanges();
     }
@@ -80,9 +81,10 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
     super.ngOnDestroy();
   }
 
-  open(portalContent?: HTMLElement | ElementRef<HTMLElement> | TemplateRef<{ $implicit: D }> | Type<T>, templateContext?: D): void {
+  open(portalContent?: TemplateRef<{ $implicit: D }> | Type<T>, templateContext?: D): void {
     portalContent && this.attachPortal(portalContent, templateContext);
     this.isOpen = true;
+    this.isOpenChange.emit(this.isOpen);
     this.cdr.detectChanges();
     setTimeout(() => {
       this.coAfterOpen.next();
@@ -91,6 +93,7 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
 
   close(result?: R): void {
     this.isOpen = false;
+    this.isOpenChange.emit(this.isOpen);
     this.cdr.detectChanges();
     this.coAfterClose.next(result);
     this.coAfterClose.complete();
@@ -99,7 +102,6 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
   destroy(): void {
     this.close();
     this.dispose();
-    this.portal?.detach();
     this.portal = null;
     this.componentInstance = null;
   }
@@ -114,12 +116,9 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
 
   private attachPortal(portalContent, templateContext?): void {
     this.dispose();
-    if (portalContent instanceof ElementRef || portalContent instanceof HTMLElement) { // html
-      this.portal = new DomPortal(portalContent);
-      this.bodyPortalOutlet!.attach(this.portal);
-    } else if (portalContent instanceof TemplateRef) { // 模板
+    if (portalContent instanceof TemplateRef) { // 模板
       this.portal = new TemplatePortal(portalContent, this.viewContainerRef, templateContext);
-      this.bodyPortalOutlet!.attach(this.portal);
+      this.bodyPortalOutlet!.attachTemplatePortal(this.portal as TemplatePortal);
     } else if (portalContent instanceof Type) { // 组件
       const childInjector = new PortalInjector(this.injector, new WeakMap([[PageSideDrawerComponent, this]]));
       this.portal = new ComponentPortal<T>(portalContent, null, childInjector);
