@@ -180,6 +180,10 @@ export class ReuseTabComponent implements OnInit, OnChanges, OnDestroy {
     this.srv.componentRef = { instance };
   }
 
+  closeCurrent(e: Event | null, idx: number, includeNonCloseable: boolean) {
+    this._close(null, this.pos, true);
+  }
+
   // #endregion
 
   //#region 事件处理

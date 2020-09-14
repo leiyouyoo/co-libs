@@ -67,8 +67,8 @@ export abstract class CoPageBase extends CoComponentBase implements OnInit, OnCh
    */
   public $close() {
     // TODO: 需要处理抽屉，模态弹框，标签页面关闭
-    if (window.planet && window.planet.mainTabService) {
-      window.planet.mainTabService.closeCurrent();
+    if (window.planet && window.planet.mainTab) {
+      window.planet.mainTab.closeCurrent();
     } else {
       this.$logger.warn('Planet 未实例化');
     }

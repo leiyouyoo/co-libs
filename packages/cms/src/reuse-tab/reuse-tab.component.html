@@ -1,12 +1,5 @@
-<nz-tabset
-  #tabset
-  [nzSelectedIndex]="pos"
-  [nzAnimated]="false"
-  [nzType]="tabType"
-  [nzTabBarExtraContent]="tabBarExtraContent"
-  [nzTabBarGutter]="tabBarGutter"
-  [nzTabBarStyle]="tabBarStyle"
->
+<nz-tabset #tabset [nzSelectedIndex]="pos" [nzAnimated]="false" [nzType]="tabType"
+  [nzTabBarExtraContent]="tabBarExtraContent" [nzTabBarGutter]="tabBarGutter" [nzTabBarStyle]="tabBarStyle">
   <nz-tab *ngFor="let i of list; let index = index" [nzTitle]="titleTemplate" (nzClick)="_to(index)">
     <ng-template #titleTemplate>
       <i *ngIf="!!i.icon" nz-icon [nzIconfont]="i.icon" class="reuse-tab__icon"></i>
