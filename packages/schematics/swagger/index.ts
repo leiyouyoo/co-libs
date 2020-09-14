@@ -256,7 +256,7 @@ function setResponseName(ref) {
     entityName = entityName.includes('+')
       ? entityName.substring(entityName.lastIndexOf('+') + 1)
       : entityName.substring(entityName.lastIndexOf('.') + 1);
-    setGeneric(ref, `${entityName}`, true);
+    setGeneric(ref, `${entityName}`, true, name ? true : false);
     return `${entityName}<${name ? entityTitle + name : 'any'}>`;
   } else {
     bindEntity(ref);
@@ -280,8 +280,12 @@ function setGeneric(ref, genericName = '', isGeneric = false, isT = false) {
     }
 
     if (!selectedEntityList.some(e => e.name === genericName || e.name === genericName + '<T>')) {
+      let className = genericName;
+      if (isT) {
+        className = genericName + '<T>';
+      }
       selectedEntityList.push({
-        name: genericName,
+        name: className,
         value: entity,
       });
     } else {
