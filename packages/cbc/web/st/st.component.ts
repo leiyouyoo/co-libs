@@ -177,6 +177,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() @InputBoolean() bordered = true;
   @Input() size: 'small' | 'middle' | 'default';
   @Input() singleSort: STSingleSort;
+  rawData: any;
   _scroll: { y?: string; x?: string };
   get scroll(): { y?: string; x?: string } {
     /**
@@ -454,6 +455,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
       } else {
         this._data = result.list as STData[];
       }
+      this.rawData = result.rawData;
       this._statistical = result.statistical as STStatisticalResults;
       this.changeEmit('loaded', result.list);
       return this._refCheck();

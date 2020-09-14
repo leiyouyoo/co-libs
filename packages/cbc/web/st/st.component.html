@@ -193,7 +193,9 @@
       <th *ngIf="expand" nzWidth="50px" [nzLeft]="true"></th>
       <th *ngFor="let i of getEnabledColumns(_filterRow, 'column', 'filter'); index as index" (keyup.enter)="_filterConfirm(i.column)">
         <ng-container [ngSwitch]="i.column.filter?.type">
-          <ng-container *ngSwitchCase="i.column.filter?.type === null ? null : 'nevermatch'"></ng-container>
+          <ng-container *ngSwitchCase="i.column.filter?.type === null ? null : 'nevermatch'">
+            <input type="text" nzSize="small" nz-input disabled>
+          </ng-container>
           <ng-container *ngSwitchCase="'select'">
             <nz-select
               class="width-100"
@@ -322,7 +324,7 @@
                 </nz-dropdown-menu>
                 <span
                   *ngIf="btn.children.length == 0"
-                  [className]="btn._className || ''"
+                  [ngClass]="btn._className || ''"
                   (click)="!buttonPropagation && $event.stopPropagation()"
                   [class.st__btn-disabled]="btn._disabled"
                 >

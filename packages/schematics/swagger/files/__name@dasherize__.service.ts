@@ -5,7 +5,7 @@ import { <% for (var entityName of serveSelectedEntityList) {%><%= entityTitle +
 
 @BaseUrl('/<%= pageName %>/<%= name %>')
 @Injectable({ providedIn: 'root' })
-export class <%= entityTitle %><%= classify(name) %>Service extends BaseApi {
+export class <%= entityTitle %><% if (name.includes('Service')){%><%= classify(name) %><% } else {%><%= classify(name) %>Service<% } %> extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
