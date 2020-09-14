@@ -74,7 +74,10 @@
         </co-page-side>
       </co-page-layout>
     </co-page-main>
-    <co-page-side-drawer [coTitle]="drawerTitle" coWidthResizable></co-page-side-drawer>
+    <co-page-side-drawer (coOnClose)="$event.close()" [coContent]="drawerContent" [coTitle]="drawerTitle" coWidthResizable></co-page-side-drawer>
+    <ng-template #drawerContent>
+      模板爱上大沙发沙发上地方
+    </ng-template>
   </co-page-layout>
 </div>
 <ng-template #drawerTitle>
