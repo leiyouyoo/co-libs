@@ -11,6 +11,10 @@ declare var window: any;
 export abstract class CoPageBase extends CoComponentBase implements OnInit, OnChanges, AfterViewInit, OnDestroy {
   constructor(@Optional() protected injector: Injector) {
     super(injector);
+
+    if (window.planet && window.planet.mainTab) {
+      window.planet.mainTab.activate(this);
+    }
   }
 
   coOnInit(): void {}
