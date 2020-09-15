@@ -677,6 +677,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
 
   @debounce(5e2)
   _filterConfirm(col: STColumn) {
+    this.pi = 1;
     this.handleFilter(col);
   }
 
