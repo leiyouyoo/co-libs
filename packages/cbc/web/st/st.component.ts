@@ -183,7 +183,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     /**
      * fix: virtual scroll height
      */
-    if (this.virtualScroll && !this._data?.length) return {};
+    // if (this.virtualScroll && !this._data?.length) return {};
     return this._scroll;
   }
   @Input() set scroll(value: { y?: string; x?: string }) {
