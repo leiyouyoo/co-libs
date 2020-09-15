@@ -14,7 +14,8 @@ import { LifeCycleComponent } from '@co/core';
 export class PageSideComponent extends LifeCycleComponent {
 
   @Input() @InputBoolean() coWidthResizable = false;
-  @HostBinding('style.margin-left.px') @Input() @InputNumber() marginLeft = 16;
+  @HostBinding('style.margin-left.px') @Input() @InputNumber() marginLeft: number | undefined = 16;
+  @HostBinding('style.min-width.px') @Input() @InputNumber() minWidth: number | undefined = 360;
 
   @HostBinding('style.width.px') width;
   @HostBinding('style.height.px') height;
