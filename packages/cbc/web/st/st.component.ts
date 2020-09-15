@@ -606,6 +606,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
         .map(item => this._data.indexOf(item))
         .filter(pos => pos !== -1)
         .forEach(pos => this._data.splice(pos, 1));
+      this._data = [...this._data];
     }
     // recalculate no
     this._columns
