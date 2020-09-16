@@ -36,10 +36,11 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { InternalI18nPipe } from './internal-i18n.pipe';
 import { NzResizableModule } from 'ng-zorro-antd/resizable';
 import { StNumberInputComponent } from './st-number-input.component';
+import { FixScrollingXDirective } from './fix-scrolling-x.directive';
 
 const COMPONENTS = [STComponent, StNumberInputComponent];
 const internalDeclaration = [ ColumnConfigComponent, InternalI18nPipe ];
-const DIRECTIVES = [STRowDirective, STWidgetHostDirective, CalcScrollDirective, CoSTWidgetHostDirective, LoadOnScrollDirective, ];
+const DIRECTIVES = [STRowDirective, STWidgetHostDirective, CalcScrollDirective, CoSTWidgetHostDirective, LoadOnScrollDirective, FixScrollingXDirective];
 const icons = [SettingOutline, DeleteOutline, EllipsisOutline, FilterOutline, MinusOutline];
 
 @NgModule({
