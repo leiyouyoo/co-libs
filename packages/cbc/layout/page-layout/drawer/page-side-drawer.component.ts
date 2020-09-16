@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -8,7 +9,6 @@ import {
   Injector,
   Input,
   OnDestroy,
-  OnInit,
   Output,
   TemplateRef,
   Type,
@@ -17,7 +17,8 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { CdkPortalOutlet, ComponentPortal, DomPortal, Portal, PortalInjector, TemplatePortal } from '@angular/cdk/portal';
+import { CdkPortalOutlet, ComponentPortal, Portal, PortalInjector, TemplatePortal } from '@angular/cdk/portal';
+import { DomSanitizer } from '@angular/platform-browser';
 import { InputBoolean } from 'ng-zorro-antd';
 import { PageSideComponent } from '../page-side.component';
 
@@ -33,7 +34,7 @@ import { PageSideComponent } from '../page-side.component';
   encapsulation: ViewEncapsulation.None,
   viewProviders: [{ provide: PageSideComponent, useExisting: forwardRef(() => PageSideDrawerComponent) }],
 })
-export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSideComponent implements OnInit, OnDestroy {
+export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSideComponent implements AfterViewInit, OnDestroy {
 
   @Input() @InputBoolean() coClosable: boolean = true;
   @Input() coTitle?: string | TemplateRef<{}>;
@@ -62,10 +63,11 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
   private componentInstance: T | null = null;
 
   constructor(public elementRef: ElementRef<HTMLElement>,
+              private _sanitizer: DomSanitizer,
               private cdr: ChangeDetectorRef,
               private viewContainerRef: ViewContainerRef,
               private injector: Injector) {
-    super(elementRef);
+    super(elementRef, _sanitizer);
   }
 
   ngAfterViewInit(): void {
@@ -73,12 +75,10 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
       this.attachPortal(this.coContent, this.coContentParams);
       this.cdr.detectChanges();
     }
-    super.ngAfterViewInit();
   }
 
   ngOnDestroy(): void {
     this.destroy();
-    super.ngOnDestroy();
   }
 
   open(portalContent?: TemplateRef<{ $implicit: D }> | Type<T>, templateContext?: D): void {

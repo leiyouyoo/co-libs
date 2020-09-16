@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, ContentChildren, HostBinding, Input, OnInit, QueryList, ViewEncapsulation } from '@angular/core';
-import { CoSizeType } from '@co/cbc/core';
+import { ChangeDetectionStrategy, Component, ContentChildren, HostBinding, OnInit, QueryList, ViewEncapsulation } from '@angular/core';
 import { SearchAreaLayoutComponent } from '@co/cbc/layout/search-area-layout';
 import { ToolbarComponent } from '@co/cbc/layout/toolbar';
 
@@ -11,8 +10,6 @@ import { ToolbarComponent } from '@co/cbc/layout/toolbar';
   encapsulation: ViewEncapsulation.None,
 })
 export class PageLayoutComponent implements OnInit {
-
-  @Input() coSize: CoSizeType = 'default';
 
   @ContentChildren(ToolbarComponent, { descendants: false }) toolbarComponents: QueryList<ToolbarComponent>;
   @ContentChildren(SearchAreaLayoutComponent, { descendants: false }) searchAreaLayoutComponents: QueryList<SearchAreaLayoutComponent>;
