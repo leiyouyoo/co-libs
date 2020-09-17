@@ -98,7 +98,9 @@
     "rxjs": "~6.5.4",
     "save-dev": "0.0.1-security",
     "tslib": "^1.10.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "tim-js-sdk": "^2.3.2",
+    "cos-js-sdk-v5": "^0.5.22"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.6",
