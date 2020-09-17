@@ -4,7 +4,6 @@ import { DA_SERVICE_TOKEN, ITokenService } from '@co/auth';
 import { CoAuthConfig, CoConfigService, CO_CONFIG, log } from '@co/core';
 // tslint:disable-next-line: no-duplicate-imports
 import { LazyService } from '@co/core';
-import { NzMessageService } from 'ng-zorro-antd/message';
 import { _HttpClient } from '../http/http.client';
 
 declare const FB: any;
@@ -41,7 +40,6 @@ export class CoAuthService {
     public http: HttpClient,
     coConfigService: CoConfigService,
     @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService,
-    private messageService: NzMessageService,
   ) {
     this.config = coConfigService.get('auth');
     this.startRefreshTokenTimer();
@@ -225,7 +223,7 @@ export class CoAuthService {
         }
       });
     } catch (e) {
-      this.messageService.warning('login faild,Please check your network');
+      console.warn('login faild,Please check your network');
     }
   }
 
