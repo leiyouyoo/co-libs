@@ -451,9 +451,6 @@ export class STColumnSource {
       if (typeof item.width === 'number') {
         item.width = `${item.width}px`;
       }
-      if (!item.width) {
-        item.width = `100px`;
-      }
 
       // sorter
       item._sort = this.sortCoerce(item);

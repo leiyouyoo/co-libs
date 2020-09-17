@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CoACLModule } from '@co/acl';
 import { CoUtilModule } from '@co/core';
+import { CoCommonModule } from '@co/common';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
@@ -49,6 +50,7 @@ const icons = [SettingOutline, DeleteOutline, EllipsisOutline, FilterOutline, Mi
     FormsModule,
     CoUtilModule,
     CoACLModule,
+    CoCommonModule,
     NzPopconfirmModule,
     NzTableModule,
     NzBadgeModule,

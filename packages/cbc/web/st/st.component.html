@@ -224,7 +224,7 @@
             <nz-date-picker nzSize="small" class="width-100" [(ngModel)]="(i.column.filter?.menus)[0].value" (ngModelChange)="_filterConfirm(i.column)"></nz-date-picker>
           </ng-container>
           <ng-container *ngSwitchCase="'date-range'">
-            <nz-range-picker nzFormat="yyyy-MM-dd" class="width-100" [(ngModel)]="(i.column.filter?.menus)[0].value" (ngModelChange)="_filterConfirm(i.column)"></nz-range-picker>
+            <nz-range-picker wholeDayRange nzSize="small" nzFormat="yyyy-MM-dd" class="width-100" [(ngModel)]="(i.column.filter?.menus)[0].value" (ngModelChange)="_filterConfirm(i.column)"></nz-range-picker>
           </ng-container>
           <ng-container *ngSwitchCase="'number'">
             <co-st-number-input [(ngModel)]="(i.column.filter?.menus)[0].value" (ngModelChange)="_filterConfirm(i.column)"></co-st-number-input>

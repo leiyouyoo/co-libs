@@ -1120,15 +1120,16 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
 
   ngOnChanges(changes: { [P in keyof this]?: SimpleChange } & SimpleChanges): void {
     const changeData = changes.data;
+    /* columns must be set before load data */
+    if (changes.columnSettingName || changes.columns) {
+      this.sortColumns();
+      this.refreshColumns().optimizeData();
+    }
     if (changeData && changeData.currentValue && !(this.req.lazyLoad && changeData.firstChange)) {
       this.loadPageData();
     }
     if (changes.loading) {
       this._loading = changes.loading.currentValue;
-    }
-    if (changes.columnSettingName || changes.columns) {
-      this.sortColumns();
-      this.refreshColumns().optimizeData();
     }
   }
 
