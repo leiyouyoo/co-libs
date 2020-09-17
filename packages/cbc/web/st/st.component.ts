@@ -984,7 +984,10 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   getFilterOptions(column: STColumn, index: number, input?: string): any[] {
-    if (column?.filter?.optionList) return column.filter.optionList;
+    /*  */
+    if (column?.filter?.optionList) {
+      return column.filter.optionList.map(o => ({ ...o, label: this.i18nSrv.fanyi(o.label), }));
+    }
     const arr = Array.from(
       new Set(this._data.map(o => o._values[index].text))
     );
