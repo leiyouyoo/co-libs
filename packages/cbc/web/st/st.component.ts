@@ -82,7 +82,7 @@ import { NzResizeEvent } from 'ng-zorro-antd/resizable';
     '[class.st__p-center]': `page.placement === 'center'`,
     '[class.st__width-strict]': `widthMode.type === 'strict'`,
     '[class.st-bordered]': `bordered`,
-    '[class.st__cdk-viewport-scroll-y]': `orgTable.scrollY && orgTable.verticalScrollBarWidth !== 0`,
+    '[class.st__cdk-viewport-scroll-y]': `cd() && orgTable.scrollY && orgTable.verticalScrollBarWidth !== 0`,
     '[class.ant-table-rep]': `responsive`,
     '[class.ant-table-rep__hide-header-footer]': `responsiveHideHeaderFooter`,
   },
