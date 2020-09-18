@@ -178,6 +178,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() @InputBoolean() bordered = true;
   @Input() size: 'small' | 'middle' | 'default';
   @Input() singleSort: STSingleSort;
+  @Input() @InputNumber() columnDefaultWidth: number;
   rawData: any;
   _scroll: { y?: string; x?: string };
   get scroll(): { y?: string; x?: string } {
@@ -977,7 +978,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   private refreshColumns(): this {
-    const res = this.columnSource.process(this.columns);
+    const res = this.columnSource.process(this.columns, { defaultWidth: this.columnDefaultWidth, });
     this._columns = res.columns;
     this._headers = res.headers;
     this._filterRow = res.filterRow;
