@@ -439,14 +439,6 @@ export class STColumnSource {
       ) {
         (item as any).type = '';
       }
-      // className
-      if (!item.className) {
-        item.className = ({
-          number: 'text-right',
-          currency: 'text-right',
-          date: 'text-center',
-        } as NzSafeAny)[item.type!];
-      }
       // width
       if (typeof item.width === 'number') {
         item.width = `${item.width}px`;
