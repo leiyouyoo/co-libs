@@ -6,7 +6,9 @@ const i18n = {
     'Columns': '列数',
     'stSetting': '设置列表内容',
     'Save':'保存',
-    'Cancel':'取消'
+    'Cancel':'取消',
+    'Recover': '恢复',
+    'Loading': '加载中',
   },
   'en-US':{
     'stSetting': 'Settings',
