@@ -913,7 +913,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   _validBtns(btns: STColumnButton[], item: STData, col: STColumn): STColumnButton[] {
     return btns.filter(btn => {
       const result = btn.iif!(item, btn, col);
-      const isRenderDisabled = btn.iifBehavior === 'disabled';
+      const isRenderDisabled = btn.iifBehavior === 'both' ? result === false : btn.iifBehavior === 'disabled';
       btn._result = result;
       btn._disabled = !result && isRenderDisabled;
       if (btn.className) {
