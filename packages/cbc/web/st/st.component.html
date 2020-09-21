@@ -184,7 +184,7 @@
                   <div class="d-flex justify-content-between">
                     <span>{{ 'Action' | translate }}</span>
                     <div class="d-flex align-items-center">
-                      <a nz-button [nzSize]="size" nzType="link" *ngIf="showFilters" (click)="resetFilters()">Reset</a>
+                      <a nz-button class="mr-sm" [nzSize]="size" nzType="link" *ngIf="showFilters" (click)="resetFilters()" style="padding-bottom: 3px;">{{ 'Reset' | internalI18n }}</a>
                       <column-config [configName]="columnSettingName"></column-config>
                     </div>
                   </div>
@@ -251,7 +251,7 @@
             <input type="text" nz-input
                    nzSize="small"
                    [(ngModel)]="(i.column.filter?.menus)[0].value"
-                   (ngModelChange)="_filterConfirm(i.column)" />
+                   (ngModelChange)="ifNeedFilterConfirm($event) && _filterConfirm(i.column)" />
           </ng-container>
         </ng-container>
       </th>

@@ -678,8 +678,13 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     this.changeEmit('filter', col);
   }
 
-  @debounce(5e2)
+  ifNeedFilterConfirm(input: string): boolean {
+    return !input || input?.length > 2;
+  }
+
+  @debounce(2e2)
   _filterConfirm(col: STColumn) {
+    console.log(col);
     this.pi = 1;
     this.handleFilter(col);
   }
@@ -1114,6 +1119,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
         m.value = null;
       })
     });
+    this.loadPageData();
   }
 
   ngAfterViewInit() {

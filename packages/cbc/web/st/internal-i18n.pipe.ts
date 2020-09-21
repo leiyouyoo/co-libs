@@ -9,6 +9,7 @@ const i18n = {
     'Cancel':'取消',
     'Recover': '恢复',
     'Loading': '加载中',
+    'Reset': '重置',
   },
   'en-US':{
     'stSetting': 'Settings',
