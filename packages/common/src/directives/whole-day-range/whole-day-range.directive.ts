@@ -16,10 +16,14 @@ export class WholeDayRangeDirective implements OnInit {
 
     this.nzDatePickerComponent.onChangeFn =
       (value: [Date, Date]) => {
-        value[0] = startOfDay(value[0]);
-        value[1] = endOfDay(value[1]);
+        if (!value?.length) {
+          this.onChangeFn([]);
+        } else {
+          value[0] = startOfDay(value[0]);
+          value[1] = endOfDay(value[1]);
 
-        this.onChangeFn(value);
+          this.onChangeFn(value);
+        }
       };
   }
 }
