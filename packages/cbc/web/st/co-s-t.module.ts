@@ -38,10 +38,11 @@ import { InternalI18nPipe } from './internal-i18n.pipe';
 import { NzResizableModule } from 'ng-zorro-antd/resizable';
 import { StNumberInputComponent } from './st-number-input.component';
 import { FixScrollingXDirective } from './fix-scrolling-x.directive';
+import { FixNzResizableDirective } from './fix-nz-resizable.directive';
 
 const COMPONENTS = [STComponent, StNumberInputComponent];
 const internalDeclaration = [ ColumnConfigComponent, InternalI18nPipe ];
-const DIRECTIVES = [STRowDirective, STWidgetHostDirective, CalcScrollDirective, CoSTWidgetHostDirective, LoadOnScrollDirective, FixScrollingXDirective];
+const DIRECTIVES = [STRowDirective, STWidgetHostDirective, CalcScrollDirective, CoSTWidgetHostDirective, LoadOnScrollDirective, FixScrollingXDirective, FixNzResizableDirective];
 const icons = [SettingOutline, DeleteOutline, EllipsisOutline, FilterOutline, MinusOutline];
 
 @NgModule({
