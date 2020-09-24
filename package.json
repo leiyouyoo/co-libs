@@ -1,6 +1,6 @@
 {
   "name": "co-libs",
-  "version": "0.2.74",
+  "version": "0.2.75",
   "description": "co-libs 是一组用于前端开发的公共模块集合",
   "keywords": [
     "co-libs",
@@ -78,8 +78,9 @@
     "@webcomponents/custom-elements": "^1.4.1",
     "ajv": "^6.12.2",
     "aos": "^3.0.0-beta.6",
-    "co-cli": "0.0.69",
+    "co-cli": "0.0.78",
     "codesandbox": "^2.1.14",
+    "cos-js-sdk-v5": "^0.5.22",
     "docsearch.js": "^2.6.3",
     "extend": "^3.0.2",
     "file-saver": "^2.0.2",
@@ -97,10 +98,9 @@
     "qrious": "^4.0.2",
     "rxjs": "~6.5.4",
     "save-dev": "0.0.1-security",
-    "tslib": "^1.10.0",
-    "zone.js": "~0.10.2",
     "tim-js-sdk": "^2.3.2",
-    "cos-js-sdk-v5": "^0.5.22"
+    "tslib": "^1.10.0",
+    "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.6",

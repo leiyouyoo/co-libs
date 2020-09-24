@@ -42,6 +42,21 @@ export class StorageCSPExcelService extends BaseApi {
 
 
     /**
+     * @param url /Storage/CSPExcel/BatchClearanceInvoiceExportExcelAsync
+     * 批量导出PackageList
+     */
+
+    @GET('batchClearanceInvoiceExportExcelAsync')
+    batchClearanceInvoiceExportExcelAsync(
+        @Payload
+        _req: {ids?:any[]} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
      * @param url /Storage/CSPExcel/ProductImport
      * 导入产品
      */
