@@ -17,6 +17,7 @@ export { StUserSettingService as ɵStUserSettingService } from './st-user-settin
 export { StNumberInputComponent } from './st-number-input.component';
 export * from './fix-scrolling-x.directive';
 export * from './fix-nz-resizable.directive';
+export * from './st-row-selected.directive'
 export { enumToFilterArray } from './utils'
 
 export { CoSTModule } from './co-s-t.module';

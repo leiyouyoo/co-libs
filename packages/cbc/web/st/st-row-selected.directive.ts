@@ -67,7 +67,7 @@ export class StRowSelectedDirective implements OnInit {
     }
     if (!(activatedIndex >= 0)) return;
 
-    /* may be 0, but doesn't matter */
+    /* may be set 0 also, but doesn't matter */
     const step = this.index > activatedIndex ? 1 : -1;
     for (let i = 0; Math.abs(i) <= Math.abs(this.index - activatedIndex);) {
       stData[activatedIndex + i].checked = true;
