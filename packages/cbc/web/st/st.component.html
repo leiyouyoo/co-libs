@@ -95,6 +95,7 @@
   [nzShowQuickJumper]="page.showQuickJumper"
   [nzShowSizeChanger]="page.showSize"
   [nzPaginationPosition]="page.position"
+  [class.st__cdk-viewport-scroll-y]="table.scrollY && table.verticalScrollBarWidth !== 0"
   [nzShowTotal]="totalTpl"
   [nzWidthConfig]="widthConfig"
   fixScrollingX
@@ -266,8 +267,9 @@
         [attr.data-index]="index"
         (click)="_rowClick($event, i, index)"
         [class.st-row-odd]="index % 2 === 1"
-        [class.st-row-selected]="i.checked || isRowActivated(i, index)"
         [ngClass]="i._rowClassName"
+        [stRowSelected]="i"
+        [stRowSelectedIndex]="index"
       >
         <td
           *ngIf="showCheckbox"

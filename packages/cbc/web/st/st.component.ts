@@ -1,5 +1,6 @@
 import { DecimalPipe, DOCUMENT } from '@angular/common';
 import {
+  AfterContentInit,
   AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -82,7 +83,6 @@ import { NzResizeEvent } from 'ng-zorro-antd/resizable';
     '[class.st__p-center]': `page.placement === 'center'`,
     '[class.st__width-strict]': `widthMode.type === 'strict'`,
     '[class.st-bordered]': `bordered`,
-    '[class.st__cdk-viewport-scroll-y]': `cd() && orgTable.scrollY && orgTable.verticalScrollBarWidth !== 0`,
     '[class.ant-table-rep]': `responsive`,
     '[class.ant-table-rep__hide-header-footer]': `responsiveHideHeaderFooter`,
   },
@@ -90,7 +90,7 @@ import { NzResizeEvent } from 'ng-zorro-antd/resizable';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
+export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, OnDestroy {
   private unsubscribe$ = new Subject<void>();
   private data$: Subscription;
   private totalTpl = ``;
@@ -556,8 +556,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     if (this.expandAccordion === false) return;
     this._data.filter(i => i !== item).forEach(i => (i.expand = false));
   }
-  _rowClick(e: Event, item: STData, index: number) {
-    this.setRowActivatedValue(item, index);
+  _rowClick(e: MouseEvent, item: STData, index: number) {
     if ((e.target as HTMLElement).nodeName === 'INPUT') return;
     const { expand, expandRowByClick, rowClickTime } = this;
     if (!!expand && item.showExpand !== false && expandRowByClick) {
@@ -716,7 +715,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     return this._checkAll(false);
   }
 
-  private _refCheck(): this {
+  _refCheck(): this {
     const validData = this._data.filter(w => !w.disabled);
     const checkedList = validData.filter(w => w.checked === true);
     this._allChecked = checkedList.length > 0 && checkedList.length === validData.length;
@@ -785,7 +784,6 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   // #region buttons
 
   _btnClick(record: STData, btn: STColumnButton, e: Event, index: number) {
-    this.setRowActivatedValue(record, index);
     // should be stop propagation when expandRowByClick is true
     if (e && this.expandRowByClick === true) {
       e.stopPropagation();
@@ -1090,25 +1088,6 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     this.cd();
   }
 
-  isRowActivated(data: STData, index: number): boolean {
-    const key = this.activatedRowKey;
-    const value = this.activatedRowValue;
-    if (key === 'index') {
-      return index === value;
-    } else {
-      return !!data[key] && data[key] === value;
-    }
-  }
-
-  setRowActivatedValue(data: STData, index: number) {
-    const key = this.activatedRowKey;
-    if (key === 'index') {
-      this.activatedRowValue = index;
-    } else if (data[key]) {
-      this.activatedRowValue = data[key];
-    }
-  }
-
   isFunction(func): boolean {
     return typeof func === 'function';
   }
@@ -1127,8 +1106,12 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     return text?.replace(/<[^>]+>/g, '');
   }
 
+  ngAfterContentInit() {
+  }
+
   ngAfterViewInit() {
     this.columnSource.restoreAllRender(this._columns);
+    this.cd()
   }
 
   ngOnChanges(changes: { [P in keyof this]?: SimpleChange } & SimpleChanges): void {

@@ -11,7 +11,6 @@ export class FixNzResizableDirective implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.nzResizableDirective);
     this.nzResizableDirective.setPosition = () => {
       const nzResizableDirective: any = this.nzResizableDirective;
       const position = nzResizableDirective.el.style.position || getComputedStyle(nzResizableDirective.el).position;
