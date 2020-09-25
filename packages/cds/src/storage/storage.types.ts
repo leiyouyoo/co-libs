@@ -27,6 +27,18 @@
     }
  
     /**
+     *  No Remark 
+     */
+    export class StorageBatchDownloadClearanceInvoiceDto {
+        
+         
+            
+            ids?: any[];
+        
+        
+    }
+ 
+    /**
      * 导入结果
      */
     export class StorageImportResultDto {
