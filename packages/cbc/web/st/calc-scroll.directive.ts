@@ -5,11 +5,13 @@ import {
   Directive,
   ElementRef,
   HostListener,
-  Input, Optional,
+  Input, OnDestroy, Optional,
 } from '@angular/core';
 import { debounce, InputBoolean } from '@co/core';
 import { NzTableComponent } from 'ng-zorro-antd';
 import { STComponent } from './st.component';
+import { pipe, Subject, Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 function outerHeight(el, defaultValue?) {
   if (!el && defaultValue !== void 0) return defaultValue;
@@ -23,7 +25,7 @@ function outerHeight(el, defaultValue?) {
 @Directive({
   selector: 'co-st[calcScroll],nz-table[calcScroll]'
 })
-export class CalcScrollDirective implements AfterContentInit, AfterViewChecked {
+export class CalcScrollDirective implements AfterContentInit, AfterViewChecked, OnDestroy {
   @Input() set data(val: any[]) {
     this.calc();
   }
@@ -34,11 +36,21 @@ export class CalcScrollDirective implements AfterContentInit, AfterViewChecked {
   @Input() @InputBoolean() disableCalcY = false;
   el: HTMLElement;
   lastHeight = 0;
+  destroy$ = new Subject();
 
   constructor(private host: ElementRef,
               @Optional() private _nzTableComponent: NzTableComponent,
               @Optional() private stComponent: STComponent,
-              ) {}
+              ) {
+    this.stComponent?.change
+      ?.pipe(
+        takeUntil(this.destroy$),
+    ).subscribe(data => {
+      if (data?.type === 'loaded') {
+        this.calc();
+      }
+    })
+  }
 
   get nzTableComponent() {
     return this._nzTableComponent ?? this.stComponent.orgTable;
@@ -78,5 +90,10 @@ export class CalcScrollDirective implements AfterContentInit, AfterViewChecked {
       //@ts-ignore
       (this.nzTableComponent.cdr as ChangeDetectorRef).markForCheck();
     });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next()
+    this.destroy$.complete()
   }
 }

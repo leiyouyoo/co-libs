@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input, ViewEncapsulation } from '@angular/core';
-import { InputBoolean, InputNumber } from 'ng-zorro-antd';
-import { LifeCycleComponent } from '@co/core';
+import { InputBoolean } from 'ng-zorro-antd';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'co-page-side',
@@ -11,20 +11,19 @@ import { LifeCycleComponent } from '@co/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class PageSideComponent extends LifeCycleComponent {
+export class PageSideComponent {
 
   @Input() @InputBoolean() coWidthResizable = false;
-  @HostBinding('style.margin-left.px') @Input() @InputNumber() marginLeft = 16;
+  @HostBinding('style.margin-left') @Input() coMarginLeft: string = '16px';
+  @HostBinding('style.min-width') @Input() coMinWidth: string = '360px';
 
   @HostBinding('style.width.px') width;
-  @HostBinding('style.height.px') height;
 
   @HostBinding('style.max-width') get maxWidth() {
-    return `calc(100% - ${this.marginLeft}px - var(--left-min-width))`;
+    return this.sanitizer.bypassSecurityTrustStyle(`calc(100% - ${this.coMarginLeft} - var(--left-min-width))`);
   }
 
-  constructor(public elementRef: ElementRef<HTMLElement>) {
-    super();
+  constructor(public elementRef: ElementRef<HTMLElement>, private sanitizer: DomSanitizer) {
   }
 
 }

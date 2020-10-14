@@ -6,6 +6,7 @@ export * from './cost-item.service';
 export * from './county.service';
 export * from './currency.service';
 export * from './data-dictionary.service';
+export * from './delivery-channel-service.service';
 export * from './dictionary-type.service';
 export * from './flight.service';
 export * from './place.service';

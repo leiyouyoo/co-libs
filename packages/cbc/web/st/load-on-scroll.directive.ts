@@ -9,6 +9,10 @@ import { debounceTime, startWith } from 'rxjs/operators';
 export class LoadOnScrollDirective implements OnInit {
   @Input() distance = 80;
   status: 'unset' | 'trying' | 'set' = 'unset';
+  lastScroll = {
+    scrollTop: 0,
+    scrollLeft: 0,
+  }
 
   constructor(private st: STComponent,
               private el: ElementRef,
@@ -39,8 +43,11 @@ export class LoadOnScrollDirective implements OnInit {
             .subscribe(async (e: Event) => {
               const element = tbodyContainer;
               const loadMore = element.scrollHeight - element.clientHeight - element.scrollTop <= this.distance;
-              console.log(loadMore);
+              const isScrollX = element.scrollLeft !== this.lastScroll.scrollLeft;
+              this.lastScroll.scrollLeft = element.scrollLeft
+              this.lastScroll.scrollTop = element.scrollTop
               if (!loadMore) return;
+              if (isScrollX) return;
               await this.st.loadPageData({ singleLoading: true, appendData: true });
             })
           this.status = 'set';

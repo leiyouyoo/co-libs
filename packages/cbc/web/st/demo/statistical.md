@@ -33,11 +33,12 @@ import { STColumn } from '@co/cbc/web/st';
             <td class="text-right">{{ s.min.text }}</td>
             <td class="text-right">{{ s.max.text }}</td>
             <td class="text-right">{{ s.custom.text }}</td>
+            <td></td>
           </tr>
           <tr class="bg-grey-lighter">
             <td colspan="3">性别平均值</td>
             <td class="text-right">{{ s.sum.value / s.dc.value | _currency }}</td>
-            <td colspan="4"></td>
+            <td colspan="5"></td>
           </tr>
         </ng-container>
       </ng-template>

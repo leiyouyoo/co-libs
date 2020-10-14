@@ -370,7 +370,7 @@ export class STColumnSource {
     return res;
   }
 
-  process(list: STColumn[]): { columns: STColumn[]; headers: STColumn[][], filterRow: STColumn[] } {
+  process(list: STColumn[], options: { defaultWidth: number } = {} as any,): { columns: STColumn[]; headers: STColumn[][], filterRow: STColumn[] } {
     if (!list || list.length === 0) throw new Error(`[st]: the columns property muse be define!`);
 
     const { noIndex } = this.cog;
@@ -439,20 +439,12 @@ export class STColumnSource {
       ) {
         (item as any).type = '';
       }
-      // className
-      if (!item.className) {
-        item.className = ({
-          number: 'text-right',
-          currency: 'text-right',
-          date: 'text-center',
-        } as NzSafeAny)[item.type!];
-      }
       // width
       if (typeof item.width === 'number') {
         item.width = `${item.width}px`;
       }
-      if (!item.width) {
-        item.width = `100px`;
+      if (!item.width && options.defaultWidth) {
+        item.width = `${options.defaultWidth}px`;
       }
 
       // sorter

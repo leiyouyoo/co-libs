@@ -741,7 +741,7 @@ export interface STColumnButton {
    *
    * @todo Bad parameter design
    */
-  iif?: (item: STData, btn: STColumnButton, column: STColumn) => boolean;
+  iif?: (item: STData, btn: STColumnButton, column: STColumn) => boolean | null;
   /**
    * Conditional expression rendering behavior, can be set to `hide` (default) or `disabled`
    */
@@ -762,7 +762,7 @@ export interface STColumnButtonOK {
   event: Event;
 }
 
-export type IifBehaviorType = 'hide' | 'disabled';
+export type IifBehaviorType = 'hide' | 'disabled' | 'both';
 
 export interface STColumnButtonModal extends ModalHelperOptions {
   /**

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CoACLModule } from '@co/acl';
 import { CoUtilModule } from '@co/core';
+import { CoCommonModule } from '@co/common';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
@@ -36,10 +37,17 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { InternalI18nPipe } from './internal-i18n.pipe';
 import { NzResizableModule } from 'ng-zorro-antd/resizable';
 import { StNumberInputComponent } from './st-number-input.component';
+import { FixScrollingXDirective } from './fix-scrolling-x.directive';
+import { FixNzResizableDirective } from './fix-nz-resizable.directive';
+import { StRowSelectedDirective } from './st-row-selected.directive';
 
 const COMPONENTS = [STComponent, StNumberInputComponent];
 const internalDeclaration = [ ColumnConfigComponent, InternalI18nPipe ];
-const DIRECTIVES = [STRowDirective, STWidgetHostDirective, CalcScrollDirective, CoSTWidgetHostDirective, LoadOnScrollDirective, ];
+const DIRECTIVES = [
+  STRowDirective, STWidgetHostDirective, CalcScrollDirective,
+  CoSTWidgetHostDirective, LoadOnScrollDirective, FixScrollingXDirective,
+  FixNzResizableDirective, StRowSelectedDirective,
+];
 const icons = [SettingOutline, DeleteOutline, EllipsisOutline, FilterOutline, MinusOutline];
 
 @NgModule({
@@ -48,6 +56,7 @@ const icons = [SettingOutline, DeleteOutline, EllipsisOutline, FilterOutline, Mi
     FormsModule,
     CoUtilModule,
     CoACLModule,
+    CoCommonModule,
     NzPopconfirmModule,
     NzTableModule,
     NzBadgeModule,

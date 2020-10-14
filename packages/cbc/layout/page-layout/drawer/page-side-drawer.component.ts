@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -8,7 +9,6 @@ import {
   Injector,
   Input,
   OnDestroy,
-  OnInit,
   Output,
   TemplateRef,
   Type,
@@ -17,7 +17,8 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { CdkPortalOutlet, ComponentPortal, DomPortal, Portal, PortalInjector, TemplatePortal } from '@angular/cdk/portal';
+import { CdkPortalOutlet, ComponentPortal, Portal, PortalInjector, TemplatePortal } from '@angular/cdk/portal';
+import { DomSanitizer } from '@angular/platform-browser';
 import { InputBoolean } from 'ng-zorro-antd';
 import { PageSideComponent } from '../page-side.component';
 
@@ -33,13 +34,16 @@ import { PageSideComponent } from '../page-side.component';
   encapsulation: ViewEncapsulation.None,
   viewProviders: [{ provide: PageSideComponent, useExisting: forwardRef(() => PageSideDrawerComponent) }],
 })
-export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSideComponent implements OnInit, OnDestroy {
+export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSideComponent implements AfterViewInit, OnDestroy {
 
   @Input() @InputBoolean() coClosable: boolean = true;
   @Input() coTitle?: string | TemplateRef<{}>;
   @Input() coFooter?: string | TemplateRef<{}>;
   @Input() coContent!: TemplateRef<{ $implicit: D; }> | Type<T>;
   @Input() coContentParams?: D;
+
+  @Input() @InputBoolean() isOpen = false;
+  @Output() readonly isOpenChange = new EventEmitter<boolean>();
 
   @Output() readonly coOnClose = new EventEmitter<PageSideDrawerComponent>();
 
@@ -53,36 +57,34 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
     return this.coAfterClose.asObservable();
   }
 
-  isOpen = false;
-
   private readonly coAfterOpen = new Subject<void>();
   private readonly coAfterClose = new Subject<R>();
   private portal: Portal<any> | null = null;
   private componentInstance: T | null = null;
 
   constructor(public elementRef: ElementRef<HTMLElement>,
+              private _sanitizer: DomSanitizer,
               private cdr: ChangeDetectorRef,
               private viewContainerRef: ViewContainerRef,
               private injector: Injector) {
-    super(elementRef);
+    super(elementRef, _sanitizer);
   }
 
   ngAfterViewInit(): void {
-    if (this.coContent instanceof TemplateRef) {
+    if (this.coContent) {
       this.attachPortal(this.coContent, this.coContentParams);
       this.cdr.detectChanges();
     }
-    super.ngAfterViewInit();
   }
 
   ngOnDestroy(): void {
     this.destroy();
-    super.ngOnDestroy();
   }
 
-  open(portalContent?: HTMLElement | ElementRef<HTMLElement> | TemplateRef<{ $implicit: D }> | Type<T>, templateContext?: D): void {
+  open(portalContent?: TemplateRef<{ $implicit: D }> | Type<T>, templateContext?: D): void {
     portalContent && this.attachPortal(portalContent, templateContext);
     this.isOpen = true;
+    this.isOpenChange.emit(this.isOpen);
     this.cdr.detectChanges();
     setTimeout(() => {
       this.coAfterOpen.next();
@@ -91,6 +93,7 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
 
   close(result?: R): void {
     this.isOpen = false;
+    this.isOpenChange.emit(this.isOpen);
     this.cdr.detectChanges();
     this.coAfterClose.next(result);
     this.coAfterClose.complete();
@@ -99,7 +102,6 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
   destroy(): void {
     this.close();
     this.dispose();
-    this.portal?.detach();
     this.portal = null;
     this.componentInstance = null;
   }
@@ -114,12 +116,9 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
 
   private attachPortal(portalContent, templateContext?): void {
     this.dispose();
-    if (portalContent instanceof ElementRef || portalContent instanceof HTMLElement) { // html
-      this.portal = new DomPortal(portalContent);
-      this.bodyPortalOutlet!.attach(this.portal);
-    } else if (portalContent instanceof TemplateRef) { // 模板
+    if (portalContent instanceof TemplateRef) { // 模板
       this.portal = new TemplatePortal(portalContent, this.viewContainerRef, templateContext);
-      this.bodyPortalOutlet!.attach(this.portal);
+      this.bodyPortalOutlet!.attachTemplatePortal(this.portal as TemplatePortal);
     } else if (portalContent instanceof Type) { // 组件
       const childInjector = new PortalInjector(this.injector, new WeakMap([[PageSideDrawerComponent, this]]));
       this.portal = new ComponentPortal<T>(portalContent, null, childInjector);

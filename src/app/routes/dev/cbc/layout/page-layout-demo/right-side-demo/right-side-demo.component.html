@@ -1,6 +1,6 @@
 <div class="bg-wrapper">
   <co-page-layout>
-    <co-page-main [coMaxWidth]="1200">
+    <co-page-main [coMaxWidth]="'1200px'">
       <co-page-layout>
         <co-toolbar>
           <co-toolbar-item>
@@ -69,12 +69,15 @@
             </nz-button-group>
           </div>
         </co-page-main>
-        <co-page-side>
+        <co-page-side [coMinWidth]="'10px'">
           <div style="display: flex;justify-content: center;align-items: center;background: #8f8f88;height: 100%;width:100%;color: white;">侧栏区域</div>
         </co-page-side>
       </co-page-layout>
     </co-page-main>
-    <co-page-side-drawer [coTitle]="drawerTitle" coWidthResizable></co-page-side-drawer>
+    <co-page-side-drawer (coOnClose)="$event.close()" [coContent]="drawerContent" [coTitle]="drawerTitle" coWidthResizable></co-page-side-drawer>
+    <ng-template #drawerContent>
+      模板爱上大沙发沙发上地方
+    </ng-template>
   </co-page-layout>
 </div>
 <ng-template #drawerTitle>

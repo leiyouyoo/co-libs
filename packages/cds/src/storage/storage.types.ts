@@ -27,6 +27,18 @@
     }
  
     /**
+     *  No Remark 
+     */
+    export class StorageBatchDownloadClearanceInvoiceDto {
+        
+         
+            
+            ids?: any[];
+        
+        
+    }
+ 
+    /**
      * 导入结果
      */
     export class StorageImportResultDto {
@@ -172,13 +184,13 @@
             /* 是否导出 */ 
             isExport?: boolean;
          
-            /* 排序 */ 
+            
             sorting?: string;
          
-            /* 页大小 */ 
+            
             maxResultCount?: number;
          
-            /* 跳过指定条数 */ 
+            
             skipCount?: number;
         
         
@@ -211,13 +223,13 @@
             /* 是否导出 */ 
             isExport?: boolean;
          
-            /* 排序 */ 
+            
             sorting?: string;
          
-            /* 页大小 */ 
+            
             maxResultCount?: number;
          
-            /* 跳过指定条数 */ 
+            
             skipCount?: number;
         
         
@@ -247,56 +259,14 @@
             /* 是否导出 */ 
             isExport?: boolean;
          
-            /* 排序 */ 
+            
             sorting?: string;
          
-            /* 页大小 */ 
+            
             maxResultCount?: number;
          
-            /* 跳过指定条数 */ 
+            
             skipCount?: number;
-        
-        
-    }
- 
-    /**
-     *  No Remark 
-     */
-    export class StorageIFormFile {
-        
-         
-            
-            contentType?: string;
-         
-            
-            contentDisposition?: string;
-         
-            
-            headers?: object;
-         
-            
-            length?: number;
-         
-            
-            name?: string;
-         
-            
-            fileName?: string;
-        
-        
-    }
- 
-    /**
-     *  No Remark 
-     */
-    export class StoragePurchaseOrderImportExcelInput {
-        
-         
-            /* 业务id */ 
-            shipmentId: string;
-         
-            
-            file: StorageIFormFile;
         
         
     }
@@ -353,10 +323,10 @@
         
          
             
-            totalCount: number;
+            totalCount: any;
          
             
-            items: T[];
+            items: any;
         
         
     }
@@ -443,7 +413,7 @@
         
          
             
-            items: T[];
+            items: any;
         
         
     }

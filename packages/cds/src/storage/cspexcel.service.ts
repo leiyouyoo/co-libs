@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { StorageFileDto,StorageImportResultDto,StorageProductExportInput,StorageOrderExportInput,StorageBillExportInput, } from './storage.types';
+import { StorageFileDto,StorageBatchDownloadClearanceInvoiceDto,StorageImportResultDto,StorageProductExportInput,StorageOrderExportInput,StorageBillExportInput, } from './storage.types';
 
 @BaseUrl('/storage/CSPExcel')
 @Injectable({ providedIn: 'root' })
@@ -35,6 +35,21 @@ export class StorageCSPExcelService extends BaseApi {
     cusClearanceInvoiceExportExcelAsync(
         @Payload
         _req: {sheetName?:string,templateName?:string,headers?:any[],apiTypes?:number,url:string,parametersJsonStr?:string,isBackgroundJob?:boolean} 
+
+    ): Observable<StorageFileDto> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Storage/CSPExcel/BatchClearanceInvoiceExportExcelAsync
+     * 批量导出PackageList
+     */
+
+    @POST('batchClearanceInvoiceExportExcelAsync')
+    batchClearanceInvoiceExportExcelAsync(
+        @Payload
+        _req:StorageBatchDownloadClearanceInvoiceDto
 
     ): Observable<StorageFileDto> {
         return null as any

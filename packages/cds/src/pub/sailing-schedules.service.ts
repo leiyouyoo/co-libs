@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBSailingSchedulesInput, PUBSailingSchedulesDto, PUBPagedResultDto, PUBGetByVoyageDto } from './pub.types';
+import { BaseApi, BaseUrl, DELETE, GET, Payload, POST } from '@co/common';
+import { PUBGetByVoyageDto, PUBPagedResultDto, PUBSailingSchedulesDetailDto, PUBSailingSchedulesDto, PUBSailingSchedulesInput } from './pub.types';
 
 @BaseUrl('/pub/SailingSchedules')
 @Injectable({ providedIn: 'root' })
@@ -9,6 +9,21 @@ export class PUBSailingSchedulesService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
+
+
+  /**
+   * @param url /PUB/SailingSchedules/DownLoadInttraSailingScheduleDetail
+   * 从inttra Api下载船期数据
+   */
+
+  @POST('downLoadInttraSailingScheduleDetail')
+  downLoadInttraSailingScheduleDetail(
+    @Payload
+      _req: {},
+  ): Observable<any> {
+    return null as any;
+  }
+
 
   /**
    * @param url /PUB/SailingSchedules/SaveSchedulesXmlToDataBase
@@ -18,10 +33,11 @@ export class PUBSailingSchedulesService extends BaseApi {
   @POST('saveSchedulesXmlToDataBase')
   saveSchedulesXmlToDataBase(
     @Payload
-    _req: {},
+      _req: {},
   ): Observable<any> {
     return null as any;
   }
+
 
   /**
    * @param url /PUB/SailingSchedules/DeleteSchedule
@@ -31,10 +47,11 @@ export class PUBSailingSchedulesService extends BaseApi {
   @DELETE('deleteSchedule')
   deleteSchedule(
     @Payload
-    _req: {},
+      _req: {},
   ): Observable<any> {
     return null as any;
   }
+
 
   /**
    * @param url /PUB/SailingSchedules/DeleteOldSchedule
@@ -44,10 +61,11 @@ export class PUBSailingSchedulesService extends BaseApi {
   @DELETE('deleteOldSchedule')
   deleteOldSchedule(
     @Payload
-    _req: {},
+      _req: {},
   ): Observable<any> {
     return null as any;
   }
+
 
   /**
    * @param url /PUB/SailingSchedules/QuerySailingSchedules
@@ -57,10 +75,11 @@ export class PUBSailingSchedulesService extends BaseApi {
   @POST('querySailingSchedules')
   querySailingSchedules(
     @Payload
-    _req: PUBSailingSchedulesInput,
+      _req: PUBSailingSchedulesInput,
   ): Observable<PUBPagedResultDto<PUBSailingSchedulesDto>> {
     return null as any;
   }
+
 
   /**
    * @param url /PUB/SailingSchedules/GetByVoyage
@@ -70,14 +89,24 @@ export class PUBSailingSchedulesService extends BaseApi {
   @GET('getByVoyage')
   getByVoyage(
     @Payload
-    _req: {
-      vesselName?: string;
-      voyageNo?: string;
-      carrierId?: string;
-      polId?: string;
-      podId?: string;
-    },
+      _req: { vesselName?: string, voyageNo?: string, carrierId?: string, polId?: string, podId?: string },
   ): Observable<PUBGetByVoyageDto> {
     return null as any;
   }
+
+
+  /**
+   * @param url /PUB/SailingSchedules/QuerySailingSchedulesDetail
+   * 查询船期数据 从api接口获取
+   */
+
+  @POST('querySailingSchedulesDetail')
+  querySailingSchedulesDetail(
+    @Payload
+      _req: PUBSailingSchedulesInput,
+  ): Observable<PUBPagedResultDto<PUBSailingSchedulesDetailDto>> {
+    return null as any;
+  }
+
+
 }

@@ -67,7 +67,7 @@ import { Component } from '@angular/core';
         <co-page-main>
           <div style="display: flex;justify-content: center;align-items: center;background: #9e9e9e;height: 300px;width:100%;color: white;">主内容区域</div>
         </co-page-main>
-        <co-page-side>
+        <co-page-side coWidthResizable>
           <div style="display: flex;justify-content: center;align-items: center;background: #8f8f88;height: 300px;width:100%;color: white;">侧栏区域</div>
         </co-page-side>
       </co-page-layout>

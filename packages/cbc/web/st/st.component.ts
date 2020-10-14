@@ -1,5 +1,6 @@
 import { DecimalPipe, DOCUMENT } from '@angular/common';
 import {
+  AfterContentInit,
   AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -89,7 +90,7 @@ import { NzResizeEvent } from 'ng-zorro-antd/resizable';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
+export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, OnDestroy {
   private unsubscribe$ = new Subject<void>();
   private data$: Subscription;
   private totalTpl = ``;
@@ -177,13 +178,14 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() @InputBoolean() bordered = true;
   @Input() size: 'small' | 'middle' | 'default';
   @Input() singleSort: STSingleSort;
+  @Input() @InputNumber() columnDefaultWidth: number;
   rawData: any;
   _scroll: { y?: string; x?: string };
   get scroll(): { y?: string; x?: string } {
     /**
      * fix: virtual scroll height
      */
-    if (this.virtualScroll && !this._data?.length) return {};
+    // if (this.virtualScroll && !this._data?.length) return {};
     return this._scroll;
   }
   @Input() set scroll(value: { y?: string; x?: string }) {
@@ -554,8 +556,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     if (this.expandAccordion === false) return;
     this._data.filter(i => i !== item).forEach(i => (i.expand = false));
   }
-  _rowClick(e: Event, item: STData, index: number) {
-    this.setRowActivatedValue(item, index);
+  _rowClick(e: MouseEvent, item: STData, index: number) {
     if ((e.target as HTMLElement).nodeName === 'INPUT') return;
     const { expand, expandRowByClick, rowClickTime } = this;
     if (!!expand && item.showExpand !== false && expandRowByClick) {
@@ -606,6 +607,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
         .map(item => this._data.indexOf(item))
         .filter(pos => pos !== -1)
         .forEach(pos => this._data.splice(pos, 1));
+      this._data = [...this._data];
     }
     // recalculate no
     this._columns
@@ -675,8 +677,14 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     this.changeEmit('filter', col);
   }
 
-  @debounce(5e2)
+  ifNeedFilterConfirm(input: string): boolean {
+    return !input || input?.length > 2;
+  }
+
+  @debounce(2e2)
   _filterConfirm(col: STColumn) {
+    console.log(col);
+    this.pi = 1;
     this.handleFilter(col);
   }
 
@@ -707,7 +715,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     return this._checkAll(false);
   }
 
-  private _refCheck(): this {
+  _refCheck(): this {
     const validData = this._data.filter(w => !w.disabled);
     const checkedList = validData.filter(w => w.checked === true);
     this._allChecked = checkedList.length > 0 && checkedList.length === validData.length;
@@ -776,7 +784,6 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   // #region buttons
 
   _btnClick(record: STData, btn: STColumnButton, e: Event, index: number) {
-    this.setRowActivatedValue(record, index);
     // should be stop propagation when expandRowByClick is true
     if (e && this.expandRowByClick === true) {
       e.stopPropagation();
@@ -909,7 +916,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   _validBtns(btns: STColumnButton[], item: STData, col: STColumn): STColumnButton[] {
     return btns.filter(btn => {
       const result = btn.iif!(item, btn, col);
-      const isRenderDisabled = btn.iifBehavior === 'disabled';
+      const isRenderDisabled = btn.iifBehavior === 'both' ? result === false : btn.iifBehavior === 'disabled';
       btn._result = result;
       btn._disabled = !result && isRenderDisabled;
       if (btn.className) {
@@ -974,7 +981,7 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   private refreshColumns(): this {
-    const res = this.columnSource.process(this.columns);
+    const res = this.columnSource.process(this.columns, { defaultWidth: this.columnDefaultWidth, });
     this._columns = res.columns;
     this._headers = res.headers;
     this._filterRow = res.filterRow;
@@ -982,7 +989,10 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   getFilterOptions(column: STColumn, index: number, input?: string): any[] {
-    if (column?.filter?.optionList) return column.filter.optionList;
+    /*  */
+    if (column?.filter?.optionList) {
+      return column.filter.optionList.map(o => ({ ...o, label: this.i18nSrv.fanyi(o.label), }));
+    }
     const arr = Array.from(
       new Set(this._data.map(o => o._values[index].text))
     );
@@ -1078,25 +1088,6 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
     this.cd();
   }
 
-  isRowActivated(data: STData, index: number): boolean {
-    const key = this.activatedRowKey;
-    const value = this.activatedRowValue;
-    if (key === 'index') {
-      return index === value;
-    } else {
-      return !!data[key] && data[key] === value;
-    }
-  }
-
-  setRowActivatedValue(data: STData, index: number) {
-    const key = this.activatedRowKey;
-    if (key === 'index') {
-      this.activatedRowValue = index;
-    } else if (data[key]) {
-      this.activatedRowValue = data[key];
-    }
-  }
-
   isFunction(func): boolean {
     return typeof func === 'function';
   }
@@ -1107,23 +1098,34 @@ export class STComponent implements AfterViewInit, OnChanges, OnDestroy {
         m.value = null;
       })
     });
+    this.loadPageData();
+  }
+
+  htmlToText(text: string) {
+    if (typeof text !== 'string') return text;
+    return text?.replace(/<[^>]+>/g, '');
+  }
+
+  ngAfterContentInit() {
   }
 
   ngAfterViewInit() {
     this.columnSource.restoreAllRender(this._columns);
+    this.cd()
   }
 
   ngOnChanges(changes: { [P in keyof this]?: SimpleChange } & SimpleChanges): void {
     const changeData = changes.data;
+    /* columns must be set before load data */
+    if (changes.columnSettingName || changes.columns) {
+      this.sortColumns();
+      this.refreshColumns().optimizeData();
+    }
     if (changeData && changeData.currentValue && !(this.req.lazyLoad && changeData.firstChange)) {
       this.loadPageData();
     }
     if (changes.loading) {
       this._loading = changes.loading.currentValue;
-    }
-    if (changes.columnSettingName || changes.columns) {
-      this.sortColumns();
-      this.refreshColumns().optimizeData();
     }
   }
 

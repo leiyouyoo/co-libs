@@ -6,7 +6,7 @@
   (nzScrollToBottom)="onLoadMore()" (nzOpenChange)="onOpenChanged($event)"
   [nzDropdownClassName]="coDropdownMode === 'table' ? 'co-picker__drowpdown--table' : ''"
   [nzDropdownStyle]="coDropdownStyle" (nzBlur)="onBlur($event)" (nzFocus)="onFocus($event)"
-  (ngModelChange)="onChanged($event)">
+  (ngModelChange)="onChanged($event)" [nzDisabled]="coDisabled">
   <div *ngIf="coDropdownMode === 'default'">
     <nz-option *ngFor="let item of optionList" [nzLabel]="item[coLabelMember]" [nzValue]="item[coValueMember]">
     </nz-option>

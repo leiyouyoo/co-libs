@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input, OnInit, Optional, Renderer2, RendererStyleFlags2, SkipSelf, ViewEncapsulation } from '@angular/core';
-import { InputNumber } from 'ng-zorro-antd';
+import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input, Optional, Renderer2, RendererStyleFlags2, SkipSelf, ViewEncapsulation } from '@angular/core';
+import { LifeCycleComponent } from '@co/core';
+import { filter, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'co-page-main',
@@ -9,21 +10,25 @@ import { InputNumber } from 'ng-zorro-antd';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class PageMainComponent implements OnInit {
+export class PageMainComponent extends LifeCycleComponent {
 
-  @HostBinding('style.max-width.px') @Input() coMaxWidth: number | 'none';
-  @HostBinding('style.min-width.px') @Input() @InputNumber() coMinWidth: number | null = 800;
+  @HostBinding('style.max-width') @Input() coMaxWidth: string;
+  @HostBinding('style.min-width') @Input() coMinWidth = '800px';
 
   constructor(@Optional() @SkipSelf() private parentMainComponent: PageMainComponent,
               private renderer: Renderer2, private elementRef: ElementRef<HTMLElement>) {
+    super();
   }
 
   ngOnInit(): void {
     if (this.parentMainComponent && this.parentMainComponent.coMinWidth === this.coMinWidth) {
-      this.coMinWidth = 0; // 内层的最小宽度不设默认值
+      this.coMinWidth = '50%'; // 内层的最小宽度默认50%
     }
     const parent = this.renderer.parentNode(this.elementRef.nativeElement);
-    this.renderer.setStyle(parent, '--left-min-width', `${this.coMinWidth}px`, RendererStyleFlags2.DashCase);
+    this.coOnChanges$.pipe(filter(({ coMinWidth }) => coMinWidth !== undefined), startWith(null)).subscribe(() => {
+      this.renderer.setStyle(parent, '--left-min-width', `${this.coMinWidth}`, RendererStyleFlags2.DashCase);
+    });
+    super.ngOnInit();
   }
 
 }
