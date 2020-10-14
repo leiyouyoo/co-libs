@@ -121,6 +121,10 @@ export class CoEditorComponent implements OnInit, OnDestroy {
     CKEDITOR.instances[this.id].execCommand('print');
   }
 
+  download() {
+    CKEDITOR.instances[this.id].execCommand('exportpdf');
+  }
+
   ngOnDestroy() {
     CKEDITOR.instances[this.id].destroy(true);
   }
