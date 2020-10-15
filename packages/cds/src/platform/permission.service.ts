@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PlatformPermissionDto,PlatformListResultDto,PlatformEntityDto,PlatformMovePermissionItemInput,PlatformGrantFunctionPermissionsToUserInput,PlatformRevokeUserFunctionPermissionsInput,PlatformGrantFunctionPermissionsToRoleInput,PlatformRevokeRoleFunctionPermissionsInput,PlatformDataPermissionDto,PlatformGrantDataPermissionsToUserInput,PlatformRevokeUserDataPermissionsInput,PlatformGrantDataPermissionsToRoleInput,PlatformRevokeRoleDataPermissionsInput, } from './platform.types';
+import { PlatformPermissionDto,PlatformListResultDto,PlatformEntityDto,PlatformMovePermissionItemInput,PlatformGrantFunctionPermissionsToUserInput,PlatformRevokeUserFunctionPermissionsInput,PlatformGrantFunctionPermissionsToRoleInput,PlatformRevokeRoleFunctionPermissionsInput,PlatformDataPermissionDto,PlatformGrantDataPermissionsToUserInput,PlatformRevokeUserDataPermissionsInput,PlatformGrantDataPermissionsToRoleInput,PlatformRevokeRoleDataPermissionsInput,PlatformDistributePermissionForTenantInput, } from './platform.types';
 
 @BaseUrl('/platform/Permission')
 @Injectable({ providedIn: 'root' })
@@ -13,7 +13,7 @@ export class PlatformPermissionService extends BaseApi {
   
     /**
      * @param url /Platform/Permission/GetAll
-     * 获取所有权限项集合
+     * 
      */
 
     @GET('getAll')
@@ -28,7 +28,7 @@ export class PlatformPermissionService extends BaseApi {
 
     /**
      * @param url /Platform/Permission/CreateOrUpdate
-     * 保存权限项
+     * 
      */
 
     @POST('createOrUpdate')
@@ -43,7 +43,7 @@ export class PlatformPermissionService extends BaseApi {
 
     /**
      * @param url /Platform/Permission/Delete
-     * 删除权限项
+     * 
      */
 
     @DELETE('delete')
@@ -88,7 +88,7 @@ export class PlatformPermissionService extends BaseApi {
 
     /**
      * @param url /Platform/Permission/Move
-     * 移动权限项
+     * 
      */
 
     @POST('move')
@@ -103,7 +103,7 @@ export class PlatformPermissionService extends BaseApi {
 
     /**
      * @param url /Platform/Permission/GetUserFunctionPermissions
-     * 获取用户拥有的功能权限集合
+     * 
      */
 
     @GET('getUserFunctionPermissions')
@@ -118,7 +118,7 @@ export class PlatformPermissionService extends BaseApi {
 
     /**
      * @param url /Platform/Permission/GrantFunctionPermissionsToUser
-     * 批量授予用户功能权限
+     * 
      */
 
     @POST('grantFunctionPermissionsToUser')
@@ -133,7 +133,7 @@ export class PlatformPermissionService extends BaseApi {
 
     /**
      * @param url /Platform/Permission/RevokeUserFunctionPermissions
-     * 撤销用户功能权限
+     * 
      */
 
     @POST('revokeUserFunctionPermissions')
@@ -148,7 +148,7 @@ export class PlatformPermissionService extends BaseApi {
 
     /**
      * @param url /Platform/Permission/GetRoleFunctionPermissions
-     * 获取角色拥有的权限集合
+     * 
      */
 
     @GET('getRoleFunctionPermissions')
@@ -163,7 +163,7 @@ export class PlatformPermissionService extends BaseApi {
 
     /**
      * @param url /Platform/Permission/GrantFunctionPermissionsToRole
-     * 批量授予角色权限
+     * 
      */
 
     @POST('grantFunctionPermissionsToRole')
@@ -178,7 +178,7 @@ export class PlatformPermissionService extends BaseApi {
 
     /**
      * @param url /Platform/Permission/RevokeRoleFunctionPermissions
-     * 批量撤销角色权限
+     * 
      */
 
     @POST('revokeRoleFunctionPermissions')
@@ -193,7 +193,7 @@ export class PlatformPermissionService extends BaseApi {
 
     /**
      * @param url /Platform/Permission/GetUserDataPermissions
-     * 获取用户拥有的数据权限集合
+     * 
      */
 
     @GET('getUserDataPermissions')
@@ -208,7 +208,7 @@ export class PlatformPermissionService extends BaseApi {
 
     /**
      * @param url /Platform/Permission/GrantDataPermissionsToUser
-     * 批量授予用户数据权限
+     * 
      */
 
     @POST('grantDataPermissionsToUser')
@@ -223,7 +223,7 @@ export class PlatformPermissionService extends BaseApi {
 
     /**
      * @param url /Platform/Permission/RevokeUserDataPermissions
-     * 撤销用户数据权限
+     * 
      */
 
     @POST('revokeUserDataPermissions')
@@ -238,7 +238,7 @@ export class PlatformPermissionService extends BaseApi {
 
     /**
      * @param url /Platform/Permission/GetRoleDataPermissions
-     * 获取角色拥有的数据权限集合
+     * 
      */
 
     @GET('getRoleDataPermissions')
@@ -253,7 +253,7 @@ export class PlatformPermissionService extends BaseApi {
 
     /**
      * @param url /Platform/Permission/GrantDataPermissionsToRole
-     * 批量授予角色数据权限
+     * 
      */
 
     @POST('grantDataPermissionsToRole')
@@ -268,13 +268,43 @@ export class PlatformPermissionService extends BaseApi {
 
     /**
      * @param url /Platform/Permission/RevokeRoleDataPermissions
-     * 批量撤销角色数据权限
+     * 
      */
 
     @POST('revokeRoleDataPermissions')
     revokeRoleDataPermissions(
         @Payload
         _req:PlatformRevokeRoleDataPermissionsInput
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Platform/Permission/DistributePermissionForTenant
+     * 
+     */
+
+    @POST('distributePermissionForTenant')
+    distributePermissionForTenant(
+        @Payload
+        _req:PlatformDistributePermissionForTenantInput
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Platform/Permission/GetPermissionForTenant
+     * 
+     */
+
+    @GET('getPermissionForTenant')
+    getPermissionForTenant(
+        @Payload
+        _req: {tenantId?:number} 
 
     ): Observable<any> {
         return null as any
