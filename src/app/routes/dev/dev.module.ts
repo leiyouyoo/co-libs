@@ -45,6 +45,10 @@ const routes: Routes = [
         loadChildren: () => import('./acl/acl.module').then(m => m.AclDemoModule),
       },
       {
+        path: 'map',
+        loadChildren: () => import('./map/map.module').then(m => m.MapDemoModule),
+      },
+      {
         path: 'container-picker',
         loadChildren: () => import('./cbc/business/container-picker/container-picker.module').then(m => m.ContainerPickerModule),
       },

@@ -15,8 +15,8 @@ import { RoutesModule } from './routes/routes.module';
 import { SharedModule } from './shared/shared.module';
 
 import { CoBusinessComponentsModule } from '@co/cbc';
+import { CoCommonModule, ResponseInterceptor, UserCustomConfigService } from '@co/common';
 import { CO_I18N_TOKEN } from '@co/core';
-import { ResponseInterceptor, CoCommonModule, UserCustomConfigService } from '@co/common';
 import { I18NService } from './core/i18n/service';
 import { StartupService } from './core/startup.service';
 
@@ -31,9 +31,9 @@ import { NgxTinymceModule } from 'ngx-tinymce';
 import { UEditorModule } from 'ngx-ueditor';
 import { JsonSchemaModule } from './shared/json-schema/json-schema.module';
 
+import { JWTInterceptor } from '@co/auth';
 import { ExampleModule, EXAMPLE_COMPONENTS } from './routes/gen/examples';
 import { IconComponent } from './shared/components/icon/icon.component';
-import { JWTInterceptor } from '@co/auth';
 
 export function StartupServiceFactory(startupService: StartupService) {
   return () => startupService.load();

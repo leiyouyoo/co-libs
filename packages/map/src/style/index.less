@@ -1,0 +1,258 @@
+@import '../../theme-default.less';
+
+
+@current-color: #1890ff;
+@passed-color: #1890ff;
+@unpassed-color: #cacaca;
+@primary-color: #1890ff;
+
+
+
+@keyframes ripple {
+
+  0% {
+    transform: scale(0.1, 0.1);
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+#panel {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 280px;
+  min-height: 100px;
+  // background-color: yellow;
+  max-height: 90%;
+  overflow-y: auto;
+}
+
+
+.map_wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  .custom-marker_wrap {
+    position: relative;
+    text-align: center;
+    transition: opacity 0.5s ease-out;
+
+    &.current {
+      >.custom-marker {
+        background-color: @current-color;
+        box-shadow: 2px 2px 5px @current-color;
+      }
+
+      >.transport {
+        color: @current-color !important;
+      }
+    }
+
+    &.passed {
+      >.custom-marker {
+        background-color: @passed-color;
+        box-shadow: 2px 2px 5px @passed-color;
+      }
+
+      >.transport {
+        color: @passed-color !important;
+      }
+    }
+
+    &.unpassed {
+      >.custom-marker {
+        background-color: @unpassed-color;
+        box-shadow: 2px 2px 5px @unpassed-color;
+      }
+
+      >.transport {
+        color: @unpassed-color !important;
+      }
+    }
+
+    &.animation {
+      >.custom-marker {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin-top: auto;
+        margin-right: auto;
+        margin-bottom: auto;
+        margin-left: auto;
+      }
+    }
+
+    .custom-marker {
+      color: #fff;
+      box-shadow: 2px 2px 5px @passed-color;
+      // border: 4px solid #fff;
+
+      &::before {
+        font-size: 12px;
+      }
+
+      each(range(10), {
+          &.enlarge-@{value}:before {
+            font-size: 16px*@value  !important;
+            // border: 4px solid #fff !important;
+            border-radius: 50% !important;
+          }
+        }
+
+      );
+
+
+      @directions: {
+        left: rotateY(180deg);
+        down: rotate(90deg);
+        up: rotate(-90deg);
+      }
+
+      each(@directions, {
+          &.dir-@{key} {
+            transform: @value ;
+          }
+        }
+
+      );
+
+      &.transport {
+        color: @current-color;
+        background-color: transparent !important;
+        box-shadow: none !important;
+
+        &::before {
+          font-size: 24px;
+        }
+      }
+    }
+
+
+    >.lightring::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: block;
+      border: 4px solid @passed-color;
+      border-radius: 50%;
+      opacity: 0;
+      content: '';
+    }
+
+    &.current {
+      >.lightring::after {
+        border: 4px solid @current-color;
+      }
+    }
+
+    @lightrings: {
+      10: 225ms;
+      20: 350ms;
+      40: 500ms;
+    }
+
+    each(@lightrings, {
+        >.lightring-@{key}:after {
+          animation: ripple 2000ms ease-out @value infinite;
+        }
+      }
+
+    );
+
+    &.paused {
+      .lightring::after {
+        animation-play-state: paused;
+      }
+    }
+  }
+
+}
+
+.amap-shipment-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  color: #fff;
+  background: @primary-color;
+  border: 4px solid #fff;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15), 0 6px 12px 0 rgba(0, 0, 0, 0.2);
+
+  &.amapicon__danger {
+    color: #fff;
+    background: red;
+    box-shadow: 0 3px 6px 0 rgba(245, 34, 45, 0.2), 0 6px 12px 0 rgba(245, 34, 45, 0.2);
+  }
+
+  &::before {
+    font-size: 12px;
+  }
+}
+
+.hide-amap-info-window-title {
+  .amap-ui-infowindow-title {
+    display: none !important;
+  }
+
+  .amap-ui-smp-ifwn-content-body,
+  .amap-ui-infowindow-body {
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: 0 9px 28px 8px rgba(0, 0, 0, 0.05), 0 6px 16px 0 rgba(0, 0, 0, 0.08),
+      0 3px 6px -4px rgba(0, 0, 0, 0.12) !important;
+  }
+}
+
+// info-window
+.amap-ui-infowindow-close {
+  display: none !important;
+}
+
+
+.amapicon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  color: #54a7af;
+  background: white;
+  border-radius: 50%;
+
+  &.amapicon__danger {
+    color: red;
+  }
+
+  &::before {
+    font-size: 30px;
+  }
+
+  &.icon-dingwei {
+    &::before {
+      font-size: 24px;
+    }
+  }
+}
+
+.mapboxgl-popup {
+  display: none !important;
+}
+
+.custom-popup__show {
+  display: flex !important;
+}
