@@ -163,7 +163,7 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
    * 组件销毁前释放相关资源
    */
   ngOnDestroy(): void {
-    this.map && this.map.destroy();
+    this.map && this.map.destroy && this.map.destroy ();
   }
 
   /**
