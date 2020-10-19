@@ -15,9 +15,17 @@ function copyLess(name) {
     fse.copySync(`${sourcePath}/${fileName}`, `${targetPath}/${fileName}`);
   });
 
+  const mapReg = /(map)$/g;
+  if (mapReg.test(sourcePath)) {
+    console.log(`111111111111111111111111111111111111111${sourcePath}/style`);
+    if (fs.existsSync(`${sourcePath}/src/style/index.less`)) {
+      fse.copySync(`${sourcePath}/src/style`, `${targetPath}/src/style`);
+    }
+  }
+
   // modules less
   fs.readdirSync(targetPath).forEach(name => {
-    console.log(`${sourcePath}/${name}/style`);
+    
     if (fs.existsSync(`${sourcePath}/${name}/style/index.less`)) {
       fse.copySync(`${sourcePath}/${name}/style`, `${targetPath}/${name}/style`);
     }
@@ -30,6 +38,8 @@ function copyLess(name) {
         }
       });
     }
+
+  
 
     const cbcReg = /(cbc)$/g;
     if (cbcReg.test(sourcePath)) {

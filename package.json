@@ -1,6 +1,6 @@
 {
   "name": "co-libs",
-  "version": "0.2.80",
+  "version": "0.2.90",
   "description": "co-libs 是一组用于前端开发的公共模块集合",
   "keywords": [
     "co-libs",
@@ -27,6 +27,7 @@
     "build:libs:core:debug": "bash scripts/ci/build-libs.sh  -n core -t D:\\src\\co\\co-portal-ms\\ -debug",
     "build:libs:chart": "bash scripts/ci/build-libs.sh -n chart",
     "build:libs:cbc": "bash scripts/ci/build-libs.sh -n cbc",
+    "build:libs:map": "bash scripts/ci/build-libs.sh -n map",
     "build:libs:cbc:debug": "bash scripts/ci/build-libs.sh  -n cbc -t D:\\src\\co\\co-portal-ms\\ -debug",
     "build:libs:cms": "bash scripts/ci/build-libs.sh -n cms",
     "build:libs:cms:debug": "bash scripts/ci/build-libs.sh  -n cms -t D:\\src\\co\\co-portal-ms\\ -debug",

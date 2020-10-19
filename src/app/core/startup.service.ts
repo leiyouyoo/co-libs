@@ -1,11 +1,11 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable, Injector } from '@angular/core';
-import { _HttpClient, CoAuthService, TitleService } from '@co/common';
-import { NzIconService } from 'ng-zorro-antd/icon';
-import { ICONS } from '../../style-icons';
+import { CoAuthService, TitleService, _HttpClient } from '@co/common';
 import { CO_SESSIONSERVICE_TOKEN, ISessionService } from '@co/core';
 import { set as _Set } from 'lodash';
+import { NzIconService } from 'ng-zorro-antd/icon';
 import { finalize } from 'rxjs/operators';
+import { ICONS } from '../../style-icons';
 
 @Injectable()
 export class StartupService {

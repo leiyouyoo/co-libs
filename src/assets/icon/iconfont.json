@@ -1,0 +1,156 @@
+{
+  "id": "1909561",
+  "name": "icp",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "icp字体图标",
+  "glyphs": [
+    {
+      "icon_id": "14230131",
+      "name": "船运",
+      "font_class": "chuanyun",
+      "unicode": "e671",
+      "unicode_decimal": 58993
+    },
+    {
+      "icon_id": "14230132",
+      "name": "空运",
+      "font_class": "kongyun",
+      "unicode": "e672",
+      "unicode_decimal": 58994
+    },
+    {
+      "icon_id": "14239193",
+      "name": "飞机",
+      "font_class": "feiji",
+      "unicode": "e676",
+      "unicode_decimal": 58998
+    },
+    {
+      "icon_id": "14239194",
+      "name": "货运",
+      "font_class": "huoyun",
+      "unicode": "e677",
+      "unicode_decimal": 58999
+    },
+    {
+      "icon_id": "14239195",
+      "name": "船",
+      "font_class": "chuan",
+      "unicode": "e678",
+      "unicode_decimal": 59000
+    },
+    {
+      "icon_id": "16058003",
+      "name": "dianshangwuliu",
+      "font_class": "dianshangwuliu",
+      "unicode": "e72d",
+      "unicode_decimal": 59181
+    },
+    {
+      "icon_id": "16040617",
+      "name": "账单",
+      "font_class": "zhangdan",
+      "unicode": "e685",
+      "unicode_decimal": 59013
+    },
+    {
+      "icon_id": "11592583",
+      "name": "新建",
+      "font_class": "add",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "15689168",
+      "name": "菜单",
+      "font_class": "caidan",
+      "unicode": "e681",
+      "unicode_decimal": 59009
+    },
+    {
+      "icon_id": "15689169",
+      "name": "默认图标",
+      "font_class": "morentubiao",
+      "unicode": "e682",
+      "unicode_decimal": 59010
+    },
+    {
+      "icon_id": "15689170",
+      "name": "设置",
+      "font_class": "shezhi",
+      "unicode": "e683",
+      "unicode_decimal": 59011
+    },
+    {
+      "icon_id": "15689171",
+      "name": "LOGO文字",
+      "font_class": "LOGOwenzi",
+      "unicode": "e684",
+      "unicode_decimal": 59012
+    },
+    {
+      "icon_id": "15586962",
+      "name": "英文",
+      "font_class": "yingwen",
+      "unicode": "e67e",
+      "unicode_decimal": 59006
+    },
+    {
+      "icon_id": "15586963",
+      "name": "中文",
+      "font_class": "zhongwen",
+      "unicode": "e67f",
+      "unicode_decimal": 59007
+    },
+    {
+      "icon_id": "15587046",
+      "name": "字体图标",
+      "font_class": "zititubiao",
+      "unicode": "e680",
+      "unicode_decimal": 59008
+    },
+    {
+      "icon_id": "12078374",
+      "name": "setting",
+      "font_class": "setting",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "14169304",
+      "name": "luanger new",
+      "font_class": "lang",
+      "unicode": "e6eb",
+      "unicode_decimal": 59115
+    },
+    {
+      "icon_id": "14207148",
+      "name": "natification new",
+      "font_class": "bell",
+      "unicode": "e6fd",
+      "unicode_decimal": 59133
+    },
+    {
+      "icon_id": "15571007",
+      "name": "字体图标",
+      "font_class": "logo",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "14827024",
+      "name": "weixin",
+      "font_class": "weixin",
+      "unicode": "e72a",
+      "unicode_decimal": 59178
+    },
+    {
+      "icon_id": "15063072",
+      "name": "名片LOGO",
+      "font_class": "logo-full",
+      "unicode": "e689",
+      "unicode_decimal": 59017
+    }
+  ]
+}
