@@ -326,5 +326,20 @@ export class PlatformPositionService extends BaseApi {
     }
 
 
+    /**
+     * @param url /Platform/Position/GetByUserIdCompanyAsync
+     * 
+     */
+
+    @GET('getByUserIdCompanyAsync')
+    getByUserIdCompanyAsync(
+        @Payload
+        _req: {userId?:number} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
 
   }

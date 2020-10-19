@@ -525,7 +525,7 @@
             handleRemark?: string;
          
             
-            files?: any[];
+            fileId?: string;
          
             
             isHandle?: boolean;

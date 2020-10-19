@@ -79,7 +79,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
     @GET('getUsersByCompanyCustomerId')
     getUsersByCompanyCustomerId(
         @Payload
-        _req: {searchText?:string,customerId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
+        _req: {userId?:number,searchText?:string,customerId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
     ): Observable<PlatformPagedResultDto<PlatformUserInfo>> {
         return null as any
