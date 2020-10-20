@@ -86,6 +86,8 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
   private map: any;
   private cacheMarkers: any[] = [];
   private cacheLayers: any[] = [];
+  private initPromise: Promise<any>;
+  private inited:boolean=false;
 
   constructor(
     private renderer: Renderer2,
@@ -95,7 +97,7 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnInit() {
-    this.init();
+    this.initPromise= this.init();
   }
 
 
@@ -105,11 +107,13 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
    * @param changes
    */
   ngOnChanges(changes: SimpleChanges): void {
-    this.init().then(()=>{
+    if(!changes.paths.currentValue && !changes.markers.currentValue) return;
 
+    const changeFunc=(cs: SimpleChanges)=>{
+      this.inited=true;
+      
       const { paths, markers, currentPositions, center, pathRectMargin } = changes;
       let ps: Path[] = [];
-  
       // 绘制路线
       let pathsOptions: any = new Map<Path, { options: any; currentPosition: [number, number] }>();
       if (paths && paths.currentValue) {
@@ -156,7 +160,15 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
       } else {
         this.map.setZoom(1)
       }
-    });
+    };
+
+    if(this.inited){
+      changeFunc(changes);
+    }else{
+      this.initPromise.then(()=>{
+        changeFunc(changes);
+      });
+    }
   }
 
   /**
@@ -172,14 +184,6 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
   private init(): Promise<any> {
     const self=this;
     return new Promise(function _p(resolve) {
-      if (self.map) {
-       if(self.map.loaded()){
-         resolve(true);
-       }else{
-         return;
-       }
-      }
-
       const div = self.mapContainer.nativeElement;
       self.renderer.setStyle(div, 'height', self.height + 'px');
       self.renderer.setStyle(div, 'width', '100%');
