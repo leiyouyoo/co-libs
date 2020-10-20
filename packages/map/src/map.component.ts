@@ -97,7 +97,9 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnInit() {
-    this.initPromise= this.init();
+    if(!this.initPromise){
+      this.initPromise= this.init();
+    }
   }
 
 
@@ -162,6 +164,10 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
       }
     };
 
+    if(!this.initPromise){
+      this.initPromise= this.init();
+    }
+    
     if(this.inited){
       changeFunc(changes);
     }else{
