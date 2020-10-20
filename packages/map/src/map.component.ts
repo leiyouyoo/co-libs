@@ -107,7 +107,7 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
    * @param changes
    */
   ngOnChanges(changes: SimpleChanges): void {
-    if(!changes.paths.currentValue && !changes.markers.currentValue) return;
+    if(!changes.paths && !changes.markers) return;
 
     const changeFunc=(cs: SimpleChanges)=>{
       this.inited=true;
