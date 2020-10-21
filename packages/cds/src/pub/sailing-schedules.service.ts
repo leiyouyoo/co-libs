@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-import { BaseApi, BaseUrl, DELETE, GET, Payload, POST } from '@co/common';
-import { PUBGetByVoyageDto, PUBPagedResultDto, PUBSailingSchedulesDetailDto, PUBSailingSchedulesDto, PUBSailingSchedulesInput } from './pub.types';
+import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
+import { PUBSailingSchedulesInput,PUBSailingSchedulesDto,PUBPagedResultDto,PUBGetByVoyageDto,PUBSailingSchedulesDetailDto, } from './pub.types';
 
 @BaseUrl('/pub/SailingSchedules')
 @Injectable({ providedIn: 'root' })
@@ -10,103 +10,111 @@ export class PUBSailingSchedulesService extends BaseApi {
     super(injector);
   }
 
+  
+    /**
+     * @param url /PUB/SailingSchedules/DownLoadInttraSailingScheduleDetail
+     * 从inttra Api下载船期数据
+     */
 
-  /**
-   * @param url /PUB/SailingSchedules/DownLoadInttraSailingScheduleDetail
-   * 从inttra Api下载船期数据
-   */
+    @POST('downLoadInttraSailingScheduleDetail')
+    downLoadInttraSailingScheduleDetail(
+        @Payload
+        _req: {} 
 
-  @POST('downLoadInttraSailingScheduleDetail')
-  downLoadInttraSailingScheduleDetail(
-    @Payload
-      _req: {},
-  ): Observable<any> {
-    return null as any;
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/SailingSchedules/SaveSchedulesXmlToDataBase
+     * 将Xml从Ftp服务获取下来再保存数据库
+     */
+
+    @POST('saveSchedulesXmlToDataBase')
+    saveSchedulesXmlToDataBase(
+        @Payload
+        _req: {} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/SailingSchedules/DeleteSchedule
+     * 删除超过15天的文件
+     */
+
+    @DELETE('deleteSchedule')
+    deleteSchedule(
+        @Payload
+        _req: {} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/SailingSchedules/DeleteOldSchedule
+     * 删除旧的船期数据
+     */
+
+    @DELETE('deleteOldSchedule')
+    deleteOldSchedule(
+        @Payload
+        _req: {} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/SailingSchedules/QuerySailingSchedules
+     * 查询船期数据
+     */
+
+    @POST('querySailingSchedules')
+    querySailingSchedules(
+        @Payload
+        _req:PUBSailingSchedulesInput
+
+    ): Observable<PUBPagedResultDto<PUBSailingSchedulesDto>> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/SailingSchedules/GetByVoyage
+     * 根据船名航次获取ETD
+     */
+
+    @GET('getByVoyage')
+    getByVoyage(
+        @Payload
+        _req: {vesselName?:string,voyageNo?:string,carrierId?:string,polId?:string,podId?:string} 
+
+    ): Observable<PUBGetByVoyageDto> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/SailingSchedules/QuerySailingSchedulesDetail
+     * 查询船期数据
+     */
+
+    @POST('querySailingSchedulesDetail')
+    querySailingSchedulesDetail(
+        @Payload
+        _req:PUBSailingSchedulesInput
+
+    ): Observable<PUBPagedResultDto<PUBSailingSchedulesDetailDto>> {
+        return null as any
+    }
+
+
+
   }
-
-
-  /**
-   * @param url /PUB/SailingSchedules/SaveSchedulesXmlToDataBase
-   * 将Xml从Ftp服务获取下来再保存数据库
-   */
-
-  @POST('saveSchedulesXmlToDataBase')
-  saveSchedulesXmlToDataBase(
-    @Payload
-      _req: {},
-  ): Observable<any> {
-    return null as any;
-  }
-
-
-  /**
-   * @param url /PUB/SailingSchedules/DeleteSchedule
-   * 删除超过15天的文件
-   */
-
-  @DELETE('deleteSchedule')
-  deleteSchedule(
-    @Payload
-      _req: {},
-  ): Observable<any> {
-    return null as any;
-  }
-
-
-  /**
-   * @param url /PUB/SailingSchedules/DeleteOldSchedule
-   * 删除旧的船期数据
-   */
-
-  @DELETE('deleteOldSchedule')
-  deleteOldSchedule(
-    @Payload
-      _req: {},
-  ): Observable<any> {
-    return null as any;
-  }
-
-
-  /**
-   * @param url /PUB/SailingSchedules/QuerySailingSchedules
-   * 查询船期数据
-   */
-
-  @POST('querySailingSchedules')
-  querySailingSchedules(
-    @Payload
-      _req: PUBSailingSchedulesInput,
-  ): Observable<PUBPagedResultDto<PUBSailingSchedulesDto>> {
-    return null as any;
-  }
-
-
-  /**
-   * @param url /PUB/SailingSchedules/GetByVoyage
-   * 根据船名航次获取ETD
-   */
-
-  @GET('getByVoyage')
-  getByVoyage(
-    @Payload
-      _req: { vesselName?: string, voyageNo?: string, carrierId?: string, polId?: string, podId?: string },
-  ): Observable<PUBGetByVoyageDto> {
-    return null as any;
-  }
-
-
-  /**
-   * @param url /PUB/SailingSchedules/QuerySailingSchedulesDetail
-   * 查询船期数据 从api接口获取
-   */
-
-  @POST('querySailingSchedulesDetail')
-  querySailingSchedulesDetail(
-    @Payload
-      _req: PUBSailingSchedulesInput,
-  ): Observable<PUBPagedResultDto<PUBSailingSchedulesDetailDto>> {
-    return null as any;
-  }
-
-
-}
