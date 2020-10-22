@@ -32,29 +32,33 @@ interface Iconfonts {
 })
 export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
   /**
-  * 高度
-  */
+   * 高度
+   */
   @Input() height: number = 300;
 
   /**
    * 宽度
    */
-  @Input() width?: number;
+  @Input() width ? : number;
 
   /**
    * 语言
    */
-  @Input() lang?: string;
+  @Input() lang ? : string;
 
   /**
    * 模式(ocean:海运地图，air：空运地图)
    */
-  @Input() mode?: Mode = 'ocean';
+  @Input() mode ? : Mode = 'ocean';
 
   /**
    * 路线区域保留外边距
    */
-  @Input() pathRectMargin?: { left?: number; right?: number; top?: number; bottom?: number } = { left: 0 };
+  @Input() pathRectMargin ? : {
+    left ? : number;right ? : number;top ? : number;bottom ? : number
+  } = {
+    left: 0
+  };
 
   /**
    * 路线
@@ -64,12 +68,12 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
   /**
    *  当前位置
    */
-  @Input() currentPositions?: Array<[number, number]>;
+  @Input() currentPositions ? : Array < [number, number] > ;
 
   /**
    *  地图中心点
    */
-  @Input() center?: [number, number];
+  @Input() center ? : [number, number];
 
   /**
    * markers
@@ -81,24 +85,25 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
    */
   @Output() markerClick = new EventEmitter();
 
-  @ViewChild('mapContainer', { static: true }) mapContainer: ElementRef;
+  @ViewChild('mapContainer', {
+    static: true
+  }) mapContainer: ElementRef;
 
   private map: any;
   private cacheMarkers: any[] = [];
   private cacheLayers: any[] = [];
-  private initPromise: Promise<any>;
-  private inited:boolean=false;
+  private initPromise: Promise < any > ;
+  private inited: boolean = false;
 
   constructor(
     private renderer: Renderer2,
     private el: ElementRef,
     private zone: NgZone,
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
-    if(!this.initPromise){
-      this.initPromise= this.init();
+    if (!this.initPromise) {
+      this.initPromise = this.init();
     }
   }
 
@@ -109,52 +114,66 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
    * @param changes
    */
   ngOnChanges(changes: SimpleChanges): void {
-    if(!changes.paths && !changes.markers) return;
+    if (!changes.paths && !changes.markers) return;
 
-    const changeFunc=(cs: SimpleChanges)=>{
-      this.inited=true;
-      
-      const { paths, markers, currentPositions, center, pathRectMargin } = changes;
+    const changeFunc = (cs: SimpleChanges) => {
+      this.inited = true;
+
+      const {
+        paths,
+        markers,
+        currentPositions,
+        center,
+        pathRectMargin
+      } = changes;
       let ps: Path[] = [];
       // 绘制路线
-      let pathsOptions: any = new Map<Path, { options: any; currentPosition: [number, number] }>();
+      let pathsOptions: any = new Map < Path,
+        {
+          options: any;currentPosition: [number, number]
+        } > ();
       if (paths && paths.currentValue) {
         pathsOptions = this.calcPathsOptions(
           paths.currentValue,
           currentPositions && currentPositions.currentValue
         );
         this.drawPaths(this.map, pathsOptions);
-  
+
         ps = ps.concat(paths.currentValue);
       }
-  
+
       // 绘制地点标记
       if (markers && markers.currentValue) {
         // const optionsMap = this.calcMarkersOptions(markers.currentValue, pathsOptions);
         if (markers && markers.currentValue) {
           ps = ps.concat([_.map(markers.currentValue, (m) => m.point)]);
         }
-  
+
         this.addMarkers(this.map, markers.currentValue);
       }
-  
+
       // 设置边距
-      const padding = { left: 100, right: 100, top: 100, bottom: 100 };
+      const padding = {
+        left: 100,
+        right: 100,
+        top: 100,
+        bottom: 100
+      };
       if (pathRectMargin && pathRectMargin.currentValue) {
         padding.left = pathRectMargin.currentValue.left || 100;
       }
-  
-  
+
+
       // // 设置当前语言
       // if (lang && lang.currentValue) {
       //   this.changeLang(this.map, lang.currentValue);
       // }
-  
+
       if (center && center.currentValue) {
         this.setCenter(this.map, center.currentValue);
       }
-  
-  
+
+
       // 根据路线和标记调整缩放层级和中心位置
       if (!_.isEmpty(ps) && ps.length > 1) {
         const bounds = this.calcBounds(this.map, ps);
@@ -164,14 +183,14 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
       }
     };
 
-    if(!this.initPromise){
-      this.initPromise= this.init();
+    if (!this.initPromise) {
+      this.initPromise = this.init();
     }
-    
-    if(this.inited){
+
+    if (this.inited) {
       changeFunc(changes);
-    }else{
-      this.initPromise.then(()=>{
+    } else {
+      this.initPromise.then(() => {
         changeFunc(changes);
       });
     }
@@ -181,19 +200,19 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
    * 组件销毁前释放相关资源
    */
   ngOnDestroy(): void {
-    this.map && this.map.destroy && this.map.destroy ();
+    this.map && this.map.destroy && this.map.destroy();
   }
 
   /**
    * 地图初始逻辑
    */
-  private init(): Promise<any> {
-    const self=this;
+  private init(): Promise < any > {
+    const self = this;
     return new Promise(function _p(resolve) {
       const div = self.mapContainer.nativeElement;
       self.renderer.setStyle(div, 'height', self.height + 'px');
       self.renderer.setStyle(div, 'width', '100%');
-  
+
       self.zone.runOutsideAngular(() => {
         mapboxgl.accessToken = 'pk.eyJ1IjoibHljY2NjeCIsImEiOiJjanprb3czMHYwNGZhM2RxcDBxaDdzdXRjIn0.Nq84rnE4jyGaDciJ8j73lw';
         // mapboxgl.baseApiUrl = 'https://api.mapbox.cn';
@@ -202,36 +221,36 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
           style: 'mapbox://styles/mapbox/streets-v11',
           zone: 1.5
         });
-  
-        self.map.on('load', ()=> {
+
+        self.map.on('load', () => {
           self.map.resize();
-  
+
           resolve(true);
         });
-  
+
         // this.map.setRenderWorldCopies(false);
         // setTimeout(() => {
         //   this.map.resize();
         // });
       });
-  });
+    });
 
-  
+
   }
 
   /**
-  * 切换语言
-  *
-  * @param map 地图
-  * @param lang 语言
-  */
+   * 切换语言
+   *
+   * @param map 地图
+   * @param lang 语言
+   */
   private changeLang(map: any, lang: string) {
     map.setLang(lang);
   }
 
   /**
- * 重置
- */
+   * 重置
+   */
   public reset(): void {
     if (this.cacheMarkers.length) {
       this.cacheMarkers.forEach(c => {
@@ -276,7 +295,7 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
   private calcBounds(map: any, paths: Path[]): any {
     if (!paths) return;
 
-    let lnglats: Array<any> = [];
+    let lnglats: Array < any > = [];
     paths.forEach((p) => {
       lnglats = _.concat(lnglats, this.convertPathToLngLats(p));
     });
@@ -305,10 +324,10 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   /**
-  *  转换路径集合到一维经纬度集合
-  *
-  * @param paths 路径集合
-  */
+   *  转换路径集合到一维经纬度集合
+   *
+   * @param paths 路径集合
+   */
   private convertPathToLngLats(path: Path) {
     if (!path) return null;
 
@@ -334,12 +353,18 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
    */
   private addMarkers(
     map: any,
-    markerOptions: Map<Marker, { status: Status }>,
+    markerOptions: Map < Marker, {
+      status: Status
+    } > ,
   ) {
 
     for (const [key, value] of markerOptions.entries()) {
       const animation: boolean = value.status === Status.current || key.animation || true;
-      const marker = this.addMarker(map, { ...key, ...value, animation });
+      const marker = this.addMarker(map, {
+        ...key,
+        ...value,
+        animation
+      });
       this.cacheMarkers.push(marker);
     }
   }
@@ -383,11 +408,14 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
       .addTo(map);
 
     if (template) {
-      const popup = new mapboxgl.Popup({ offset: 4, closeOnMove: false })
+      const popup = new mapboxgl.Popup({
+          offset: 4,
+          closeOnMove: false
+        })
         .setHTML(template.body);
       marker.setPopup(popup);
       marker.togglePopup();
-      
+
       markerContainer.onmouseover = function () {
         popup.addClassName('custom-popup__show')
       }
@@ -409,7 +437,9 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
    */
   private drawPaths(
     map: any,
-    optionsMap: Map<Path, { options: any; currentPosition: [number, number] }>,
+    optionsMap: Map < Path, {
+      options: any;currentPosition: [number, number]
+    } > ,
   ) {
     // 根据途径点找到档次运输的主干线
     const oceanPortType = 'chuanyun';
@@ -424,7 +454,7 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
       );
       return (
         (startPos && startPos?.icon?.includes(oceanPortType) && endPos && endPos?.icon?.includes(oceanPortType)) ||
-        (startPos && startPos?.icon?.includes(airPortType) && endPos && endPos?.icon?.includes(airPortType))
+        (startPos && startPos?.icon?.includes(airPortType) && endPos && endPos ?.icon?.includes(airPortType))
       );
     });
 
@@ -437,12 +467,21 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
     for (const [key, value] of optionsMap.entries()) {
       if (mainPaths.includes(key)) {
         if (this.mode === 'air') {
-          this.drawBezierPath(map, key, value.currentPosition, { transport: 'feiji', ...value.options });
+          this.drawBezierPath(map, key, value.currentPosition, {
+            transport: 'feiji',
+            ...value.options
+          });
         } else {
-          this.drawFixedPath(map, key, value.currentPosition, { transport: 'chuan', ...value.options });
+          this.drawFixedPath(map, key, value.currentPosition, {
+            transport: 'chuan',
+            ...value.options
+          });
         }
       } else {
-        this.drawBezierPath(map, key, value.currentPosition, { transport: 'huoyun', ...value.options });
+        this.drawBezierPath(map, key, value.currentPosition, {
+          transport: 'huoyun',
+          ...value.options
+        });
       }
     }
   }
@@ -456,34 +495,38 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
    */
   private calcPathsOptions(
     paths: Path[],
-    currentPositions: Array<[number, number]>
-  ): Map<Path, { options: any; currentPosition?: [number, number] }> {
+    currentPositions: Array < [number, number] >
+  ): Map < Path, {
+    options: any;currentPosition ? : [number, number]
+  } > {
 
-    const pathsOptions: Map<Path, { options: any; currentPosition?: [number, number] }> = new Map<
+    const pathsOptions: Map < Path, {
+        options: any;currentPosition ? : [number, number]
+      } > = new Map <
       Path,
-      { options: any; currentPosition: [number, number] }
-    >();
+      {
+        options: any;currentPosition: [number, number]
+      } >
+      ();
 
     currentPositions = this.convertPathToLngLats(currentPositions) as any[];
 
     // 如果有当前位置，则计算当前位置到开始位置路线及样式
+    let pathIndex=-1;
     if (currentPositions) {
       for (const cp of currentPositions) {
         const closestPoint: any = cp;
-        const pathIndex = _.findLastIndex(paths, (path) => {
-          const pathLngLats:any = this.convertPathToLngLats(path);
-          const beginP = pathLngLats[0];
-          const endP = pathLngLats[pathLngLats.length - 1];
+        const nearPoints:any[]=[];
 
-          const llb = new mapboxgl.LngLatBounds(
-            new mapboxgl.LngLat(beginP[0], beginP[1]),
-            new mapboxgl.LngLat(endP[0], endP[1])
-          );
+        for(let path of paths){
+          const point:any=CoordUtils.getNearbyPoint(path,closestPoint);
+          nearPoints.push(point);
+        }
 
-          const ll = new mapboxgl.LngLat(cp[0], cp[1]);
-
-          return llb.contains(ll);
-        });
+        let nearPoint= CoordUtils.getNearbyPoint(nearPoints,closestPoint);
+        pathIndex=nearPoints.findIndex(p=>{
+          return p[0]===nearPoint[0] && p[1]===nearPoint[1];
+        })
 
         // 如果在路线中途，则此段路线拆分成已通过和未通过两段。
         if (pathIndex > -1) {
@@ -512,7 +555,7 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
 
           // 设置当前路线样式
           pathsOptions.set(curPath, {
-            currentPosition: curPath[1],
+            currentPosition: nearPoint,
             options: {
               status: Status.current,
             },
@@ -522,6 +565,8 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
 
       // 未通过路线样式
       for (let i = 0; i < paths.length; i++) {
+        if(i===pathIndex) continue;
+
         const p: any = this.convertPathToLngLats(paths[i]);
         pathsOptions.set(p, {
           options: {
@@ -554,12 +599,20 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
    */
   private calcMarkersOptions(
     markers: Marker[],
-    pathOptions: Map<Path, { options: any; currentPosition: [number, number]; status: Status }>,
-  ): Map<Marker, { status: Status }> {
-    const markerOptions: Map<Marker, { status: Status }> = new Map<
+    pathOptions: Map < Path, {
+      options: any;currentPosition: [number, number];status: Status
+    } > ,
+  ): Map < Marker, {
+    status: Status
+  } > {
+    const markerOptions: Map < Marker, {
+        status: Status
+      } > = new Map <
       Marker,
-      { status: Status }
-    >();
+      {
+        status: Status
+      } >
+      ();
 
     markers.forEach((marker) => {
       for (const [key, value] of pathOptions.entries()) {
@@ -594,10 +647,10 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
           }
 
           // 当前位置在最后节点
-          if(marker.point[0] === path[path.length - 1][0] &&
+          if (marker.point[0] === path[path.length - 1][0] &&
             marker.point[1] === path[path.length - 1][1] &&
             marker.point[0] === pathOption.currentPosition[0] &&
-            marker.point[1] === pathOption.currentPosition[1]){
+            marker.point[1] === pathOption.currentPosition[1]) {
             markerOptions.set(marker, {
               status: Status.passed,
             });
@@ -740,8 +793,7 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
       const centerPoint = points[centerIndex];
 
       const marker = this.addMarker(
-        map,
-        {
+        map, {
           icon: `custom-marker icon-${pathOptions.transport} transport dir-${dir}`,
           status,
           point: centerPoint,
@@ -863,8 +915,7 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
       const animation = true;
       const centerPoint = points[centerIndex];
       const marker = this.addMarker(
-        map,
-        {
+        map, {
           icon: `custom-marker icon-${pathOptions.transport} transport dir-${dir}`,
           status,
           point: centerPoint,
@@ -933,20 +984,20 @@ export enum Direction {
    */
   left = 'left',
 
-  /**
-   * 右
-   */
-  right = 'right',
+    /**
+     * 右
+     */
+    right = 'right',
 
-  /**
-   * 上
-   */
-  up = 'up',
+    /**
+     * 上
+     */
+    up = 'up',
 
-  /**
-   * 下
-   */
-  down = 'down'
+    /**
+     * 下
+     */
+    down = 'down'
 }
 
 
@@ -959,15 +1010,15 @@ export enum Status {
    */
   current = 'current',
 
-  /**
-   * 通过
-   */
-  passed = 'passed',
+    /**
+     * 通过
+     */
+    passed = 'passed',
 
-  /**
-   * 未通过
-   */
-  unpassed = 'unpassed'
+    /**
+     * 未通过
+     */
+    unpassed = 'unpassed'
 }
 
 // Marker信息
@@ -975,22 +1026,22 @@ export interface Marker {
   /**
    * 图标
    */
-  icon?: string,
+  icon ? : string,
 
-  /**
-   * 坐标
-   */
-  point: Array<any>,
+    /**
+     * 坐标
+     */
+    point: Array < any > ,
 
-  /**
-   * 是否动画
-   */
-  animation: boolean,
+    /**
+     * 是否动画
+     */
+    animation: boolean,
 
-  /**
-   * 状态
-   */
-  status: Status
+    /**
+     * 状态
+     */
+    status: Status
 }
 
 /**
@@ -1002,21 +1053,24 @@ export interface Size {
    */
   width: number,
 
-  /**
-   * 高
-   */
-  height: number
+    /**
+     * 高
+     */
+    height: number
 }
 
 /**
  * 图标
  */
 export interface Icon {
-  img?: string,
-  icon?: string,
-  point: Array<any>,
-  template?: { title?: string, body?: string },
-  data?: any,
+  img ? : string,
+    icon ? : string,
+    point: Array < any > ,
+    template ? : {
+      title ? : string,
+      body ? : string
+    },
+    data ? : any,
 }
 
 /**
@@ -1026,51 +1080,53 @@ export interface MapOptions {
   /**
    * 高度
    */
-  height?: number,
+  height ? : number,
 
-  /**
-   * 宽度
-   */
-  width?: number,
+    /**
+     * 宽度
+     */
+    width ? : number,
 
-  /**
-   * 语言
-   */
-  lang?: string,
+    /**
+     * 语言
+     */
+    lang ? : string,
 
-  /**
-   * 模式(ocean:海运地图，air：空运地图)
-   */
-  mode?: string,
+    /**
+     * 模式(ocean:海运地图，air：空运地图)
+     */
+    mode ? : string,
 
-  /**
-   * 路线区域保留外边距
-   */
-  pathRectMargin?: { left?: number; right?: number; top?: number; bottom?: number },
+    /**
+     * 路线区域保留外边距
+     */
+    pathRectMargin ? : {
+      left ? : number;right ? : number;top ? : number;bottom ? : number
+    },
 
-  /**
-   * 路线
-   */
-  paths?: Path[],
+    /**
+     * 路线
+     */
+    paths ? : Path[],
 
-  /**
-   *  当前位置
-   */
-  currentPointList?: [number, number][],
+    /**
+     *  当前位置
+     */
+    currentPointList ? : [number, number][],
 
-  /**
-   *  地图中心点
-   */
-  center?: [number, number],
+    /**
+     *  地图中心点
+     */
+    center ? : [number, number],
 
-  /**
-   * markers
-   */
-  markers?: Marker[],
+    /**
+     * markers
+     */
+    markers ? : Marker[],
 }
 
 export default class Bezier {
- 
+
   /*
    * @desc 获取点，这里可以设置点的个数
    * @param {number} num 点个数
@@ -1084,7 +1140,7 @@ export default class Bezier {
 
     const controlPoint = Bezier.getControlPoint(startAjustPoint, endAjustPoint, controlHeight);
 
-    const points:any = [];
+    const points: any = [];
     for (let i = 0; i < num; i++) {
       points.push(Bezier.twoBezier(i / num, startAjustPoint, controlPoint, endAjustPoint));
     }
@@ -1140,5 +1196,70 @@ export default class Bezier {
     } else {
       return [(point1[0] + point2[0]) / 2, (point1[1] + point2[1]) / 2 + distance * l];
     }
+  }
+}
+
+
+ class CoordUtils {
+  EARTH_RADIUS: number = 6378137.0; //地球半径(米) 
+
+  public static  getNearbyPoint(path:any,point:any) {
+    var coord=new CoordUtils();
+    let nearbyPoint=path[0];
+      let distance=coord.getDistance(path[0],point);
+      for(let i=0;i<path.length; i++){
+        let d1=coord.getDistance(path[i],point);
+        if(d1<distance){
+          distance=d1;
+          nearbyPoint=path[i];
+        }
+      }
+
+      return nearbyPoint;
+  }
+
+  /// <summary>
+  /// 角度数转换为弧度公式
+  /// </summary>
+  /// <param name="d"></param>
+  /// <returns></returns>
+  private radians(d: number) {
+    return d * Math.PI / 180.0;
+  }
+  /// <summary>
+  /// 弧度转换为角度数公式
+  /// </summary>
+  /// <param name="d"></param>
+  /// <returns></returns>
+  private degrees(d: number) {
+    return d * (180 / Math.PI);
+  }
+  /// <summary>
+  /// 计算两个经纬度之间的直接距离
+  /// </summary> 
+  public getDistance(srcPoint: any, destPoint: any) {
+    let radLat1 = this.radians(srcPoint[0]);
+    let radLat2 = this.radians(destPoint[0]);
+    let a = radLat1 - radLat2;
+    let b = this.radians(srcPoint[1]) - this.radians(destPoint[1]);
+    let s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) +
+      Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
+    s = s * this.EARTH_RADIUS;
+    s = Math.round(s * 10000) / 10000;
+
+    return s;
+  }
+  /// <summary>
+  /// 计算两个经纬度之间的直接距离(google 算法)
+  /// </summary>
+  public getDistanceGoogle(srcPoint: any, destPoint: any) {
+    let radLat1 = this.radians(srcPoint.X);
+    let radLng1 = this.radians(srcPoint.Y);
+    let radLat2 = this.radians(destPoint.X);
+    let radLng2 = this.radians(destPoint.Y);
+    let s = Math.acos(Math.cos(radLat1) * Math.cos(radLat2) * Math.cos(radLng1 - radLng2) + Math.sin(radLat1) * Math.sin(radLat2));
+    s = s * this.EARTH_RADIUS;
+    s = Math.round(s * 10000) / 10000;
+    return s;
   }
 }
