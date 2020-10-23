@@ -833,9 +833,9 @@ export class CoMapComponent implements OnInit, OnChanges, OnDestroy {
       } else {
         // 在中途
         centerIndex = _.findIndex(points, (p) => p[0] === currentPos[0] && p[1] === currentPos[1]);
-        if (centerIndex > -1) {
-          centerIndex = Math.ceil(points.length / 2);
-        }
+        // if (centerIndex > -1) {
+        //   centerIndex = Math.ceil(points.length / 2);
+        // }
       }
     } else if (pathOptions.status === Status.passed) {
       centerIndex = points.length - 1;
