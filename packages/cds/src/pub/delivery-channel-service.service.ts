@@ -5,7 +5,7 @@ import { PUBDeliveryChannelDto,PUBListResultDto, } from './pub.types';
 
 @BaseUrl('/pub/DeliveryChannelService')
 @Injectable({ providedIn: 'root' })
-export class PUBDeliveryChannelServiceService extends BaseApi {
+export class PUBDeliveryChannelService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }

@@ -45,7 +45,7 @@ export function buildCOSwagger(options: any): Rule {
         options.path = requireUrl;
         console.log('生成路径' + options.path);
       } else {
-        options.path = `${project.sourceRoot}/`;
+        options.path = `${requireUrl}/`;
       }
     }
 

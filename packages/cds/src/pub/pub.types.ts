@@ -36,7 +36,7 @@
         
          
             
-            items: T[];
+            items: any;
         
         
     }
@@ -123,10 +123,99 @@
         
          
             
-            totalCount: number;
+            totalCount: any;
          
             
-            items: T[];
+            items: any;
+        
+        
+    }
+ 
+    /**
+     * 渠道添加修改DTO
+     */
+    export class PUBChannelDataCreateUpdateDto {
+        
+         
+            /* 本地化 */ 
+            localizationText?: string;
+         
+            /* 运输模式
+0 = Unknown
+1 = Ocean
+2 = Air */ 
+            freightMethodType?: number;
+         
+            /* 渠道名称 */ 
+            channelGroupStr?: string;
+         
+            /* 运输方式ID */ 
+            fbaFreightMethodId?: string;
+         
+            /* 是否含税 */ 
+            isTaxIncluded?: boolean;
+         
+            /* 渠道公司ID
+1、美森快船;2、海派;3、海卡;4、南航直飞;5、香港飞;6、北京飞;7、韩国飞 */ 
+            channelId?: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     * 渠道DTO
+     */
+    export class PUBChannelDataDto {
+        
+         
+            /* 创建人 */ 
+            creatorUserName?: string;
+         
+            /* 本地化 */ 
+            localizationText?: string;
+         
+            /* 运输模式
+0 = Unknown
+1 = Ocean
+2 = Air */ 
+            freightMethodType?: number;
+         
+            /* 渠道名称 */ 
+            channelGroupStr?: string;
+         
+            /* 运输方式ID */ 
+            fbaFreightMethodId?: string;
+         
+            /* 运输方式 */ 
+            fbaFreightMethodValue?: string;
+         
+            /* 是否含税 */ 
+            isTaxIncluded?: boolean;
+         
+            /* 渠道公司ID
+1、美森快船;2、海派;3、海卡;4、南航直飞;5、香港飞;6、北京飞;7、韩国飞 */ 
+            channelId?: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     * 渠道重复校验-传输对象模型
+     */
+    export class PUBChannelDataCheckDto {
+        
+         
+            /* 名称 */ 
+            channelGroupStr?: string;
+         
+            
+            id?: string;
         
         
     }
@@ -376,6 +465,115 @@
          
             
             id?: string;
+        
+        
+    }
+ 
+    /**
+     * 公司配置
+     */
+    export class PUBConfigureModel {
+        
+         
+            /* 主键 */ 
+            id?: string;
+         
+            /* 公司Id */ 
+            companyId?: string;
+         
+            /* Required
+客户ID */ 
+            customerId?: string;
+         
+            /* 财务解决方案Id */ 
+            solutionId?: string;
+         
+            /* Required, Max length = 10
+本位币 */ 
+            standardCurrency?: string;
+         
+            /* Required, Max length = 10
+默认币种 */ 
+            defaultCurrency?: string;
+         
+            /* 签发地ID */ 
+            issuePlaceId?: string;
+         
+            /* Max length = 10
+公司缩写代码 */ 
+            shortCode?: string;
+         
+            
+            glCodes?: any[];
+         
+            
+            solutionGlConfigs?: any[];
+         
+            
+            solutionCurrencies?: any[];
+         
+            
+            configureBankAccounts?: any[];
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBConfigure {
+        
+         
+            
+            id: string;
+         
+            
+            companyId: string;
+         
+            
+            customerId: string;
+         
+            
+            standardCurrency: string;
+         
+            
+            defaultCurrency: string;
+         
+            
+            creationTime: string;
+         
+            
+            creatorUserId: number;
+         
+            
+            tenantId: number;
+         
+            
+            issuePlaceId?: string;
+         
+            
+            shortCode?: string;
+         
+            
+            lastModifierUserId?: number;
+         
+            
+            lastModificationTime?: string;
+         
+            
+            configuresBanks?: any[];
+         
+            
+            configure2Solutions?: any[];
+         
+            
+            isDeleted?: boolean;
+         
+            
+            deleterUserId?: number;
+         
+            
+            deletionTime?: string;
         
         
     }
@@ -1059,6 +1257,129 @@
          
             /* 名称 */ 
             name: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     * 运输方式DTO
+     */
+    export class PUBFbaFreightMethodDto {
+        
+         
+            /* 创建人 */ 
+            creatorUserName?: string;
+         
+            /* 本地化 */ 
+            localizationText?: string;
+         
+            /* 运输方式 */ 
+            value?: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     * 运输方式重复校验-传输对象模型
+     */
+    export class PUBFbaFreightMethodCheckDto {
+        
+         
+            /* 运输方式 */ 
+            value?: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBFeedbackInput {
+        
+         
+            /* 标题 */ 
+            title?: string;
+         
+            /* 反馈类型ID  新增反馈时必须 */ 
+            feedbackTypeId?: number;
+         
+            /* 反馈类型 */ 
+            contents?: string;
+         
+            /* 反馈系统来源 */ 
+            feedbackSource?: string;
+         
+            /* 处理备注 */ 
+            handleRemark?: string;
+         
+            /* 文件列表 type="file" name="file" */ 
+            files?: any[];
+         
+            /* 是否为处理 */ 
+            isHandle?: boolean;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBFeedbackDto {
+        
+         
+            
+            feedbackType?: number;
+         
+            /* 标题 */ 
+            title?: string;
+         
+            /* 反馈内容 */ 
+            content?: string;
+         
+            /* 反馈人 */ 
+            feedbackUser?: number;
+         
+            /* 反馈系统来源 */ 
+            feedbackSource?: string;
+         
+            /* 反馈时间 */ 
+            feedbackTime?: string;
+         
+            /* 处理时间 */ 
+            handleTime?: string;
+         
+            /* 处理人 */ 
+            handleUser?: number;
+         
+            /* 处理备注 */ 
+            handleRemark?: string;
+         
+            /* 导航地址 */ 
+            navigationUrl?: string;
+         
+            /* 是否处理 */ 
+            isHandle?: boolean;
+         
+            
+            upFileList?: any[];
+         
+            /* 反馈用户名 */ 
+            userName?: string;
+         
+            /* 文件业务编号 */ 
+            fileNo?: string;
          
             
             id?: string;
@@ -1852,6 +2173,12 @@
             /* 是否重试 */ 
             isRetry?: boolean;
          
+            /* 是否直航0全部，1直航，2不是直航
+0 = All
+1 = Direct
+2 = NotDirect */ 
+            isDirect?: number;
+         
             
             filter?: string;
          
@@ -1941,6 +2268,9 @@
          
             /* 服务名称 */ 
             serviceName?: string;
+         
+            /* 截关日 */ 
+            terminalCutoff?: string;
          
             /* 可以向承运人预订的最晚日期 */ 
             bkCutoffDate?: string;

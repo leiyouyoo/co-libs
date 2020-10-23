@@ -1,6 +1,8 @@
 export * from './area.service';
+export * from './channel-data.service';
 export * from './charging-code.service';
 export * from './commodity.service';
+export * from './configure.service';
 export * from './container.service';
 export * from './cost-item.service';
 export * from './county.service';
@@ -8,6 +10,8 @@ export * from './currency.service';
 export * from './data-dictionary.service';
 export * from './delivery-channel-service.service';
 export * from './dictionary-type.service';
+export * from './fba-freight-method.service';
+export * from './feedback.service';
 export * from './flight.service';
 export * from './place.service';
 export * from './region.service';
