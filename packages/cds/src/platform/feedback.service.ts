@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PlatformFeedbackInput,PlatformFeedbackDto,PlatformListResultDto, } from './platform.types';
+import { PlatformFeedbackInput,PlatformFeedbackDto,PlatformQueryFeedbackInput,PlatformListResultDto, } from './platform.types';
 
 @BaseUrl('/platform/Feedback')
 @Injectable({ providedIn: 'root' })
@@ -42,14 +42,14 @@ export class PlatformFeedbackService extends BaseApi {
 
 
     /**
-     * @param url /Platform/Feedback/GetFeedbackStatistics
+     * @param url /Platform/Feedback/QueryFeedbackStatistics
      * 
      */
 
-    @GET('getFeedbackStatistics')
-    getFeedbackStatistics(
+    @POST('queryFeedbackStatistics')
+    queryFeedbackStatistics(
         @Payload
-        _req: {title?:string,feedbackTypeId?:number,feedbackSource?:string,userId?:number,startDate?:string,endDate?:string,isHandle?:boolean,ids?:any[],keyName?:string,searchText?:string,includeDeleted?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
+        _req:PlatformQueryFeedbackInput
 
     ): Observable<any> {
         return null as any
@@ -72,14 +72,14 @@ export class PlatformFeedbackService extends BaseApi {
 
 
     /**
-     * @param url /Platform/Feedback/GetList
+     * @param url /Platform/Feedback/QueryList
      * 
      */
 
-    @GET('getList')
-    getList(
+    @POST('queryList')
+    queryList(
         @Payload
-        _req: {title?:string,feedbackTypeId?:number,feedbackSource?:string,userId?:number,startDate?:string,endDate?:string,isHandle?:boolean,ids?:any[],keyName?:string,searchText?:string,includeDeleted?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
+        _req:PlatformQueryFeedbackInput
 
     ): Observable<PlatformListResultDto<PlatformFeedbackDto>> {
         return null as any

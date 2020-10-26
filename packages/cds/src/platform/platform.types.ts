@@ -27,10 +27,10 @@
         
          
             
-            totalCount: number;
+            totalCount: any;
          
             
-            items: T[];
+            items: any;
         
         
     }
@@ -240,7 +240,7 @@
         
          
             
-            items: T[];
+            items: any;
         
         
     }
@@ -593,6 +593,57 @@
     /**
      *  No Remark 
      */
+    export class PlatformQueryFeedbackInput {
+        
+         
+            
+            title?: string;
+         
+            
+            feedbackTypeId?: number;
+         
+            
+            feedbackSource?: string;
+         
+            
+            userId?: number;
+         
+            
+            startDate?: string;
+         
+            
+            endDate?: string;
+         
+            
+            isHandle?: boolean;
+         
+            
+            ids?: any[];
+         
+            
+            keyName?: string;
+         
+            
+            searchText?: string;
+         
+            
+            includeDeleted?: boolean;
+         
+            
+            sorting?: string;
+         
+            
+            maxResultCount?: number;
+         
+            
+            skipCount?: number;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
     export class PlatformJobDto {
         
          
@@ -639,7 +690,7 @@
         
          
             
-            id?: string;
+            id?: any;
         
         
     }
