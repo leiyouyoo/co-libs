@@ -13,7 +13,7 @@ export class PlatformAppVersionService extends BaseApi {
   
     /**
      * @param url /Platform/AppVersion/GetVersionByAppType
-     * 根据系统类型获取当前系统的最新版本号
+     * 
      */
 
     @GET('getVersionByAppType')
@@ -28,7 +28,7 @@ export class PlatformAppVersionService extends BaseApi {
 
     /**
      * @param url /Platform/AppVersion/CheckVersion
-     * 检查更新版本(true表示有更新，false表示没有更新)
+     * 
      */
 
     @POST('checkVersion')
@@ -43,7 +43,7 @@ export class PlatformAppVersionService extends BaseApi {
 
     /**
      * @param url /Platform/AppVersion/CreateOrUpdate
-     * 保存
+     * 
      */
 
     @POST('createOrUpdate')

@@ -13,7 +13,7 @@ export class PlatformCompanyConfigureService extends BaseApi {
   
     /**
      * @param url /Platform/CompanyConfigure/GetAll
-     * 返回公司配置集合
+     * 
      */
 
     @GET('getAll')
@@ -43,7 +43,7 @@ export class PlatformCompanyConfigureService extends BaseApi {
 
     /**
      * @param url /Platform/CompanyConfigure/GetByCompanyId
-     * 获取公司配置详情
+     * 
      */
 
     @GET('getByCompanyId')
@@ -58,7 +58,7 @@ export class PlatformCompanyConfigureService extends BaseApi {
 
     /**
      * @param url /Platform/CompanyConfigure/GetByUserId
-     * 根据用户获取公司配置
+     * 
      */
 
     @GET('getByUserId')
@@ -73,7 +73,7 @@ export class PlatformCompanyConfigureService extends BaseApi {
 
     /**
      * @param url /Platform/CompanyConfigure/Create
-     * 创建
+     * 
      */
 
     @POST('create')
@@ -88,7 +88,7 @@ export class PlatformCompanyConfigureService extends BaseApi {
 
     /**
      * @param url /Platform/CompanyConfigure/CreateOrUpdate
-     * 创建或更新公司配置
+     * 
      */
 
     @POST('createOrUpdate')
@@ -103,7 +103,7 @@ export class PlatformCompanyConfigureService extends BaseApi {
 
     /**
      * @param url /Platform/CompanyConfigure/Update
-     * 更新
+     * 
      */
 
     @PUT('update')
@@ -118,7 +118,7 @@ export class PlatformCompanyConfigureService extends BaseApi {
 
     /**
      * @param url /Platform/CompanyConfigure/Delete
-     * 删除
+     * 
      */
 
     @DELETE('delete')
@@ -133,7 +133,7 @@ export class PlatformCompanyConfigureService extends BaseApi {
 
     /**
      * @param url /Platform/CompanyConfigure/GetCompanies
-     * 获取公司列表
+     * 
      */
 
     @GET('getCompanies')

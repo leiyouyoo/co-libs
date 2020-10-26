@@ -13,7 +13,7 @@ export class PlatformEditionService extends BaseApi {
   
     /**
      * @param url /Platform/Edition/GetAll
-     * 返回版本集合
+     * 
      */
 
     @GET('getAll')
@@ -28,7 +28,7 @@ export class PlatformEditionService extends BaseApi {
 
     /**
      * @param url /Platform/Edition/Get
-     * 获取版本明细
+     * 
      */
 
     @GET('get')
@@ -43,7 +43,7 @@ export class PlatformEditionService extends BaseApi {
 
     /**
      * @param url /Platform/Edition/Create
-     * 创建
+     * 
      */
 
     @POST('create')
@@ -58,7 +58,7 @@ export class PlatformEditionService extends BaseApi {
 
     /**
      * @param url /Platform/Edition/CreateOrUpdate
-     * 创建或更新版本
+     * 
      */
 
     @POST('createOrUpdate')
@@ -73,7 +73,7 @@ export class PlatformEditionService extends BaseApi {
 
     /**
      * @param url /Platform/Edition/Update
-     * 更新
+     * 
      */
 
     @PUT('update')
@@ -88,7 +88,7 @@ export class PlatformEditionService extends BaseApi {
 
     /**
      * @param url /Platform/Edition/Delete
-     * 删除
+     * 
      */
 
     @DELETE('delete')
@@ -103,7 +103,7 @@ export class PlatformEditionService extends BaseApi {
 
     /**
      * @param url /Platform/Edition/GetPermissions
-     * 获取指定版本下的可用功能点集合
+     * 
      */
 
     @GET('getPermissions')
@@ -118,7 +118,7 @@ export class PlatformEditionService extends BaseApi {
 
     /**
      * @param url /Platform/Edition/SetPermissions
-     * 批量设置权限
+     * 
      */
 
     @POST('setPermissions')
@@ -133,7 +133,7 @@ export class PlatformEditionService extends BaseApi {
 
     /**
      * @param url /Platform/Edition/RemovePermissions
-     * 删除权限
+     * 
      */
 
     @DELETE('removePermissions')
@@ -148,7 +148,7 @@ export class PlatformEditionService extends BaseApi {
 
     /**
      * @param url /Platform/Edition/GrantToTenants
-     * 授予指定版本给租户
+     * 
      */
 
     @POST('grantToTenants')
@@ -163,7 +163,7 @@ export class PlatformEditionService extends BaseApi {
 
     /**
      * @param url /Platform/Edition/RevokeFromTenants
-     * 授予指定版本给租户
+     * 
      */
 
     @POST('revokeFromTenants')
@@ -178,7 +178,7 @@ export class PlatformEditionService extends BaseApi {
 
     /**
      * @param url /Platform/Edition/GetByTenantId
-     * 根据租户获取指定版本
+     * 
      */
 
     @GET('getByTenantId')

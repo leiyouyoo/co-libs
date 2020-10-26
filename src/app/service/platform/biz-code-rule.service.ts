@@ -13,7 +13,7 @@ export class PlatformBizCodeRuleService extends BaseApi {
   
     /**
      * @param url /Platform/BizCodeRule/TestImpersonationAuthorize
-     * 测试模拟匿名账户
+     * 
      */
 
     @POST('testImpersonationAuthorize')

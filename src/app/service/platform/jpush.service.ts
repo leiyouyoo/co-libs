@@ -13,7 +13,7 @@ export class PlatformJPushService extends BaseApi {
   
     /**
      * @param url /Platform/JPush/CreateAsync
-     * 用于app端用户每次登录时调用
+     * 
      */
 
     @POST('createAsync')
@@ -28,7 +28,7 @@ export class PlatformJPushService extends BaseApi {
 
     /**
      * @param url /Platform/JPush/CreateOrUpdate
-     * 保存
+     * 
      */
 
     @POST('createOrUpdate')
