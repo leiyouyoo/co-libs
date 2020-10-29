@@ -420,7 +420,7 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
         .subscribe(
           result => resolvePromise(result),
           error => {
-            console.warn('st.loadDate', error);
+            console.error('st.loadDate', error);
             rejectPromise(error);
           },
         );
