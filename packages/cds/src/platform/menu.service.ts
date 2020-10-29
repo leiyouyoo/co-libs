@@ -13,7 +13,7 @@ export class PlatformMenuService extends BaseApi {
   
     /**
      * @param url /Platform/Menu/GetAll
-     * 
+     * 获取平台所有菜单项集合
      */
 
     @GET('getAll')
@@ -28,7 +28,7 @@ export class PlatformMenuService extends BaseApi {
 
     /**
      * @param url /Platform/Menu/GetAllIncludeChildrenAsync
-     * 
+     * 获取所有菜单（分层级）
      */
 
     @GET('getAllIncludeChildrenAsync')
@@ -43,7 +43,7 @@ export class PlatformMenuService extends BaseApi {
 
     /**
      * @param url /Platform/Menu/CreateOrUpdate
-     * 
+     * 保存菜单项
      */
 
     @POST('createOrUpdate')
@@ -58,7 +58,7 @@ export class PlatformMenuService extends BaseApi {
 
     /**
      * @param url /Platform/Menu/Delete
-     * 
+     * 删除菜单项
      */
 
     @DELETE('delete')
@@ -73,7 +73,7 @@ export class PlatformMenuService extends BaseApi {
 
     /**
      * @param url /Platform/Menu/Recover
-     * 
+     * 恢复菜单
      */
 
     @POST('recover')
@@ -88,7 +88,7 @@ export class PlatformMenuService extends BaseApi {
 
     /**
      * @param url /Platform/Menu/Cancel
-     * 
+     * 作废菜单
      */
 
     @POST('cancel')
@@ -103,7 +103,7 @@ export class PlatformMenuService extends BaseApi {
 
     /**
      * @param url /Platform/Menu/Move
-     * 
+     * 移动菜单项
      */
 
     @POST('move')
@@ -118,7 +118,7 @@ export class PlatformMenuService extends BaseApi {
 
     /**
      * @param url /Platform/Menu/AddToMyFavorites
-     * 
+     * 添加菜单到收藏夹
      */
 
     @POST('addToMyFavorites')
@@ -133,7 +133,7 @@ export class PlatformMenuService extends BaseApi {
 
     /**
      * @param url /Platform/Menu/AddBatchToMyFavorites
-     * 
+     * 批量收藏用户菜单
      */
 
     @POST('addBatchToMyFavorites')
@@ -148,7 +148,7 @@ export class PlatformMenuService extends BaseApi {
 
     /**
      * @param url /Platform/Menu/RemoveFromMyFavorites
-     * 
+     * 添加菜单到收藏夹
      */
 
     @DELETE('removeFromMyFavorites')
@@ -163,7 +163,7 @@ export class PlatformMenuService extends BaseApi {
 
     /**
      * @param url /Platform/Menu/GetMyFavorites
-     * 
+     * 获取我收藏的菜单集合
      */
 
     @GET('getMyFavorites')
@@ -178,7 +178,7 @@ export class PlatformMenuService extends BaseApi {
 
     /**
      * @param url /Platform/Menu/ChangeState
-     * 
+     * 更改菜单项状态
      */
 
     @POST('changeState')
@@ -193,7 +193,7 @@ export class PlatformMenuService extends BaseApi {
 
     /**
      * @param url /Platform/Menu/UpdateUserMenuSetting
-     * 
+     * 更新用户菜单配置
      */
 
     @PUT('updateUserMenuSetting')

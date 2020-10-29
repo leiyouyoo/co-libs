@@ -13,7 +13,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
   
     /**
      * @param url /Platform/OrganizationUnit/GetByUserId
-     * 
+     * 获取用户所在组织机构
      */
 
     @GET('getByUserId')
@@ -28,7 +28,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/GetGroupOrganizationUnits
-     * 
+     * 获取所有组织机构（分层级）
      */
 
     @GET('getGroupOrganizationUnits')
@@ -43,7 +43,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/GetAsync
-     * 
+     * 获取组织机构详情
      */
 
     @GET('getAsync')
@@ -58,7 +58,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/GetUsersByOrganizationUnitId
-     * 
+     * 获取组织机构下的用户
      */
 
     @GET('getUsersByOrganizationUnitId')
@@ -73,7 +73,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/GetUsersByCompanyCustomerId
-     * 
+     * 获取公司下的用户
      */
 
     @GET('getUsersByCompanyCustomerId')
@@ -88,7 +88,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/GetSaleUsers
-     * 
+     * 获取业务员
      */
 
     @GET('getSaleUsers')
@@ -103,7 +103,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/GetAllUsersByOrganizationUnitId
-     * 
+     * 获取组织机构下的所有用户（平台用）
      */
 
     @GET('getAllUsersByOrganizationUnitId')
@@ -118,7 +118,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/GetCustomerServiceUsers
-     * 
+     * 获取客服人员
      */
 
     @GET('getCustomerServiceUsers')
@@ -133,7 +133,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/GetUsersAndOrganizationUnit
-     * 
+     * 获取组织机构下的用户带上组织机构、职位信息（用于IM ）
      */
 
     @GET('getUsersAndOrganizationUnit')
@@ -148,7 +148,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/GetUserDetail
-     * 
+     * 获取 用户详情带职位、组织机构
      */
 
     @GET('getUserDetail')
@@ -163,7 +163,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/GetOrganizationUnitUsers
-     * 
+     * 获取组织机构下的用户
      */
 
     @GET('getOrganizationUnitUsers')
@@ -178,7 +178,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/GetPositionUserDetail
-     * 
+     * 获取用户详情
      */
 
     @GET('getPositionUserDetail')
@@ -193,7 +193,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/GetAll
-     * 
+     * 获取组织节点集合
      */
 
     @GET('getAll')
@@ -208,7 +208,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/GetAllListAsync
-     * 
+     * 获取全部组织节点集合
      */
 
     @GET('getAllListAsync')
@@ -223,7 +223,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/CreateOrUpdate
-     * 
+     * 保存组织项
      */
 
     @POST('createOrUpdate')
@@ -238,7 +238,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/Move
-     * 
+     * 移动组织节点
      */
 
     @POST('move')
@@ -253,7 +253,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/Delete
-     * 
+     * 删除组织节点
      */
 
     @DELETE('delete')
@@ -268,7 +268,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/Recover
-     * 
+     * 恢复组织
      */
 
     @POST('recover')
@@ -283,7 +283,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/Cancel
-     * 
+     * 作废组织
      */
 
     @POST('cancel')
@@ -298,7 +298,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/GetOrganizationUnitsByUserName
-     * 
+     * 根据用户名称模糊获取所属组织架构
      */
 
     @GET('getOrganizationUnitsByUserName')

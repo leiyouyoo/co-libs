@@ -13,7 +13,7 @@ export class PlatformPositionService extends BaseApi {
   
     /**
      * @param url /Platform/Position/GetAll
-     * 
+     * 返回职位集合
      */
 
     @GET('getAll')
@@ -28,7 +28,7 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/Get
-     * 
+     * 获取职位明细
      */
 
     @GET('get')
@@ -43,7 +43,7 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/GetPositionAndOrganization
-     * 
+     * 获取用户的职位及组织机构
      */
 
     @GET('getPositionAndOrganization')
@@ -58,7 +58,7 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/Create
-     * 
+     * 创建
      */
 
     @POST('create')
@@ -73,7 +73,7 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/CreateAsync
-     * 
+     * 创建职位（支持同一职位的多组织生成）
      */
 
     @POST('createAsync')
@@ -88,7 +88,7 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/Update
-     * 
+     * 更新
      */
 
     @PUT('update')
@@ -103,7 +103,7 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/UpdateAsync
-     * 
+     * 编辑职位（支持同一职位的多组织生成）
      */
 
     @PUT('updateAsync')
@@ -118,7 +118,7 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/CreateOrUpdate
-     * 
+     * 创建或更新职位
      */
 
     @POST('createOrUpdate')
@@ -133,7 +133,7 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/Delete
-     * 
+     * 删除
      */
 
     @DELETE('delete')
@@ -148,7 +148,7 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/AddUsersToPosition
-     * 
+     * 添加用户到指定职位中
      */
 
     @POST('addUsersToPosition')
@@ -163,7 +163,7 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/SetUserPositions
-     * 
+     * 设置用户职位
      */
 
     @POST('setUserPositions')
@@ -178,7 +178,7 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/SetUserDefaultPosition
-     * 
+     * 设置默认用户职位
      */
 
     @POST('setUserDefaultPosition')
@@ -193,7 +193,7 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/RemoveUsersFromPosition
-     * 
+     * 删除指定用户从指定职位中
      */
 
     @DELETE('removeUsersFromPosition')
@@ -208,7 +208,7 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/RemovePositionsFromUser
-     * 
+     * 删除用户的职位
      */
 
     @DELETE('removePositionsFromUser')
@@ -223,7 +223,7 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/GetUsersFromPosition
-     * 
+     * 获取指定职位下用户集合
      */
 
     @GET('getUsersFromPosition')
@@ -238,7 +238,7 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/GetBatchUserPositions
-     * 
+     * 批量获取用户职位集合
      */
 
     @GET('getBatchUserPositions')
@@ -253,7 +253,7 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/GetPositionByUserId
-     * 
+     * 获取用户职位集合
      */
 
     @GET('getPositionByUserId')
@@ -268,7 +268,7 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/IsUserInPosition
-     * 
+     * 判断用户是否挂在指定职位下
      */
 
     @POST('isUserInPosition')
@@ -283,7 +283,7 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/GetSubordinates
-     * 
+     * 获取下属集合
      */
 
     @GET('getSubordinates')
@@ -298,7 +298,7 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/Recover
-     * 
+     * 恢复职位
      */
 
     @POST('recover')
@@ -313,7 +313,7 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/Cancel
-     * 
+     * 作废职位
      */
 
     @POST('cancel')
@@ -328,7 +328,7 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/GetByUserIdCompanyAsync
-     * 
+     * 获取当前登录用户公司集合
      */
 
     @GET('getByUserIdCompanyAsync')

@@ -13,7 +13,7 @@ export class PlatformSessionService extends BaseApi {
   
     /**
      * @param url /Platform/Session/GetCurrentUserConfiguration
-     * 
+     * 获取当前用户配置信息
      */
 
     @GET('getCurrentUserConfiguration')

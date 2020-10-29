@@ -13,7 +13,7 @@ export class PlatformSettingService extends BaseApi {
   
     /**
      * @param url /Platform/Setting/GetCurrentUserSetting
-     * 
+     * 获取用户指定键设置信息
      */
 
     @GET('getCurrentUserSetting')
@@ -28,7 +28,7 @@ export class PlatformSettingService extends BaseApi {
 
     /**
      * @param url /Platform/Setting/SetCurrentUserSetting
-     * 
+     * 设置信息
      */
 
     @POST('setCurrentUserSetting')
@@ -43,7 +43,7 @@ export class PlatformSettingService extends BaseApi {
 
     /**
      * @param url /Platform/Setting/GetCurrentUserSettings
-     * 
+     * 获取当前用户设置
      */
 
     @GET('getCurrentUserSettings')
