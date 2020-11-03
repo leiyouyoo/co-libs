@@ -65,25 +65,27 @@
             /* 是否包含无效数据 */ 
             includeInvalid?: boolean;
          
-            
+            /* 主键集合 */ 
             ids?: any[];
          
-            
+            /* 键名 */ 
             keyName?: string;
          
-            
+            /* 搜索文本 */ 
             searchText?: string;
          
-            
+            /* 包含逻辑删除 */ 
             includeDeleted?: boolean;
          
-            
+            /* Sorting information.
+Should include sorting field and optionally a direction (ASC or DESC)
+Can contain more than one field separated by comma (,). */ 
             sorting?: string;
          
-            
+            /* 页大小 */ 
             maxResultCount?: number;
          
-            
+            /* 跳过指定条数 */ 
             skipCount?: number;
         
         
@@ -280,25 +282,27 @@
             /* 是否包含无效数据 */ 
             includeInvalid?: boolean;
          
-            
+            /* 主键集合 */ 
             ids?: any[];
          
-            
+            /* 键名 */ 
             keyName?: string;
          
-            
+            /* 搜索文本 */ 
             searchText?: string;
          
-            
+            /* 包含逻辑删除 */ 
             includeDeleted?: boolean;
          
-            
+            /* Sorting information.
+Should include sorting field and optionally a direction (ASC or DESC)
+Can contain more than one field separated by comma (,). */ 
             sorting?: string;
          
-            
+            /* 页大小 */ 
             maxResultCount?: number;
          
-            
+            /* 跳过指定条数 */ 
             skipCount?: number;
         
         
@@ -409,25 +413,27 @@
             /* 是否包含无效数据 */ 
             includeInvalid?: boolean;
          
-            
+            /* 主键集合 */ 
             ids?: any[];
          
-            
+            /* 键名 */ 
             keyName?: string;
          
-            
+            /* 搜索文本 */ 
             searchText?: string;
          
-            
+            /* 包含逻辑删除 */ 
             includeDeleted?: boolean;
          
-            
+            /* Sorting information.
+Should include sorting field and optionally a direction (ASC or DESC)
+Can contain more than one field separated by comma (,). */ 
             sorting?: string;
          
-            
+            /* 页大小 */ 
             maxResultCount?: number;
          
-            
+            /* 跳过指定条数 */ 
             skipCount?: number;
         
         
@@ -519,6 +525,33 @@
     }
  
     /**
+     * 银企直连信息
+     */
+    export class PUBConfigureBankDirectDto {
+        
+         
+            /* 公司ID */ 
+            companyId?: string;
+         
+            /* 是否支持银企直连 */ 
+            isBankDirect?: boolean;
+         
+            /* 招商银行账户 */ 
+            cmbBankAccountNo?: string;
+         
+            /* 银行账户Id */ 
+            cmbAccountId?: string;
+         
+            /* 账户名称 */ 
+            cmbBankAccountName?: string;
+         
+            /* 一网通账户ID */ 
+            cmbNetComUserAccount?: string;
+        
+        
+    }
+ 
+    /**
      *  No Remark 
      */
     export class PUBConfigure {
@@ -547,6 +580,12 @@
          
             
             tenantId: number;
+         
+            
+            cmbNetComUserAccount?: string;
+         
+            
+            isActivateBankDirect?: boolean;
          
             
             issuePlaceId?: string;
@@ -691,25 +730,27 @@
             /* 是否包含无效数据 */ 
             includeInvalid?: boolean;
          
-            
+            /* 主键集合 */ 
             ids?: any[];
          
-            
+            /* 键名 */ 
             keyName?: string;
          
-            
+            /* 搜索文本 */ 
             searchText?: string;
          
-            
+            /* 包含逻辑删除 */ 
             includeDeleted?: boolean;
          
-            
+            /* Sorting information.
+Should include sorting field and optionally a direction (ASC or DESC)
+Can contain more than one field separated by comma (,). */ 
             sorting?: string;
          
-            
+            /* 页大小 */ 
             maxResultCount?: number;
          
-            
+            /* 跳过指定条数 */ 
             skipCount?: number;
         
         
@@ -820,22 +861,22 @@
             /* 费用代码 */ 
             code?: string;
          
-            
+            /* 名称 */ 
             name?: string;
          
-            
+            /* 全称 */ 
             fullName?: string;
          
-            
+            /* 带有父级Id的全Id */ 
             fullId?: string;
          
-            
+            /* 层级代码 */ 
             levelCode?: string;
          
-            
+            /* 层级 */ 
             level?: number;
          
-            
+            /* 父ID */ 
             parentId?: string;
          
             
@@ -985,25 +1026,27 @@
     export class PUBGetAllForUiPickerInput {
         
          
-            
+            /* 主键集合 */ 
             ids?: any[];
          
-            
+            /* 键名 */ 
             keyName?: string;
          
-            
+            /* 搜索文本 */ 
             searchText?: string;
          
-            
+            /* 包含逻辑删除 */ 
             includeDeleted?: boolean;
          
-            
+            /* Sorting information.
+Should include sorting field and optionally a direction (ASC or DESC)
+Can contain more than one field separated by comma (,). */ 
             sorting?: string;
          
-            
+            /* 页大小 */ 
             maxResultCount?: number;
          
-            
+            /* 跳过指定条数 */ 
             skipCount?: number;
         
         
@@ -1123,25 +1166,27 @@
             /* 类型代码 */ 
             typeCodes?: any[];
          
-            
+            /* 主键集合 */ 
             ids?: any[];
          
-            
+            /* 键名 */ 
             keyName?: string;
          
-            
+            /* 搜索文本 */ 
             searchText?: string;
          
-            
+            /* 包含逻辑删除 */ 
             includeDeleted?: boolean;
          
-            
+            /* Sorting information.
+Should include sorting field and optionally a direction (ASC or DESC)
+Can contain more than one field separated by comma (,). */ 
             sorting?: string;
          
-            
+            /* 页大小 */ 
             maxResultCount?: number;
          
-            
+            /* 跳过指定条数 */ 
             skipCount?: number;
         
         
@@ -1450,25 +1495,27 @@
             /* 航空公司 Id */ 
             airlineIds?: any[];
          
-            
+            /* 主键集合 */ 
             ids?: any[];
          
-            
+            /* 键名 */ 
             keyName?: string;
          
-            
+            /* 搜索文本 */ 
             searchText?: string;
          
-            
+            /* 包含逻辑删除 */ 
             includeDeleted?: boolean;
          
-            
+            /* Sorting information.
+Should include sorting field and optionally a direction (ASC or DESC)
+Can contain more than one field separated by comma (,). */ 
             sorting?: string;
          
-            
+            /* 页大小 */ 
             maxResultCount?: number;
          
-            
+            /* 跳过指定条数 */ 
             skipCount?: number;
         
         
@@ -1594,13 +1641,13 @@
             /* 是否分页 */ 
             isPaged?: boolean;
          
-            
+            /* 排序 */ 
             sorting?: string;
          
-            
+            /* 页大小 */ 
             maxResultCount?: number;
          
-            
+            /* 跳过指定条数 */ 
             skipCount?: number;
         
         
@@ -1855,25 +1902,27 @@
             /* 是否分页 */ 
             isPaged?: boolean;
          
-            
+            /* 主键集合 */ 
             ids?: any[];
          
-            
+            /* 键名 */ 
             keyName?: string;
          
-            
+            /* 搜索文本 */ 
             searchText?: string;
          
-            
+            /* 包含逻辑删除 */ 
             includeDeleted?: boolean;
          
-            
+            /* Sorting information.
+Should include sorting field and optionally a direction (ASC or DESC)
+Can contain more than one field separated by comma (,). */ 
             sorting?: string;
          
-            
+            /* 页大小 */ 
             maxResultCount?: number;
          
-            
+            /* 跳过指定条数 */ 
             skipCount?: number;
         
         
@@ -2008,25 +2057,27 @@
             /* 是否包含子对象数据 */ 
             includeChildren?: boolean;
          
-            
+            /* 主键集合 */ 
             ids?: any[];
          
-            
+            /* 键名 */ 
             keyName?: string;
          
-            
+            /* 搜索文本 */ 
             searchText?: string;
          
-            
+            /* 包含逻辑删除 */ 
             includeDeleted?: boolean;
          
-            
+            /* Sorting information.
+Should include sorting field and optionally a direction (ASC or DESC)
+Can contain more than one field separated by comma (,). */ 
             sorting?: string;
          
-            
+            /* 页大小 */ 
             maxResultCount?: number;
          
-            
+            /* 跳过指定条数 */ 
             skipCount?: number;
         
         
@@ -2086,25 +2137,27 @@
             /* 地区Id */ 
             areaIds?: any[];
          
-            
+            /* 主键集合 */ 
             ids?: any[];
          
-            
+            /* 键名 */ 
             keyName?: string;
          
-            
+            /* 搜索文本 */ 
             searchText?: string;
          
-            
+            /* 包含逻辑删除 */ 
             includeDeleted?: boolean;
          
-            
+            /* Sorting information.
+Should include sorting field and optionally a direction (ASC or DESC)
+Can contain more than one field separated by comma (,). */ 
             sorting?: string;
          
-            
+            /* 页大小 */ 
             maxResultCount?: number;
          
-            
+            /* 跳过指定条数 */ 
             skipCount?: number;
         
         
@@ -2179,16 +2232,16 @@
 2 = NotDirect */ 
             isDirect?: number;
          
-            
+            /* 过滤条件 */ 
             filter?: string;
          
-            
+            /* 排序 */ 
             sorting?: string;
          
-            
+            /* 页大小 */ 
             maxResultCount?: number;
          
-            
+            /* 跳过指定条数 */ 
             skipCount?: number;
         
         
@@ -2495,25 +2548,27 @@
             /* 是否包含无效数据 */ 
             includeInvalid?: boolean;
          
-            
+            /* 主键集合 */ 
             ids?: any[];
          
-            
+            /* 键名 */ 
             keyName?: string;
          
-            
+            /* 搜索文本 */ 
             searchText?: string;
          
-            
+            /* 包含逻辑删除 */ 
             includeDeleted?: boolean;
          
-            
+            /* Sorting information.
+Should include sorting field and optionally a direction (ASC or DESC)
+Can contain more than one field separated by comma (,). */ 
             sorting?: string;
          
-            
+            /* 页大小 */ 
             maxResultCount?: number;
          
-            
+            /* 跳过指定条数 */ 
             skipCount?: number;
         
         
@@ -2633,25 +2688,27 @@
             /* 是否包含无效数据 */ 
             includeInvalid?: boolean;
          
-            
+            /* 主键集合 */ 
             ids?: any[];
          
-            
+            /* 键名 */ 
             keyName?: string;
          
-            
+            /* 搜索文本 */ 
             searchText?: string;
          
-            
+            /* 包含逻辑删除 */ 
             includeDeleted?: boolean;
          
-            
+            /* Sorting information.
+Should include sorting field and optionally a direction (ASC or DESC)
+Can contain more than one field separated by comma (,). */ 
             sorting?: string;
          
-            
+            /* 页大小 */ 
             maxResultCount?: number;
          
-            
+            /* 跳过指定条数 */ 
             skipCount?: number;
         
         
@@ -2772,25 +2829,27 @@
             /* 船东 Id */ 
             carrierIds?: any[];
          
-            
+            /* 主键集合 */ 
             ids?: any[];
          
-            
+            /* 键名 */ 
             keyName?: string;
          
-            
+            /* 搜索文本 */ 
             searchText?: string;
          
-            
+            /* 包含逻辑删除 */ 
             includeDeleted?: boolean;
          
-            
+            /* Sorting information.
+Should include sorting field and optionally a direction (ASC or DESC)
+Can contain more than one field separated by comma (,). */ 
             sorting?: string;
          
-            
+            /* 页大小 */ 
             maxResultCount?: number;
          
-            
+            /* 跳过指定条数 */ 
             skipCount?: number;
         
         
@@ -2970,25 +3029,27 @@
             /* 船名 Id */ 
             vesselIds?: any[];
          
-            
+            /* 主键集合 */ 
             ids?: any[];
          
-            
+            /* 键名 */ 
             keyName?: string;
          
-            
+            /* 搜索文本 */ 
             searchText?: string;
          
-            
+            /* 包含逻辑删除 */ 
             includeDeleted?: boolean;
          
-            
+            /* Sorting information.
+Should include sorting field and optionally a direction (ASC or DESC)
+Can contain more than one field separated by comma (,). */ 
             sorting?: string;
          
-            
+            /* 页大小 */ 
             maxResultCount?: number;
          
-            
+            /* 跳过指定条数 */ 
             skipCount?: number;
         
         
