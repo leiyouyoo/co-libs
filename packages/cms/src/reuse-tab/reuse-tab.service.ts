@@ -326,7 +326,7 @@ export class ReuseTabService implements OnDestroy {
     if (typeof menu.icon === 'string') {
       return menu.icon;
     } else {
-      return menu.icon.value;
+      return menu?.icon?.value || "icon-menu-default";
     }
   }
 
