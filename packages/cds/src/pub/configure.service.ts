@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBConfigureModel,PUBConfigure,PUBConfigureBankDirectDto, } from './pub.types';
+import { PUBConfigureModel,PUBConfigure,PUBConfigureBankDirectDto,PUBUpBankDirectActnbrInput,PUBQueryGLCodeInput,PUBGLCodeModel, } from './pub.types';
 
 @BaseUrl('/pub/Configure')
 @Injectable({ providedIn: 'root' })
@@ -232,6 +232,36 @@ export class PUBConfigureService extends BaseApi {
         _req: {companyId?:string} 
 
     ): Observable<PUBConfigureBankDirectDto> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/Configure/UpBankDirectActnbrAsync
+     * 更新银企直连账号信息
+     */
+
+    @POST('upBankDirectActnbrAsync')
+    upBankDirectActnbrAsync(
+        @Payload
+        _req:PUBUpBankDirectActnbrInput
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/Configure/GetGLCodeAsync
+     * 获取会计科目
+     */
+
+    @POST('getGLCodeAsync')
+    getGLCodeAsync(
+        @Payload
+        _req:PUBQueryGLCodeInput
+
+    ): Observable<PUBGLCodeModel> {
         return null as any
     }
 
