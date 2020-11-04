@@ -1029,9 +1029,9 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
   showLoading(type?: 'nz-table' | 'load-on-scroll', ): boolean {
     switch (type) {
       case 'nz-table':
-        return this.loadOnScroll ? (!this._data?.length && this._loading) : this._loading;
+        return this.loadOnScroll ? (this.pi === 1 && this._loading) : this._loading;
       case 'load-on-scroll':
-        return this.loadOnScroll && this._loading;
+        return this.loadOnScroll && this.pi !== 1 && this._loading;
       default:
         return this.loadOnScroll ? false : this._loading;
     }
