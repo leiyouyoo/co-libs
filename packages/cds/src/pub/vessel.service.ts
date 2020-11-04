@@ -118,7 +118,7 @@ export class PUBVesselService extends BaseApi {
 
     /**
      * @param url /PUB/Vessel/CreateOrUpdate
-     * 
+     * 创建或更新
      */
 
     @POST('createOrUpdate')

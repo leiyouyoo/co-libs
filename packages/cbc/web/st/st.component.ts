@@ -420,7 +420,7 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
         .subscribe(
           result => resolvePromise(result),
           error => {
-            console.warn('st.loadDate', error);
+            console.error('st.loadDate', error);
             rejectPromise(error);
           },
         );
@@ -653,6 +653,7 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
       this._columns.forEach((item, index) => (item._sort!.default = index === idx ? value : null));
     }
     this.cdr.detectChanges();
+    if (this.loadOnScroll) this.pi = 1;
     this.loadPageData();
     const res = {
       value,

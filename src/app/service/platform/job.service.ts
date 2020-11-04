@@ -13,7 +13,7 @@ export class PlatformJobService extends BaseApi {
   
     /**
      * @param url /Platform/Job/GetAll
-     * 返回职务集合(包含作废的数据)
+     * 
      */
 
     @GET('getAll')
@@ -28,7 +28,7 @@ export class PlatformJobService extends BaseApi {
 
     /**
      * @param url /Platform/Job/Get
-     * 获取职务详情
+     * 
      */
 
     @GET('get')
@@ -43,7 +43,7 @@ export class PlatformJobService extends BaseApi {
 
     /**
      * @param url /Platform/Job/Create
-     * 创建职务
+     * 
      */
 
     @POST('create')
@@ -58,7 +58,7 @@ export class PlatformJobService extends BaseApi {
 
     /**
      * @param url /Platform/Job/Update
-     * 更新职务
+     * 
      */
 
     @PUT('update')
@@ -73,7 +73,7 @@ export class PlatformJobService extends BaseApi {
 
     /**
      * @param url /Platform/Job/CreateOrUpdate
-     * 创建或更新职务
+     * 
      */
 
     @POST('createOrUpdate')
@@ -88,7 +88,7 @@ export class PlatformJobService extends BaseApi {
 
     /**
      * @param url /Platform/Job/Delete
-     * 删除职务
+     * 
      */
 
     @DELETE('delete')
@@ -103,7 +103,7 @@ export class PlatformJobService extends BaseApi {
 
     /**
      * @param url /Platform/Job/CheckIsBindPosition
-     * 校验当前职务是否绑定职位
+     * 
      */
 
     @POST('checkIsBindPosition')
@@ -118,7 +118,7 @@ export class PlatformJobService extends BaseApi {
 
     /**
      * @param url /Platform/Job/Recover
-     * 恢复职务
+     * 
      */
 
     @POST('recover')
@@ -133,7 +133,7 @@ export class PlatformJobService extends BaseApi {
 
     /**
      * @param url /Platform/Job/Cancel
-     * 作废职务
+     * 
      */
 
     @POST('cancel')
@@ -148,7 +148,7 @@ export class PlatformJobService extends BaseApi {
 
     /**
      * @param url /Platform/Job/CheckedRepeat
-     * 校验重复(职务验证英文名称,本地名称)
+     * 
      */
 
     @POST('checkedRepeat')
