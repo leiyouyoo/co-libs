@@ -57,6 +57,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   @Output() readonly coOpenChange = new EventEmitter<boolean>();
   @Output() readonly coBlur = new EventEmitter<void>();
   @Output() readonly coFocus = new EventEmitter<void>();
+  @Output() readonly coOptionChange = new EventEmitter<any>();
 
   @ViewChild(NzSelectComponent, { static: true }) private nzSelectComponent!: NzSelectComponent;
 
@@ -211,6 +212,15 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   }
 
   onChanged(e: any) {
+    /* 触发选中item 的事件 */
+    try {
+      const item = this.optionList.find(o => o[this.coValueMember] === e);
+      if (item) {
+        this.coOptionChange.emit(item);
+      }
+    } catch (e) {
+      console.error(e);
+    }
     this.onChange(e);
   }
 
