@@ -109,6 +109,8 @@ export class ReuseTabService implements OnDestroy {
       active: 'title',
       url,
       title: value,
+      icon:value.icon,
+      style:value.style,
       list: this._cached,
     });
   }

@@ -67,6 +67,17 @@ export abstract class CoPageBase extends CoComponentBase implements OnInit, OnCh
   }
 
   /**
+   * 更改当前页标题标题
+   */
+  public $setTitle(title:string | {text:string,icon:string,style:string}): void {
+    if (window.planet) {
+      window.planet.mainTabService.title=title
+    } else {
+      this.$logger.warn('Planet 未实例化');
+    }
+  }
+
+  /**
    * 关闭当前页面
    */
   public $close() {
