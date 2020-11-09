@@ -47,11 +47,11 @@ const components = [
 ];
 const directive = [ImDebounceInputDirective];
 const pipe = [CustomerLifeCyclePipe, IMArrayJoinPipe, ImTranslatePipe];
-const service = [ImBroadcastService];
+const service = [ImBroadcastService, ImService];
 @NgModule({
   declarations: [...components, ...directive, ...pipe],
   imports: [CommonModule, TranslateModule, NgZorroAntdModule, FormsModule, NgxMoveableModule],
-  exports: [...components, ...directive, ...pipe],
-  providers: [ImService],
+  exports: [...components, ...directive, ...pipe, ...service],
+  providers: [...service],
 })
-export class DelonImModule {}
+export class CoImModule {}
