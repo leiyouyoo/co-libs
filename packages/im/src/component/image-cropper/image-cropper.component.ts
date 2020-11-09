@@ -1,7 +1,7 @@
-import { Component, OnInit, ElementRef, Input, SimpleChanges, OnChanges, Renderer2, Output, EventEmitter } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, Renderer2, SimpleChanges } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import Cropper from 'cropperjs';
 import { NzMessageService } from 'ng-zorro-antd';
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'lib-image-cropper',
@@ -18,7 +18,7 @@ export class ImageCropperComponent implements OnInit, OnChanges {
   @Output() emitFile: EventEmitter<any> = new EventEmitter<any>();
   image: any;
   cropper: any;
-  imgData: string | ArrayBuffer;
+  imgData: null | string | ArrayBuffer;
   constructor(
     private el: ElementRef,
     private renderer2: Renderer2,
@@ -26,8 +26,8 @@ export class ImageCropperComponent implements OnInit, OnChanges {
     private translate: TranslateService,
   ) {}
   ngOnChanges(changes: SimpleChanges): void {
-    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
-    //Add '${implements OnChanges}' to the class.
+    // Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+    // Add '${implements OnChanges}' to the class.
     console.log(this.file);
     if (!changes.file.currentValue) {
       return;
@@ -72,7 +72,7 @@ export class ImageCropperComponent implements OnInit, OnChanges {
     fr.readAsDataURL(file);
     fr.onload = () => {
       this.image = this.el.nativeElement.querySelector('#js_image');
-      if (this.cropper && this.imgData != fr.result) {
+      if (this.cropper && this.imgData !== fr.result) {
         this.cropper.replace(fr.result as string, false);
       } else {
         this.imgData = fr.result;
@@ -119,9 +119,9 @@ export class ImageCropperComponent implements OnInit, OnChanges {
   }
   // 获取圆形canvas
   getRoundedCanvas() {
-    const sourceCanvas = this.image.cropper['getCroppedCanvas']('');
+    const sourceCanvas = this.image.cropper.getCroppedCanvas('');
     const canvas = document.createElement('canvas');
-    const context = canvas.getContext('2d');
+    const context:any = canvas.getContext('2d');
     const width = sourceCanvas.width;
     const height = sourceCanvas.height;
     canvas.width = width;
@@ -131,7 +131,7 @@ export class ImageCropperComponent implements OnInit, OnChanges {
     context.fillRect(0, 0, canvas.width, canvas.height);
     context.beginPath();
     context.arc(width / 2, height / 2, Math.min(width, height) / 2, 0, 2 * Math.PI, true);
-    context.clip(); //裁剪上面的圆形
+    context.clip(); // 裁剪上面的圆形
     context.drawImage(sourceCanvas, 0, 0, width, height);
     context.globalCompositeOperation = 'destination-in';
     return canvas;

@@ -1,10 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CoCommonModule } from '@co/common';
 import { TranslateModule } from '@ngx-translate/core';
 // tslint:disable-next-line: import-blacklist
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { NgxMoveableModule } from 'ngx-moveable';
+
 import { ChatHistoryComponent } from './component/chat-history/chat-history.component';
 import { ImBookingDetailComponent } from './component/im-booking-detail/im-booking-detail.component';
 import { AddressPopoverComponent } from './component/im-contacts/address-popover/address-popover.component';
@@ -27,6 +29,7 @@ import { ImService } from './service/im.service';
 import { CustomerLifeCyclePipe } from './service/pipe/customer-life-cycle.pipe';
 import { IMArrayJoinPipe } from './service/pipe/im-array-join.pipe';
 import { ImTranslatePipe } from './service/pipe/im-translate.pipe';
+import { FileManageService } from './util/file-manage/service/file-manage.service';
 
 const components = [
   ImagePreviewerComponent,
@@ -48,9 +51,9 @@ const components = [
 ];
 const directive = [ImDebounceInputDirective];
 const pipe = [CustomerLifeCyclePipe, IMArrayJoinPipe, ImTranslatePipe];
-const service = [ImBroadcastService, ImService];
+const service = [ImBroadcastService, ImService,FileManageService];
 @NgModule({
-  declarations: [...components, ...directive, ...pipe],
-  imports: [CommonModule, TranslateModule, NgZorroAntdModule, FormsModule, NgxMoveableModule],
+  declarations: [...components, ...directive, ...pipe,...service],
+  imports: [CoCommonModule,CommonModule, TranslateModule, NgZorroAntdModule, FormsModule, NgxMoveableModule],
 })
 export class CoImModule {}

@@ -1,6 +1,6 @@
 import { HttpClient, HttpEvent, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { Inject, Injectable, Optional } from '@angular/core';
-import { CoConfigService, CoThemeHttpClientConfig, CoCommonConfig } from '@co/core';
+import { CoCommonConfig, CoConfigService, CoThemeHttpClientConfig } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, switchMap, tap } from 'rxjs/operators';
@@ -1013,8 +1013,8 @@ function hasHeader(header: _HttpHeaders, name: string): boolean {
   if (!header) return false;
   switch (true) {
     case header instanceof HttpHeaders:
-      return (<HttpHeaders>header).has(name);
+      return (header as HttpHeaders).has(name);
     default:
-      return !!(<object>header)?.hasOwnProperty(name);
+      return !!(header as object)?.hasOwnProperty(name);
   }
 }

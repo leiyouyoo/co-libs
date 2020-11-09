@@ -1,4 +1,4 @@
-import { Injectable, Optional, Inject } from '@angular/core';
+import { Inject, Injectable, Optional } from '@angular/core';
 import { _HttpClient } from '@co/common';
 import { CoConfigManager } from '@co/core';
 
@@ -37,38 +37,38 @@ export class ImService {
   }
   // 获取客户下所有联系人
   getCustomerContacts(id?) {
-    let param = {};
-    if (id) param['id'] = id;
+    const param:any = {};
+    if (id) param.id = id;
     const url = `/CRM/ContactIM/GetCustomerContacts`;
     return this._httpClient.get(url, param);
   }
 
   // 根据客户Id获取客服列表
   GetServiceUsers(id?) {
-    let param = {};
-    if (id) param['id'] = id;
+    const param:any = {};
+    if (id) param.id = id;
     const url = `/CSP/BusinessServiceUser/GetServiceUsers`;
     return this._httpClient.get(url, param);
   }
   // 获取公司内部组织架构员工
   getUsersAndOrganizationUnit(inpupt?) {
-    let param = {};
-    if (inpupt) param['inpupt'] = inpupt;
+    const param:any = {};
+    if (inpupt) param.inpupt = inpupt;
     const url = `/Platform/OrganizationUnit/GetUsersAndOrganizationUnit`;
     return this._httpClient.get(url, param);
   }
 
   // 获取所有合作伙伴的所有联系人
   getPartnerContacts(CustomerId?, SearchText?) {
-    let param = {};
-    if (SearchText) param['SearchText'] = SearchText;
+    const param:any = {};
+    if (SearchText) param.SearchText = SearchText;
     const url = `/CRM/ContactIM/GetPartnerContacts`;
     return this._httpClient.get(url, param);
   }
   // 获取业务员所跟进的所有客户的所有联系
   getSaleCustomerContacts(CustomerId?, SearchText?) {
-    let param = {};
-    if (SearchText) param['SearchText'] = SearchText;
+    const param:any = {};
+    if (SearchText) param.SearchText = SearchText;
     const url = `/CRM/ContactIM/GetSaleCustomerContacts`;
     return this._httpClient.get(url, param);
   }

@@ -666,7 +666,7 @@ export class ImComponent implements OnInit {
    */
   getChatList(loadMore = false, isForward = false) {
     if (!this.isC2C) {
-      const params = {
+      const params:any = {
         GroupId: this.fromId,
         MaxResultCount: this.pageInfo.maxResultCount,
         SkipCount: this.pageInfo.skipCount * this.pageInfo.maxResultCount,
@@ -683,7 +683,7 @@ export class ImComponent implements OnInit {
         this.handldChatList(res, null, loadMore, isForward);
       });
     } else {
-      const params = {
+      const params:any = {
         FromAccount: this.fromId,
         ToAccount: this.myImId.toString(),
         MaxResultCount: this.pageInfo.maxResultCount,

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { _HttpClient } from '@co/common';
-import { catchError, map, tap } from 'rxjs/operators';
 import { forkJoin, Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 import { PortOfDischarge, ShipmentDetail, ShipperInfo } from '../entities/ShipmentDetail';
-import { FreightMethodType } from '../models/FreightMethodType';
 import { VesselTrackPoint } from '../entities/VesselTrackPoint';
+import { FreightMethodType } from '../models/FreightMethodType';
 import { GetAllParam } from '../models/interfaces';
 
 @Injectable({
@@ -182,7 +182,7 @@ export class ShipmentService {
   }
 
   getShipmentLinkDetail(Id: number) {
-    let params = { Id };
+    const params = { Id };
     return this.http.get('/CSP/ShipmentShareLink/GetDetail', params);
   }
 

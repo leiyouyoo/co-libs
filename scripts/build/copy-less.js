@@ -17,7 +17,7 @@ function copyLess(name) {
 
   const mapReg = /(map)$/g;
   if (mapReg.test(sourcePath)) {
-    console.log(`111111111111111111111111111111111111111${sourcePath}/style`);
+    // console.log(`111111111111111111111111111111111111111${sourcePath}/style`);
     if (fs.existsSync(`${sourcePath}/src/style/index.less`)) {
       fse.copySync(`${sourcePath}/src/style`, `${targetPath}/src/style`);
     }

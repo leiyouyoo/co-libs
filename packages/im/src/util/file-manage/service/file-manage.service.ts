@@ -1,11 +1,11 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { _HttpClient } from '@co/common';
-import { BusinessType } from '../entity/business-type';
-import { AttachmentType } from '../entity/attachment-type';
 import { Observable } from 'rxjs';
-import { SharingFile } from '../entity/sharing-file';
 import { map } from 'rxjs/operators';
-import { HttpHeaders } from '@angular/common/http';
+import { AttachmentType } from '../entity/attachment-type';
+import { BusinessType } from '../entity/business-type';
+import { SharingFile } from '../entity/sharing-file';
 
 @Injectable({
   providedIn: 'root',
@@ -79,9 +79,9 @@ export class FileManageService {
       businessId: BusinessId,
       businessType: BusinessType,
       attachmentType: AttachmentType,
-      fileName: fileName,
-      extensionName: extensionName,
-      attachmentSharings: [{ sharingPeopleId: sharingPeopleId }],
+      fileName,
+      extensionName,
+      attachmentSharings: [{ sharingPeopleId }],
     });
   }
 
@@ -90,7 +90,7 @@ export class FileManageService {
    * @param Id 文件ID
    */
   get(Id: number) {
-    return this.http.get('/CSP/Attachment/Get', { Id: Id });
+    return this.http.get('/CSP/Attachment/Get', { Id });
   }
 
   /**
@@ -100,7 +100,7 @@ export class FileManageService {
    * @param AttachmentType
    */
   getAll(BusinessId: number, BusinessType: BusinessType, AttachmentType: AttachmentType) {
-    return this.http.get('/CSP/Attachment/GetAll', { BusinessId: BusinessId, BusinessType: BusinessType, AttachmentType: AttachmentType });
+    return this.http.get('/CSP/Attachment/GetAll', { BusinessId, BusinessType, AttachmentType });
   }
 
   /**
@@ -108,7 +108,7 @@ export class FileManageService {
    * @param Id 文件ID
    */
   deleteFile(Id: number) {
-    return this.http.delete('/CSP/Attachment/Delete', { Id: Id });
+    return this.http.delete('/CSP/Attachment/Delete', { Id });
   }
 
   /**
@@ -126,10 +126,10 @@ export class FileManageService {
    * @param Modifier 图片裁剪尺寸，如果非图片，无需传（1.原图：raw_jpg,jpg可以换成其他扩展名；2.支持尺寸128x128,64x64,32x32,256x）
    */
   downLoadImgOrFile(FileId: string, Handler?: string, Modifier?: string) {
-    let params = {
-      FileId: FileId,
+    const params = {
+      FileId,
       Handler: Handler || 'raw',
-      Modifier: Modifier,
+      Modifier,
     };
     return this.http.get('/Storage/File/GetDownLoadFile', params);
   }
