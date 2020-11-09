@@ -95,6 +95,7 @@
     "ngx-simplemde": "^9.0.0",
     "ngx-tinymce": "^9.0.0",
     "ngx-ueditor": "^9.0.0",
+    "ngx-moveable": "^0.14.4",
     "perfect-scrollbar": "^1.5.0",
     "qrious": "^4.0.2",
     "rxjs": "~6.5.4",
