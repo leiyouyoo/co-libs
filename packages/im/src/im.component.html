@@ -1,12 +1,5 @@
 <!-- 头像裁剪 -->
-<input
-  type="file"
-  data-im-input-show
-  accept="image/jpeg,image/png"
-  #avatarUploadElement
-  (change)="avtarUpload($event)"
-  style="display: none;"
-/>
+<input type="file" data-im-input-show accept="image/jpeg,image/png" #avatarUploadElement (change)="avtarUpload($event)" style="display: none;" />
 <lib-image-cropper data-im-input-show (emitFile)="onEmitFile($event)" [showCropper]="showCropper" [file]="imageFile"></lib-image-cropper>
 <section class="im-container" #ImContainer>
   <div (click)="onCustomerservice()" *ngIf="showCustomerservice" class="icon-Customerservice-wrap">
@@ -14,7 +7,7 @@
   </div>
   <app-image-previewer [imgUrlList]="imgUrlList" *ngIf="showPreviewer"></app-image-previewer>
   <div #target class="imInput">
-    <p class="min-window-control" data-im-input-show (click)="showImLayout()" *ngIf="!isVisible">
+    <p class="min-window-control" data-im-input-show *ngIf="!isVisible">
       <img data-im-input-show src="assets/images/im/IM-icon.png" alt="" />
       <span *ngIf="getTotalUnreadCount()" class="total-unread-count"></span>
       {{ 'Message list' | translate }}
@@ -50,23 +43,8 @@
       <div class="header">
         <div><img [src]="getAvtar(selectedItem)" /></div>
         <span>{{ selectedItem?.userProfile?.nick || selectedItem?.groupProfile?.name }}</span>
-        <div
-          style="
-            position: absolute;
-            top: 50%;
-            right: 20px;
-            display: flex;
-            align-items: center;
-            color: rgba(0, 0, 0, 0.15);
-            transform: translateY(-50%);
-          "
-        >
-          <i
-            class="iconfont icon-zuixiaohua minimization font24"
-            nz-icon
-            [nzIconfont]="'icon-zuixiaohua'"
-            (click)="closeChatDiv($event)"
-          ></i>
+        <div style="position: absolute; top: 50%; right: 20px; display: flex; align-items: center; color: rgba(0, 0, 0, 0.15); transform: translateY(-50%);">
+          <i class="iconfont icon-zuixiaohua minimization font24" nz-icon [nzIconfont]="'icon-zuixiaohua'" (click)="closeChatDiv($event)"></i>
           <i
             (click)="cancleChatDiv($event)"
             style="color: #00000025; font-size: 14px;"
@@ -100,9 +78,7 @@
                     style="display: inline-block; width: 24px; height: 24px;"
                     [src]="
                       chatMessage?.fromImageUrl || chatMessage?.fromAccountImageUrl || chatMessage?.avatar || userProfile?.avatar
-                        ? formatImAvatarUrl(
-                            chatMessage?.fromImageUrl || chatMessage?.fromAccountImageUrl || chatMessage?.avatar || userProfile?.avatar
-                          )
+                        ? formatImAvatarUrl(chatMessage?.fromImageUrl || chatMessage?.fromAccountImageUrl || chatMessage?.avatar || userProfile?.avatar)
                         : 'assets/images/im/avatar-2.png'
                     "
                     alt=""
@@ -110,10 +86,7 @@
                   <span>{{ chatMessage.nickName || chatMessage.fromNickName || chatMessage.nick || userProfile.nick }}</span>
                 </div>
                 <div [ngClass]="{ myItems: chatMessage.flow === 'out', otherItems: chatMessage.flow === 'in' }">
-                  <span
-                    *ngIf="chatMessage?.type === 'TIMCustomElem'"
-                    [innerHTML]="chatMessage.msgBody[0].msgContent.Ext | imTranslate | async"
-                  ></span>
+                  <span *ngIf="chatMessage?.type === 'TIMCustomElem'" [innerHTML]="chatMessage.msgBody[0].msgContent.Ext | imTranslate | async"></span>
                   <app-text-element *ngIf="chatMessage?.type === 'TIMTextElem'" [payload]="chatMessage.payload"></app-text-element>
                   <app-img-element
                     (showPreviewImg)="showPreviewImg($event)"
@@ -156,12 +129,7 @@
       <div *ngIf="!selectedItem.isRemindMessage && !selectedItem.disbandGroupFlage" class="footer">
         <input type="file" accept=".jpg, .jpeg, .png, .gif" #imageUpload (change)="imageChange($event)" style="display: none;" />
         <input type="file" #fileUploadElement (change)="fileChange($event)" style="display: none;" />
-        <textarea
-          (keydown)="checkKeyDown($event)"
-          (keyup)="checkKeyUp($event)"
-          placeholder="Type message…"
-          [(ngModel)]="inputValue"
-        ></textarea>
+        <textarea (keydown)="checkKeyDown($event)" (keyup)="checkKeyUp($event)" placeholder="Type message…" [(ngModel)]="inputValue"></textarea>
         <p class="send-group">
           <span>
             <i
@@ -235,14 +203,7 @@
                       ></i>
                     </ng-container>
                     <ng-template #editGroupNameTemplate>
-                      <input
-                        edit-group
-                        nz-input
-                        autofocus
-                        (blur)="editGroupName = true; editGroupProfile()"
-                        [(ngModel)]="groupInfo.name"
-                        type="text"
-                      />
+                      <input edit-group nz-input autofocus (blur)="editGroupName = true; editGroupProfile()" [(ngModel)]="groupInfo.name" type="text" />
                     </ng-template>
                   </div>
                 </div>
@@ -335,11 +296,7 @@
               <div *ngIf="globelPersonList.length" data-im-input-show class="search-person-list">
                 <label data-im-input-show for="">联系人</label>
                 <div (click)="chatWithPercon(item, true)" data-im-input-show *ngFor="let item of globelPersonList">
-                  <img
-                    data-im-input-show
-                    [src]="item.profilePictureId ? formatImAvatarUrl(item.profilePictureId) : 'assets/images/im/avatar-2.png'"
-                    alt=""
-                  />
+                  <img data-im-input-show [src]="item.profilePictureId ? formatImAvatarUrl(item.profilePictureId) : 'assets/images/im/avatar-2.png'" alt="" />
                   <p data-im-input-show>
                     <span data-im-input-show class="name"
                       ><span [innerHtml]="item.name" *ngIf="item.name"></span><span [innerHtml]="item.surname" *ngIf="item.surname"></span>
@@ -357,11 +314,7 @@
                     <span
                       class="name"
                       [innerHtml]="
-                        item.bussinessType === 'C2C'
-                          ? item.userProfile.nick
-                            ? item.userProfile.nick
-                            : item.userProfile.name
-                          : item.groupProfile.name
+                        item.bussinessType === 'C2C' ? (item.userProfile.nick ? item.userProfile.nick : item.userProfile.name) : item.groupProfile.name
                       "
                     ></span>
                     <span [innerHtml]="item?.lastMessage?.messageForShow"></span>
@@ -418,13 +371,7 @@
                 >
                   <span class="name">
                     <ng-container *ngIf="!item.isRemindMessage; else elseTemplate">
-                      {{
-                        item.bussinessType === 'C2C'
-                          ? item.userProfile.nick
-                            ? item.userProfile.nick
-                            : item.userProfile.name
-                          : item.groupProfile.name
-                      }}
+                      {{ item.bussinessType === 'C2C' ? (item.userProfile.nick ? item.userProfile.nick : item.userProfile.name) : item.groupProfile.name }}
                     </ng-container>
                     <ng-template #elseTemplate>
                       {{ item.title }}
@@ -478,14 +425,7 @@
           [nzIconfont]="'icon-edit'"
           class="iconfont icon-edit"
         ></i>
-        <i
-          *ngIf="!isIE()"
-          (click)="avtarUploadClick()"
-          data-im-input-show
-          nz-icon
-          [nzIconfont]="'icon-edit'"
-          class="iconfont icon-edit"
-        ></i>
+        <i *ngIf="!isIE()" (click)="avtarUploadClick()" data-im-input-show nz-icon [nzIconfont]="'icon-edit'" class="iconfont icon-edit"></i>
       </div>
     </ng-template>
     <div class="right-content">
