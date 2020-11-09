@@ -420,7 +420,7 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
         .subscribe(
           result => resolvePromise(result),
           error => {
-            console.warn('st.loadDate', error);
+            console.error('st.loadDate', error);
             rejectPromise(error);
           },
         );
@@ -653,6 +653,7 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
       this._columns.forEach((item, index) => (item._sort!.default = index === idx ? value : null));
     }
     this.cdr.detectChanges();
+    if (this.loadOnScroll) this.pi = 1;
     this.loadPageData();
     const res = {
       value,
@@ -1028,9 +1029,9 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
   showLoading(type?: 'nz-table' | 'load-on-scroll', ): boolean {
     switch (type) {
       case 'nz-table':
-        return this.loadOnScroll ? (!this._data?.length && this._loading) : this._loading;
+        return this.loadOnScroll ? (this.pi === 1 && this._loading) : this._loading;
       case 'load-on-scroll':
-        return this.loadOnScroll && this._loading;
+        return this.loadOnScroll && this.pi !== 1 && this._loading;
       default:
         return this.loadOnScroll ? false : this._loading;
     }

@@ -13,7 +13,7 @@ export class PlatformTfsWebhookProxyService extends BaseApi {
   
     /**
      * @param url /Platform/TfsWebhookProxy/ReleaseNotification
-     * 
+     * TFS服务挂钩代理中转企业微信（仅内网用）
      */
 
     @POST('releaseNotification')

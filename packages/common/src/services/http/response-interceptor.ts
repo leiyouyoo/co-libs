@@ -242,15 +242,15 @@ export class ResponseInterceptor implements HttpInterceptor {
    */
   protected addAcceptLanguageHeader(headers: HttpHeaders): HttpHeaders {
     const aspCultureMap = {
-      'zh-CN': 'zh-Hans',
-      'en-US': 'en',
+      'zh-cn': 'zh-Hans',
+      'en-us': 'en',
     };
     const layout = JSON.parse(localStorage.getItem('layout')!);
     let langValue = `en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7`;
     let aspCultureValue = 'en';
     if (layout && layout.lang) {
       langValue = layout.lang;
-      aspCultureValue = aspCultureMap[layout.lang];
+      aspCultureValue = aspCultureMap[layout.lang.toLowerCase()];
     }
     if (headers && !headers.has('Accept-Language')) {
       headers = headers.set('Accept-Language', langValue);

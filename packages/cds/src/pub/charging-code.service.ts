@@ -34,7 +34,7 @@ export class PUBChargingCodeService extends BaseApi {
     @GET('getAll')
     getAll(
         @Payload
-        _req: {groupId?:string,text?:string,isValid?:boolean} 
+        _req: {companyId?:string,groupId?:string,text?:string,isValid?:boolean} 
 
     ): Observable<PUBPagedResultDto<PUBChargingCodeDto>> {
         return null as any
@@ -88,7 +88,7 @@ export class PUBChargingCodeService extends BaseApi {
 
     /**
      * @param url /PUB/ChargingCode/Check
-     * 
+     * 数据检查
      */
 
     @POST('check')

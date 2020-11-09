@@ -13,7 +13,7 @@ export class PlatformCacheExampleService extends BaseApi {
   
     /**
      * @param url /Platform/CacheExample/GetAll
-     * 
+     * 返回样例集合
      */
 
     @GET('getAll')
@@ -28,7 +28,7 @@ export class PlatformCacheExampleService extends BaseApi {
 
     /**
      * @param url /Platform/CacheExample/Get
-     * 
+     * 获取样例明细
      */
 
     @GET('get')
@@ -58,7 +58,7 @@ export class PlatformCacheExampleService extends BaseApi {
 
     /**
      * @param url /Platform/CacheExample/Create
-     * 
+     * 创建
      */
 
     @POST('create')
@@ -73,7 +73,7 @@ export class PlatformCacheExampleService extends BaseApi {
 
     /**
      * @param url /Platform/CacheExample/BulkInsert
-     * 
+     * 批量插入
      */
 
     @POST('bulkInsert')
@@ -88,7 +88,7 @@ export class PlatformCacheExampleService extends BaseApi {
 
     /**
      * @param url /Platform/CacheExample/Update
-     * 
+     * 更新
      */
 
     @PUT('update')
@@ -103,7 +103,7 @@ export class PlatformCacheExampleService extends BaseApi {
 
     /**
      * @param url /Platform/CacheExample/Test
-     * 
+     * 本地化测试
      */
 
     @POST('test')

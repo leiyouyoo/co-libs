@@ -13,7 +13,7 @@ export class PlatformBusinessFilterService extends BaseApi {
   
     /**
      * @param url /Platform/BusinessFilter/GetConditionGroup
-     * 获取自定义的过滤条件组详情
+     * 
      */
 
     @GET('getConditionGroup')
@@ -28,7 +28,7 @@ export class PlatformBusinessFilterService extends BaseApi {
 
     /**
      * @param url /Platform/BusinessFilter/GetConditionGroupList
-     * 根据业务类型获取当前用户自定义的过滤条件组
+     * 
      */
 
     @GET('getConditionGroupList')
@@ -43,7 +43,7 @@ export class PlatformBusinessFilterService extends BaseApi {
 
     /**
      * @param url /Platform/BusinessFilter/CreateOrUpdateConditionGroup
-     * 新增或编辑用户自定义的过滤条件组
+     * 
      */
 
     @POST('createOrUpdateConditionGroup')
@@ -58,7 +58,7 @@ export class PlatformBusinessFilterService extends BaseApi {
 
     /**
      * @param url /Platform/BusinessFilter/DeleteConditionGroup
-     * Deletes the condition group.
+     * 
      */
 
     @DELETE('deleteConditionGroup')

@@ -13,7 +13,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
   
     /**
      * @param url /Platform/OrganizationUnit/GetByUserId
-     * 获取用户所在组织机构
+     * 
      */
 
     @GET('getByUserId')
@@ -28,7 +28,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/GetGroupOrganizationUnits
-     * 获取所有组织机构（分层级）
+     * 
      */
 
     @GET('getGroupOrganizationUnits')
@@ -42,8 +42,23 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
 
     /**
+     * @param url /Platform/OrganizationUnit/GetAsync
+     * 
+     */
+
+    @GET('getAsync')
+    getAsync(
+        @Payload
+        _req: {id?:string} 
+
+    ): Observable<PlatformOrganizationUnitDto> {
+        return null as any
+    }
+
+
+    /**
      * @param url /Platform/OrganizationUnit/GetUsersByOrganizationUnitId
-     * 获取组织机构下的用户
+     * 
      */
 
     @GET('getUsersByOrganizationUnitId')
@@ -57,8 +72,23 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
 
     /**
+     * @param url /Platform/OrganizationUnit/GetUsersByCompanyCustomerId
+     * 
+     */
+
+    @GET('getUsersByCompanyCustomerId')
+    getUsersByCompanyCustomerId(
+        @Payload
+        _req: {userId?:number,searchText?:string,customerId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
+
+    ): Observable<PlatformPagedResultDto<PlatformUserInfo>> {
+        return null as any
+    }
+
+
+    /**
      * @param url /Platform/OrganizationUnit/GetSaleUsers
-     * 获取业务员
+     * 
      */
 
     @GET('getSaleUsers')
@@ -72,14 +102,29 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
 
     /**
+     * @param url /Platform/OrganizationUnit/GetAllUsersByOrganizationUnitId
+     * 
+     */
+
+    @GET('getAllUsersByOrganizationUnitId')
+    getAllUsersByOrganizationUnitId(
+        @Payload
+        _req: {id?:string} 
+
+    ): Observable<PlatformListResultDto<PlatformUserInfo>> {
+        return null as any
+    }
+
+
+    /**
      * @param url /Platform/OrganizationUnit/GetCustomerServiceUsers
-     * 获取客服人员
+     * 
      */
 
     @GET('getCustomerServiceUsers')
     getCustomerServiceUsers(
         @Payload
-        _req: {ids?:any[],searchText?:string,type?:number,isOwnDepartment?:boolean,organizationUnitId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
+        _req: {ids?:any[],searchText?:string,type?:number,organizationType?:number,isOwnDepartment?:boolean,organizationUnitId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
     ): Observable<PlatformPagedResultDto<PlatformUserInfo>> {
         return null as any
@@ -88,7 +133,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/GetUsersAndOrganizationUnit
-     * 获取组织机构下的用户带上组织机构、职位信息（用于IM ）
+     * 
      */
 
     @GET('getUsersAndOrganizationUnit')
@@ -103,7 +148,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/GetUserDetail
-     * 获取 用户详情带职位、组织机构
+     * 
      */
 
     @GET('getUserDetail')
@@ -118,7 +163,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/GetOrganizationUnitUsers
-     * 获取组织机构下的用户
+     * 
      */
 
     @GET('getOrganizationUnitUsers')
@@ -133,7 +178,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/GetPositionUserDetail
-     * 获取用户详情
+     * 
      */
 
     @GET('getPositionUserDetail')
@@ -148,7 +193,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/GetAll
-     * 获取组织节点集合
+     * 
      */
 
     @GET('getAll')
@@ -163,7 +208,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/GetAllListAsync
-     * 获取全部组织节点集合
+     * 
      */
 
     @GET('getAllListAsync')
@@ -178,7 +223,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/CreateOrUpdate
-     * 保存菜单项
+     * 
      */
 
     @POST('createOrUpdate')
@@ -193,7 +238,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/Move
-     * 移动组织节点
+     * 
      */
 
     @POST('move')
@@ -208,7 +253,7 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/Delete
-     * 删除组织节点
+     * 
      */
 
     @DELETE('delete')
@@ -245,6 +290,21 @@ export class PlatformOrganizationUnitService extends BaseApi {
     cancel(
         @Payload
         _req:PlatformEntityDto<any>
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Platform/OrganizationUnit/GetOrganizationUnitsByUserName
+     * 
+     */
+
+    @GET('getOrganizationUnitsByUserName')
+    getOrganizationUnitsByUserName(
+        @Payload
+        _req: {searchText?:string} 
 
     ): Observable<any> {
         return null as any

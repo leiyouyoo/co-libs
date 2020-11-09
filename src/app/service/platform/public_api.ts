@@ -4,6 +4,7 @@ export * from './business-filter.service';
 export * from './cache-example.service';
 export * from './company-configure.service';
 export * from './edition.service';
+export * from './feedback.service';
 export * from './job.service';
 export * from './jpush.service';
 export * from './menu.service';
