@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+// tslint:disable-next-line: import-blacklist
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { NgxMoveableModule } from 'ngx-moveable';
 import { ChatHistoryComponent } from './component/chat-history/chat-history.component';
@@ -51,7 +52,5 @@ const service = [ImBroadcastService, ImService];
 @NgModule({
   declarations: [...components, ...directive, ...pipe],
   imports: [CommonModule, TranslateModule, NgZorroAntdModule, FormsModule, NgxMoveableModule],
-  exports: [...components, ...directive, ...pipe, ...service],
-  providers: [...service],
 })
 export class CoImModule {}

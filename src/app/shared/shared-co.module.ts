@@ -20,6 +20,7 @@ import { G2TimelineModule } from '@co/chart/timeline';
 import { TrendModule } from '@co/chart/trend';
 import { G2WaterWaveModule } from '@co/chart/water-wave';
 import { ReuseTabModule } from '@co/cms';
+import { CoImModule } from '@co/im';
 import { CoMapModule } from '@co/map';
 
 import { CbcWebComponentsModule, CoBasicCompoentsModule, CoBusinessComponentsModule, CoLayoutComponentsModule } from '@co/cbc';
@@ -30,6 +31,7 @@ export const SHARED_DELON_MODULES = [
   CoEllipsisModule,
   CoImageModule,
   CoMapModule,
+  CoImModule,
   PageHeaderModule,
   CoNoticeIconModule,
   SidebarNavModule,

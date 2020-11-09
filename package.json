@@ -32,6 +32,7 @@
     "build:libs:cms": "bash scripts/ci/build-libs.sh -n cms",
     "build:libs:cms:debug": "bash scripts/ci/build-libs.sh  -n cms -t D:\\src\\co\\co-portal-ms\\ -debug",
     "build:libs:cds": "bash scripts/ci/build-libs.sh -n cds",
+    "build:libs:im": "bash scripts/ci/build-libs.sh -n im",
     "build:libs:theme": "bash scripts/ci/build-libs.sh -n theme",
     "build:libs:theme:debug": "bash scripts/ci/build-libs.sh  -n theme -t D:\\src\\co\\co-portal-ms\\ -debug",
     "build:schematics": "bash scripts/ci/build-schematics.sh -b",

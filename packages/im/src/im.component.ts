@@ -36,7 +36,7 @@ import { FileManageService } from './util/index';
 const moment = moment_;
 
 @Component({
-  selector: 'app-im',
+  selector: 'co-im',
   templateUrl: './im.component.html',
   styleUrls: ['./im.component.less'],
   providers: [SocialService],
@@ -77,7 +77,7 @@ export class ImComponent implements OnInit {
   editGroupNotification = true; // 修改群公告
   conversationsList: Array<any> = []; // 会话列表
   searchConversationsList: Array<any> = []; // 会话列表
-  chatMessageList: Array<any> = []; //历史消息列表
+  chatMessageList: Array<any> = []; // 历史消息列表
   allMessage = true; // 已加载全部数据
   selectedItem: any; // 当前选择的会话
   searchText = '';
@@ -175,6 +175,7 @@ export class ImComponent implements OnInit {
       this.frame.translate[1] = 0;
     }
     target.style.transform = `translate(${this.frame.translate[0]}px, ${this.frame.translate[1]}px)`;
+    // tslint:disable-next-line: no-unused-expression
     !isDrag && this.showImLayout();
   }
   ngOnInit() {
@@ -212,7 +213,7 @@ export class ImComponent implements OnInit {
       this.showChat(arr[0], true);
     } else {
       this.isVisible = true;
-      let item = {
+      const item = {
         bussinessType: this.customerserviceType.toLowerCase(),
         type: 'GROUP',
         disbandGroupFlage: true,
@@ -328,10 +329,10 @@ export class ImComponent implements OnInit {
       onMessage(async function messageRecived(imRes) {
         const data = imRes.data[0];
         if (data.type === 'TIMImageElem') {
-          let url = data.payload.imageInfoArray[0].imageUrl;
-          data['msgBody'] = [{ msgContent: { ImageInfoArray: [{ URL: url }] } }];
+          const url = data.payload.imageInfoArray[0].imageUrl;
+          data.msgBody = [{ msgContent: { ImageInfoArray: [{ URL: url }] } }];
         } else if (data.type == 'TIMFileElem') {
-          data['msgBody'] = [
+          data.msgBody = [
             {
               msgContent: {
                 FileName: data.payload.fileName,
@@ -366,7 +367,7 @@ export class ImComponent implements OnInit {
         }
       });
 
-      let imRes = await getConversationList();
+      const imRes = await getConversationList();
       if (!imRes) {
         return;
       }
@@ -398,7 +399,7 @@ export class ImComponent implements OnInit {
   isJSON(str) {
     if (typeof str == 'string') {
       try {
-        var obj = JSON.parse(str);
+        const obj = JSON.parse(str);
         if (typeof obj == 'object' && obj) {
           return true;
         } else {
@@ -453,7 +454,7 @@ export class ImComponent implements OnInit {
       return e.replace(/PM/, `${this.translate.instant('PM')}`).replace(/AM/, `${this.translate.instant('AM')}`);
     };
     const Date = moment(time);
-    let currentWeek = moment().weekday(moment().weekday()).format();
+    const currentWeek = moment().weekday(moment().weekday()).format();
     if (Date.isValid()) {
       const toDay = moment().startOf('day');
       if (Date.isSameOrAfter(toDay)) {
@@ -665,24 +666,24 @@ export class ImComponent implements OnInit {
    */
   getChatList(loadMore = false, isForward = false) {
     if (!this.isC2C) {
-      let params = {
+      const params = {
         GroupId: this.fromId,
         MaxResultCount: this.pageInfo.maxResultCount,
         SkipCount: this.pageInfo.skipCount * this.pageInfo.maxResultCount,
       };
       if (this.messageId) {
-        params['MegSeq'] = this.messageId;
-        params['isForward'] = false;
+        params.MegSeq = this.messageId;
+        params.isForward = false;
         if (isForward) {
           params.SkipCount = this.forwardPageInfo.skipCount * this.forwardPageInfo.maxResultCount;
-          params['isForward'] = true;
+          params.isForward = true;
         }
       }
       this.imTemplateService.getGroupMsg(params).subscribe((res: any) => {
         this.handldChatList(res, null, loadMore, isForward);
       });
     } else {
-      let params = {
+      const params = {
         FromAccount: this.fromId,
         ToAccount: this.myImId.toString(),
         MaxResultCount: this.pageInfo.maxResultCount,
@@ -690,12 +691,12 @@ export class ImComponent implements OnInit {
         Sorting: 'msgTime desc',
       };
       if (this.messageId) {
-        params['id'] = this.messageId;
-        params['isForward'] = false;
+        params.id = this.messageId;
+        params.isForward = false;
         delete params.Sorting;
         if (isForward) {
           params.SkipCount = this.forwardPageInfo.skipCount * this.forwardPageInfo.maxResultCount;
-          params['isForward'] = true;
+          params.isForward = true;
         }
       }
       this.imTemplateService.getC2CMsg(params).subscribe((res: any) => {
@@ -716,11 +717,11 @@ export class ImComponent implements OnInit {
       e.flow = e.from == this.myImId ? 'out' : 'in';
       e.anchorImgUrl = this.isC2C ? e.fromImageUrl : e.fromAccountImageUrl;
       e.type = e.msgBody[0].msgType;
-      e['payload'] = { text: e.msgBody[0].msgContent.Text };
+      e.payload = { text: e.msgBody[0].msgContent.Text };
       e.msgTime = moment(e.msgTime).format();
     });
     if (!this.messageId) {
-      res.items.reverse(); //消息按时间排序
+      res.items.reverse(); // 消息按时间排序
     }
     // undo 之前已经遍历过，后续可以优化是否需要重新遍历
     this.chatMessageList.forEach(e => {
@@ -741,17 +742,17 @@ export class ImComponent implements OnInit {
       tmpChatLists = res.items.concat(this.chatMessageList);
     }
     // 去重
-    let obj = {};
+    const obj = {};
     tmpChatLists = tmpChatLists.reduce(function (item, next) {
       obj[next.id] ? '' : (obj[next.id] = true && item.push(next));
       return item;
     }, []);
-    let _chatList = tmpChatLists.filter(e => {
+    const _chatList = tmpChatLists.filter(e => {
       return !e.isTimeShow;
     });
     let has5MinInclude = false;
     // 插入时间显示
-    let chatListWithTime: Array<any> = [];
+    const chatListWithTime: Array<any> = [];
     for (let index = _chatList.length - 1; index >= 0; index--) {
       const element = _chatList[index];
       const msgTime = moment(element.msgTime).format();
@@ -765,7 +766,7 @@ export class ImComponent implements OnInit {
         this.nowTime = msgTime;
         subtract5Min = moment(this.nowTime).subtract(5, 'minutes').format();
         const checkTime = i => {
-          let _element = _chatList[i];
+          const _element = _chatList[i];
           if (has5MinInclude) {
             // 如果消息包含当前时间5分以内的，插入5分钟内最前面的消息时间
             chatListWithTime.unshift({ isTimeShow: true, time: _chatList[i + 1].msgTime });
@@ -815,7 +816,7 @@ export class ImComponent implements OnInit {
   }
   // 中间栏icon点击事件
   getData(data, i) {
-    let arr = _.cloneDeep(this.iconListUnselected);
+    const arr = _.cloneDeep(this.iconListUnselected);
     arr[i] = this.iconListSeleted[i];
     this.iconList = arr;
     this.selectIconType = data;
@@ -843,7 +844,7 @@ export class ImComponent implements OnInit {
         return false;
       }
       if (this.justText(e?.lastMessage?.messageForShow).toLowerCase().includes(searchKey)) {
-        let msg = this.justText(e?.lastMessage?.messageForShow);
+        const msg = this.justText(e?.lastMessage?.messageForShow);
         e.lastMessage.messageForShow = this.sanitizer.bypassSecurityTrustHtml(
           msg.replace(subStrForSearch(msg), `<span style ='color: #1890ff;'>${subStrForSearch(msg)}</span>`),
         );
@@ -904,8 +905,8 @@ export class ImComponent implements OnInit {
    */
   checkKeyUp(event) {
     event.stopPropagation();
-    let keyCode = event.keyCode || event.which || event.charCode;
-    let ctrlKey = event.ctrlKey || event.metaKey;
+    const keyCode = event.keyCode || event.which || event.charCode;
+    const ctrlKey = event.ctrlKey || event.metaKey;
     // 判断 ctrl+enter 换行
     if (ctrlKey && keyCode == 13) {
       this.inputValue += '\n';
@@ -917,13 +918,13 @@ export class ImComponent implements OnInit {
   // 处理enter发送
   checkKeyDown(e) {
     e.stopPropagation();
-    var et = e || window.event;
-    var keycode = et.charCode || et.which || et.keyCode;
+    const et = e || window.event;
+    const keycode = et.charCode || et.which || et.keyCode;
     if (keycode == 13) {
       if (window.event) {
         window.event.returnValue = false;
       } else {
-        e.preventDefault(); //for firefox
+        e.preventDefault(); // for firefox
       }
     }
   }
@@ -947,7 +948,7 @@ export class ImComponent implements OnInit {
       await sendmessage(textMessage)
         .then(imRes => {
           this.insertCurrentTime();
-          let _data = cloneDeep(imRes.data.message);
+          const _data = cloneDeep(imRes.data.message);
           _data.msgKey = `${_data.sequence}_${_data.random}_${_data.time}`;
           this.chatMessageList.push(_data);
           setMessageRead(this.selectedItem.conversationID);
@@ -971,17 +972,17 @@ export class ImComponent implements OnInit {
   }
   // 发送图片消息
   async imageChange($event) {
-    let params = $event.target;
+    const params = $event.target;
     let fileMessage: any = {};
     setMessageRead(this.selectedItem.conversationID);
-    let reader = new FileReader();
+    const reader = new FileReader();
     reader.readAsDataURL($event.target.files[0]);
     let localImg;
 
     reader.onload = async theFile => {
       localImg = theFile.target.result;
 
-      let obj = {
+      const obj = {
         type: 'TIMImageElem',
         flow: 'out',
         msgBody: [
@@ -1009,7 +1010,7 @@ export class ImComponent implements OnInit {
   }
   // 发送文件消息
   async fileChange($event) {
-    let params = $event.target;
+    const params = $event.target;
     const file = params.files[0];
     if (file.size / 1024 / 1024 > 100) {
       this.nzMessageService.error(this.translate.instant('The file size exceeds 100M, cannot be sent!'));
@@ -1017,7 +1018,7 @@ export class ImComponent implements OnInit {
     }
     let fileMessage: any = {};
     setMessageRead(this.selectedItem.conversationID);
-    let obj = {
+    const obj = {
       type: 'TIMFileElem',
       flow: 'out',
       msgBody: [
@@ -1151,8 +1152,8 @@ export class ImComponent implements OnInit {
    */
   chatWithPercon(personInfo, notFromChat = false) {
     console.log(personInfo);
-    let newConversationID = '';
-    let userInfo = {
+    const newConversationID = '';
+    const userInfo = {
       bussinessType: 'C2C',
       conversationID: newConversationID,
       lastMessage: {
@@ -1194,7 +1195,7 @@ export class ImComponent implements OnInit {
     let checkExited: any;
     this.conversationsList.forEach((e, index) => {
       if (e.conversationID == userInfo.conversationID) {
-        checkExited = { index: index, value: e };
+        checkExited = { index, value: e };
       }
     });
     if (checkExited) {
