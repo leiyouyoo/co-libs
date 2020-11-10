@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { emojiMap, emojiName, emojiUrl } from '../../entity/emojiMap';
 import { ImService } from '../../service/im.service';
 import { parseText } from '../../service/IMservices';
-import { emojiMap, emojiName, emojiUrl } from '../../entity/emojiMap';
 
 @Component({
   selector: 'app-text-element',
@@ -18,10 +18,7 @@ export class TextElementComponent implements OnInit {
   ngOnInit() {
     this.contentList();
   }
-  /**
-   * @returns
-   * @memberof ChatPage
-   */
+
   contentList() {
     const data = this.payload;
     if (data.text.includes('/Storage/File/GetDownLoadFile?') || data.text.includes('data:image/png;base64,')) {
