@@ -36,7 +36,7 @@
         
          
             
-            items: any;
+            items: T[];
         
         
     }
@@ -125,10 +125,10 @@ Can contain more than one field separated by comma (,). */
         
          
             
-            totalCount: any;
+            totalCount: number;
          
             
-            items: any;
+            items: T[];
         
         
     }
@@ -568,6 +568,81 @@ Can contain more than one field separated by comma (,). */
          
             
             cmbDirectActnbr?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBQueryGLCodeInput {
+        
+         
+            
+            companyId?: string;
+         
+            
+            currency?: string;
+         
+            
+            type?: number;
+         
+            
+            isReceivable?: boolean;
+        
+        
+    }
+ 
+    /**
+     * 会计科目
+     */
+    export class PUBGLCodeModel {
+        
+         
+            /* 主键 */ 
+            id?: string;
+         
+            /* 财务解决方案Id */ 
+            solutionId?: string;
+         
+            /* 公司Id */ 
+            companyId?: string;
+         
+            /* 会计科目组Id */ 
+            glGroupId?: string;
+         
+            /* 代码 */ 
+            code?: string;
+         
+            /* 名称 */ 
+            name?: string;
+         
+            /* 本地化 */ 
+            localizationText?: string;
+         
+            /* 流程费用报销 */ 
+            isFee?: boolean;
+         
+            /* 分组名称 */ 
+            glGroupName?: string;
+         
+            /* 外币币种 */ 
+            foreignCurrency?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBQueryBankDirectAccountInfo {
+        
+         
+            /* 公司ID */ 
+            companyId?: string;
+         
+            /* 银行账户ID */ 
+            bankAccountId?: string;
         
         
     }
@@ -2186,6 +2261,36 @@ Can contain more than one field separated by comma (,). */
          
             /* 创建时间 */ 
             creationTime?: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBRegionWithLevelUiPickerDto {
+        
+         
+            /* 地区代码 */ 
+            code?: string;
+         
+            /* 地区名称-英文 */ 
+            name?: string;
+         
+            /* 上级Id */ 
+            parentId?: string;
+         
+            /* 地区名称-本地化 */ 
+            nameLocalization?: string;
+         
+            /* 子集 */ 
+            children?: any[];
+         
+            /* 是否包含查询对象 */ 
+            isContainKeyword?: boolean;
          
             
             id?: string;
