@@ -4,8 +4,7 @@
     "baseUrl": ".",
     "rootDir": ".",
     "paths": {
-      "@co/common": ["../../dist/@co/common"],
-      "@co/core": ["../../dist/@co/core"]
+      "@co/*": ["../../dist/@co/*"]
     }
   },
   "angularCompilerOptions": {
