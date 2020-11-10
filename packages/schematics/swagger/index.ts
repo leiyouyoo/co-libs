@@ -40,13 +40,17 @@ export function buildCOSwagger(options: any): Rule {
     // 路由
     let requireUrl = process.cwd();
     if (!options.path) {
+      console.log('当前路径' + requireUrl);
       if (requireUrl.includes('apps')) {
         requireUrl = requireUrl.substring(requireUrl.lastIndexOf('apps'));
         options.path = requireUrl;
-        console.log('生成路径' + options.path);
+      } else if (requireUrl.includes('packages\\cds')) {
+        requireUrl = requireUrl.substring(requireUrl.lastIndexOf('packages'));
+        options.path = requireUrl;
       } else {
-        options.path = `${requireUrl}/`;
+        options.path = `${project.sourceRoot}`;
       }
+      console.log('生成路径' + options.path);
     }
 
     const response = await getSwaggerData(options, tree)();
