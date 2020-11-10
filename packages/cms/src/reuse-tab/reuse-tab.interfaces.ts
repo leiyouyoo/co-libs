@@ -36,6 +36,8 @@ export enum ReuseTabMatchMode {
 export interface ReuseTitle {
   text?: string;
   i18n?: string;
+  icon?: string;
+  style?: string;
 }
 
 export interface ReuseTabCached {
@@ -61,6 +63,8 @@ export interface ReuseTabNotify {
   active: 'add' | 'override' | 'title' | 'clear' | 'closable' | 'close' | 'closeRight' | 'move' | 'refresh';
   url?: string;
   title?: ReuseTitle;
+  icon?: string;
+  style?: string;
   item?: ReuseTabCached;
   list?: ReuseTabCached[];
   [key: string]: any;

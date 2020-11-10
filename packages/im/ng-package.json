@@ -6,6 +6,7 @@
     "flatModuleFile": "im",
     "entryFile": "public_api.ts",
     "umdModuleIds": {
+      "ng-zorro-antd": "ng-zorro-antd",
       "@co/common": "co.common",
       "@co/core": "co.core"
     }

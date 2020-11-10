@@ -13,7 +13,7 @@
   "homepage": "https://www.cityocean.com",
   "keywords": [
     "im",
-    "angular"
+    "co-libs"
   ],
   "dependencies": {
     "@co/common": "PEER-0.0.0-PLACEHOLDER",

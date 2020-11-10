@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
-import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { CSPGetShipmentListInput,CSPShipmentListOutput,CSPPagedResultDto,CSPPubLocation,CSPListResultDto,CSPNameValueDto,CSPNetWorkLocationModel,CSPGetAllForProductOutput,CSPShipmentDetailOutput,CSPShipmentEventGroupDto,CSPCreateOrUpdateShipmentInput,CSPCloseShipmentInput,CSPShipmentOrderItemDto,CSPImportShipmentOrderItemsInput,CSPUpdatePostPortEstDateInput,CSPConditionItemAttribute,CSPShipmentsStatisticsOutput,CSPGetRelatedBusinessOutput, } from './csp.types';
+import { Observable } from 'rxjs';
+import { CSPCloseShipmentInput,CSPConditionItemAttribute,CSPCreateOrUpdateShipmentInput,CSPGetAllForProductOutput,CSPGetRelatedBusinessOutput,CSPGetShipmentListInput,CSPImportShipmentOrderItemsInput,CSPListResultDto,CSPNameValueDto,CSPNetWorkLocationModel,CSPPagedResultDto,CSPPubLocation,CSPShipmentDetailOutput,CSPShipmentEventGroupDto,CSPShipmentListOutput,CSPShipmentOrderItemDto,CSPShipmentsStatisticsOutput,CSPUpdatePostPortEstDateInput, } from './csp.types';
 
 @BaseUrl('/csp/Shipment')
 @Injectable({ providedIn: 'root' })
