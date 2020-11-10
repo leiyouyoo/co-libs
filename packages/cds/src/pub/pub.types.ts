@@ -36,7 +36,7 @@
         
          
             
-            items: T[];
+            items: any;
         
         
     }
@@ -125,10 +125,10 @@ Can contain more than one field separated by comma (,). */
         
          
             
-            totalCount: number;
+            totalCount: any;
          
             
-            items: T[];
+            items: any;
         
         
     }
@@ -520,114 +520,6 @@ Can contain more than one field separated by comma (,). */
          
             
             configureBankAccounts?: any[];
-        
-        
-    }
- 
-    /**
-     * 银企直连信息
-     */
-    export class PUBConfigureBankDirectDto {
-        
-         
-            /* 公司ID */ 
-            companyId?: string;
-         
-            /* 是否支持银企直连 */ 
-            isBankDirect?: boolean;
-         
-            /* 招商银行账户 */ 
-            cmbBankAccountNo?: string;
-         
-            /* 银行账户Id */ 
-            cmbAccountId?: string;
-         
-            /* 账户名称 */ 
-            cmbBankAccountName?: string;
-         
-            /* 一网通账户ID */ 
-            cmbNetComUserAccount?: string;
-         
-            /* CMB银企直连户口号 */ 
-            cmbDirectActnbr?: string;
-        
-        
-    }
- 
-    /**
-     *  No Remark 
-     */
-    export class PUBUpBankDirectActnbrInput {
-        
-         
-            
-            companyId?: string;
-         
-            
-            bankAccountId?: string;
-         
-            
-            cmbDirectActnbr?: string;
-        
-        
-    }
- 
-    /**
-     *  No Remark 
-     */
-    export class PUBQueryGLCodeInput {
-        
-         
-            
-            companyId?: string;
-         
-            
-            currency?: string;
-         
-            
-            type?: number;
-         
-            
-            isReceivable?: boolean;
-        
-        
-    }
- 
-    /**
-     * 会计科目
-     */
-    export class PUBGLCodeModel {
-        
-         
-            /* 主键 */ 
-            id?: string;
-         
-            /* 财务解决方案Id */ 
-            solutionId?: string;
-         
-            /* 公司Id */ 
-            companyId?: string;
-         
-            /* 会计科目组Id */ 
-            glGroupId?: string;
-         
-            /* 代码 */ 
-            code?: string;
-         
-            /* 名称 */ 
-            name?: string;
-         
-            /* 本地化 */ 
-            localizationText?: string;
-         
-            /* 流程费用报销 */ 
-            isFee?: boolean;
-         
-            /* 分组名称 */ 
-            glGroupName?: string;
-         
-            /* 外币币种 */ 
-            foreignCurrency?: string;
         
         
     }
