@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBRegionDto,PUBListResultDto,PUBGetByAreaInput,PUBRegionCheckDto,PUBGetAllCountryForUiPickerInput,PUBCountryUiPickerDto,PUBPagedResultDto,PUBGetAllRegionForUiPickerInput,PUBRegionUiPickerDto, } from './pub.types';
+import { PUBRegionDto,PUBListResultDto,PUBGetByAreaInput,PUBRegionCheckDto,PUBGetAllCountryForUiPickerInput,PUBCountryUiPickerDto,PUBPagedResultDto,PUBGetAllRegionForUiPickerInput,PUBRegionUiPickerDto,PUBRegionWithLevelUiPickerDto, } from './pub.types';
 
 @BaseUrl('/pub/Region')
 @Injectable({ providedIn: 'root' })
@@ -172,6 +172,21 @@ export class PUBRegionService extends BaseApi {
         _req:PUBGetAllRegionForUiPickerInput
 
     ): Observable<PUBPagedResultDto<PUBRegionUiPickerDto>> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/Region/GetAllCountriesForPicker
+     * 提供给UI地区（国家带子级）选择器的服务接口
+     */
+
+    @GET('getAllCountriesForPicker')
+    getAllCountriesForPicker(
+        @Payload
+        _req: {searchText?:string,ids?:string} 
+
+    ): Observable<PUBListResultDto<PUBRegionWithLevelUiPickerDto>> {
         return null as any
     }
 

@@ -12,6 +12,36 @@ export class PUBSailingSchedulesService extends BaseApi {
 
   
     /**
+     * @param url /PUB/SailingSchedules/SynchroVesselVoyageToICP3
+     * 同步船，航次到ICP3
+     */
+
+    @POST('synchroVesselVoyageToICP3')
+    synchroVesselVoyageToICP3(
+        @Payload
+        _req: {} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/SailingSchedules/QueryShippingETA
+     * 查询船期ETA
+     */
+
+    @POST('queryShippingETA')
+    queryShippingETA(
+        @Payload
+        _req: {} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
      * @param url /PUB/SailingSchedules/DownLoadInttraSailingScheduleDetail
      * 从inttra Api下载船期数据
      */

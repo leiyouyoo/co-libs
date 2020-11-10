@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBConfigureModel,PUBConfigure, } from './pub.types';
+import { PUBConfigureModel,PUBConfigure,PUBQueryBankDirectAccountInfo,PUBQueryGLCodeInput,PUBGLCodeModel, } from './pub.types';
 
 @BaseUrl('/pub/Configure')
 @Injectable({ providedIn: 'root' })
@@ -72,14 +72,29 @@ export class PUBConfigureService extends BaseApi {
 
 
     /**
-     * @param url /PUB/Configure/GetCommpanyListByShortName
+     * @param url /PUB/Configure/GetCompanyListByShortName
      * 获取公司列表 根据银行短名
      */
 
-    @POST('getCommpanyListByShortName')
-    getCommpanyListByShortName(
+    @POST('getCompanyListByShortName')
+    getCompanyListByShortName(
         @Payload
         _req: {shortName?:string} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/Configure/GetCompayBank
+     * 获取公司银行列表
+     */
+
+    @POST('getCompayBank')
+    getCompayBank(
+        @Payload
+        _req: {companyId?:string} 
 
     ): Observable<any> {
         return null as any
@@ -202,6 +217,51 @@ export class PUBConfigureService extends BaseApi {
         _req: {userId?:number} 
 
     ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/Configure/GetBankDirectModelAsync
+     * 获取银企直连信息
+     */
+
+    @POST('getBankDirectModelAsync')
+    getBankDirectModelAsync(
+        @Payload
+        _req:PUBQueryBankDirectAccountInfo
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/Configure/UpBankDirectActnbrAsync
+     * 更新银企直连账号信息
+     */
+
+    @POST('upBankDirectActnbrAsync')
+    upBankDirectActnbrAsync(
+        @Payload
+        _req: {} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/Configure/GetGLCodeAsync
+     * 获取会计科目
+     */
+
+    @POST('getGLCodeAsync')
+    getGLCodeAsync(
+        @Payload
+        _req:PUBQueryGLCodeInput
+
+    ): Observable<PUBGLCodeModel> {
         return null as any
     }
 
