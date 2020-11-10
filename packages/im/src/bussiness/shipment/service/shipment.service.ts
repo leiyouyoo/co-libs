@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { _HttpClient } from '@co/common';
-import { forkJoin, Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-import { PortOfDischarge, ShipmentDetail, ShipperInfo } from '../entities/ShipmentDetail';
+import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+import { ShipmentDetail } from '../entities/ShipmentDetail';
 import { VesselTrackPoint } from '../entities/VesselTrackPoint';
 import { FreightMethodType } from '../models/FreightMethodType';
 import { GetAllParam } from '../models/interfaces';

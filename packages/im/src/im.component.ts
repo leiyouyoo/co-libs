@@ -4,9 +4,9 @@ import { NavigationStart, Router } from '@angular/router';
 import { ACLService } from '@co/acl';
 import { SocialService } from '@co/auth';
 import { TranslateService } from '@ngx-translate/core';
-import { cloneDeep } from 'lodash';
 import * as _ from 'lodash';
 import * as moment_ from 'moment';
+// tslint:disable-next-line: import-blacklist
 import { NzModalService } from 'ng-zorro-antd';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { filter } from 'rxjs/operators';
@@ -146,8 +146,8 @@ export class ImComponent implements OnInit {
       !isPreviewerClose &&
       $event.tagName &&
       !clickedInside &&
-      $event.nodeName != 'path' &&
-      $event.nodeName != 'svg' &&
+      $event.nodeName !== 'path' &&
+      $event.nodeName !== 'svg' &&
       !($event as HTMLElement).hasAttribute('data-im-input-show') &&
       !$event.classList.contains('ant-popover-inner-content')
     ) {
@@ -236,19 +236,19 @@ export class ImComponent implements OnInit {
     if (!url) {
       url = location.href;
     }
-    if (url.indexOf('/bookings/BookingView') != -1) {
+    if (url.indexOf('/bookings/BookingView') !== -1) {
       this.customerserviceId = url.split('BookingId=')[1].substr(0, 36);
       this.customerserviceType = 'Booking';
-    } else if (url.indexOf('/crm/booking/bookinglist/bookingDetail/') != -1) {
+    } else if (url.indexOf('/crm/booking/bookinglist/bookingDetail/') !== -1) {
       this.customerserviceId = url.split('booking/bookinglist/bookingDetail/')[1].substr(0, 36);
       this.customerserviceType = 'Booking';
-    } else if (url.indexOf('crm/quotes/quoteslist/quotesDetail/') != -1) {
+    } else if (url.indexOf('crm/quotes/quoteslist/quotesDetail/') !== -1) {
       this.customerserviceId = url.split('crm/quotes/quoteslist/quotesDetail/')[1].substr(0, 36);
       this.customerserviceType = 'Quote';
-    } else if (url.indexOf('/quotes/QuotesDetail') != -1) {
+    } else if (url.indexOf('/quotes/QuotesDetail') !== -1) {
       this.customerserviceId = url.split('quotesId=')[1].substr(0, 36);
       this.customerserviceType = 'Quote';
-    } else if (url.indexOf('/shipments/detail/') != -1) {
+    } else if (url.indexOf('/shipments/detail/') !== -1) {
       this.customerserviceId = url.split('/shipments/detail/')[1].substr(0, 36);
       this.customerserviceType = 'Shipment';
     } else {
@@ -278,6 +278,7 @@ export class ImComponent implements OnInit {
   closeChatDiv($event?) {
     this.isChat = false;
     this.isSelectItem = true;
+    // tslint:disable-next-line: no-unused-expression
     $event && $event.stopPropagation();
   }
 
@@ -285,21 +286,21 @@ export class ImComponent implements OnInit {
     const initConversationList = list => {
       this.compareUrl();
       const systemList = list.filter(e => {
-        return e.type == '@TIM#SYSTEM';
+        return e.type === '@TIM#SYSTEM';
       });
       systemList.forEach(ele => {
-        if (ele?.lastMessage?.type == 'TIMGroupSystemNoticeElem' && ele?.lastMessage?.payload?.operationType === 5) {
+        if (ele?.lastMessage?.type === 'TIMGroupSystemNoticeElem' && ele?.lastMessage?.payload?.operationType === 5) {
           if (this.selectedItem?.groupProfile?.groupID === ele?.lastMessage?.payload?.groupProfile?.groupID) {
             this.cancleChatDiv();
           }
         }
       });
       list = list.filter(e => {
-        return e.type != '@TIM#SYSTEM';
+        return e.type !== '@TIM#SYSTEM';
       });
 
       list.forEach(ele => {
-        if (ele.type == 'C2C') {
+        if (ele.type === 'C2C') {
           ele.bussinessType = ele.type;
           ele.name = ele.userProfile.userID;
           const message = ele.lastMessage.payload.text;
@@ -326,12 +327,12 @@ export class ImComponent implements OnInit {
     const self = this;
     onSDKReady(async function ready() {
       self.ImSDKReady = true;
-      onMessage(async function messageRecived(imRes) {
-        const data = imRes.data[0];
+      onMessage(async function messageRecived(res) {
+        const data = res.data[0];
         if (data.type === 'TIMImageElem') {
           const url = data.payload.imageInfoArray[0].imageUrl;
           data.msgBody = [{ msgContent: { ImageInfoArray: [{ URL: url }] } }];
-        } else if (data.type == 'TIMFileElem') {
+        } else if (data.type === 'TIMFileElem') {
           data.msgBody = [
             {
               msgContent: {
@@ -377,7 +378,6 @@ export class ImComponent implements OnInit {
 
   /**
    * @description 如果是企业微信跳转过来的，根据会话ID打开会话
-   * @memberof ImTemplateComponent
    */
   checkIsFromQiyeWechat() {
     const url = location.href;
@@ -397,10 +397,10 @@ export class ImComponent implements OnInit {
     }
   }
   isJSON(str) {
-    if (typeof str == 'string') {
+    if (typeof str === 'string') {
       try {
         const obj = JSON.parse(str);
-        if (typeof obj == 'object' && obj) {
+        if (typeof obj === 'object' && obj) {
           return true;
         } else {
           return false;
@@ -413,8 +413,6 @@ export class ImComponent implements OnInit {
   }
   /**
    * @description 获取业务类型
-   * @returns
-   * @memberof CityOceanService
    */
   formatBussinessType(conversationID: string) {
     if (conversationID.toLowerCase().startsWith('groupbooking')) {
@@ -433,8 +431,6 @@ export class ImComponent implements OnInit {
   }
   /**
    * @description 获取业务id
-   * @returns
-   * @memberof CityOceanService
    */
   formatBussinessId() {
     return this.selectedItem.conversationID.toLowerCase().replace('group' + this.selectedItem.bussinessType, '');
@@ -446,8 +442,6 @@ export class ImComponent implements OnInit {
   /**
    * 格式化聊天时间
    *
-   * @returns
-   * @memberof CityOceanService
    */
   getImChatTime(time, formatType?) {
     const replaceAMPM = (e: string) => {
@@ -508,7 +502,7 @@ export class ImComponent implements OnInit {
         this.conversationsList.unshift(this.conversationsList.splice(index, 1)[0]);
       }
     }
-    if (this.selectedItem && item.conversationID === this.selectedItem.conversationID && this.isChat == true) {
+    if (this.selectedItem && item.conversationID === this.selectedItem.conversationID && this.isChat === true) {
       return;
     } else if (item.isRemindMessage) {
       this.isSchedule = true;
@@ -529,13 +523,13 @@ export class ImComponent implements OnInit {
     this.chatMessageList = [];
     // this.allMessage = false;
     this.selectedItem = item;
-    if (item.unreadCount != 0) {
+    if (item.unreadCount !== 0) {
       setMessageRead(item.conversationID);
     }
     if (
-      this.selectedItem.bussinessType != 'C2C' &&
-      this.selectedItem.bussinessType != 'remindMessage' &&
-      this.selectedItem.bussinessType != 'order'
+      this.selectedItem.bussinessType !== 'C2C' &&
+      this.selectedItem.bussinessType !== 'remindMessage' &&
+      this.selectedItem.bussinessType !== 'order'
     ) {
       this.isC2C = false;
       this.fromId = this.selectedItem.groupProfile.groupID;
@@ -617,7 +611,7 @@ export class ImComponent implements OnInit {
           getGroupProfile(this.fromId)
             .then(res => {
               this.groupInfo = res.data.group;
-              this.groupInfoCopy = cloneDeep(res.data.group);
+              this.groupInfoCopy = _.cloneDeep(res.data.group);
               console.log(res);
             })
             .catch(error => {
@@ -661,12 +655,10 @@ export class ImComponent implements OnInit {
   /**
    * 获取消息列表
    *
-   * @param loadMore
-   * @memberof ChatPage
    */
   getChatList(loadMore = false, isForward = false) {
     if (!this.isC2C) {
-      const params:any = {
+      const params: any = {
         GroupId: this.fromId,
         MaxResultCount: this.pageInfo.maxResultCount,
         SkipCount: this.pageInfo.skipCount * this.pageInfo.maxResultCount,
@@ -683,7 +675,7 @@ export class ImComponent implements OnInit {
         this.handldChatList(res, null, loadMore, isForward);
       });
     } else {
-      const params:any = {
+      const params: any = {
         FromAccount: this.fromId,
         ToAccount: this.myImId.toString(),
         MaxResultCount: this.pageInfo.maxResultCount,
@@ -707,14 +699,13 @@ export class ImComponent implements OnInit {
   }
   /**
    * // 处理消息列表数据
-   * @memberof ChatPage
    */
   handldChatList(res, sorting, loadMore = false, isForward = false) {
     if (this.messageId && res.items.length === 0) {
       !isForward ? (this.hideBottomShowMore = true) : (this.hideTopShowMore = true);
     }
     res.items.forEach(e => {
-      e.flow = e.from == this.myImId ? 'out' : 'in';
+      e.flow = e.from === this.myImId ? 'out' : 'in';
       e.anchorImgUrl = this.isC2C ? e.fromImageUrl : e.fromAccountImageUrl;
       e.type = e.msgBody[0].msgType;
       e.payload = { text: e.msgBody[0].msgContent.Text };
@@ -743,7 +734,8 @@ export class ImComponent implements OnInit {
     }
     // 去重
     const obj = {};
-    tmpChatLists = tmpChatLists.reduce(function (item, next) {
+    tmpChatLists = tmpChatLists.reduce((item, next) => {
+      // tslint:disable-next-line: no-unused-expression
       obj[next.id] ? '' : (obj[next.id] = true && item.push(next));
       return item;
     }, []);
@@ -812,6 +804,7 @@ export class ImComponent implements OnInit {
     } else {
       this.allMessage = false;
     }
+    // tslint:disable-next-line: no-unused-expression
     !this.messageId && !loadMore && this.scrollBottom();
   }
   // 中间栏icon点击事件
@@ -898,19 +891,17 @@ export class ImComponent implements OnInit {
   }
 
   /**
-   *处理enter发送，ctrl+enter换行
+   * 处理enter发送，ctrl+enter换行
    *
-   * @returns
-   * @memberof ChatPage
    */
   checkKeyUp(event) {
     event.stopPropagation();
     const keyCode = event.keyCode || event.which || event.charCode;
     const ctrlKey = event.ctrlKey || event.metaKey;
     // 判断 ctrl+enter 换行
-    if (ctrlKey && keyCode == 13) {
+    if (ctrlKey && keyCode === 13) {
       this.inputValue += '\n';
-    } else if (keyCode == 13) {
+    } else if (keyCode === 13) {
       this.inputValue = this.inputValue.replace(/(?:[\n\r]*)$/g, '');
       this.send();
     }
@@ -918,10 +909,13 @@ export class ImComponent implements OnInit {
   // 处理enter发送
   checkKeyDown(e) {
     e.stopPropagation();
+    // tslint:disable-next-line: deprecation
     const et = e || window.event;
     const keycode = et.charCode || et.which || et.keyCode;
-    if (keycode == 13) {
+    if (keycode === 13) {
+      // tslint:disable-next-line: deprecation
       if (window.event) {
+        // tslint:disable-next-line: deprecation
         window.event.returnValue = false;
       } else {
         e.preventDefault(); // for firefox
@@ -929,15 +923,13 @@ export class ImComponent implements OnInit {
     }
   }
   /**
-   *发送消息
+   * 发送消息
    *
-   * @returns
-   * @memberof ChatPage
    */
   async send() {
     this.fromId += '';
     let textMessage: any = {};
-    if (this.inputValue == '' || this.fromId == null || this.inputValue == undefined) {
+    if (this.inputValue === '' || this.fromId == null || this.inputValue === undefined) {
       return;
     }
     if (!this.inputValue.replace(/[\r\n\s+]/g, '')) {
@@ -948,7 +940,7 @@ export class ImComponent implements OnInit {
       await sendmessage(textMessage)
         .then(imRes => {
           this.insertCurrentTime();
-          const _data = cloneDeep(imRes.data.message);
+          const _data = _.cloneDeep(imRes.data.message);
           _data.msgKey = `${_data.sequence}_${_data.random}_${_data.time}`;
           this.chatMessageList.push(_data);
           setMessageRead(this.selectedItem.conversationID);
@@ -980,7 +972,7 @@ export class ImComponent implements OnInit {
     let localImg;
 
     reader.onload = async theFile => {
-      localImg = theFile.target.result;
+      localImg = theFile?.target?.result;
 
       const obj = {
         type: 'TIMImageElem',
@@ -1098,7 +1090,6 @@ export class ImComponent implements OnInit {
   /**
    * 与最后一条消息比较时间，如果超出5分钟，插入最新时间
    *
-   * @memberof ChatPage
    */
   insertCurrentTime() {
     const now = moment(new Date()).format();
@@ -1147,8 +1138,7 @@ export class ImComponent implements OnInit {
   }
 
   /**
-   * @param  是否为通讯录点击的
-   * @memberof ImTemplateComponent
+   * @notFromChat  是否为通讯录点击的
    */
   chatWithPercon(personInfo, notFromChat = false) {
     console.log(personInfo);
@@ -1194,7 +1184,7 @@ export class ImComponent implements OnInit {
     this.currentWindowShowType = 'chat';
     let checkExited: any;
     this.conversationsList.forEach((e, index) => {
-      if (e.conversationID == userInfo.conversationID) {
+      if (e.conversationID === userInfo.conversationID) {
         checkExited = { index, value: e };
       }
     });
@@ -1228,6 +1218,7 @@ export class ImComponent implements OnInit {
     this.isChat = false;
     this.selectedItem = null; // 当前选择的会话
     this.isSelectItem = false;
+    // tslint:disable-next-line: no-unused-expression
     e && e.stopPropagation();
   }
   // 联系人双击事件
@@ -1239,7 +1230,6 @@ export class ImComponent implements OnInit {
   /**
    * @description 修改群信息
    * @author youlei
-   * @memberof ImTemplateComponent
    */
   editGroupProfile() {
     if (this.groupInfoCopy.name === this.groupInfo.name && this.groupInfoCopy.notification === this.groupInfo.notification) {
@@ -1250,7 +1240,7 @@ export class ImComponent implements OnInit {
       name: this.groupInfo.name,
       notification: this.groupInfo.notification,
     }).then(r => {
-      this.groupInfoCopy = cloneDeep(this.groupInfo);
+      this.groupInfoCopy = _.cloneDeep(this.groupInfo);
     });
   }
   initGroupmemberToJoin(imContacts): Array<any> {
@@ -1266,8 +1256,6 @@ export class ImComponent implements OnInit {
   /**
    * @description 添加群成员
    * @author youlei
-   * @param {*} imContacts
-   * @memberof ImTemplateComponent
    */
   addMemberConfirm(imContacts) {
     addGroupNumber({
@@ -1282,7 +1270,6 @@ export class ImComponent implements OnInit {
   /**
    * @description 头像上传
    * @author youlei
-   * @memberof ImTemplateComponent
    */
   avtarUpload($event) {
     console.log($event.target);

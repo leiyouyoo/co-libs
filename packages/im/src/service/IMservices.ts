@@ -155,7 +155,7 @@ export function createTextMessage(userID: string, type: string, payload: string)
 }
 
 /*创建图片消息 */
-export function createImageMessage(userID: string, type: string, params: any, fun?: () => void) {
+export function createImageMessage(userID: string, type: string, params: any, fun?: (e) => void) {
   if (type === 'signle') {
     type = TIM.TYPES.CONV_C2C;
   }
@@ -175,7 +175,7 @@ export function createImageMessage(userID: string, type: string, params: any, fu
 }
 
 /*创建文件消息 */
-export function createFileMessage(userID: string, type: string, params: any, fun?: () => void) {
+export function createFileMessage(userID: string, type: string, params: any, fun?: (e) => void) {
   if (type === 'signle') {
     type = TIM.TYPES.CONV_C2C;
   }
@@ -439,7 +439,7 @@ export async function getMessageList(conversationID: string, nextReqMessageID?: 
   // });
 }
 
-export async function onConversationUpdate(fun: () => void) {
+export async function onConversationUpdate(fun: (e) => void) {
   // function(fun) {
   // 收到会话列表更新通知，可通过遍历 event.data 获取会话列表数据并渲染到页面
   // event.name - TIM.EVENT.CONVERSATION_LIST_UPDATED

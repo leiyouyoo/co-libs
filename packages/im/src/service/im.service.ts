@@ -1,4 +1,4 @@
-import { Inject, Injectable, Optional } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { _HttpClient } from '@co/common';
 import { CoConfigManager } from '@co/core';
 
@@ -8,7 +8,7 @@ import { CoConfigManager } from '@co/core';
 export class ImService {
   constructor(private _httpClient: _HttpClient) {}
   getImgUrl(url) {
-    if (url.indexOf('data:image/png;base64') != -1 || url.indexOf('http') != -1) {
+    if (url.indexOf('data:image/png;base64') !== -1 || url.indexOf('http') !== -1) {
       return url;
     } else {
       return CoConfigManager.getValue('serverUrl') ? CoConfigManager.getValue('serverUrl') + url : 'http://192.168.1.6:8000' + url;
@@ -37,7 +37,7 @@ export class ImService {
   }
   // 获取客户下所有联系人
   getCustomerContacts(id?) {
-    const param:any = {};
+    const param: any = {};
     if (id) param.id = id;
     const url = `/CRM/ContactIM/GetCustomerContacts`;
     return this._httpClient.get(url, param);
@@ -45,14 +45,14 @@ export class ImService {
 
   // 根据客户Id获取客服列表
   GetServiceUsers(id?) {
-    const param:any = {};
+    const param: any = {};
     if (id) param.id = id;
     const url = `/CSP/BusinessServiceUser/GetServiceUsers`;
     return this._httpClient.get(url, param);
   }
   // 获取公司内部组织架构员工
   getUsersAndOrganizationUnit(inpupt?) {
-    const param:any = {};
+    const param: any = {};
     if (inpupt) param.inpupt = inpupt;
     const url = `/Platform/OrganizationUnit/GetUsersAndOrganizationUnit`;
     return this._httpClient.get(url, param);
@@ -60,14 +60,14 @@ export class ImService {
 
   // 获取所有合作伙伴的所有联系人
   getPartnerContacts(CustomerId?, SearchText?) {
-    const param:any = {};
+    const param: any = {};
     if (SearchText) param.SearchText = SearchText;
     const url = `/CRM/ContactIM/GetPartnerContacts`;
     return this._httpClient.get(url, param);
   }
   // 获取业务员所跟进的所有客户的所有联系
   getSaleCustomerContacts(CustomerId?, SearchText?) {
-    const param:any = {};
+    const param: any = {};
     if (SearchText) param.SearchText = SearchText;
     const url = `/CRM/ContactIM/GetSaleCustomerContacts`;
     return this._httpClient.get(url, param);

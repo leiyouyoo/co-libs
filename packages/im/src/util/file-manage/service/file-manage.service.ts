@@ -1,4 +1,3 @@
-import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { _HttpClient } from '@co/common';
 import { Observable } from 'rxjs';
@@ -12,7 +11,7 @@ import { SharingFile } from '../entity/sharing-file';
 })
 export class FileManageService {
   userMsg = JSON.parse(localStorage.getItem('co.session') || 'null');
-  constructor(public http: _HttpClient) { }
+  constructor(public http: _HttpClient) {}
 
   /**
    * 查询文件
@@ -20,8 +19,8 @@ export class FileManageService {
    * @param BusinessType 业务类型
    * @param AttachmentType 附件类型
    */
-  getAttachmentListByBusiness(BusinessId: string, BusinessType: BusinessType, AttachmentType: AttachmentType): Observable<SharingFile[]> {
-    return this.http.get('/CSP/Attachment/GetList', { BusinessId, BusinessType, AttachmentType }).pipe(map((o: any) => o.items)) as any;
+  getAttachmentListByBusiness(businessId: string, businessType: BusinessType, attachmentType: AttachmentType): Observable<SharingFile[]> {
+    return this.http.get('/CSP/Attachment/GetList', { businessId, businessType, attachmentType }).pipe(map((o: any) => o.items)) as any;
   }
 
   /**
@@ -29,8 +28,6 @@ export class FileManageService {
    * @param BusinessId 业务ID
    * @param BusinessType 业务类型
    * @param AttachmentType 附件类型
-   * @param fileName
-   * @param extensionName
    */
   create(params: {
     items: [
@@ -60,25 +57,19 @@ export class FileManageService {
 
   /**
    * 更新文件
-   * @param BusinessId
-   * @param BusinessType
-   * @param AttachmentType
-   * @param fileName
-   * @param extensionName
-   * @param sharingPeopleId
    */
   update(
     BusinessId: number,
-    BusinessType: BusinessType,
-    AttachmentType: AttachmentType,
+    businessType: BusinessType,
+    attachmentType: AttachmentType,
     fileName: string,
     extensionName: string,
     sharingPeopleId: string,
   ) {
     return this.http.post('/CSP/Attachment/Update', {
       businessId: BusinessId,
-      businessType: BusinessType,
-      attachmentType: AttachmentType,
+      businessType,
+      attachmentType,
       fileName,
       extensionName,
       attachmentSharings: [{ sharingPeopleId }],
@@ -95,12 +86,9 @@ export class FileManageService {
 
   /**
    * 获取全部文件
-   * @param BusinessId
-   * @param BusinessType
-   * @param AttachmentType
    */
-  getAll(BusinessId: number, BusinessType: BusinessType, AttachmentType: AttachmentType) {
-    return this.http.get('/CSP/Attachment/GetAll', { BusinessId, BusinessType, AttachmentType });
+  getAll(businessId: number, businessType: BusinessType, attachmentType: AttachmentType) {
+    return this.http.get('/CSP/Attachment/GetAll', { businessId, businessType, attachmentType });
   }
 
   /**
@@ -113,7 +101,6 @@ export class FileManageService {
 
   /**
    * 批量移除文件
-   * @param Id
    */
   deleteFiles(fileList: any) {
     return this.http.post('/CSP/Attachment/BatchDelete', fileList);
@@ -163,6 +150,7 @@ export class FileManageService {
   }
 
   getAvatarUrl(option: { idOrUrl: string; defaultUrl?: string; fromAbp?: boolean }) {
+    // tslint:disable-next-line: prefer-const
     let { idOrUrl, defaultUrl, fromAbp } = option;
     if (fromAbp) {
       idOrUrl = this.userMsg.session.user.profilePictureId;

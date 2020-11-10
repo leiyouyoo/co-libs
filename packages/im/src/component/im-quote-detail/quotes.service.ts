@@ -5,11 +5,11 @@ import { _HttpClient } from '@co/common';
 })
 export class ImQuotesService {
   constructor(public httpService: _HttpClient) {}
-  //获取询价详情
+  // 获取询价详情
   getQuoteDetail(Id: string) {
-    let url = '/CRM/QuoteEnquiry/GetForCSP';
-    let params = {
-      Id: Id,
+    const url = '/CRM/QuoteEnquiry/GetForCSP';
+    const params = {
+      Id,
     };
     return this.httpService.get(url, params);
   }

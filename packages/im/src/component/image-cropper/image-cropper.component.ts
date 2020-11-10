@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, Renderer2, SimpleChanges } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import Cropper from 'cropperjs';
-import { NzMessageService } from 'ng-zorro-antd';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'lib-image-cropper',
@@ -33,7 +33,7 @@ export class ImageCropperComponent implements OnInit, OnChanges {
       return;
     }
     this.file = changes.file.currentValue;
-    const matchType = (fileName) => {
+    const matchType = fileName => {
       // 后缀获取
       let suffix = '';
       // 获取类型结果
@@ -52,8 +52,8 @@ export class ImageCropperComponent implements OnInit, OnChanges {
       // 图片格式
       const imglist = ['png', 'jpg', 'jpeg'];
       // 进行图片匹配
-      result = imglist.some((item) => {
-        return item == suffix;
+      result = imglist.some(item => {
+        return item === suffix;
       });
       return result;
     };
@@ -121,7 +121,7 @@ export class ImageCropperComponent implements OnInit, OnChanges {
   getRoundedCanvas() {
     const sourceCanvas = this.image.cropper.getCroppedCanvas('');
     const canvas = document.createElement('canvas');
-    const context:any = canvas.getContext('2d');
+    const context: any = canvas.getContext('2d');
     const width = sourceCanvas.width;
     const height = sourceCanvas.height;
     canvas.width = width;
@@ -139,9 +139,6 @@ export class ImageCropperComponent implements OnInit, OnChanges {
   /**
    * 转为file对象
    *
-   * @param {string} dataurl
-   * @returns
-   * @memberof ChatPage
    */
   dataURLtoFile(dataurl: string) {
     const data = atob(dataurl);
