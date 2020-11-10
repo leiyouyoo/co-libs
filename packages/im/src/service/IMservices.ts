@@ -200,7 +200,7 @@ export function sendmessage(message): any {
 
 /**
  * 将某会话下的未读消息状态设置为已读，置为已读的消息不会计入到未读统计
- * @param conversationID 会话Id
+ * conversationID 会话Id
  */
 export function setMessageRead(conversationID: string) {
   tim.setMessageRead({ conversationID });
@@ -342,7 +342,6 @@ export async function getGroupProfile(groupID: string) {
 
 /**
  * 修改群组资料
- * @param groupInfo 群组资料
  */
 export async function updateGroupProfile(groupInfo: GroupInfoUpdate) {
   await onSDKReady(() => {});
@@ -358,7 +357,6 @@ export async function getMyProfile() {
 }
 /**
  *  退出群组
- * @param groupID 群组Id
  * return {imResponse.data.groupID; // 退出成功的群 ID}
  */
 export function quitGroup(groupID: string) {
@@ -366,7 +364,6 @@ export function quitGroup(groupID: string) {
 }
 /**
  *  删除会话
- * @param conversationID  用户的帐号列表，类型为string
  * return  imResponse.data;// 被删除的会话 ID。
  */
 export function deleteConversation(conversationID: string) {
@@ -374,7 +371,6 @@ export function deleteConversation(conversationID: string) {
 }
 /**
  * 修改个人标配资料
- * @param groupInfo 群组资料
  */
 export async function updateMyProfile(myInfo: MyInfoCheck) {
   await onSDKReady(() => {});
@@ -382,9 +378,9 @@ export async function updateMyProfile(myInfo: MyInfoCheck) {
 }
 /**
  * 获取群成员列表
- * @param groupID 群组Id
- * @param count 需要拉取的最大数量，默认100
- * @param offset 偏移量，默认从0开始
+ *  groupID 群组Id
+ *  count 需要拉取的最大数量，默认100
+ *  offset 偏移量，默认从0开始
  * return {IMResponse.data.memberList //群成员列表}
  */
 export function getGroupMemberlist(groupID: string, count: number = 100, offset: number = 0) {
@@ -392,8 +388,8 @@ export function getGroupMemberlist(groupID: string, count: number = 100, offset:
   return promise;
 }
 /**
- *  获取其他用户资料
- * @param userIDList 用户的帐号列表，类型为数组
+ * 获取其他用户资料
+ * userIDList 用户的帐号列表，类型为数组
  * return {imResponse.data; // 存储用户资料的数组 - [Profile]}
  */
 export function getUserProfile(userIDList: Array<any>) {
@@ -403,8 +399,8 @@ export function getUserProfile(userIDList: Array<any>) {
 }
 /**
  *  获取群成员资料
- * @param groupId 群组Id
- * @param userIdList 用户Id数组，单次最多500人
+ * groupId 群组Id
+ * userIdList 用户Id数组，单次最多500人
  * return {imResponse.data.existedUserIDList // 已在群中的群成员 userIDList}
  */
 export function getGroupMemberProfile(groupId: string, userIdList: Array<string>) {
@@ -413,8 +409,8 @@ export function getGroupMemberProfile(groupId: string, userIdList: Array<string>
 
 /**
  * 获取某会话的消息列表
- * @param conversationID 会话 ID
- * @param nextReqMessageID 用于分页续拉的消息 ID。第一次拉取时该字段可不填，每次调用该接口会返回该字段，续拉时将返回字段填入即可
+ * conversationID 会话 ID
+ * nextReqMessageID 用于分页续拉的消息 ID。第一次拉取时该字段可不填，每次调用该接口会返回该字段，续拉时将返回字段填入即可
  * return {
  *            messageList: imResponse.data.messageList,                //   消息列表。
  *             nextReqMessageID: imResponse.data.nextReqMessageID,     //   用于续拉，分页续拉时需传入该字段。

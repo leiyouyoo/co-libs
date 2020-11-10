@@ -377,7 +377,7 @@ export class ImComponent implements OnInit {
   }
 
   /**
-   * @description 如果是企业微信跳转过来的，根据会话ID打开会话
+   * 如果是企业微信跳转过来的，根据会话ID打开会话
    */
   checkIsFromQiyeWechat() {
     const url = location.href;
@@ -412,7 +412,7 @@ export class ImComponent implements OnInit {
     return false;
   }
   /**
-   * @description 获取业务类型
+   * 获取业务类型
    */
   formatBussinessType(conversationID: string) {
     if (conversationID.toLowerCase().startsWith('groupbooking')) {
@@ -430,7 +430,7 @@ export class ImComponent implements OnInit {
     }
   }
   /**
-   * @description 获取业务id
+   * 获取业务id
    */
   formatBussinessId() {
     return this.selectedItem.conversationID.toLowerCase().replace('group' + this.selectedItem.bussinessType, '');
@@ -1108,7 +1108,6 @@ export class ImComponent implements OnInit {
 
   /**
    * 下载文件
-   * @param msg 文件消息
    */
   downlaodFile(msg) {
     const link = document.createElement('a');
@@ -1228,8 +1227,7 @@ export class ImComponent implements OnInit {
   }
 
   /**
-   * @description 修改群信息
-   * @author youlei
+   * 修改群信息
    */
   editGroupProfile() {
     if (this.groupInfoCopy.name === this.groupInfo.name && this.groupInfoCopy.notification === this.groupInfo.notification) {
@@ -1254,8 +1252,7 @@ export class ImComponent implements OnInit {
   }
 
   /**
-   * @description 添加群成员
-   * @author youlei
+   * 添加群成员
    */
   addMemberConfirm(imContacts) {
     addGroupNumber({
@@ -1268,8 +1265,7 @@ export class ImComponent implements OnInit {
   }
 
   /**
-   * @description 头像上传
-   * @author youlei
+   * 头像上传
    */
   avtarUpload($event) {
     console.log($event.target);

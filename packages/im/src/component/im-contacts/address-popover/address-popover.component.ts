@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ImService } from '../../../service/im.service';
 
 @Component({
@@ -20,8 +20,7 @@ export class AddressPopoverComponent implements OnInit {
     console.log(value);
   }
   /**
-   * @param  是否为通讯录点击的
-   * @memberof ImTemplateComponent
+   * 是否为通讯录点击的
    */
   chatWithPercon(personInfo) {
     this.contactsDbClick.emit({ ...personInfo });

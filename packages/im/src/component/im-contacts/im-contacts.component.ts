@@ -1,16 +1,17 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { ImService } from '../../service/im.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import * as _ from 'lodash';
+import { ImService } from '../../service/im.service';
 @Component({
   selector: 'lib-im-contacts',
   templateUrl: './im-contacts.component.html',
   styleUrls: ['./im-contacts.component.less'],
 })
 export class ImContactsComponent implements OnInit {
+  constructor(private imTemplateService: ImService, private sanitizer: DomSanitizer) {}
   contactList: Array<any> = []; // 本公司人员列表
   partnerContactsList: Array<any> = []; // 合作伙伴联系人
-  searchContactText: any; //通讯录的搜索
+  searchContactText: any; // 通讯录的搜索
 
   @Output() imContactsClick: EventEmitter<any> = new EventEmitter<any>();
   @Input() fromType = 'csp';
@@ -22,7 +23,10 @@ export class ImContactsComponent implements OnInit {
 
   myCustomerList: Array<any> = []; // 我的客户
   currentShowLists: Array<any> = [];
-  constructor(private imTemplateService: ImService, private sanitizer: DomSanitizer) {}
+  searchContactResultList: Array<any> = []; // CSP所有联系人搜索结果
+  serviceContactResultList: Array<any> = []; // CSP服务商搜索结果
+  partnerContactResultList: Array<any> = []; // CSP合作伙伴搜索结果
+  myCustomerContactResultList: Array<any> = []; // CSP合作伙伴搜索结果
 
   ngOnInit() {
     if (this.fromType === 'csp') {
@@ -58,7 +62,7 @@ export class ImContactsComponent implements OnInit {
     }
 
     // CRM FRM本公司联系人
-    if (this.fromType != 'csp') {
+    if (this.fromType !== 'csp') {
       this.imTemplateService.getUsersAndOrganizationUnit().subscribe((r: any) => {
         this.contactList = r.items;
         this.currentShowLists = this.contactList;
@@ -69,10 +73,6 @@ export class ImContactsComponent implements OnInit {
       });
     }
   }
-  searchContactResultList: Array<any> = []; // CSP所有联系人搜索结果
-  serviceContactResultList: Array<any> = []; // CSP服务商搜索结果
-  partnerContactResultList: Array<any> = []; // CSP合作伙伴搜索结果
-  myCustomerContactResultList: Array<any> = []; // CSP合作伙伴搜索结果
   resetList() {
     this.searchContactResultList = [];
     this.serviceContactResultList = [];
@@ -81,11 +81,7 @@ export class ImContactsComponent implements OnInit {
   }
 
   /**
-   * @description 联系人搜索
-   * @author youlei
-   * @param {*} [key] 可能为父祖件传过来的值
-   * @returns
-   * @memberof ImContactsComponent
+   * 联系人搜索
    */
   searchContact(key?): Array<any> {
     let searchKey = '';
@@ -101,24 +97,24 @@ export class ImContactsComponent implements OnInit {
     }
     this.resetList();
     this.visible = true;
-    const subStrForSearch = (str) => {
+    const subStrForSearch = str => {
       return str.substr(str.toLowerCase().indexOf(searchKey), searchKey.length);
     };
-    const filterPersonWithName = (element) => {
+    const filterPersonWithName = element => {
       if (!key) {
         return (
-          (element.name && element.name.toLowerCase().indexOf(searchKey) != -1) ||
-          (element.surname && element.surname.toLowerCase().indexOf(searchKey) != -1) ||
-          (element.cName && element.cName.toLowerCase().indexOf(searchKey) != -1)
+          (element.name && element.name.toLowerCase().indexOf(searchKey) !== -1) ||
+          (element.surname && element.surname.toLowerCase().indexOf(searchKey) !== -1) ||
+          (element.cName && element.cName.toLowerCase().indexOf(searchKey) !== -1)
         );
       } else {
-        if (element.name && element.name.toLowerCase().indexOf(searchKey) != -1) {
+        if (element.name && element.name.toLowerCase().indexOf(searchKey) !== -1) {
           element.name = this.sanitizer.bypassSecurityTrustHtml(
             element.name.replace(subStrForSearch(element.name), `<span style ='color: #1890ff;'>${subStrForSearch(element.name)}</span>`),
           );
           return true;
         }
-        if (element.surname && element.surname.toLowerCase().indexOf(searchKey) != -1) {
+        if (element.surname && element.surname.toLowerCase().indexOf(searchKey) !== -1) {
           element.surname = this.sanitizer.bypassSecurityTrustHtml(
             element.surname.replace(
               subStrForSearch(element.surname),
@@ -127,7 +123,7 @@ export class ImContactsComponent implements OnInit {
           );
           return true;
         }
-        if (element.cName && element.cName.toLowerCase().indexOf(searchKey) != -1) {
+        if (element.cName && element.cName.toLowerCase().indexOf(searchKey) !== -1) {
           element.cName = this.sanitizer.bypassSecurityTrustHtml(
             '(' +
               element.cName.replace(
@@ -142,32 +138,32 @@ export class ImContactsComponent implements OnInit {
       }
     };
     if (this.fromType === 'csp') {
-      _.cloneDeep(this.serviceList).forEach((e) => {
-        let list = e.users.filter((element) => {
+      _.cloneDeep(this.serviceList).forEach(e => {
+        const list = e.users.filter(element => {
           return filterPersonWithName(element);
         });
         this.serviceContactResultList = this.serviceContactResultList.concat(list);
       });
 
-      _.cloneDeep(this.partnerContactsList).forEach((e) => {
-        let list = e.contacts.filter((element) => {
+      _.cloneDeep(this.partnerContactsList).forEach(e => {
+        const list = e.contacts.filter(element => {
           return filterPersonWithName(element);
         });
         this.partnerContactResultList = this.partnerContactResultList.concat(list);
       });
 
-      this.searchContactResultList = _.cloneDeep(this.contactList).filter((element) => {
+      this.searchContactResultList = _.cloneDeep(this.contactList).filter(element => {
         return filterPersonWithName(element);
       });
     } else {
-      _.cloneDeep(this.myCustomerList).forEach((e) => {
-        let list = e.contacts.filter((element) => {
+      _.cloneDeep(this.myCustomerList).forEach(e => {
+        const list = e.contacts.filter(element => {
           return filterPersonWithName(element);
         });
         this.myCustomerContactResultList = this.myCustomerContactResultList.concat(list);
       });
-      _.cloneDeep(this.contactList).forEach((e) => {
-        let list = e.contacts.filter((element) => {
+      _.cloneDeep(this.contactList).forEach(e => {
+        const list = e.contacts.filter(element => {
           return filterPersonWithName(element);
         });
         this.searchContactResultList = this.searchContactResultList.concat(list);
@@ -181,7 +177,7 @@ export class ImContactsComponent implements OnInit {
     ];
   }
   onRadioChange(event) {
-    if (event == 'company') {
+    if (event === 'company') {
       this.currentShowLists = this.contactList;
     } else if (event === 'partner') {
       this.currentShowLists = this.partnerContactsList;
@@ -191,25 +187,26 @@ export class ImContactsComponent implements OnInit {
   }
 
   /**
-   * @param  是否为通讯录点击的
-   * @memberof ImTemplateComponent
+   *  是否为通讯录点击的
    */
   chatWithPercon(personInfo) {
     this.imContactsClick.emit({ ...personInfo });
   }
   calculateTotalChecked(): Array<any> {
-    const data = (arr) => {
+    const data = arr => {
       if (!arr) {
         return [];
       }
       const ar: Array<any> = [];
-      arr.forEach((element) => {
+      arr.forEach(element => {
+        // tslint:disable-next-line: no-unused-expression
         element.users &&
-          element.users.forEach((e) => {
+          element.users.forEach(e => {
             ar.push(e);
           });
+        // tslint:disable-next-line: no-unused-expression
         element.contacts &&
-          element.contacts.forEach((e) => {
+          element.contacts.forEach(e => {
             ar.push(e);
           });
       });
@@ -224,7 +221,7 @@ export class ImContactsComponent implements OnInit {
       ...this.contactList,
       ...data(this.partnerContactsList),
       ...this.myCustomerList,
-    ].filter((e) => {
+    ].filter(e => {
       return e.checked && e.isActive;
     });
   }

@@ -15,9 +15,9 @@ export class FileManageService {
 
   /**
    * 查询文件
-   * @param BusinessId 业务ID
-   * @param BusinessType 业务类型
-   * @param AttachmentType 附件类型
+   * BusinessId 业务ID
+   * BusinessType 业务类型
+   * AttachmentType 附件类型
    */
   getAttachmentListByBusiness(businessId: string, businessType: BusinessType, attachmentType: AttachmentType): Observable<SharingFile[]> {
     return this.http.get('/CSP/Attachment/GetList', { businessId, businessType, attachmentType }).pipe(map((o: any) => o.items)) as any;
@@ -25,9 +25,9 @@ export class FileManageService {
 
   /**
    * 创建文件
-   * @param BusinessId 业务ID
-   * @param BusinessType 业务类型
-   * @param AttachmentType 附件类型
+   * BusinessId 业务ID
+   * BusinessType 业务类型
+   * AttachmentType 附件类型
    */
   create(params: {
     items: [
@@ -78,7 +78,7 @@ export class FileManageService {
 
   /**
    * 获取文件
-   * @param Id 文件ID
+   * Id 文件ID
    */
   get(Id: number) {
     return this.http.get('/CSP/Attachment/Get', { Id });
@@ -93,7 +93,7 @@ export class FileManageService {
 
   /**
    * 移除文件
-   * @param Id 文件ID
+   * Id 文件ID
    */
   deleteFile(Id: number) {
     return this.http.delete('/CSP/Attachment/Delete', { Id });
@@ -108,9 +108,9 @@ export class FileManageService {
 
   /**
    * 下载文件或者获取图片
-   * @param FileId 文件id,上传后返回
-   * @param Handler 文件处理器（下载原文件就传 raw,如果是图片就传image）
-   * @param Modifier 图片裁剪尺寸，如果非图片，无需传（1.原图：raw_jpg,jpg可以换成其他扩展名；2.支持尺寸128x128,64x64,32x32,256x）
+   * FileId 文件id,上传后返回
+   * Handler 文件处理器（下载原文件就传 raw,如果是图片就传image）
+   * Modifier 图片裁剪尺寸，如果非图片，无需传（1.原图：raw_jpg,jpg可以换成其他扩展名；2.支持尺寸128x128,64x64,32x32,256x）
    */
   downLoadImgOrFile(FileId: string, Handler?: string, Modifier?: string) {
     const params = {
