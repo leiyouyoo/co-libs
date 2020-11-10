@@ -51,9 +51,10 @@ const components = [
 ];
 const directive = [ImDebounceInputDirective];
 const pipe = [CustomerLifeCyclePipe, IMArrayJoinPipe, ImTranslatePipe];
-const service = [ImBroadcastService, ImService,FileManageService];
+const service = [ImBroadcastService, ImService, FileManageService];
 @NgModule({
-  declarations: [...components, ...directive, ...pipe,...service],
-  imports: [CoCommonModule,CommonModule, TranslateModule, NgZorroAntdModule, FormsModule, NgxMoveableModule],
+  declarations: [...components, ...directive, ...pipe],
+  providers: [...service],
+  imports: [CoCommonModule, CommonModule, TranslateModule, NgZorroAntdModule, FormsModule, NgxMoveableModule],
 })
 export class CoImModule {}
