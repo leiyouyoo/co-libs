@@ -3,6 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { NavigationStart, Router } from '@angular/router';
 import { ACLService } from '@co/acl';
 import { SocialService } from '@co/auth';
+import { GlobalEventDispatcher } from '@co/cms';
 import { TranslateService } from '@ngx-translate/core';
 import * as _ from 'lodash';
 import * as moment_ from 'moment';
@@ -11,7 +12,6 @@ import { NzModalService } from 'ng-zorro-antd';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { filter } from 'rxjs/operators';
 import { ImContactsComponent } from './component/im-contacts/im-contacts.component';
-import { ImBroadcastService } from './service/im-broadcast.service';
 import { ImService } from './service/im.service';
 import {
   addGroupNumber,
@@ -44,7 +44,6 @@ const moment = moment_;
 export class ImComponent implements OnInit {
   constructor(
     private translate: TranslateService,
-    private imBroadcastService: ImBroadcastService,
     private imTemplateService: ImService,
     private nzMessageService: NzMessageService,
     private fileManageService: FileManageService,
@@ -54,6 +53,7 @@ export class ImComponent implements OnInit {
     private aclService: ACLService,
     private socialService: SocialService,
     private sanitizer: DomSanitizer,
+    private globalEventDispatcher: GlobalEventDispatcher,
   ) {
     this.router.events.pipe(filter(e => e instanceof NavigationStart)).subscribe((route: any) => {
       this.compareUrl(route.url);
@@ -179,7 +179,7 @@ export class ImComponent implements OnInit {
     !isDrag && this.showImLayout();
   }
   ngOnInit() {
-    this.imBroadcastService.on('chatWithGroup').subscribe((res: any) => {
+    this.globalEventDispatcher.register('chatWithGroup').subscribe((res: any) => {
       this.customerserviceType = res.customerserviceType;
       this.customerserviceId = res.customerserviceId;
       this.onCustomerservice();
