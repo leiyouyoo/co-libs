@@ -23,9 +23,9 @@ PACKAGES=(core
   mock
   form
   apm
-  im
+  cms
   map
-  cms)
+  im)
 NODE_PACKAGES=(cli)
 
 for ARG in "$@"; do
