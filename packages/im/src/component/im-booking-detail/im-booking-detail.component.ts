@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
-import { BookingStatusType, bookingStatus, ImBookingLibraryService } from '../../bussiness/booking/index';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import * as moment from 'moment';
+import { bookingStatus, BookingStatusType, ImBookingLibraryService } from '../../bussiness/booking/index';
 
 @Component({
   selector: 'lib-im-booking-detail',
@@ -295,10 +295,10 @@ export class ImBookingDetailComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.bookingLibraryService.GetBookingForUpdate(this.id).subscribe((res: any) => {
+    this.bookingLibraryService.getBookingForCRM(this.id).subscribe((res: any) => {
       this.bookingDetail = res;
       this.showBussinessNo.emit(res.bookingNo);
-      this.bookingDetail['containsSpecialGoodsTypesArr'] = this.bookingDetail.containsSpecialGoodsTypes
+      this.bookingDetail.containsSpecialGoodsTypesArr = this.bookingDetail.containsSpecialGoodsTypes
         ? JSON.parse(this.bookingDetail.containsSpecialGoodsTypes)
         : [];
       switch (res.status) {
@@ -443,8 +443,8 @@ export class ImBookingDetailComponent implements OnInit, OnChanges {
     let str = '';
     try {
       if (data.containerType) {
-        let containerType = JSON.parse(data.containerType);
-        containerType.forEach((element) => {
+        const containerType = JSON.parse(data.containerType);
+        containerType.forEach(element => {
           if (element.value) {
             str += ' ' + element.value + 'X' + element.name;
           }

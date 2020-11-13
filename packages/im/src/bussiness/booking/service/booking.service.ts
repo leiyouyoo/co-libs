@@ -67,18 +67,17 @@ export class ImBookingLibraryService {
     return this.httpService.put(url, bookingObj);
   }
 
-  // 获取预订用于编辑
-  GetBookingForUpdate(Id: string) {
-    const url = '/CSP/Booking/Get';
+  // 预定详情
+  getBookingDetail(Id: string) {
+    const url = 'CSP/Booking/Get';
     const params = {
       id: Id,
     };
     return this.httpService.get(url, params);
   }
-
-  // 预定详情
-  getBookingDetail(Id: string) {
-    const url = 'CSP/Booking/Get';
+   // 预定详情
+  getBookingForCRM(Id: string) {
+    const url = 'csp/Booking/getForCRM';
     const params = {
       id: Id,
     };

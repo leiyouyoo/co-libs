@@ -132,8 +132,8 @@ export class ImComponent implements OnInit {
     }
     if (
       $event.parentNode &&
-      $event.parentNode.parentNode &&
-      ($event.parentNode.parentNode as HTMLElement).hasAttribute('data-im-input-show')
+      $event?.parentNode?.parentNode &&
+      ($event?.parentNode?.parentNode as HTMLElement).hasAttribute('data-im-input-show')
     ) {
       isPreviewerClose = true;
     }
