@@ -296,15 +296,15 @@
               <!-- 常规展示 -->
               <ng-container [ngSwitch]="c.type" *ngIf="['no'].includes(c.type) || !i._editing || c.uneditable; else editing">
                 <label *ngSwitchCase="'radio'" nz-radio [nzDisabled]="i.disabled" [ngModel]="i.checked" (ngModelChange)="_refRadio($event, i)"></label>
-                <a *ngSwitchCase="'link'" (click)="_click($event, i, c)" [innerHTML]="i._values[cIdx]._text"></a>
-                <ng-container *ngIf="i._values[cIdx].text">
+                <a *ngSwitchCase="'link'" (click)="_click($event, i, c)" [innerHTML]="i._values[cIdx]?._text"></a>
+                <ng-container *ngIf="i._values[cIdx]?.text">
                   <nz-tag *ngSwitchCase="'tag'" [nzColor]="i._values[cIdx].color">
-                    <span [innerHTML]="i._values[cIdx]._text"></span>
+                    <span [innerHTML]="i._values[cIdx]?._text"></span>
                   </nz-tag>
-                  <nz-badge *ngSwitchCase="'badge'" [nzStatus]="i._values[cIdx].color" [nzText]="i._values[cIdx].text"></nz-badge>
+                  <nz-badge *ngSwitchCase="'badge'" [nzStatus]="i._values[cIdx].color" [nzText]="i._values[cIdx]?.text"></nz-badge>
                 </ng-container>
                 <ng-template *ngSwitchCase="'widget'" st-widget-host [record]="i" [column]="c"></ng-template>
-                <span *ngSwitchDefault [innerHTML]="i._values[cIdx]._text" [attr.title]="isTruncate(c) ? htmlToText(i._values[cIdx].text) : null"></span>
+                <span *ngSwitchDefault [innerHTML]="i._values[cIdx]?._text" [attr.title]="isTruncate(c) ? htmlToText(i._values[cIdx]?.text) : null"></span>
               </ng-container>
               <!-- 编辑 -->
               <ng-template #editing>
