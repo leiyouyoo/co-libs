@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PlatformOrganizationUnitDto,PlatformListResultDto,PlatformUserInfo,PlatformPagedResultDto,PlatformIMContactGroupDto,PlatformContactUserDto,PlatformOrganizationUnitUserDto,PlatformMoveOrganizationUnitInput,PlatformEntityDto, } from './platform.types';
+import { PlatformOrganizationUnitDto,PlatformListResultDto,PlatformUserInfo,PlatformPagedResultDto,PlatformIMContactGroupDto,PlatformContactUserWithPinyinDto,PlatformSetRemarkAndDescInput,PlatformContactUserDto,PlatformOrganizationUnitUserDto,PlatformMoveOrganizationUnitInput,PlatformEntityDto, } from './platform.types';
 
 @BaseUrl('/platform/OrganizationUnit')
 @Injectable({ providedIn: 'root' })
@@ -142,6 +142,36 @@ export class PlatformOrganizationUnitService extends BaseApi {
         _req: {input?:object} 
 
     ): Observable<PlatformListResultDto<PlatformIMContactGroupDto>> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Platform/OrganizationUnit/GetMyWorkers
+     * 
+     */
+
+    @GET('getMyWorkers')
+    getMyWorkers(
+        @Payload
+        _req: {input?:object} 
+
+    ): Observable<PlatformListResultDto<PlatformContactUserWithPinyinDto>> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Platform/OrganizationUnit/SetRemarkAndDescAsync
+     * 
+     */
+
+    @POST('setRemarkAndDescAsync')
+    setRemarkAndDescAsync(
+        @Payload
+        _req:PlatformSetRemarkAndDescInput
+
+    ): Observable<any> {
         return null as any
     }
 
