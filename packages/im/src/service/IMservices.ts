@@ -13,7 +13,9 @@ class TIMSetting {
 }
 // 创建 SDK 实例，TIM.create() 方法对于同一个 SDKAppID 只会返回同一份实例
 let tim;
-const subject = new ReplaySubject<TIM>(1);
+let loginSubject;
+initInternalVariable();
+
 /*群组创建接口 */
 interface GroupInfoCheck {
   name: string;
@@ -117,19 +119,18 @@ export class GetUserSigService {
     // start login
     const userSig = TIMSetting.userSig;
     await login(JSON.parse(localStorage.getItem('co.session') || 'null').session.user.id.toString(), userSig);
-    subject.next();
+    loginSubject.next();
   }
 }
 
 /*登出 */
 export function logOut(): void {
-  // tslint:disable-next-line: no-unused-expression
-  subject && subject.complete();
   try {
     const promise = tim.logout();
     promise.then(imResponse => {
       console.log(imResponse.data);
     });
+    initInternalVariable();
   } catch (error) {
     console.log(error);
   }
@@ -457,7 +458,7 @@ export function onSDKReady(fun: () => void) {
   // 监听事件，例如：
   // 收到离线消息和会话列表同步完毕通知，接入侧可以调用 sendMessage 等需要鉴权的接口
   // event.name - TIM.EVENT.SDK_READY
-  subject.subscribe(() => {
+  loginSubject.subscribe(() => {
     return new Promise(res => {
       if (tim && tim.COStatus === 1) {
         return res(fun());
@@ -507,4 +508,9 @@ export async function onKickedOut(fun: () => void) {
 
 export function addGroupNumber(params: { groupID: string; userIDList: Array<string> }) {
   return tim.addGroupMember(params);
+}
+
+function initInternalVariable() {
+  tim = null;
+  loginSubject = new ReplaySubject<TIM>(1);
 }
