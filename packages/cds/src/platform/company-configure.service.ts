@@ -139,7 +139,22 @@ export class PlatformCompanyConfigureService extends BaseApi {
     @GET('getCompanies')
     getCompanies(
         @Payload
-        _req: {isActive?:boolean,isMarkDefault?:boolean} 
+        _req: {isActive?:boolean,isMarkDefault?:boolean,placeId?:string} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Platform/CompanyConfigure/GetCompanyCustomers
+     * 
+     */
+
+    @GET('getCompanyCustomers')
+    getCompanyCustomers(
+        @Payload
+        _req: {isActive?:boolean,isMarkDefault?:boolean,placeId?:string} 
 
     ): Observable<any> {
         return null as any

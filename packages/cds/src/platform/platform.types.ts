@@ -127,27 +127,6 @@
          
             
             description?: string;
-         
-            
-            creationTime?: string;
-         
-            
-            creatorUserId?: number;
-         
-            
-            lastModificationTime?: string;
-         
-            
-            lastModifierUserId?: number;
-         
-            
-            isDeleted?: boolean;
-         
-            
-            deletionTime?: string;
-         
-            
-            deleterUserId?: number;
         
         
     }
@@ -355,6 +334,9 @@
          
             /* 是否有效 */ 
             isActive?: boolean;
+         
+            
+            isDefault?: boolean;
          
             
             id?: string;
