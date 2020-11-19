@@ -6,7 +6,7 @@ import { SocialService } from '@co/auth';
 import { GlobalEventDispatcher } from '@co/cms';
 import { TranslateService } from '@ngx-translate/core';
 import * as _ from 'lodash';
-import * as moment_ from 'moment';
+import moment from 'moment';
 // tslint:disable-next-line: import-blacklist
 import { NzModalService } from 'ng-zorro-antd';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -33,7 +33,6 @@ import {
   updateMyProfile,
 } from './service/IMservices';
 import { FileManageService } from './util/index';
-const moment = moment_;
 
 @Component({
   selector: 'co-im',

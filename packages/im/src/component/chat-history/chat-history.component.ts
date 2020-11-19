@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { ImService } from '../../service/im.service';
-import * as moment_ from 'moment';
-const moment = moment_;
+import moment from 'moment';
 
 @Component({
   selector: 'lib-chat-history',

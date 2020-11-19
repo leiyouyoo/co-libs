@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
-import * as moment from 'moment';
+import moment from 'moment';
 import { bookingStatus, BookingStatusType, ImBookingLibraryService } from '../../bussiness/booking/index';
 
 @Component({

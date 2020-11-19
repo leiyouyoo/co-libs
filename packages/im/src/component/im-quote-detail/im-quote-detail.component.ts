@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
-import * as moment from 'moment';
+import moment from 'moment';
 import { quoteEntity } from './class/quoteEntity';
 import { FreightMethodType } from '../../bussiness/shipment/models/FreightMethodType';
 import { ImQuotesService } from './quotes.service';
