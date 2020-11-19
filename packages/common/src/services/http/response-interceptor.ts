@@ -9,7 +9,7 @@ import { DA_SERVICE_TOKEN, ITokenService } from '@co/auth';
 import { CoCommonConfig, CoConfigService } from '@co/core';
 import * as _ from 'lodash';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { Observable, Subject } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { CoAuthService } from '../auth/auth.service';
 import { ENVIRONMENT } from './environment';
 
@@ -229,6 +229,7 @@ export class ResponseInterceptor implements HttpInterceptor {
 
     modifiedHeaders = this.addXRequestedWithHeader(modifiedHeaders);
     modifiedHeaders = this.addAcceptLanguageHeader(modifiedHeaders);
+    modifiedHeaders = this.addTimezoneOffsetHeader(modifiedHeaders);
     return request.clone({
       headers: modifiedHeaders,
     });
@@ -264,6 +265,15 @@ export class ResponseInterceptor implements HttpInterceptor {
   protected addXRequestedWithHeader(headers: HttpHeaders): HttpHeaders {
     if (headers) {
       headers = headers.set('X-Requested-With', 'XMLHttpRequest');
+    }
+
+    return headers;
+  }
+
+  protected addTimezoneOffsetHeader(headers: HttpHeaders): HttpHeaders {
+    if (headers) {
+      const offset = new Date().getTimezoneOffset() / 60;
+      headers = headers.set('.Timezone-Offset', offset >= 0 ? `+${offset}` : `${offset}`);
     }
 
     return headers;
