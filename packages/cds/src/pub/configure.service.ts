@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBConfigureModel,PUBConfigure,PUBQueryBankDirectAccountInfo,PUBQueryGLCodeInput,PUBGLCodeModel, } from './pub.types';
+import { PUBConfigureModel,PUBConfigure,PUBGetExchangeRateListInput,PUBQueryBankDirectAccountInfo,PUBQueryGLCodeInput,PUBGLCodeModel, } from './pub.types';
 
 @BaseUrl('/pub/Configure')
 @Injectable({ providedIn: 'root' })
@@ -121,7 +121,7 @@ export class PUBConfigureService extends BaseApi {
      * 获取公司配置信息
      */
 
-    @POST('getConfigureModelAsync')
+    @GET('getConfigureModelAsync')
     getConfigureModelAsync(
         @Payload
         _req: {companyId?:string} 
@@ -169,7 +169,22 @@ export class PUBConfigureService extends BaseApi {
     @POST('getExchangeRateListAsync')
     getExchangeRateListAsync(
         @Payload
-        _req: {date?:string} 
+        _req:PUBGetExchangeRateListInput
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/Configure/GetExchangeRateListAllByDatesAsync
+     * 
+     */
+
+    @POST('getExchangeRateListAllByDatesAsync')
+    getExchangeRateListAllByDatesAsync(
+        @Payload
+        _req:PUBGetExchangeRateListInput
 
     ): Observable<any> {
         return null as any
@@ -184,7 +199,7 @@ export class PUBConfigureService extends BaseApi {
     @POST('getExchangeRateListByDatesAsync')
     getExchangeRateListByDatesAsync(
         @Payload
-        _req: {} 
+        _req:PUBGetExchangeRateListInput
 
     ): Observable<any> {
         return null as any
@@ -322,6 +337,36 @@ export class PUBConfigureService extends BaseApi {
         _req: {companyId?:string} 
 
     ): Observable<PUBConfigure> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/Configure/GetAccountInfos
+     * 
+     */
+
+    @POST('getAccountInfos')
+    getAccountInfos(
+        @Payload
+        _req: {} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/Configure/GetBankAccountList
+     * 
+     */
+
+    @POST('getBankAccountList')
+    getBankAccountList(
+        @Payload
+        _req: {} 
+
+    ): Observable<any> {
         return null as any
     }
 

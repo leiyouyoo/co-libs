@@ -527,6 +527,27 @@ Can contain more than one field separated by comma (,). */
     /**
      *  No Remark 
      */
+    export class PUBGetExchangeRateListInput {
+        
+         
+            /* 
+0 = Default
+1 = Invoice
+2 = ARAP */ 
+            type?: number;
+         
+            
+            dates?: any[];
+         
+            
+            date?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
     export class PUBQueryBankDirectAccountInfo {
         
          
@@ -586,6 +607,9 @@ Can contain more than one field separated by comma (,). */
          
             /* 本地化 */ 
             localizationText?: string;
+         
+            
+            remark?: string;
          
             /* 流程费用报销 */ 
             isFee?: boolean;
@@ -1526,6 +1550,9 @@ Can contain more than one field separated by comma (,). */
          
             /* 地区Id */ 
             regionId: string;
+         
+            /* 国家ID */ 
+            countryId?: string;
          
             /* 地点名称-本地化 */ 
             nameLocalization?: string;
