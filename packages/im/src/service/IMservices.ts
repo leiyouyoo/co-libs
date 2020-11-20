@@ -13,8 +13,7 @@ class TIMSetting {
 }
 // 创建 SDK 实例，TIM.create() 方法对于同一个 SDKAppID 只会返回同一份实例
 let tim;
-let loginSubject;
-initInternalVariable();
+let loginSubject = initInternalVariable();
 
 /*群组创建接口 */
 interface GroupInfoCheck {
@@ -512,5 +511,5 @@ export function addGroupNumber(params: { groupID: string; userIDList: Array<stri
 
 function initInternalVariable() {
   tim = null;
-  loginSubject = new ReplaySubject<TIM>(1);
+  return loginSubject = new ReplaySubject<TIM>(1);
 }
