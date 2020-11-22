@@ -1,0 +1,44 @@
+<nz-tree-select
+  style="width: 100%"
+  [nzExpandedKeys]="coExpandedKeys"
+  [nzNodes]="coNodes"
+  [nzShowSearch]="coShowSearch"
+  [nzCheckable]="coCheckable"
+  [nzAllowClear]="coAllowClear"
+  [nzShowExpand]="coShowExpand"
+  [nzShowLine]="coShowLine"
+  [nzDropdownMatchSelectWidth]="coDropdownMatchSelectWidth"
+  [nzHideUnMatched]="coHideUnMatched"
+  [nzShowIcon]="coShowIcon"
+  [nzDisabled]="coDisabled"
+  [nzAsyncData]="coAsyncData"
+  [nzMultiple]="coMultiple"
+  [nzDefaultExpandAll]="coDefaultExpandAll"
+  [nzCheckStrictly]="coCheckStrictly"
+  [nzExpandedIcon]="coExpandedIcon"
+  [nzNotFoundContent]="coNotFoundContent"
+  [nzOpen]="coOpen"
+  [nzSize]="coSize"
+  [nzPlaceHolder]="coPlaceHolder"
+  [nzDropdownStyle]="coDropdownStyle"
+  [nzDropdownClassName]="coDropdownClassName"
+  [nzDisplayWith]="coDisplayWith"
+  [nzMaxTagCount]="coMaxTagCount"
+  [nzTreeTemplate]="coTreeTemplate"
+  [nzMaxTagPlaceholder]="coMaxTagPlaceholder"
+  (nzOpenChange)="coOpenChange.emit($event)"
+  (nzCleared)="coCleared.emit($event)"
+  (nzRemoved)="coRemoved.emit($event)"
+  (nzExpandChange)="coExpandChange.emit($event)"
+  (nzTreeClick)="coTreeClick.emit($event)"
+  (nzTreeCheckBoxChange)="coTreeCheckBoxChange.emit($event)"
+  nzPlaceHolder="Please select"
+  [(ngModel)]="value"
+  (ngModelChange)="onChange($event)"
+>
+  <div #btns style="display: flex;align-items: center;padding: 0 10px 5px">
+    <button nzSize="small" nz-button nzType="primary" (click)="checkAll(coNodes)">{{text.checkAll}}</button>
+    <button nzSize="small" nz-button nzType="default" (click)="checkNothing(coNodes)">{{text.checkNothing}}</button>
+    <button nzSize="small" nz-button nzType="default" (click)="checkInverted(coNodes)">{{text.inverse}}</button>
+  </div>
+</nz-tree-select>

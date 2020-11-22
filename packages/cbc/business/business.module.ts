@@ -22,6 +22,7 @@ import { ShippingLinePickerModule } from '@co/cbc/business/shipping-line-picker'
 import { YoyagePickerModule } from '@co/cbc/business/voyage-picker';
 import { PlaceAllPickerModule } from '@co/cbc/business/place-all-picker';
 import { ServiceUserPickerModule } from '@co/cbc/business/service-user-picker'
+import { TreePickerModule } from '@co/cbc/business/tree-picker';
 
 const EXPORT_MODULES: any[] = [
   CustomerPickerModule,
@@ -46,6 +47,7 @@ const EXPORT_MODULES: any[] = [
   ShippingLinePickerModule,
   PlaceAllPickerModule,
   ServiceUserPickerModule,
+  TreePickerModule,
 ];
 const IMPORT_MODULES: any[] = [CdsModule];
 

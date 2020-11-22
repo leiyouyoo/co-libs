@@ -37,6 +37,10 @@ const routes: Routes = [
         loadChildren: () => import('./cbc/business/customer-picker/customer-picker.module').then(m => m.CustomerPickerDemoModule),
       },
       {
+        path: 'tree-picker',
+        loadChildren: () => import('./cbc/business/tree-picker/tree-picker.module').then(m => m.TreePickerModule),
+      },
+      {
         path: 'place-picker',
         loadChildren: () => import('./cbc/business/place-picker/place-picker.module').then(m => m.PlacePickerDemoModule),
       },
