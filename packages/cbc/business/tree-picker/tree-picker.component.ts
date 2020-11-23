@@ -28,7 +28,7 @@ import {
   OnTouchedType,
 } from 'ng-zorro-antd';
 import { Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 
 /**
  * 客户选择器控件
@@ -59,6 +59,7 @@ export class TreePickerComponent extends LifeCycleComponent implements ControlVa
   @Input() @InputBoolean() coHideUnMatched: boolean = false;
   @Input() @InputBoolean() coShowIcon: boolean = false;
   @Input() @InputBoolean() coShowSearch: boolean = false;
+  @Input() @InputBoolean() coServerSearch: boolean = false;
   @Input() @InputBoolean() coDisabled = false;
   @Input() @InputBoolean() coAsyncData = false;
   @Input() @InputBoolean() coMultiple = false;
@@ -112,18 +113,25 @@ export class TreePickerComponent extends LifeCycleComponent implements ControlVa
       let dropdown = overlayElement.firstChild as HTMLElement;
       this.renderer.insertBefore(dropdown, this.btns.nativeElement, dropdown.firstChild);
     });
-    const setInputValueFun = this.treeSelectRef.setInputValue;
-    this.treeSelectRef.setInputValue = function(value: string) {
-      if (this.treeRef && !this.treeRef['fixed']) {
-        this.treeRef.nzSearchFunc = () => true;
-        this.treeRef['fixed'] = true;
-      }
-      if (that.coShowSearch) {
+    // 改变原组件本地数据匹配的规则
+    if (this.coShowSearch && this.coServerSearch) {
+      this.treeSelectRef.setSearchValues = function(): void {
+        Promise.resolve().then(() => {
+          this.isNotFound = false; // 原组件在搜索空字符串时，isNotFound为true，直接将树隐藏了，这里锁定值为false
+        });
+      };
+      const setInputValueFun = this.treeSelectRef.setInputValue;
+      this.treeSelectRef.setInputValue = function(value: string) {
+        if (this.treeRef && !this.treeRef['fixed']) {
+          this.treeRef.nzSearchFunc = () => true; // 锁定为全部匹配
+          this.treeRef['fixed'] = true;
+        }
         that.onSearchSubject.next(value);
-      }
-      setInputValueFun.apply(this, [value]);
-    };
+        setInputValueFun.apply(this, [value]);
+      };
+    }
     this.onSearchSubject.asObservable().pipe(
+      filter(v => v !== '' && v !== null && v !== undefined),
       debounceTime(500),
       distinctUntilChanged(),
     ).subscribe(searchText => {
@@ -139,7 +147,7 @@ export class TreePickerComponent extends LifeCycleComponent implements ControlVa
       const existValues = new Set<string>(this.flattenNodes.map(node => node.value));
       this.value = this.value.filter(value => existValues.has(value));
       this.onChange(this.value);
-      this.coNodes = [...this.coNodes];
+      // this.coNodes = [...this.coNodes];
     }
     super.ngOnChanges(changes);
   }

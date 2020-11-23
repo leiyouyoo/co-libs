@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { PUBRegionService } from '@co/cds';
 
 @Component({
@@ -9,7 +9,7 @@ import { PUBRegionService } from '@co/cds';
                       [coNodes]="nodes"
                       [(ngModel)]="selectedValue"
                       [coDropdownStyle]="{ 'max-height': '500px' }"
-                      coShowSearch coMultiple coCheckable coCheckStrictly
+                      coShowSearch coMultiple coCheckable coCheckStrictly coServerSearch
       ></co-tree-picker>
       <p>{{ selectedValue }}</p>
     </div>
@@ -59,7 +59,7 @@ export class TreePickerBasicComponent implements OnInit {
   ];
   selectedValue = ['0-0'];
 
-  constructor(private regionService: PUBRegionService) {
+  constructor(private regionService: PUBRegionService, private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
@@ -92,6 +92,7 @@ export class TreePickerBasicComponent implements OnInit {
     this.regionService.getAllCountriesForPicker({ searchText }).subscribe(res => {
       this.nodes = this.buildNodes(res.items);
       console.log(this.nodes);
+      // this.cdr.markForCheck();
     });
   }
 
