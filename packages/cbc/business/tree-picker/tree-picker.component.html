@@ -37,8 +37,8 @@
   (ngModelChange)="onChange($event)"
 >
   <div #btns style="display: flex;align-items: center;padding: 0 10px 5px">
-    <button nzSize="small" nz-button nzType="primary" (click)="checkAll(coNodes)">{{text.checkAll}}</button>
-    <button nzSize="small" nz-button nzType="default" (click)="checkNothing(coNodes)">{{text.checkNothing}}</button>
-    <button nzSize="small" nz-button nzType="default" (click)="checkInverted(coNodes)">{{text.inverse}}</button>
+    <button nzSize="small" nz-button nzType="primary" (click)="checkAll()">{{text.checkAll}}</button>
+    <button nzSize="small" nz-button nzType="default" (click)="checkNothing()">{{text.checkNothing}}</button>
+    <button nzSize="small" nz-button nzType="default" (click)="checkInverted()">{{text.inverse}}</button>
   </div>
 </nz-tree-select>
