@@ -8,7 +8,7 @@ import { TreePickerComponent } from './tree-picker.component';
 const COMPONENTS = [TreePickerComponent];
 
 /**
- * 客户选取器模块
+ * 树选择器模块
  */
 @NgModule({
   imports: [CommonModule, FormsModule, NzSelectModule, NzSpinModule, NzTreeSelectModule, NzButtonModule],

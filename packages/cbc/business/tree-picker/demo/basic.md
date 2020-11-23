@@ -10,6 +10,9 @@ order: 0
 基础用法。
 
 ```ts
+import { Component, OnInit } from '@angular/core';
+import { PUBRegionService } from '@co/cds';
+
 @Component({
   selector: 'app-demo',
   template: `
@@ -90,6 +93,9 @@ export class TreePickerBasicComponent implements OnInit {
       };
       node.children = this.buildNodes(item.children ?? [], item, level + 1);
       node.isLeaf = node.children.length < 1;
+      if (node.isLeaf) {
+        node.disableCheckbox = false;
+      }
       return node;
     });
   }
@@ -102,5 +108,6 @@ export class TreePickerBasicComponent implements OnInit {
   }
 
 }
+
 
 ```
