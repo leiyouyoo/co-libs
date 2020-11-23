@@ -76,7 +76,7 @@ export class TreePickerComponent extends LifeCycleComponent implements ControlVa
   @Input() coExpandedKeys: string[] = [];
   @Input() coNodes: Array<NzTreeNodeOptions> = [];
   @Input() coDisplayWith: (node: NzTreeNode) => string | undefined = (node: NzTreeNode) => node.title;
-  @Input() coMaxTagCount!: number;
+  @Input() coMaxTagCount: number = 3;
   @Input() coMaxTagPlaceholder: TemplateRef<{ $implicit: NzTreeNode[] }> | null = null;
   @Output() readonly coOpenChange = new EventEmitter<boolean>();
   @Output() readonly coCleared = new EventEmitter<void>();
@@ -85,11 +85,12 @@ export class TreePickerComponent extends LifeCycleComponent implements ControlVa
   @Output() readonly coTreeClick = new EventEmitter<NzFormatEmitEvent>();
   @Output() readonly coTreeCheckBoxChange = new EventEmitter<NzFormatEmitEvent>();
   @Input() coTreeTemplate!: TemplateRef<{ $implicit: NzTreeNode; origin: NzTreeNodeOptions }>;
-  @Input() text: { checkAll: string, checkNothing: string, inverse: string }
+  @Input() btnText: { checkAll: string, checkNothing: string, inverse: string }
     = { checkAll: 'Check All', checkNothing: 'Check Nothing', inverse: 'Inverse' };
 
   value: string[] = [];
   private flattenNodes: Array<NzTreeNodeOptions> = [];
+  // private tips: string; TODO 鼠标提示文字
 
   private onSearchSubject = new Subject<string>();
   @Output() readonly coOnSearch = new EventEmitter<string>();
@@ -147,7 +148,6 @@ export class TreePickerComponent extends LifeCycleComponent implements ControlVa
       const existValues = new Set<string>(this.flattenNodes.map(node => node.value));
       this.value = this.value.filter(value => existValues.has(value));
       this.onChange(this.value);
-      // this.coNodes = [...this.coNodes];
     }
     super.ngOnChanges(changes);
   }
@@ -164,23 +164,27 @@ export class TreePickerComponent extends LifeCycleComponent implements ControlVa
 
   checkAll() {
     this.value = this.flattenNodes.filter(node => !node.disableCheckbox).map(node => node.value);
-    this.coNodes = [...this.coNodes];
-    this.onChange(this.value);
-    this.cdr.markForCheck();
+    this.updateView();
   }
 
   checkNothing() {
     this.value = [];
+    this.updateView();
+  }
+
+  checkInverted() {
+    this.value = this.flattenNodes.filter(node => !node.disableCheckbox && !node.checked).map(node => node.value);
+    this.updateView();
+  }
+
+  updateView() {
     this.coNodes = [...this.coNodes];
     this.onChange(this.value);
     this.cdr.markForCheck();
   }
 
-  checkInverted() {
-    this.value = this.flattenNodes.filter(node => !node.disableCheckbox && !node.checked).map(node => node.value);
-    this.coNodes = [...this.coNodes];
-    this.onChange(this.value);
-    this.cdr.markForCheck();
+  setTips() {
+
   }
 
   onChange: OnChangeType = _value => {

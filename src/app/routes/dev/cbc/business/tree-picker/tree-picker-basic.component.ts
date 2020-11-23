@@ -10,6 +10,7 @@ import { PUBRegionService } from '@co/cds';
                       [(ngModel)]="selectedValue"
                       [coDropdownStyle]="{ 'max-height': '500px' }"
                       coShowSearch coMultiple coCheckable coCheckStrictly coServerSearch
+                      style="width: 100%;height: 32px;overflow: hidden;flex-wrap: nowrap;"
       ></co-tree-picker>
       <p>{{ selectedValue }}</p>
     </div>
