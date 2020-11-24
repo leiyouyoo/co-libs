@@ -20,5 +20,6 @@ export * from '@co/cbc/business/carrier-picker';
 export * from '@co/cbc/business/shipping-line-picker';
 export * from '@co/cbc/business/place-all-picker';
 export * from '@co/cbc/business/service-user-picker';
+export * from '@co/cbc/business/tree-picker';
 
 export * from './business.module';
