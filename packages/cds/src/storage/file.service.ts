@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { StorageUploadResultDto,StorageGetFileInfoDto,StoragePagedResultDto,StorageChunkUploadResultDto, } from './storage.types';
+import { StorageUploadResultDto,StorageGetFileInfoDto,StorageGetFileInfosInput,StorageListResultDto,StorageChunkUploadResultDto, } from './storage.types';
 
 @BaseUrl('/storage/File')
 @Injectable({ providedIn: 'root' })
@@ -46,12 +46,12 @@ export class StorageFileService extends BaseApi {
      * 批量获取文件详情
      */
 
-    @GET('getFileInfos')
+    @POST('getFileInfos')
     getFileInfos(
         @Payload
-        _req: {ids?:any[]} 
+        _req:StorageGetFileInfosInput
 
-    ): Observable<StoragePagedResultDto<StorageGetFileInfoDto>> {
+    ): Observable<StorageListResultDto<StorageGetFileInfoDto>> {
         return null as any
     }
 
