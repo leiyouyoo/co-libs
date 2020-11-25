@@ -103,7 +103,7 @@
 >
   <thead class="st__head">
     <tr *ngFor="let row of _headers; let rowFirst = first"  [class.st-has-filter]="showFilters">
-      <th *ngIf="rowFirst && showCheckbox" [nzWidth]="size === 'small' ? '38px' : '50px'" [attr.rowspan]="_headers.length" [nzLeft]="true">
+      <th *ngIf="rowFirst && showCheckbox" [nzWidth]="size === 'small' ? '28px' : '50px'" class="text-center" [attr.rowspan]="_headers.length" [nzLeft]="true">
         <ng-container *ngIf="checkboxSelections.length === 0">
           <ng-template [ngTemplateOutlet]="chkAllTpl" [ngTemplateOutletContext]="{ $implicit: false }"> </ng-template>
         </ng-container>
@@ -125,7 +125,7 @@
           </nz-dropdown-menu>
         </div>
       </th>
-      <th *ngIf="rowFirst && expand" [nzWidth]="size === 'small' ? '38px' : '50px'" [attr.rowspan]="_headers.length" [nzLeft]="true"></th>
+      <th *ngIf="rowFirst && expand" [nzWidth]="size === 'small' ? '28px' : '50px'" [attr.rowspan]="_headers.length" [nzLeft]="true"></th>
       <ng-container *ngFor="let h of getEnabledColumns(row, 'column', 'header'); let index = index">
         <th
           *ngIf="h?.column?.type !== 'action'; else notResizable"
