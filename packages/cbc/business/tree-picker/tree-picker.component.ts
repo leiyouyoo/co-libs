@@ -74,7 +74,7 @@ export class TreePickerComponent extends LifeCycleComponent implements ControlVa
   @Input() coDropdownStyle: NgStyleInterface | null = null;
   @Input() coDropdownClassName?: string;
   @Input() coExpandedKeys: string[] = [];
-  @Input() coNodes: Array<NzTreeNodeOptions> = [];
+  @Input() coNodes: Array<NzTreeNode | NzTreeNodeOptions> = [];
   @Input() coDisplayWith: (node: NzTreeNode) => string | undefined = (node: NzTreeNode) => node.title;
   @Input() coMaxTagCount: number = 3;
   @Input() coMaxTagPlaceholder: TemplateRef<{ $implicit: NzTreeNode[] }> | null = null;
@@ -105,6 +105,11 @@ export class TreePickerComponent extends LifeCycleComponent implements ControlVa
   constructor(private cdr: ChangeDetectorRef,
               private renderer: Renderer2) {
     super();
+  }
+
+  ngOnInit(): void {
+    this.flattenNodes = this.getFlattenNodes();
+    super.ngOnInit();
   }
 
   ngAfterViewInit(): void {
@@ -144,10 +149,24 @@ export class TreePickerComponent extends LifeCycleComponent implements ControlVa
   ngOnChanges(changes: SimpleChanges): void {
     const { coNodes } = changes;
     if (coNodes) {
+      const savedNodes: NzTreeNode[] = [];
+      const lastFlattenNodes = [...this.flattenNodes];
+      const flattenNodes = this.getFlattenNodes();
+      let value = Array.isArray(this.value) ? this.value : [this.value];
+      value.forEach(key => {
+        if (flattenNodes.every(node => node.key !== key)) {
+          const node = this.getNodeByKey(lastFlattenNodes, key);
+          if (node) {
+            console.log(node);
+            savedNodes.push(node);
+          }
+        }
+      });
+      this.coNodes = [...savedNodes, ...this.coNodes];
+      if (this.isMultiple && Array.isArray(this.value)) {
+        this.value = [...this.value];
+      }
       this.flattenNodes = this.getFlattenNodes();
-      const existValues = new Set<string>(this.flattenNodes.map(node => node.value));
-      this.value = this.value.filter(value => existValues.has(value));
-      this.onChange(this.value);
     }
     super.ngOnChanges(changes);
   }
@@ -160,6 +179,18 @@ export class TreePickerComponent extends LifeCycleComponent implements ControlVa
       }
     });
     return flattenNodes;
+  }
+
+  private getNodeByKey(nodes: Array<NzTreeNode | NzTreeNodeOptions>, nodeKey: string) {
+    let result: any = null;
+    nodes.some(node => {
+      if (node.key === nodeKey) {
+        result = node;
+        return true;
+      }
+      return false;
+    });
+    return result;
   }
 
   checkAll() {
@@ -181,10 +212,6 @@ export class TreePickerComponent extends LifeCycleComponent implements ControlVa
     this.coNodes = [...this.coNodes];
     this.onChange(this.value);
     this.cdr.markForCheck();
-  }
-
-  setTips() {
-
   }
 
   onChange: OnChangeType = _value => {

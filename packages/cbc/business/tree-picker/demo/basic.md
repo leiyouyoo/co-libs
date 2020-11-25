@@ -10,7 +10,7 @@ order: 0
 基础用法。
 
 ```ts
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { PUBRegionService } from '@co/cds';
 
 @Component({
@@ -21,7 +21,8 @@ import { PUBRegionService } from '@co/cds';
                       [coNodes]="nodes"
                       [(ngModel)]="selectedValue"
                       [coDropdownStyle]="{ 'max-height': '500px' }"
-                      coShowSearch coMultiple coCheckable coCheckStrictly
+                      coShowSearch coMultiple coCheckable coCheckStrictly coServerSearch
+                      style="width: 100%;height: 32px;overflow: hidden;flex-wrap: nowrap;"
       ></co-tree-picker>
       <p>{{ selectedValue }}</p>
     </div>
@@ -108,6 +109,7 @@ export class TreePickerBasicComponent implements OnInit {
   }
 
 }
+
 
 
 ```

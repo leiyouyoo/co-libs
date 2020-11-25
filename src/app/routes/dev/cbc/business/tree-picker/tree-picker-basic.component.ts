@@ -5,14 +5,14 @@ import { PUBRegionService } from '@co/cds';
   selector: 'app-demo',
   template: `
     <div style="margin:80px;width: 300px">
+      <p>{{ selectedValue }}</p>
       <co-tree-picker (coOnSearch)="search($event)"
                       [coNodes]="nodes"
                       [(ngModel)]="selectedValue"
                       [coDropdownStyle]="{ 'max-height': '500px' }"
                       coShowSearch coMultiple coCheckable coCheckStrictly coServerSearch
-                      style="width: 100%;height: 32px;overflow: hidden;flex-wrap: nowrap;"
+                      style="width: 100%;"
       ></co-tree-picker>
-      <p>{{ selectedValue }}</p>
     </div>
   `,
 })
@@ -60,7 +60,7 @@ export class TreePickerBasicComponent implements OnInit {
   ];
   selectedValue = ['0-0'];
 
-  constructor(private regionService: PUBRegionService, private cdr: ChangeDetectorRef) {
+  constructor(private regionService: PUBRegionService) {
   }
 
   ngOnInit(): void {
@@ -80,7 +80,7 @@ export class TreePickerBasicComponent implements OnInit {
         children: [],
         ...item,
       };
-      node.children = this.buildNodes(item.children ?? [], item, level + 1);
+      node.children = this.buildNodes(item.children ?? [], node, level + 1);
       node.isLeaf = node.children.length < 1;
       if (node.isLeaf) {
         node.disableCheckbox = false;
@@ -92,8 +92,6 @@ export class TreePickerBasicComponent implements OnInit {
   search(searchText: string) {
     this.regionService.getAllCountriesForPicker({ searchText }).subscribe(res => {
       this.nodes = this.buildNodes(res.items);
-      console.log(this.nodes);
-      // this.cdr.markForCheck();
     });
   }
 
