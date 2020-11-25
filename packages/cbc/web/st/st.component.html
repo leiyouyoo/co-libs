@@ -203,7 +203,10 @@
         *ngIf="showFilters && getEnabledColumns(_filterRow, 'column', 'filter')?.length">
       <th *ngIf="showCheckbox" nzWidth="50px" [nzLeft]="true"></th>
       <th *ngIf="expand" nzWidth="50px" [nzLeft]="true"></th>
-      <th *ngFor="let i of getEnabledColumns(_filterRow, 'column', 'filter'); index as index" (keyup.enter)="_filterConfirm(i.column)">
+      <th *ngFor="let i of getEnabledColumns(_filterRow, 'column', 'filter'); index as index"
+          [nzLeft]="!!i.column._left"
+          [nzRight]="!!i.column._right"
+          (keyup.enter)="_filterConfirm(i.column)">
         <ng-container [ngSwitch]="i.column.filter?.type">
           <ng-container *ngSwitchCase="i.column.filter?.type === null ? null : 'nevermatch'">
             <input type="text" nzSize="small" nz-input disabled>
@@ -267,14 +270,16 @@
         [attr.data-index]="index"
         (click)="_rowClick($event, i, index)"
         [class.st-row-odd]="index % 2 === 1"
+        [class.st-row-child-expanded]="i._innerExpandRow"
         [ngClass]="i._rowClassName"
         [stRowSelected]="i"
         [stRowSelectedIndex]="index"
+        [hidden]="i._innerExpandRow && !i._innerExpanded"
       >
         <td
           *ngIf="showCheckbox"
           [nzLeft]="true">
-          <label nz-checkbox [nzDisabled]="i.disabled" [ngModel]="i.checked" (ngModelChange)="_checkSelection(i, $event, index)"></label>
+          <label *ngIf="!i._innerExpandRow" nz-checkbox [nzDisabled]="i.disabled" [ngModel]="i.checked" (ngModelChange)="_checkSelection(i, $event, index)"></label>
         </td>
         <td
           *ngIf="expand"

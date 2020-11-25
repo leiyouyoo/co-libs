@@ -233,7 +233,7 @@ export class STDataSource {
         text = this.ynPipe.transform(value === col.yn!.truth, col.yn!.yes!, col.yn!.no!, col.yn!.mode!, false);
         break;
       case 'enum':
-        // todo maybe all columns can be i18n
+        // maybe all columns need i18n
         col.indexI18n = col.indexI18n !== false;
         text = col.enum![value];
         break;
@@ -247,6 +247,8 @@ export class STDataSource {
         } else {
           text = '';
         }
+        // maybe all columns need i18n
+        col.indexI18n = col.indexI18n !== false;
         break;
     }
     if (text == null) text = '';
