@@ -258,6 +258,7 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
   @Input() @InputBoolean() checkOnLoad = false;
   @Input() checkboxSelections = [];
   @Input() @InputBoolean() buttonPropagation = false;
+  @Input() @InputBoolean() cellContentPropagation = false;
   @Input() @InputBoolean() loadOnScroll = false;
   @Input() columnSettingName: string = 'st';
   @Input() activatedRowKey: string = 'id';
@@ -570,7 +571,11 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
     setTimeout(() => {
       const data = { e, item, index };
       if (this.rowClickCount === 1) {
-        this.changeEmit('click', data);
+        if (!this.cellContentPropagation && (e.target as HTMLElement)?.matches(`span[data-cell-span] *`)) {
+          // nothing to do
+        } else {
+          this.changeEmit('click', data);
+        }
       } else {
         this.changeEmit('dblClick', data);
       }
