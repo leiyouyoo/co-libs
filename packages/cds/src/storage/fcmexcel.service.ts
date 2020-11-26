@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { StoragePreShipmentExportInput,StorageFileDto,StorageGetShipmentListInput,StorageGetDeliveryInfoListInput,StorageShippingOrderDataRowDto,StorageImportDataRowDto,StorageExportShippingOrdersInput, } from './storage.types';
+import { StoragePreShipmentExportInput,StorageFileDto,StorageGetShipmentListInput,StorageGetDeliveryInfoListInput,StorageObject,StorageImportDataRowDto,StorageExportShippingOrdersInput,StorageImportResultDto,StorageExportPackingListInput, } from './storage.types';
 
 @BaseUrl('/storage/FCMExcel')
 @Injectable({ providedIn: 'root' })
@@ -66,7 +66,7 @@ export class StorageFCMExcelService extends BaseApi {
         @Payload
         _req: {file?:File} 
 
-    ): Observable<StorageImportDataRowDto<StorageShippingOrderDataRowDto>> {
+    ): Observable<StorageImportDataRowDto<StorageObject>> {
         return null as any
     }
 
@@ -80,6 +80,36 @@ export class StorageFCMExcelService extends BaseApi {
     exportShippingOrders(
         @Payload
         _req:StorageExportShippingOrdersInput
+
+    ): Observable<StorageFileDto> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Storage/FCMExcel/ImportPackingList
+     * 导入装箱单
+     */
+
+    @FORM('importPackingList')
+    importPackingList(
+        @Payload
+        _req: {businessId?:string,tradeType?:number,isSave?:boolean,file?:File} 
+
+    ): Observable<StorageImportResultDto<StorageObject>> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Storage/FCMExcel/ExportPackingList
+     * 导出装箱单
+     */
+
+    @POST('exportPackingList')
+    exportPackingList(
+        @Payload
+        _req:StorageExportPackingListInput
 
     ): Observable<StorageFileDto> {
         return null as any
