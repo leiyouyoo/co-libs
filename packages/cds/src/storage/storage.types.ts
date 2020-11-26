@@ -130,7 +130,7 @@
         
          
             /* CSP BookingId 集合 */ 
-            bookingIds?: any[];
+            businessIds?: any[];
         
         
     }

@@ -140,7 +140,7 @@ Id 要调整成bookingId
     @FORM('importPackingList')
     importPackingList(
         @Payload
-        _req: {bookingId?:string,isSave?:boolean,file?:File}
+        _req: {businessId?:string,isSave?:boolean,file?:File}
 
     ): Observable<StorageImportResultDto<StorageObject>> {
         return null as any
