@@ -110,7 +110,20 @@ export class STColumnSource {
       ret.push(item);
     }
     this.btnCoerceIf(ret);
-    return ret;
+    /* unnest buttons */
+    const unnestRet: STColumnButton[] = [];
+    ret.forEach(o => {
+      const children = o.children;
+      o.children = [];
+      if (children?.length) {
+        unnestRet.push(...children);
+      } else {
+        unnestRet.push(o);
+      }
+    })
+    // debug only code
+    // unnestRet[0] = { ...unnestRet[0], text: '', children: [unnestRet[1]] }
+    return unnestRet;
   }
 
   private btnCoerceIf(list: STColumnButton[]) {

@@ -919,8 +919,8 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
     return text;
   }
 
-  _validBtns(btns: STColumnButton[], item: STData, col: STColumn): STColumnButton[] {
-    return btns.filter(btn => {
+  _validBtns(btns: STColumnButton[], item: STData, col: STColumn, isRoot = false): STColumnButton[] {
+    const filteredBtns = btns.filter(btn => {
       const result = btn.iif!(item, btn, col);
       const isRenderDisabled = btn.iifBehavior === 'both' ? result === false : btn.iifBehavior === 'disabled';
       btn._result = result;
@@ -937,6 +937,30 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
       }
       return (result || isRenderDisabled) && showOnEdit;
     });
+    let nestedBtns: STColumnButton[] = [];
+    if (isRoot) {
+      nestedBtns = (() => {
+        const [firstBtn, secondBtn, ...lastBtns] = filteredBtns;
+        const retBtns: STColumnButton[] = []
+        if (firstBtn) retBtns.push(firstBtn);
+        if (secondBtn) retBtns.push(secondBtn);
+        if (lastBtns?.length) retBtns.push({ children: lastBtns });
+        return retBtns;
+      })();
+    } else {
+      nestedBtns = filteredBtns;
+    }
+
+    return nestedBtns;
+  }
+
+  /* not production ready */
+  btnTrackByFn(index: number, item: STColumnButton) {
+    if (item.children?.length) {
+      return item.children[0]
+    } else {
+      return item;
+    }
   }
 
   // #endregion
@@ -1139,5 +1163,8 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
     const { unsubscribe$ } = this;
     unsubscribe$.next();
     unsubscribe$.complete();
+  }
+
+  ngDoCheck() {
   }
 }
