@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { StoragePreShipmentExportInput,StorageFileDto,StorageGetShipmentListInput,StorageGetDeliveryInfoListInput,StorageObject,StorageImportDataRowDto,StorageExportShippingOrdersInput,StorageImportResultDto,StorageExportPackingListInput,StorageExportContainersInput,StorageImportContainersWithExcelInput, } from './storage.types';
+import { StoragePreShipmentExportInput,StorageFileDto,StorageGetShipmentListInput,StorageGetDeliveryInfoListInput,StorageObject,StorageImportDataRowDto,StorageExportShippingOrdersInput,StorageImportResultDto,StorageExportPackingListInput,StorageExportContainersInput, } from './storage.types';
 
 @BaseUrl('/storage/FCMExcel')
 @Injectable({ providedIn: 'root' })
@@ -136,10 +136,10 @@ export class StorageFCMExcelService extends BaseApi {
      * 导入集装箱
      */
 
-    @POST('importContainers')
+    @FORM('importContainers')
     importContainers(
         @Payload
-        _req:StorageImportContainersWithExcelInput
+        _req: {shipmentId?:string,file?:File} 
 
     ): Observable<StorageImportDataRowDto<StorageObject>> {
         return null as any
