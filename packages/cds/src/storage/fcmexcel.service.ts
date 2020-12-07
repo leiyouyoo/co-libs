@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { StoragePreShipmentExportInput,StorageFileDto,StorageGetShipmentListInput,StorageGetDeliveryInfoListInput,StorageObject,StorageImportDataRowDto,StorageExportShippingOrdersInput,StorageImportResultDto,StorageExportPackingListInput, } from './storage.types';
+import { StoragePreShipmentExportInput,StorageFileDto,StorageGetShipmentListInput,StorageGetDeliveryInfoListInput,StorageObject,StorageImportDataRowDto,StorageExportShippingOrdersInput,StorageImportResultDto,StorageExportPackingListInput,StorageExportContainersInput,StorageImportContainersWithExcelInput, } from './storage.types';
 
 @BaseUrl('/storage/FCMExcel')
 @Injectable({ providedIn: 'root' })
@@ -94,7 +94,7 @@ export class StorageFCMExcelService extends BaseApi {
     @FORM('importPackingList')
     importPackingList(
         @Payload
-        _req: {businessId?:string,tradeType?:number,isSave?:boolean,file?:File} 
+        _req: {businessId?:string,businessType?:number,tradeType?:number,isSave?:boolean,file?:File} 
 
     ): Observable<StorageImportResultDto<StorageObject>> {
         return null as any
@@ -112,6 +112,36 @@ export class StorageFCMExcelService extends BaseApi {
         _req:StorageExportPackingListInput
 
     ): Observable<StorageFileDto> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Storage/FCMExcel/ExportContainers
+     * 导出集装箱
+     */
+
+    @POST('exportContainers')
+    exportContainers(
+        @Payload
+        _req:StorageExportContainersInput
+
+    ): Observable<StorageFileDto> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Storage/FCMExcel/ImportContainers
+     * 导入集装箱
+     */
+
+    @POST('importContainers')
+    importContainers(
+        @Payload
+        _req:StorageImportContainersWithExcelInput
+
+    ): Observable<StorageImportDataRowDto<StorageObject>> {
         return null as any
     }
 

@@ -329,6 +329,60 @@
     /**
      *  No Remark 
      */
+    export class StorageExportContainersInput {
+        
+         
+            
+            shipmentId?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class StorageIFormFile {
+        
+         
+            
+            contentType?: string;
+         
+            
+            contentDisposition?: string;
+         
+            
+            headers?: object;
+         
+            
+            length?: number;
+         
+            
+            name?: string;
+         
+            
+            fileName?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class StorageImportContainersWithExcelInput {
+        
+         
+            
+            shipmentId?: string;
+         
+            
+            file?: StorageIFormFile;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
     export class StorageUploadResultDto {
         
          
