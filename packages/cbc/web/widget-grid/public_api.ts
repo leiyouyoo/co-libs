@@ -1,1 +1,5 @@
 export { CoWidgetGridModule } from './widget-grid.module'
+export { AddWidgetPanelComponent } from './add-widget-panel/add-widget-panel.component'
+export { WidgetGridResizeDirective } from './widget-grid-resize.directive'
+export { WidgetGridComponent } from './widget-grid.component'
+export { CoWidgetItemDirective, CoWidgetItemSource } from './widget-item.directive'

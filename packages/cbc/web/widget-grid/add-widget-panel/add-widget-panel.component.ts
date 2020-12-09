@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CoWidgetItemSource } from '../widget-item.directive';
-import { getBottomEmptyRow } from '@co/cbc/web/widget-grid/utils';
+import { getBottomEmptyRow } from '../utils';
 import { NgxWidgetGridComponent } from '@co/cbc/web/ngx-widget-grid';
 
 interface Size {

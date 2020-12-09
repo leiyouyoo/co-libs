@@ -1,0 +1,10 @@
+{
+  "ngPackage": {
+    "lib": {
+      "flatModuleFile": "ngxWidgetGrid",
+      "entryFile": "public_api.ts",
+      "umdModuleIds": {
+      }
+    }
+  }
+}
