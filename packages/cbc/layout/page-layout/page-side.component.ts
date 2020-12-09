@@ -13,8 +13,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class PageSideComponent {
 
-  @Input() @InputBoolean() coWidthResizable = false;
-  @HostBinding('style.margin-left') @Input() coMarginLeft: string = '16px';
+  @Input() @InputBoolean() coWidthResizable = true;
+  @HostBinding('style.margin-left') @Input() coMarginLeft: string = '0px'; // UI认为不要间距更好，这里先将【16px】改成【0px】
   @HostBinding('style.min-width') @Input() coMinWidth: string = '360px';
 
   @HostBinding('style.width.px') width;

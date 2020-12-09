@@ -163,6 +163,7 @@ export class TreePickerComponent extends LifeCycleComponent implements ControlVa
         }
       });
       this.coNodes = [...savedNodes, ...this.coNodes];
+      // 重新赋值，因为nz-tree-select组件在设置新的nodes之后，内部会将节点状态全部重置为未勾选状态，导致下次勾选时，丢失原来已选值
       if (this.isMultiple && Array.isArray(this.value)) {
         this.value = [...this.value];
       }

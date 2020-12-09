@@ -9,7 +9,7 @@ import { PageSideComponent } from './page-side.component';
 @Component({
   selector: 'co-page-side-resize-handle',
   template: `
-    <i nz-icon nzType="caret-left" nzTheme="outline" class="co-page-side-resize-handle-pointer"></i>
+    <i nz-icon nzType="swap" nzTheme="outline" class="co-page-side-resize-handle-pointer"></i>
   `,
   host: {
     '[class.co-page-side-resize-handle]': 'true',
