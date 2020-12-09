@@ -67,7 +67,7 @@ Id 要调整成bookingId
         @Payload
         _req: {file?:File}
 
-    ): Observable<StorageImportResultDto> {
+    ): Observable<any> {
         return null as any
     }
 
@@ -97,7 +97,7 @@ Id 要调整成bookingId
         @Payload
         _req: {file?:File}
 
-    ): Observable<StorageImportResultDto> {
+    ): Observable<any> {
         return null as any
     }
 
