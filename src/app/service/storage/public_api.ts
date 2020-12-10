@@ -1,3 +1,4 @@
+export * from './attachment.service';
 export * from './cspexcel.service';
 export * from './excel.service';
 export * from './excel-template.service';
@@ -10,4 +11,3 @@ export * from './rate-excel.service';
 
 
 export * from './storage.types';
-
