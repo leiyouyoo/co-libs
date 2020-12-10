@@ -10,7 +10,7 @@ export class StorageFCMExcelService extends BaseApi {
     super(injector);
   }
 
-
+  
     /**
      * @param url /Storage/FCMExcel/BookingOrderExport
      * 电商委托单导出
@@ -19,7 +19,7 @@ export class StorageFCMExcelService extends BaseApi {
     @POST('bookingOrderExport')
     bookingOrderExport(
         @Payload
-        _req: {}
+        _req: {} 
 
     ): Observable<StorageFileDto> {
         return null as any
@@ -28,7 +28,7 @@ export class StorageFCMExcelService extends BaseApi {
 
     /**
      * @param url /Storage/FCMExcel/PreShipmentExport
-     *
+     * 
      */
 
     @POST('preShipmentExport')
@@ -79,7 +79,7 @@ export class StorageFCMExcelService extends BaseApi {
     @FORM('importShippingOrders')
     importShippingOrders(
         @Payload
-        _req: {file?:File}
+        _req: {file?:File} 
 
     ): Observable<StorageImportDataRowDto<StorageObject>> {
         return null as any
@@ -109,7 +109,7 @@ export class StorageFCMExcelService extends BaseApi {
     @FORM('importPackingList')
     importPackingList(
         @Payload
-        _req: {businessId?:string,businessType?:number,tradeType?:number,isSave?:boolean,file?:File}
+        _req: {businessId?:string,businessType?:number,tradeType?:number,isSave?:boolean,file?:File} 
 
     ): Observable<StorageImportResultDto<StorageObject>> {
         return null as any
@@ -154,7 +154,7 @@ export class StorageFCMExcelService extends BaseApi {
     @FORM('importContainers')
     importContainers(
         @Payload
-        _req: {shipmentId?:string,file?:File}
+        _req: {shipmentId?:string,file?:File} 
 
     ): Observable<StorageImportDataRowDto<StorageObject>> {
         return null as any

@@ -2,7 +2,7 @@
     /**
      *  No Remark 
      */
-    export class ChangeAttachmentTypeInput {
+    export class StorageChangeAttachmentTypeInput {
         
          
             /* 附件类型
@@ -52,10 +52,10 @@
 45 = TaxBill
 46 = SignReceipt
 47 = BookingNote */ 
-            attachmentType: number;
+            attachmentType?: number;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -63,11 +63,11 @@
     /**
      *  No Remark 
      */
-    export class GetAllAttachmentListInput {
+    export class StorageGetAllAttachmentListInput {
         
          
             /* 业务Id集合 */ 
-            businessIds: any[];
+            businessIds?: any[];
          
             /* 附件类型
 0 = Other
@@ -116,13 +116,13 @@
 45 = TaxBill
 46 = SignReceipt
 47 = BookingNote */ 
-            attachmentType: number;
+            attachmentType?: number;
          
             /* 是否过滤认证 */ 
-            ignoreAuthorize: boolean;
+            ignoreAuthorize?: boolean;
          
             /* 附件角色 */ 
-            roles: any[];
+            roles?: any[];
         
         
     }
@@ -130,35 +130,35 @@
     /**
      * 用于附件列表显示的 Dto
      */
-    export class AttachmentListDto {
+    export class StorageAttachmentListDto {
         
          
             /* 上传人 */ 
-            uploadBy: string;
+            uploadBy?: string;
          
             /* 上传时间 */ 
-            creationTime: string;
+            creationTime?: string;
          
             /* 上传人Id */ 
-            creatorUserId: number;
+            creatorUserId?: number;
          
             /* 附件类型字面值 */ 
-            typeString: string;
+            typeString?: string;
          
             /* 是否公开 */ 
-            isPublic: boolean;
+            isPublic?: boolean;
          
             /* CO.Storage.Domain.Attachments.Enums.AttachmentRoles[] 允许删除附件的角色，必需存在于 CO.Storage.Application.Attachments.Dto.AttachmentDto.CanViewRoles，（CreatorUser 始终有权限删除） */ 
-            canDeleteRoles: any[];
+            canDeleteRoles?: any[];
          
             /* CO.Storage.Domain.Attachments.Enums.AttachmentRoles[] 允许查看附件的角色，仅当 CO.Storage.Application.Attachments.Dto.AttachmentDto.IsPublic 为 false 时有效（CreatorUser 始终有权限查看） */ 
-            canViewRoles: any[];
+            canViewRoles?: any[];
          
             /* Id */ 
-            id: string;
+            id?: string;
          
             /* 业务id（如是booking，则传booking的id） */ 
-            businessId: string;
+            businessId?: string;
          
             /* 业务类型
 0 = Quote
@@ -168,7 +168,7 @@
 4 = Product
 5 = Billing
 6 = Invoice */ 
-            businessType: number;
+            businessType?: number;
          
             /* 附件类型
 0 = Other
@@ -217,16 +217,28 @@
 45 = TaxBill
 46 = SignReceipt
 47 = BookingNote */ 
-            attachmentType: number;
+            attachmentType?: number;
          
             /* 文件id(上传到文件服务器后返回) */ 
-            fileId: string;
+            fileId?: string;
          
             /* 文件名称(上传到文件服务器后返回) */ 
-            fileName: string;
+            fileName?: string;
          
             /* 文件扩展名(上传到文件服务器后返回) */ 
-            extensionName: string;
+            extensionName?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class StorageListResultDto<T> {
+        
+         
+            
+            items: any;
         
         
     }
@@ -234,11 +246,11 @@
     /**
      * 主键类型默认为整形的数据传输对象基类
      */
-    export class CoEntityDto {
+    export class StorageCoEntityDto {
         
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -246,23 +258,23 @@
     /**
      * 附件基本信息 Dto
      */
-    export class AttachmentDto {
+    export class StorageAttachmentDto {
         
          
             /* 是否公开 */ 
-            isPublic: boolean;
+            isPublic?: boolean;
          
             /* CO.Storage.Domain.Attachments.Enums.AttachmentRoles[] 允许删除附件的角色，必需存在于 CO.Storage.Application.Attachments.Dto.AttachmentDto.CanViewRoles，（CreatorUser 始终有权限删除） */ 
-            canDeleteRoles: any[];
+            canDeleteRoles?: any[];
          
             /* CO.Storage.Domain.Attachments.Enums.AttachmentRoles[] 允许查看附件的角色，仅当 CO.Storage.Application.Attachments.Dto.AttachmentDto.IsPublic 为 false 时有效（CreatorUser 始终有权限查看） */ 
-            canViewRoles: any[];
+            canViewRoles?: any[];
          
             /* Id */ 
-            id: string;
+            id?: string;
          
             /* 业务id（如是booking，则传booking的id） */ 
-            businessId: string;
+            businessId?: string;
          
             /* 业务类型
 0 = Quote
@@ -272,7 +284,7 @@
 4 = Product
 5 = Billing
 6 = Invoice */ 
-            businessType: number;
+            businessType?: number;
          
             /* 附件类型
 0 = Other
@@ -321,16 +333,16 @@
 45 = TaxBill
 46 = SignReceipt
 47 = BookingNote */ 
-            attachmentType: number;
+            attachmentType?: number;
          
             /* 文件id(上传到文件服务器后返回) */ 
-            fileId: string;
+            fileId?: string;
          
             /* 文件名称(上传到文件服务器后返回) */ 
-            fileName: string;
+            fileName?: string;
          
             /* 文件扩展名(上传到文件服务器后返回) */ 
-            extensionName: string;
+            extensionName?: string;
         
         
     }
@@ -338,11 +350,11 @@
     /**
      * 用于批量创建附件的 Dto
      */
-    export class BatchCreateAttachmentInput {
+    export class StorageBatchCreateAttachmentInput {
         
          
             /* Gets or sets the items. */ 
-            items: any[];
+            items?: any[];
         
         
     }
@@ -350,26 +362,26 @@
     /**
      *  No Remark 
      */
-    export class FileDto {
+    export class StorageFileDto {
         
          
             
-            fileType: string;
+            fileName: string;
          
             
-            isSuccess: boolean;
+            fileToken: string;
          
             
-            message: string;
+            fileType?: string;
          
             
-            result: object;
+            isSuccess?: boolean;
          
             
-            fileName?: string;
+            message?: string;
          
             
-            fileToken?: string;
+            result?: object;
         
         
     }
@@ -377,11 +389,11 @@
     /**
      *  No Remark 
      */
-    export class BatchDownloadClearanceInvoiceDto {
+    export class StorageBatchDownloadClearanceInvoiceDto {
         
          
             
-            ids: any[];
+            ids?: any[];
         
         
     }
@@ -389,29 +401,32 @@
     /**
      * 导入结果
      */
-    export class ImportResultDto {
+    export class StorageImportResultDto<T> {
         
          
+            /* Data */ 
+            data: any;
+         
             /* 验证错误 */ 
-            rowErrors: any[];
+            rowErrors: any;
          
             /* 模板错误 */ 
-            templateErrors: any[];
+            templateErrors: any;
          
             /* 其它消息信息 */ 
-            message: string;
+            message: any;
          
             /* 行数据总条数 */ 
-            totalRowCount: number;
+            totalRowCount: any;
          
             /* 行数据验证错误条数 */ 
-            errorRowCount: number;
+            errorRowCount: any;
          
             /* 导入异常信息 */ 
-            exception: object;
+            exception: any;
          
             /* 是否存在导入错误 */ 
-            hasError: boolean;
+            hasError: any;
         
         
     }
@@ -419,17 +434,17 @@
     /**
      * 产品导出
      */
-    export class ProductExportInput {
+    export class StorageProductExportInput {
         
          
             /* 国家Id */ 
-            regionId: string;
+            regionId?: string;
          
             /* 搜索关键字 */ 
-            searchText: string;
+            searchText?: string;
          
             /* 产品Id集合 */ 
-            ids: any[];
+            ids?: any[];
         
         
     }
@@ -437,11 +452,11 @@
     /**
      * 采购订单导出
      */
-    export class OrderExportInput {
+    export class StorageOrderExportInput {
         
          
             /* 采购订单Id集合 */ 
-            ids: any[];
+            ids?: any[];
         
         
     }
@@ -449,14 +464,14 @@
     /**
      * 账单导出
      */
-    export class BillExportInput {
+    export class StorageBillExportInput {
         
          
             /* 是否英文 */ 
-            isEnglish: boolean;
+            isEnglish?: boolean;
          
             /* 账单Id集合 */ 
-            ids: any[];
+            ids?: any[];
         
         
     }
@@ -464,18 +479,18 @@
     /**
      *  No Remark 
      */
-    export class Object {
+    export class StorageObject {
         
     }
  
     /**
      *  No Remark 
      */
-    export class ExportPackingListInput {
+    export class StorageExportPackingListInput {
         
          
             /* CSP BookingId 集合 */ 
-            businessIds: any[];
+            businessIds?: any[];
         
         
     }
@@ -483,11 +498,11 @@
     /**
      * 预报单查询模型
      */
-    export class PreShipmentExportInput {
+    export class StoragePreShipmentExportInput {
         
          
             /* 是否是CSP的客户创建的 */ 
-            isCustomerCreate: boolean;
+            isCustomerCreate?: boolean;
          
             /* 运输方式，枚举下拉
 0 = NotSet
@@ -495,70 +510,70 @@
 2 = Air
 3 = Truck
 4 = Rail */ 
-            transportationMode: number;
+            transportationMode?: number;
          
             /* 下单日期 */ 
-            creationTime: string;
+            creationTime?: string;
          
             /* 业务员 */ 
-            serviceUserId: number;
+            serviceUserId?: number;
          
             /* 客户id */ 
-            customerId: string;
+            customerId?: string;
          
             /* 交货方式，枚举下拉
 0 = NotSet
 1 = DeliveryGoodsByMyself
 2 = PickUpByCityocean */ 
-            fbaPickUpMethodType: number;
+            fbaPickUpMethodType?: number;
          
             /* 操作口岸 */ 
-            serviceCompanyId: string;
+            serviceCompanyId?: string;
          
             /* 承运人（代理）客户Id，如 Cityocean ... */ 
-            agentCustomerId: string;
+            agentCustomerId?: string;
          
             /* 联系人，模糊 */ 
-            contactName: string;
+            contactName?: string;
          
             /* 运单号，模糊 */ 
-            shipmentNo: string;
+            shipmentNo?: string;
          
             /* 送货地址，模糊 */ 
-            destinationAddress: string;
+            destinationAddress?: string;
          
             /* 交货位置，模糊 */ 
-            originAddress: string;
+            originAddress?: string;
          
             /* 交货仓库，模糊 */ 
-            originWarehouse: string;
+            originWarehouse?: string;
          
             /* 国家，模糊 */ 
-            country: string;
+            country?: string;
          
             /* 渠道，模糊 */ 
-            channel: string;
+            channel?: string;
          
             /* FBA编号，模糊 */ 
-            fbaNo: string;
+            fbaNo?: string;
          
             /* 创建人，模糊 */ 
-            creatorUser: string;
+            creatorUser?: string;
          
             
-            ids: any[];
+            ids?: any[];
          
             /* 是否导出 */ 
-            isExport: boolean;
+            isExport?: boolean;
          
             /* 排序 */ 
-            sorting: string;
+            sorting?: string;
          
             /* 页大小 */ 
-            maxResultCount: number;
+            maxResultCount?: number;
          
             /* 跳过指定条数 */ 
-            skipCount: number;
+            skipCount?: number;
         
         
     }
@@ -566,38 +581,38 @@
     /**
      *  No Remark 
      */
-    export class GetShipmentListInput {
+    export class StorageGetShipmentListInput {
         
          
             /* 搜索关键字 */ 
-            searchText: string;
+            searchText?: string;
          
             /* 承运人 Ids */ 
-            agentCustomerIds: any[];
+            agentCustomerIds?: any[];
          
             /* 渠道 */ 
-            channel: string;
+            channel?: string;
          
             /* 开始时间 */ 
-            startTime: string;
+            startTime?: string;
          
             /* 结束时间 */ 
-            endTime: string;
+            endTime?: string;
          
             
-            ids: any[];
+            ids?: any[];
          
             /* 是否导出 */ 
-            isExport: boolean;
+            isExport?: boolean;
          
             /* 排序 */ 
-            sorting: string;
+            sorting?: string;
          
             /* 页大小 */ 
-            maxResultCount: number;
+            maxResultCount?: number;
          
             /* 跳过指定条数 */ 
-            skipCount: number;
+            skipCount?: number;
         
         
     }
@@ -605,35 +620,35 @@
     /**
      *  No Remark 
      */
-    export class GetDeliveryInfoListInput {
+    export class StorageGetDeliveryInfoListInput {
         
          
             /* 搜索关键字 */ 
-            searchText: string;
+            searchText?: string;
          
             /* 渠道 */ 
-            channel: string;
+            channel?: string;
          
             /* 开始时间 */ 
-            startTime: string;
+            startTime?: string;
          
             /* 结束时间 */ 
-            endTime: string;
+            endTime?: string;
          
             
-            ids: any[];
+            ids?: any[];
          
             /* 是否导出 */ 
-            isExport: boolean;
+            isExport?: boolean;
          
             /* 排序 */ 
-            sorting: string;
+            sorting?: string;
          
             /* 页大小 */ 
-            maxResultCount: number;
+            maxResultCount?: number;
          
             /* 跳过指定条数 */ 
-            skipCount: number;
+            skipCount?: number;
         
         
     }
@@ -641,11 +656,20 @@
     /**
      *  No Remark 
      */
-    export class ExportShippingOrdersInput {
+    export class StorageImportDataRowDto<T> {
         
          
             
-            shippingOrderIds: any[];
+            items: any;
+         
+            
+            totalRowCount: any;
+         
+            
+            errorRowCount: any;
+         
+            
+            exception: any;
         
         
     }
@@ -653,11 +677,11 @@
     /**
      *  No Remark 
      */
-    export class ExportContainersInput {
+    export class StorageExportShippingOrdersInput {
         
          
             
-            shipmentId: string;
+            shippingOrderIds?: any[];
         
         
     }
@@ -665,20 +689,11 @@
     /**
      *  No Remark 
      */
-    export class UploadResultDto {
+    export class StorageExportContainersInput {
         
          
-            /* 文件访问ID */ 
-            fileId: string;
-         
-            /* 文件下载根地址 */ 
-            url: string;
-         
-            /* 文件名 */ 
-            fileName: string;
-         
-            /* 文件扩展名 */ 
-            extensionName: string;
+            
+            shipmentId?: string;
         
         
     }
@@ -686,23 +701,44 @@
     /**
      *  No Remark 
      */
-    export class GetFileInfoDto {
+    export class StorageUploadResultDto {
         
          
             /* 文件访问ID */ 
-            fileId: string;
+            fileId?: string;
          
             /* 文件下载根地址 */ 
-            url: string;
+            url?: string;
          
             /* 文件名 */ 
-            fileName: string;
+            fileName?: string;
          
             /* 文件扩展名 */ 
-            extensionName: string;
+            extensionName?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class StorageGetFileInfoDto {
+        
+         
+            /* 文件访问ID */ 
+            fileId?: string;
+         
+            /* 文件下载根地址 */ 
+            url?: string;
+         
+            /* 文件名 */ 
+            fileName?: string;
+         
+            /* 文件扩展名 */ 
+            extensionName?: string;
          
             /* 创建时间 */ 
-            creationTime: string;
+            creationTime?: string;
         
         
     }
@@ -710,11 +746,11 @@
     /**
      *  No Remark 
      */
-    export class GetFileInfosInput {
+    export class StorageGetFileInfosInput {
         
          
             
-            ids: any[];
+            ids?: any[];
         
         
     }
@@ -722,26 +758,26 @@
     /**
      *  No Remark 
      */
-    export class ChunkUploadResultDto {
+    export class StorageChunkUploadResultDto {
         
          
             /* 是否合并成功 */ 
-            mergeOk: boolean;
+            mergeOk?: boolean;
          
             /* 第几片 */ 
-            chunkIndex: number;
+            chunkIndex?: number;
          
             /* 文件访问ID */ 
-            fileId: string;
+            fileId?: string;
          
             /* 文件下载根地址 */ 
-            url: string;
+            url?: string;
          
             /* 文件名 */ 
-            fileName: string;
+            fileName?: string;
          
             /* 文件扩展名 */ 
-            extensionName: string;
+            extensionName?: string;
         
         
     }
@@ -749,14 +785,14 @@
     /**
      *  No Remark 
      */
-    export class ICPUploadFileInput {
+    export class StorageICPUploadFileInput {
         
          
             
-            fileName: string;
+            fileName?: string;
          
             
-            fileContent: string;
+            fileContent?: string;
         
         
     }
@@ -764,11 +800,11 @@
     /**
      * 提供给ICP下载
      */
-    export class ICPBatchDownloadInput {
+    export class StorageICPBatchDownloadInput {
         
          
             /* 文件Ids */ 
-            fileIds: any[];
+            fileIds?: any[];
         
         
     }
@@ -776,20 +812,20 @@
     /**
      * 提供给ICP批量下载返回内容
      */
-    export class ICPBatchDownloadResult {
+    export class StorageICPBatchDownloadResult {
         
          
             /* 文件Id */ 
-            fileId: string;
+            fileId?: string;
          
             /* 文件名 */ 
-            fileName: string;
+            fileName?: string;
          
             /* 文件扩展名 */ 
-            extensionName: string;
+            extensionName?: string;
          
             /* 文件字节流 */ 
-            fileContent: string;
+            fileContent?: string;
         
         
     }
