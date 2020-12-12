@@ -938,7 +938,7 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
       return (result || isRenderDisabled) && showOnEdit;
     });
     let nestedBtns: STColumnButton[] = [];
-    if (isRoot) {
+    if (isRoot && filteredBtns?.length > 3) {
       nestedBtns = (() => {
         const [firstBtn, secondBtn, ...lastBtns] = filteredBtns;
         const retBtns: STColumnButton[] = []
