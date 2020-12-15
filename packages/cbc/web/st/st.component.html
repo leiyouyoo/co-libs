@@ -328,7 +328,9 @@
                     <i nz-icon nzType="down"></i>
                   </ng-container>
                   <ng-template #ellipsisIcon>
-                    <i nz-icon nzType="ellipsis"></i>
+                    <span style="position: relative;">
+                      <i nz-icon nzType="ellipsis" style="position: absolute;font-size: 20px;"></i>
+                    </span>
                   </ng-template>
                 </a>
                 <nz-dropdown-menu #btnMenu="nzDropdownMenu">
