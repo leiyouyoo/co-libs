@@ -260,6 +260,7 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
   @Input() @InputBoolean() buttonPropagation = false;
   @Input() @InputBoolean() cellContentPropagation = false;
   @Input() @InputBoolean() loadOnScroll = false;
+  @Input() @InputBoolean() uncheckMuteCheckbox = false;
   @Input() columnSettingName: string = 'st';
   @Input() activatedRowKey: string = 'id';
 
@@ -734,14 +735,29 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
 
   _checkAll(checked?: boolean): this {
     checked = typeof checked === 'undefined' ? this._allChecked : checked;
+    if (!checked) {
+      const checkList = this._data.filter(w => w.checked && !w.disabled);
+      this._uncheckNotify(checkList);
+    }
     this._data.filter(w => !w.disabled).forEach(i => (i.checked = checked));
-    return this._refCheck()._checkNotify();
+    this._refCheck();
+    if (!this.uncheckMuteCheckbox) {
+      this._checkNotify();
+    }
+    return this;
   }
 
   _checkSelection(i: STData, value: boolean, index: number) {
     i.checked = value;
     this.expandSTList.toArray()?.[index]?._checkAll(value);
-    return this._refCheck()._checkNotify();
+    if (!value) {
+      this._uncheckNotify([i]);
+    }
+    this._refCheck();
+    if (!this.uncheckMuteCheckbox) {
+      this._checkNotify();
+    }
+    return this;
   }
 
   _rowSelection(row: STColumnSelection): this {
@@ -752,6 +768,11 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
   _checkNotify(): this {
     const res = this._data.filter(w => !w.disabled && w.checked === true);
     this.changeEmit('checkbox', res);
+    return this;
+  }
+
+  _uncheckNotify(res: STData[]): this {
+    this.changeEmit('uncheck', res);
     return this;
   }
 

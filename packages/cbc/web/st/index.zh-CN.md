@@ -84,7 +84,8 @@ module: import { CoSTModule } from '@co/cbc';
 | `[buttonPropagation]` | 是否启用按钮click 冒泡 | `boolean` | `false` |
 | `[cellContentPropagation]` | 点击td 内容时是否冒泡 | `boolean` | `false` |
 | `[activatedRowKey]` | 点击高亮当前行，默认根据id 判断，设置成index 的话就是根据数组下标 | `string` | 'id' |
-| `(change)` | 变化时回调，包括：`pi`、`ps`、`checkbox`、`radio`、`sort`、`filter`、`click`、`dblClick`、`expand` 变动 | `EventEmitter<STChange>` | - |
+| `[uncheckMuteCheckbox]` | 取消勾选时不触发checkbox 事件 | `boolean` | `false` |
+| `(change)` | 变化时回调，包括：`pi`、`ps`、`checkbox`、`uncheck`、`radio`、`sort`、`filter`、`click`、`dblClick`、`expand` 变动 | `EventEmitter<STChange>` | - |
 | `(error)` | 异常时回调 | `EventEmitter<STError>` | - |
 
 ### 组件属性与方法
