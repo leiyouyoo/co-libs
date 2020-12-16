@@ -1,6 +1,6 @@
 {
   "name": "co-libs",
-  "version": "1.0.44",
+  "version": "1.0.45",
   "description": "co-libs 是一组用于前端开发的公共模块集合",
   "keywords": [
     "co-libs",
@@ -52,6 +52,7 @@
     "publish:next": "bash scripts/publish/publish.sh -next",
     "gen:platform": "ng g co-cli:swagger --name platform --url http://192.168.1.5:8000/swagger/Platform/swagger.json",
     "gen:pub": "ng g co-cli:swagger --name pub --url http://192.168.1.5:8000/swagger/PUB/swagger.json",
+    "gen:fam": "ng g co-cli:swagger --name fam --url http://192.168.1.5:8000/swagger/FAM/swagger.json",
     "analyze": "node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod --stats-json",
     "sonar": "sonar-scanner",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s --pkg package.json",

@@ -47,7 +47,8 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
 
   @Output() readonly coOnClose = new EventEmitter<PageSideDrawerComponent>();
 
-  @ViewChild(CdkPortalOutlet, { static: false }) bodyPortalOutlet?: CdkPortalOutlet;
+  @ViewChild(CdkPortalOutlet, { static: false }) bodyPortalOutlet!: CdkPortalOutlet;
+  @ViewChild('drawerBody', { static: false }) drawerBody!: ElementRef<HTMLElement>;
 
   get afterOpen(): Observable<void> {
     return this.coAfterOpen.asObservable();
@@ -99,11 +100,14 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
     this.coAfterClose.complete();
   }
 
-  destroy(): void {
+  destroy(clearHtml = false): void {
     this.close();
     this.dispose();
     this.portal = null;
     this.componentInstance = null;
+    if (clearHtml) {
+      this.drawerBody.nativeElement.innerHTML = '';
+    }
   }
 
   closeClick(): void {
@@ -117,7 +121,7 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
   private attachPortal(portalContent, templateContext?): void {
     this.dispose();
     if (portalContent instanceof TemplateRef) { // 模板
-      this.portal = new TemplatePortal(portalContent, this.viewContainerRef, templateContext);
+      this.portal = new TemplatePortal(portalContent, this.viewContainerRef, { $implicit: templateContext, drawerRef: this });
       this.bodyPortalOutlet!.attachTemplatePortal(this.portal as TemplatePortal);
     } else if (portalContent instanceof Type) { // 组件
       const childInjector = new PortalInjector(this.injector, new WeakMap([[PageSideDrawerComponent, this]]));
