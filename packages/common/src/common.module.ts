@@ -9,6 +9,7 @@ import { CoLocaleModule } from './locale/locale.module';
 
 import { CoDrawerHelper } from './services/drawer/drawer.helper';
 import { ModalHelper } from './services/modal/modal.helper';
+import { CoDomService } from './services/dom/dom.service';
 
 // pipes
 import { COMMON_DIRECTIVES } from './directives';
@@ -21,7 +22,6 @@ import { TitleService } from './services/title/title.service';
 
 import { NzI18nModule } from 'ng-zorro-antd/i18n';
 import { Environment, ENVIRONMENT } from './services/http/environment';
-import { CoDomService } from '@co/common/src/services/dom/dom.service.ts';
 
 @NgModule({
   imports: [CommonModule, RouterModule, OverlayModule, NzI18nModule, CoLocaleModule],

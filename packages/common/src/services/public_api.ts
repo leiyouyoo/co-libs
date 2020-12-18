@@ -21,3 +21,4 @@ export * from './auth/auth.service';
 export * from './logger/logger';
 export * from './session/session.service';
 export * from './google/google-map.service'
+export * from './dom/dom.service';
