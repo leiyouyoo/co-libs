@@ -9,9 +9,9 @@ export class CoDomService {
    * 根据dom对象获取组件实例，这个dom是组件下面的子元素，不是组件自身节点
    * 比如：<app-compA><div #div></div></app-compA>，可以通过div获取CompA组件实例
    * @param element dom对象
-   * @returns {any} 组件实例，注意判断是否为空
+   * @returns 组件实例，注意判断是否为空
    */
-  findAngularComponent(element: HTMLElement) {
+  findAngularComponent(element: any): any {
     let comp;
     let process = true;
     while (process) {
