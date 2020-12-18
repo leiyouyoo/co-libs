@@ -21,6 +21,7 @@ import { TitleService } from './services/title/title.service';
 
 import { NzI18nModule } from 'ng-zorro-antd/i18n';
 import { Environment, ENVIRONMENT } from './services/http/environment';
+import { CoDomService } from '@co/common/src/services/dom/dom.service.ts';
 
 @NgModule({
   imports: [CommonModule, RouterModule, OverlayModule, NzI18nModule, CoLocaleModule],
@@ -33,6 +34,7 @@ export class CoCommonModule {
       ngModule: CoCommonModule,
       providers: [
         CoDrawerHelper,
+        CoDomService,
         { provide: ENVIRONMENT, useValue: config.environment },
         { provide: CO_TITLE_TOKEN, useClass: TitleService, multi: false },
         { provide: CO_SESSIONSERVICE_TOKEN, useClass: CoSessionService, multi: false },
@@ -45,7 +47,7 @@ export class CoCommonModule {
   static forChild(): ModuleWithProviders {
     return {
       ngModule: CoCommonModule,
-      providers: [ModalHelper, CoDrawerHelper, { provide: CO_TITLE_TOKEN, useClass: TitleService, multi: false }],
+      providers: [ModalHelper, CoDrawerHelper, CoDomService, { provide: CO_TITLE_TOKEN, useClass: TitleService, multi: false }],
     };
   }
 }
