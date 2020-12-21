@@ -14,9 +14,9 @@
     <ng-template cdkPortalOutlet></ng-template>
     <ng-content *ngIf="!coContent"></ng-content>
   </div>
-  <div *ngIf="coFooter" class="co-page-side-drawer-footer">
-    <ng-container *nzStringTemplateOutlet="coFooter">
-      <div [innerHTML]="coFooter"></div>
+  <div *ngIf="footer" class="co-page-side-drawer-footer">
+    <ng-container *nzStringTemplateOutlet="footer">
+      <div [innerHTML]="footer"></div>
     </ng-container>
   </div>
 </div>

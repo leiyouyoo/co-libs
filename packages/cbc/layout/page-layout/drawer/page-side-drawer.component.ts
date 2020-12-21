@@ -3,12 +3,14 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  ContentChild,
+  Directive,
   ElementRef,
   EventEmitter,
   forwardRef,
   Injector,
   Input,
-  OnDestroy,
+  OnDestroy, Optional,
   Output,
   TemplateRef,
   Type,
@@ -21,6 +23,7 @@ import { CdkPortalOutlet, ComponentPortal, Portal, PortalInjector, TemplatePorta
 import { DomSanitizer } from '@angular/platform-browser';
 import { InputBoolean } from 'ng-zorro-antd';
 import { PageSideComponent } from '../page-side.component';
+
 
 @Component({
   selector: 'co-page-side-drawer',
@@ -49,6 +52,12 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
 
   @ViewChild(CdkPortalOutlet, { static: false }) bodyPortalOutlet!: CdkPortalOutlet;
   @ViewChild('drawerBody', { static: false }) drawerBody!: ElementRef<HTMLElement>;
+
+  coFooterDiTpl: TemplateRef<{}>;
+
+  get footer(): string | TemplateRef<{}> {
+    return this.coFooterDiTpl ?? this.coFooter;
+  }
 
   get afterOpen(): Observable<void> {
     return this.coAfterOpen.asObservable();
@@ -139,4 +148,17 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
   }
 
 
+}
+
+
+@Directive({
+  selector: '[coFooter]',
+  exportAs: 'coFooter',
+})
+export class CoFooterDirective {
+  constructor(@Optional() private drawer: PageSideDrawerComponent, public templateRef: TemplateRef<{}>) {
+    if (this.drawer) {
+      this.drawer.coFooterDiTpl = this.templateRef;
+    }
+  }
 }

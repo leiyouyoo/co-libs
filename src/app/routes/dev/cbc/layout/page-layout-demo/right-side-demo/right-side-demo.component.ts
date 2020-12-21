@@ -18,11 +18,11 @@ export class RightSideDemoComponent implements OnInit {
   }
 
   open(id?) {
-    // if (id) {
-    //   this.sideDrawer?.open(PageLayoutDemoComponent, { id });
-    // } else {
+    if (id) {
+      this.sideDrawer?.open(PageLayoutDemoComponent, { id });
+    } else {
       this.sideDrawer?.open();
-    // }
+    }
   }
 
   close() {

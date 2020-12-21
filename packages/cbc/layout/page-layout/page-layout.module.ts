@@ -6,7 +6,7 @@ import { PageLayoutComponent } from './page-layout.component';
 import { PageMainComponent } from './page-main.component';
 import { PageSideComponent } from './page-side.component';
 import { PageSideResizeHandleComponent } from './page-side-resize-handle.component';
-import { PageSideDrawerComponent } from './drawer/page-side-drawer.component';
+import { CoFooterDirective, PageSideDrawerComponent } from './drawer/page-side-drawer.component';
 
 
 const COMPONENTS = [
@@ -18,14 +18,14 @@ const COMPONENTS = [
 ];
 
 @NgModule({
-  declarations: [...COMPONENTS],
+  declarations: [...COMPONENTS, CoFooterDirective],
   imports: [
     CommonModule,
     NzIconModule,
     NzOutletModule,
     PortalModule,
   ],
-  exports: [...COMPONENTS],
+  exports: [...COMPONENTS, CoFooterDirective],
 })
 export class PageLayoutModule {
 }
