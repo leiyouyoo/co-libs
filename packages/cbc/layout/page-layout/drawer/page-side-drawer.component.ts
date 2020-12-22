@@ -3,7 +3,6 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  ContentChild,
   Directive,
   ElementRef,
   EventEmitter,
@@ -152,8 +151,8 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
 
 
 @Directive({
-  selector: '[coFooter]',
-  exportAs: 'coFooter',
+  selector: '[coDrawerFooter]',
+  exportAs: 'coDrawerFooter',
 })
 export class CoFooterDirective {
   constructor(@Optional() private drawer: PageSideDrawerComponent, public templateRef: TemplateRef<{}>) {
