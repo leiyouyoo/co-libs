@@ -154,7 +154,7 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
   selector: '[coDrawerFooter]',
   exportAs: 'coDrawerFooter',
 })
-export class CoFooterDirective {
+export class CoDrawerFooterDirective {
   constructor(@Optional() private drawer: PageSideDrawerComponent, public templateRef: TemplateRef<{}>) {
     if (this.drawer) {
       this.drawer.coFooterDiTpl = this.templateRef;
