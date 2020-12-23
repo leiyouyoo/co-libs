@@ -10,6 +10,7 @@ export * from './currency.service';
 export * from './data-dictionary.service';
 export * from './delivery-channel-service.service';
 export * from './dictionary-type.service';
+export * from './exchange-rate.service';
 export * from './fba-freight-method.service';
 export * from './flight.service';
 export * from './glcode.service';

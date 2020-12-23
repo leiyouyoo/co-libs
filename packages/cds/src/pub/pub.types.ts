@@ -1382,6 +1382,60 @@ Can contain more than one field separated by comma (,). */
     }
  
     /**
+     * 汇率模型
+     */
+    export class PUBExchangeRateDto {
+        
+         
+            /* 类型
+0 = Default
+1 = Invoice
+2 = ARAP */ 
+            type: number;
+         
+            /* 源币种 */ 
+            sourceCurrency: string;
+         
+            /* 目标币种 */ 
+            targetCurrency: string;
+         
+            /* 有效期-从 */ 
+            fromDate: string;
+         
+            /* 有效期-到 */ 
+            toDate: string;
+         
+            /* 汇率 */ 
+            rate: number;
+         
+            /* 是否有效 */ 
+            isValid: boolean;
+         
+            /* 创建人 */ 
+            creatorUserName?: string;
+         
+            /* 创建时间 */ 
+            creationTime?: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBEntityDto<T> {
+        
+         
+            
+            id?: any;
+        
+        
+    }
+ 
+    /**
      * 运输方式DTO
      */
     export class PUBFbaFreightMethodDto {
@@ -1542,6 +1596,9 @@ Can contain more than one field separated by comma (,). */
     export class PUBGLCodeDto {
         
          
+            /* 名称本地化 */ 
+            nameLocalization?: string;
+         
             /* 创建人 */ 
             creatorUserName?: string;
          
@@ -1550,18 +1607,6 @@ Can contain more than one field separated by comma (,). */
          
             
             id?: string;
-        
-        
-    }
- 
-    /**
-     *  No Remark 
-     */
-    export class PUBEntityDto<T> {
-        
-         
-            
-            id?: any;
         
         
     }

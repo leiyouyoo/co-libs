@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBPlaceDto,PUBPagedResultDto,PUBGetPlaceListByRegionsInput,PUBPlaceOrCountyDto,PUBPlaceCheckDto,PUBChangePlaceStateInput,PUBListResultDto,PUBGetPlaceMapInput,PUBPlaceView,PUBFromToDto,PUBGetByPortIdsOutput,PUBGetPortByCityInput,PUBGetPortByCityDto,PUBGetAllPlaceForUiPickerInput,PUBPlaceUiPickerDto, } from './pub.types';
+import { PUBPlaceDto,PUBPagedResultDto,PUBGetPlaceListByRegionsInput,PUBPlaceOrCountyDto,PUBPlaceCheckDto,PUBEntityDto,PUBChangePlaceStateInput,PUBListResultDto,PUBGetPlaceMapInput,PUBPlaceView,PUBFromToDto,PUBGetByPortIdsOutput,PUBGetPortByCityInput,PUBGetPortByCityDto,PUBGetAllPlaceForUiPickerInput,PUBPlaceUiPickerDto, } from './pub.types';
 
 @BaseUrl('/pub/Place')
 @Injectable({ providedIn: 'root' })
@@ -34,7 +34,7 @@ export class PUBPlaceService extends BaseApi {
     @GET('getAll')
     getAll(
         @Payload
-        _req: {id?:string,name?:string,regionId?:string,isOcean?:boolean,isAir?:boolean,isAirOrOcean?:boolean,isRail?:boolean,isOther?:boolean,isCity?:boolean,isRamp?:boolean,isValid?:boolean,isMultiple?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
+        _req: {id?:string,searchText?:string,name?:string,regionId?:string,isOcean?:boolean,isAir?:boolean,isAirOrOcean?:boolean,isRail?:boolean,isOther?:boolean,isCity?:boolean,isRamp?:boolean,isValid?:boolean,isMultiple?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
     ): Observable<PUBPagedResultDto<PUBPlaceDto>> {
         return null as any
@@ -112,6 +112,21 @@ export class PUBPlaceService extends BaseApi {
         _req:PUBPlaceDto
 
     ): Observable<PUBPlaceDto> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/Place/SetValid
+     * 设置是否有效
+     */
+
+    @POST('setValid')
+    setValid(
+        @Payload
+        _req:PUBEntityDto<any>
+
+    ): Observable<any> {
         return null as any
     }
 
