@@ -9,7 +9,9 @@ import {
   forwardRef,
   Injector,
   Input,
-  OnDestroy, Optional,
+  OnDestroy,
+  OnInit,
+  Optional,
   Output,
   TemplateRef,
   Type,
@@ -159,12 +161,22 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
   selector: '[coDrawerFooter]',
   exportAs: 'coDrawerFooter',
 })
-export class CoDrawerFooterDirective {
+export class CoDrawerFooterDirective implements OnInit, OnDestroy {
   constructor(@Optional() private drawer: PageSideDrawerComponent, public templateRef: TemplateRef<{}>) {
+  }
+
+  ngOnInit(): void {
     if (this.drawer) {
       this.drawer.coFooterDiTpl = this.templateRef;
     }
   }
+
+  ngOnDestroy(): void {
+    if (this.drawer) {
+      this.drawer.coFooterDiTpl = null as any;
+    }
+  }
+
 }
 
 
@@ -172,10 +184,19 @@ export class CoDrawerFooterDirective {
   selector: '[coDrawerTitle]',
   exportAs: 'coDrawerTitle',
 })
-export class CoDrawerTitleDirective {
+export class CoDrawerTitleDirective implements OnInit, OnDestroy {
   constructor(@Optional() private drawer: PageSideDrawerComponent, public templateRef: TemplateRef<{}>) {
+  }
+
+  ngOnInit(): void {
     if (this.drawer) {
       this.drawer.coTitleDiTpl = this.templateRef;
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.drawer) {
+      this.drawer.coTitleDiTpl = null as any;
     }
   }
 }
