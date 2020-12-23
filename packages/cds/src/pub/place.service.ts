@@ -117,6 +117,21 @@ export class PUBPlaceService extends BaseApi {
 
 
     /**
+     * @param url /PUB/Place/ICPCreateOrUpdate
+     * 创建或更新地点
+     */
+
+    @POST('iCPCreateOrUpdate')
+    iCPCreateOrUpdate(
+        @Payload
+        _req:PUBPlaceDto
+
+    ): Observable<PUBPlaceDto> {
+        return null as any
+    }
+
+
+    /**
      * @param url /PUB/Place/Create
      * 创建地点
      */

@@ -1537,25 +1537,131 @@ Can contain more than one field separated by comma (,). */
     }
  
     /**
+     * 会计科目模型
+     */
+    export class PUBGLCodeDto {
+        
+         
+            /* 创建人 */ 
+            creatorUserName?: string;
+         
+            /* 创建时间 */ 
+            creationTime?: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBEntityDto<T> {
+        
+         
+            
+            id?: any;
+        
+        
+    }
+ 
+    /**
+     * 会计科目分组模型
+     */
+    export class PUBGLGroupDto {
+        
+         
+            /* 地区名称-英文 */ 
+            name: string;
+         
+            /* 类型 */ 
+            type?: number;
+         
+            /* 地区代码 */ 
+            code?: string;
+         
+            /* 地区名称-本地化 */ 
+            nameLocalization?: string;
+         
+            /* 是否有效 */ 
+            isValid?: boolean;
+         
+            /* 上级Id */ 
+            parentId?: string;
+         
+            /* Max length = 200
+备注 */ 
+            remark?: string;
+         
+            /* 子集 */ 
+            children?: any[];
+         
+            /* 创建人 */ 
+            creatorUserName?: string;
+         
+            /* 创建时间 */ 
+            creationTime?: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
      * 地点-传输对象模型
      */
     export class PUBPlaceDto {
         
          
-            /* 地点代码 */ 
+            /* 地点代码-维护 */ 
             code: string;
          
-            /* 地点名称 */ 
+            /* 地点名称-维护 */ 
             name: string;
          
-            /* 地区Id */ 
+            /* 地区Id-维护 */ 
             regionId: string;
+         
+            /* 地点名称-本地化-维护 */ 
+            nameLocalization?: string;
+         
+            /* 是否海运-维护 */ 
+            isOcean?: boolean;
+         
+            /* 是否空运-维护 */ 
+            isAir?: boolean;
+         
+            /* 是否铁路-维护 */ 
+            isRail?: boolean;
+         
+            /* 其它-维护 */ 
+            isOther?: boolean;
+         
+            /* 是否城市-维护 */ 
+            isCity?: boolean;
+         
+            /* 经度-维护 */ 
+            longitude?: string;
+         
+            /* 纬度-维护 */ 
+            latitude?: string;
+         
+            /* 备注-维护 */ 
+            remark?: string;
+         
+            /* 城市Id-维护 */ 
+            cityId?: string;
+         
+            /* 是否有效-维护 */ 
+            isValid?: boolean;
          
             /* 国家ID */ 
             countryId?: string;
          
-            /* 地点名称-本地化 */ 
-            nameLocalization?: string;
+            /* 地区名称-列表显示 */ 
+            regionName?: string;
          
             /* 全称 */ 
             fullName?: string;
@@ -1563,29 +1669,17 @@ Can contain more than one field separated by comma (,). */
             /* 全称-本地化 */ 
             fullNameLocalization?: string;
          
-            /* 地区名称-列表显示 */ 
-            regionName?: string;
-         
-            /* 是否海运 */ 
-            isOcean?: boolean;
-         
-            /* 是否空运 */ 
-            isAir?: boolean;
-         
-            /* 其它 */ 
-            isOther?: boolean;
+            /* 创建时间 */ 
+            creationTime?: string;
          
             /* 创建人 */ 
             creatorUserName?: string;
          
-            /* 是否有效 */ 
-            isValid?: boolean;
-         
-            /* 创建时间 */ 
-            creationTime?: string;
-         
             /* 中文名称 */ 
             chineseName?: string;
+         
+            /* ICP用户 */ 
+            icpUserId?: string;
          
             
             id?: string;
@@ -1683,6 +1777,9 @@ Can contain more than one field separated by comma (,). */
             /* 名称 */ 
             name: string;
          
+            /* 本地语言 */ 
+            localName?: string;
+         
             
             id?: string;
         
@@ -1700,6 +1797,9 @@ Can contain more than one field separated by comma (,). */
          
             
             isValid: boolean;
+         
+            
+            icpUserId?: string;
         
         
     }
@@ -2621,6 +2721,76 @@ Can contain more than one field separated by comma (,). */
          
             /* 父Id */ 
             parentId?: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     * 解决方案模型
+     */
+    export class PUBSolutionDto {
+        
+         
+            /* 类型
+0 = Bussiness
+1 = Finance */ 
+            type: number;
+         
+            /* 名称 */ 
+            name: string;
+         
+            /* 账单日期类型（0建立时间、1业务时间）
+0 = CreateTime
+1 = BussinessTime */ 
+            invoiceDateType: number;
+         
+            /* 是否财务共享 */ 
+            isAccountingShare: boolean;
+         
+            /* Required
+是否有效 */ 
+            isValid: boolean;
+         
+            /* 本地化名称 */ 
+            nameLocalization?: string;
+         
+            /* 备注 */ 
+            remark?: string;
+         
+            /* 创建人 */ 
+            creatorUserName?: string;
+         
+            /* 创建时间 */ 
+            creationTime?: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBSolutionCurrencyDto {
+        
+         
+            /* Required
+解决方案Id */ 
+            solutionId: string;
+         
+            /* Required, Max length = 10
+币种 */ 
+            currency: string;
+         
+            /* 创建人 */ 
+            creatorUserName?: string;
+         
+            /* 创建时间 */ 
+            creationTime?: string;
          
             
             id?: string;

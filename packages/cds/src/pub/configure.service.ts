@@ -117,11 +117,26 @@ export class PUBConfigureService extends BaseApi {
 
 
     /**
+     * @param url /PUB/Configure/GetConfigure
+     * 
+     */
+
+    @GET('getConfigure')
+    getConfigure(
+        @Payload
+        _req: {companyId?:string} 
+
+    ): Observable<PUBConfigureModel> {
+        return null as any
+    }
+
+
+    /**
      * @param url /PUB/Configure/GetConfigureModelAsync
      * 获取公司配置信息
      */
 
-    @GET('getConfigureModelAsync')
+    @POST('getConfigureModelAsync')
     getConfigureModelAsync(
         @Payload
         _req: {companyId?:string} 
@@ -363,6 +378,36 @@ export class PUBConfigureService extends BaseApi {
 
     @POST('getBankAccountList')
     getBankAccountList(
+        @Payload
+        _req: {} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/Configure/GetConfigureListAsync
+     * 获取公司配置列表
+     */
+
+    @POST('getConfigureListAsync')
+    getConfigureListAsync(
+        @Payload
+        _req: {} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/Configure/GetSolutionGLConfigListByCompanyIdsAsync
+     * 
+     */
+
+    @POST('getSolutionGLConfigListByCompanyIdsAsync')
+    getSolutionGLConfigListByCompanyIdsAsync(
         @Payload
         _req: {} 
 
