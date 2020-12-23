@@ -88,7 +88,7 @@ export class TreePickerComponent extends LifeCycleComponent implements ControlVa
   @Input() btnText: { checkAll: string, checkNothing: string, inverse: string }
     = { checkAll: 'Check All', checkNothing: 'Check Nothing', inverse: 'Inverse' };
 
-  value: string[] = [];
+  value: string[] | string;
   private flattenNodes: Array<NzTreeNodeOptions> = [];
   // private tips: string; TODO 鼠标提示文字
 
@@ -229,15 +229,7 @@ export class TreePickerComponent extends LifeCycleComponent implements ControlVa
   }
 
   writeValue(value: string[] | string): void {
-    if (isNotNil(value)) {
-      if (this.isMultiple && Array.isArray(value)) {
-        this.value = value;
-      } else {
-        this.value = [value as string];
-      }
-    } else {
-      this.value = [];
-    }
+    this.value = value;
     this.cdr.markForCheck();
   }
 

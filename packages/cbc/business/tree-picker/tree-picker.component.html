@@ -36,7 +36,7 @@
   [(ngModel)]="value"
   (ngModelChange)="onChange($event)"
 >
-  <div #btns style="display: flex;align-items: center;padding: 0 10px 5px">
+  <div #btns *ngIf="coShowToolBtns" style="display: flex;align-items: center;padding: 0 10px 5px">
     <button nzSize="small" nz-button nzType="primary" (click)="checkAll()">{{btnText.checkAll}}</button>
     <button nzSize="small" nz-button nzType="default" (click)="checkNothing()">{{btnText.checkNothing}}</button>
     <button nzSize="small" nz-button nzType="default" (click)="checkInverted()">{{btnText.inverse}}</button>
