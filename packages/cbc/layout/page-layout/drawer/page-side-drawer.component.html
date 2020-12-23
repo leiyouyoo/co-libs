@@ -3,10 +3,10 @@
   <button *ngIf="coClosable" (click)="closeClick()" aria-label="Close" class="co-page-side-drawer-close" style="--scroll-bar: 0px;">
     <i nz-icon nzType="close"></i>
   </button>
-  <div class="co-page-side-drawer-header" *ngIf="coTitle">
+  <div class="co-page-side-drawer-header" *ngIf="title">
     <div class="co-page-side-drawer-title">
-      <ng-container *nzStringTemplateOutlet="coTitle">
-        <div [innerHTML]="coTitle"></div>
+      <ng-container *nzStringTemplateOutlet="title">
+        <div [innerHTML]="title"></div>
       </ng-container>
     </div>
   </div>
@@ -14,7 +14,7 @@
     <ng-template cdkPortalOutlet></ng-template>
     <ng-content *ngIf="!coContent"></ng-content>
   </div>
-  <div *ngIf="footer" class="co-page-side-drawer-footer">
+  <div class="co-page-side-drawer-footer" *ngIf="footer">
     <ng-container *nzStringTemplateOutlet="footer">
       <div [innerHTML]="footer"></div>
     </ng-container>

@@ -53,9 +53,14 @@ export class PageSideDrawerComponent<T = any, R = any, D = any> extends PageSide
   @ViewChild('drawerBody', { static: false }) drawerBody!: ElementRef<HTMLElement>;
 
   coFooterDiTpl: TemplateRef<{}>;
+  coTitleDiTpl: TemplateRef<{}>;
 
   get footer(): string | TemplateRef<{}> {
     return this.coFooterDiTpl ?? this.coFooter;
+  }
+
+  get title(): string | TemplateRef<{}> {
+    return this.coTitleDiTpl ?? this.coTitle;
   }
 
   get afterOpen(): Observable<void> {
@@ -158,6 +163,19 @@ export class CoDrawerFooterDirective {
   constructor(@Optional() private drawer: PageSideDrawerComponent, public templateRef: TemplateRef<{}>) {
     if (this.drawer) {
       this.drawer.coFooterDiTpl = this.templateRef;
+    }
+  }
+}
+
+
+@Directive({
+  selector: '[coDrawerTitle]',
+  exportAs: 'coDrawerTitle',
+})
+export class CoDrawerTitleDirective {
+  constructor(@Optional() private drawer: PageSideDrawerComponent, public templateRef: TemplateRef<{}>) {
+    if (this.drawer) {
+      this.drawer.coTitleDiTpl = this.templateRef;
     }
   }
 }
