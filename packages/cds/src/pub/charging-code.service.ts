@@ -88,7 +88,7 @@ export class PUBChargingCodeService extends BaseApi {
 
     /**
      * @param url /PUB/ChargingCode/Check
-     * 数据检查
+     * 
      */
 
     @POST('check')
