@@ -13,7 +13,7 @@ export class PUBSolutionService extends BaseApi {
   
     /**
      * @param url /PUB/Solution/Get
-     * 获取解决方案明细
+     * 
      */
 
     @GET('get')
@@ -28,7 +28,7 @@ export class PUBSolutionService extends BaseApi {
 
     /**
      * @param url /PUB/Solution/GetAll
-     * 获取解决方案列表
+     * 
      */
 
     @GET('getAll')
@@ -43,7 +43,7 @@ export class PUBSolutionService extends BaseApi {
 
     /**
      * @param url /PUB/Solution/CreateOrUpdate
-     * 保存解决方案
+     * 
      */
 
     @POST('createOrUpdate')
@@ -58,7 +58,7 @@ export class PUBSolutionService extends BaseApi {
 
     /**
      * @param url /PUB/Solution/SetValid
-     * 设置是否有效
+     * 
      */
 
     @POST('setValid')
@@ -73,7 +73,7 @@ export class PUBSolutionService extends BaseApi {
 
     /**
      * @param url /PUB/Solution/Delete
-     * 删除解决方案
+     * 
      */
 
     @DELETE('delete')

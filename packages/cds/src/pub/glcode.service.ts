@@ -34,7 +34,7 @@ export class PUBGLCodeService extends BaseApi {
     @GET('getAll')
     getAll(
         @Payload
-        _req: {groupId?:string,searchText?:string,parentId?:string,isRecursion?:boolean} 
+        _req: {solutionId:string,groupId?:string,searchText?:string,parentId?:string,isRecursion?:boolean} 
 
     ): Observable<PUBListResultDto<PUBGLCodeDto>> {
         return null as any

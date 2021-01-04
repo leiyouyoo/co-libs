@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBExchangeRateDto,PUBListResultDto,PUBEntityDto, } from './pub.types';
+import { PUBExchangeRateDto,PUBPagedResultDto,PUBEntityDto, } from './pub.types';
 
 @BaseUrl('/pub/ExchangeRate')
 @Injectable({ providedIn: 'root' })
@@ -13,7 +13,7 @@ export class PUBExchangeRateService extends BaseApi {
   
     /**
      * @param url /PUB/ExchangeRate/Get
-     * 获取汇率明细
+     * 
      */
 
     @GET('get')
@@ -28,22 +28,22 @@ export class PUBExchangeRateService extends BaseApi {
 
     /**
      * @param url /PUB/ExchangeRate/GetAll
-     * 获取汇率列表
+     * 
      */
 
     @GET('getAll')
     getAll(
         @Payload
-        _req: {type?:number,sourceCurrency?:string,targetCurrency?:string,fromDate?:string,toDate?:string,isValid?:boolean} 
+        _req: {type?:number,sourceCurrency?:string,targetCurrency?:string,fromDate?:string,toDate?:string,isValid?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PUBListResultDto<PUBExchangeRateDto>> {
+    ): Observable<PUBPagedResultDto<PUBExchangeRateDto>> {
         return null as any
     }
 
 
     /**
      * @param url /PUB/ExchangeRate/CreateOrUpdate
-     * 保存汇率
+     * 
      */
 
     @POST('createOrUpdate')
@@ -58,7 +58,7 @@ export class PUBExchangeRateService extends BaseApi {
 
     /**
      * @param url /PUB/ExchangeRate/SetValid
-     * 设置是否有效
+     * 
      */
 
     @POST('setValid')
@@ -73,7 +73,7 @@ export class PUBExchangeRateService extends BaseApi {
 
     /**
      * @param url /PUB/ExchangeRate/Delete
-     * 删除汇率
+     * 
      */
 
     @DELETE('delete')

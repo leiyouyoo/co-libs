@@ -1632,11 +1632,8 @@
             /* 流程费用报销 */ 
             isFee?: boolean;
          
-            /* 核销对象类型
-0 = Department
-1 = Personal
-2 = Customer */ 
-            checkObjectType?: number;
+            /* 核销对象类型 */ 
+            checkObjectTypes?: any[];
          
             /* 银行帐 */ 
             isBankAccount?: boolean;
@@ -1655,6 +1652,12 @@
          
             /* 日记帐 */ 
             isJournal?: boolean;
+         
+            /* 层级 */ 
+            level?: number;
+         
+            /* 是否有效 */ 
+            isValid?: boolean;
          
             /* 创建人 */ 
             creatorUserName?: string;
@@ -1704,11 +1707,11 @@
             /* 地区名称-本地化 */ 
             nameLocalization?: string;
          
-            /* 是否有效 */ 
-            isValid?: boolean;
-         
             /* 上级Id */ 
             parentId?: string;
+         
+            /* 层级 */ 
+            level?: number;
          
             /* Max length = 200
 备注 */ 
@@ -2196,6 +2199,9 @@
          
             /* 上级Id */ 
             parentId?: string;
+         
+            /* 层级 */ 
+            level?: number;
          
             /* 子集 */ 
             children?: any[];
