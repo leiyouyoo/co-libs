@@ -36,7 +36,7 @@
         
          
             
-            items: T[];
+            items: any;
         
         
     }
@@ -123,10 +123,10 @@
         
          
             
-            totalCount: number;
+            totalCount: any;
          
             
-            items: T[];
+            items: any;
         
         
     }
@@ -1418,7 +1418,7 @@
         
          
             
-            id?: string;
+            id?: any;
         
         
     }
