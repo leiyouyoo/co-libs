@@ -7,7 +7,7 @@ type: Documents
 ## 写在前面
 
 ```bash
- ng g co-cli:swagger --name fcm --url http://192.168.1.5:8002/swagger/FCM/swagger.json --path xxx --entity Settings
+ ng g co-cli:swagger --name CSP --url http://api.dev.com/swagger/CSP/swagger.json
 ```
 
 ## 命令格式

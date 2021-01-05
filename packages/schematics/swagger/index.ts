@@ -2,7 +2,8 @@ import { strings } from '@angular-devkit/core';
 
 import { apply, chain, MergeStrategy, mergeWith, move, Rule, SchematicContext, template, Tree, url } from '@angular-devkit/schematics';
 import axios from 'axios';
-import { forEach, groupBy } from 'lodash';
+import { groupBy } from 'lodash';
+import { cloneDeep } from 'lodash';
 
 // You don't have to export the function as default. You can also have more than one rule factory
 // per file.
@@ -198,8 +199,6 @@ function setSwaggerRequest(reqList: any) {
         parmDetail.type = 'File';
       } else if (parmDetail?.type === 'boolean') {
         parmDetail.type = 'boolean';
-      } else {
-        parmDetail.type = 'string';
       }
 
       // 绑定实体
@@ -208,6 +207,14 @@ function setSwaggerRequest(reqList: any) {
         const name = setEntityName(parmDetail.schema.$ref, true, true);
         entity.reqEntity = name;
         bindEntity(parmDetail?.schema?.$ref);
+        parmDetail.type = fileName + name;
+      }
+
+      if (parmDetail?.$ref) {
+        // 找寻该实体,并加入处理
+        const name = setEntityName(parmDetail.$ref, true, true);
+        entity.reqEntity = name;
+        bindEntity(parmDetail?.$ref);
         parmDetail.type = fileName + name;
       }
 
@@ -245,14 +252,15 @@ function saveEntity(definitions) {
     let isT = false;
     if (entityName.includes('`')) {
       isT = true;
-      entityName = definition.split('`')[0] + '<T>';
+      let inx = entityName.substring(entityName.indexOf('`') + 1, entityName.indexOf('`') + 2);
+      entityName = definition.split('`')[0] + inx + '<T>';
     }
     typeEntity.name = entityName.includes('+')
       ? entityName.substring(entityName.lastIndexOf('+') + 1)
       : entityName.substring(entityName.lastIndexOf('.') + 1);
 
     // 找到该实体
-    let properties = definitions[definition].properties;
+    let properties = cloneDeep(definitions[definition].properties);
     for (const proper in properties) {
       // 先处理类型
       let properItem: any = properties[proper];
@@ -261,10 +269,16 @@ function saveEntity(definitions) {
       } else if (properItem?.type === 'array') {
         if (properItem.items?.$ref) {
           // 设置方法内部实体名称
-          const name = getEntityName(properItem.items.$ref);
-          bindEntity(properItem.items.$ref, true, isT);
+          const name = setEntityName(properItem.items.$ref);
+          let childIsT = false;
+          if (properItem.items.$ref.includes('`')) {
+            childIsT = true;
+          }
+          bindEntity(properItem.items.$ref, true, childIsT);
           if (isT) {
             properItem.type = 'T[]';
+          } else if (childIsT) {
+            properItem.type = fileName + name + '<any>[]';
           } else {
             properItem.type = fileName + name + '[]';
           }
@@ -275,8 +289,19 @@ function saveEntity(definitions) {
         properItem.type = 'File';
       } else if (properItem?.type === 'boolean') {
         properItem.type = 'boolean';
-      } else {
-        properItem.type = 'string';
+      }
+
+      // 绑定实体
+      else if (properItem?.schema?.$ref) {
+        // 找寻该实体,并加入处理
+        const name = setEntityName(properItem.schema.$ref, true, true);
+        bindEntity(properItem?.schema?.$ref);
+        properItem.type = fileName + name;
+      } else if (properItem?.$ref) {
+        // 找寻该实体,并加入处理
+        const name = setEntityName(properItem.$ref, true, true);
+        bindEntity(properItem?.$ref);
+        properItem.type = fileName + name;
       }
     }
 
@@ -291,10 +316,13 @@ function saveEntity(definitions) {
 
 function setEntityName(ref, res = false, showAny = false) {
   let firstName: string, thenName: string;
+
   if (ref.includes('`')) {
+    let inx = ref.substring(ref.indexOf('`') + 1, ref.indexOf('`') + 2);
     firstName = ref.split('`')[0];
     thenName = ref.split('`')[1];
     firstName = firstName.substring(firstName.lastIndexOf('.') + 1);
+    firstName = firstName + inx;
     thenName = thenName.substring(0, thenName.indexOf(','));
     thenName = thenName.substring(thenName.lastIndexOf('.') + 1);
 
@@ -327,12 +355,8 @@ function setEntityName(ref, res = false, showAny = false) {
   }
 }
 
-function getEntityName(ref) {
-  return ref.includes('+') ? ref.substring(ref.lastIndexOf('+') + 1) : ref.substring(ref.lastIndexOf('.') + 1);
-}
-
 function bindEntity(ref, addFileTypes = false, isT = false) {
-  let entityName = getEntityName(ref);
+  let entityName = setEntityName(ref);
 
   const entity =
     (serviceResData.definitions && serviceResData.definitions[ref?.replace('#/definitions/', '')]) || serviceResData?.components.schemas;
@@ -392,15 +416,21 @@ function bindEntity(ref, addFileTypes = false, isT = false) {
   }
 
   // 用于生成实体文件
+  if (isT) {
+    entity.name += '<T>';
+  }
+
   if (!exportAllTypeEntity.some(e => e.name === entityName) && addFileTypes) {
     exportAllTypeEntity.push(entity);
   }
 
   let firstName: string, thenName: string;
   if (ref.includes('`')) {
+    let inx = ref.substring(ref.indexOf('`') + 1, ref.indexOf('`') + 2);
     firstName = ref.split('`')[0];
     thenName = ref.split('`')[1];
     firstName = firstName.substring(firstName.lastIndexOf('.') + 1);
+    firstName = firstName + inx;
     thenName = thenName.substring(0, thenName.indexOf(','));
     thenName = thenName.substring(thenName.lastIndexOf('.') + 1);
 
@@ -409,7 +439,9 @@ function bindEntity(ref, addFileTypes = false, isT = false) {
     }
 
     if (!itemExportEntityName.some(e => e === thenName)) {
-      itemExportEntityName.push(thenName);
+      if (exportAllTypeEntity.some(z => z.name === 'thenName')) {
+        itemExportEntityName.push(thenName);
+      }
     }
   } else {
     firstName = ref.includes('+') ? ref.substring(ref.lastIndexOf('+') + 1) : ref.substring(ref.lastIndexOf('.') + 1);
