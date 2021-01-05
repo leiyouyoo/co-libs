@@ -36,7 +36,7 @@
         
          
             
-            items: any;
+            items: T[];
         
         
     }
@@ -123,10 +123,10 @@
         
          
             
-            totalCount: any;
+            totalCount: number;
          
             
-            items: any;
+            items: T[];
         
         
     }
@@ -1418,7 +1418,7 @@
         
          
             
-            id?: any;
+            id?: string;
         
         
     }
@@ -1603,12 +1603,14 @@
             /* 备注 */ 
             remark?: string;
          
-            /* 科目类型(1:资产;2:负债;3:权益;4:成本;5:损益 )
+            /* 科目类型(1:资产;2:负债;3:权益;4:成本;5:损益;6:费用;7:收入 )
 1 = Assets
 2 = Debt
 3 = Rights
 4 = Costs
-5 = ProfitAndLoss */ 
+5 = ProfitAndLoss
+6 = Cost
+7 = Income */ 
             glCodeType?: number;
          
             /* 帐页格式(1:金额式;2:外币金额式;3:数量金额式;4:数量式外币)
@@ -1682,6 +1684,21 @@
          
             /* 分组Id */ 
             groupId: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     * 设置公司输入参数
+     */
+    export class PUBGLCodeSetCompanyInput {
+        
+         
+            /* 分组Id */ 
+            companyId: string;
          
             
             id?: string;
