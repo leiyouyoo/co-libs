@@ -1631,11 +1631,20 @@
             /* 外币币种 */ 
             foreignCurrency?: string;
          
+            /* 是否部门核算 */ 
+            isDepartmentCheck?: boolean;
+         
+            /* 是否个人核算 */ 
+            isPersonalCheck?: boolean;
+         
+            /* 是否客户往来 */ 
+            isCustomerCheck?: boolean;
+         
+            /* 辅助核算 */ 
+            aidCheckDescription?: string;
+         
             /* 流程费用报销 */ 
             isFee?: boolean;
-         
-            /* 核销对象类型 */ 
-            checkObjectTypes?: any[];
          
             /* 银行帐 */ 
             isBankAccount?: boolean;
