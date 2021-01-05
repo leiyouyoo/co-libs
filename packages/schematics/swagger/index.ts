@@ -336,10 +336,16 @@ function setEntityName(ref, res = false, showAny = false) {
       }
 
       if (!itemExportEntityName.includes(thenName)) {
-        itemExportEntityName.push(thenName);
+        if (exportAllTypeEntity.some(z => z.name === thenName)) {
+          itemExportEntityName.push(thenName);
+        }
       }
 
-      return `${firstName}<${fileName + thenName}>`;
+      if (exportAllTypeEntity.some(z => z.name === thenName)) {
+        return `${firstName}<${fileName + thenName}>`;
+      } else {
+        return `${firstName}<any>`;
+      }
     }
     return firstName;
   } else {
@@ -439,7 +445,7 @@ function bindEntity(ref, addFileTypes = false, isT = false) {
     }
 
     if (!itemExportEntityName.some(e => e === thenName)) {
-      if (exportAllTypeEntity.some(z => z.name === 'thenName')) {
+      if (exportAllTypeEntity.some(z => z.name === thenName)) {
         itemExportEntityName.push(thenName);
       }
     }
