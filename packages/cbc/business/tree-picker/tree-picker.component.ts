@@ -17,7 +17,6 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { LifeCycleComponent } from '@co/core';
 import {
   InputBoolean,
-  isNotNil,
   NgStyleInterface,
   NzFormatEmitEvent,
   NzSizeLDSType,
@@ -65,6 +64,7 @@ export class TreePickerComponent extends LifeCycleComponent implements ControlVa
   @Input() @InputBoolean() coMultiple = false;
   @Input() @InputBoolean() coDefaultExpandAll = false;
   @Input() @InputBoolean() coCheckStrictly = false;
+  @Input() @InputBoolean() coShowToolBtns = true; // 是否显示全选之类的按钮
   @Input() coVirtualHeight: string | null = null;
   @Input() coExpandedIcon?: TemplateRef<{ $implicit: NzTreeNode; origin: NzTreeNodeOptions }>;
   @Input() coNotFoundContent?: string;
@@ -114,11 +114,13 @@ export class TreePickerComponent extends LifeCycleComponent implements ControlVa
 
   ngAfterViewInit(): void {
     let that = this;
-    this.treeSelectRef.cdkConnectedOverlay.attach.subscribe(() => {
-      let overlayElement = this.treeSelectRef.cdkConnectedOverlay.overlayRef.overlayElement as HTMLElement;
-      let dropdown = overlayElement.firstChild as HTMLElement;
-      this.renderer.insertBefore(dropdown, this.btns.nativeElement, dropdown.firstChild);
-    });
+    if (this.btns) {
+      this.treeSelectRef.cdkConnectedOverlay.attach.subscribe(() => {
+        let overlayElement = this.treeSelectRef.cdkConnectedOverlay.overlayRef.overlayElement as HTMLElement;
+        let dropdown = overlayElement.firstChild as HTMLElement;
+        this.renderer.insertBefore(dropdown, this.btns.nativeElement, dropdown.firstChild);
+      });
+    }
     // 改变原组件本地数据匹配的规则
     if (this.coShowSearch && this.coServerSearch) {
       this.treeSelectRef.setSearchValues = function(): void {

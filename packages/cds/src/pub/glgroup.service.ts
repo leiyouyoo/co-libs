@@ -34,7 +34,7 @@ export class PUBGLGroupService extends BaseApi {
     @GET('getAll')
     getAll(
         @Payload
-        _req: {code?:string,name?:string,parentId?:string,isRecursion?:boolean,id?:string} 
+        _req: {searchText?:string,parentId?:string,isRecursion?:boolean} 
 
     ): Observable<PUBListResultDto<PUBGLGroupDto>> {
         return null as any

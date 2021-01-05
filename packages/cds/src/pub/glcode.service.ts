@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBGLCodeDto,PUBListResultDto,PUBEntityDto, } from './pub.types';
+import { PUBGLCodeDto,PUBListResultDto,PUBEntityDto,PUBGLCodeSetGroupInput, } from './pub.types';
 
 @BaseUrl('/pub/GLCode')
 @Injectable({ providedIn: 'root' })
@@ -34,7 +34,7 @@ export class PUBGLCodeService extends BaseApi {
     @GET('getAll')
     getAll(
         @Payload
-        _req: {input?:object} 
+        _req: {solutionId:string,groupId?:string,searchText?:string,parentId?:string,isRecursion?:boolean} 
 
     ): Observable<PUBListResultDto<PUBGLCodeDto>> {
         return null as any
@@ -80,6 +80,21 @@ export class PUBGLCodeService extends BaseApi {
     delete(
         @Payload
         _req: {id?:string} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/GLCode/SetGroup
+     * 转移分组
+     */
+
+    @POST('setGroup')
+    setGroup(
+        @Payload
+        _req:PUBGLCodeSetGroupInput
 
     ): Observable<any> {
         return null as any

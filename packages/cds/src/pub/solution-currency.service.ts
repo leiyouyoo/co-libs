@@ -13,7 +13,7 @@ export class PUBSolutionCurrencyService extends BaseApi {
   
     /**
      * @param url /PUB/SolutionCurrency/Get
-     * 获取解决方案币种明细
+     * 
      */
 
     @GET('get')
@@ -28,7 +28,7 @@ export class PUBSolutionCurrencyService extends BaseApi {
 
     /**
      * @param url /PUB/SolutionCurrency/GetAll
-     * 获取解决方案币种列表
+     * 
      */
 
     @GET('getAll')
@@ -43,7 +43,7 @@ export class PUBSolutionCurrencyService extends BaseApi {
 
     /**
      * @param url /PUB/SolutionCurrency/CreateOrUpdate
-     * 保存解决方案币种
+     * 
      */
 
     @POST('createOrUpdate')
@@ -58,7 +58,7 @@ export class PUBSolutionCurrencyService extends BaseApi {
 
     /**
      * @param url /PUB/SolutionCurrency/Delete
-     * 删除解决方案币种
+     * 
      */
 
     @DELETE('delete')

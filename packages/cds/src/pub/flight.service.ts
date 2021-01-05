@@ -118,7 +118,7 @@ export class PUBFlightService extends BaseApi {
 
     /**
      * @param url /PUB/Flight/CreateOrUpdate
-     * 创建或更新
+     * 
      */
 
     @POST('createOrUpdate')

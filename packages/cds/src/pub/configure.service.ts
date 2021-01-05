@@ -252,6 +252,21 @@ export class PUBConfigureService extends BaseApi {
 
 
     /**
+     * @param url /PUB/Configure/GetBankDirectByUserAsync
+     * 获取银企直连信息
+     */
+
+    @POST('getBankDirectByUserAsync')
+    getBankDirectByUserAsync(
+        @Payload
+        _req: {userId?:number} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
      * @param url /PUB/Configure/GetBankDirectModelAsync
      * 获取银企直连信息
      */
