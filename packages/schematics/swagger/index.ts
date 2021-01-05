@@ -1,82 +1,78 @@
 import { strings } from '@angular-devkit/core';
-import {
-  apply,
-  chain,
-  MergeStrategy,
-  mergeWith,
-  move,
-  Rule,
-  SchematicContext,
-  SchematicsException,
-  template,
-  Tree,
-  url,
-} from '@angular-devkit/schematics';
-import { getWorkspace } from '@schematics/angular/utility/config';
+
+import { apply, chain, MergeStrategy, mergeWith, move, Rule, SchematicContext, template, Tree, url } from '@angular-devkit/schematics';
 import axios from 'axios';
-import { groupBy } from 'lodash';
-import { idText } from 'typescript';
+import { forEach, groupBy } from 'lodash';
 
 // You don't have to export the function as default. You can also have more than one rule factory
 // per file.
 
-let serveEntityList: any = [];
-const selectedEntityList: any = [];
-let serviceList: any = [];
-let serveSelectedEntityList: any = [];
-let entityTitle = '';
+// 生成文件名
+let fileName = '';
+
+// 用于头部引用 import { FCMBatchCreateAttachmentInput } ../types
+let itemExportEntityName: any = [];
+
+// 用于生成请求方法
+let itemExportEntity: any = [];
+
+// 用于.types.ts文件导出的文件名
+let exportFileNameList: any = [];
+
+// 用于 .types.ts生成的实体
+let exportAllTypeEntity: any = [];
+
+// 服务器返回的数据
+let serviceResData: any = [];
+
 export function buildCOSwagger(options: any): Rule {
-  return async (tree: Tree, context: SchematicContext) => {
-    console.log('loading....');
-    entityTitle = options.url.substring(options.url.indexOf('swagger/') + 8, options.url.lastIndexOf('/'));
-    const workspace = getWorkspace(tree);
-    if (!options.project) {
-      throw new SchematicsException('Option (project) is required.');
-    }
-
-    const projectName = options.project as string;
-    const project = workspace.projects[projectName];
-
+  return async (tree: Tree) => {
+    console.log('生成服务启动,生成中...');
     // 路由
-    let requireUrl = process.cwd();
+    let filePath = process.cwd();
     if (!options.path) {
-      console.log('当前路径' + requireUrl);
-      if (requireUrl.includes('apps')) {
-        requireUrl = requireUrl.substring(requireUrl.lastIndexOf('apps'));
-        options.path = requireUrl;
-      } else if (requireUrl.includes('packages\\cds')) {
-        requireUrl = requireUrl.substring(requireUrl.lastIndexOf('packages'));
-        options.path = requireUrl;
+      console.log('当前路径' + filePath);
+      if (filePath.includes('apps')) {
+        filePath = filePath.substring(filePath.lastIndexOf('apps'));
+        options.path = filePath;
+      } else if (filePath.includes('packages\\cds')) {
+        filePath = filePath.substring(filePath.lastIndexOf('packages'));
+        options.path = filePath;
       } else {
-        options.path = `${project.sourceRoot}`;
+        options.path = `src\\app\\services\\${options.name}`;
       }
-      console.log('生成路径' + options.path);
     }
 
-    const response = await getSwaggerData(options, tree)();
+    options.path = options.path.toLowerCase();
+    console.log('生成路径' + options.path);
 
-    [`${options.path}/index.ts`, `${options.path}/public_api.ts`, `${options.path}/${options.name}.types.ts`]
+    // 根路径文件名
+    fileName = options.name;
+    // 接口数据获取并解析
+    const response = await getSwaggerData(options, tree)();
+    console.log('数据解析完毕');
+    [`${options.path}/index.ts`, `${options.path}/public_api.ts`, `${options.path}/${fileName.toLowerCase()}.types.ts`]
       .filter(p => tree.exists(p))
       .forEach(p => tree.delete(p));
 
     // 导出模板
-    let html = '';
-    for (let msg of serviceList) {
-      msg = strings.dasherize(msg);
-      msg += '.service';
-      html += `export * from './${msg}';\r\n`;
-    }
 
+    let html = '';
+    for (let data of exportFileNameList) {
+      data = strings.dasherize(data);
+      data += '.service';
+      html += `export * from './${data}';\r\n`;
+    }
+    console.log('导出模板');
     const index_ts = mergeWith(
       apply(url('./index_files'), [
         template({
           ...strings,
-          'if-flat': (s: string) => (options.flat ? '' : s),
           ...{
-            entityTitle,
-            name: options.name,
+            name: fileName,
+            fileName: fileName,
             serviceList: html,
-            entity: selectedEntityList,
+            entity: exportAllTypeEntity,
           },
         }),
         move(options.path as string),
@@ -92,60 +88,37 @@ function getSwaggerData(options, tree: Tree): () => Promise<any[]> {
   // 获取接口数据
   return async () => {
     const res: any = await axios.get(options.url);
-    // 赋值 实体值
-    serveEntityList = res.data.definitions;
-    // 定义导出目录
-    serviceList = [];
+    serviceResData = res.data;
+    exportAllTypeEntity = [];
+    // 存实体
+    saveEntity(res.data.definitions || serviceResData?.components.schemas);
 
-    // 把Object 转 Array
-    const arr: any = [];
-    // tslint:disable-next-line: forin
-    for (const a in res.data.paths) {
-      arr.push({
-        url: a,
-        api: res.data.paths[a],
-        type: Object.keys(res.data.paths[a])[0],
-      });
-    }
-
-    // 根据服务位置来分组
-    const group: any = groupBy(arr, item => item.api[Object.keys(item.api)[0]].tags[0]);
+    // 接口分组
+    let apiGroup = setApiGroup();
 
     // 定义生成Tree函数
     const chainArr: any[] = [];
 
-    // 循环分组处理数据
-    let i = 0;
     // tslint:disable-next-line: forin
-    for (const na in group) {
-      if (options.entity && options.entity !== na) {
-        continue;
-      }
+    for (const apiItemName in apiGroup) {
+      exportFileNameList.push(strings.dasherize(apiItemName));
+      itemExportEntity = [];
+      itemExportEntityName = [];
+      setSwaggerRequest(apiGroup[apiItemName]);
 
-      serveSelectedEntityList = [];
-      i++;
-      // 重构实体结构
-      const groupArr = setSwaggerRequest(group[na]);
-      group[na] = {};
-      group[na].arr = groupArr;
-      serviceList.push(`${na}`);
-
-      const newServeSelectedEntityList: any = [];
-      groupArr.forEach(e => {
-        serveSelectedEntityList.forEach(z => {
-          if (e.reqEntity?.includes(z) || e.resEntity?.includes(z)) {
-            if (!newServeSelectedEntityList.includes(z)) {
-              newServeSelectedEntityList.push(z);
-            }
-          }
-        });
-      });
-
-      const name = strings.dasherize(na);
-      const path = `${options.path}/${name}.service.ts`;
-
+      // 查询更改并替换
+      const path = `${options.path}/${strings.dasherize(apiItemName)}.service.ts`;
       if (tree.exists(path)) {
         tree.delete(path);
+      }
+
+      // 给导出加上前缀
+      itemExportEntityName.map(e => {
+        e = fileName + e;
+      });
+
+      for (var inx in itemExportEntityName) {
+        itemExportEntityName[inx] = fileName + itemExportEntityName[inx];
       }
 
       chainArr.push(
@@ -153,13 +126,12 @@ function getSwaggerData(options, tree: Tree): () => Promise<any[]> {
           apply(url('./files'), [
             template({
               ...strings,
-              'if-flat': (s: string) => (options.flat ? '' : s),
               ...{
-                name: na,
-                pageName: options.name,
-                entityTitle,
-                serveSelectedEntityList: newServeSelectedEntityList,
-                data: group[na].arr,
+                name: apiItemName,
+                baseName: apiItemName,
+                fileName: fileName,
+                itemExportEntityName: itemExportEntityName,
+                entityList: itemExportEntity,
               },
             }),
             move(options.path as string),
@@ -173,19 +145,41 @@ function getSwaggerData(options, tree: Tree): () => Promise<any[]> {
   };
 }
 
+function setApiGroup() {
+  // 把Object 转 Array
+  const apiArr: any = [];
+  // tslint:disable-next-line: forin
+  for (const a in serviceResData.paths) {
+    apiArr.push({
+      url: a,
+      api: serviceResData.paths[a],
+      type: Object.keys(serviceResData.paths[a])[0],
+    });
+  }
+
+  // 根据服务位置来分组
+  return groupBy(apiArr, item => item.api[Object.keys(item.api)[0]].tags[0]);
+}
+
 // reqList 分组后的列表
 function setSwaggerRequest(reqList: any) {
   for (const detail of reqList) {
     // api接口内容详情
-    detail.newType = detail.type;
+    let entity: any = {};
+    entity.type = detail.type;
+    entity.api = detail.api;
     const reqDetail = detail.api[detail.type];
+    if (!reqDetail.parameters) {
+      reqDetail.parameters = [];
+    }
+
     if (detail.type === 'post' && reqDetail.parameters) {
-      if (reqDetail.parameters[0] && reqDetail.parameters[0].in && reqDetail.parameters[0].in === 'formData') {
-        detail.newType = 'form';
+      if (reqDetail.parameters[0]?.in === 'formData') {
+        entity.type = 'form';
       }
     }
 
-    detail.reqJson = {};
+    entity.reqJson = {};
 
     // 配置参数位置
     for (const parmDetail of reqDetail.parameters) {
@@ -196,124 +190,154 @@ function setSwaggerRequest(reqList: any) {
         if (parmDetail.items?.schema?.$ref) {
           // 设置方法内部实体名称
           const name = setEntityName(parmDetail.items?.schema?.$ref);
-          bindEntity(parmDetail.items?.schema?.$ref);
           parmDetail.type = name + '[]';
         } else {
           parmDetail.type = 'any[]';
         }
       } else if (parmDetail?.type === 'file') {
         parmDetail.type = 'File';
+      } else if (parmDetail?.type === 'boolean') {
+        parmDetail.type = 'boolean';
+      } else {
+        parmDetail.type = 'string';
       }
 
       // 绑定实体
       if (parmDetail?.schema?.$ref) {
         // 找寻该实体,并加入处理
-        const name = setEntityName(parmDetail.schema?.$ref);
-        detail.reqEntity = name;
-        parmDetail.type = entityTitle + name;
-        bindEntity(parmDetail.schema.$ref);
+        const name = setEntityName(parmDetail.schema.$ref, true, true);
+        entity.reqEntity = name;
+        bindEntity(parmDetail?.schema?.$ref);
+        parmDetail.type = fileName + name;
       }
 
       // 首字母小写
-      parmDetail.name = parmDetail.name.replace(/^\S/, s => s.toLowerCase());
+      parmDetail.name = parmDetail?.name?.replace(/^\S/, s => s.toLowerCase());
 
       // 处理非必填
       if (!parmDetail.required) {
         parmDetail.name += '?';
       }
-      detail.reqJson[parmDetail.name] = parmDetail.type;
+
+      entity.reqJson[parmDetail.name] = parmDetail.type;
+      entity.name = parmDetail.name;
     }
 
     // 获取返回实体
-    detail.resEntity = 'any';
+    entity.resEntity = 'any';
     if (reqDetail.responses[200].schema?.$ref) {
       // 如果实体存在就处理
-      const entity_name = reqDetail.responses[200].schema.$ref.replace('#/definitions/', '');
-      if (serveEntityList[entity_name]) {
-        // set entity
-        const entityName = setResponseName(reqDetail.responses[200].schema.$ref);
-        detail.resEntity = entityTitle + entityName;
-      }
+      const name = setEntityName(reqDetail.responses[200].schema.$ref, true);
+      entity.resEntity = fileName + name;
     }
+    entity.url = detail.url;
+    itemExportEntity.push(entity);
   }
-
   return reqList;
 }
 
-function setResponseName(ref) {
-  // tslint:disable-next-line: one-variable-per-declaration
-  let entityName: string, entityValue: string;
-  if (ref.includes('`')) {
-    // 泛型,生成实体xxx<xxx>
-    entityName = ref.split('`')[0];
-    entityValue = ref.split('`')[1];
-    // tslint:disable-next-line: one-variable-per-declaration
-    let name: string = '',
-      zname: string = '';
+function saveEntity(definitions) {
+  exportAllTypeEntity = [];
 
-    // 处理泛型中某实体
-    zname = entityValue.substring(0, entityValue.indexOf(','));
-    name = zname.includes('+') ? zname.substring(zname.lastIndexOf('+') + 1) : zname.substring(zname.lastIndexOf('.') + 1);
-    bindEntity(zname.substring(zname.lastIndexOf('[') + 1));
-
-    // 处理泛型实体
-    entityName = entityName.includes('+')
+  for (const definition in definitions) {
+    let typeEntity: any = {};
+    let entityName = definition;
+    let isT = false;
+    if (entityName.includes('`')) {
+      isT = true;
+      entityName = definition.split('`')[0] + '<T>';
+    }
+    typeEntity.name = entityName.includes('+')
       ? entityName.substring(entityName.lastIndexOf('+') + 1)
       : entityName.substring(entityName.lastIndexOf('.') + 1);
-    setGeneric(ref, `${entityName}`, true, name ? true : false);
-    return `${entityName}<${name ? entityTitle + name : 'any'}>`;
-  } else {
-    bindEntity(ref);
-    entityName = ref.includes('+') ? ref.substring(ref.lastIndexOf('+') + 1) : ref.substring(ref.lastIndexOf('.') + 1);
-    return entityName;
-  }
-}
 
-function setGeneric(ref, genericName = '', isGeneric = false, isT = false) {
-  const entity = serveEntityList[ref.replace('#/definitions/', '')];
-  if (isGeneric && entity) {
-    // tslint:disable-next-line: forin
-    for (const key in entity.properties) {
-      const parmDetail = entity.properties[key];
-      parmDetail.type = 'any';
-      if (parmDetail?.type === 'integer') {
-        parmDetail.type = 'number';
-      } else if (parmDetail?.type === 'array') {
-        parmDetail.type = 'any[]';
-      }
-    }
-
-    if (!selectedEntityList.some(e => e.name === genericName || e.name === genericName + '<T>')) {
-      let className = genericName;
-      if (isT) {
-        className = genericName + '<T>';
-      }
-      selectedEntityList.push({
-        name: className,
-        value: entity,
-      });
-    } else {
-      let className = genericName;
-      if (isT) {
-        className = className + '<T>';
-        const data: any = selectedEntityList.find(e => e.name === genericName);
-        if (data) {
-          data.name = className;
-          data.value = entity;
+    // 找到该实体
+    let properties = definitions[definition].properties;
+    for (const proper in properties) {
+      // 先处理类型
+      let properItem: any = properties[proper];
+      if (properItem?.type === 'integer') {
+        properItem.type = 'number';
+      } else if (properItem?.type === 'array') {
+        if (properItem.items?.$ref) {
+          // 设置方法内部实体名称
+          const name = getEntityName(properItem.items.$ref);
+          bindEntity(properItem.items.$ref, true, isT);
+          if (isT) {
+            properItem.type = 'T[]';
+          } else {
+            properItem.type = fileName + name + '[]';
+          }
+        } else {
+          properItem.type = 'any[]';
         }
+      } else if (properItem?.type === 'file') {
+        properItem.type = 'File';
+      } else if (properItem?.type === 'boolean') {
+        properItem.type = 'boolean';
+      } else {
+        properItem.type = 'string';
       }
     }
 
-    if (!serveSelectedEntityList.some(e => e === genericName)) {
-      serveSelectedEntityList.push(genericName);
+    typeEntity.description = definitions[definition].description;
+    typeEntity.properties = properties;
+
+    if (!exportAllTypeEntity?.some(e => e.name === typeEntity.name)) {
+      exportAllTypeEntity.push(typeEntity);
     }
   }
 }
 
-function bindEntity(ref) {
-  const entity = serveEntityList[ref.replace('#/definitions/', '')];
-  const entityName = setEntityName(ref, true);
+function setEntityName(ref, res = false, showAny = false) {
+  let firstName: string, thenName: string;
+  if (ref.includes('`')) {
+    firstName = ref.split('`')[0];
+    thenName = ref.split('`')[1];
+    firstName = firstName.substring(firstName.lastIndexOf('.') + 1);
+    thenName = thenName.substring(0, thenName.indexOf(','));
+    thenName = thenName.substring(thenName.lastIndexOf('.') + 1);
+
+    if (res && showAny) {
+      return `${firstName}<any>`;
+    }
+
+    if (res) {
+      if (!itemExportEntityName.includes(firstName)) {
+        itemExportEntityName.push(firstName);
+      }
+
+      if (!itemExportEntityName.includes(thenName)) {
+        itemExportEntityName.push(thenName);
+      }
+
+      return `${firstName}<${fileName + thenName}>`;
+    }
+    return firstName;
+  } else {
+    firstName = ref.includes('+') ? ref.substring(ref.lastIndexOf('+') + 1) : ref.substring(ref.lastIndexOf('.') + 1);
+
+    if (res) {
+      if (!itemExportEntityName.includes(firstName)) {
+        itemExportEntityName.push(firstName);
+      }
+    }
+
+    return firstName;
+  }
+}
+
+function getEntityName(ref) {
+  return ref.includes('+') ? ref.substring(ref.lastIndexOf('+') + 1) : ref.substring(ref.lastIndexOf('.') + 1);
+}
+
+function bindEntity(ref, addFileTypes = false, isT = false) {
+  let entityName = getEntityName(ref);
+
+  const entity =
+    (serviceResData.definitions && serviceResData.definitions[ref?.replace('#/definitions/', '')]) || serviceResData?.components.schemas;
   if (entity) {
+    entity.name = entityName;
     const required = entity.required;
     // tslint:disable-next-line: forin
     for (const key in entity.properties) {
@@ -324,8 +348,13 @@ function bindEntity(ref) {
         if (parmDetail.items?.schema?.$ref) {
           // 设置方法内部实体名称
           const name = setEntityName(parmDetail.items?.schema?.$ref);
-          bindEntity(parmDetail.items?.schema?.$ref);
-          parmDetail.type = name + '[]';
+          bindEntity(parmDetail.items?.schema?.$ref, addFileTypes);
+
+          if (addFileTypes && isT) {
+            parmDetail.type = 'T[]';
+          } else {
+            parmDetail.type = fileName + name + '[]';
+          }
         } else {
           parmDetail.type = 'any[]';
         }
@@ -335,20 +364,22 @@ function bindEntity(ref) {
       if (parmDetail?.schema?.$ref) {
         // 找寻该实体,并加入处理
         const name = setEntityName(parmDetail.schema?.$ref);
-        parmDetail.type = entityTitle + name;
-        bindEntity(parmDetail.schema.$ref);
+        parmDetail.type = fileName + name;
+        bindEntity(parmDetail.schema.$ref, addFileTypes);
       }
 
       if (parmDetail?.$ref) {
         // 找寻该实体,并加入处理
         const name = setEntityName(parmDetail.$ref);
-        parmDetail.type = entityTitle + name;
-        bindEntity(parmDetail.$ref);
+        parmDetail.type = fileName + name;
+        bindEntity(parmDetail.$ref, addFileTypes);
       }
 
       // 处理非必填
       if (!parmDetail.required) {
-        parmDetail.name += '?';
+        if (parmDetail.name) {
+          parmDetail.name += '?';
+        }
       }
 
       // set required
@@ -361,58 +392,29 @@ function bindEntity(ref) {
   }
 
   // 用于生成实体文件
-  if (!selectedEntityList.some(e => e.name === entityName || e.name === entityName + '<T>')) {
-    selectedEntityList.push({
-      name: entityName,
-      value: entity,
-    });
+  if (!exportAllTypeEntity.some(e => e.name === entityName) && addFileTypes) {
+    exportAllTypeEntity.push(entity);
   }
 
-  // 用于引用
-  if (!serveSelectedEntityList.some(e => e === entityName)) {
-    serveSelectedEntityList.push(entityName);
-  }
-}
-
-function setEntityName(ref, isEntity = false) {
-  // tslint:disable-next-line: one-variable-per-declaration
-  let entityName: string, entityValue: string;
+  let firstName: string, thenName: string;
   if (ref.includes('`')) {
-    // 生成实体xxx<xxx>
-    entityName = ref.split('`')[0];
-    entityValue = ref.split('`')[1];
-    // tslint:disable-next-line: one-variable-per-declaration
-    let name: string = '',
-      zname: string = '';
-    if (entityValue) {
-      zname = entityValue.substring(0, entityValue.indexOf(','));
-      name = zname.includes('+') ? zname.substring(zname.lastIndexOf('+') + 1) : zname.substring(zname.lastIndexOf('.') + 1);
-    }
-    const entityRef = zname.substring(zname.lastIndexOf('[') + 1);
-    const entity = serveEntityList[entityRef.replace('#/definitions/', '')];
-    if (entityRef && isEntity) {
-      setGeneric(entityRef, `${name}`, true);
+    firstName = ref.split('`')[0];
+    thenName = ref.split('`')[1];
+    firstName = firstName.substring(firstName.lastIndexOf('.') + 1);
+    thenName = thenName.substring(0, thenName.indexOf(','));
+    thenName = thenName.substring(thenName.lastIndexOf('.') + 1);
+
+    if (!itemExportEntityName.some(e => e === firstName)) {
+      itemExportEntityName.push(firstName);
     }
 
-    entityName = entityName.includes('+')
-      ? entityName.substring(entityName.lastIndexOf('+') + 1)
-      : entityName.substring(entityName.lastIndexOf('.') + 1);
-    setGeneric(ref, `${entityName}`, true, true);
-
-    if (!entity && ref.includes('[')) {
-      // 该请求来自实体
-      if (isEntity) {
-        return `${entityName}`;
-      }
-      return `${entityName}<any>`;
-    } else {
-      if (entityRef && isEntity) {
-        return `${entityName}`;
-      }
-      return `${entityName}<${name ? entityTitle + name : 'any'}>`;
+    if (!itemExportEntityName.some(e => e === thenName)) {
+      itemExportEntityName.push(thenName);
     }
   } else {
-    entityName = ref.includes('+') ? ref.substring(ref.lastIndexOf('+') + 1) : ref.substring(ref.lastIndexOf('.') + 1);
-    return entityName;
+    firstName = ref.includes('+') ? ref.substring(ref.lastIndexOf('+') + 1) : ref.substring(ref.lastIndexOf('.') + 1);
+    if (!itemExportEntityName.some(e => e === firstName)) {
+      itemExportEntityName.push(firstName);
+    }
   }
 }
