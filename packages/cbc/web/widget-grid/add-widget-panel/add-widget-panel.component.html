@@ -2,7 +2,7 @@
   <div class="widgets-panel">
     <div *ngFor="let item of items;index as index" class="widgets-panel__item"
          (click)="selectedIndex = index"
-         [class.selected]="selectedIndex === index">轨迹阿斯顿</div>
+         [class.selected]="selectedIndex === index">{{ item.label }}</div>
   </div>
   <div class="size-panel">
     <div *ngFor="let item of sizeList;index as index" class="size-panel__item">
