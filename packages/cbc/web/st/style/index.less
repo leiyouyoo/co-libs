@@ -321,3 +321,31 @@
     }
   }
 }
+
+.co-st-column-tree {
+  margin-top: 4px;
+
+  nz-tree-node-title {
+    position: relative;
+    width: 100%;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 5px;
+      bottom: 0;
+
+      width: 16px;
+      height: 16px;
+      margin: auto;
+
+      background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAbUlEQVQ4T2NkoBAwUqifgZABq6AWhOGyCJ8BIM2hUI2rGRgYsBqCywBkzTDLsRpCyAsEgwhmgCQDA4M6QdWoCm4yMDA8hxnwn0TNMOWMVHMBmQ5gwJkOqBILFKUDmJcoSolEhQvVEhJRtmFTBAAogA8RAWu36QAAAABJRU5ErkJggg==');
+      display: none;
+      opacity: .4;
+    }
+    &:hover:after {
+      display: block;
+    }
+  }
+}
