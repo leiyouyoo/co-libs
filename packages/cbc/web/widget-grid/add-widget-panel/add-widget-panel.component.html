@@ -1,7 +1,7 @@
 <div class="add-widget-panel">
   <div class="widgets-panel">
     <div *ngFor="let item of items;index as index" class="widgets-panel__item"
-         (click)="selectedIndex = index"
+         (click)="onItemClick(index, $event)"
          [class.selected]="selectedIndex === index">{{ item.label }}</div>
   </div>
   <div class="size-panel">
@@ -11,7 +11,7 @@
           <ng-template [ngTemplateOutlet]="coWidgetItemSource.getItem(items[selectedIndex].index)"></ng-template>
         </div>
       </div>
-      <div class="size-panel__text">{{item.width}}X{{item.height}}(最大)</div>
+      <div class="size-panel__text">{{item.width}}X{{item.height}}</div>
     </div>
   </div>
 </div>
