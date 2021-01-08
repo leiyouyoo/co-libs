@@ -28,6 +28,11 @@ export class AddWidgetPanelComponent implements OnInit {
       return this.selectedItem.sizeList.map(o => {
         o.w = 115 * o.width;
         o.h = 118 * o.height;
+        if (o.width === 1 && o.height === 1) {
+          o.w *= 2;
+          o.h *= 2;
+        }
+
         return o;
       })
     }

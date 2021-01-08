@@ -14,7 +14,10 @@ export class WidgetGridResizeDirective implements OnInit, DoCheck {
       // this.host.rows++;
       // this.host.rows++;
     } else {
-      this.host.rows = this.host.rows - getBottomEmptyRow(this.host);
+      const emptyRow = getBottomEmptyRow(this.host)
+      if ((this.host.rows - emptyRow) > 0) {
+        this.host.rows = this.host.rows - emptyRow;
+      }
     }
   }
   el: HTMLElement;
