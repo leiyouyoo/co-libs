@@ -81,6 +81,10 @@
     background: rgba(245,245,245);
   }
 
+  th, td {
+    background-clip: padding-box !important;
+  }
+
   &__head {
 
     &-optional,
@@ -119,31 +123,31 @@
 
   // 修复 `st` 会导致内嵌表格的BUG
   .@{ant-prefix}-table-tbody>tr {
-    &@{st-prefix}-row-odd td {
-      background: #fafafa;
+    &@{st-prefix}-row-odd {
+      background-color: #fafafa;
     }
 
     &@{st-prefix}-row-error {
-      background: #FFA39E;
+      background-color: #FFA39E;
     }
     &@{st-prefix}-row-error-text {
       color: #e55354;
     }
 
     &@{st-prefix}-row-secondary {
-      background: #d8dffa;
+      background-color: #d8dffa;
     }
 
     &@{st-prefix}-row-selected {
-      background: rgba(230, 247, 255, 1);
+      background-color: rgba(230, 247, 255, 1);
 
       &:hover td {
-        background: rgba(230, 247, 255, 1);
+        background-color: rgba(230, 247, 255, 1);
       }
     }
     &@{st-prefix}-row-child-expanded {
       &:hover td {
-        background: #CFDDEE !important;
+        background-color: #CFDDEE !important;
       }
       td {
         padding-top: 8px;
