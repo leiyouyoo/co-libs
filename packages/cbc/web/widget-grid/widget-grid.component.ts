@@ -37,7 +37,7 @@ export class WidgetGridComponent implements OnInit {
       this.ngxWidgetGrid.rows = this.widgets.reduce((previousValue: any, currentValue) => {
         const rows = currentValue.rect.top + currentValue.rect.height - 1
         return rows > previousValue ? rows : previousValue;
-      }, 0);
+      }, 0) || 2;
     })
   }
 
