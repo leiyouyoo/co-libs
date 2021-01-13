@@ -90,7 +90,6 @@ function getSwaggerData(options, tree: Tree): () => Promise<any[]> {
   return async () => {
     const res: any = await axios.get(options.url);
     serviceResData = res.data;
-    exportAllTypeEntity = [];
     // 存实体
     saveEntity(res.data.definitions || serviceResData?.components.schemas);
 
@@ -274,7 +273,11 @@ function saveEntity(definitions) {
           if (properItem.items.$ref.includes('`')) {
             childIsT = true;
           }
-          bindEntity(properItem.items.$ref, true, childIsT);
+
+          if (!exportAllTypeEntity.some(e => e.name === name)) {
+            bindEntity(properItem.items.$ref, true, childIsT);
+          }
+
           if (isT) {
             properItem.type = 'T[]';
           } else if (childIsT) {
@@ -295,12 +298,18 @@ function saveEntity(definitions) {
       else if (properItem?.schema?.$ref) {
         // 找寻该实体,并加入处理
         const name = setEntityName(properItem.schema.$ref, true, true);
-        bindEntity(properItem?.schema?.$ref);
+        if (!exportAllTypeEntity.some(e => e.name === name)) {
+          bindEntity(properItem?.schema?.$ref);
+        }
+
         properItem.type = fileName + name;
       } else if (properItem?.$ref) {
         // 找寻该实体,并加入处理
         const name = setEntityName(properItem.$ref, true, true);
-        bindEntity(properItem?.$ref);
+
+        if (!exportAllTypeEntity.some(e => e.name === name)) {
+          bindEntity(properItem?.$ref);
+        }
         properItem.type = fileName + name;
       }
     }
@@ -363,7 +372,7 @@ function setEntityName(ref, res = false, showAny = false) {
 
 function bindEntity(ref, addFileTypes = false, isT = false) {
   let entityName = setEntityName(ref);
-
+  let refList = [];
   const entity =
     (serviceResData.definitions && serviceResData.definitions[ref?.replace('#/definitions/', '')]) || serviceResData?.components.schemas;
   if (entity) {
@@ -371,6 +380,7 @@ function bindEntity(ref, addFileTypes = false, isT = false) {
     const required = entity.required;
     // tslint:disable-next-line: forin
     for (const key in entity.properties) {
+      let ref = null;
       const parmDetail = entity.properties[key];
       if (parmDetail?.type === 'integer') {
         parmDetail.type = 'number';
@@ -378,8 +388,7 @@ function bindEntity(ref, addFileTypes = false, isT = false) {
         if (parmDetail.items?.schema?.$ref) {
           // 设置方法内部实体名称
           const name = setEntityName(parmDetail.items?.schema?.$ref);
-          bindEntity(parmDetail.items?.schema?.$ref, addFileTypes);
-
+          ref = parmDetail.items?.schema?.$ref;
           if (addFileTypes && isT) {
             parmDetail.type = 'T[]';
           } else {
@@ -395,14 +404,14 @@ function bindEntity(ref, addFileTypes = false, isT = false) {
         // 找寻该实体,并加入处理
         const name = setEntityName(parmDetail.schema?.$ref);
         parmDetail.type = fileName + name;
-        bindEntity(parmDetail.schema.$ref, addFileTypes);
+        ref = parmDetail.schema.$ref;
       }
 
       if (parmDetail?.$ref) {
         // 找寻该实体,并加入处理
         const name = setEntityName(parmDetail.$ref);
+        ref = parmDetail.$ref;
         parmDetail.type = fileName + name;
-        bindEntity(parmDetail.$ref, addFileTypes);
       }
 
       // 处理非必填
@@ -417,6 +426,13 @@ function bindEntity(ref, addFileTypes = false, isT = false) {
         const keyValue = entity.properties[key];
         delete entity.properties[key];
         entity.properties[key + '?'] = keyValue;
+      }
+
+      if (ref) {
+        refList.push(ref);
+        if (!refList.some(e => e === ref)) {
+          bindEntity(ref, addFileTypes);
+        }
       }
     }
   }
