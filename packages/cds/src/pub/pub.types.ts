@@ -4390,6 +4390,47 @@
     }
  
     /**
+     * 根据港口获取航线
+     */
+    export class PUBShippingLinesByPortDto {
+        [key:string]: any;
+        
+         
+            /* 港口集合 */ 
+            portIds: any[];
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBShippingLinesDto {
+        [key:string]: any;
+        
+         
+            
+            name: string;
+         
+            
+            code: string;
+         
+            
+            isValid: boolean;
+         
+            
+            localizationText: string;
+         
+            
+            localizationName: string;
+         
+            
+            id: string;
+        
+        
+    }
+ 
+    /**
      * 解决方案模型
      */
     export class PUBSolutionDto {
