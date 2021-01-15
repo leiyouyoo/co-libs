@@ -1,4 +1,4 @@
 <%= serviceList %>
 
-export * from './<%= name %>.types';
+export * from './<%= fileName.toLowerCase() %>.types';
 

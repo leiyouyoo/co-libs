@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBChargingCodeDto,PUBPagedResultDto,PUBChangeChargingCodeStateInput,PUBGetAllChargingCodeForUiPickerInput,PUBChargingCodeUiPickerDto, } from './pub.types';
+import { PUBChargingCodeDto,PUBPagedResultDto1,PUBChangeChargingCodeStateInput,PUBGetAllChargingCodeForUiPickerInput,PUBChargingCodeUiPickerDto } from './pub.types';
 
-@BaseUrl('/pub/ChargingCode')
+@BaseUrl('/PUB/ChargingCode')
 @Injectable({ providedIn: 'root' })
 export class PUBChargingCodeService extends BaseApi {
   constructor(injector: Injector) {
@@ -16,7 +16,7 @@ export class PUBChargingCodeService extends BaseApi {
      * 获取费用代码
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -31,12 +31,12 @@ export class PUBChargingCodeService extends BaseApi {
      * 获取费用代码列表
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
         _req: {companyId?:string,groupId?:string,text?:string,isValid?:boolean} 
 
-    ): Observable<PUBPagedResultDto<PUBChargingCodeDto>> {
+    ): Observable<PUBPagedResultDto1<PUBChargingCodeDto>> {
         return null as any
     }
 
@@ -46,7 +46,7 @@ export class PUBChargingCodeService extends BaseApi {
      * 修改费用代码状态
      */
 
-    @POST('changeChargingCodeState')
+    @POST('ChangeChargingCodeState')
     changeChargingCodeState(
         @Payload
         _req:PUBChangeChargingCodeStateInput
@@ -61,7 +61,7 @@ export class PUBChargingCodeService extends BaseApi {
      * 创建或更新费用代码
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PUBChargingCodeDto
@@ -76,22 +76,22 @@ export class PUBChargingCodeService extends BaseApi {
      * 提供给UI费用代码选择器的服务接口
      */
 
-    @POST('getAllForUiPicker')
+    @POST('GetAllForUiPicker')
     getAllForUiPicker(
         @Payload
         _req:PUBGetAllChargingCodeForUiPickerInput
 
-    ): Observable<PUBPagedResultDto<PUBChargingCodeUiPickerDto>> {
+    ): Observable<PUBPagedResultDto1<PUBChargingCodeUiPickerDto>> {
         return null as any
     }
 
 
     /**
      * @param url /PUB/ChargingCode/Check
-     * 数据检查
+     * 暂无备注
      */
 
-    @POST('check')
+    @POST('Check')
     check(
         @Payload
         _req:PUBChargingCodeDto
@@ -103,10 +103,10 @@ export class PUBChargingCodeService extends BaseApi {
 
     /**
      * @param url /PUB/ChargingCode/Create
-     * 
+     * 暂无备注
      */
 
-    @POST('create')
+    @POST('Create')
     create(
         @Payload
         _req:PUBChargingCodeDto
@@ -118,10 +118,10 @@ export class PUBChargingCodeService extends BaseApi {
 
     /**
      * @param url /PUB/ChargingCode/Update
-     * 
+     * 暂无备注
      */
 
-    @PUT('update')
+    @PUT('Update')
     update(
         @Payload
         _req:PUBChargingCodeDto
@@ -133,10 +133,10 @@ export class PUBChargingCodeService extends BaseApi {
 
     /**
      * @param url /PUB/ChargingCode/Delete
-     * 
+     * 暂无备注
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 

@@ -1,13 +1,14 @@
 <% for (var item of entity) { %> 
     /**
-     * <% if (item.value && item.value.description){%><%= item.value.description %><% } 
+     * <% if (item && item.description){%><%= item.description %><% } 
     else {%> No Remark <% } %>
      */
-    export class <%= entityTitle + item.name %> {
-        <% if (item.value && item.value.properties){%>
-        <% for (var detail in item.value.properties) { %> 
-            <% if(item.value.properties[detail] && item.value.properties[detail].description ){ %>/* <%= item.value.properties[detail].description %> */ <% } %>
-            <%= detail %>: <%= item.value.properties[detail].type %>;
+    export class <%= fileName + item.name %> {
+        [key:string]: any;
+        <% if (item.properties){%>
+        <% for (var detail in item.properties) { %> 
+            <% if(item.properties[detail] && item.properties[detail].description ){ %>/* <%= item.properties[detail].description %> */ <% } %>
+            <%= detail %>: <%= item.properties[detail].type %>;
         <% } %>
         <% } %>
     }

@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBCountyDto,PUBListResultDto,PUBPagedResultDto, } from './pub.types';
+import { PUBCountyDto,PUBListResultDto1,PUBPagedResultDto1 } from './pub.types';
 
-@BaseUrl('/pub/County')
+@BaseUrl('/PUB/County')
 @Injectable({ providedIn: 'root' })
 export class PUBCountyService extends BaseApi {
   constructor(injector: Injector) {
@@ -16,7 +16,7 @@ export class PUBCountyService extends BaseApi {
      * 获取区县镇
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -31,12 +31,12 @@ export class PUBCountyService extends BaseApi {
      * 获取区县镇列表
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
         _req: {code?:string,name?:string,parentId?:string,isRecursion?:boolean,id?:string} 
 
-    ): Observable<PUBListResultDto<PUBCountyDto>> {
+    ): Observable<PUBListResultDto1<PUBCountyDto>> {
         return null as any
     }
 
@@ -46,12 +46,12 @@ export class PUBCountyService extends BaseApi {
      * 获取区县镇列表（不区分上下级）
      */
 
-    @GET('getFlatList')
+    @GET('GetFlatList')
     getFlatList(
         @Payload
         _req: {id?:string,code?:string,name?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PUBPagedResultDto<PUBCountyDto>> {
+    ): Observable<PUBPagedResultDto1<PUBCountyDto>> {
         return null as any
     }
 
@@ -61,7 +61,7 @@ export class PUBCountyService extends BaseApi {
      * 创建或更新地区-前端提交只需调用这个方法即可
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PUBCountyDto
@@ -76,7 +76,7 @@ export class PUBCountyService extends BaseApi {
      * 创建地区
      */
 
-    @POST('create')
+    @POST('Create')
     create(
         @Payload
         _req:PUBCountyDto
@@ -91,7 +91,7 @@ export class PUBCountyService extends BaseApi {
      * 更新地区
      */
 
-    @PUT('update')
+    @PUT('Update')
     update(
         @Payload
         _req:PUBCountyDto
@@ -106,7 +106,7 @@ export class PUBCountyService extends BaseApi {
      * 删除区县镇
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 

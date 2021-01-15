@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBExchangeRateDto,PUBListResultDto,PUBEntityDto, } from './pub.types';
+import { PUBExchangeRateDto,PUBPagedResultDto1,PUBEntityDto1 } from './pub.types';
 
-@BaseUrl('/pub/ExchangeRate')
+@BaseUrl('/PUB/ExchangeRate')
 @Injectable({ providedIn: 'root' })
 export class PUBExchangeRateService extends BaseApi {
   constructor(injector: Injector) {
@@ -16,7 +16,7 @@ export class PUBExchangeRateService extends BaseApi {
      * 获取汇率明细
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -31,12 +31,12 @@ export class PUBExchangeRateService extends BaseApi {
      * 获取汇率列表
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
-        _req: {type?:number,sourceCurrency?:string,targetCurrency?:string,fromDate?:string,toDate?:string,isValid?:boolean} 
+        _req: {type?:number,sourceCurrency?:string,targetCurrency?:string,fromDate?:string,toDate?:string,isValid?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PUBListResultDto<PUBExchangeRateDto>> {
+    ): Observable<PUBPagedResultDto1<PUBExchangeRateDto>> {
         return null as any
     }
 
@@ -46,7 +46,7 @@ export class PUBExchangeRateService extends BaseApi {
      * 保存汇率
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PUBExchangeRateDto
@@ -61,10 +61,10 @@ export class PUBExchangeRateService extends BaseApi {
      * 设置是否有效
      */
 
-    @POST('setValid')
+    @POST('SetValid')
     setValid(
         @Payload
-        _req:PUBEntityDto<any>
+        _req:PUBEntityDto1<any>
 
     ): Observable<any> {
         return null as any
@@ -76,7 +76,7 @@ export class PUBExchangeRateService extends BaseApi {
      * 删除汇率
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 

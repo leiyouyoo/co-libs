@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBContainerDto,PUBPagedResultDto,PUBContainerGroupDto,PUBListResultDto,PUBContainerCheckInputDto,PUBChangeContainerStateInput,PUBGetAllContainerForUiPickerInput,PUBContainerUiPickerDto, } from './pub.types';
+import { PUBPagedResultDto1,PUBContainerDto,PUBListResultDto1,PUBContainerGroupDto,PUBContainerCheckInputDto,PUBChangeContainerStateInput,PUBGetAllContainerForUiPickerInput,PUBContainerUiPickerDto } from './pub.types';
 
-@BaseUrl('/pub/Container')
+@BaseUrl('/PUB/Container')
 @Injectable({ providedIn: 'root' })
 export class PUBContainerService extends BaseApi {
   constructor(injector: Injector) {
@@ -16,12 +16,12 @@ export class PUBContainerService extends BaseApi {
      * 获取分页箱型列表
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
         _req: {isValid?:boolean,code?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PUBPagedResultDto<PUBContainerDto>> {
+    ): Observable<PUBPagedResultDto1<PUBContainerDto>> {
         return null as any
     }
 
@@ -31,12 +31,12 @@ export class PUBContainerService extends BaseApi {
      * 获取箱型分组列表（根据数字前缀分组）
      */
 
-    @GET('getAllGroup')
+    @GET('GetAllGroup')
     getAllGroup(
         @Payload
         _req: {} 
 
-    ): Observable<PUBListResultDto<PUBContainerGroupDto>> {
+    ): Observable<PUBListResultDto1<PUBContainerGroupDto>> {
         return null as any
     }
 
@@ -46,7 +46,7 @@ export class PUBContainerService extends BaseApi {
      * 获取箱型详情
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -61,7 +61,7 @@ export class PUBContainerService extends BaseApi {
      * 箱型重复校验
      */
 
-    @POST('check')
+    @POST('Check')
     check(
         @Payload
         _req:PUBContainerCheckInputDto
@@ -76,7 +76,7 @@ export class PUBContainerService extends BaseApi {
      * 创建箱型
      */
 
-    @POST('create')
+    @POST('Create')
     create(
         @Payload
         _req:PUBContainerDto
@@ -91,7 +91,7 @@ export class PUBContainerService extends BaseApi {
      * 编辑箱型
      */
 
-    @PUT('update')
+    @PUT('Update')
     update(
         @Payload
         _req:PUBContainerDto
@@ -106,7 +106,7 @@ export class PUBContainerService extends BaseApi {
      * 删除箱型
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 
@@ -121,7 +121,7 @@ export class PUBContainerService extends BaseApi {
      * 修改费用代码状态
      */
 
-    @POST('changeContainerState')
+    @POST('ChangeContainerState')
     changeContainerState(
         @Payload
         _req:PUBChangeContainerStateInput
@@ -136,7 +136,7 @@ export class PUBContainerService extends BaseApi {
      * 创建或更新箱型
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PUBContainerDto
@@ -151,12 +151,27 @@ export class PUBContainerService extends BaseApi {
      * 提供给UI箱型选择器服务接口
      */
 
-    @POST('getAllForUiPicker')
+    @POST('GetAllForUiPicker')
     getAllForUiPicker(
         @Payload
         _req:PUBGetAllContainerForUiPickerInput
 
-    ): Observable<PUBPagedResultDto<PUBContainerUiPickerDto>> {
+    ): Observable<PUBPagedResultDto1<PUBContainerUiPickerDto>> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/Container/PushContainerETA
+     * 推送inttra箱动态到icp3
+     */
+
+    @POST('PushContainerETA')
+    pushContainerETA(
+        @Payload
+        _req: {} 
+
+    ): Observable<any> {
         return null as any
     }
 

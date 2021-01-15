@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBChannelDataCreateUpdateDto,PUBChannelDataDto,PUBChannelDataCheckDto,PUBPagedResultDto, } from './pub.types';
+import { PUBChannelDataCreateUpdateDto,PUBChannelDataDto,PUBChannelDataCheckDto,PUBPagedResultDto1 } from './pub.types';
 
-@BaseUrl('/pub/ChannelData')
+@BaseUrl('/PUB/ChannelData')
 @Injectable({ providedIn: 'root' })
 export class PUBChannelDataService extends BaseApi {
   constructor(injector: Injector) {
@@ -16,7 +16,7 @@ export class PUBChannelDataService extends BaseApi {
      * 保存渠道
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PUBChannelDataCreateUpdateDto
@@ -31,7 +31,7 @@ export class PUBChannelDataService extends BaseApi {
      * 校验重复性数据
      */
 
-    @POST('check')
+    @POST('Check')
     check(
         @Payload
         _req:PUBChannelDataCheckDto
@@ -46,7 +46,7 @@ export class PUBChannelDataService extends BaseApi {
      * 删除渠道
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 
@@ -61,7 +61,7 @@ export class PUBChannelDataService extends BaseApi {
      * 获取渠道实体
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -76,12 +76,12 @@ export class PUBChannelDataService extends BaseApi {
      * 获取渠道列表
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
         _req: {freightMethodType?:number,channelGroupStr?:string,fbaFreightMethodId?:string,isTaxIncluded?:boolean,channelId?:string,ids?:any[],keyName?:string,searchText?:string,includeDeleted?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PUBPagedResultDto<PUBChannelDataDto>> {
+    ): Observable<PUBPagedResultDto1<PUBChannelDataDto>> {
         return null as any
     }
 

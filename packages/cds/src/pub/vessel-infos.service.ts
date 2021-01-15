@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBGetShipTrackInfoOutput,PUBAddingVesselInfosTaskInput, } from './pub.types';
+import { PUBGetShipTrackInfoOutput,PUBAddingVesselInfosTaskInput } from './pub.types';
 
-@BaseUrl('/pub/VesselInfos')
+@BaseUrl('/PUB/VesselInfos')
 @Injectable({ providedIn: 'root' })
 export class PUBVesselInfosService extends BaseApi {
   constructor(injector: Injector) {
@@ -16,7 +16,7 @@ export class PUBVesselInfosService extends BaseApi {
      * 根据港口获取轨迹信息
      */
 
-    @GET('getShipTrackInfo')
+    @GET('GetShipTrackInfo')
     getShipTrackInfo(
         @Payload
         _req: {pOLCode:string,pODCode:string,vesselName?:string} 
@@ -31,7 +31,7 @@ export class PUBVesselInfosService extends BaseApi {
      * 获取当前船名坐标（可批量获取）
      */
 
-    @POST('getCurrentPositions')
+    @POST('GetCurrentPositions')
     getCurrentPositions(
         @Payload
         _req: {} 
@@ -46,7 +46,7 @@ export class PUBVesselInfosService extends BaseApi {
      * 获取需获取的船任务列表中当前轨迹数据
      */
 
-    @GET('getVesselInfosNew')
+    @GET('GetVesselInfosNew')
     getVesselInfosNew(
         @Payload
         _req: {} 
@@ -61,7 +61,7 @@ export class PUBVesselInfosService extends BaseApi {
      * 同步船舶轨迹的数据
      */
 
-    @POST('syncShipTrackingInfo')
+    @POST('SyncShipTrackingInfo')
     syncShipTrackingInfo(
         @Payload
         _req: {} 
@@ -73,10 +73,10 @@ export class PUBVesselInfosService extends BaseApi {
 
     /**
      * @param url /PUB/VesselInfos/SyncIcpUsers
-     * 
+     * 暂无备注
      */
 
-    @POST('syncIcpUsers')
+    @POST('SyncIcpUsers')
     syncIcpUsers(
         @Payload
         _req: {} 
@@ -91,7 +91,7 @@ export class PUBVesselInfosService extends BaseApi {
      * 添加船舶轨迹定时任务
      */
 
-    @POST('addingVesselInfosTask')
+    @POST('AddingVesselInfosTask')
     addingVesselInfosTask(
         @Payload
         _req:PUBAddingVesselInfosTaskInput

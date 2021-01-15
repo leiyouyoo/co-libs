@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBGLCodeDto,PUBListResultDto,PUBEntityDto, } from './pub.types';
+import { PUBGLCodeDto,PUBListResultDto1,PUBEntityDto1,PUBGLCodeSetGroupInput,PUBGLCodeSetCompanyInput } from './pub.types';
 
-@BaseUrl('/pub/GLCode')
+@BaseUrl('/PUB/GLCode')
 @Injectable({ providedIn: 'root' })
 export class PUBGLCodeService extends BaseApi {
   constructor(injector: Injector) {
@@ -16,7 +16,7 @@ export class PUBGLCodeService extends BaseApi {
      * 获取会计科目明细
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -31,12 +31,12 @@ export class PUBGLCodeService extends BaseApi {
      * 获取会计科目列表
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
-        _req: {input?:object} 
+        _req: {solutionId:string,companyId?:string,gLCodeType?:number,groupId?:string,searchText?:string,parentId?:string,isValid?:boolean,isRecursion?:boolean} 
 
-    ): Observable<PUBListResultDto<PUBGLCodeDto>> {
+    ): Observable<PUBListResultDto1<PUBGLCodeDto>> {
         return null as any
     }
 
@@ -46,7 +46,7 @@ export class PUBGLCodeService extends BaseApi {
      * 保存会计科目
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PUBGLCodeDto
@@ -61,10 +61,10 @@ export class PUBGLCodeService extends BaseApi {
      * 设置是否有效
      */
 
-    @POST('setValid')
+    @POST('SetValid')
     setValid(
         @Payload
-        _req:PUBEntityDto<any>
+        _req:PUBEntityDto1<any>
 
     ): Observable<any> {
         return null as any
@@ -76,10 +76,40 @@ export class PUBGLCodeService extends BaseApi {
      * 删除会计科目
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/GLCode/SetGroup
+     * 转移分组
+     */
+
+    @POST('SetGroup')
+    setGroup(
+        @Payload
+        _req:PUBGLCodeSetGroupInput
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/GLCode/SetCompany
+     * 设置公司
+     */
+
+    @POST('SetCompany')
+    setCompany(
+        @Payload
+        _req:PUBGLCodeSetCompanyInput
 
     ): Observable<any> {
         return null as any

@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBConfigureModel,PUBConfigure,PUBGetExchangeRateListInput,PUBQueryBankDirectAccountInfo,PUBQueryGLCodeInput,PUBGLCodeModel, } from './pub.types';
+import { PUBConfigureModel,PUBGetExchangeRateListInput,PUBQueryBankDirectAccountInfo,PUBQueryGLCodeInput,PUBGLCodeModel,PUBConfigure } from './pub.types';
 
-@BaseUrl('/pub/Configure')
+@BaseUrl('/PUB/Configure')
 @Injectable({ providedIn: 'root' })
 export class PUBConfigureService extends BaseApi {
   constructor(injector: Injector) {
@@ -16,7 +16,7 @@ export class PUBConfigureService extends BaseApi {
      * 获取银行账户根据 银行短名
      */
 
-    @GET('getAccountNoByBankShortNameList')
+    @GET('GetAccountNoByBankShortNameList')
     getAccountNoByBankShortNameList(
         @Payload
         _req: {shortName?:string} 
@@ -31,7 +31,7 @@ export class PUBConfigureService extends BaseApi {
      * 根据公司获取所有银行账号
      */
 
-    @GET('getAccountNoByCompany')
+    @GET('GetAccountNoByCompany')
     getAccountNoByCompany(
         @Payload
         _req: {companyId?:string} 
@@ -46,7 +46,7 @@ export class PUBConfigureService extends BaseApi {
      * 获取简写公司列表
      */
 
-    @GET('getBankShortNameList')
+    @GET('GetBankShortNameList')
     getBankShortNameList(
         @Payload
         _req: {} 
@@ -61,7 +61,7 @@ export class PUBConfigureService extends BaseApi {
      * 获取银行账户列表
      */
 
-    @POST('getBnakAccountList')
+    @POST('GetBnakAccountList')
     getBnakAccountList(
         @Payload
         _req: {companyId?:string,shortName?:string} 
@@ -76,7 +76,7 @@ export class PUBConfigureService extends BaseApi {
      * 获取公司列表 根据银行短名
      */
 
-    @POST('getCompanyListByShortName')
+    @POST('GetCompanyListByShortName')
     getCompanyListByShortName(
         @Payload
         _req: {shortName?:string} 
@@ -91,7 +91,7 @@ export class PUBConfigureService extends BaseApi {
      * 获取公司银行列表
      */
 
-    @POST('getCompayBank')
+    @POST('GetCompayBank')
     getCompayBank(
         @Payload
         _req: {companyId?:string} 
@@ -106,7 +106,7 @@ export class PUBConfigureService extends BaseApi {
      * 根据用户获取银行列表
      */
 
-    @POST('getCompayBankByUser')
+    @POST('GetCompayBankByUser')
     getCompayBankByUser(
         @Payload
         _req: {userId?:number} 
@@ -118,10 +118,10 @@ export class PUBConfigureService extends BaseApi {
 
     /**
      * @param url /PUB/Configure/GetConfigure
-     * 
+     * 暂无备注
      */
 
-    @GET('getConfigure')
+    @GET('GetConfigure')
     getConfigure(
         @Payload
         _req: {companyId?:string} 
@@ -136,7 +136,7 @@ export class PUBConfigureService extends BaseApi {
      * 获取公司配置信息
      */
 
-    @POST('getConfigureModelAsync')
+    @POST('GetConfigureModelAsync')
     getConfigureModelAsync(
         @Payload
         _req: {companyId?:string} 
@@ -151,7 +151,7 @@ export class PUBConfigureService extends BaseApi {
      * 获取银行账号
      */
 
-    @POST('getConfigureBankAccountListAsync')
+    @POST('GetConfigureBankAccountListAsync')
     getConfigureBankAccountListAsync(
         @Payload
         _req: {companyId?:string} 
@@ -166,7 +166,7 @@ export class PUBConfigureService extends BaseApi {
      * 获取汇率
      */
 
-    @POST('getExchangeRateAsync')
+    @POST('GetExchangeRateAsync')
     getExchangeRateAsync(
         @Payload
         _req: {date?:string,sourceCurrency?:string,targetCurrency?:string} 
@@ -181,7 +181,7 @@ export class PUBConfigureService extends BaseApi {
      * 获取汇率集合
      */
 
-    @POST('getExchangeRateListAsync')
+    @POST('GetExchangeRateListAsync')
     getExchangeRateListAsync(
         @Payload
         _req:PUBGetExchangeRateListInput
@@ -193,10 +193,10 @@ export class PUBConfigureService extends BaseApi {
 
     /**
      * @param url /PUB/Configure/GetExchangeRateListAllByDatesAsync
-     * 
+     * 暂无备注
      */
 
-    @POST('getExchangeRateListAllByDatesAsync')
+    @POST('GetExchangeRateListAllByDatesAsync')
     getExchangeRateListAllByDatesAsync(
         @Payload
         _req:PUBGetExchangeRateListInput
@@ -211,7 +211,7 @@ export class PUBConfigureService extends BaseApi {
      * 获取汇率集合
      */
 
-    @POST('getExchangeRateListByDatesAsync')
+    @POST('GetExchangeRateListByDatesAsync')
     getExchangeRateListByDatesAsync(
         @Payload
         _req:PUBGetExchangeRateListInput
@@ -226,7 +226,7 @@ export class PUBConfigureService extends BaseApi {
      * 获取会计科目集合
      */
 
-    @POST('getGLCodeListByUserAsync')
+    @POST('GetGLCodeListByUserAsync')
     getGLCodeListByUserAsync(
         @Payload
         _req: {userId?:number} 
@@ -241,8 +241,23 @@ export class PUBConfigureService extends BaseApi {
      * 获取会计科目集合
      */
 
-    @POST('getSolutionGLConfigListByUserAsync')
+    @POST('GetSolutionGLConfigListByUserAsync')
     getSolutionGLConfigListByUserAsync(
+        @Payload
+        _req: {userId?:number} 
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/Configure/GetBankDirectByUserAsync
+     * 获取银企直连信息
+     */
+
+    @POST('GetBankDirectByUserAsync')
+    getBankDirectByUserAsync(
         @Payload
         _req: {userId?:number} 
 
@@ -256,7 +271,7 @@ export class PUBConfigureService extends BaseApi {
      * 获取银企直连信息
      */
 
-    @POST('getBankDirectModelAsync')
+    @POST('GetBankDirectModelAsync')
     getBankDirectModelAsync(
         @Payload
         _req:PUBQueryBankDirectAccountInfo
@@ -271,7 +286,7 @@ export class PUBConfigureService extends BaseApi {
      * 更新银企直连账号信息
      */
 
-    @POST('upBankDirectActnbrAsync')
+    @POST('UpBankDirectActnbrAsync')
     upBankDirectActnbrAsync(
         @Payload
         _req: {} 
@@ -286,7 +301,7 @@ export class PUBConfigureService extends BaseApi {
      * 获取会计科目
      */
 
-    @POST('getGLCodeAsync')
+    @POST('GetGLCodeAsync')
     getGLCodeAsync(
         @Payload
         _req:PUBQueryGLCodeInput
@@ -301,7 +316,7 @@ export class PUBConfigureService extends BaseApi {
      * 获取会计科目集合
      */
 
-    @POST('getGLCodeListAsync')
+    @POST('GetGLCodeListAsync')
     getGLCodeListAsync(
         @Payload
         _req: {companyId?:string} 
@@ -316,7 +331,7 @@ export class PUBConfigureService extends BaseApi {
      * 获取解决方案会计科目配置集合
      */
 
-    @POST('getSolutionGLConfigListAsync')
+    @POST('GetSolutionGLConfigListAsync')
     getSolutionGLConfigListAsync(
         @Payload
         _req: {companyId?:string} 
@@ -331,7 +346,7 @@ export class PUBConfigureService extends BaseApi {
      * 根据公司获取解决方案币种
      */
 
-    @GET('getSolutionCurrencyListByCompany')
+    @GET('GetSolutionCurrencyListByCompany')
     getSolutionCurrencyListByCompany(
         @Payload
         _req: {companyId?:string} 
@@ -346,7 +361,7 @@ export class PUBConfigureService extends BaseApi {
      * 获取公司配置
      */
 
-    @GET('getConfigureAsync')
+    @GET('GetConfigureAsync')
     getConfigureAsync(
         @Payload
         _req: {companyId?:string} 
@@ -358,10 +373,10 @@ export class PUBConfigureService extends BaseApi {
 
     /**
      * @param url /PUB/Configure/GetAccountInfos
-     * 
+     * 暂无备注
      */
 
-    @POST('getAccountInfos')
+    @POST('GetAccountInfos')
     getAccountInfos(
         @Payload
         _req: {} 
@@ -373,10 +388,10 @@ export class PUBConfigureService extends BaseApi {
 
     /**
      * @param url /PUB/Configure/GetBankAccountList
-     * 
+     * 暂无备注
      */
 
-    @POST('getBankAccountList')
+    @POST('GetBankAccountList')
     getBankAccountList(
         @Payload
         _req: {} 
@@ -391,7 +406,7 @@ export class PUBConfigureService extends BaseApi {
      * 获取公司配置列表
      */
 
-    @POST('getConfigureListAsync')
+    @POST('GetConfigureListAsync')
     getConfigureListAsync(
         @Payload
         _req: {} 
@@ -403,10 +418,10 @@ export class PUBConfigureService extends BaseApi {
 
     /**
      * @param url /PUB/Configure/GetSolutionGLConfigListByCompanyIdsAsync
-     * 
+     * 暂无备注
      */
 
-    @POST('getSolutionGLConfigListByCompanyIdsAsync')
+    @POST('GetSolutionGLConfigListByCompanyIdsAsync')
     getSolutionGLConfigListByCompanyIdsAsync(
         @Payload
         _req: {} 

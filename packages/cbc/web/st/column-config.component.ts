@@ -44,6 +44,7 @@ import { mergeSorted } from './utils';
               </div>
             </div>-->
             <nz-tree [nzData]="nodes"
+                     class="co-st-column-tree"
                      nzDraggable
                      nzBlockNode
                      [nzBeforeDrop]="nzBeforeDrop"

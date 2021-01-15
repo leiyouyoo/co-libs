@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBRegionDto,PUBListResultDto,PUBGetByAreaInput,PUBRegionCheckDto,PUBGetAllCountryForUiPickerInput,PUBCountryUiPickerDto,PUBPagedResultDto,PUBGetAllRegionForUiPickerInput,PUBRegionUiPickerDto,PUBRegionWithLevelUiPickerDto, } from './pub.types';
+import { PUBRegionDto,PUBListResultDto1,PUBGetByAreaInput,PUBRegionCheckDto,PUBGetAllCountryForUiPickerInput,PUBPagedResultDto1,PUBCountryUiPickerDto,PUBGetAllRegionForUiPickerInput,PUBRegionUiPickerDto,PUBRegionWithLevelUiPickerDto } from './pub.types';
 
-@BaseUrl('/pub/Region')
+@BaseUrl('/PUB/Region')
 @Injectable({ providedIn: 'root' })
 export class PUBRegionService extends BaseApi {
   constructor(injector: Injector) {
@@ -16,7 +16,7 @@ export class PUBRegionService extends BaseApi {
      * 获取地区明细
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -31,12 +31,12 @@ export class PUBRegionService extends BaseApi {
      * 获取地区列表
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
         _req: {ids?:any[],code?:string,shippingCode?:string,name?:string,parentId?:string,isValid?:boolean,isRecursion?:boolean,id?:string} 
 
-    ): Observable<PUBListResultDto<PUBRegionDto>> {
+    ): Observable<PUBListResultDto1<PUBRegionDto>> {
         return null as any
     }
 
@@ -46,12 +46,12 @@ export class PUBRegionService extends BaseApi {
      * 根据片区获取省份地区
      */
 
-    @POST('getByAreaIds')
+    @POST('GetByAreaIds')
     getByAreaIds(
         @Payload
         _req:PUBGetByAreaInput
 
-    ): Observable<PUBListResultDto<PUBRegionDto>> {
+    ): Observable<PUBListResultDto1<PUBRegionDto>> {
         return null as any
     }
 
@@ -61,7 +61,7 @@ export class PUBRegionService extends BaseApi {
      * 校验重复性数据
      */
 
-    @POST('check')
+    @POST('Check')
     check(
         @Payload
         _req:PUBRegionCheckDto
@@ -76,7 +76,7 @@ export class PUBRegionService extends BaseApi {
      * 创建或更新地区-前端提交只需调用这个方法即可
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PUBRegionDto
@@ -91,7 +91,7 @@ export class PUBRegionService extends BaseApi {
      * 创建地区
      */
 
-    @POST('create')
+    @POST('Create')
     create(
         @Payload
         _req:PUBRegionDto
@@ -106,7 +106,7 @@ export class PUBRegionService extends BaseApi {
      * 更新地区
      */
 
-    @PUT('update')
+    @PUT('Update')
     update(
         @Payload
         _req:PUBRegionDto
@@ -121,7 +121,7 @@ export class PUBRegionService extends BaseApi {
      * 删除地区
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 
@@ -133,10 +133,10 @@ export class PUBRegionService extends BaseApi {
 
     /**
      * @param url /PUB/Region/BulkCreateAsync
-     * 
+     * 暂无备注
      */
 
-    @POST('bulkCreateAsync')
+    @POST('BulkCreateAsync')
     bulkCreateAsync(
         @Payload
         _req:PUBRegionDto
@@ -151,12 +151,12 @@ export class PUBRegionService extends BaseApi {
      * 提供给UI国家选择器的服务接口
      */
 
-    @POST('getAllCountryForUiPicker')
+    @POST('GetAllCountryForUiPicker')
     getAllCountryForUiPicker(
         @Payload
         _req:PUBGetAllCountryForUiPickerInput
 
-    ): Observable<PUBPagedResultDto<PUBCountryUiPickerDto>> {
+    ): Observable<PUBPagedResultDto1<PUBCountryUiPickerDto>> {
         return null as any
     }
 
@@ -166,12 +166,12 @@ export class PUBRegionService extends BaseApi {
      * 提供给UI地区（省份）选择器的服务接口
      */
 
-    @POST('getAllRegionForUiPicker')
+    @POST('GetAllRegionForUiPicker')
     getAllRegionForUiPicker(
         @Payload
         _req:PUBGetAllRegionForUiPickerInput
 
-    ): Observable<PUBPagedResultDto<PUBRegionUiPickerDto>> {
+    ): Observable<PUBPagedResultDto1<PUBRegionUiPickerDto>> {
         return null as any
     }
 
@@ -181,12 +181,12 @@ export class PUBRegionService extends BaseApi {
      * 提供给UI地区（国家带子级）选择器的服务接口
      */
 
-    @GET('getAllCountriesForPicker')
+    @GET('GetAllCountriesForPicker')
     getAllCountriesForPicker(
         @Payload
         _req: {searchText?:string,ids?:string} 
 
-    ): Observable<PUBListResultDto<PUBRegionWithLevelUiPickerDto>> {
+    ): Observable<PUBListResultDto1<PUBRegionWithLevelUiPickerDto>> {
         return null as any
     }
 

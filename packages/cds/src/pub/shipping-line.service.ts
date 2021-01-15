@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBShippingLineDto,PUBListResultDto,PUBShippingLineCheckInputDto,PUBChangeShippingLineStateInput,PUBCountryReationShippingDto,PUBPortReationCountryDto,PUBGetAllShippingLineForUiPickerInput,PUBShippingLineUiPickerDto,PUBPagedResultDto, } from './pub.types';
+import { PUBShippingLineDto,PUBListResultDto1,PUBShippingLineCheckInputDto,PUBChangeShippingLineStateInput,PUBCountryReationShippingDto,PUBPortReationCountryDto,PUBGetAllShippingLineForUiPickerInput,PUBPagedResultDto1,PUBShippingLineUiPickerDto } from './pub.types';
 
-@BaseUrl('/pub/ShippingLine')
+@BaseUrl('/PUB/ShippingLine')
 @Injectable({ providedIn: 'root' })
 export class PUBShippingLineService extends BaseApi {
   constructor(injector: Injector) {
@@ -16,7 +16,7 @@ export class PUBShippingLineService extends BaseApi {
      * 获取航线详情
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -31,12 +31,12 @@ export class PUBShippingLineService extends BaseApi {
      * 分页获取航线顶级父类集合
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
         _req: {isValid?:boolean,parentId?:string,isRecursion?:boolean} 
 
-    ): Observable<PUBListResultDto<PUBShippingLineDto>> {
+    ): Observable<PUBListResultDto1<PUBShippingLineDto>> {
         return null as any
     }
 
@@ -46,7 +46,7 @@ export class PUBShippingLineService extends BaseApi {
      * 航线重复校验
      */
 
-    @POST('check')
+    @POST('Check')
     check(
         @Payload
         _req:PUBShippingLineCheckInputDto
@@ -61,7 +61,7 @@ export class PUBShippingLineService extends BaseApi {
      * 创建航线
      */
 
-    @POST('create')
+    @POST('Create')
     create(
         @Payload
         _req:PUBShippingLineDto
@@ -76,7 +76,7 @@ export class PUBShippingLineService extends BaseApi {
      * 更新或者删除
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PUBShippingLineDto
@@ -91,7 +91,7 @@ export class PUBShippingLineService extends BaseApi {
      * 编辑航线
      */
 
-    @POST('postUpdate')
+    @POST('PostUpdate')
     postUpdate(
         @Payload
         _req:PUBShippingLineDto
@@ -106,7 +106,7 @@ export class PUBShippingLineService extends BaseApi {
      * 删除航线
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 
@@ -121,7 +121,7 @@ export class PUBShippingLineService extends BaseApi {
      * 修改航线状态
      */
 
-    @POST('changeShippingLineState')
+    @POST('ChangeShippingLineState')
     changeShippingLineState(
         @Payload
         _req:PUBChangeShippingLineStateInput
@@ -136,12 +136,12 @@ export class PUBShippingLineService extends BaseApi {
      * 获取航线与国家关系列表
      */
 
-    @GET('getCountryList')
+    @GET('GetCountryList')
     getCountryList(
         @Payload
         _req: {shippingLineId?:string} 
 
-    ): Observable<PUBListResultDto<PUBCountryReationShippingDto>> {
+    ): Observable<PUBListResultDto1<PUBCountryReationShippingDto>> {
         return null as any
     }
 
@@ -151,7 +151,7 @@ export class PUBShippingLineService extends BaseApi {
      * 保存航线与国家关系列表
      */
 
-    @POST('saveCountry')
+    @POST('SaveCountry')
     saveCountry(
         @Payload
         _req: {} 
@@ -166,12 +166,12 @@ export class PUBShippingLineService extends BaseApi {
      * 获取航线与港口关系列表
      */
 
-    @GET('getPortList')
+    @GET('GetPortList')
     getPortList(
         @Payload
         _req: {shippingLineId?:string} 
 
-    ): Observable<PUBListResultDto<PUBPortReationCountryDto>> {
+    ): Observable<PUBListResultDto1<PUBPortReationCountryDto>> {
         return null as any
     }
 
@@ -181,7 +181,7 @@ export class PUBShippingLineService extends BaseApi {
      * 保存航线与港口关系列表
      */
 
-    @POST('savePort')
+    @POST('SavePort')
     savePort(
         @Payload
         _req: {} 
@@ -196,7 +196,7 @@ export class PUBShippingLineService extends BaseApi {
      * 根据航线获取对应的港口
      */
 
-    @GET('getPortsByShippingLine')
+    @GET('GetPortsByShippingLine')
     getPortsByShippingLine(
         @Payload
         _req: {code?:string} 
@@ -211,7 +211,7 @@ export class PUBShippingLineService extends BaseApi {
      * 根据航线获取对应的省份
      */
 
-    @GET('getRegionsByShippingLine')
+    @GET('GetRegionsByShippingLine')
     getRegionsByShippingLine(
         @Payload
         _req: {code?:string} 
@@ -226,12 +226,12 @@ export class PUBShippingLineService extends BaseApi {
      * 提供给UI航线选择器服务接口
      */
 
-    @POST('getAllForUiPicker')
+    @POST('GetAllForUiPicker')
     getAllForUiPicker(
         @Payload
         _req:PUBGetAllShippingLineForUiPickerInput
 
-    ): Observable<PUBPagedResultDto<PUBShippingLineUiPickerDto>> {
+    ): Observable<PUBPagedResultDto1<PUBShippingLineUiPickerDto>> {
         return null as any
     }
 

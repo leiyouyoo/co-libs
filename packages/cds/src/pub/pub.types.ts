@@ -3,28 +3,29 @@
      * 片区Dto
      */
     export class PUBAreaDto {
+        [key:string]: any;
         
          
             /* 片区名称-英文 */ 
             name: string;
          
             /* 片区名称-本地化 */ 
-            nameLocalization?: string;
+            nameLocalization: string;
          
             /* 直接RegionId */ 
-            regionIds?: any[];
+            regionIds: any[];
          
             /* 直接Region名称-本地化 */ 
-            regionNames?: any[];
+            regionNames: any[];
          
             /* 片区包含或所属国家 */ 
-            countryIds?: any[];
+            countryIds: any[];
          
             /* 中文名称 */ 
-            chineseName?: string;
+            chineseName: string;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -32,11 +33,12 @@
     /**
      *  No Remark 
      */
-    export class PUBListResultDto<T> {
+    export class PUBListResultDto1<T> {
+        [key:string]: any;
         
          
             
-            items: any;
+            items: T[];
         
         
     }
@@ -45,13 +47,14 @@
      * 片区重复校验-传输对象模型
      */
     export class PUBAreaCheckDto {
+        [key:string]: any;
         
          
             /* 名称 */ 
-            name?: string;
+            name: string;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -60,33 +63,32 @@
      * GetAllAreaForUiPickerInput
      */
     export class PUBGetAllAreaForUiPickerInput {
+        [key:string]: any;
         
          
             /* 是否包含无效数据 */ 
-            includeInvalid?: boolean;
+            includeInvalid: boolean;
          
-            /* 主键集合 */ 
-            ids?: any[];
+            
+            ids: any[];
          
-            /* 键名 */ 
-            keyName?: string;
+            
+            keyName: string;
          
-            /* 搜索文本 */ 
-            searchText?: string;
+            
+            searchText: string;
          
-            /* 包含逻辑删除 */ 
-            includeDeleted?: boolean;
+            
+            includeDeleted: boolean;
          
-            /* Sorting information.
-Should include sorting field and optionally a direction (ASC or DESC)
-Can contain more than one field separated by comma (,). */ 
-            sorting?: string;
+            
+            sorting: string;
          
-            /* 页大小 */ 
-            maxResultCount?: number;
+            
+            maxResultCount: number;
          
-            /* 跳过指定条数 */ 
-            skipCount?: number;
+            
+            skipCount: number;
         
         
     }
@@ -95,6 +97,7 @@ Can contain more than one field separated by comma (,). */
      * AreaUiPickerDto
      */
     export class PUBAreaUiPickerDto {
+        [key:string]: any;
         
          
             /* 片区名称 */ 
@@ -121,14 +124,104 @@ Can contain more than one field separated by comma (,). */
     /**
      *  No Remark 
      */
-    export class PUBPagedResultDto<T> {
+    export class PUBPagedResultDto1<T> {
+        [key:string]: any;
         
          
             
-            totalCount: any;
+            totalCount: number;
          
             
-            items: any;
+            items: T[];
+        
+        
+    }
+ 
+    /**
+     * 过滤条件
+     */
+    export class PUBGetAllForUiPickerInput {
+        [key:string]: any;
+        
+         
+            /* 是否含税 */ 
+            isTaxIncluded: boolean;
+         
+            /* 主要运输方式
+0 = NotSet
+1 = Ocean
+2 = Air
+3 = Rail
+4 = MultiModal
+5 = Express
+6 = Truck */ 
+            transportationMode: number;
+         
+            
+            ids: any[];
+         
+            
+            keyName: string;
+         
+            
+            searchText: string;
+         
+            
+            includeDeleted: boolean;
+         
+            
+            sorting: string;
+         
+            
+            maxResultCount: number;
+         
+            
+            skipCount: number;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBChannelUiPickerDto {
+        [key:string]: any;
+        
+         
+            /* 显示名称 */ 
+            name?: string;
+         
+            /* 本地化显示名称 */ 
+            localizationName?: string;
+         
+            /* 是否含税 */ 
+            isTaxIncluded?: boolean;
+         
+            /* 主要运输方式
+0 = NotSet
+1 = Ocean
+2 = Air
+3 = Rail
+4 = MultiModal
+5 = Express
+6 = Truck */ 
+            transportationMode?: number;
+         
+            /* 尾程运输方式
+0 = NotSet
+1 = Ocean
+2 = Air
+3 = Rail
+4 = MultiModal
+5 = Express
+6 = Truck */ 
+            postTransportationMode?: number;
+         
+            
+            localizationText?: string;
+         
+            
+            id?: string;
         
         
     }
@@ -137,32 +230,33 @@ Can contain more than one field separated by comma (,). */
      * 渠道添加修改DTO
      */
     export class PUBChannelDataCreateUpdateDto {
+        [key:string]: any;
         
          
             /* 本地化 */ 
-            localizationText?: string;
+            localizationText: string;
          
             /* 运输模式
 0 = Unknown
 1 = Ocean
 2 = Air */ 
-            freightMethodType?: number;
+            freightMethodType: number;
          
             /* 渠道名称 */ 
-            channelGroupStr?: string;
+            channelGroupStr: string;
          
             /* 运输方式ID */ 
-            fbaFreightMethodId?: string;
+            fbaFreightMethodId: string;
          
             /* 是否含税 */ 
-            isTaxIncluded?: boolean;
+            isTaxIncluded: boolean;
          
             /* 渠道公司ID
 1、美森快船;2、海派;3、海卡;4、南航直飞;5、香港飞;6、北京飞;7、韩国飞 */ 
-            channelId?: string;
+            channelId: string;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -171,38 +265,39 @@ Can contain more than one field separated by comma (,). */
      * 渠道DTO
      */
     export class PUBChannelDataDto {
+        [key:string]: any;
         
          
             /* 创建人 */ 
-            creatorUserName?: string;
+            creatorUserName: string;
          
             /* 本地化 */ 
-            localizationText?: string;
+            localizationText: string;
          
             /* 运输模式
 0 = Unknown
 1 = Ocean
 2 = Air */ 
-            freightMethodType?: number;
+            freightMethodType: number;
          
             /* 渠道名称 */ 
-            channelGroupStr?: string;
+            channelGroupStr: string;
          
             /* 运输方式ID */ 
-            fbaFreightMethodId?: string;
+            fbaFreightMethodId: string;
          
             /* 运输方式 */ 
-            fbaFreightMethodValue?: string;
+            fbaFreightMethodValue: string;
          
             /* 是否含税 */ 
-            isTaxIncluded?: boolean;
+            isTaxIncluded: boolean;
          
             /* 渠道公司ID
 1、美森快船;2、海派;3、海卡;4、南航直飞;5、香港飞;6、北京飞;7、韩国飞 */ 
-            channelId?: string;
+            channelId: string;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -211,13 +306,14 @@ Can contain more than one field separated by comma (,). */
      * 渠道重复校验-传输对象模型
      */
     export class PUBChannelDataCheckDto {
+        [key:string]: any;
         
          
             /* 名称 */ 
-            channelGroupStr?: string;
+            channelGroupStr: string;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -226,31 +322,32 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBChargingCodeDto {
+        [key:string]: any;
         
          
             /* 费用组Id */ 
-            groupId?: string;
+            groupId: string;
          
             /* 费用代码 */ 
-            code?: string;
+            code: string;
          
             /* 费用名称 */ 
-            name?: string;
+            name: string;
          
             /* 是否佣金 */ 
-            isCommission?: boolean;
+            isCommission: boolean;
          
             /* 是否有效 */ 
-            isValid?: boolean;
+            isValid: boolean;
          
             /* 是特殊费用（特殊费用名称：profit\cuf，新增提示：是否加到baseport rates? 。
 默认加到base,可以勾选不添加到基本港费用。）
 0 = OtherCharging
 1 = ManagerCharging */ 
-            type?: number;
+            type: number;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -259,6 +356,7 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBChangeChargingCodeStateInput {
+        [key:string]: any;
         
          
             
@@ -274,36 +372,35 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBGetAllChargingCodeForUiPickerInput {
+        [key:string]: any;
         
          
             /* 分组Id */ 
-            groupId?: string;
+            groupId: string;
          
             /* 是否包含无效数据 */ 
-            includeInvalid?: boolean;
+            includeInvalid: boolean;
          
-            /* 主键集合 */ 
-            ids?: any[];
+            
+            ids: any[];
          
-            /* 键名 */ 
-            keyName?: string;
+            
+            keyName: string;
          
-            /* 搜索文本 */ 
-            searchText?: string;
+            
+            searchText: string;
          
-            /* 包含逻辑删除 */ 
-            includeDeleted?: boolean;
+            
+            includeDeleted: boolean;
          
-            /* Sorting information.
-Should include sorting field and optionally a direction (ASC or DESC)
-Can contain more than one field separated by comma (,). */ 
-            sorting?: string;
+            
+            sorting: string;
          
-            /* 页大小 */ 
-            maxResultCount?: number;
+            
+            maxResultCount: number;
          
-            /* 跳过指定条数 */ 
-            skipCount?: number;
+            
+            skipCount: number;
         
         
     }
@@ -312,6 +409,7 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBChargingCodeUiPickerDto {
+        [key:string]: any;
         
          
             /* 费用组Id */ 
@@ -345,6 +443,7 @@ Can contain more than one field separated by comma (,). */
      * 品名管理
      */
     export class PUBCommodityDto {
+        [key:string]: any;
         
          
             /* 名称 */ 
@@ -381,6 +480,7 @@ Can contain more than one field separated by comma (,). */
      * 品名校验
      */
     export class PUBCommodityCheckInputDto {
+        [key:string]: any;
         
          
             /* 校验类型 
@@ -396,7 +496,7 @@ Can contain more than one field separated by comma (,). */
             name: string;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -405,36 +505,35 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBGetAllCommodityForUiPickerInput {
+        [key:string]: any;
         
          
             /* 是否包含子级 */ 
-            includeChildren?: boolean;
+            includeChildren: boolean;
          
             /* 是否包含无效数据 */ 
-            includeInvalid?: boolean;
+            includeInvalid: boolean;
          
-            /* 主键集合 */ 
-            ids?: any[];
+            
+            ids: any[];
          
-            /* 键名 */ 
-            keyName?: string;
+            
+            keyName: string;
          
-            /* 搜索文本 */ 
-            searchText?: string;
+            
+            searchText: string;
          
-            /* 包含逻辑删除 */ 
-            includeDeleted?: boolean;
+            
+            includeDeleted: boolean;
          
-            /* Sorting information.
-Should include sorting field and optionally a direction (ASC or DESC)
-Can contain more than one field separated by comma (,). */ 
-            sorting?: string;
+            
+            sorting: string;
          
-            /* 页大小 */ 
-            maxResultCount?: number;
+            
+            maxResultCount: number;
          
-            /* 跳过指定条数 */ 
-            skipCount?: number;
+            
+            skipCount: number;
         
         
     }
@@ -443,6 +542,7 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBCommodityUiPickerDto {
+        [key:string]: any;
         
          
             /* 名称 */ 
@@ -476,50 +576,35 @@ Can contain more than one field separated by comma (,). */
     }
  
     /**
-     * 公司配置
+     *  No Remark 
      */
-    export class PUBConfigureModel {
+    export class PUBCompayBankAccountDto {
+        [key:string]: any;
         
          
-            /* 主键 */ 
-            id?: string;
-         
-            /* 公司Id */ 
-            companyId?: string;
-         
-            /* Required
-客户ID */ 
-            customerId?: string;
-         
-            /* 财务解决方案Id */ 
-            solutionId?: string;
-         
-            /* Required, Max length = 10
-本位币 */ 
-            standardCurrency?: string;
-         
-            /* Required, Max length = 10
-默认币种 */ 
-            defaultCurrency?: string;
-         
-            /* 签发地ID */ 
-            issuePlaceId?: string;
-         
-            /* Max length = 10
-公司缩写代码 */ 
-            shortCode?: string;
+            /* 显示名称 */ 
+            showName: string;
          
             
-            glCodes?: any[];
+            companyName: string;
          
             
-            solutionGlConfigs?: any[];
+            companyId: string;
          
-            
-            solutionCurrencies?: any[];
+            /* 银行名称 */ 
+            bankName: string;
          
-            
-            configureBankAccounts?: any[];
+            /* 银行账户 */ 
+            bankAccountNo: string;
+         
+            /* 账户Id */ 
+            acocuntNoId: string;
+         
+            /* 银行ID */ 
+            bankId: string;
+         
+            /* 币种 */ 
+            currency: string;
         
         
     }
@@ -527,20 +612,30 @@ Can contain more than one field separated by comma (,). */
     /**
      *  No Remark 
      */
-    export class PUBGetExchangeRateListInput {
+    export class PUBOrganizationUnitDto {
+        [key:string]: any;
         
          
-            /* 
-0 = Default
-1 = Invoice
-2 = ARAP */ 
-            type?: number;
+            
+            name: string;
          
             
-            dates?: any[];
+            displayName: string;
          
             
-            date?: string;
+            fullName: string;
+         
+            
+            localizationText: string;
+         
+            
+            tenantId: number;
+         
+            
+            isValid: boolean;
+         
+            
+            id: string;
         
         
     }
@@ -548,35 +643,30 @@ Can contain more than one field separated by comma (,). */
     /**
      *  No Remark 
      */
-    export class PUBQueryBankDirectAccountInfo {
-        
-         
-            /* 公司ID */ 
-            companyId?: string;
-         
-            /* 银行账户ID */ 
-            bankAccountId?: string;
-        
-        
-    }
- 
-    /**
-     *  No Remark 
-     */
-    export class PUBQueryGLCodeInput {
+    export class PUBCompanyBankDto {
+        [key:string]: any;
         
          
             
-            companyId?: string;
+            accountNo: string;
          
             
-            currency?: string;
+            showName: string;
          
             
-            type?: number;
+            companyName: string;
          
             
-            isReceivable?: boolean;
+            companyId: string;
+         
+            /* 银行名称 */ 
+            bankName: string;
+         
+            /* 银行ID */ 
+            bankId: string;
+         
+            /* 币种 */ 
+            currency: string;
         
         
     }
@@ -585,6 +675,7 @@ Can contain more than one field separated by comma (,). */
      * 会计科目
      */
     export class PUBGLCodeModel {
+        [key:string]: any;
         
          
             /* 主键 */ 
@@ -624,13 +715,444 @@ Can contain more than one field separated by comma (,). */
     }
  
     /**
+     * 解决方案会计科目配置
+     */
+    export class PUBSolutionGLConfigModel {
+        [key:string]: any;
+        
+         
+            /* 主键 */ 
+            id?: string;
+         
+            /* 财务解决方案Id */ 
+            solutionId?: string;
+         
+            /* 公司Id */ 
+            companyId?: string;
+         
+            /* Required
+类型 */ 
+            type?: number;
+         
+            /* 费用项目Id */ 
+            chargingCodeId?: string;
+         
+            /* Required, Max length = 10
+币种 */ 
+            currency?: string;
+         
+            /* Required
+应收会计科目ID */ 
+            drglCodeId?: string;
+         
+            /* Required
+应付会计科目ID */ 
+            crglCodeId?: string;
+        
+        
+    }
+ 
+    /**
+     * 解决方案可用币种
+     */
+    export class PUBSolutionCurrencyModel {
+        [key:string]: any;
+        
+         
+            /* 主键 */ 
+            id?: string;
+         
+            /* 财务解决方案Id */ 
+            solutionId?: string;
+         
+            /* 币种 */ 
+            currency?: string;
+         
+            
+            companyId?: string;
+        
+        
+    }
+ 
+    /**
+     * 银行帐号
+     */
+    export class PUBConfigureBankAccountModel {
+        [key:string]: any;
+        
+         
+            /* Identity, Indexed, Required
+主键 */ 
+            id?: string;
+         
+            /* 公司Id */ 
+            companyId?: string;
+         
+            /* Required
+银行ID */ 
+            configureBankId?: string;
+         
+            /* Required, Max length = 30
+账号 */ 
+            accountNo?: string;
+         
+            /* Required, Max length = 10
+币种 */ 
+            currency?: string;
+         
+            /* 会计科目ID */ 
+            glId?: string;
+         
+            /* Required
+是否对公账号 */ 
+            isOpen?: boolean;
+         
+            /* Required, Default value = true
+是否有效 */ 
+            isValid?: boolean;
+        
+        
+    }
+ 
+    /**
+     * 公司配置
+     */
+    export class PUBConfigureModel {
+        [key:string]: any;
+        
+         
+            /* 主键 */ 
+            id: string;
+         
+            /* 公司Id */ 
+            companyId: string;
+         
+            /* Required
+客户ID */ 
+            customerId: string;
+         
+            /* 财务解决方案Id */ 
+            solutionId: string;
+         
+            /* Required, Max length = 10
+本位币 */ 
+            standardCurrency: string;
+         
+            /* Required, Max length = 10
+默认币种 */ 
+            defaultCurrency: string;
+         
+            /* 签发地ID */ 
+            issuePlaceId: string;
+         
+            /* Max length = 10
+公司缩写代码 */ 
+            shortCode: string;
+         
+            
+            glCodes: PUBGLCodeModel[];
+         
+            
+            solutionGlConfigs: PUBSolutionGLConfigModel[];
+         
+            
+            solutionCurrencies: PUBSolutionCurrencyModel[];
+         
+            
+            configureBankAccounts: PUBConfigureBankAccountModel[];
+        
+        
+    }
+ 
+    /**
      *  No Remark 
      */
-    export class PUBConfigure {
+    export class PUBGetExchangeRateListInput {
+        [key:string]: any;
+        
+         
+            /* 
+0 = Default
+1 = Invoice
+2 = ARAP */ 
+            type: number;
+         
+            
+            dates: any[];
+         
+            
+            date: string;
+        
+        
+    }
+ 
+    /**
+     * 汇率
+     */
+    export class PUBExchangeRateModel {
+        [key:string]: any;
+        
+         
+            /* Identity, Indexed, Required
+主键 */ 
+            id: string;
+         
+            /* Required
+类型
+0 = Default
+1 = Invoice
+2 = ARAP */ 
+            type: number;
+         
+            /* Required, Max length = 10
+源币种 */ 
+            sourceCurrency: string;
+         
+            /* Required, Max length = 10
+目标币种 */ 
+            targetCurrency: string;
+         
+            /* Required
+有效期-从 */ 
+            fromDate: string;
+         
+            /* Required
+有效期-到 */ 
+            toDate: string;
+         
+            /* Required
+汇率 */ 
+            rate: number;
+         
+            /* Required
+是否有效 */ 
+            isValid: boolean;
+        
+        
+    }
+ 
+    /**
+     * 银企直连信息
+     */
+    export class PUBConfigureBankDirectDto {
+        [key:string]: any;
+        
+         
+            /* 银行名 */ 
+            bankName: string;
+         
+            /* 币种 */ 
+            currency: string;
+         
+            /* 公司ID */ 
+            companyId: string;
+         
+            /* 是否支持银企直连 */ 
+            isBankDirect: boolean;
+         
+            /* 招商银行账户 */ 
+            cmbBankAccountNo: string;
+         
+            /* 银行账户Id */ 
+            cmbAccountId: string;
+         
+            /* 账户名称 */ 
+            cmbBankAccountName: string;
+         
+            /* 一网通账户ID */ 
+            cmbNetComUserAccount: string;
+         
+            /* CMB银企直连户口号 */ 
+            cmbDirectActnbr: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBQueryBankDirectAccountInfo {
+        [key:string]: any;
+        
+         
+            /* 公司ID */ 
+            companyId: string;
+         
+            /* 银行账户ID */ 
+            bankAccountId: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBUpBankDirectActnbrInput {
+        [key:string]: any;
         
          
             
-            id: string;
+            companyId: string;
+         
+            
+            bankAccountId: string;
+         
+            
+            cmbDirectActnbr: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBQueryGLCodeInput {
+        [key:string]: any;
+        
+         
+            
+            companyId: string;
+         
+            
+            currency: string;
+         
+            
+            type: number;
+         
+            
+            isReceivable: boolean;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBConfigureBank {
+        [key:string]: any;
+        
+         
+            
+            configureId: string;
+         
+            
+            shortName: string;
+         
+            
+            name: string;
+         
+            
+            isValid: boolean;
+         
+            
+            tenantId: number;
+         
+            
+            address?: string;
+         
+            
+            localizationText?: string;
+         
+            
+            remark?: string;
+         
+            
+            voidDate?: string;
+         
+            
+            configuresBankAccounts?: any[];
+         
+            
+            configure?: PUBConfigure;
+         
+            
+            isDeleted?: boolean;
+         
+            
+            deleterUserId?: number;
+         
+            
+            deletionTime?: string;
+         
+            
+            lastModificationTime?: string;
+         
+            
+            lastModifierUserId?: number;
+         
+            
+            creationTime?: string;
+         
+            
+            creatorUserId?: number;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBConfigure2Solution {
+        [key:string]: any;
+        
+         
+            
+            configureId: string;
+         
+            
+            solutionId: string;
+         
+            
+            tenantId: number;
+         
+            
+            solution?: PUBSolution;
+         
+            
+            configure?: PUBConfigure;
+         
+            
+            isDeleted?: boolean;
+         
+            
+            deleterUserId?: number;
+         
+            
+            deletionTime?: string;
+         
+            
+            lastModificationTime?: string;
+         
+            
+            lastModifierUserId?: number;
+         
+            
+            creationTime?: string;
+         
+            
+            creatorUserId?: number;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBConfigure {
+        [key:string]: any;
+        
+         
+            
+            cmbNetComUserAccount: string;
+         
+            
+            isActivateBankDirect: boolean;
          
             
             companyId: string;
@@ -645,37 +1167,172 @@ Can contain more than one field separated by comma (,). */
             defaultCurrency: string;
          
             
+            issuePlaceId: string;
+         
+            
+            shortCode: string;
+         
+            
+            tenantId: number;
+         
+            
+            configuresBanks: PUBConfigureBank[];
+         
+            
+            configure2Solutions: PUBConfigure2Solution[];
+         
+            
+            isDeleted: boolean;
+         
+            
+            deleterUserId: number;
+         
+            
+            deletionTime: string;
+         
+            
+            lastModificationTime: string;
+         
+            
+            lastModifierUserId: number;
+         
+            
             creationTime: string;
          
             
             creatorUserId: number;
          
             
+            id: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBConfiguresBankAccount {
+        [key:string]: any;
+        
+         
+            
+            cmbNetComUserAccount: string;
+         
+            
+            isCMBankDirect: boolean;
+         
+            
+            cmbDirectActnbr: string;
+         
+            
+            configureBankId: string;
+         
+            
+            accountNo: string;
+         
+            
+            currency: string;
+         
+            
+            glId: string;
+         
+            
+            isOpen: boolean;
+         
+            
+            isValid: boolean;
+         
+            
+            voidDate: string;
+         
+            
             tenantId: number;
          
             
-            cmbNetComUserAccount?: string;
+            configuresBank: PUBConfigureBank;
          
             
-            isActivateBankDirect?: boolean;
+            isDeleted: boolean;
          
             
-            issuePlaceId?: string;
+            deleterUserId: number;
          
             
-            shortCode?: string;
+            deletionTime: string;
          
             
-            lastModifierUserId?: number;
+            lastModificationTime: string;
          
             
-            lastModificationTime?: string;
+            lastModifierUserId: number;
          
             
-            configuresBanks?: any[];
+            creationTime: string;
+         
+            
+            creatorUserId: number;
+         
+            
+            id: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBSolution {
+        [key:string]: any;
+        
+         
+            /* 
+0 = Bussiness
+1 = Finance */ 
+            type: number;
+         
+            
+            name: string;
+         
+            /* 
+0 = CreateTime
+1 = BussinessTime */ 
+            invoiceDateType: number;
+         
+            
+            isAccountingShare: boolean;
+         
+            
+            isValid: boolean;
+         
+            
+            tenantId: number;
+         
+            
+            creatorUserCache?: object;
+         
+            
+            remark?: string;
+         
+            
+            voidTime?: string;
+         
+            
+            localizationText?: string;
+         
+            
+            solution2Currencies?: any[];
+         
+            
+            solutionGLConfigs?: any[];
+         
+            
+            solution2ChargingCodeGroups?: any[];
          
             
             configure2Solutions?: any[];
+         
+            
+            glCodes?: any[];
          
             
             isDeleted?: boolean;
@@ -685,6 +1342,624 @@ Can contain more than one field separated by comma (,). */
          
             
             deletionTime?: string;
+         
+            
+            lastModificationTime?: string;
+         
+            
+            lastModifierUserId?: number;
+         
+            
+            creationTime?: string;
+         
+            
+            creatorUserId?: number;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBSolution2Currency {
+        [key:string]: any;
+        
+         
+            
+            creatorUserCache: object;
+         
+            
+            solutionId: string;
+         
+            
+            currency: string;
+         
+            
+            tenantId: number;
+         
+            
+            solution: PUBSolution;
+         
+            
+            isDeleted: boolean;
+         
+            
+            deleterUserId: number;
+         
+            
+            deletionTime: string;
+         
+            
+            lastModificationTime: string;
+         
+            
+            lastModifierUserId: number;
+         
+            
+            creationTime: string;
+         
+            
+            creatorUserId: number;
+         
+            
+            id: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBSolutionGLConfig {
+        [key:string]: any;
+        
+         
+            
+            chargingCodeCache: object;
+         
+            
+            drglCodeCache: object;
+         
+            
+            crglCodeCache: object;
+         
+            
+            creatorUserCache: object;
+         
+            
+            solutionId: string;
+         
+            
+            type: number;
+         
+            
+            chargingCodeId: string;
+         
+            
+            currency: string;
+         
+            
+            drglCodeId: string;
+         
+            
+            crglCodeId: string;
+         
+            
+            companyId: string;
+         
+            
+            isValid: boolean;
+         
+            
+            voidTime: string;
+         
+            
+            tenantId: number;
+         
+            
+            solution: PUBSolution;
+         
+            
+            isDeleted: boolean;
+         
+            
+            deleterUserId: number;
+         
+            
+            deletionTime: string;
+         
+            
+            lastModificationTime: string;
+         
+            
+            lastModifierUserId: number;
+         
+            
+            creationTime: string;
+         
+            
+            creatorUserId: number;
+         
+            
+            id: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBSolution2ChargingCodeGroup {
+        [key:string]: any;
+        
+         
+            
+            solutionId: string;
+         
+            
+            chargingCodeGroupId: string;
+         
+            
+            isAgent: boolean;
+         
+            
+            tenantId: number;
+         
+            
+            solution: PUBSolution;
+         
+            
+            chargingCodeGroup: PUBChargingGroup;
+         
+            
+            isDeleted: boolean;
+         
+            
+            deleterUserId: number;
+         
+            
+            deletionTime: string;
+         
+            
+            lastModificationTime: string;
+         
+            
+            lastModifierUserId: number;
+         
+            
+            creationTime: string;
+         
+            
+            creatorUserId: number;
+         
+            
+            id: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBGLCode {
+        [key:string]: any;
+        
+         
+            
+            solutionId: string;
+         
+            
+            code: string;
+         
+            
+            name: string;
+         
+            
+            isPub: boolean;
+         
+            
+            isValid: boolean;
+         
+            
+            tenantId: number;
+         
+            
+            fullName?: string;
+         
+            
+            fullId?: string;
+         
+            
+            levelCode?: string;
+         
+            
+            level?: number;
+         
+            
+            parent?: PUBGLCode;
+         
+            
+            children?: any[];
+         
+            
+            creatorUserCache?: object;
+         
+            
+            glGroupId?: string;
+         
+            
+            localizationText?: string;
+         
+            
+            remark?: string;
+         
+            /* 
+1 = Assets
+2 = Debt
+3 = Rights
+4 = Costs
+5 = ProfitAndLoss
+6 = Cost
+7 = Income */ 
+            glCodeType?: number;
+         
+            /* 
+1 = Amount
+2 = ForeignCurrencyAmount
+3 = NumberAmount
+4 = NumberForeignCurrencyAmount */ 
+            ledgerStyle?: number;
+         
+            /* 
+1 = Debit
+2 = Credit */ 
+            glCodeProperty?: number;
+         
+            
+            isForeignCheck?: boolean;
+         
+            
+            foreignCurrency?: string;
+         
+            
+            isFee?: boolean;
+         
+            
+            isDepartmentCheck?: boolean;
+         
+            
+            isPersonalCheck?: boolean;
+         
+            
+            isCustomerCheck?: boolean;
+         
+            
+            isBankAccount?: boolean;
+         
+            
+            parentId?: string;
+         
+            
+            companyId?: string;
+         
+            
+            isNumberCheck?: boolean;
+         
+            
+            unitName?: string;
+         
+            
+            isJournal?: boolean;
+         
+            
+            voidTime?: string;
+         
+            
+            solution?: PUBSolution;
+         
+            
+            glGroup?: PUBGLGroup;
+         
+            
+            isDeleted?: boolean;
+         
+            
+            deleterUserId?: number;
+         
+            
+            deletionTime?: string;
+         
+            
+            lastModificationTime?: string;
+         
+            
+            lastModifierUserId?: number;
+         
+            
+            creationTime?: string;
+         
+            
+            creatorUserId?: number;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBChargingGroup {
+        [key:string]: any;
+        
+         
+            
+            code?: string;
+         
+            
+            name?: string;
+         
+            
+            type?: number;
+         
+            
+            fullName?: string;
+         
+            
+            fullId?: string;
+         
+            
+            levelCode?: string;
+         
+            
+            level?: number;
+         
+            
+            parent?: PUBChargingGroup;
+         
+            
+            parentId?: string;
+         
+            
+            children?: any[];
+         
+            
+            chargingCodes?: any[];
+         
+            
+            solution2ChargingCodeGroups?: any[];
+         
+            
+            localizationText?: string;
+         
+            
+            id?: string;
+         
+            
+            creationTime?: string;
+         
+            
+            creatorUserId?: number;
+         
+            
+            lastModificationTime?: string;
+         
+            
+            lastModifierUserId?: number;
+         
+            
+            deletionTime?: string;
+         
+            
+            deleterUserId?: number;
+         
+            
+            isDeleted?: boolean;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBGLGroup {
+        [key:string]: any;
+        
+         
+            
+            code: string;
+         
+            
+            tenantId: number;
+         
+            
+            fullName?: string;
+         
+            
+            fullId?: string;
+         
+            
+            levelCode?: string;
+         
+            
+            level?: number;
+         
+            
+            parent?: PUBGLGroup;
+         
+            
+            children?: any[];
+         
+            
+            creatorUserCache?: object;
+         
+            
+            type?: number;
+         
+            
+            parentId?: string;
+         
+            
+            name?: string;
+         
+            
+            localizationText?: string;
+         
+            
+            remark?: string;
+         
+            
+            glCodes?: any[];
+         
+            
+            id?: string;
+         
+            
+            creationTime?: string;
+         
+            
+            creatorUserId?: number;
+         
+            
+            lastModificationTime?: string;
+         
+            
+            lastModifierUserId?: number;
+         
+            
+            deletionTime?: string;
+         
+            
+            deleterUserId?: number;
+         
+            
+            isDeleted?: boolean;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBChargingCode {
+        [key:string]: any;
+        
+         
+            
+            groupId: string;
+         
+            
+            group: PUBChargingGroup;
+         
+            
+            code: string;
+         
+            
+            name: string;
+         
+            
+            isCommission: boolean;
+         
+            
+            mergerId: string;
+         
+            
+            isValid: boolean;
+         
+            /* 
+0 = OtherCharging
+1 = ManagerCharging */ 
+            type: number;
+         
+            
+            localizationText: string;
+         
+            
+            id: string;
+         
+            
+            creationTime: string;
+         
+            
+            creatorUserId: number;
+         
+            
+            lastModificationTime: string;
+         
+            
+            lastModifierUserId: number;
+         
+            
+            deletionTime: string;
+         
+            
+            deleterUserId: number;
+         
+            
+            isDeleted: boolean;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBBankAccountInfoDto {
+        [key:string]: any;
+        
+         
+            
+            id: string;
+         
+            
+            accountNo: string;
+         
+            
+            currency: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBBankAccountModel {
+        [key:string]: any;
+        
+         
+            /* 公司Id */ 
+            companyId: string;
+         
+            /* 公司名称 */ 
+            companyName: string;
+         
+            /* 银行ID */ 
+            bankId: string;
+         
+            /* 银行名称 */ 
+            bankName: string;
+         
+            /* 账户Id */ 
+            bankAccountId: string;
+         
+            /* 银行账户 */ 
+            bankAccountNo: string;
+         
+            /* 币种 */ 
+            currency: string;
+         
+            /* 会计科目Id */ 
+            glId: string;
+         
+            /* 客户Id */ 
+            customerId: string;
+         
+            /* 显示名称 */ 
+            showName: string;
         
         
     }
@@ -693,6 +1968,7 @@ Can contain more than one field separated by comma (,). */
      * 箱型管理
      */
     export class PUBContainerDto {
+        [key:string]: any;
         
          
             /* 代码 */ 
@@ -729,6 +2005,7 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBContainerGroupDto {
+        [key:string]: any;
         
          
             /* 箱型分组名 */ 
@@ -744,6 +2021,7 @@ Can contain more than one field separated by comma (,). */
      * 箱型校验
      */
     export class PUBContainerCheckInputDto {
+        [key:string]: any;
         
          
             /* 校验类型
@@ -758,19 +2036,19 @@ Can contain more than one field separated by comma (,). */
             checkType: number;
          
             /* 代码 */ 
-            code?: string;
+            code: string;
          
             /* 国际标准代码 */ 
-            isoCode?: string;
+            isoCode: string;
          
             /* 箱量 */ 
-            teu?: number;
+            teu: number;
          
             /* ISO */ 
-            iso?: string;
+            iso: string;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -779,6 +2057,7 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBChangeContainerStateInput {
+        [key:string]: any;
         
          
             
@@ -794,36 +2073,35 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBGetAllContainerForUiPickerInput {
+        [key:string]: any;
         
          
             /* 箱型代码 */ 
-            code?: string;
+            code: string;
          
             /* 是否包含无效数据 */ 
-            includeInvalid?: boolean;
+            includeInvalid: boolean;
          
-            /* 主键集合 */ 
-            ids?: any[];
+            
+            ids: any[];
          
-            /* 键名 */ 
-            keyName?: string;
+            
+            keyName: string;
          
-            /* 搜索文本 */ 
-            searchText?: string;
+            
+            searchText: string;
          
-            /* 包含逻辑删除 */ 
-            includeDeleted?: boolean;
+            
+            includeDeleted: boolean;
          
-            /* Sorting information.
-Should include sorting field and optionally a direction (ASC or DESC)
-Can contain more than one field separated by comma (,). */ 
-            sorting?: string;
+            
+            sorting: string;
          
-            /* 页大小 */ 
-            maxResultCount?: number;
+            
+            maxResultCount: number;
          
-            /* 跳过指定条数 */ 
-            skipCount?: number;
+            
+            skipCount: number;
         
         
     }
@@ -832,6 +2110,7 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBContainerUiPickerDto {
+        [key:string]: any;
         
          
             /* 创建人 */ 
@@ -868,6 +2147,7 @@ Can contain more than one field separated by comma (,). */
      * 费用代码-传输对象模型
      */
     export class PUBCostItemDto {
+        [key:string]: any;
         
          
             /* 费用代码 */ 
@@ -907,7 +2187,11 @@ Can contain more than one field separated by comma (,). */
      * 费用代码重复校验-传输对象模型
      */
     export class PUBCostItemCheckDto {
+        [key:string]: any;
         
+         
+            /* 上级Id */ 
+            parentId: string;
          
             /* 费用代码 */ 
             code: string;
@@ -915,11 +2199,8 @@ Can contain more than one field separated by comma (,). */
             /* 费用名称 */ 
             name: string;
          
-            /* 上级Id */ 
-            parentId?: string;
-         
             
-            id?: string;
+            id: string;
         
         
     }
@@ -928,27 +2209,28 @@ Can contain more than one field separated by comma (,). */
      * 费用代码扁平列表
      */
     export class PUBCostItemFlatDto {
+        [key:string]: any;
         
          
             /* 费用代码 */ 
             code?: string;
          
-            /* 名称 */ 
+            
             name?: string;
          
-            /* 全称 */ 
+            
             fullName?: string;
          
-            /* 带有父级Id的全Id */ 
+            
             fullId?: string;
          
-            /* 层级代码 */ 
+            
             levelCode?: string;
          
-            /* 层级 */ 
+            
             level?: number;
          
-            /* 父ID */ 
+            
             parentId?: string;
          
             
@@ -961,6 +2243,7 @@ Can contain more than one field separated by comma (,). */
      * 区县镇
      */
     export class PUBCountyDto {
+        [key:string]: any;
         
          
             /* 地区名称-英文 */ 
@@ -1021,6 +2304,7 @@ Can contain more than one field separated by comma (,). */
      * 币种管理
      */
     export class PUBCurrencyDto {
+        [key:string]: any;
         
          
             /* 国家Id */ 
@@ -1033,22 +2317,22 @@ Can contain more than one field separated by comma (,). */
             name: string;
          
             /* 币种名称-本地化 */ 
-            nameLocalization?: string;
+            nameLocalization: string;
          
             /* 国家名称 */ 
-            regionName?: string;
+            regionName: string;
          
             /* 是否有效 */ 
-            isValid?: boolean;
+            isValid: boolean;
          
             /* 创建人 */ 
-            creatorUserName?: string;
+            creatorUserName: string;
          
             /* 创建时间 */ 
-            creationTime?: string;
+            creationTime: string;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -1057,7 +2341,14 @@ Can contain more than one field separated by comma (,). */
      * 币种重复校验-传输对象模型
      */
     export class PUBCurrencyCheckDto {
+        [key:string]: any;
         
+         
+            /* 校验类型 - Code|Name
+0 = All
+1 = Code
+2 = Name */ 
+            type: number;
          
             /* 币种代码 */ 
             code: string;
@@ -1065,14 +2356,8 @@ Can contain more than one field separated by comma (,). */
             /* 币种名称 */ 
             name: string;
          
-            /* 校验类型 - Code|Name
-0 = All
-1 = Code
-2 = Name */ 
-            type?: number;
-         
             
-            id?: string;
+            id: string;
         
         
     }
@@ -1081,6 +2366,7 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBChangeCurrencyStateInput {
+        [key:string]: any;
         
          
             
@@ -1093,41 +2379,10 @@ Can contain more than one field separated by comma (,). */
     }
  
     /**
-     * 币种过滤条件
-     */
-    export class PUBGetAllForUiPickerInput {
-        
-         
-            /* 主键集合 */ 
-            ids?: any[];
-         
-            /* 键名 */ 
-            keyName?: string;
-         
-            /* 搜索文本 */ 
-            searchText?: string;
-         
-            /* 包含逻辑删除 */ 
-            includeDeleted?: boolean;
-         
-            /* Sorting information.
-Should include sorting field and optionally a direction (ASC or DESC)
-Can contain more than one field separated by comma (,). */ 
-            sorting?: string;
-         
-            /* 页大小 */ 
-            maxResultCount?: number;
-         
-            /* 跳过指定条数 */ 
-            skipCount?: number;
-        
-        
-    }
- 
-    /**
      * 币种列表
      */
     export class PUBCurrencyUiPickerDto {
+        [key:string]: any;
         
          
             /* 币种代码 */ 
@@ -1152,9 +2407,29 @@ Can contain more than one field separated by comma (,). */
     }
  
     /**
+     *  No Remark 
+     */
+    export class PUBExchange {
+        [key:string]: any;
+        
+         
+            
+            fromCurrencyId: string;
+         
+            
+            toCurrencyId: string;
+         
+            
+            exchangeRate: number;
+        
+        
+    }
+ 
+    /**
      * 数据字典-传输对象模型
      */
     export class PUBDataDictionaryDto {
+        [key:string]: any;
         
          
             /* 类型Id */ 
@@ -1164,25 +2439,25 @@ Can contain more than one field separated by comma (,). */
             code: string;
          
             /* 字典名称 */ 
-            name?: string;
+            name: string;
          
             /* 描述 */ 
-            description?: string;
+            description: string;
          
             /* 字典名称-本地化 */ 
-            nameLocalization?: string;
+            nameLocalization: string;
          
             /* 创建人 */ 
-            creatorUserName?: string;
+            creatorUserName: string;
          
             
-            isValid?: boolean;
+            isValid: boolean;
          
             /* 创建时间 */ 
-            creationTime?: string;
+            creationTime: string;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -1191,6 +2466,7 @@ Can contain more than one field separated by comma (,). */
      * 数据字典重复校验-传输对象模型
      */
     export class PUBDataDictionaryCheckDto {
+        [key:string]: any;
         
          
             /* 字典类型 */ 
@@ -1203,7 +2479,7 @@ Can contain more than one field separated by comma (,). */
             name: string;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -1212,6 +2488,7 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBChangeDataDictionnaryStateInput {
+        [key:string]: any;
         
          
             
@@ -1227,39 +2504,38 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBGetAllDataDictionaryForUiPickerInput {
+        [key:string]: any;
         
          
             /* 是否包含无效数据 */ 
-            includeInvalid?: boolean;
+            includeInvalid: boolean;
          
             /* 类型Id */ 
-            typeIds?: any[];
+            typeIds: any[];
          
             /* 类型代码 */ 
-            typeCodes?: any[];
+            typeCodes: any[];
          
-            /* 主键集合 */ 
-            ids?: any[];
+            
+            ids: any[];
          
-            /* 键名 */ 
-            keyName?: string;
+            
+            keyName: string;
          
-            /* 搜索文本 */ 
-            searchText?: string;
+            
+            searchText: string;
          
-            /* 包含逻辑删除 */ 
-            includeDeleted?: boolean;
+            
+            includeDeleted: boolean;
          
-            /* Sorting information.
-Should include sorting field and optionally a direction (ASC or DESC)
-Can contain more than one field separated by comma (,). */ 
-            sorting?: string;
+            
+            sorting: string;
          
-            /* 页大小 */ 
-            maxResultCount?: number;
+            
+            maxResultCount: number;
          
-            /* 跳过指定条数 */ 
-            skipCount?: number;
+            
+            skipCount: number;
         
         
     }
@@ -1268,6 +2544,7 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBDataDictionaryUiPickerDto {
+        [key:string]: any;
         
          
             /* 类型Id */ 
@@ -1307,25 +2584,26 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBDeliveryChannelDto {
+        [key:string]: any;
         
          
             /* 渠道名称 */ 
             name: string;
          
             /* 是否有效 */ 
-            isValid?: boolean;
+            isValid: boolean;
          
             /* 渠道名称-本地化 */ 
-            localizationText?: string;
+            localizationText: string;
          
             /* 贸易类型 */ 
-            tradeType?: number;
+            tradeType: number;
          
             /* 是否收税 */ 
-            isTaxIncluded?: boolean;
+            isTaxIncluded: boolean;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -1334,6 +2612,7 @@ Can contain more than one field separated by comma (,). */
      * 字典类型-传输对象模型
      */
     export class PUBDictionaryTypeDto {
+        [key:string]: any;
         
          
             /* 类型代码 */ 
@@ -1343,25 +2622,25 @@ Can contain more than one field separated by comma (,). */
             name: string;
          
             /* 地区名称-本地化 */ 
-            nameLocalization?: string;
+            nameLocalization: string;
          
             /* 是否有效 */ 
-            isValid?: boolean;
+            isValid: boolean;
          
             /* 创建人 */ 
-            creatorUserName?: string;
+            creatorUserName: string;
          
             /* 创建时间 */ 
-            creationTime?: string;
+            creationTime: string;
          
             /* 描述 */ 
-            description?: string;
+            description: string;
          
             /* 备注 */ 
-            remark?: string;
+            remark: string;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -1370,13 +2649,14 @@ Can contain more than one field separated by comma (,). */
      * 数据字典类型重复校验-传输对象模型
      */
     export class PUBDictionaryTypeCheckDto {
+        [key:string]: any;
         
          
             /* 名称 */ 
             name: string;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -1385,6 +2665,7 @@ Can contain more than one field separated by comma (,). */
      * 汇率模型
      */
     export class PUBExchangeRateDto {
+        [key:string]: any;
         
          
             /* 类型
@@ -1412,13 +2693,13 @@ Can contain more than one field separated by comma (,). */
             isValid: boolean;
          
             /* 创建人 */ 
-            creatorUserName?: string;
+            creatorUserName: string;
          
             /* 创建时间 */ 
-            creationTime?: string;
+            creationTime: string;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -1426,11 +2707,12 @@ Can contain more than one field separated by comma (,). */
     /**
      *  No Remark 
      */
-    export class PUBEntityDto<T> {
+    export class PUBEntityDto1<T> {
+        [key:string]: any;
         
          
             
-            id?: any;
+            id: string;
         
         
     }
@@ -1439,19 +2721,20 @@ Can contain more than one field separated by comma (,). */
      * 运输方式DTO
      */
     export class PUBFbaFreightMethodDto {
+        [key:string]: any;
         
          
             /* 创建人 */ 
-            creatorUserName?: string;
+            creatorUserName: string;
          
             /* 本地化 */ 
-            localizationText?: string;
+            localizationText: string;
          
             /* 运输方式 */ 
-            value?: string;
+            value: string;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -1460,13 +2743,14 @@ Can contain more than one field separated by comma (,). */
      * 运输方式重复校验-传输对象模型
      */
     export class PUBFbaFreightMethodCheckDto {
+        [key:string]: any;
         
          
             /* 运输方式 */ 
-            value?: string;
+            value: string;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -1475,6 +2759,7 @@ Can contain more than one field separated by comma (,). */
      * 航班管理
      */
     export class PUBFlightDto {
+        [key:string]: any;
         
          
             /* 航空公司ID */ 
@@ -1502,6 +2787,7 @@ Can contain more than one field separated by comma (,). */
      * 航班校验
      */
     export class PUBFlightCheckInputDto {
+        [key:string]: any;
         
          
             /* 校验类型
@@ -1514,10 +2800,10 @@ Can contain more than one field separated by comma (,). */
             checkType: number;
          
             /* 航班号 */ 
-            no?: string;
+            no: string;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -1526,36 +2812,35 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBGetAllFlightForUiPickerInput {
+        [key:string]: any;
         
          
             /* 是否包含无效数据 */ 
-            includeInvalid?: boolean;
+            includeInvalid: boolean;
          
             /* 航空公司 Id */ 
-            airlineIds?: any[];
+            airlineIds: any[];
          
-            /* 主键集合 */ 
-            ids?: any[];
+            
+            ids: any[];
          
-            /* 键名 */ 
-            keyName?: string;
+            
+            keyName: string;
          
-            /* 搜索文本 */ 
-            searchText?: string;
+            
+            searchText: string;
          
-            /* 包含逻辑删除 */ 
-            includeDeleted?: boolean;
+            
+            includeDeleted: boolean;
          
-            /* Sorting information.
-Should include sorting field and optionally a direction (ASC or DESC)
-Can contain more than one field separated by comma (,). */ 
-            sorting?: string;
+            
+            sorting: string;
          
-            /* 页大小 */ 
-            maxResultCount?: number;
+            
+            maxResultCount: number;
          
-            /* 跳过指定条数 */ 
-            skipCount?: number;
+            
+            skipCount: number;
         
         
     }
@@ -1564,6 +2849,7 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBFlightUiPickerDto {
+        [key:string]: any;
         
          
             /* 创建人姓名 */ 
@@ -1594,16 +2880,105 @@ Can contain more than one field separated by comma (,). */
      * 会计科目模型
      */
     export class PUBGLCodeDto {
+        [key:string]: any;
         
+         
+            /* 财务解决方案ID */ 
+            solutionId: string;
+         
+            /* 代码 */ 
+            code: string;
+         
+            /* 名称 */ 
+            name: string;
+         
+            /* 是否为公共科目 */ 
+            isPub: boolean;
+         
+            /* 会计科目组ID */ 
+            glGroupId?: string;
          
             /* 名称本地化 */ 
             nameLocalization?: string;
+         
+            /* 备注 */ 
+            remark?: string;
+         
+            /* 科目类型(1:资产;2:负债;3:权益;4:成本;5:损益;6:费用;7:收入 )
+1 = Assets
+2 = Debt
+3 = Rights
+4 = Costs
+5 = ProfitAndLoss
+6 = Cost
+7 = Income */ 
+            glCodeType?: number;
+         
+            /* 帐页格式(1:金额式;2:外币金额式;3:数量金额式;4:数量式外币)
+1 = Amount
+2 = ForeignCurrencyAmount
+3 = NumberAmount
+4 = NumberForeignCurrencyAmount */ 
+            ledgerStyle?: number;
+         
+            /* 科目性质(余额方向)1:借方;2:贷方
+1 = Debit
+2 = Credit */ 
+            glCodeProperty?: number;
+         
+            /* 外币核算 */ 
+            isForeignCheck?: boolean;
+         
+            /* 外币币种 */ 
+            foreignCurrency?: string;
+         
+            /* 是否部门核算 */ 
+            isDepartmentCheck?: boolean;
+         
+            /* 是否个人核算 */ 
+            isPersonalCheck?: boolean;
+         
+            /* 是否客户往来 */ 
+            isCustomerCheck?: boolean;
+         
+            /* 辅助核算 */ 
+            aidCheckDescription?: string;
+         
+            /* 流程费用报销 */ 
+            isFee?: boolean;
+         
+            /* 银行帐 */ 
+            isBankAccount?: boolean;
+         
+            /* 父节点 */ 
+            parentId?: string;
+         
+            /* 公司 */ 
+            companyId?: string;
+         
+            /* 数量核算 */ 
+            isNumberCheck?: boolean;
+         
+            /* 计量单位 */ 
+            unitName?: string;
+         
+            /* 日记帐 */ 
+            isJournal?: boolean;
+         
+            /* 层级 */ 
+            level?: number;
+         
+            /* 是否有效 */ 
+            isValid?: boolean;
          
             /* 创建人 */ 
             creatorUserName?: string;
          
             /* 创建时间 */ 
             creationTime?: string;
+         
+            /* 子集 */ 
+            children?: any[];
          
             
             id?: string;
@@ -1612,9 +2987,42 @@ Can contain more than one field separated by comma (,). */
     }
  
     /**
+     * 设置分组输入参数
+     */
+    export class PUBGLCodeSetGroupInput {
+        [key:string]: any;
+        
+         
+            /* 分组Id */ 
+            groupId: string;
+         
+            
+            id: string;
+        
+        
+    }
+ 
+    /**
+     * 设置公司输入参数
+     */
+    export class PUBGLCodeSetCompanyInput {
+        [key:string]: any;
+        
+         
+            /* 分组Id */ 
+            companyId: string;
+         
+            
+            id: string;
+        
+        
+    }
+ 
+    /**
      * 会计科目分组模型
      */
     export class PUBGLGroupDto {
+        [key:string]: any;
         
          
             /* 地区名称-英文 */ 
@@ -1629,11 +3037,11 @@ Can contain more than one field separated by comma (,). */
             /* 地区名称-本地化 */ 
             nameLocalization?: string;
          
-            /* 是否有效 */ 
-            isValid?: boolean;
-         
             /* 上级Id */ 
             parentId?: string;
+         
+            /* 层级 */ 
+            level?: number;
          
             /* Max length = 200
 备注 */ 
@@ -1658,6 +3066,7 @@ Can contain more than one field separated by comma (,). */
      * 地点-传输对象模型
      */
     export class PUBPlaceDto {
+        [key:string]: any;
         
          
             /* 地点代码-维护 */ 
@@ -1666,68 +3075,68 @@ Can contain more than one field separated by comma (,). */
             /* 地点名称-维护 */ 
             name: string;
          
+            /* 地点名称-本地化-维护 */ 
+            nameLocalization: string;
+         
             /* 地区Id-维护 */ 
             regionId: string;
          
-            /* 地点名称-本地化-维护 */ 
-            nameLocalization?: string;
-         
             /* 是否海运-维护 */ 
-            isOcean?: boolean;
+            isOcean: boolean;
          
             /* 是否空运-维护 */ 
-            isAir?: boolean;
+            isAir: boolean;
          
             /* 是否铁路-维护 */ 
-            isRail?: boolean;
+            isRail: boolean;
          
             /* 其它-维护 */ 
-            isOther?: boolean;
+            isOther: boolean;
          
             /* 是否城市-维护 */ 
-            isCity?: boolean;
+            isCity: boolean;
          
             /* 经度-维护 */ 
-            longitude?: string;
+            longitude: string;
          
             /* 纬度-维护 */ 
-            latitude?: string;
+            latitude: string;
          
             /* 备注-维护 */ 
-            remark?: string;
+            remark: string;
          
             /* 城市Id-维护 */ 
-            cityId?: string;
+            cityId: string;
          
             /* 是否有效-维护 */ 
-            isValid?: boolean;
+            isValid: boolean;
          
             /* 国家ID */ 
-            countryId?: string;
+            countryId: string;
          
             /* 地区名称-列表显示 */ 
-            regionName?: string;
+            regionName: string;
          
             /* 全称 */ 
-            fullName?: string;
+            fullName: string;
          
             /* 全称-本地化 */ 
-            fullNameLocalization?: string;
+            fullNameLocalization: string;
          
             /* 创建时间 */ 
-            creationTime?: string;
+            creationTime: string;
          
             /* 创建人 */ 
-            creatorUserName?: string;
+            creatorUserName: string;
          
             /* 中文名称 */ 
-            chineseName?: string;
+            chineseName: string;
          
             /* ICP用户 */ 
-            icpUserId?: string;
+            icpUserId: string;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -1736,46 +3145,47 @@ Can contain more than one field separated by comma (,). */
      * 获取列表-传输对象模型
      */
     export class PUBGetPlaceListByRegionsInput {
+        [key:string]: any;
         
          
             /* 城市id */ 
-            placeId?: string;
+            placeId: string;
          
             /* 地点名称 */ 
-            name?: string;
+            name: string;
          
             /* 地区Id */ 
-            regionIds?: any[];
+            regionIds: any[];
          
             /* 是否海运 */ 
-            isOcean?: boolean;
+            isOcean: boolean;
          
             /* 是否空运 */ 
-            isAir?: boolean;
+            isAir: boolean;
          
             /* 是海运港或空运港 */ 
-            isAirOrOcean?: boolean;
+            isAirOrOcean: boolean;
          
             /* 其它 */ 
-            isOther?: boolean;
+            isOther: boolean;
          
             /* 是否为城市 */ 
-            isCity?: boolean;
+            isCity: boolean;
          
             /* 是否有效 */ 
-            isValid?: boolean;
+            isValid: boolean;
          
             /* 是否分页 */ 
-            isPaged?: boolean;
+            isPaged: boolean;
          
-            /* 排序 */ 
-            sorting?: string;
+            
+            sorting: string;
          
-            /* 页大小 */ 
-            maxResultCount?: number;
+            
+            maxResultCount: number;
          
-            /* 跳过指定条数 */ 
-            skipCount?: number;
+            
+            skipCount: number;
         
         
     }
@@ -1784,6 +3194,7 @@ Can contain more than one field separated by comma (,). */
      * 港口或区县Dto
      */
     export class PUBPlaceOrCountyDto {
+        [key:string]: any;
         
          
             /* 0为place,1为Country区县 */ 
@@ -1814,6 +3225,7 @@ Can contain more than one field separated by comma (,). */
      * 地点重复性校验-传输对象模型
      */
     export class PUBPlaceCheckDto {
+        [key:string]: any;
         
          
             /* 地点代码 */ 
@@ -1823,10 +3235,10 @@ Can contain more than one field separated by comma (,). */
             name: string;
          
             /* 本地语言 */ 
-            localName?: string;
+            localName: string;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -1835,6 +3247,7 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBChangePlaceStateInput {
+        [key:string]: any;
         
          
             
@@ -1844,7 +3257,26 @@ Can contain more than one field separated by comma (,). */
             isValid: boolean;
          
             
-            icpUserId?: string;
+            icpUserId: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBPlaceMapTerm {
+        [key:string]: any;
+        
+         
+            
+            long_name?: string;
+         
+            
+            short_name?: string;
+         
+            
+            types?: any[];
         
         
     }
@@ -1853,10 +3285,11 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBGetPlaceMapInput {
+        [key:string]: any;
         
          
             
-            address_components?: any[];
+            address_components: PUBPlaceMapTerm[];
         
         
     }
@@ -1865,52 +3298,53 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBPlaceView {
+        [key:string]: any;
         
          
             
-            countryId?: string;
+            countryId: string;
          
             
-            countryName?: string;
+            countryName: string;
          
             
-            countryLocalizationText?: string;
+            countryLocalizationText: string;
          
             
-            provinceId?: string;
+            provinceId: string;
          
             
-            provinceName?: string;
+            provinceName: string;
          
             
-            provinceLocalizationText?: string;
+            provinceLocalizationText: string;
          
             
-            cityId?: string;
+            cityId: string;
          
             
-            cityName?: string;
+            cityName: string;
          
             
-            cityLocalizationText?: string;
+            cityLocalizationText: string;
          
             
-            countyId?: string;
+            countyId: string;
          
             
-            countyName?: string;
+            countyName: string;
          
             
-            countyLocalizationText?: string;
+            countyLocalizationText: string;
          
             
-            streetId?: string;
+            streetId: string;
          
             
-            streetName?: string;
+            streetName: string;
          
             
-            streetLocalizationText?: string;
+            streetLocalizationText: string;
         
         
     }
@@ -1919,6 +3353,7 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBFromToDto {
+        [key:string]: any;
         
          
             /* 国家Id */ 
@@ -1949,19 +3384,91 @@ Can contain more than one field separated by comma (,). */
     }
  
     /**
+     *  No Remark 
+     */
+    export class PUBPlaceModel {
+        [key:string]: any;
+        
+         
+            
+            name?: string;
+         
+            
+            placeId?: string;
+         
+            
+            placeName?: string;
+         
+            
+            regionId?: string;
+         
+            
+            regionName?: string;
+         
+            
+            countryId?: string;
+         
+            
+            countryName?: string;
+         
+            
+            areaId?: string;
+         
+            
+            areaName?: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBRegionWithLevelUiPickerDto {
+        [key:string]: any;
+        
+         
+            /* 地区代码 */ 
+            code?: string;
+         
+            /* 地区名称-英文 */ 
+            name?: string;
+         
+            /* 上级Id */ 
+            parentId?: string;
+         
+            /* 地区名称-本地化 */ 
+            nameLocalization?: string;
+         
+            /* 子集 */ 
+            children?: any[];
+         
+            /* 是否包含查询对象 */ 
+            isContainKeyword?: boolean;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
      * 根据港口Id获取港口信息(含逆向检索省州片区)
      */
     export class PUBGetByPortIdsOutput {
+        [key:string]: any;
         
          
             /* 港口 */ 
-            places?: any[];
+            places: PUBPlaceModel[];
          
             /* 区域 */ 
-            regions?: any[];
+            regions: PUBRegionWithLevelUiPickerDto[];
          
             /* 片区 */ 
-            areas?: any[];
+            areas: PUBAreaDto[];
         
         
     }
@@ -1970,19 +3477,20 @@ Can contain more than one field separated by comma (,). */
      * 根据城市信息返回港口数据
      */
     export class PUBGetPortByCityInput {
+        [key:string]: any;
         
          
             /* 城市Id */ 
-            cityId?: string;
+            cityId: string;
          
             /* 谷歌地图place_id */ 
-            placeId?: string;
+            placeId: string;
          
             /* 谷歌地点明细 */ 
-            placeName?: string;
+            placeName: string;
          
             /* 是否返回Data，如果为false，则Data为null */ 
-            returnData?: boolean;
+            returnData: boolean;
         
         
     }
@@ -1991,13 +3499,14 @@ Can contain more than one field separated by comma (,). */
      * 根据城市信息返回港口数据
      */
     export class PUBGetPortByCityDto {
+        [key:string]: any;
         
          
             /* 是否有值 */ 
-            hasData?: boolean;
+            hasData: boolean;
          
             /* 港口数据 */ 
-            data?: any[];
+            data: PUBPlaceDto[];
         
         
     }
@@ -2006,57 +3515,56 @@ Can contain more than one field separated by comma (,). */
      * 地点UI选择器
      */
     export class PUBGetAllPlaceForUiPickerInput {
+        [key:string]: any;
         
          
             /* 地区Id */ 
-            regionIds?: any[];
+            regionIds: any[];
          
             /* 城市Id */ 
-            cityIds?: any[];
+            cityIds: any[];
          
             /* 是否海运 */ 
-            isOcean?: boolean;
+            isOcean: boolean;
          
             /* 是否空运 */ 
-            isAir?: boolean;
+            isAir: boolean;
          
             /* 是海运港或空运港 */ 
-            isAirOrOcean?: boolean;
+            isAirOrOcean: boolean;
          
             /* 其它 */ 
-            isOther?: boolean;
+            isOther: boolean;
          
             /* 是否为城市 */ 
-            isCity?: boolean;
+            isCity: boolean;
          
             /* 是否有效 */ 
-            isValid?: boolean;
+            isValid: boolean;
          
             /* 是否分页 */ 
-            isPaged?: boolean;
+            isPaged: boolean;
          
-            /* 主键集合 */ 
-            ids?: any[];
+            
+            ids: any[];
          
-            /* 键名 */ 
-            keyName?: string;
+            
+            keyName: string;
          
-            /* 搜索文本 */ 
-            searchText?: string;
+            
+            searchText: string;
          
-            /* 包含逻辑删除 */ 
-            includeDeleted?: boolean;
+            
+            includeDeleted: boolean;
          
-            /* Sorting information.
-Should include sorting field and optionally a direction (ASC or DESC)
-Can contain more than one field separated by comma (,). */ 
-            sorting?: string;
+            
+            sorting: string;
          
-            /* 页大小 */ 
-            maxResultCount?: number;
+            
+            maxResultCount: number;
          
-            /* 跳过指定条数 */ 
-            skipCount?: number;
+            
+            skipCount: number;
         
         
     }
@@ -2065,6 +3573,7 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBPlaceUiPickerDto {
+        [key:string]: any;
         
          
             /* 地点代码 */ 
@@ -2107,6 +3616,7 @@ Can contain more than one field separated by comma (,). */
      * 树形地区-传输对象模型
      */
     export class PUBRegionDto {
+        [key:string]: any;
         
          
             /* 地区名称-英文 */ 
@@ -2123,6 +3633,9 @@ Can contain more than one field separated by comma (,). */
          
             /* 上级Id */ 
             parentId?: string;
+         
+            /* 层级 */ 
+            level?: number;
          
             /* 子集 */ 
             children?: any[];
@@ -2146,13 +3659,14 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBGetByAreaInput {
+        [key:string]: any;
         
          
             /* 片区id */ 
-            areaIds?: any[];
+            areaIds: any[];
          
             /* 是否递归取所有下级 */ 
-            recursive?: boolean;
+            recursive: boolean;
         
         
     }
@@ -2161,19 +3675,20 @@ Can contain more than one field separated by comma (,). */
      * 地区重复校验-传输对象模型
      */
     export class PUBRegionCheckDto {
+        [key:string]: any;
         
          
             /* 上级Id */ 
-            parentId?: string;
+            parentId: string;
          
             /* 代码 */ 
-            code?: string;
+            code: string;
          
             /* 名称 */ 
-            name?: string;
+            name: string;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -2182,36 +3697,35 @@ Can contain more than one field separated by comma (,). */
      * 国家UI组件过滤
      */
     export class PUBGetAllCountryForUiPickerInput {
+        [key:string]: any;
         
          
             /* 是否包含无效数据 */ 
-            includeInvalid?: boolean;
+            includeInvalid: boolean;
          
             /* 是否包含子对象数据 */ 
-            includeChildren?: boolean;
+            includeChildren: boolean;
          
-            /* 主键集合 */ 
-            ids?: any[];
+            
+            ids: any[];
          
-            /* 键名 */ 
-            keyName?: string;
+            
+            keyName: string;
          
-            /* 搜索文本 */ 
-            searchText?: string;
+            
+            searchText: string;
          
-            /* 包含逻辑删除 */ 
-            includeDeleted?: boolean;
+            
+            includeDeleted: boolean;
          
-            /* Sorting information.
-Should include sorting field and optionally a direction (ASC or DESC)
-Can contain more than one field separated by comma (,). */ 
-            sorting?: string;
+            
+            sorting: string;
          
-            /* 页大小 */ 
-            maxResultCount?: number;
+            
+            maxResultCount: number;
          
-            /* 跳过指定条数 */ 
-            skipCount?: number;
+            
+            skipCount: number;
         
         
     }
@@ -2220,6 +3734,7 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBCountryUiPickerDto {
+        [key:string]: any;
         
          
             /* 地区名称-英文 */ 
@@ -2256,42 +3771,41 @@ Can contain more than one field separated by comma (,). */
      * 地区（省份）UI组件过滤
      */
     export class PUBGetAllRegionForUiPickerInput {
+        [key:string]: any;
         
          
             /* 是否包含无效数据 */ 
-            includeInvalid?: boolean;
+            includeInvalid: boolean;
          
             /* 是否包含子对象数据 */ 
-            includeChildren?: boolean;
+            includeChildren: boolean;
          
             /* 国家Id */ 
-            countryIds?: any[];
+            countryIds: any[];
          
             /* 地区Id */ 
-            areaIds?: any[];
+            areaIds: any[];
          
-            /* 主键集合 */ 
-            ids?: any[];
+            
+            ids: any[];
          
-            /* 键名 */ 
-            keyName?: string;
+            
+            keyName: string;
          
-            /* 搜索文本 */ 
-            searchText?: string;
+            
+            searchText: string;
          
-            /* 包含逻辑删除 */ 
-            includeDeleted?: boolean;
+            
+            includeDeleted: boolean;
          
-            /* Sorting information.
-Should include sorting field and optionally a direction (ASC or DESC)
-Can contain more than one field separated by comma (,). */ 
-            sorting?: string;
+            
+            sorting: string;
          
-            /* 页大小 */ 
-            maxResultCount?: number;
+            
+            maxResultCount: number;
          
-            /* 跳过指定条数 */ 
-            skipCount?: number;
+            
+            skipCount: number;
         
         
     }
@@ -2300,6 +3814,7 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBRegionUiPickerDto {
+        [key:string]: any;
         
          
             /* 地区名称-英文 */ 
@@ -2335,29 +3850,39 @@ Can contain more than one field separated by comma (,). */
     /**
      *  No Remark 
      */
-    export class PUBRegionWithLevelUiPickerDto {
+    export class PUBQueryShippingETADto {
+        [key:string]: any;
         
          
-            /* 地区代码 */ 
-            code?: string;
-         
-            /* 地区名称-英文 */ 
-            name?: string;
-         
-            /* 上级Id */ 
-            parentId?: string;
-         
-            /* 地区名称-本地化 */ 
-            nameLocalization?: string;
-         
-            /* 子集 */ 
-            children?: any[];
-         
-            /* 是否包含查询对象 */ 
-            isContainKeyword?: boolean;
+            
+            oceanBookingsId: string;
          
             
-            id?: string;
+            oceanBookingNo: string;
+         
+            
+            vesselName: string;
+         
+            
+            voyageNo: string;
+         
+            
+            carrierCode: string;
+         
+            
+            eta: string;
+         
+            
+            etd: string;
+         
+            /* 装货 */ 
+            polCode: string;
+         
+            /* 卸货 */ 
+            podCode: string;
+         
+            
+            receiveEmail: string;
         
         
     }
@@ -2366,6 +3891,7 @@ Can contain more than one field separated by comma (,). */
      * 传入参数
      */
     export class PUBSailingSchedulesInput {
+        [key:string]: any;
         
          
             /* 起始港代码 */ 
@@ -2378,34 +3904,34 @@ Can contain more than one field separated by comma (,). */
             carrierCode: any[];
          
             /* 离港日期 */ 
-            etd?: string;
+            etd: string;
          
             /* 到港日期 */ 
-            eta?: string;
+            eta: string;
          
             /* 添加几周的日期 */ 
-            week?: number;
+            week: number;
          
             /* 是否重试 */ 
-            isRetry?: boolean;
+            isRetry: boolean;
          
             /* 是否直航0全部，1直航，2不是直航
 0 = All
 1 = Direct
 2 = NotDirect */ 
-            isDirect?: number;
+            isDirect: number;
          
-            /* 过滤条件 */ 
-            filter?: string;
+            
+            filter: string;
          
-            /* 排序 */ 
-            sorting?: string;
+            
+            sorting: string;
          
-            /* 页大小 */ 
-            maxResultCount?: number;
+            
+            maxResultCount: number;
          
-            /* 跳过指定条数 */ 
-            skipCount?: number;
+            
+            skipCount: number;
         
         
     }
@@ -2414,6 +3940,7 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBSailingSchedulesDto {
+        [key:string]: any;
         
          
             /* 图片网址 */ 
@@ -2453,19 +3980,20 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBGetByVoyageDto {
+        [key:string]: any;
         
          
             /* 船名 */ 
-            vesselName?: string;
+            vesselName: string;
          
             /* 航次号 */ 
-            voyageNo?: string;
+            voyageNo: string;
          
             /* 离港日 */ 
-            etd?: string;
+            etd: string;
          
             /* 到港日 */ 
-            eta?: string;
+            eta: string;
         
         
     }
@@ -2474,6 +4002,7 @@ Can contain more than one field separated by comma (,). */
      * 船期详情数据Dto
      */
     export class PUBSailingSchedulesDetailDto {
+        [key:string]: any;
         
          
             /* 船东代码  inttra */ 
@@ -2582,9 +4111,92 @@ Can contain more than one field separated by comma (,). */
     }
  
     /**
+     * 转运线
+     */
+    export class PUBtransportDto {
+        [key:string]: any;
+        
+         
+            /* 船名 */ 
+            vesselName: string;
+         
+            /* 船次 */ 
+            voyageNo: string;
+         
+            /* IMO */ 
+            imo: string;
+         
+            /* 原点Code */ 
+            originUnCode: string;
+         
+            /* 起始港 名称 本地化 */ 
+            originNameLocalization: string;
+         
+            /* 始发位置城市名称 */ 
+            originCityName: string;
+         
+            /* 始发位置省份 */ 
+            originSubdivision: string;
+         
+            /* 始发位置国家 */ 
+            originCountry: string;
+         
+            /* 始发码头名称 */ 
+            originTerminal: string;
+         
+            /* 出发日期 */ 
+            departureDate: string;
+         
+            /* 终点Code */ 
+            destinationUnCode: string;
+         
+            /* 目的地港 名称 本地化 */ 
+            destinationNameLocalization: string;
+         
+            /* 目的地位置的城市名称 */ 
+            destinationCityName: string;
+         
+            /* 目的地位置的省/自治区名称 */ 
+            destinationSubdivision: string;
+         
+            /* 目的地港所在国家 */ 
+            destinationCountry: string;
+         
+            /* 目的地港口码头名称 */ 
+            destinationTerminal: string;
+         
+            /* 到达日期 */ 
+            arrivalDate: string;
+         
+            /* 航程 */ 
+            transitTime: number;
+         
+            /* 航次类型 Mainline 主干线  Branchline转运支线 */ 
+            conveyanceType: string;
+         
+            /* 转运顺序 如果是有转运，则从初始港开始 */ 
+            transportSeq: number;
+         
+            /* 航线编号，作为api中一条航线，以及支线的记录 */ 
+            scheduleNumber: string;
+         
+            /* 转运运输工具名称 */ 
+            transportName: string;
+         
+            /* 转运运输方式 */ 
+            transportType: string;
+         
+            
+            id: string;
+        
+        
+    }
+ 
+    /**
      * 航线管理
      */
     export class PUBShippingLineDto {
+        [key:string]: any;
         
          
             /* 代码 */ 
@@ -2624,6 +4236,7 @@ Can contain more than one field separated by comma (,). */
      * 航线校验
      */
     export class PUBShippingLineCheckInputDto {
+        [key:string]: any;
         
          
             /* 校验类型 
@@ -2636,14 +4249,14 @@ Can contain more than one field separated by comma (,). */
 4 = Name */ 
             checkType: number;
          
+            /* 代码 */ 
+            code: string;
+         
             /* 名称 */ 
             name: string;
          
-            /* 代码 */ 
-            code?: string;
-         
             
-            id?: string;
+            id: string;
         
         
     }
@@ -2652,6 +4265,7 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBChangeShippingLineStateInput {
+        [key:string]: any;
         
          
             
@@ -2667,6 +4281,7 @@ Can contain more than one field separated by comma (,). */
      * 国家航线关系Dto
      */
     export class PUBCountryReationShippingDto {
+        [key:string]: any;
         
          
             /* 国家Id */ 
@@ -2685,6 +4300,7 @@ Can contain more than one field separated by comma (,). */
      * 港口航线关系Dto
      */
     export class PUBPortReationCountryDto {
+        [key:string]: any;
         
          
             /* 港口 */ 
@@ -2703,36 +4319,35 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBGetAllShippingLineForUiPickerInput {
+        [key:string]: any;
         
          
             /* 是否包含子级 */ 
-            includeChildren?: boolean;
+            includeChildren: boolean;
          
             /* 是否包含无效数据 */ 
-            includeInvalid?: boolean;
+            includeInvalid: boolean;
          
-            /* 主键集合 */ 
-            ids?: any[];
+            
+            ids: any[];
          
-            /* 键名 */ 
-            keyName?: string;
+            
+            keyName: string;
          
-            /* 搜索文本 */ 
-            searchText?: string;
+            
+            searchText: string;
          
-            /* 包含逻辑删除 */ 
-            includeDeleted?: boolean;
+            
+            includeDeleted: boolean;
          
-            /* Sorting information.
-Should include sorting field and optionally a direction (ASC or DESC)
-Can contain more than one field separated by comma (,). */ 
-            sorting?: string;
+            
+            sorting: string;
          
-            /* 页大小 */ 
-            maxResultCount?: number;
+            
+            maxResultCount: number;
          
-            /* 跳过指定条数 */ 
-            skipCount?: number;
+            
+            skipCount: number;
         
         
     }
@@ -2741,6 +4356,7 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBShippingLineUiPickerDto {
+        [key:string]: any;
         
          
             /* 名称 */ 
@@ -2777,6 +4393,7 @@ Can contain more than one field separated by comma (,). */
      * 解决方案模型
      */
     export class PUBSolutionDto {
+        [key:string]: any;
         
          
             /* 类型
@@ -2787,6 +4404,9 @@ Can contain more than one field separated by comma (,). */
             /* 名称 */ 
             name: string;
          
+            /* 本地化名称 */ 
+            nameLocalization: string;
+         
             /* 账单日期类型（0建立时间、1业务时间）
 0 = CreateTime
 1 = BussinessTime */ 
@@ -2795,24 +4415,21 @@ Can contain more than one field separated by comma (,). */
             /* 是否财务共享 */ 
             isAccountingShare: boolean;
          
+            /* 备注 */ 
+            remark: string;
+         
             /* Required
 是否有效 */ 
             isValid: boolean;
          
-            /* 本地化名称 */ 
-            nameLocalization?: string;
-         
-            /* 备注 */ 
-            remark?: string;
-         
             /* 创建人 */ 
-            creatorUserName?: string;
+            creatorUserName: string;
          
             /* 创建时间 */ 
-            creationTime?: string;
+            creationTime: string;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -2821,6 +4438,7 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBSolutionCurrencyDto {
+        [key:string]: any;
         
          
             /* Required
@@ -2832,13 +4450,65 @@ Can contain more than one field separated by comma (,). */
             currency: string;
          
             /* 创建人 */ 
-            creatorUserName?: string;
+            creatorUserName: string;
          
             /* 创建时间 */ 
-            creationTime?: string;
+            creationTime: string;
          
             
-            id?: string;
+            id: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBSolutionGLConfigDto {
+        [key:string]: any;
+        
+         
+            /* 解决方案Id */ 
+            solutionId: string;
+         
+            /* 类型：1	费用项目; 2	主营业务收入; 3	预收预付; 4	代收代付; 5	汇兑损益; 6	当年改单科目; 7	上年改单科目; 8	上年之前改单科目; 9	当期净利润; 10 留存收益; 11 应收应付; 12	佣金(业务管理成本); 13	内部往来; 14	手续费; */ 
+            type: number;
+         
+            /* 费用项目Id */ 
+            chargingCodeId: string;
+         
+            /* 费用项目名称 */ 
+            chargingCodeName: string;
+         
+            /* 币种 */ 
+            currency: string;
+         
+            /* 应收会计科目Id */ 
+            drglCodeId: string;
+         
+            /* 应收会计科目代码 */ 
+            drglCode: string;
+         
+            /* 应付会计科目Id */ 
+            crglCodeId: string;
+         
+            /* 应付会计科目代码 */ 
+            crglCode: string;
+         
+            /* 所属公司(比如 主营业务收入，广州，深圳不同) */ 
+            companyId: string;
+         
+            /* 是否作废 */ 
+            isValid: boolean;
+         
+            /* 创建人 */ 
+            creatorUserName: string;
+         
+            /* 创建时间 */ 
+            creationTime: string;
+         
+            
+            id: string;
         
         
     }
@@ -2847,6 +4517,7 @@ Can contain more than one field separated by comma (,). */
      * 运输条款-传输对象模型
      */
     export class PUBTransportClauseDto {
+        [key:string]: any;
         
          
             /* 起始地类型 */ 
@@ -2856,25 +4527,25 @@ Can contain more than one field separated by comma (,). */
             destinationId: string;
          
             /* 是否有效 */ 
-            isValid?: boolean;
+            isValid: boolean;
          
             /* 描述 */ 
-            description?: string;
+            description: string;
          
             /* 起始地类型 */ 
-            originalName?: string;
+            originalName: string;
          
             /* 目的地类型 */ 
-            destinationName?: string;
+            destinationName: string;
          
             /* 创建人 */ 
-            creatorUserName?: string;
+            creatorUserName: string;
          
             /* 创建时间 */ 
-            creationTime?: string;
+            creationTime: string;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -2883,16 +4554,17 @@ Can contain more than one field separated by comma (,). */
      * 运输条款重复校验-传输对象模型
      */
     export class PUBTransportClauseCheckDto {
+        [key:string]: any;
         
          
             /* 起始地 */ 
-            originalId?: string;
+            originalId: string;
          
             /* 目的地 */ 
-            destinationId?: string;
+            destinationId: string;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -2901,6 +4573,7 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBChangeTransportClauseStateInput {
+        [key:string]: any;
         
          
             
@@ -2916,33 +4589,32 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBGetAllTransportClauseForUiPickerInput {
+        [key:string]: any;
         
          
             /* 是否包含无效数据 */ 
-            includeInvalid?: boolean;
+            includeInvalid: boolean;
          
-            /* 主键集合 */ 
-            ids?: any[];
+            
+            ids: any[];
          
-            /* 键名 */ 
-            keyName?: string;
+            
+            keyName: string;
          
-            /* 搜索文本 */ 
-            searchText?: string;
+            
+            searchText: string;
          
-            /* 包含逻辑删除 */ 
-            includeDeleted?: boolean;
+            
+            includeDeleted: boolean;
          
-            /* Sorting information.
-Should include sorting field and optionally a direction (ASC or DESC)
-Can contain more than one field separated by comma (,). */ 
-            sorting?: string;
+            
+            sorting: string;
          
-            /* 页大小 */ 
-            maxResultCount?: number;
+            
+            maxResultCount: number;
          
-            /* 跳过指定条数 */ 
-            skipCount?: number;
+            
+            skipCount: number;
         
         
     }
@@ -2951,6 +4623,7 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBTransportClauseUiPickerDto {
+        [key:string]: any;
         
          
             /* 起始地类型 */ 
@@ -2987,7 +4660,14 @@ Can contain more than one field separated by comma (,). */
      * 船名管理
      */
     export class PUBVesselDto {
+        [key:string]: any;
         
+         
+            /* 创建人姓名 */ 
+            creatorUserName: string;
+         
+            /* 创建时间 */ 
+            creationTime: string;
          
             /* 代码 */ 
             code: string;
@@ -3007,17 +4687,11 @@ Can contain more than one field separated by comma (,). */
             
             unCode: string;
          
-            /* 创建人姓名 */ 
-            creatorUserName?: string;
-         
-            /* 创建时间 */ 
-            creationTime?: string;
-         
             /* 是否有效 */ 
-            isValid?: boolean;
+            isValid: boolean;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -3026,6 +4700,7 @@ Can contain more than one field separated by comma (,). */
      * 船名校验
      */
     export class PUBVesselCheckInputDto {
+        [key:string]: any;
         
          
             /* 校验类型 
@@ -3039,13 +4714,13 @@ Can contain more than one field separated by comma (,). */
             checkType: number;
          
             /* 代码 */ 
-            code?: string;
+            code: string;
          
             /* 名称 */ 
-            name?: string;
+            name: string;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -3054,36 +4729,35 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBGetAllVesselForUiPickerInput {
+        [key:string]: any;
         
          
             /* 是否包含无效数据 */ 
-            includeInvalid?: boolean;
+            includeInvalid: boolean;
          
             /* 船东 Id */ 
-            carrierIds?: any[];
+            carrierIds: any[];
          
-            /* 主键集合 */ 
-            ids?: any[];
+            
+            ids: any[];
          
-            /* 键名 */ 
-            keyName?: string;
+            
+            keyName: string;
          
-            /* 搜索文本 */ 
-            searchText?: string;
+            
+            searchText: string;
          
-            /* 包含逻辑删除 */ 
-            includeDeleted?: boolean;
+            
+            includeDeleted: boolean;
          
-            /* Sorting information.
-Should include sorting field and optionally a direction (ASC or DESC)
-Can contain more than one field separated by comma (,). */ 
-            sorting?: string;
+            
+            sorting: string;
          
-            /* 页大小 */ 
-            maxResultCount?: number;
+            
+            maxResultCount: number;
          
-            /* 跳过指定条数 */ 
-            skipCount?: number;
+            
+            skipCount: number;
         
         
     }
@@ -3092,6 +4766,7 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBVesselUiPickerDto {
+        [key:string]: any;
         
          
             /* 创建人姓名 */ 
@@ -3130,7 +4805,43 @@ Can contain more than one field separated by comma (,). */
     /**
      *  No Remark 
      */
+    export class PUBShipTracePointDto {
+        [key:string]: any;
+        
+         
+            
+            longitudeDegree?: string;
+         
+            
+            latitudeDegree?: string;
+         
+            
+            postTime?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBGetShipTrackInfoOutput {
+        [key:string]: any;
+        
+         
+            
+            shipTracePoints: PUBShipTracePointDto[];
+         
+            /* 当前坐标点 */ 
+            currentPosition: PUBVesselInfosDto;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
     export class PUBVesselInfosDto {
+        [key:string]: any;
         
          
             
@@ -3169,22 +4880,8 @@ Can contain more than one field separated by comma (,). */
     /**
      *  No Remark 
      */
-    export class PUBGetShipTrackInfoOutput {
-        
-         
-            
-            shipTracePoints?: any[];
-         
-            /* 当前坐标点 */ 
-            currentPosition?: PUBVesselInfosDto;
-        
-        
-    }
- 
-    /**
-     *  No Remark 
-     */
     export class PUBAddingVesselInfosTaskInput {
+        [key:string]: any;
         
          
             /* 船名Id */ 
@@ -3203,7 +4900,14 @@ Can contain more than one field separated by comma (,). */
      * 航次管理
      */
     export class PUBVoyageDto {
+        [key:string]: any;
         
+         
+            /* 创建人姓名 */ 
+            creatorUserName: string;
+         
+            /* 创建时间 */ 
+            creationTime: string;
          
             /* 船名Id */ 
             vesselId: string;
@@ -3211,17 +4915,11 @@ Can contain more than one field separated by comma (,). */
             /* 航次 */ 
             no: string;
          
-            /* 创建人姓名 */ 
-            creatorUserName?: string;
-         
-            /* 创建时间 */ 
-            creationTime?: string;
-         
             /* 是否有效 */ 
-            isValid?: boolean;
+            isValid: boolean;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -3230,6 +4928,7 @@ Can contain more than one field separated by comma (,). */
      * 航次校验
      */
     export class PUBVoyageCheckInputDto {
+        [key:string]: any;
         
          
             /* 校验类型 
@@ -3242,10 +4941,10 @@ Can contain more than one field separated by comma (,). */
             checkType: number;
          
             /* 航次 */ 
-            no?: string;
+            no: string;
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -3254,36 +4953,35 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBGetAllVoyageForUiPickerInput {
+        [key:string]: any;
         
          
             /* 是否包含无效数据 */ 
-            includeInvalid?: boolean;
+            includeInvalid: boolean;
          
             /* 船名 Id */ 
-            vesselIds?: any[];
+            vesselIds: any[];
          
-            /* 主键集合 */ 
-            ids?: any[];
+            
+            ids: any[];
          
-            /* 键名 */ 
-            keyName?: string;
+            
+            keyName: string;
          
-            /* 搜索文本 */ 
-            searchText?: string;
+            
+            searchText: string;
          
-            /* 包含逻辑删除 */ 
-            includeDeleted?: boolean;
+            
+            includeDeleted: boolean;
          
-            /* Sorting information.
-Should include sorting field and optionally a direction (ASC or DESC)
-Can contain more than one field separated by comma (,). */ 
-            sorting?: string;
+            
+            sorting: string;
          
-            /* 页大小 */ 
-            maxResultCount?: number;
+            
+            maxResultCount: number;
          
-            /* 跳过指定条数 */ 
-            skipCount?: number;
+            
+            skipCount: number;
         
         
     }
@@ -3292,6 +4990,7 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PUBVoyageUiPickerDto {
+        [key:string]: any;
         
          
             /* 创建人姓名 */ 

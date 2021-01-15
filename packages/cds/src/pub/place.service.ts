@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBPlaceDto,PUBPagedResultDto,PUBGetPlaceListByRegionsInput,PUBPlaceOrCountyDto,PUBPlaceCheckDto,PUBEntityDto,PUBChangePlaceStateInput,PUBListResultDto,PUBGetPlaceMapInput,PUBPlaceView,PUBFromToDto,PUBGetByPortIdsOutput,PUBGetPortByCityInput,PUBGetPortByCityDto,PUBGetAllPlaceForUiPickerInput,PUBPlaceUiPickerDto, } from './pub.types';
+import { PUBPlaceDto,PUBPagedResultDto1,PUBGetPlaceListByRegionsInput,PUBPlaceOrCountyDto,PUBPlaceCheckDto,PUBEntityDto1,PUBChangePlaceStateInput,PUBListResultDto1,PUBGetPlaceMapInput,PUBPlaceView,PUBFromToDto,PUBGetByPortIdsOutput,PUBGetPortByCityInput,PUBGetPortByCityDto,PUBGetAllPlaceForUiPickerInput,PUBPlaceUiPickerDto } from './pub.types';
 
-@BaseUrl('/pub/Place')
+@BaseUrl('/PUB/Place')
 @Injectable({ providedIn: 'root' })
 export class PUBPlaceService extends BaseApi {
   constructor(injector: Injector) {
@@ -16,7 +16,7 @@ export class PUBPlaceService extends BaseApi {
      * 获取地点明细
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -31,12 +31,12 @@ export class PUBPlaceService extends BaseApi {
      * 获取地点列表
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
-        _req: {id?:string,searchText?:string,name?:string,regionId?:string,isOcean?:boolean,isAir?:boolean,isAirOrOcean?:boolean,isRail?:boolean,isOther?:boolean,isCity?:boolean,isRamp?:boolean,isValid?:boolean,isMultiple?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
+        _req: {id?:string,searchText?:string,name?:string,regionId?:string,isOcean?:boolean,isAir?:boolean,isAirOrOcean?:boolean,isRail?:boolean,isOther?:boolean,isCity?:boolean,isRamp?:boolean,isValid?:boolean,isAll?:boolean,isMultiple?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PUBPagedResultDto<PUBPlaceDto>> {
+    ): Observable<PUBPagedResultDto1<PUBPlaceDto>> {
         return null as any
     }
 
@@ -46,12 +46,12 @@ export class PUBPlaceService extends BaseApi {
      * 根据地区id集合查找地点
      */
 
-    @POST('getByRegionIds')
+    @POST('GetByRegionIds')
     getByRegionIds(
         @Payload
         _req:PUBGetPlaceListByRegionsInput
 
-    ): Observable<PUBPagedResultDto<PUBPlaceDto>> {
+    ): Observable<PUBPagedResultDto1<PUBPlaceDto>> {
         return null as any
     }
 
@@ -61,12 +61,12 @@ export class PUBPlaceService extends BaseApi {
      * 根据国家id查找国家下的place
      */
 
-    @GET('getByCountryIds')
+    @GET('GetByCountryIds')
     getByCountryIds(
         @Payload
         _req: {placeId?:string,name?:string,regionIds?:any[],isOcean?:boolean,isAir?:boolean,isAirOrOcean?:boolean,isOther?:boolean,isCity?:boolean,isValid?:boolean,isPaged?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PUBPagedResultDto<PUBPlaceDto>> {
+    ): Observable<PUBPagedResultDto1<PUBPlaceDto>> {
         return null as any
     }
 
@@ -76,12 +76,12 @@ export class PUBPlaceService extends BaseApi {
      * 分页获取港口或区县
      */
 
-    @GET('getPlaceAndCounty')
+    @GET('GetPlaceAndCounty')
     getPlaceAndCounty(
         @Payload
         _req: {code?:string,name?:string,type?:number,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PUBPagedResultDto<PUBPlaceOrCountyDto>> {
+    ): Observable<PUBPagedResultDto1<PUBPlaceOrCountyDto>> {
         return null as any
     }
 
@@ -91,7 +91,7 @@ export class PUBPlaceService extends BaseApi {
      * 校验重复性数据
      */
 
-    @POST('check')
+    @POST('Check')
     check(
         @Payload
         _req:PUBPlaceCheckDto
@@ -106,7 +106,7 @@ export class PUBPlaceService extends BaseApi {
      * 创建或更新地点
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PUBPlaceDto
@@ -121,10 +121,10 @@ export class PUBPlaceService extends BaseApi {
      * 设置是否有效
      */
 
-    @POST('setValid')
+    @POST('SetValid')
     setValid(
         @Payload
-        _req:PUBEntityDto<any>
+        _req:PUBEntityDto1<any>
 
     ): Observable<any> {
         return null as any
@@ -136,7 +136,7 @@ export class PUBPlaceService extends BaseApi {
      * 创建或更新地点
      */
 
-    @POST('iCPCreateOrUpdate')
+    @POST('ICPCreateOrUpdate')
     iCPCreateOrUpdate(
         @Payload
         _req:PUBPlaceDto
@@ -151,7 +151,7 @@ export class PUBPlaceService extends BaseApi {
      * 创建地点
      */
 
-    @POST('create')
+    @POST('Create')
     create(
         @Payload
         _req:PUBPlaceDto
@@ -166,7 +166,7 @@ export class PUBPlaceService extends BaseApi {
      * 更新地点
      */
 
-    @PUT('update')
+    @PUT('Update')
     update(
         @Payload
         _req:PUBPlaceDto
@@ -181,7 +181,7 @@ export class PUBPlaceService extends BaseApi {
      * 删除地点
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 
@@ -196,7 +196,7 @@ export class PUBPlaceService extends BaseApi {
      * 修改地点状态
      */
 
-    @POST('changePlaceState')
+    @POST('ChangePlaceState')
     changePlaceState(
         @Payload
         _req:PUBChangePlaceStateInput
@@ -211,12 +211,12 @@ export class PUBPlaceService extends BaseApi {
      * 根据地点id集合查找地点集合
      */
 
-    @POST('getByPlacesIds')
+    @POST('GetByPlacesIds')
     getByPlacesIds(
         @Payload
         _req: {} 
 
-    ): Observable<PUBListResultDto<PUBPlaceDto>> {
+    ): Observable<PUBListResultDto1<PUBPlaceDto>> {
         return null as any
     }
 
@@ -226,7 +226,7 @@ export class PUBPlaceService extends BaseApi {
      * 根据地图解析地址
      */
 
-    @POST('resolve')
+    @POST('Resolve')
     resolve(
         @Payload
         _req:PUBGetPlaceMapInput
@@ -241,12 +241,12 @@ export class PUBPlaceService extends BaseApi {
      * 获取港口或地点列表
      */
 
-    @GET('getFromToList')
+    @GET('GetFromToList')
     getFromToList(
         @Payload
         _req: {searchText?:string,id?:string,isPort?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PUBPagedResultDto<PUBFromToDto>> {
+    ): Observable<PUBPagedResultDto1<PUBFromToDto>> {
         return null as any
     }
 
@@ -256,7 +256,7 @@ export class PUBPlaceService extends BaseApi {
      * 根据港口Id获取港口信息(含逆向检索省州片区)
      */
 
-    @POST('getByPortIds')
+    @POST('GetByPortIds')
     getByPortIds(
         @Payload
         _req: {} 
@@ -271,7 +271,7 @@ export class PUBPlaceService extends BaseApi {
      * 根据城市港口、区县镇Id数组获取详细文本
      */
 
-    @POST('getByCountyIds')
+    @POST('GetByCountyIds')
     getByCountyIds(
         @Payload
         _req: {} 
@@ -286,7 +286,7 @@ export class PUBPlaceService extends BaseApi {
      * 根据城市信息获取港口
      */
 
-    @POST('getPortByCity')
+    @POST('GetPortByCity')
     getPortByCity(
         @Payload
         _req:PUBGetPortByCityInput
@@ -301,12 +301,12 @@ export class PUBPlaceService extends BaseApi {
      * 提供给UI地点选择器的服务接口
      */
 
-    @POST('getAllForUiPicker')
+    @POST('GetAllForUiPicker')
     getAllForUiPicker(
         @Payload
         _req:PUBGetAllPlaceForUiPickerInput
 
-    ): Observable<PUBPagedResultDto<PUBPlaceUiPickerDto>> {
+    ): Observable<PUBPagedResultDto1<PUBPlaceUiPickerDto>> {
         return null as any
     }
 

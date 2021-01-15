@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBAreaDto,PUBListResultDto,PUBAreaCheckDto,PUBGetAllAreaForUiPickerInput,PUBAreaUiPickerDto,PUBPagedResultDto, } from './pub.types';
+import { PUBAreaDto,PUBListResultDto1,PUBAreaCheckDto,PUBGetAllAreaForUiPickerInput,PUBPagedResultDto1,PUBAreaUiPickerDto } from './pub.types';
 
-@BaseUrl('/pub/Area')
+@BaseUrl('/PUB/Area')
 @Injectable({ providedIn: 'root' })
 export class PUBAreaService extends BaseApi {
   constructor(injector: Injector) {
@@ -16,7 +16,7 @@ export class PUBAreaService extends BaseApi {
      * 获取片区
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -31,12 +31,12 @@ export class PUBAreaService extends BaseApi {
      * 获取片区列表
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
         _req: {name?:string,isValid?:boolean} 
 
-    ): Observable<PUBListResultDto<PUBAreaDto>> {
+    ): Observable<PUBListResultDto1<PUBAreaDto>> {
         return null as any
     }
 
@@ -46,7 +46,7 @@ export class PUBAreaService extends BaseApi {
      * 创建或编辑片区
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PUBAreaDto
@@ -61,7 +61,7 @@ export class PUBAreaService extends BaseApi {
      * 校验重复性数据
      */
 
-    @POST('check')
+    @POST('Check')
     check(
         @Payload
         _req:PUBAreaCheckDto
@@ -76,7 +76,7 @@ export class PUBAreaService extends BaseApi {
      * 删除片区
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 
@@ -91,12 +91,12 @@ export class PUBAreaService extends BaseApi {
      * 用于前端片区选择器
      */
 
-    @POST('getAllForUiPicker')
+    @POST('GetAllForUiPicker')
     getAllForUiPicker(
         @Payload
         _req:PUBGetAllAreaForUiPickerInput
 
-    ): Observable<PUBPagedResultDto<PUBAreaUiPickerDto>> {
+    ): Observable<PUBPagedResultDto1<PUBAreaUiPickerDto>> {
         return null as any
     }
 
