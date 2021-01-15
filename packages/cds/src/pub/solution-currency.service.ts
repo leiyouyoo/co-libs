@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBSolutionCurrencyDto,PUBListResultDto, } from './pub.types';
+import { PUBSolutionCurrencyDto,PUBListResultDto1 } from './pub.types';
 
-@BaseUrl('/pub/SolutionCurrency')
+@BaseUrl('/PUB/SolutionCurrency')
 @Injectable({ providedIn: 'root' })
 export class PUBSolutionCurrencyService extends BaseApi {
   constructor(injector: Injector) {
@@ -13,10 +13,10 @@ export class PUBSolutionCurrencyService extends BaseApi {
   
     /**
      * @param url /PUB/SolutionCurrency/Get
-     * 
+     * 获取解决方案币种明细
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -28,25 +28,25 @@ export class PUBSolutionCurrencyService extends BaseApi {
 
     /**
      * @param url /PUB/SolutionCurrency/GetAll
-     * 
+     * 获取解决方案币种列表
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
         _req: {solutionId:string,searchText?:string} 
 
-    ): Observable<PUBListResultDto<PUBSolutionCurrencyDto>> {
+    ): Observable<PUBListResultDto1<PUBSolutionCurrencyDto>> {
         return null as any
     }
 
 
     /**
      * @param url /PUB/SolutionCurrency/CreateOrUpdate
-     * 
+     * 保存解决方案币种
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PUBSolutionCurrencyDto
@@ -58,10 +58,10 @@ export class PUBSolutionCurrencyService extends BaseApi {
 
     /**
      * @param url /PUB/SolutionCurrency/Delete
-     * 
+     * 删除解决方案币种
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 

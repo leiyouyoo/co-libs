@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBSailingSchedulesInput,PUBSailingSchedulesDto,PUBPagedResultDto,PUBGetByVoyageDto,PUBSailingSchedulesDetailDto, } from './pub.types';
+import { PUBSailingSchedulesInput,PUBPagedResultDto1,PUBSailingSchedulesDto,PUBGetByVoyageDto,PUBSailingSchedulesDetailDto } from './pub.types';
 
-@BaseUrl('/pub/SailingSchedules')
+@BaseUrl('/PUB/SailingSchedules')
 @Injectable({ providedIn: 'root' })
 export class PUBSailingSchedulesService extends BaseApi {
   constructor(injector: Injector) {
@@ -16,7 +16,7 @@ export class PUBSailingSchedulesService extends BaseApi {
      * 同步船，航次到ICP3
      */
 
-    @POST('synchroVesselVoyageToICP3')
+    @POST('SynchroVesselVoyageToICP3')
     synchroVesselVoyageToICP3(
         @Payload
         _req: {} 
@@ -31,7 +31,7 @@ export class PUBSailingSchedulesService extends BaseApi {
      * 查询船期ETA
      */
 
-    @POST('queryShippingETA')
+    @POST('QueryShippingETA')
     queryShippingETA(
         @Payload
         _req: {} 
@@ -46,7 +46,7 @@ export class PUBSailingSchedulesService extends BaseApi {
      * 从inttra Api下载船期数据
      */
 
-    @POST('downLoadInttraSailingScheduleDetail')
+    @POST('DownLoadInttraSailingScheduleDetail')
     downLoadInttraSailingScheduleDetail(
         @Payload
         _req: {} 
@@ -61,7 +61,7 @@ export class PUBSailingSchedulesService extends BaseApi {
      * 将Xml从Ftp服务获取下来再保存数据库
      */
 
-    @POST('saveSchedulesXmlToDataBase')
+    @POST('SaveSchedulesXmlToDataBase')
     saveSchedulesXmlToDataBase(
         @Payload
         _req: {} 
@@ -76,7 +76,7 @@ export class PUBSailingSchedulesService extends BaseApi {
      * 删除超过15天的文件
      */
 
-    @DELETE('deleteSchedule')
+    @DELETE('DeleteSchedule')
     deleteSchedule(
         @Payload
         _req: {} 
@@ -91,7 +91,7 @@ export class PUBSailingSchedulesService extends BaseApi {
      * 删除旧的船期数据
      */
 
-    @DELETE('deleteOldSchedule')
+    @DELETE('DeleteOldSchedule')
     deleteOldSchedule(
         @Payload
         _req: {} 
@@ -106,12 +106,12 @@ export class PUBSailingSchedulesService extends BaseApi {
      * 查询船期数据
      */
 
-    @POST('querySailingSchedules')
+    @POST('QuerySailingSchedules')
     querySailingSchedules(
         @Payload
         _req:PUBSailingSchedulesInput
 
-    ): Observable<PUBPagedResultDto<PUBSailingSchedulesDto>> {
+    ): Observable<PUBPagedResultDto1<PUBSailingSchedulesDto>> {
         return null as any
     }
 
@@ -121,7 +121,7 @@ export class PUBSailingSchedulesService extends BaseApi {
      * 根据船名航次获取ETD
      */
 
-    @GET('getByVoyage')
+    @GET('GetByVoyage')
     getByVoyage(
         @Payload
         _req: {vesselName?:string,voyageNo?:string,carrierId?:string,polId?:string,podId?:string} 
@@ -136,12 +136,12 @@ export class PUBSailingSchedulesService extends BaseApi {
      * 查询船期数据
      */
 
-    @POST('querySailingSchedulesDetail')
+    @POST('QuerySailingSchedulesDetail')
     querySailingSchedulesDetail(
         @Payload
         _req:PUBSailingSchedulesInput
 
-    ): Observable<PUBPagedResultDto<PUBSailingSchedulesDetailDto>> {
+    ): Observable<PUBPagedResultDto1<PUBSailingSchedulesDetailDto>> {
         return null as any
     }
 

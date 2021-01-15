@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBVesselDto,PUBPagedResultDto,PUBVesselCheckInputDto,PUBGetAllVesselForUiPickerInput,PUBVesselUiPickerDto, } from './pub.types';
+import { PUBVesselDto,PUBPagedResultDto1,PUBVesselCheckInputDto,PUBGetAllVesselForUiPickerInput,PUBVesselUiPickerDto } from './pub.types';
 
-@BaseUrl('/pub/Vessel')
+@BaseUrl('/PUB/Vessel')
 @Injectable({ providedIn: 'root' })
 export class PUBVesselService extends BaseApi {
   constructor(injector: Injector) {
@@ -16,7 +16,7 @@ export class PUBVesselService extends BaseApi {
      * 获取船名详情
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -31,12 +31,12 @@ export class PUBVesselService extends BaseApi {
      * 分页获取船名列表
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
         _req: {isValid?:boolean,code?:string,name?:string,carrierId?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PUBPagedResultDto<PUBVesselDto>> {
+    ): Observable<PUBPagedResultDto1<PUBVesselDto>> {
         return null as any
     }
 
@@ -46,7 +46,7 @@ export class PUBVesselService extends BaseApi {
      * 船名重复校验
      */
 
-    @POST('check')
+    @POST('Check')
     check(
         @Payload
         _req:PUBVesselCheckInputDto
@@ -61,7 +61,7 @@ export class PUBVesselService extends BaseApi {
      * 创建船名
      */
 
-    @POST('create')
+    @POST('Create')
     create(
         @Payload
         _req:PUBVesselDto
@@ -76,7 +76,7 @@ export class PUBVesselService extends BaseApi {
      * 编辑船名
      */
 
-    @PUT('update')
+    @PUT('Update')
     update(
         @Payload
         _req:PUBVesselDto
@@ -91,7 +91,7 @@ export class PUBVesselService extends BaseApi {
      * 删除船名
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 
@@ -106,22 +106,22 @@ export class PUBVesselService extends BaseApi {
      * 提供给UI船名选择器的服务接口
      */
 
-    @POST('getAllForUiPicker')
+    @POST('GetAllForUiPicker')
     getAllForUiPicker(
         @Payload
         _req:PUBGetAllVesselForUiPickerInput
 
-    ): Observable<PUBPagedResultDto<PUBVesselUiPickerDto>> {
+    ): Observable<PUBPagedResultDto1<PUBVesselUiPickerDto>> {
         return null as any
     }
 
 
     /**
      * @param url /PUB/Vessel/CreateOrUpdate
-     * 
+     * 暂无备注
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PUBVesselDto

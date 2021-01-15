@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBDictionaryTypeDto,PUBPagedResultDto,PUBDictionaryTypeCheckDto, } from './pub.types';
+import { PUBDictionaryTypeDto,PUBPagedResultDto1,PUBDictionaryTypeCheckDto } from './pub.types';
 
-@BaseUrl('/pub/DictionaryType')
+@BaseUrl('/PUB/DictionaryType')
 @Injectable({ providedIn: 'root' })
 export class PUBDictionaryTypeService extends BaseApi {
   constructor(injector: Injector) {
@@ -16,7 +16,7 @@ export class PUBDictionaryTypeService extends BaseApi {
      * 获取字典类型明细
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -31,12 +31,12 @@ export class PUBDictionaryTypeService extends BaseApi {
      * 获取字典类型列表
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
         _req: {code?:string,name?:string,isValid?:boolean} 
 
-    ): Observable<PUBPagedResultDto<PUBDictionaryTypeDto>> {
+    ): Observable<PUBPagedResultDto1<PUBDictionaryTypeDto>> {
         return null as any
     }
 
@@ -46,7 +46,7 @@ export class PUBDictionaryTypeService extends BaseApi {
      * 校验重复性数据
      */
 
-    @POST('check')
+    @POST('Check')
     check(
         @Payload
         _req:PUBDictionaryTypeCheckDto
@@ -61,7 +61,7 @@ export class PUBDictionaryTypeService extends BaseApi {
      * 创建或更新字典类型
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PUBDictionaryTypeDto
@@ -76,7 +76,7 @@ export class PUBDictionaryTypeService extends BaseApi {
      * 创建字典类型
      */
 
-    @POST('create')
+    @POST('Create')
     create(
         @Payload
         _req:PUBDictionaryTypeDto
@@ -91,7 +91,7 @@ export class PUBDictionaryTypeService extends BaseApi {
      * 更新字典类型
      */
 
-    @PUT('update')
+    @PUT('Update')
     update(
         @Payload
         _req:PUBDictionaryTypeDto
@@ -106,7 +106,7 @@ export class PUBDictionaryTypeService extends BaseApi {
      * 删除字典类型
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 

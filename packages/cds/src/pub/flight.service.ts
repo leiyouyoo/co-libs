@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBFlightDto,PUBPagedResultDto,PUBFlightCheckInputDto,PUBGetAllFlightForUiPickerInput,PUBFlightUiPickerDto, } from './pub.types';
+import { PUBPagedResultDto1,PUBFlightDto,PUBFlightCheckInputDto,PUBGetAllFlightForUiPickerInput,PUBFlightUiPickerDto } from './pub.types';
 
-@BaseUrl('/pub/Flight')
+@BaseUrl('/PUB/Flight')
 @Injectable({ providedIn: 'root' })
 export class PUBFlightService extends BaseApi {
   constructor(injector: Injector) {
@@ -16,12 +16,12 @@ export class PUBFlightService extends BaseApi {
      * 分页获取航班列表
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
         _req: {isValid?:boolean,airlineId?:string,no?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PUBPagedResultDto<PUBFlightDto>> {
+    ): Observable<PUBPagedResultDto1<PUBFlightDto>> {
         return null as any
     }
 
@@ -31,7 +31,7 @@ export class PUBFlightService extends BaseApi {
      * 获取航班详情
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -46,7 +46,7 @@ export class PUBFlightService extends BaseApi {
      * 航班重复校验
      */
 
-    @POST('check')
+    @POST('Check')
     check(
         @Payload
         _req:PUBFlightCheckInputDto
@@ -61,7 +61,7 @@ export class PUBFlightService extends BaseApi {
      * 创建航班
      */
 
-    @POST('create')
+    @POST('Create')
     create(
         @Payload
         _req:PUBFlightDto
@@ -76,7 +76,7 @@ export class PUBFlightService extends BaseApi {
      * 编辑航班
      */
 
-    @PUT('update')
+    @PUT('Update')
     update(
         @Payload
         _req:PUBFlightDto
@@ -91,7 +91,7 @@ export class PUBFlightService extends BaseApi {
      * 删除航班
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 
@@ -106,22 +106,22 @@ export class PUBFlightService extends BaseApi {
      * 提供给UI航班选择器的服务接口
      */
 
-    @POST('getAllForUiPicker')
+    @POST('GetAllForUiPicker')
     getAllForUiPicker(
         @Payload
         _req:PUBGetAllFlightForUiPickerInput
 
-    ): Observable<PUBPagedResultDto<PUBFlightUiPickerDto>> {
+    ): Observable<PUBPagedResultDto1<PUBFlightUiPickerDto>> {
         return null as any
     }
 
 
     /**
      * @param url /PUB/Flight/CreateOrUpdate
-     * 
+     * 暂无备注
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PUBFlightDto

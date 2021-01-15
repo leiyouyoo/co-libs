@@ -1,4 +1,5 @@
 export * from './area.service';
+export * from './channel.service';
 export * from './channel-data.service';
 export * from './charging-code.service';
 export * from './commodity.service';
@@ -21,6 +22,7 @@ export * from './sailing-schedules.service';
 export * from './shipping-line.service';
 export * from './solution.service';
 export * from './solution-currency.service';
+export * from './solution-glconfig.service';
 export * from './transport-clause.service';
 export * from './vessel.service';
 export * from './vessel-infos.service';

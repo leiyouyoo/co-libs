@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBFbaFreightMethodDto,PUBFbaFreightMethodCheckDto,PUBPagedResultDto, } from './pub.types';
+import { PUBFbaFreightMethodDto,PUBFbaFreightMethodCheckDto,PUBPagedResultDto1 } from './pub.types';
 
-@BaseUrl('/pub/FbaFreightMethod')
+@BaseUrl('/PUB/FbaFreightMethod')
 @Injectable({ providedIn: 'root' })
 export class PUBFbaFreightMethodService extends BaseApi {
   constructor(injector: Injector) {
@@ -16,7 +16,7 @@ export class PUBFbaFreightMethodService extends BaseApi {
      * 保存运输方式
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PUBFbaFreightMethodDto
@@ -31,7 +31,7 @@ export class PUBFbaFreightMethodService extends BaseApi {
      * 校验重复性数据
      */
 
-    @POST('check')
+    @POST('Check')
     check(
         @Payload
         _req:PUBFbaFreightMethodCheckDto
@@ -46,7 +46,7 @@ export class PUBFbaFreightMethodService extends BaseApi {
      * 删除运输方式
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 
@@ -61,7 +61,7 @@ export class PUBFbaFreightMethodService extends BaseApi {
      * 获取运输方式
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -76,12 +76,12 @@ export class PUBFbaFreightMethodService extends BaseApi {
      * 获取运输方式列表
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
         _req: {value?:string,ids?:any[],keyName?:string,searchText?:string,includeDeleted?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PUBPagedResultDto<PUBFbaFreightMethodDto>> {
+    ): Observable<PUBPagedResultDto1<PUBFbaFreightMethodDto>> {
         return null as any
     }
 

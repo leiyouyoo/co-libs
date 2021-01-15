@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBDeliveryChannelDto,PUBListResultDto, } from './pub.types';
+import { PUBDeliveryChannelDto,PUBListResultDto1 } from './pub.types';
 
-@BaseUrl('/pub/DeliveryChannelService')
+@BaseUrl('/PUB/DeliveryChannelService')
 @Injectable({ providedIn: 'root' })
-export class PUBDeliveryChannelServiceService extends BaseApi {
+export class PUBDeliveryChannelService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
@@ -16,7 +16,7 @@ export class PUBDeliveryChannelServiceService extends BaseApi {
      * 创建或添加数据
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PUBDeliveryChannelDto
@@ -31,7 +31,7 @@ export class PUBDeliveryChannelServiceService extends BaseApi {
      * 删除数据
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 
@@ -46,7 +46,7 @@ export class PUBDeliveryChannelServiceService extends BaseApi {
      * 获取详细数据
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -61,7 +61,7 @@ export class PUBDeliveryChannelServiceService extends BaseApi {
      * 验证名称重复
      */
 
-    @POST('check')
+    @POST('Check')
     check(
         @Payload
         _req:PUBDeliveryChannelDto
@@ -76,12 +76,12 @@ export class PUBDeliveryChannelServiceService extends BaseApi {
      * 根据条件查询列表数据
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
         _req: {name?:string,tradeType?:number,isTaxIncluded?:boolean,isValid?:boolean} 
 
-    ): Observable<PUBListResultDto<PUBDeliveryChannelDto>> {
+    ): Observable<PUBListResultDto1<PUBDeliveryChannelDto>> {
         return null as any
     }
 
