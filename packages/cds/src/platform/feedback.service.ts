@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PlatformFeedbackInput,PlatformFeedbackDto,PlatformQueryFeedbackInput,PlatformListResultDto, } from './platform.types';
+import { PlatformFeedbackInput,PlatformFeedbackDto,PlatformQueryFeedbackInput,PlatformListResultDto1 } from './platform.types';
 
-@BaseUrl('/platform/Feedback')
+@BaseUrl('/Platform/Feedback')
 @Injectable({ providedIn: 'root' })
 export class PlatformFeedbackService extends BaseApi {
   constructor(injector: Injector) {
@@ -13,10 +13,10 @@ export class PlatformFeedbackService extends BaseApi {
   
     /**
      * @param url /Platform/Feedback/CreateOrUpdate
-     * 创建新的反馈
+     * 暂无备注
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PlatformFeedbackInput
@@ -28,10 +28,10 @@ export class PlatformFeedbackService extends BaseApi {
 
     /**
      * @param url /Platform/Feedback/Get
-     * 获取详情
+     * 暂无备注
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -43,10 +43,10 @@ export class PlatformFeedbackService extends BaseApi {
 
     /**
      * @param url /Platform/Feedback/QueryFeedbackStatisticsOnSoucre
-     * 
+     * 暂无备注
      */
 
-    @POST('queryFeedbackStatisticsOnSoucre')
+    @POST('QueryFeedbackStatisticsOnSoucre')
     queryFeedbackStatisticsOnSoucre(
         @Payload
         _req:PlatformQueryFeedbackInput
@@ -58,10 +58,10 @@ export class PlatformFeedbackService extends BaseApi {
 
     /**
      * @param url /Platform/Feedback/QueryFeedbackStatistics
-     * 反馈统计
+     * 暂无备注
      */
 
-    @POST('queryFeedbackStatistics')
+    @POST('QueryFeedbackStatistics')
     queryFeedbackStatistics(
         @Payload
         _req:PlatformQueryFeedbackInput
@@ -73,10 +73,10 @@ export class PlatformFeedbackService extends BaseApi {
 
     /**
      * @param url /Platform/Feedback/GetFeedTypeList
-     * 获取反馈类型列表
+     * 暂无备注
      */
 
-    @GET('getFeedTypeList')
+    @GET('GetFeedTypeList')
     getFeedTypeList(
         @Payload
         _req: {} 
@@ -88,25 +88,25 @@ export class PlatformFeedbackService extends BaseApi {
 
     /**
      * @param url /Platform/Feedback/QueryList
-     * 查询列表数据 分页
+     * 暂无备注
      */
 
-    @POST('queryList')
+    @POST('QueryList')
     queryList(
         @Payload
         _req:PlatformQueryFeedbackInput
 
-    ): Observable<PlatformListResultDto<PlatformFeedbackDto>> {
+    ): Observable<PlatformListResultDto1<PlatformFeedbackDto>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/Feedback/HandleFeedback
-     * 处理反馈
+     * 暂无备注
      */
 
-    @POST('handleFeedback')
+    @POST('HandleFeedback')
     handleFeedback(
         @Payload
         _req:PlatformFeedbackInput

@@ -10,22 +10,22 @@
             name: string;
          
             /* 片区名称-本地化 */ 
-            nameLocalization: string;
+            nameLocalization?: string;
          
             /* 直接RegionId */ 
-            regionIds: any[];
+            regionIds?: any[];
          
             /* 直接Region名称-本地化 */ 
-            regionNames: any[];
+            regionNames?: any[];
          
             /* 片区包含或所属国家 */ 
-            countryIds: any[];
+            countryIds?: any[];
          
             /* 中文名称 */ 
-            chineseName: string;
+            chineseName?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -496,7 +496,7 @@
             name: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -1149,12 +1149,6 @@
         
          
             
-            cmbNetComUserAccount: string;
-         
-            
-            isActivateBankDirect: boolean;
-         
-            
             companyId: string;
          
             
@@ -1167,43 +1161,49 @@
             defaultCurrency: string;
          
             
-            issuePlaceId: string;
-         
-            
-            shortCode: string;
-         
-            
             tenantId: number;
          
             
-            configuresBanks: PUBConfigureBank[];
+            cmbNetComUserAccount?: string;
          
             
-            configure2Solutions: PUBConfigure2Solution[];
+            isActivateBankDirect?: boolean;
          
             
-            isDeleted: boolean;
+            issuePlaceId?: string;
          
             
-            deleterUserId: number;
+            shortCode?: string;
          
             
-            deletionTime: string;
+            configuresBanks?: PUBConfigureBank[];
          
             
-            lastModificationTime: string;
+            configure2Solutions?: PUBConfigure2Solution[];
          
             
-            lastModifierUserId: number;
+            isDeleted?: boolean;
          
             
-            creationTime: string;
+            deleterUserId?: number;
          
             
-            creatorUserId: number;
+            deletionTime?: string;
          
             
-            id: string;
+            lastModificationTime?: string;
+         
+            
+            lastModifierUserId?: number;
+         
+            
+            creationTime?: string;
+         
+            
+            creatorUserId?: number;
+         
+            
+            id?: string;
         
         
     }
@@ -1216,15 +1216,6 @@
         
          
             
-            cmbNetComUserAccount: string;
-         
-            
-            isCMBankDirect: boolean;
-         
-            
-            cmbDirectActnbr: string;
-         
-            
             configureBankId: string;
          
             
@@ -1234,46 +1225,55 @@
             currency: string;
          
             
-            glId: string;
-         
-            
             isOpen: boolean;
          
             
             isValid: boolean;
          
             
-            voidDate: string;
-         
-            
             tenantId: number;
          
             
-            configuresBank: PUBConfigureBank;
+            cmbNetComUserAccount?: string;
          
             
-            isDeleted: boolean;
+            isCMBankDirect?: boolean;
          
             
-            deleterUserId: number;
+            cmbDirectActnbr?: string;
          
             
-            deletionTime: string;
+            glId?: string;
          
             
-            lastModificationTime: string;
+            voidDate?: string;
          
             
-            lastModifierUserId: number;
+            configuresBank?: PUBConfigureBank;
          
             
-            creationTime: string;
+            isDeleted?: boolean;
          
             
-            creatorUserId: number;
+            deleterUserId?: number;
          
             
-            id: string;
+            deletionTime?: string;
+         
+            
+            lastModificationTime?: string;
+         
+            
+            lastModifierUserId?: number;
+         
+            
+            creationTime?: string;
+         
+            
+            creatorUserId?: number;
+         
+            
+            id?: string;
         
         
     }
@@ -1308,31 +1308,80 @@
             tenantId: number;
          
             
+            creatorUserCache??: object;
+         
+            
+            remark??: string;
+         
+            
+            voidTime??: string;
+         
+            
+            localizationText??: string;
+         
+            
+            solution2Currencies??: any[];
+         
+            
+            solutionGLConfigs??: any[];
+         
+            
+            solution2ChargingCodeGroups??: any[];
+         
+            
+            configure2Solutions??: any[];
+         
+            
+            glCodes??: any[];
+         
+            
+            isDeleted??: boolean;
+         
+            
+            deleterUserId??: number;
+         
+            
+            deletionTime??: string;
+         
+            
+            lastModificationTime??: string;
+         
+            
+            lastModifierUserId??: number;
+         
+            
+            creationTime??: string;
+         
+            
+            creatorUserId??: number;
+         
+            
+            id??: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PUBSolution2Currency {
+        [key:string]: any;
+        
+         
+            
+            solutionId: string;
+         
+            
+            currency: string;
+         
+            
+            tenantId: number;
+         
+            
             creatorUserCache?: object;
          
             
-            remark?: string;
-         
-            
-            voidTime?: string;
-         
-            
-            localizationText?: string;
-         
-            
-            solution2Currencies?: any[];
-         
-            
-            solutionGLConfigs?: any[];
-         
-            
-            solution2ChargingCodeGroups?: any[];
-         
-            
-            configure2Solutions?: any[];
-         
-            
-            glCodes?: any[];
+            solution?: PUBSolution;
          
             
             isDeleted?: boolean;
@@ -1364,79 +1413,15 @@
     /**
      *  No Remark 
      */
-    export class PUBSolution2Currency {
-        [key:string]: any;
-        
-         
-            
-            creatorUserCache: object;
-         
-            
-            solutionId: string;
-         
-            
-            currency: string;
-         
-            
-            tenantId: number;
-         
-            
-            solution: PUBSolution;
-         
-            
-            isDeleted: boolean;
-         
-            
-            deleterUserId: number;
-         
-            
-            deletionTime: string;
-         
-            
-            lastModificationTime: string;
-         
-            
-            lastModifierUserId: number;
-         
-            
-            creationTime: string;
-         
-            
-            creatorUserId: number;
-         
-            
-            id: string;
-        
-        
-    }
- 
-    /**
-     *  No Remark 
-     */
     export class PUBSolutionGLConfig {
         [key:string]: any;
         
-         
-            
-            chargingCodeCache: object;
-         
-            
-            drglCodeCache: object;
-         
-            
-            crglCodeCache: object;
-         
-            
-            creatorUserCache: object;
          
             
             solutionId: string;
          
             
             type: number;
-         
-            
-            chargingCodeId: string;
          
             
             currency: string;
@@ -1448,43 +1433,58 @@
             crglCodeId: string;
          
             
-            companyId: string;
-         
-            
             isValid: boolean;
-         
-            
-            voidTime: string;
          
             
             tenantId: number;
          
             
-            solution: PUBSolution;
+            chargingCodeCache?: object;
          
             
-            isDeleted: boolean;
+            drglCodeCache?: object;
          
             
-            deleterUserId: number;
+            crglCodeCache?: object;
          
             
-            deletionTime: string;
+            creatorUserCache?: object;
          
             
-            lastModificationTime: string;
+            chargingCodeId?: string;
          
             
-            lastModifierUserId: number;
+            companyId?: string;
          
             
-            creationTime: string;
+            voidTime?: string;
          
             
-            creatorUserId: number;
+            solution?: PUBSolution;
          
             
-            id: string;
+            isDeleted?: boolean;
+         
+            
+            deleterUserId?: number;
+         
+            
+            deletionTime?: string;
+         
+            
+            lastModificationTime?: string;
+         
+            
+            lastModifierUserId?: number;
+         
+            
+            creationTime?: string;
+         
+            
+            creatorUserId?: number;
+         
+            
+            id?: string;
         
         
     }
@@ -1509,34 +1509,34 @@
             tenantId: number;
          
             
-            solution: PUBSolution;
+            solution?: PUBSolution;
          
             
-            chargingCodeGroup: PUBChargingGroup;
+            chargingCodeGroup?: PUBChargingGroup;
          
             
-            isDeleted: boolean;
+            isDeleted?: boolean;
          
             
-            deleterUserId: number;
+            deleterUserId?: number;
          
             
-            deletionTime: string;
+            deletionTime?: string;
          
             
-            lastModificationTime: string;
+            lastModificationTime?: string;
          
             
-            lastModifierUserId: number;
+            lastModifierUserId?: number;
          
             
-            creationTime: string;
+            creationTime?: string;
          
             
-            creatorUserId: number;
+            creatorUserId?: number;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -1777,67 +1777,67 @@
             tenantId: number;
          
             
-            fullName?: string;
+            fullName??: string;
          
             
-            fullId?: string;
+            fullId??: string;
          
             
-            levelCode?: string;
+            levelCode??: string;
          
             
-            level?: number;
+            level??: number;
          
             
-            parent?: PUBGLGroup;
+            parent??: PUBGLGroup;
          
             
-            children?: any[];
+            children??: any[];
          
             
-            creatorUserCache?: object;
+            creatorUserCache??: object;
          
             
-            type?: number;
+            type??: number;
          
             
-            parentId?: string;
+            parentId??: string;
          
             
-            name?: string;
+            name??: string;
          
             
-            localizationText?: string;
+            localizationText??: string;
          
             
-            remark?: string;
+            remark??: string;
          
             
-            glCodes?: any[];
+            glCodes??: any[];
          
             
-            id?: string;
+            id??: string;
          
             
-            creationTime?: string;
+            creationTime??: string;
          
             
-            creatorUserId?: number;
+            creatorUserId??: number;
          
             
-            lastModificationTime?: string;
+            lastModificationTime??: string;
          
             
-            lastModifierUserId?: number;
+            lastModifierUserId??: number;
          
             
-            deletionTime?: string;
+            deletionTime??: string;
          
             
-            deleterUserId?: number;
+            deleterUserId??: number;
          
             
-            isDeleted?: boolean;
+            isDeleted??: boolean;
         
         
     }
@@ -2036,19 +2036,19 @@
             checkType: number;
          
             /* 代码 */ 
-            code: string;
+            code?: string;
          
             /* 国际标准代码 */ 
-            isoCode: string;
+            isoCode?: string;
          
             /* 箱量 */ 
-            teu: number;
+            teu?: number;
          
             /* ISO */ 
-            iso: string;
+            iso?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -2190,17 +2190,17 @@
         [key:string]: any;
         
          
-            /* 上级Id */ 
-            parentId: string;
-         
             /* 费用代码 */ 
             code: string;
          
             /* 费用名称 */ 
             name: string;
          
+            /* 上级Id */ 
+            parentId?: string;
+         
             
-            id: string;
+            id?: string;
         
         
     }
@@ -2317,22 +2317,22 @@
             name: string;
          
             /* 币种名称-本地化 */ 
-            nameLocalization: string;
+            nameLocalization?: string;
          
             /* 国家名称 */ 
-            regionName: string;
+            regionName?: string;
          
             /* 是否有效 */ 
-            isValid: boolean;
+            isValid?: boolean;
          
             /* 创建人 */ 
-            creatorUserName: string;
+            creatorUserName?: string;
          
             /* 创建时间 */ 
-            creationTime: string;
+            creationTime?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -2344,20 +2344,20 @@
         [key:string]: any;
         
          
-            /* 校验类型 - Code|Name
-0 = All
-1 = Code
-2 = Name */ 
-            type: number;
-         
             /* 币种代码 */ 
             code: string;
          
             /* 币种名称 */ 
             name: string;
          
+            /* 校验类型 - Code|Name
+0 = All
+1 = Code
+2 = Name */ 
+            type?: number;
+         
             
-            id: string;
+            id?: string;
         
         
     }
@@ -2439,25 +2439,25 @@
             code: string;
          
             /* 字典名称 */ 
-            name: string;
+            name?: string;
          
             /* 描述 */ 
-            description: string;
+            description?: string;
          
             /* 字典名称-本地化 */ 
-            nameLocalization: string;
+            nameLocalization?: string;
          
             /* 创建人 */ 
-            creatorUserName: string;
+            creatorUserName?: string;
          
             
-            isValid: boolean;
+            isValid?: boolean;
          
             /* 创建时间 */ 
-            creationTime: string;
+            creationTime?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -2479,7 +2479,7 @@
             name: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -2591,19 +2591,19 @@
             name: string;
          
             /* 是否有效 */ 
-            isValid: boolean;
+            isValid?: boolean;
          
             /* 渠道名称-本地化 */ 
-            localizationText: string;
+            localizationText?: string;
          
             /* 贸易类型 */ 
-            tradeType: number;
+            tradeType?: number;
          
             /* 是否收税 */ 
-            isTaxIncluded: boolean;
+            isTaxIncluded?: boolean;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -2622,25 +2622,25 @@
             name: string;
          
             /* 地区名称-本地化 */ 
-            nameLocalization: string;
+            nameLocalization?: string;
          
             /* 是否有效 */ 
-            isValid: boolean;
+            isValid?: boolean;
          
             /* 创建人 */ 
-            creatorUserName: string;
+            creatorUserName?: string;
          
             /* 创建时间 */ 
-            creationTime: string;
+            creationTime?: string;
          
             /* 描述 */ 
-            description: string;
+            description?: string;
          
             /* 备注 */ 
-            remark: string;
+            remark?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -2656,7 +2656,7 @@
             name: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -2693,13 +2693,13 @@
             isValid: boolean;
          
             /* 创建人 */ 
-            creatorUserName: string;
+            creatorUserName?: string;
          
             /* 创建时间 */ 
-            creationTime: string;
+            creationTime?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -2800,10 +2800,10 @@
             checkType: number;
          
             /* 航班号 */ 
-            no: string;
+            no?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -2997,7 +2997,7 @@
             groupId: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -3013,7 +3013,7 @@
             companyId: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -3075,68 +3075,68 @@
             /* 地点名称-维护 */ 
             name: string;
          
-            /* 地点名称-本地化-维护 */ 
-            nameLocalization: string;
-         
             /* 地区Id-维护 */ 
             regionId: string;
          
+            /* 地点名称-本地化-维护 */ 
+            nameLocalization?: string;
+         
             /* 是否海运-维护 */ 
-            isOcean: boolean;
+            isOcean?: boolean;
          
             /* 是否空运-维护 */ 
-            isAir: boolean;
+            isAir?: boolean;
          
             /* 是否铁路-维护 */ 
-            isRail: boolean;
+            isRail?: boolean;
          
             /* 其它-维护 */ 
-            isOther: boolean;
+            isOther?: boolean;
          
             /* 是否城市-维护 */ 
-            isCity: boolean;
+            isCity?: boolean;
          
             /* 经度-维护 */ 
-            longitude: string;
+            longitude?: string;
          
             /* 纬度-维护 */ 
-            latitude: string;
+            latitude?: string;
          
             /* 备注-维护 */ 
-            remark: string;
+            remark?: string;
          
             /* 城市Id-维护 */ 
-            cityId: string;
+            cityId?: string;
          
             /* 是否有效-维护 */ 
-            isValid: boolean;
+            isValid?: boolean;
          
             /* 国家ID */ 
-            countryId: string;
+            countryId?: string;
          
             /* 地区名称-列表显示 */ 
-            regionName: string;
+            regionName?: string;
          
             /* 全称 */ 
-            fullName: string;
+            fullName?: string;
          
             /* 全称-本地化 */ 
-            fullNameLocalization: string;
+            fullNameLocalization?: string;
          
             /* 创建时间 */ 
-            creationTime: string;
+            creationTime?: string;
          
             /* 创建人 */ 
-            creatorUserName: string;
+            creatorUserName?: string;
          
             /* 中文名称 */ 
-            chineseName: string;
+            chineseName?: string;
          
             /* ICP用户 */ 
-            icpUserId: string;
+            icpUserId?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -3235,10 +3235,10 @@
             name: string;
          
             /* 本地语言 */ 
-            localName: string;
+            localName?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -3257,7 +3257,7 @@
             isValid: boolean;
          
             
-            icpUserId: string;
+            icpUserId?: string;
         
         
     }
@@ -3904,34 +3904,34 @@
             carrierCode: any[];
          
             /* 离港日期 */ 
-            etd: string;
+            etd?: string;
          
             /* 到港日期 */ 
-            eta: string;
+            eta?: string;
          
             /* 添加几周的日期 */ 
-            week: number;
+            week?: number;
          
             /* 是否重试 */ 
-            isRetry: boolean;
+            isRetry?: boolean;
          
             /* 是否直航0全部，1直航，2不是直航
 0 = All
 1 = Direct
 2 = NotDirect */ 
-            isDirect: number;
+            isDirect?: number;
          
             
-            filter: string;
+            filter?: string;
          
             
-            sorting: string;
+            sorting?: string;
          
             
-            maxResultCount: number;
+            maxResultCount?: number;
          
             
-            skipCount: number;
+            skipCount?: number;
         
         
     }
@@ -4249,14 +4249,14 @@
 4 = Name */ 
             checkType: number;
          
-            /* 代码 */ 
-            code: string;
-         
             /* 名称 */ 
             name: string;
          
+            /* 代码 */ 
+            code?: string;
+         
             
-            id: string;
+            id?: string;
         
         
     }
@@ -4445,9 +4445,6 @@
             /* 名称 */ 
             name: string;
          
-            /* 本地化名称 */ 
-            nameLocalization: string;
-         
             /* 账单日期类型（0建立时间、1业务时间）
 0 = CreateTime
 1 = BussinessTime */ 
@@ -4456,21 +4453,24 @@
             /* 是否财务共享 */ 
             isAccountingShare: boolean;
          
-            /* 备注 */ 
-            remark: string;
-         
             /* Required
 是否有效 */ 
             isValid: boolean;
          
+            /* 本地化名称 */ 
+            nameLocalization?: string;
+         
+            /* 备注 */ 
+            remark?: string;
+         
             /* 创建人 */ 
-            creatorUserName: string;
+            creatorUserName?: string;
          
             /* 创建时间 */ 
-            creationTime: string;
+            creationTime?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -4491,13 +4491,13 @@
             currency: string;
          
             /* 创建人 */ 
-            creatorUserName: string;
+            creatorUserName?: string;
          
             /* 创建时间 */ 
-            creationTime: string;
+            creationTime?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -4515,41 +4515,41 @@
             /* 类型：1	费用项目; 2	主营业务收入; 3	预收预付; 4	代收代付; 5	汇兑损益; 6	当年改单科目; 7	上年改单科目; 8	上年之前改单科目; 9	当期净利润; 10 留存收益; 11 应收应付; 12	佣金(业务管理成本); 13	内部往来; 14	手续费; */ 
             type: number;
          
-            /* 费用项目Id */ 
-            chargingCodeId: string;
-         
-            /* 费用项目名称 */ 
-            chargingCodeName: string;
-         
             /* 币种 */ 
             currency: string;
          
             /* 应收会计科目Id */ 
             drglCodeId: string;
          
-            /* 应收会计科目代码 */ 
-            drglCode: string;
-         
             /* 应付会计科目Id */ 
             crglCodeId: string;
          
+            /* 费用项目Id */ 
+            chargingCodeId?: string;
+         
+            /* 费用项目名称 */ 
+            chargingCodeName?: string;
+         
+            /* 应收会计科目代码 */ 
+            drglCode?: string;
+         
             /* 应付会计科目代码 */ 
-            crglCode: string;
+            crglCode?: string;
          
             /* 所属公司(比如 主营业务收入，广州，深圳不同) */ 
-            companyId: string;
+            companyId?: string;
          
             /* 是否作废 */ 
-            isValid: boolean;
+            isValid?: boolean;
          
             /* 创建人 */ 
-            creatorUserName: string;
+            creatorUserName?: string;
          
             /* 创建时间 */ 
-            creationTime: string;
+            creationTime?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -4568,25 +4568,25 @@
             destinationId: string;
          
             /* 是否有效 */ 
-            isValid: boolean;
+            isValid?: boolean;
          
             /* 描述 */ 
-            description: string;
+            description?: string;
          
             /* 起始地类型 */ 
-            originalName: string;
+            originalName?: string;
          
             /* 目的地类型 */ 
-            destinationName: string;
+            destinationName?: string;
          
             /* 创建人 */ 
-            creatorUserName: string;
+            creatorUserName?: string;
          
             /* 创建时间 */ 
-            creationTime: string;
+            creationTime?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -4704,12 +4704,6 @@
         [key:string]: any;
         
          
-            /* 创建人姓名 */ 
-            creatorUserName: string;
-         
-            /* 创建时间 */ 
-            creationTime: string;
-         
             /* 代码 */ 
             code: string;
          
@@ -4728,11 +4722,17 @@
             
             unCode: string;
          
+            /* 创建人姓名 */ 
+            creatorUserName?: string;
+         
+            /* 创建时间 */ 
+            creationTime?: string;
+         
             /* 是否有效 */ 
-            isValid: boolean;
+            isValid?: boolean;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -4755,13 +4755,13 @@
             checkType: number;
          
             /* 代码 */ 
-            code: string;
+            code?: string;
          
             /* 名称 */ 
-            name: string;
+            name?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -4944,23 +4944,23 @@
         [key:string]: any;
         
          
-            /* 创建人姓名 */ 
-            creatorUserName: string;
-         
-            /* 创建时间 */ 
-            creationTime: string;
-         
             /* 船名Id */ 
             vesselId: string;
          
             /* 航次 */ 
             no: string;
          
+            /* 创建人姓名 */ 
+            creatorUserName?: string;
+         
+            /* 创建时间 */ 
+            creationTime?: string;
+         
             /* 是否有效 */ 
-            isValid: boolean;
+            isValid?: boolean;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -4982,10 +4982,10 @@
             checkType: number;
          
             /* 航次 */ 
-            no: string;
+            no?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }

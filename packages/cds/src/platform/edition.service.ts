@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PlatformEditionDto,PlatformPagedResultDto,PlatformSetEditionPermissionsInput,PlatformGrantToTenantsInput,PlatformRevokeFromTenantsInput, } from './platform.types';
+import { PlatformPagedResultDto1,PlatformEditionDto,PlatformSetEditionPermissionsInput,PlatformGrantToTenantsInput,PlatformRevokeFromTenantsInput } from './platform.types';
 
-@BaseUrl('/platform/Edition')
+@BaseUrl('/Platform/Edition')
 @Injectable({ providedIn: 'root' })
 export class PlatformEditionService extends BaseApi {
   constructor(injector: Injector) {
@@ -13,25 +13,25 @@ export class PlatformEditionService extends BaseApi {
   
     /**
      * @param url /Platform/Edition/GetAll
-     * 返回版本集合
+     * 暂无备注
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
         _req: {searchText?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PlatformPagedResultDto<PlatformEditionDto>> {
+    ): Observable<PlatformPagedResultDto1<PlatformEditionDto>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/Edition/Get
-     * 获取版本明细
+     * 暂无备注
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -43,10 +43,10 @@ export class PlatformEditionService extends BaseApi {
 
     /**
      * @param url /Platform/Edition/Create
-     * 创建
+     * 暂无备注
      */
 
-    @POST('create')
+    @POST('Create')
     create(
         @Payload
         _req:PlatformEditionDto
@@ -58,10 +58,10 @@ export class PlatformEditionService extends BaseApi {
 
     /**
      * @param url /Platform/Edition/CreateOrUpdate
-     * 创建或更新版本
+     * 暂无备注
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PlatformEditionDto
@@ -73,10 +73,10 @@ export class PlatformEditionService extends BaseApi {
 
     /**
      * @param url /Platform/Edition/Update
-     * 更新
+     * 暂无备注
      */
 
-    @PUT('update')
+    @PUT('Update')
     update(
         @Payload
         _req:PlatformEditionDto
@@ -88,10 +88,10 @@ export class PlatformEditionService extends BaseApi {
 
     /**
      * @param url /Platform/Edition/Delete
-     * 删除
+     * 暂无备注
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 
@@ -103,10 +103,10 @@ export class PlatformEditionService extends BaseApi {
 
     /**
      * @param url /Platform/Edition/GetPermissions
-     * 获取指定版本下的可用功能点集合
+     * 暂无备注
      */
 
-    @GET('getPermissions')
+    @GET('GetPermissions')
     getPermissions(
         @Payload
         _req: {id?:string} 
@@ -118,10 +118,10 @@ export class PlatformEditionService extends BaseApi {
 
     /**
      * @param url /Platform/Edition/SetPermissions
-     * 批量设置权限
+     * 暂无备注
      */
 
-    @POST('setPermissions')
+    @POST('SetPermissions')
     setPermissions(
         @Payload
         _req:PlatformSetEditionPermissionsInput
@@ -133,10 +133,10 @@ export class PlatformEditionService extends BaseApi {
 
     /**
      * @param url /Platform/Edition/RemovePermissions
-     * 删除权限
+     * 暂无备注
      */
 
-    @DELETE('removePermissions')
+    @DELETE('RemovePermissions')
     removePermissions(
         @Payload
         _req: {functionPermissionIds?:any[],id?:string} 
@@ -148,10 +148,10 @@ export class PlatformEditionService extends BaseApi {
 
     /**
      * @param url /Platform/Edition/GrantToTenants
-     * 授予指定版本给租户
+     * 暂无备注
      */
 
-    @POST('grantToTenants')
+    @POST('GrantToTenants')
     grantToTenants(
         @Payload
         _req:PlatformGrantToTenantsInput
@@ -163,10 +163,10 @@ export class PlatformEditionService extends BaseApi {
 
     /**
      * @param url /Platform/Edition/RevokeFromTenants
-     * 授予指定版本给租户
+     * 暂无备注
      */
 
-    @POST('revokeFromTenants')
+    @POST('RevokeFromTenants')
     revokeFromTenants(
         @Payload
         _req:PlatformRevokeFromTenantsInput
@@ -178,10 +178,10 @@ export class PlatformEditionService extends BaseApi {
 
     /**
      * @param url /Platform/Edition/GetByTenantId
-     * 根据租户获取指定版本
+     * 暂无备注
      */
 
-    @GET('getByTenantId')
+    @GET('GetByTenantId')
     getByTenantId(
         @Payload
         _req: {id?:number} 

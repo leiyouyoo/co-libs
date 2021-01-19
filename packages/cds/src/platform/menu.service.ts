@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PlatformMenuItemDto,PlatformListResultDto,PlatformEntityDto,PlatformMoveMenuItemInput,PlatformAddToFavoritesInput,PlatformChangeStateInput, } from './platform.types';
+import { PlatformListResultDto1,PlatformMenuItemDto,PlatformEntityDto1,PlatformMoveMenuItemInput,PlatformAddToFavoritesInput,PlatformChangeStateInput } from './platform.types';
 
-@BaseUrl('/platform/Menu')
+@BaseUrl('/Platform/Menu')
 @Injectable({ providedIn: 'root' })
 export class PlatformMenuService extends BaseApi {
   constructor(injector: Injector) {
@@ -13,40 +13,40 @@ export class PlatformMenuService extends BaseApi {
   
     /**
      * @param url /Platform/Menu/GetAll
-     * 获取平台所有菜单项集合
+     * 暂无备注
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
         _req: {searchText?:string} 
 
-    ): Observable<PlatformListResultDto<PlatformMenuItemDto>> {
+    ): Observable<PlatformListResultDto1<PlatformMenuItemDto>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/Menu/GetAllIncludeChildrenAsync
-     * 获取所有菜单（分层级）
+     * 暂无备注
      */
 
-    @GET('getAllIncludeChildrenAsync')
+    @GET('GetAllIncludeChildrenAsync')
     getAllIncludeChildrenAsync(
         @Payload
         _req: {} 
 
-    ): Observable<PlatformListResultDto<PlatformMenuItemDto>> {
+    ): Observable<PlatformListResultDto1<PlatformMenuItemDto>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/Menu/CreateOrUpdate
-     * 保存菜单项
+     * 暂无备注
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PlatformMenuItemDto
@@ -58,10 +58,10 @@ export class PlatformMenuService extends BaseApi {
 
     /**
      * @param url /Platform/Menu/Delete
-     * 删除菜单项
+     * 暂无备注
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 
@@ -73,13 +73,13 @@ export class PlatformMenuService extends BaseApi {
 
     /**
      * @param url /Platform/Menu/Recover
-     * 恢复菜单
+     * 暂无备注
      */
 
-    @POST('recover')
+    @POST('Recover')
     recover(
         @Payload
-        _req:PlatformEntityDto<any>
+        _req:PlatformEntityDto1<any>
 
     ): Observable<any> {
         return null as any
@@ -88,13 +88,13 @@ export class PlatformMenuService extends BaseApi {
 
     /**
      * @param url /Platform/Menu/Cancel
-     * 作废菜单
+     * 暂无备注
      */
 
-    @POST('cancel')
+    @POST('Cancel')
     cancel(
         @Payload
-        _req:PlatformEntityDto<any>
+        _req:PlatformEntityDto1<any>
 
     ): Observable<any> {
         return null as any
@@ -103,10 +103,10 @@ export class PlatformMenuService extends BaseApi {
 
     /**
      * @param url /Platform/Menu/Move
-     * 移动菜单项
+     * 暂无备注
      */
 
-    @POST('move')
+    @POST('Move')
     move(
         @Payload
         _req:PlatformMoveMenuItemInput
@@ -118,10 +118,10 @@ export class PlatformMenuService extends BaseApi {
 
     /**
      * @param url /Platform/Menu/AddToMyFavorites
-     * 添加菜单到收藏夹
+     * 暂无备注
      */
 
-    @POST('addToMyFavorites')
+    @POST('AddToMyFavorites')
     addToMyFavorites(
         @Payload
         _req:PlatformAddToFavoritesInput
@@ -133,10 +133,10 @@ export class PlatformMenuService extends BaseApi {
 
     /**
      * @param url /Platform/Menu/AddBatchToMyFavorites
-     * 批量收藏用户菜单
+     * 暂无备注
      */
 
-    @POST('addBatchToMyFavorites')
+    @POST('AddBatchToMyFavorites')
     addBatchToMyFavorites(
         @Payload
         _req:PlatformAddToFavoritesInput
@@ -148,10 +148,10 @@ export class PlatformMenuService extends BaseApi {
 
     /**
      * @param url /Platform/Menu/RemoveFromMyFavorites
-     * 添加菜单到收藏夹
+     * 暂无备注
      */
 
-    @DELETE('removeFromMyFavorites')
+    @DELETE('RemoveFromMyFavorites')
     removeFromMyFavorites(
         @Payload
         _req: {menuIds?:any[]} 
@@ -163,10 +163,10 @@ export class PlatformMenuService extends BaseApi {
 
     /**
      * @param url /Platform/Menu/GetMyFavorites
-     * 获取我收藏的菜单集合
+     * 暂无备注
      */
 
-    @GET('getMyFavorites')
+    @GET('GetMyFavorites')
     getMyFavorites(
         @Payload
         _req: {input?:object} 
@@ -178,10 +178,10 @@ export class PlatformMenuService extends BaseApi {
 
     /**
      * @param url /Platform/Menu/ChangeState
-     * 更改菜单项状态
+     * 暂无备注
      */
 
-    @POST('changeState')
+    @POST('ChangeState')
     changeState(
         @Payload
         _req:PlatformChangeStateInput
@@ -193,10 +193,10 @@ export class PlatformMenuService extends BaseApi {
 
     /**
      * @param url /Platform/Menu/UpdateUserMenuSetting
-     * 更新用户菜单配置
+     * 暂无备注
      */
 
-    @PUT('updateUserMenuSetting')
+    @PUT('UpdateUserMenuSetting')
     updateUserMenuSetting(
         @Payload
         _req: {moduleName?:string} 

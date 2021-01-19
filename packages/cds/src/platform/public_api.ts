@@ -6,7 +6,6 @@ export * from './company-configure.service';
 export * from './edition.service';
 export * from './feedback.service';
 export * from './job.service';
-export * from './jpush.service';
 export * from './menu.service';
 export * from './notification.service';
 export * from './organization-unit.service';

@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PlatformCompanyConfigureDto,PlatformPagedResultDto,PlatformOrganizationUnitDto,PlatformListResultDto, } from './platform.types';
+import { PlatformPagedResultDto1,PlatformCompanyConfigureDto,PlatformListResultDto1 } from './platform.types';
 
-@BaseUrl('/platform/CompanyConfigure')
+@BaseUrl('/Platform/CompanyConfigure')
 @Injectable({ providedIn: 'root' })
 export class PlatformCompanyConfigureService extends BaseApi {
   constructor(injector: Injector) {
@@ -13,25 +13,25 @@ export class PlatformCompanyConfigureService extends BaseApi {
   
     /**
      * @param url /Platform/CompanyConfigure/GetAll
-     * 返回公司配置集合
+     * 暂无备注
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
         _req: {isActive?:boolean} 
 
-    ): Observable<PlatformPagedResultDto<PlatformCompanyConfigureDto>> {
+    ): Observable<PlatformPagedResultDto1<PlatformCompanyConfigureDto>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/CompanyConfigure/Get
-     * 
+     * 暂无备注
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -43,10 +43,10 @@ export class PlatformCompanyConfigureService extends BaseApi {
 
     /**
      * @param url /Platform/CompanyConfigure/GetByCompanyId
-     * 获取公司配置详情
+     * 暂无备注
      */
 
-    @GET('getByCompanyId')
+    @GET('GetByCompanyId')
     getByCompanyId(
         @Payload
         _req: {id?:string} 
@@ -58,10 +58,10 @@ export class PlatformCompanyConfigureService extends BaseApi {
 
     /**
      * @param url /Platform/CompanyConfigure/GetByUserId
-     * 根据用户获取公司配置
+     * 暂无备注
      */
 
-    @GET('getByUserId')
+    @GET('GetByUserId')
     getByUserId(
         @Payload
         _req: {userId?:number} 
@@ -73,10 +73,10 @@ export class PlatformCompanyConfigureService extends BaseApi {
 
     /**
      * @param url /Platform/CompanyConfigure/Create
-     * 创建
+     * 暂无备注
      */
 
-    @POST('create')
+    @POST('Create')
     create(
         @Payload
         _req:PlatformCompanyConfigureDto
@@ -88,10 +88,10 @@ export class PlatformCompanyConfigureService extends BaseApi {
 
     /**
      * @param url /Platform/CompanyConfigure/CreateOrUpdate
-     * 创建或更新公司配置
+     * 暂无备注
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PlatformCompanyConfigureDto
@@ -103,10 +103,10 @@ export class PlatformCompanyConfigureService extends BaseApi {
 
     /**
      * @param url /Platform/CompanyConfigure/Update
-     * 更新
+     * 暂无备注
      */
 
-    @PUT('update')
+    @PUT('Update')
     update(
         @Payload
         _req:PlatformCompanyConfigureDto
@@ -118,10 +118,10 @@ export class PlatformCompanyConfigureService extends BaseApi {
 
     /**
      * @param url /Platform/CompanyConfigure/Delete
-     * 删除
+     * 暂无备注
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 
@@ -133,10 +133,10 @@ export class PlatformCompanyConfigureService extends BaseApi {
 
     /**
      * @param url /Platform/CompanyConfigure/GetCompanies
-     * 获取公司列表
+     * 暂无备注
      */
 
-    @GET('getCompanies')
+    @GET('GetCompanies')
     getCompanies(
         @Payload
         _req: {isActive?:boolean,isMarkDefault?:boolean,placeId?:string} 
@@ -148,10 +148,10 @@ export class PlatformCompanyConfigureService extends BaseApi {
 
     /**
      * @param url /Platform/CompanyConfigure/GetCompanyCustomers
-     * 
+     * 暂无备注
      */
 
-    @GET('getCompanyCustomers')
+    @GET('GetCompanyCustomers')
     getCompanyCustomers(
         @Payload
         _req: {isActive?:boolean,isMarkDefault?:boolean,placeId?:string} 
@@ -163,15 +163,15 @@ export class PlatformCompanyConfigureService extends BaseApi {
 
     /**
      * @param url /Platform/CompanyConfigure/GetByPlaceOrLocation
-     * 根据港口或仓库获取口岸公司配置
+     * 暂无备注
      */
 
-    @GET('getByPlaceOrLocation')
+    @GET('GetByPlaceOrLocation')
     getByPlaceOrLocation(
         @Payload
-        _req: {placeId?:string,locationId?:string} 
+        _req: {placeId?:string,locationId?:string,isMarkDefault?:boolean} 
 
-    ): Observable<PlatformListResultDto<PlatformOrganizationUnitDto>> {
+    ): Observable<PlatformListResultDto1<PlatformCompanyConfigureDto>> {
         return null as any
     }
 

@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PlatformPositionDto,PlatformPagedResultDto,PlatformPositionAndOrganizationUnitDto,PlatformCreatePositionDto,PlatformResMsgDto,PlatformUpdatePositionDto,PlatformAddUsersToPositionInput,PlatformAddPositionsToUserInput,PlatformSetUserDefaultPositionInput,PlatformIsInPositionInput,PlatformEntityDto, } from './platform.types';
+import { PlatformPagedResultDto1,PlatformPositionDto,PlatformPositionAndOrganizationUnitDto,PlatformCreatePositionDto,PlatformResMsgDto,PlatformUpdatePositionDto,PlatformAddUsersToPositionInput,PlatformAddPositionsToUserInput,PlatformSetUserDefaultPositionInput,PlatformIsInPositionInput,PlatformEntityDto1 } from './platform.types';
 
-@BaseUrl('/platform/Position')
+@BaseUrl('/Platform/Position')
 @Injectable({ providedIn: 'root' })
 export class PlatformPositionService extends BaseApi {
   constructor(injector: Injector) {
@@ -13,25 +13,25 @@ export class PlatformPositionService extends BaseApi {
   
     /**
      * @param url /Platform/Position/GetAll
-     * 返回职位集合
+     * 暂无备注
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
         _req: {organizationUnitId?:string,parentId?:string,searchText?:string,isRecursion?:boolean,isValid?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PlatformPagedResultDto<PlatformPositionDto>> {
+    ): Observable<PlatformPagedResultDto1<PlatformPositionDto>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/Position/Get
-     * 获取职位明细
+     * 暂无备注
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -43,10 +43,10 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/GetPositionAndOrganization
-     * 获取用户的职位及组织机构
+     * 暂无备注
      */
 
-    @GET('getPositionAndOrganization')
+    @GET('GetPositionAndOrganization')
     getPositionAndOrganization(
         @Payload
         _req: {userId?:number} 
@@ -58,10 +58,10 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/Create
-     * 创建
+     * 暂无备注
      */
 
-    @POST('create')
+    @POST('Create')
     create(
         @Payload
         _req:PlatformPositionDto
@@ -73,10 +73,10 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/CreateAsync
-     * 创建职位（支持同一职位的多组织生成）
+     * 暂无备注
      */
 
-    @POST('createAsync')
+    @POST('CreateAsync')
     createAsync(
         @Payload
         _req:PlatformCreatePositionDto
@@ -88,10 +88,10 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/Update
-     * 更新
+     * 暂无备注
      */
 
-    @PUT('update')
+    @PUT('Update')
     update(
         @Payload
         _req:PlatformPositionDto
@@ -103,10 +103,10 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/UpdateAsync
-     * 编辑职位（支持同一职位的多组织生成）
+     * 暂无备注
      */
 
-    @PUT('updateAsync')
+    @PUT('UpdateAsync')
     updateAsync(
         @Payload
         _req:PlatformUpdatePositionDto
@@ -118,10 +118,10 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/CreateOrUpdate
-     * 创建或更新职位
+     * 暂无备注
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PlatformPositionDto
@@ -133,10 +133,10 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/Delete
-     * 删除
+     * 暂无备注
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 
@@ -148,10 +148,10 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/AddUsersToPosition
-     * 添加用户到指定职位中
+     * 暂无备注
      */
 
-    @POST('addUsersToPosition')
+    @POST('AddUsersToPosition')
     addUsersToPosition(
         @Payload
         _req:PlatformAddUsersToPositionInput
@@ -163,10 +163,10 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/SetUserPositions
-     * 设置用户职位
+     * 暂无备注
      */
 
-    @POST('setUserPositions')
+    @POST('SetUserPositions')
     setUserPositions(
         @Payload
         _req:PlatformAddPositionsToUserInput
@@ -178,10 +178,10 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/SetUserDefaultPosition
-     * 设置默认用户职位
+     * 暂无备注
      */
 
-    @POST('setUserDefaultPosition')
+    @POST('SetUserDefaultPosition')
     setUserDefaultPosition(
         @Payload
         _req:PlatformSetUserDefaultPositionInput
@@ -193,10 +193,10 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/RemoveUsersFromPosition
-     * 删除指定用户从指定职位中
+     * 暂无备注
      */
 
-    @DELETE('removeUsersFromPosition')
+    @DELETE('RemoveUsersFromPosition')
     removeUsersFromPosition(
         @Payload
         _req: {userIds?:any[],positionId?:string,isDefault?:boolean} 
@@ -208,10 +208,10 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/RemovePositionsFromUser
-     * 删除用户的职位
+     * 暂无备注
      */
 
-    @DELETE('removePositionsFromUser')
+    @DELETE('RemovePositionsFromUser')
     removePositionsFromUser(
         @Payload
         _req: {userId?:number} 
@@ -223,10 +223,10 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/GetUsersFromPosition
-     * 获取指定职位下用户集合
+     * 暂无备注
      */
 
-    @GET('getUsersFromPosition')
+    @GET('GetUsersFromPosition')
     getUsersFromPosition(
         @Payload
         _req: {id?:string} 
@@ -238,10 +238,10 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/GetBatchUserPositions
-     * 批量获取用户职位集合
+     * 暂无备注
      */
 
-    @GET('getBatchUserPositions')
+    @GET('GetBatchUserPositions')
     getBatchUserPositions(
         @Payload
         _req: {userIds?:any[]} 
@@ -253,10 +253,10 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/GetPositionByUserId
-     * 获取用户职位集合
+     * 暂无备注
      */
 
-    @GET('getPositionByUserId')
+    @GET('GetPositionByUserId')
     getPositionByUserId(
         @Payload
         _req: {id?:number,isDefault?:boolean} 
@@ -268,10 +268,10 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/IsUserInPosition
-     * 判断用户是否挂在指定职位下
+     * 暂无备注
      */
 
-    @POST('isUserInPosition')
+    @POST('IsUserInPosition')
     isUserInPosition(
         @Payload
         _req:PlatformIsInPositionInput
@@ -283,10 +283,10 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/GetSubordinates
-     * 获取下属集合
+     * 暂无备注
      */
 
-    @GET('getSubordinates')
+    @GET('GetSubordinates')
     getSubordinates(
         @Payload
         _req: {userId?:number,subordinatePositionName?:string} 
@@ -298,13 +298,13 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/Recover
-     * 恢复职位
+     * 暂无备注
      */
 
-    @POST('recover')
+    @POST('Recover')
     recover(
         @Payload
-        _req:PlatformEntityDto<any>
+        _req:PlatformEntityDto1<any>
 
     ): Observable<any> {
         return null as any
@@ -313,13 +313,13 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/Cancel
-     * 作废职位
+     * 暂无备注
      */
 
-    @POST('cancel')
+    @POST('Cancel')
     cancel(
         @Payload
-        _req:PlatformEntityDto<any>
+        _req:PlatformEntityDto1<any>
 
     ): Observable<any> {
         return null as any
@@ -328,10 +328,10 @@ export class PlatformPositionService extends BaseApi {
 
     /**
      * @param url /Platform/Position/GetByUserIdCompanyAsync
-     * 获取当前登录用户公司集合
+     * 暂无备注
      */
 
-    @GET('getByUserIdCompanyAsync')
+    @GET('GetByUserIdCompanyAsync')
     getByUserIdCompanyAsync(
         @Payload
         _req: {userId?:number} 
