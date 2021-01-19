@@ -1308,55 +1308,55 @@
             tenantId: number;
          
             
-            creatorUserCache??: object;
+            creatorUserCache?: object;
          
             
-            remark??: string;
+            remark?: string;
          
             
-            voidTime??: string;
+            voidTime?: string;
          
             
-            localizationText??: string;
+            localizationText?: string;
          
             
-            solution2Currencies??: any[];
+            solution2Currencies?: any[];
          
             
-            solutionGLConfigs??: any[];
+            solutionGLConfigs?: any[];
          
             
-            solution2ChargingCodeGroups??: any[];
+            solution2ChargingCodeGroups?: any[];
          
             
-            configure2Solutions??: any[];
+            configure2Solutions?: any[];
          
             
-            glCodes??: any[];
+            glCodes?: any[];
          
             
-            isDeleted??: boolean;
+            isDeleted?: boolean;
          
             
-            deleterUserId??: number;
+            deleterUserId?: number;
          
             
-            deletionTime??: string;
+            deletionTime?: string;
          
             
-            lastModificationTime??: string;
+            lastModificationTime?: string;
          
             
-            lastModifierUserId??: number;
+            lastModifierUserId?: number;
          
             
-            creationTime??: string;
+            creationTime?: string;
          
             
-            creatorUserId??: number;
+            creatorUserId?: number;
          
             
-            id??: string;
+            id?: string;
         
         
     }
@@ -1777,67 +1777,67 @@
             tenantId: number;
          
             
-            fullName??: string;
+            fullName?: string;
          
             
-            fullId??: string;
+            fullId?: string;
          
             
-            levelCode??: string;
+            levelCode?: string;
          
             
-            level??: number;
+            level?: number;
          
             
-            parent??: PUBGLGroup;
+            parent?: PUBGLGroup;
          
             
-            children??: any[];
+            children?: any[];
          
             
-            creatorUserCache??: object;
+            creatorUserCache?: object;
          
             
-            type??: number;
+            type?: number;
          
             
-            parentId??: string;
+            parentId?: string;
          
             
-            name??: string;
+            name?: string;
          
             
-            localizationText??: string;
+            localizationText?: string;
          
             
-            remark??: string;
+            remark?: string;
          
             
-            glCodes??: any[];
+            glCodes?: any[];
          
             
-            id??: string;
+            id?: string;
          
             
-            creationTime??: string;
+            creationTime?: string;
          
             
-            creatorUserId??: number;
+            creatorUserId?: number;
          
             
-            lastModificationTime??: string;
+            lastModificationTime?: string;
          
             
-            lastModifierUserId??: number;
+            lastModifierUserId?: number;
          
             
-            deletionTime??: string;
+            deletionTime?: string;
          
             
-            deleterUserId??: number;
+            deleterUserId?: number;
          
             
-            isDeleted??: boolean;
+            isDeleted?: boolean;
         
         
     }

@@ -317,7 +317,7 @@ function saveEntity(definitions) {
         properItem.type = fileName + name;
       }
 
-      if (entity?.required && !entity.required.some(e => e === proper)) {
+      if (entity?.required && !entity.required.some(e => e === proper) && !proper.includes('?')) {
         let data = properties[proper];
         delete properties[proper];
         properties[proper + '?'] = data;
