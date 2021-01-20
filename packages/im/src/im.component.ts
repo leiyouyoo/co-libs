@@ -228,7 +228,7 @@ export class ImComponent implements OnInit {
       this.showChat(item, true);
     } else {
       // 全局客服（运价议价）
-      this.chatWithPerson(info, true);
+      this.chatWithPerson(info?.personInfo, true);
     }
   }
   // 对比url，用于显示快捷入口
