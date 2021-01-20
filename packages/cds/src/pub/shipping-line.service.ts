@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBShippingLineDto,PUBListResultDto1,PUBShippingLineCheckInputDto,PUBChangeShippingLineStateInput,PUBCountryReationShippingDto,PUBPortReationCountryDto,PUBGetAllShippingLineForUiPickerInput,PUBPagedResultDto1,PUBShippingLineUiPickerDto } from './pub.types';
+import { PUBShippingLineDto,PUBListResultDto1,PUBShippingLineCheckInputDto,PUBChangeShippingLineStateInput,PUBCountryReationShippingDto,PUBPortReationCountryDto,PUBGetAllShippingLineForUiPickerInput,PUBPagedResultDto1,PUBShippingLineUiPickerDto,PUBShippingLinesByPortDto } from './pub.types';
 
 @BaseUrl('/PUB/ShippingLine')
 @Injectable({ providedIn: 'root' })
@@ -232,6 +232,21 @@ export class PUBShippingLineService extends BaseApi {
         _req:PUBGetAllShippingLineForUiPickerInput
 
     ): Observable<PUBPagedResultDto1<PUBShippingLineUiPickerDto>> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /PUB/ShippingLine/GetShippingLinesByPort
+     * 根据港口查询航线
+     */
+
+    @POST('GetShippingLinesByPort')
+    getShippingLinesByPort(
+        @Payload
+        _req:PUBShippingLinesByPortDto
+
+    ): Observable<any> {
         return null as any
     }
 

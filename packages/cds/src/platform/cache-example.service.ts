@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PlatformCacheExampleDto,PlatformPagedResultDto,PlatformEntityHistorySnapshot, } from './platform.types';
+import { PlatformPagedResultDto1,PlatformCacheExampleDto,PlatformEntityHistorySnapshot } from './platform.types';
 
-@BaseUrl('/platform/CacheExample')
+@BaseUrl('/Platform/CacheExample')
 @Injectable({ providedIn: 'root' })
 export class PlatformCacheExampleService extends BaseApi {
   constructor(injector: Injector) {
@@ -13,25 +13,25 @@ export class PlatformCacheExampleService extends BaseApi {
   
     /**
      * @param url /Platform/CacheExample/GetAll
-     * 返回样例集合
+     * 暂无备注
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
         _req: {name?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PlatformPagedResultDto<PlatformCacheExampleDto>> {
+    ): Observable<PlatformPagedResultDto1<PlatformCacheExampleDto>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/CacheExample/Get
-     * 获取样例明细
+     * 暂无备注
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -43,10 +43,10 @@ export class PlatformCacheExampleService extends BaseApi {
 
     /**
      * @param url /Platform/CacheExample/Subscriber
-     * 
+     * 暂无备注
      */
 
-    @POST('subscriber')
+    @POST('Subscriber')
     subscriber(
         @Payload
         _req: {p?:string} 
@@ -58,10 +58,10 @@ export class PlatformCacheExampleService extends BaseApi {
 
     /**
      * @param url /Platform/CacheExample/Create
-     * 创建
+     * 暂无备注
      */
 
-    @POST('create')
+    @POST('Create')
     create(
         @Payload
         _req:PlatformCacheExampleDto
@@ -73,10 +73,10 @@ export class PlatformCacheExampleService extends BaseApi {
 
     /**
      * @param url /Platform/CacheExample/BulkInsert
-     * 批量插入
+     * 暂无备注
      */
 
-    @POST('bulkInsert')
+    @POST('BulkInsert')
     bulkInsert(
         @Payload
         _req: {} 
@@ -88,10 +88,10 @@ export class PlatformCacheExampleService extends BaseApi {
 
     /**
      * @param url /Platform/CacheExample/Update
-     * 更新
+     * 暂无备注
      */
 
-    @PUT('update')
+    @PUT('Update')
     update(
         @Payload
         _req:PlatformCacheExampleDto
@@ -103,10 +103,10 @@ export class PlatformCacheExampleService extends BaseApi {
 
     /**
      * @param url /Platform/CacheExample/Test
-     * 本地化测试
+     * 暂无备注
      */
 
-    @POST('test')
+    @POST('Test')
     test(
         @Payload
         _req: {} 
@@ -118,10 +118,10 @@ export class PlatformCacheExampleService extends BaseApi {
 
     /**
      * @param url /Platform/CacheExample/Delete
-     * 
+     * 暂无备注
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 

@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PlatformAppVersionDto,PlatformPagedResultDto, } from './platform.types';
+import { PlatformAppVersionDto,PlatformPagedResultDto1 } from './platform.types';
 
-@BaseUrl('/platform/AppVersion')
+@BaseUrl('/Platform/AppVersion')
 @Injectable({ providedIn: 'root' })
 export class PlatformAppVersionService extends BaseApi {
   constructor(injector: Injector) {
@@ -13,13 +13,13 @@ export class PlatformAppVersionService extends BaseApi {
   
     /**
      * @param url /Platform/AppVersion/GetVersionByAppType
-     * 根据系统类型获取当前系统的最新版本号
+     * 暂无备注
      */
 
-    @GET('getVersionByAppType')
+    @GET('GetVersionByAppType')
     getVersionByAppType(
         @Payload
-        _req: {input?:number} 
+        _req: {input?:number,from?:number} 
 
     ): Observable<PlatformAppVersionDto> {
         return null as any
@@ -28,10 +28,10 @@ export class PlatformAppVersionService extends BaseApi {
 
     /**
      * @param url /Platform/AppVersion/CheckVersion
-     * 检查更新版本(true表示有更新，false表示没有更新)
+     * 暂无备注
      */
 
-    @POST('checkVersion')
+    @POST('CheckVersion')
     checkVersion(
         @Payload
         _req:PlatformAppVersionDto
@@ -43,10 +43,10 @@ export class PlatformAppVersionService extends BaseApi {
 
     /**
      * @param url /Platform/AppVersion/CreateOrUpdate
-     * 保存
+     * 暂无备注
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PlatformAppVersionDto
@@ -58,10 +58,10 @@ export class PlatformAppVersionService extends BaseApi {
 
     /**
      * @param url /Platform/AppVersion/Get
-     * 
+     * 暂无备注
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -73,25 +73,25 @@ export class PlatformAppVersionService extends BaseApi {
 
     /**
      * @param url /Platform/AppVersion/GetAll
-     * 
+     * 暂无备注
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
         _req: {sorting?:string,skipCount?:number,maxResultCount?:number} 
 
-    ): Observable<PlatformPagedResultDto<PlatformAppVersionDto>> {
+    ): Observable<PlatformPagedResultDto1<PlatformAppVersionDto>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/AppVersion/Create
-     * 
+     * 暂无备注
      */
 
-    @POST('create')
+    @POST('Create')
     create(
         @Payload
         _req:PlatformAppVersionDto
@@ -103,10 +103,10 @@ export class PlatformAppVersionService extends BaseApi {
 
     /**
      * @param url /Platform/AppVersion/Update
-     * 
+     * 暂无备注
      */
 
-    @PUT('update')
+    @PUT('Update')
     update(
         @Payload
         _req:PlatformAppVersionDto
@@ -118,10 +118,10 @@ export class PlatformAppVersionService extends BaseApi {
 
     /**
      * @param url /Platform/AppVersion/Delete
-     * 
+     * 暂无备注
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 

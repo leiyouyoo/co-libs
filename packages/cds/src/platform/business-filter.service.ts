@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PlatformConditionGroupInfo,PlatformListResultDto, } from './platform.types';
+import { PlatformConditionGroupInfo,PlatformListResultDto1 } from './platform.types';
 
-@BaseUrl('/platform/BusinessFilter')
+@BaseUrl('/Platform/BusinessFilter')
 @Injectable({ providedIn: 'root' })
 export class PlatformBusinessFilterService extends BaseApi {
   constructor(injector: Injector) {
@@ -13,10 +13,10 @@ export class PlatformBusinessFilterService extends BaseApi {
   
     /**
      * @param url /Platform/BusinessFilter/GetConditionGroup
-     * 获取自定义的过滤条件组详情
+     * 暂无备注
      */
 
-    @GET('getConditionGroup')
+    @GET('GetConditionGroup')
     getConditionGroup(
         @Payload
         _req: {id?:string} 
@@ -28,25 +28,25 @@ export class PlatformBusinessFilterService extends BaseApi {
 
     /**
      * @param url /Platform/BusinessFilter/GetConditionGroupList
-     * 根据业务类型获取当前用户自定义的过滤条件组
+     * 暂无备注
      */
 
-    @GET('getConditionGroupList')
+    @GET('GetConditionGroupList')
     getConditionGroupList(
         @Payload
         _req: {businessType?:string} 
 
-    ): Observable<PlatformListResultDto<PlatformConditionGroupInfo>> {
+    ): Observable<PlatformListResultDto1<PlatformConditionGroupInfo>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/BusinessFilter/CreateOrUpdateConditionGroup
-     * 新增或编辑用户自定义的过滤条件组
+     * 暂无备注
      */
 
-    @POST('createOrUpdateConditionGroup')
+    @POST('CreateOrUpdateConditionGroup')
     createOrUpdateConditionGroup(
         @Payload
         _req:PlatformConditionGroupInfo
@@ -58,10 +58,10 @@ export class PlatformBusinessFilterService extends BaseApi {
 
     /**
      * @param url /Platform/BusinessFilter/DeleteConditionGroup
-     * Deletes the condition group.
+     * 暂无备注
      */
 
-    @DELETE('deleteConditionGroup')
+    @DELETE('DeleteConditionGroup')
     deleteConditionGroup(
         @Payload
         _req: {id?:string} 

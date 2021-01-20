@@ -246,6 +246,9 @@ function saveEntity(definitions) {
   exportAllTypeEntity = [];
 
   for (const definition in definitions) {
+    if (definition === 'CO.PUB.Application.Solutions.Dto.SolutionCurrencyDto') {
+      debugger;
+    }
     let typeEntity: any = {};
     let entityName = definition;
     let isT = false;
@@ -259,7 +262,8 @@ function saveEntity(definitions) {
       : entityName.substring(entityName.lastIndexOf('.') + 1);
 
     // 找到该实体
-    let properties = cloneDeep(definitions[definition].properties);
+    let entity = definitions[definition];
+    let properties = cloneDeep(entity.properties);
     for (const proper in properties) {
       // 先处理类型
       let properItem: any = properties[proper];
@@ -311,6 +315,12 @@ function saveEntity(definitions) {
           bindEntity(properItem?.$ref);
         }
         properItem.type = fileName + name;
+      }
+
+      if (entity?.required && !entity.required.some(e => e === proper) && !proper.includes('?')) {
+        let data = properties[proper];
+        delete properties[proper];
+        properties[proper + '?'] = data;
       }
     }
 

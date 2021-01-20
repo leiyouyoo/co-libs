@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PlatformGetNotificationsOutput,PlatformEntityDto,PlatformGetNotificationSettingsOutput,PlatformUpdateNotificationSettingsInput,PlatformSendMessageModel, } from './platform.types';
+import { PlatformGetNotificationsOutput,PlatformEntityDto1,PlatformGetNotificationSettingsOutput,PlatformUpdateNotificationSettingsInput,PlatformSendMessageModel } from './platform.types';
 
-@BaseUrl('/platform/Notification')
+@BaseUrl('/Platform/Notification')
 @Injectable({ providedIn: 'root' })
 export class PlatformNotificationService extends BaseApi {
   constructor(injector: Injector) {
@@ -13,10 +13,10 @@ export class PlatformNotificationService extends BaseApi {
   
     /**
      * @param url /Platform/Notification/GetUserNotifications
-     * 
+     * 暂无备注
      */
 
-    @GET('getUserNotifications')
+    @GET('GetUserNotifications')
     getUserNotifications(
         @Payload
         _req: {dataTypeNameFilter?:string,state?:number,startDate?:string,endDate?:string,maxResultCount?:number,skipCount?:number} 
@@ -28,10 +28,10 @@ export class PlatformNotificationService extends BaseApi {
 
     /**
      * @param url /Platform/Notification/SetAllNotificationsAsRead
-     * 
+     * 暂无备注
      */
 
-    @POST('setAllNotificationsAsRead')
+    @POST('SetAllNotificationsAsRead')
     setAllNotificationsAsRead(
         @Payload
         _req: {} 
@@ -43,13 +43,13 @@ export class PlatformNotificationService extends BaseApi {
 
     /**
      * @param url /Platform/Notification/SetNotificationAsRead
-     * 
+     * 暂无备注
      */
 
-    @POST('setNotificationAsRead')
+    @POST('SetNotificationAsRead')
     setNotificationAsRead(
         @Payload
-        _req:PlatformEntityDto<any>
+        _req:PlatformEntityDto1<any>
 
     ): Observable<any> {
         return null as any
@@ -58,10 +58,10 @@ export class PlatformNotificationService extends BaseApi {
 
     /**
      * @param url /Platform/Notification/GetNotificationSettings
-     * 
+     * 暂无备注
      */
 
-    @GET('getNotificationSettings')
+    @GET('GetNotificationSettings')
     getNotificationSettings(
         @Payload
         _req: {tenantId?:number,userId?:number} 
@@ -73,10 +73,10 @@ export class PlatformNotificationService extends BaseApi {
 
     /**
      * @param url /Platform/Notification/UpdateNotificationSettings
-     * 
+     * 暂无备注
      */
 
-    @POST('updateNotificationSettings')
+    @POST('UpdateNotificationSettings')
     updateNotificationSettings(
         @Payload
         _req:PlatformUpdateNotificationSettingsInput
@@ -88,10 +88,10 @@ export class PlatformNotificationService extends BaseApi {
 
     /**
      * @param url /Platform/Notification/DeleteNotification
-     * 
+     * 暂无备注
      */
 
-    @DELETE('deleteNotification')
+    @DELETE('DeleteNotification')
     deleteNotification(
         @Payload
         _req: {id?:string} 
@@ -103,10 +103,10 @@ export class PlatformNotificationService extends BaseApi {
 
     /**
      * @param url /Platform/Notification/DeleteAllUserNotifications
-     * 
+     * 暂无备注
      */
 
-    @DELETE('deleteAllUserNotifications')
+    @DELETE('DeleteAllUserNotifications')
     deleteAllUserNotifications(
         @Payload
         _req: {state?:number,startDate?:string,endDate?:string} 
@@ -118,10 +118,10 @@ export class PlatformNotificationService extends BaseApi {
 
     /**
      * @param url /Platform/Notification/SendMessage
-     * 
+     * 暂无备注
      */
 
-    @POST('sendMessage')
+    @POST('SendMessage')
     sendMessage(
         @Payload
         _req:PlatformSendMessageModel

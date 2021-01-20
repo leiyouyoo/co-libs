@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PlatformUserInfo,PlatformPagedResultDto,PlatformBizCodeRuleTemplateDto,PlatformCreateOrUpdateTemplateInput, } from './platform.types';
+import { PlatformPagedResultDto1,PlatformUserInfo,PlatformBizCodeRuleTemplateDto,PlatformCreateOrUpdateTemplateInput } from './platform.types';
 
-@BaseUrl('/platform/BizCodeRule')
+@BaseUrl('/Platform/BizCodeRule')
 @Injectable({ providedIn: 'root' })
 export class PlatformBizCodeRuleService extends BaseApi {
   constructor(injector: Injector) {
@@ -13,25 +13,25 @@ export class PlatformBizCodeRuleService extends BaseApi {
   
     /**
      * @param url /Platform/BizCodeRule/TestImpersonationAuthorize
-     * 测试模拟匿名账户
+     * 暂无备注
      */
 
-    @POST('testImpersonationAuthorize')
+    @POST('TestImpersonationAuthorize')
     testImpersonationAuthorize(
         @Payload
         _req: {} 
 
-    ): Observable<PlatformPagedResultDto<PlatformUserInfo>> {
+    ): Observable<PlatformPagedResultDto1<PlatformUserInfo>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/BizCodeRule/GetTemplate
-     * 
+     * 暂无备注
      */
 
-    @GET('getTemplate')
+    @GET('GetTemplate')
     getTemplate(
         @Payload
         _req: {id?:string} 
@@ -43,10 +43,10 @@ export class PlatformBizCodeRuleService extends BaseApi {
 
     /**
      * @param url /Platform/BizCodeRule/DeleteTemplate
-     * 
+     * 暂无备注
      */
 
-    @DELETE('deleteTemplate')
+    @DELETE('DeleteTemplate')
     deleteTemplate(
         @Payload
         _req: {id?:string} 
@@ -58,10 +58,10 @@ export class PlatformBizCodeRuleService extends BaseApi {
 
     /**
      * @param url /Platform/BizCodeRule/CreateTemplate
-     * 
+     * 暂无备注
      */
 
-    @POST('createTemplate')
+    @POST('CreateTemplate')
     createTemplate(
         @Payload
         _req:PlatformCreateOrUpdateTemplateInput
@@ -73,10 +73,10 @@ export class PlatformBizCodeRuleService extends BaseApi {
 
     /**
      * @param url /Platform/BizCodeRule/UpdateTemplate
-     * 
+     * 暂无备注
      */
 
-    @PUT('updateTemplate')
+    @PUT('UpdateTemplate')
     updateTemplate(
         @Payload
         _req:PlatformCreateOrUpdateTemplateInput
@@ -88,15 +88,15 @@ export class PlatformBizCodeRuleService extends BaseApi {
 
     /**
      * @param url /Platform/BizCodeRule/GetAllTemplateList
-     * 
+     * 暂无备注
      */
 
-    @GET('getAllTemplateList')
+    @GET('GetAllTemplateList')
     getAllTemplateList(
         @Payload
         _req: {groupId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PlatformPagedResultDto<PlatformBizCodeRuleTemplateDto>> {
+    ): Observable<PlatformPagedResultDto1<PlatformBizCodeRuleTemplateDto>> {
         return null as any
     }
 
