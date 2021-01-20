@@ -206,12 +206,11 @@ export class ImComponent implements OnInit {
     if (this.checkAnonymous()) {
       return;
     }
+    this.isVisible = true;
     const arr = this.checkConversationList(null, info?.isC2C);
     if (arr.length) {
-      this.isVisible = true;
       this.showChat(arr[0], true);
     } else if (!info?.isC2C) {
-      this.isVisible = true;
       const item = {
         bussinessType: this.customerserviceType.toLowerCase(),
         type: 'GROUP',
