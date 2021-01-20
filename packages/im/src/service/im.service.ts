@@ -11,7 +11,7 @@ export class ImService {
     if (url.indexOf('data:image/png;base64') !== -1 || url.indexOf('http') !== -1) {
       return url;
     } else {
-      return CoConfigManager.getValue('serverUrl') ? CoConfigManager.getValue('serverUrl') + url : 'http://192.168.1.6:8000' + url;
+      return  CoConfigManager.getValue('serverUrl') + url;
     }
   }
   getOrganizationUnit(param: { ParentId?: string; IsRecursion: boolean }) {

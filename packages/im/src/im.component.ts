@@ -178,10 +178,10 @@ export class ImComponent implements OnInit {
     !isDrag && this.showImLayout();
   }
   ngOnInit() {
-    this.globalEventDispatcher.register('chatWithGroup').subscribe((res: any) => {
+    this.globalEventDispatcher.register('chatWithIM').subscribe((res: any) => {
       this.customerserviceType = res.customerserviceType;
       this.customerserviceId = res.customerserviceId;
-      this.onCustomerservice();
+      this.onCustomerservice(res);
     });
     this.handleImConversation();
     this.compareUrl();
@@ -202,15 +202,15 @@ export class ImComponent implements OnInit {
     return false;
   }
   // 快捷入口点击事件
-  onCustomerservice() {
+  onCustomerservice(info) {
     if (this.checkAnonymous()) {
       return;
     }
-    const arr = this.checkConversationList();
+    const arr = this.checkConversationList(null, info?.isC2C);
     if (arr.length) {
       this.isVisible = true;
       this.showChat(arr[0], true);
-    } else {
+    } else if (!info?.isC2C) {
       this.isVisible = true;
       const item = {
         bussinessType: this.customerserviceType.toLowerCase(),
@@ -226,6 +226,9 @@ export class ImComponent implements OnInit {
       };
       this.conversationsList.unshift(item);
       this.showChat(item, true);
+    } else {
+      // 全局客服（运价议价）
+      this.chatWithPerson(info, true);
     }
   }
   // 对比url，用于显示快捷入口
@@ -256,12 +259,14 @@ export class ImComponent implements OnInit {
     this.showCustomerservice = true;
   }
   // 判断当前会话是否包含在内
-  checkConversationList(conversation?) {
+  checkConversationList(conversation?, isC2C = false) {
     let conversationId: string;
     if (conversation) {
       conversationId = conversation;
-    } else {
+    } else if (!isC2C) {
       conversationId = `GROUP${this.customerserviceType}${this.customerserviceId}`;
+    } else {
+      conversationId = `C2C${this.customerserviceId}`;
     }
     return this.conversationsList.filter((e: any) => {
       return e.conversationID === conversationId;
@@ -1138,8 +1143,12 @@ export class ImComponent implements OnInit {
   /**
    * @notFromChat  是否为通讯录点击的
    */
-  chatWithPercon(personInfo, notFromChat = false) {
+  chatWithPerson(personInfo, notFromChat = false) {
     console.log(personInfo);
+    personInfo.nick = personInfo.name || personInfo.userName || personInfo.userId || personInfo.id;
+    personInfo.userID = personInfo.userID || personInfo.id;
+    personInfo.userId = personInfo.userId || personInfo.id;
+    personInfo.name = personInfo.name || personInfo.userName || personInfo.userId || personInfo.id;
     const newConversationID = '';
     const userInfo = {
       bussinessType: 'C2C',
@@ -1222,7 +1231,7 @@ export class ImComponent implements OnInit {
   // 联系人双击事件
   imContactsDbClick(event) {
     event.userID = event.userId;
-    this.chatWithPercon(event, true);
+    this.chatWithPerson(event, true);
   }
 
   /**
