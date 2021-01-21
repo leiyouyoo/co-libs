@@ -238,19 +238,19 @@ export class ImComponent implements OnInit {
       url = location.href;
     }
     if (url.indexOf('/bookings/BookingView') !== -1) {
-      this.customerserviceId = url.split('BookingId=')[1].substr(0, 36);
+      this.customerserviceId = url.split('BookingId=')[1]?.substr(0, 36);
       this.customerserviceType = 'Booking';
     } else if (url.indexOf('/crm/booking/bookinglist/bookingDetail/') !== -1) {
-      this.customerserviceId = url.split('booking/bookinglist/bookingDetail/')[1].substr(0, 36);
+      this.customerserviceId = url.split('booking/bookinglist/bookingDetail/')[1]?.substr(0, 36);
       this.customerserviceType = 'Booking';
     } else if (url.indexOf('crm/quotes/quoteslist/quotesDetail/') !== -1) {
-      this.customerserviceId = url.split('crm/quotes/quoteslist/quotesDetail/')[1].substr(0, 36);
+      this.customerserviceId = url.split('crm/quotes/quoteslist/quotesDetail/')[1]?.substr(0, 36);
       this.customerserviceType = 'Quote';
     } else if (url.indexOf('/quotes/QuotesDetail') !== -1) {
-      this.customerserviceId = url.split('quotesId=')[1].substr(0, 36);
+      this.customerserviceId = url.split('quotes/Quoteil/')[1]?.substr(0, 36);
       this.customerserviceType = 'Quote';
     } else if (url.indexOf('/shipments/detail/') !== -1) {
-      this.customerserviceId = url.split('/shipments/detail/')[1].substr(0, 36);
+      this.customerserviceId = url.split('/shipments/detail/')[1]?.substr(0, 36);
       this.customerserviceType = 'Shipment';
     } else {
       return;
