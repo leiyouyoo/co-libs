@@ -1,19 +1,19 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBGLGroupDto,PUBListResultDto1 } from './pub.types';
+import { PUBSolutionGLConfigDto,PUBListResultDto1 } from './pub.types';
 
-@BaseUrl('/PUB/GLGroup')
+@BaseUrl('/PUB/SolutionGLConfig')
 @Injectable({ providedIn: 'root' })
-export class PUBGLGroupService extends BaseApi {
+export class PUBSolutionGLConfigService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
 
   
     /**
-     * @param url /PUB/GLGroup/Get
-     * 获取会计科目分组明细
+     * @param url /PUB/SolutionGLConfig/Get
+     * 获取会计科目配置明细
      */
 
     @GET('Get')
@@ -21,44 +21,44 @@ export class PUBGLGroupService extends BaseApi {
         @Payload
         _req: {id?:string} 
 
-    ): Observable<PUBGLGroupDto> {
+    ): Observable<PUBSolutionGLConfigDto> {
         return null as any
     }
 
 
     /**
-     * @param url /PUB/GLGroup/GetAll
-     * 获取会计科目分组列表
+     * @param url /PUB/SolutionGLConfig/GetAll
+     * 获取会计科目配置列表
      */
 
     @GET('GetAll')
     getAll(
         @Payload
-        _req: {searchText?:string,parentId?:string,isRecursion?:boolean} 
+        _req: {solutionId:string} 
 
-    ): Observable<PUBListResultDto1<PUBGLGroupDto>> {
+    ): Observable<PUBListResultDto1<PUBSolutionGLConfigDto>> {
         return null as any
     }
 
 
     /**
-     * @param url /PUB/GLGroup/CreateOrUpdate
-     * 保存会计科目分组
+     * @param url /PUB/SolutionGLConfig/CreateOrUpdate
+     * 保存会计科目配置
      */
 
     @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
-        _req:PUBGLGroupDto
+        _req:PUBSolutionGLConfigDto
 
-    ): Observable<PUBGLGroupDto> {
+    ): Observable<PUBSolutionGLConfigDto> {
         return null as any
     }
 
 
     /**
-     * @param url /PUB/GLGroup/Delete
-     * 删除会计科目分组
+     * @param url /PUB/SolutionGLConfig/Delete
+     * 删除会计科目配置
      */
 
     @DELETE('Delete')

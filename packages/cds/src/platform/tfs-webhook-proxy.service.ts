@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PlatformTfsWebhookInput, } from './platform.types';
+import { PlatformTfsWebhookInput } from './platform.types';
 
-@BaseUrl('/platform/TfsWebhookProxy')
+@BaseUrl('/Platform/TfsWebhookProxy')
 @Injectable({ providedIn: 'root' })
 export class PlatformTfsWebhookProxyService extends BaseApi {
   constructor(injector: Injector) {
@@ -13,10 +13,10 @@ export class PlatformTfsWebhookProxyService extends BaseApi {
   
     /**
      * @param url /Platform/TfsWebhookProxy/ReleaseNotification
-     * TFS服务挂钩代理中转企业微信（仅内网用）
+     * 暂无备注
      */
 
-    @POST('releaseNotification')
+    @POST('ReleaseNotification')
     releaseNotification(
         @Payload
         _req:PlatformTfsWebhookInput

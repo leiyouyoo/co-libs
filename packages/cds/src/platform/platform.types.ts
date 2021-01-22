@@ -1,18 +1,24 @@
  
     /**
-     * App版本管理Dto模型
+     *  No Remark 
      */
     export class PlatformAppVersionDto {
+        [key:string]: any;
         
          
-            /* App所属系统
+            /* 
 0 = NotSet
 1 = Android
 2 = Ios */ 
             appType: number;
          
-            /* 最新版本 */ 
+            
             version: string;
+         
+            /* 
+1 = Csp
+2 = Icp */ 
+            fromSourceType?: number;
          
             
             id?: string;
@@ -23,49 +29,33 @@
     /**
      *  No Remark 
      */
-    export class PlatformPagedResultDto<T> {
+    export class PlatformPagedResultDto1<T> {
+        [key:string]: any;
         
          
             
-            totalCount: any;
+            totalCount: number;
          
             
-            items: any;
+            items: T[];
         
         
     }
  
     /**
-     * 租户信息
-     */
-    export class PlatformTenantInfo {
-        
-         
-            /* Id */ 
-            id?: number;
-         
-            /* 名称 */ 
-            name?: string;
-         
-            /* 租户账号 */ 
-            tenancyName?: string;
-        
-        
-    }
- 
-    /**
-     * 用户信息
+     *  No Remark 
      */
     export class PlatformUserInfo {
+        [key:string]: any;
         
          
-            /* Id */ 
+            
             id?: number;
          
-            /* 名 */ 
+            
             name?: string;
          
-            /* 姓 */ 
+            
             surname?: string;
          
             
@@ -74,139 +64,246 @@
             
             surnameLocalization?: string;
          
-            /* 账号 */ 
+            
             userName?: string;
          
-            /* 地址 */ 
+            
             emailAddress?: string;
          
-            /* 电话 */ 
+            
             phoneNumber?: string;
          
-            /* 头像 */ 
+            
             profilePictureId?: string;
          
-            /* 用户拥有的角色集合 */ 
+            
             roles?: any[];
          
-            /* 用户挂职的组织机构 */ 
+            
             organizationUnits?: any[];
          
-            /* 用户归属租户信息 */ 
+            
             tenant?: PlatformTenantInfo;
         
         
     }
  
     /**
-     * BizCodeRuleTemplate Dto
+     *  No Remark 
      */
-    export class PlatformBizCodeRuleTemplateDto {
+    export class PlatformRoleInfo {
+        [key:string]: any;
         
          
             
-            id?: string;
+            id: number;
          
             
-            groupId?: string;
+            name: string;
+         
+            
+            displayName: string;
+         
+            
+            isAssigned: boolean;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformUserOrganizationInfo {
+        [key:string]: any;
+        
+         
+            
+            organizationUnitId: string;
+         
+            
+            organizationUnitFullName: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformTenantInfo {
+        [key:string]: any;
+        
+         
+            
+            id?: number;
          
             
             name?: string;
          
             
-            value?: string;
-         
-            
-            isEnabled?: boolean;
-         
-            
-            numberStep?: number;
-         
-            
-            resetDateFormat?: string;
-         
-            
-            description?: string;
+            tenancyName?: string;
         
         
     }
  
     /**
-     * 获取模板详情
+     *  No Remark 
      */
-    export class PlatformCreateOrUpdateTemplateInput {
+    export class PlatformBizCodeRuleTemplateDto {
+        [key:string]: any;
         
          
-            /* 规则模板名称 */ 
+            
+            id: string;
+         
+            
+            groupId: string;
+         
+            
             name: string;
          
-            /* 规则模板值 */ 
+            
             value: string;
          
-            /* 编码序号重置日期格式。（以当前时间为基准，如果当前时间不等于最后生成的时间，则重置编码） */ 
+            
+            isEnabled: boolean;
+         
+            
+            numberStep: number;
+         
+            
             resetDateFormat: string;
          
-            /* 为空时表示新建 */ 
+            
+            description: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformCreateOrUpdateTemplateInput {
+        [key:string]: any;
+        
+         
+            
+            name: string;
+         
+            
+            value: string;
+         
+            
+            resetDateFormat: string;
+         
+            
             id?: string;
          
-            /* 租户Id，如果不为空则表示为特定租户特有规则 */ 
+            
             tenantId?: number;
          
-            /* 是否启用 */ 
+            
             isEnabled?: boolean;
          
-            /* 数字序号步长 */ 
+            
             numberStep?: number;
          
-            /* 备注说明 */ 
+            
             description?: string;
         
         
     }
  
     /**
-     * 自定义过滤条件组信息
+     *  No Remark 
      */
-    export class PlatformConditionGroupInfo {
+    export class PlatformConditionItem {
+        [key:string]: any;
         
          
-            /* 过滤条件组名称 */ 
+            
+            memberName: string;
+         
+            
+            modelTypeName?: string;
+         
+            
+            displayName?: string;
+         
+            
+            groupName?: string;
+         
+            
+            value?: object;
+         
+            /* 
+13 = Equal
+15 = GreaterThan
+16 = GreaterThanOrEqual
+20 = LessThan
+21 = LessThanOrEqual
+35 = NotEqual
+1000 = Contains
+1001 = NotContains
+1002 = In
+1003 = NotIn
+1004 = EndWith
+1005 = StartsWith
+1006 = Within */ 
+            operator?: number;
+         
+            
+            isSpecial?: boolean;
+         
+            
+            isEnable?: boolean;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformConditionGroupInfo {
+        [key:string]: any;
+        
+         
+            
             name: string;
          
-            /* Gets or sets the type of the business. */ 
+            
             businessType: string;
          
-            /* 该分组的拥有者，如果为空则租户下的所有人都可以使用此过滤 */ 
+            
             userId?: number;
          
-            /* Gets a value indicating whether this instance is default. */ 
+            
             isDefault?: boolean;
          
-            /* Gets or sets the tenant identifier. */ 
+            
             tenantId?: number;
          
-            /* Gets or sets the condition items. */ 
-            items?: any[];
+            
+            items?: PlatformConditionItem[];
          
-            /* 主键 */ 
+            
             id?: string;
          
-            /* 创建时间 */ 
+            
             creationTime?: string;
          
-            /* 创建人ID */ 
+            
             creatorUserId?: number;
          
-            /* 最后一次修改时间 */ 
+            
             lastModificationTime?: string;
          
-            /* 最后一次修改人 */ 
+            
             lastModifierUserId?: number;
          
-            /* 删除时间 */ 
+            
             deletionTime?: string;
          
-            /* 删除用户 */ 
+            
             deleterUserId?: number;
          
             
@@ -218,46 +315,76 @@
     /**
      *  No Remark 
      */
-    export class PlatformListResultDto<T> {
+    export class PlatformListResultDto1<T> {
+        [key:string]: any;
         
          
             
-            items: any;
+            items: T[];
         
         
     }
  
     /**
-     * 用户-数据传输对象
+     *  No Remark 
      */
-    export class PlatformUserDto {
+    export class PlatformCacheExampleDto {
+        [key:string]: any;
         
          
-            /* 名 */ 
+            
+            remark?: string;
+         
+            
+            createUserId?: number;
+         
+            
+            createUser?: PlatformUserDto;
+         
+            
             name?: string;
          
-            /* 姓 */ 
+            
+            displayName?: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformUserDto {
+        [key:string]: any;
+        
+         
+            
+            name?: string;
+         
+            
             surname?: string;
          
-            /* 中文名 */ 
+            
             cName?: string;
          
-            /* 账号 */ 
+            
             userName?: string;
          
-            /* 邮箱 */ 
+            
             emailAddress?: string;
          
-            /* 电话 */ 
+            
             phoneNumber?: string;
          
-            /* 头像 */ 
+            
             profilePictureId?: string;
          
-            /* 是否激活 */ 
+            
             isActive?: boolean;
          
-            /* 创建时间 */ 
+            
             creationTime?: string;
          
             
@@ -267,72 +394,53 @@
     }
  
     /**
-     * 样例列表-数据传输对象
-     */
-    export class PlatformCacheExampleDto {
-        
-         
-            /* 备注 */ 
-            remark?: string;
-         
-            /* 创建人ID */ 
-            createUserId?: number;
-         
-            /* 创建用户 */ 
-            createUser?: PlatformUserDto;
-         
-            /* 名称 */ 
-            name?: string;
-         
-            /* 别名 */ 
-            displayName?: string;
-         
-            
-            id?: string;
-        
-        
-    }
- 
-    /**
-     * 实体变更版本快照
+     *  No Remark 
      */
     export class PlatformEntityHistorySnapshot {
+        [key:string]: any;
         
          
-            /* 变更属性快照字典 */ 
-            changedPropertiesSnapshots?: object;
+            
+            changedPropertiesSnapshots: object;
          
-            /* 属性变更层级记录 */ 
-            propertyChangesStackTree?: object;
+            
+            propertyChangesStackTree: object;
         
         
     }
  
     /**
-     * 公司配置-数据传输对象
+     *  No Remark 
      */
     export class PlatformCompanyConfigureDto {
+        [key:string]: any;
         
          
-            /* 公司ID */ 
+            
             companyId?: string;
          
-            /* 公司名称 */ 
+            
             companyName?: string;
          
-            /* 客户ID */ 
+            
             customerId?: string;
          
-            /* 客户名称 */ 
+            
             customerName?: string;
          
-            /* 标准币种ID */ 
+            
+            customerTel?: string;
+         
+            
+            customerAddress?: string;
+         
+            
             standardCurrencyId?: string;
          
-            /* 标准币种ID */ 
+            
             standardCurrencyName?: string;
          
-            /* 是否有效 */ 
+            
             isActive?: boolean;
          
             
@@ -345,24 +453,25 @@
     }
  
     /**
-     * 组织节点-数据传输对象
+     *  No Remark 
      */
     export class PlatformOrganizationUnitDto {
+        [key:string]: any;
         
          
-            /* 是否默认所在 公司/组织 */ 
+            
             isDefault?: boolean;
          
-            /* 显示名称 */ 
+            
             displayName?: string;
          
-            /* 显示名称本地化信息 */ 
+            
             displayNameLocalization?: string;
          
-            /* 公司全名 */ 
+            
             fullName?: string;
          
-            /* 组织节点类型
+            /* 
 1 = Group
 2 = Department
 4 = Company
@@ -371,40 +480,40 @@
 32 = Head */ 
             type?: number;
          
-            /* 是否有效 */ 
+            
             isValid?: boolean;
          
-            /* 描述 */ 
+            
             description?: string;
          
-            /* 子节点数 */ 
+            
             childCount?: number;
          
-            /* 创建时间 */ 
+            
             creationTime?: string;
          
-            /* 创建人 */ 
+            
             creatorUserName?: string;
          
-            /* 子集 */ 
+            
             childrenDto?: any[];
          
-            /* 职位Ids */ 
+            
             positionIds?: any[];
          
-            /* 名称 */ 
+            
             name?: string;
          
-            /* 带有父级Id的全Id */ 
+            
             fullId?: string;
          
-            /* 层级代码 */ 
+            
             levelCode?: string;
          
-            /* 层级 */ 
+            
             level?: number;
          
-            /* 父ID */ 
+            
             parentId?: string;
          
             
@@ -414,27 +523,28 @@
     }
  
     /**
-     * 版本-数据传输对象
+     *  No Remark 
      */
     export class PlatformEditionDto {
+        [key:string]: any;
         
          
-            /* 功能权限 */ 
+            
             functionPermissions?: any[];
          
-            /* 租户集合 */ 
+            
             tenants?: any[];
          
-            /* 名称 */ 
+            
             name?: string;
          
-            /* 显示名称 */ 
+            
             displayName?: string;
          
-            /* 显示名称本地化信息 */ 
+            
             displayNameLocalization?: string;
          
-            /* 描述 */ 
+            
             desc?: string;
          
             
@@ -444,46 +554,131 @@
     }
  
     /**
-     * 设置版本权限-输入参数
+     *  No Remark 
+     */
+    export class PlatformPermissionDto {
+        [key:string]: any;
+        
+         
+            
+            displayName?: string;
+         
+            
+            displayNameLocalization?: string;
+         
+            /* 
+1 = Function
+2 = Data */ 
+            type?: number;
+         
+            
+            isValid?: boolean;
+         
+            
+            description?: string;
+         
+            
+            creatorUserName?: string;
+         
+            
+            children?: any[];
+         
+            
+            roleIds?: any[];
+         
+            
+            userIds?: any[];
+         
+            
+            organizationUnitIds?: any[];
+         
+            
+            creationTime?: string;
+         
+            
+            name?: string;
+         
+            
+            fullName?: string;
+         
+            
+            fullId?: string;
+         
+            
+            levelCode?: string;
+         
+            
+            level?: number;
+         
+            
+            parentId?: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformTenantEditionDto {
+        [key:string]: any;
+        
+         
+            
+            tenantName: string;
+         
+            
+            id: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
      */
     export class PlatformSetEditionPermissionsInput {
+        [key:string]: any;
         
          
-            /* 功能权限集合 */ 
-            functionPermissionIds?: any[];
+            
+            functionPermissionIds: any[];
          
             
-            id?: string;
+            id: string;
         
         
     }
  
     /**
-     * 授予版本给指定租户-输入参数
+     *  No Remark 
      */
     export class PlatformGrantToTenantsInput {
+        [key:string]: any;
         
          
-            /* 功能权限集合 */ 
-            tenantIds?: any[];
+            
+            tenantIds: any[];
          
             
-            id?: string;
+            id: string;
         
         
     }
  
     /**
-     * 移除版本从指定租户-输入参数
+     *  No Remark 
      */
     export class PlatformRevokeFromTenantsInput {
+        [key:string]: any;
         
          
-            /* 租户集合 */ 
-            tenantIds?: any[];
+            
+            tenantIds: any[];
          
             
-            id?: string;
+            id: string;
         
         
     }
@@ -492,31 +687,57 @@
      *  No Remark 
      */
     export class PlatformFeedbackInput {
+        [key:string]: any;
         
          
-            /* 标题 */ 
+            
+            feedbackTypeId: number;
+         
+            
             title?: string;
          
-            /* 反馈类型ID  新增反馈时必须 */ 
-            feedbackTypeId?: number;
-         
-            /* 反馈类型 */ 
+            
             contents?: string;
          
-            /* 反馈系统来源 */ 
+            
             feedbackSource?: string;
          
-            /* 处理备注 */ 
+            
             handleRemark?: string;
+         
+            
+            navigationUrl?: string;
          
             
             fileIds?: any[];
          
-            /* 是否为处理 */ 
+            
             isHandle?: boolean;
          
             
             id?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformUploadFileDto {
+        [key:string]: any;
+        
+         
+            
+            fileId?: string;
+         
+            
+            fileUrl?: string;
+         
+            
+            fileName?: string;
+         
+            
+            extensionName?: string;
         
         
     }
@@ -525,52 +746,53 @@
      *  No Remark 
      */
     export class PlatformFeedbackDto {
+        [key:string]: any;
         
          
             
-            feedbackType?: number;
-         
-            /* 标题 */ 
-            title?: string;
-         
-            /* 反馈内容 */ 
-            content?: string;
-         
-            /* 反馈人 */ 
-            feedbackUser?: number;
-         
-            /* 反馈系统来源 */ 
-            feedbackSource?: string;
-         
-            /* 反馈时间 */ 
-            feedbackTime?: string;
-         
-            /* 处理时间 */ 
-            handleTime?: string;
-         
-            /* 处理人 */ 
-            handleUser?: number;
-         
-            /* 处理备注 */ 
-            handleRemark?: string;
-         
-            /* 导航地址 */ 
-            navigationUrl?: string;
-         
-            /* 是否处理 */ 
-            isHandle?: boolean;
+            feedbackType: number;
          
             
-            upFileList?: any[];
-         
-            /* 反馈用户名 */ 
-            userName?: string;
-         
-            /* 文件业务编号 */ 
-            fileNo?: string;
+            title: string;
          
             
-            id?: string;
+            content: string;
+         
+            
+            feedbackUser: number;
+         
+            
+            feedbackSource: string;
+         
+            
+            feedbackTime: string;
+         
+            
+            handleTime: string;
+         
+            
+            handleUser: number;
+         
+            
+            handleRemark: string;
+         
+            
+            navigationUrl: string;
+         
+            
+            isHandle: boolean;
+         
+            
+            upFileList: PlatformUploadFileDto[];
+         
+            
+            userName: string;
+         
+            
+            fileNo: string;
+         
+            
+            id: string;
         
         
     }
@@ -579,89 +801,151 @@
      *  No Remark 
      */
     export class PlatformQueryFeedbackInput {
+        [key:string]: any;
         
          
-            /* 标题 */ 
-            title?: string;
-         
-            /* 反馈类型ID  新增反馈时必须 */ 
-            feedbackTypeId?: number;
-         
-            /* 反馈系统来源 */ 
-            feedbackSource?: string;
-         
-            /* 查询反馈人员ID */ 
-            userId?: number;
-         
-            /* 查询用 开始时间 */ 
-            startDate?: string;
+            
+            title: string;
          
             
-            endDate?: string;
+            feedbackTypeId: number;
          
-            /* 是否标记为已处理 默认空查询所有 */ 
-            isHandle?: boolean;
+            
+            feedbackSource: string;
          
-            /* 主键集合 */ 
-            ids?: any[];
+            
+            userId: number;
          
-            /* 键名 */ 
-            keyName?: string;
+            
+            startDate: string;
          
-            /* 搜索文本 */ 
-            searchText?: string;
+            
+            endDate: string;
          
-            /* 包含逻辑删除 */ 
-            includeDeleted?: boolean;
+            
+            isHandle: boolean;
          
-            /* Sorting information.
-Should include sorting field and optionally a direction (ASC or DESC)
-Can contain more than one field separated by comma (,). */ 
-            sorting?: string;
+            
+            ids: any[];
          
-            /* 页大小 */ 
-            maxResultCount?: number;
+            
+            keyName: string;
          
-            /* 跳过指定条数 */ 
-            skipCount?: number;
+            
+            searchText: string;
+         
+            
+            includeDeleted: boolean;
+         
+            
+            sorting: string;
+         
+            
+            maxResultCount: number;
+         
+            
+            skipCount: number;
         
         
     }
  
     /**
-     * 职务-数据传输对象
+     *  No Remark 
      */
-    export class PlatformJobDto {
+    export class PlatformFeedbackSystemStatisticsDto {
+        [key:string]: any;
         
          
-            /* 名称 */ 
+            
+            feedbackSource: string;
+         
+            
+            feedType: string;
+         
+            
+            sourceGroupToTypeNumber: number;
+         
+            
+            handleNum: number;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformFeedbackStatisticsDto {
+        [key:string]: any;
+        
+         
+            
+            startDate: string;
+         
+            
+            endDate: string;
+         
+            
+            activeUsersNumber: number;
+         
+            
+            feedbackSource: string;
+         
+            
+            feedType: string;
+         
+            
+            isHandle: boolean;
+         
+            
+            handleNum: number;
+         
+            
+            noHandleNum: number;
+         
+            
+            number: number;
+         
+            
+            sourceGroupToTypeNumber: number;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformJobDto {
+        [key:string]: any;
+        
+         
+            
             name: string;
          
-            /* 显示名称本地化信息 */ 
+            
             displayNameLocalization: string;
          
-            /* 序号 */ 
+            
             no?: number;
          
-            /* 显示名称 */ 
+            
             displayName?: string;
          
-            /* 职务类型 */ 
+            
             jobTypeId?: string;
          
-            /* 职务类型 */ 
+            
             jobTypeName?: string;
          
-            /* 描述 */ 
+            
             desc?: string;
          
-            /* 创建人 */ 
+            
             creatorUserName?: string;
          
-            /* 1有效、0作废 */ 
+            
             isValid?: boolean;
          
-            /* 创建时间 */ 
+            
             creationTime?: string;
          
             
@@ -673,230 +957,111 @@ Can contain more than one field separated by comma (,). */
     /**
      *  No Remark 
      */
-    export class PlatformEntityDto<T> {
+    export class PlatformEntityDto1<T> {
+        [key:string]: any;
         
          
             
-            id?: any;
+            id: string;
         
         
     }
  
     /**
-     * 校验重复
+     *  No Remark 
      */
     export class PlatformCheckedRepeatForJobInput {
+        [key:string]: any;
         
-         
-            /* 职务名称 */ 
-            name?: string;
-         
-            /* 显示名称本地化信息 */ 
-            nameLocalization?: string;
-         
-            /* 主键 */ 
-            id?: string;
-        
-        
-    }
- 
-    /**
-     * 极光用户绑定Dto
-     */
-    export class PlatformJPushUserIdBindRegistrationIdDto {
-        
-         
-            /* 设备Id */ 
-            registrationId: string;
-         
-            /* 应用来源
-1 = Csp
-2 = Icp */ 
-            fromSource: number;
          
             
-            id?: string;
+            name: string;
+         
+            
+            nameLocalization: string;
+         
+            
+            id: string;
         
         
     }
  
     /**
-     * 菜单项-数据传输对象
+     *  No Remark 
      */
     export class PlatformMenuItemDto {
+        [key:string]: any;
         
          
-            /* 显示名称 */ 
+            
             displayName?: string;
          
-            /* 显示名称本地化信息 */ 
+            
             displayNameLocalization?: string;
          
-            /* 顺序 */ 
+            
             order?: number;
          
-            /* 图标 */ 
+            
             icon?: string;
          
-            /* 菜单项类型
+            /* 
 0 = CSP_Web
 1 = CSP_Mobile
 2 = ICP_Web
 3 = ICP_Mobile */ 
             type?: number;
          
-            /* Url */ 
+            
             url?: string;
          
-            /* 关联权限ID */ 
+            
             permissionId?: string;
          
-            /* 关联权限全称 */ 
+            
             permissionName?: string;
          
-            /* 目标位置 */ 
+            
             target?: string;
          
-            /* 快捷键 */ 
+            
             shortcut?: string;
          
-            /* 是否激活 */ 
+            
             isActive?: boolean;
          
-            /* 描述 */ 
+            
             description?: string;
          
-            /* 创建时间 */ 
+            
             creationTime?: string;
          
-            /* 创建人 */ 
+            
             creatorUserName?: string;
          
             
             childrenDto?: any[];
          
-            /* 名称 */ 
+            
             name?: string;
          
-            /* 全称 */ 
+            
             fullName?: string;
          
-            /* 带有父级Id的全Id */ 
+            
             fullId?: string;
          
-            /* 层级代码 */ 
+            
             levelCode?: string;
          
-            /* 层级 */ 
+            
             level?: number;
          
-            /* 父ID */ 
+            
             parentId?: string;
          
             
             id?: string;
-        
-        
-    }
- 
-    /**
-     * 移动菜单项-数据传输对象
-     */
-    export class PlatformMoveMenuItemInput {
-        
-         
-            /* ID */ 
-            id?: string;
-         
-            /* 新父项ID */ 
-            parentId?: string;
-        
-        
-    }
- 
-    /**
-     * 添加菜单到收藏夹-数据传输对象
-     */
-    export class PlatformAddToFavoritesInput {
-        
-         
-            /* 菜单项ID */ 
-            menuIds?: any[];
-        
-        
-    }
- 
-    /**
-     * 更改菜单项状态-数据传输对象
-     */
-    export class PlatformChangeStateInput {
-        
-         
-            /* 是否激活状态 */ 
-            isActive?: boolean;
-         
-            
-            id?: string;
-        
-        
-    }
- 
-    /**
-     * 当前用户的通知分页集合
-     */
-    export class PlatformGetNotificationsOutput {
-        
-         
-            /* 未读数量 */ 
-            unreadCount?: number;
-         
-            
-            totalCount?: number;
-         
-            
-            items?: any[];
-        
-        
-    }
- 
-    /**
-     * 当前登录用户的通知设置参数
-     */
-    export class PlatformGetNotificationSettingsOutput {
-        
-         
-            /* 租户Id */ 
-            tenantId?: number;
-         
-            /* 用户 Id */ 
-            userId?: number;
-         
-            /* 是否接收通知 */ 
-            receiveNotifications?: boolean;
-         
-            /* 已订阅的通知 */ 
-            notifications?: any[];
-        
-        
-    }
- 
-    /**
-     * 更新通知设置的输入参数
-     */
-    export class PlatformUpdateNotificationSettingsInput {
-        
-         
-            /* 租户Id */ 
-            tenantId?: number;
-         
-            /* 用户 Id */ 
-            userId?: number;
-         
-            /* 是否接收全部通知 */ 
-            receiveNotifications?: boolean;
-         
-            /* 通知订阅信息 */ 
-            notifications?: any[];
         
         
     }
@@ -904,14 +1069,128 @@ Can contain more than one field separated by comma (,). */
     /**
      *  No Remark 
      */
-    export class PlatformSendMessageModel {
+    export class PlatformMoveMenuItemInput {
+        [key:string]: any;
         
          
             
-            targetUsers?: any[];
+            id: string;
          
             
-            message?: string;
+            parentId: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformAddToFavoritesInput {
+        [key:string]: any;
+        
+         
+            
+            menuIds: any[];
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformGetMenusFromFavoritesInput {
+        [key:string]: any;
+        
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformChangeStateInput {
+        [key:string]: any;
+        
+         
+            
+            isActive: boolean;
+         
+            
+            id: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformUserNotification {
+        [key:string]: any;
+        
+         
+            
+            tenantId?: number;
+         
+            
+            userId?: number;
+         
+            /* 
+0 = Unread
+1 = Read */ 
+            state?: number;
+         
+            
+            notification?: PlatformTenantNotification;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformGetNotificationsOutput {
+        [key:string]: any;
+        
+         
+            
+            unreadCount: number;
+         
+            
+            totalCount: number;
+         
+            
+            items: PlatformUserNotification[];
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformTenantNotification {
+        [key:string]: any;
+        
+         
+            
+            tenantId?: number;
+         
+            
+            notificationName?: string;
+         
+            
+            data?: PlatformNotificationData;
+         
+            
+            entityType?: string;
+         
+            
+            entityTypeName?: string;
+         
+            
+            entityId?: object;
          
             /* 
 0 = Info
@@ -920,6 +1199,174 @@ Can contain more than one field separated by comma (,). */
 3 = Error
 4 = Fatal */ 
             severity?: number;
+         
+            
+            creationTime?: string;
+         
+            
+            id?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformNotificationData {
+        [key:string]: any;
+        
+         
+            
+            type?: string;
+         
+            
+            properties?: object;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformNotificationSubscriptionWithDisplayNameDto {
+        [key:string]: any;
+        
+         
+            
+            name: string;
+         
+            
+            displayName?: string;
+         
+            
+            description?: string;
+         
+            
+            conditionItemList?: any[];
+         
+            /* 
+0 = None
+1 = App
+2 = Email
+3 = EmailAndApp */ 
+            sendType?: number;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformGetNotificationSettingsOutput {
+        [key:string]: any;
+        
+         
+            
+            tenantId: number;
+         
+            
+            userId: number;
+         
+            
+            receiveNotifications: boolean;
+         
+            
+            notifications: PlatformNotificationSubscriptionWithDisplayNameDto[];
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformNotificationSubscriptionDto {
+        [key:string]: any;
+        
+         
+            
+            name: string;
+         
+            
+            conditionItemList?: any[];
+         
+            /* 
+0 = None
+1 = App
+2 = Email
+3 = EmailAndApp */ 
+            sendType?: number;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformUpdateNotificationSettingsInput {
+        [key:string]: any;
+        
+         
+            
+            tenantId: number;
+         
+            
+            userId: number;
+         
+            
+            receiveNotifications: boolean;
+         
+            
+            notifications: PlatformNotificationSubscriptionDto[];
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformUserIdentifier {
+        [key:string]: any;
+        
+         
+            
+            tenantId?: number;
+         
+            
+            userId?: number;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformSendMessageModel {
+        [key:string]: any;
+        
+         
+            
+            targetUsers: PlatformUserIdentifier[];
+         
+            
+            message: string;
+         
+            /* 
+0 = Info
+1 = Success
+2 = Warn
+3 = Error
+4 = Fatal */ 
+            severity: number;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformContactUserInput {
+        [key:string]: any;
+        
         
         
     }
@@ -928,12 +1375,13 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PlatformIMContactGroupDto {
+        [key:string]: any;
         
          
-            /* 所属公司名称（客户名/合作伙伴名） */ 
+            
             companyName?: string;
          
-            /* 联系人集合 */ 
+            
             contacts?: any[];
         
         
@@ -942,49 +1390,105 @@ Can contain more than one field separated by comma (,). */
     /**
      *  No Remark 
      */
+    export class PlatformContactUserDto {
+        [key:string]: any;
+        
+         
+            
+            userId: number;
+         
+            
+            profilePictureId: string;
+         
+            
+            name: string;
+         
+            
+            surname: string;
+         
+            
+            cName: string;
+         
+            
+            phoneNumber: string;
+         
+            
+            email: string;
+         
+            
+            isActive: boolean;
+         
+            
+            position: string;
+         
+            
+            fullOrganizationUnit: string;
+         
+            
+            organizationUnitLevelCode: string;
+         
+            
+            customerId: string;
+         
+            
+            companyName: string;
+         
+            
+            remark: string;
+         
+            
+            description: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
     export class PlatformContactUserWithPinyinDto {
+        [key:string]: any;
         
          
             
             pinyinFirst?: string;
          
-            /* 用户id */ 
+            
             userId?: number;
          
-            /* 头像Id(用存储地址拼接) */ 
+            
             profilePictureId?: string;
          
-            /* 名 */ 
+            
             name?: string;
          
-            /* 姓 */ 
+            
             surname?: string;
          
-            /* 中文名 */ 
+            
             cName?: string;
          
-            /* 电话 */ 
+            
             phoneNumber?: string;
          
-            /* 邮箱 */ 
+            
             email?: string;
          
-            /* 是否激活 */ 
+            
             isActive?: boolean;
          
-            /* 职位 */ 
+            
             position?: string;
          
-            /* 组织机构路径 */ 
+            
             fullOrganizationUnit?: string;
          
-            /* 组织机构级别路径 */ 
+            
             organizationUnitLevelCode?: string;
          
-            /* 所属客户id */ 
+            
             customerId?: string;
          
-            /* 所属公司名称（客户名/合作伙伴名） */ 
+            
             companyName?: string;
          
             
@@ -1000,331 +1504,221 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PlatformSetRemarkAndDescInput {
+        [key:string]: any;
         
          
             
-            myWorkerUserId?: number;
+            myWorkerUserId: number;
          
             
-            remark?: string;
+            remark: string;
          
             
-            description?: string;
+            description: string;
         
         
     }
  
     /**
-     * IM联系人Dto
-     */
-    export class PlatformContactUserDto {
-        
-         
-            /* 用户id */ 
-            userId?: number;
-         
-            /* 头像Id(用存储地址拼接) */ 
-            profilePictureId?: string;
-         
-            /* 名 */ 
-            name?: string;
-         
-            /* 姓 */ 
-            surname?: string;
-         
-            /* 中文名 */ 
-            cName?: string;
-         
-            /* 电话 */ 
-            phoneNumber?: string;
-         
-            /* 邮箱 */ 
-            email?: string;
-         
-            /* 是否激活 */ 
-            isActive?: boolean;
-         
-            /* 职位 */ 
-            position?: string;
-         
-            /* 组织机构路径 */ 
-            fullOrganizationUnit?: string;
-         
-            /* 组织机构级别路径 */ 
-            organizationUnitLevelCode?: string;
-         
-            /* 所属客户id */ 
-            customerId?: string;
-         
-            /* 所属公司名称（客户名/合作伙伴名） */ 
-            companyName?: string;
-         
-            
-            remark?: string;
-         
-            
-            description?: string;
-        
-        
-    }
- 
-    /**
-     * 组织机构用户dto
+     *  No Remark 
      */
     export class PlatformOrganizationUnitUserDto {
+        [key:string]: any;
         
          
-            /* 用户id */ 
+            
             userId?: number;
          
-            /* 头像 */ 
+            
             profilePictureId?: string;
          
-            /* 账号 */ 
+            
             userName?: string;
          
-            /* 名 */ 
+            
             name?: string;
          
-            /* 姓 */ 
+            
             surname?: string;
          
-            /* 本地化名 */ 
+            
             cName?: string;
          
-            /* 电话 */ 
+            
             phoneNumber?: string;
          
-            /* 邮箱 */ 
+            
             email?: string;
          
-            /* 职位 */ 
+            
             position?: string;
          
-            /* 组织机构路径 */ 
+            
             fullOrganizationUnit?: string;
          
-            /* 所属组织机构id */ 
+            
             organizationUnitId?: string;
         
         
     }
  
     /**
-     * 移动组织节点-输入参数
+     *  No Remark 
      */
     export class PlatformMoveOrganizationUnitInput {
+        [key:string]: any;
         
-         
-            /* 组织节点ID */ 
-            id?: string;
-         
-            /* 新父项ID */ 
-            parentId?: string;
-        
-        
-    }
- 
-    /**
-     * 权限项-数据传输对象
-     */
-    export class PlatformPermissionDto {
-        
-         
-            /* 显示名称 */ 
-            displayName?: string;
-         
-            /* 显示名称本地化信息 */ 
-            displayNameLocalization?: string;
-         
-            /* 权限项类型
-1 = Function
-2 = Data */ 
-            type?: number;
-         
-            /* 是否有效 */ 
-            isValid?: boolean;
-         
-            /* 描述 */ 
-            description?: string;
-         
-            /* 创建人姓名 */ 
-            creatorUserName?: string;
-         
-            /* 子集合 */ 
-            children?: any[];
-         
-            /* 绑定的角色Ids */ 
-            roleIds?: any[];
-         
-            /* 用户Ids */ 
-            userIds?: any[];
-         
-            /* 用户所属的组织Ids */ 
-            organizationUnitIds?: any[];
-         
-            /* 创建时间 */ 
-            creationTime?: string;
-         
-            /* 名称 */ 
-            name?: string;
-         
-            /* 全称 */ 
-            fullName?: string;
-         
-            /* 带有父级Id的全Id */ 
-            fullId?: string;
-         
-            /* 层级代码 */ 
-            levelCode?: string;
-         
-            /* 层级 */ 
-            level?: number;
-         
-            /* 父ID */ 
-            parentId?: string;
          
             
-            id?: string;
+            id: string;
+         
+            
+            parentId: string;
         
         
     }
  
     /**
-     * 移动权限项-输入参数
+     *  No Remark 
      */
     export class PlatformMovePermissionItemInput {
+        [key:string]: any;
         
-         
-            /* 父项ID */ 
-            parentId?: string;
          
             
-            id?: string;
+            parentId: string;
+         
+            
+            id: string;
         
         
     }
  
     /**
-     * 批量授予权限给用户-输入参数
+     *  No Remark 
      */
     export class PlatformGrantFunctionPermissionsToUserInput {
+        [key:string]: any;
         
          
-            /* 父项ID */ 
-            userId?: number;
+            
+            userId: number;
          
-            /* 权限项集合 */ 
-            permissionIds?: any[];
+            
+            permissionIds: any[];
         
         
     }
  
     /**
-     * 撤销用户权限-输入参数
+     *  No Remark 
      */
     export class PlatformRevokeUserFunctionPermissionsInput {
+        [key:string]: any;
         
          
-            /* 父项ID */ 
-            userId?: number;
+            
+            userId: number;
          
-            /* 权限项集合 */ 
-            permissionIds?: any[];
+            
+            permissionIds: any[];
         
         
     }
  
     /**
-     * 批量授予权限给角色-输入参数
+     *  No Remark 
      */
     export class PlatformGrantFunctionPermissionsToRoleInput {
+        [key:string]: any;
         
          
-            /* 角色ID */ 
-            roleId?: number;
+            
+            roleId: number;
          
-            /* 权限项集合 */ 
-            permissionIds?: any[];
+            
+            permissionIds: any[];
         
         
     }
  
     /**
-     * 撤销角色的权限-输入参数
+     *  No Remark 
      */
     export class PlatformRevokeRoleFunctionPermissionsInput {
+        [key:string]: any;
         
          
-            /* 角色ID */ 
-            roleId?: number;
+            
+            roleId: number;
          
-            /* 权限项集合 */ 
-            permissionIds?: any[];
+            
+            permissionIds: any[];
         
         
     }
  
     /**
-     * 数据权限项-数据传输对象
+     *  No Remark 
      */
     export class PlatformDataPermissionDto {
+        [key:string]: any;
         
          
-            /* 数据范围 */ 
+            
             datas?: any[];
          
-            /* 显示名称 */ 
+            
             displayName?: string;
          
-            /* 显示名称本地化信息 */ 
+            
             displayNameLocalization?: string;
          
-            /* 权限项类型
+            /* 
 1 = Function
 2 = Data */ 
             type?: number;
          
-            /* 是否有效 */ 
+            
             isValid?: boolean;
          
-            /* 描述 */ 
+            
             description?: string;
          
-            /* 创建人姓名 */ 
+            
             creatorUserName?: string;
          
-            /* 子集合 */ 
+            
             children?: any[];
          
-            /* 绑定的角色Ids */ 
+            
             roleIds?: any[];
          
-            /* 用户Ids */ 
+            
             userIds?: any[];
          
-            /* 用户所属的组织Ids */ 
+            
             organizationUnitIds?: any[];
          
-            /* 创建时间 */ 
+            
             creationTime?: string;
          
-            /* 名称 */ 
+            
             name?: string;
          
-            /* 全称 */ 
+            
             fullName?: string;
          
-            /* 带有父级Id的全Id */ 
+            
             fullId?: string;
          
-            /* 层级代码 */ 
+            
             levelCode?: string;
          
-            /* 层级 */ 
+            
             level?: number;
          
-            /* 父ID */ 
+            
             parentId?: string;
          
             
@@ -1334,61 +1728,81 @@ Can contain more than one field separated by comma (,). */
     }
  
     /**
-     * 批量授予权限给用户-输入参数
+     *  No Remark 
+     */
+    export class PlatformDataPermissionItem {
+        [key:string]: any;
+        
+         
+            
+            perimissionId?: string;
+         
+            
+            datas?: any[];
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
      */
     export class PlatformGrantDataPermissionsToUserInput {
+        [key:string]: any;
         
          
-            /* 父项ID */ 
-            userId?: number;
+            
+            userId: number;
          
-            /* 权限项集合 */ 
-            permissions?: any[];
+            
+            permissions: PlatformDataPermissionItem[];
         
         
     }
  
     /**
-     * 撤销用户权限-输入参数
+     *  No Remark 
      */
     export class PlatformRevokeUserDataPermissionsInput {
+        [key:string]: any;
         
          
-            /* 父项ID */ 
-            userId?: number;
+            
+            userId: number;
          
-            /* 权限项集合 */ 
-            permissionIds?: any[];
+            
+            permissionIds: any[];
         
         
     }
  
     /**
-     * 批量授予权限给角色-输入参数
+     *  No Remark 
      */
     export class PlatformGrantDataPermissionsToRoleInput {
+        [key:string]: any;
         
          
-            /* 角色ID */ 
-            roleId?: number;
+            
+            roleId: number;
          
-            /* 权限项集合 */ 
-            permissions?: any[];
+            
+            permissions: PlatformDataPermissionItem[];
         
         
     }
  
     /**
-     * 撤销角色的权限-输入参数
+     *  No Remark 
      */
     export class PlatformRevokeRoleDataPermissionsInput {
+        [key:string]: any;
         
          
-            /* 角色ID */ 
-            roleId?: number;
+            
+            roleId: number;
          
-            /* 权限项集合 */ 
-            permissionIds?: any[];
+            
+            permissionIds: any[];
         
         
     }
@@ -1397,69 +1811,71 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PlatformDistributePermissionForTenantInput {
+        [key:string]: any;
         
          
-            /* 租户 */ 
-            tenantId?: number;
+            
+            tenantId: number;
          
-            /* 权限 */ 
-            permissionIds?: any[];
+            
+            permissionIds: any[];
         
         
     }
  
     /**
-     * 职位-数据传输对象
+     *  No Remark 
      */
     export class PlatformPositionDto {
+        [key:string]: any;
         
          
-            /* 显示名称本地化信息 */ 
+            
             nameLocalization: string;
          
-            /* 职务ID */ 
+            
             jobId: string;
          
-            /* 序号 */ 
+            
             no?: number;
          
-            /* 描述 */ 
+            
             desc?: string;
          
-            /* 所属部门 */ 
+            
             organizationUnitId?: string;
          
-            /* 所属部门 */ 
+            
             organizationUnitName?: string;
          
-            /* 职务名 */ 
+            
             jobName?: string;
          
-            /* 创建人 */ 
+            
             creatorUserName?: string;
          
-            /* 1有效、0作废 */ 
+            
             isValid?: boolean;
          
-            /* 创建时间 */ 
+            
             creationTime?: string;
          
-            /* 名称 */ 
+            
             name?: string;
          
-            /* 全称 */ 
+            
             fullName?: string;
          
-            /* 带有父级Id的全Id */ 
+            
             fullId?: string;
          
-            /* 层级代码 */ 
+            
             levelCode?: string;
          
-            /* 层级 */ 
+            
             level?: number;
          
-            /* 父ID */ 
+            
             parentId?: string;
          
             
@@ -1469,43 +1885,61 @@ Can contain more than one field separated by comma (,). */
     }
  
     /**
-     * 职位带组织机构Dto
+     *  No Remark 
      */
     export class PlatformPositionAndOrganizationUnitDto {
+        [key:string]: any;
         
          
             
-            desc?: string;
+            desc: string;
          
             
-            localizationDesc?: string;
+            localizationDesc: string;
          
             
-            fullOrganizationUnit?: string;
+            fullOrganizationUnit: string;
         
         
     }
  
     /**
-     * 创建模型
+     *  No Remark 
      */
-    export class PlatformCreatePositionDto {
+    export class PlatformBelongToOrganizationModel {
+        [key:string]: any;
         
          
-            /* 显示名称本地化信息 */ 
+            
+            organizationUnitId?: string;
+         
+            
+            parentId?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformCreatePositionDto {
+        [key:string]: any;
+        
+         
+            
             nameLocalization: string;
          
-            /* 显示名称 */ 
+            
             name: string;
          
-            /* 职务ID */ 
+            
             jobId: string;
          
-            /* 描述 */ 
+            
             desc?: string;
          
-            /* 所属组织list */ 
-            belongToOrganizationModels?: any[];
+            
+            belongToOrganizationModels?: PlatformBelongToOrganizationModel[];
         
         
     }
@@ -1514,231 +1948,217 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PlatformResMsgDto {
+        [key:string]: any;
         
          
             
-            result?: boolean;
+            result: boolean;
          
             
-            messages?: any[];
+            messages: any[];
         
         
     }
  
     /**
-     * 职位更新模型
+     *  No Remark 
      */
     export class PlatformUpdatePositionDto {
+        [key:string]: any;
         
          
-            /* 显示名称本地化信息 */ 
+            
             nameLocalization: string;
          
-            /* 显示名称 */ 
+            
             name: string;
          
-            /* 职务ID */ 
+            
             jobId: string;
          
-            /* Id */ 
+            
             id?: string;
          
-            /* 描述 */ 
+            
             desc?: string;
          
-            /* 所属组织list */ 
-            belongToOrganizationModels?: any[];
+            
+            belongToOrganizationModels?: PlatformBelongToOrganizationModel[];
         
         
     }
  
     /**
-     * 批量添加用户到职位点-输入参数
+     *  No Remark 
      */
     export class PlatformAddUsersToPositionInput {
+        [key:string]: any;
         
          
-            /* 用户ID集合 */ 
-            userIds?: any[];
+            
+            userIds: any[];
          
-            /* 职位ID */ 
-            positionId?: string;
+            
+            positionId: string;
          
-            /* 是否默认职位 */ 
-            isDefault?: boolean;
+            
+            isDefault: boolean;
         
         
     }
  
     /**
-     * 批量添加职位到用户-输入参数
+     *  No Remark 
      */
     export class PlatformAddPositionsToUserInput {
+        [key:string]: any;
         
          
-            /* 用户ID集合 */ 
-            userId?: number;
+            
+            userId: number;
          
-            /* 职位ID */ 
-            positionIds?: any[];
+            
+            positionIds: any[];
         
         
     }
  
     /**
-     * 批量添加用户到职位-输入参数
+     *  No Remark 
      */
     export class PlatformSetUserDefaultPositionInput {
+        [key:string]: any;
         
          
-            /* 用户ID */ 
-            userId?: number;
+            
+            userId: number;
          
-            /* 职位ID */ 
-            positionId?: string;
+            
+            positionId: string;
         
         
     }
  
     /**
-     * 判断用户是否归属指定职位-输入参数
+     *  No Remark 
+     */
+    export class PlatformUserPositionDto {
+        [key:string]: any;
+        
+         
+            
+            userId: number;
+         
+            
+            positionId: string;
+         
+            
+            positionName: string;
+         
+            
+            jobName: string;
+         
+            
+            jobId: string;
+         
+            
+            organizationUnitId: string;
+         
+            
+            organizationUnitName: string;
+         
+            
+            id: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
      */
     export class PlatformIsInPositionInput {
+        [key:string]: any;
         
-         
-            /* 用户ID */ 
-            userId?: number;
-         
-            /* 职位ID */ 
-            positionId?: string;
-         
-            /* 是否默认职位 */ 
-            isDefault?: boolean;
-        
-        
-    }
- 
-    /**
-     * 用户信息-数据传输对象
-     */
-    export class PlatformSessionUserDto {
-        
-         
-            /* ICP用户id */ 
-            icpUserId?: string;
-         
-            /* 客户Id */ 
-            customerId?: string;
-         
-            /* 当前客户归属的服务商（如 Cityocean）客户Id */ 
-            serviceCustomerId?: string;
-         
-            /* 当前客户归属的服务商（如 Cityocean）租户Id */ 
-            serviceCustomerTenantId?: number;
-         
-            /* 当前客户归属的服务商（如 Cityocean）租户名称 */ 
-            serviceCustomerTenantName?: string;
-         
-            /* 名 */ 
-            name?: string;
-         
-            /* 姓 */ 
-            surname?: string;
-         
-            /* 账号 */ 
-            userName?: string;
-         
-            /* 邮箱 */ 
-            emailAddress?: string;
-         
-            /* 头像图片ID */ 
-            profilePictureId?: string;
-         
-            /* 角色集合 */ 
-            roles?: any[];
-         
-            /* 职位 */ 
-            positions?: any[];
-         
-            /* 模拟用户Id */ 
-            impersonatorUserId?: number;
          
             
-            id?: number;
-        
-        
-    }
- 
-    /**
-     * 租户信息-数据传输对象
-     */
-    export class PlatformSessionTenantDto {
-        
-         
-            /* 租户账号 */ 
-            tenancyName?: string;
-         
-            /* 名称 */ 
-            name?: string;
-         
-            /* Logo文件Id */ 
-            logoId?: string;
-         
-            /* Logo文件类型 */ 
-            logoFileType?: string;
-         
-            /* 创建时间 */ 
-            creationTime?: string;
-         
-            /* 模拟租户Id */ 
-            impersonatorTenantId?: number;
+            userId: number;
          
             
-            id?: number;
+            positionId: string;
+         
+            
+            isDefault: boolean;
         
         
     }
  
     /**
-     * 平台信息-数据传输对象
+     *  No Remark 
      */
-    export class PlatformSessionPlatformDto {
+    export class PlatformOrganizationUnitCompanyDto {
+        [key:string]: any;
         
          
-            /* 平台名 */ 
-            name?: string;
+            
+            displayName: string;
          
-            /* 描述 */ 
-            desc?: string;
-         
-            /* 版本 */ 
-            version?: string;
-         
-            /* 发布日期 */ 
-            releaseDate?: string;
-         
-            /* 插件版本信息 */ 
-            pluginVersions?: any[];
+            
+            id?: string;
         
         
     }
  
     /**
-     * 获取当前用户会话信息-数据传输对象
+     *  No Remark 
+     */
+    export class PlatformUserConfigurationDto {
+        [key:string]: any;
+        
+         
+            
+            session: PlatformUserSessionDto;
+         
+            
+            localization: PlatformAbpUserLocalizationConfigDto;
+         
+            
+            auth: PlatformUserAuthConfigDto;
+         
+            
+            nav: PlatformAbpUserNavConfigDto;
+         
+            
+            setting: PlatformAbpUserSettingConfigDto;
+         
+            
+            clock: PlatformAbpUserClockConfigDto;
+         
+            
+            timing: PlatformAbpUserTimingConfigDto;
+         
+            
+            security: PlatformAbpUserSecurityConfigDto;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
      */
     export class PlatformUserSessionDto {
+        [key:string]: any;
         
          
-            /* 用户信息 */ 
+            
             user?: PlatformSessionUserDto;
          
-            /* 租户信息 */ 
+            
             tenant?: PlatformSessionTenantDto;
          
-            /* 平台信息 */ 
+            
             platform?: PlatformSessionPlatformDto;
          
-            /* 是否在多租户侧
+            /* 
 1 = Tenant
 2 = Host */ 
             multiTenancySide?: number;
@@ -1749,7 +2169,225 @@ Can contain more than one field separated by comma (,). */
     /**
      *  No Remark 
      */
+    export class PlatformAbpUserLocalizationConfigDto {
+        [key:string]: any;
+        
+         
+            
+            currentCulture?: PlatformAbpUserCurrentCultureConfigDto;
+         
+            
+            languages?: any[];
+         
+            
+            currentLanguage?: PlatformLanguageInfo;
+         
+            
+            sources?: any[];
+         
+            
+            values?: object;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformUserAuthConfigDto {
+        [key:string]: any;
+        
+         
+            
+            grantedDataPermissions?: any[];
+         
+            
+            grantedFunctionPermissions?: any[];
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformAbpUserNavConfigDto {
+        [key:string]: any;
+        
+         
+            
+            menus?: object;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformAbpUserSettingConfigDto {
+        [key:string]: any;
+        
+         
+            
+            values?: object;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformAbpUserClockConfigDto {
+        [key:string]: any;
+        
+         
+            
+            provider?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformAbpUserTimingConfigDto {
+        [key:string]: any;
+        
+         
+            
+            timeZoneInfo?: PlatformAbpUserTimeZoneConfigDto;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformAbpUserSecurityConfigDto {
+        [key:string]: any;
+        
+         
+            
+            antiForgery?: PlatformAbpUserAntiForgeryConfigDto;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformSessionUserDto {
+        [key:string]: any;
+        
+         
+            
+            icpUserId?: string;
+         
+            
+            customerId?: string;
+         
+            
+            serviceCustomerId?: string;
+         
+            
+            serviceCustomerTenantId?: number;
+         
+            
+            serviceCustomerTenantName?: string;
+         
+            
+            name?: string;
+         
+            
+            surname?: string;
+         
+            
+            userName?: string;
+         
+            
+            emailAddress?: string;
+         
+            
+            profilePictureId?: string;
+         
+            
+            roles?: any[];
+         
+            
+            positions?: any[];
+         
+            
+            impersonatorUserId?: number;
+         
+            
+            isExternal?: boolean;
+         
+            
+            id?: number;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformSessionTenantDto {
+        [key:string]: any;
+        
+         
+            
+            tenancyName?: string;
+         
+            
+            name?: string;
+         
+            
+            logoId?: string;
+         
+            
+            logoFileType?: string;
+         
+            
+            creationTime?: string;
+         
+            
+            impersonatorTenantId?: number;
+         
+            
+            id?: number;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformSessionPlatformDto {
+        [key:string]: any;
+        
+         
+            
+            name?: string;
+         
+            
+            desc?: string;
+         
+            
+            version?: string;
+         
+            
+            releaseDate?: string;
+         
+            
+            pluginVersions?: any[];
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
     export class PlatformAbpUserCurrentCultureConfigDto {
+        [key:string]: any;
         
          
             
@@ -1765,6 +2403,7 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PlatformLanguageInfo {
+        [key:string]: any;
         
          
             
@@ -1791,38 +2430,15 @@ Can contain more than one field separated by comma (,). */
     /**
      *  No Remark 
      */
-    export class PlatformAbpUserLocalizationConfigDto {
+    export class PlatformAbpLocalizationSourceDto {
+        [key:string]: any;
         
          
             
-            currentCulture?: PlatformAbpUserCurrentCultureConfigDto;
+            name: string;
          
             
-            languages?: any[];
-         
-            
-            currentLanguage?: PlatformLanguageInfo;
-         
-            
-            sources?: any[];
-         
-            
-            values?: object;
-        
-        
-    }
- 
-    /**
-     * 用户授权信息
-     */
-    export class PlatformUserAuthConfigDto {
-        
-         
-            /* 授予的数据权限 */ 
-            grantedDataPermissions?: any[];
-         
-            /* 授予的功能权限 */ 
-            grantedFunctionPermissions?: any[];
+            type: string;
         
         
     }
@@ -1830,11 +2446,21 @@ Can contain more than one field separated by comma (,). */
     /**
      *  No Remark 
      */
-    export class PlatformAbpUserNavConfigDto {
+    export class PlatformDataPermissionGrantInfo {
+        [key:string]: any;
         
          
             
-            menus?: object;
+            datas: any[];
+         
+            
+            permissionId: string;
+         
+            
+            permissionName: string;
+         
+            
+            isGranted: boolean;
         
         
     }
@@ -1842,11 +2468,39 @@ Can contain more than one field separated by comma (,). */
     /**
      *  No Remark 
      */
-    export class PlatformAbpUserSettingConfigDto {
+    export class PlatformUserMenuItem {
+        [key:string]: any;
         
          
             
-            values?: object;
+            name?: string;
+         
+            
+            icon?: string;
+         
+            
+            displayName?: string;
+         
+            
+            order?: number;
+         
+            
+            url?: string;
+         
+            
+            customData?: object;
+         
+            
+            target?: string;
+         
+            
+            isEnabled?: boolean;
+         
+            
+            isVisible?: boolean;
+         
+            
+            items?: any[];
         
         
     }
@@ -1854,11 +2508,97 @@ Can contain more than one field separated by comma (,). */
     /**
      *  No Remark 
      */
-    export class PlatformAbpUserClockConfigDto {
+    export class PlatformUserMenu {
+        [key:string]: any;
         
          
             
-            provider?: string;
+            name: string;
+         
+            
+            displayName: string;
+         
+            
+            customData: object;
+         
+            
+            items: PlatformUserMenuItem[];
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformAbpUserTimeZoneConfigDto {
+        [key:string]: any;
+        
+         
+            
+            windows?: PlatformAbpUserWindowsTimeZoneConfigDto;
+         
+            
+            iana?: PlatformAbpUserIanaTimeZoneConfigDto;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformAbpUserAntiForgeryConfigDto {
+        [key:string]: any;
+        
+         
+            
+            tokenCookieName?: string;
+         
+            
+            tokenHeaderName?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformOrganizationUnitPositionConfigDto {
+        [key:string]: any;
+        
+         
+            
+            positionName: string;
+         
+            
+            jobName: string;
+         
+            
+            organizationUnitName: string;
+         
+            
+            organizationUnitId: string;
+         
+            
+            isDefault: boolean;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformPluginVersionDto {
+        [key:string]: any;
+        
+         
+            
+            name: string;
+         
+            
+            version: string;
+         
+            
+            releaseDate: string;
         
         
     }
@@ -1867,6 +2607,7 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PlatformAbpUserWindowsTimeZoneConfigDto {
+        [key:string]: any;
         
          
             
@@ -1888,6 +2629,7 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PlatformAbpUserIanaTimeZoneConfigDto {
+        [key:string]: any;
         
          
             
@@ -1899,116 +2641,15 @@ Can contain more than one field separated by comma (,). */
     /**
      *  No Remark 
      */
-    export class PlatformAbpUserTimeZoneConfigDto {
-        
-         
-            
-            windows?: PlatformAbpUserWindowsTimeZoneConfigDto;
-         
-            
-            iana?: PlatformAbpUserIanaTimeZoneConfigDto;
-        
-        
-    }
- 
-    /**
-     *  No Remark 
-     */
-    export class PlatformAbpUserTimingConfigDto {
-        
-         
-            
-            timeZoneInfo?: PlatformAbpUserTimeZoneConfigDto;
-        
-        
-    }
- 
-    /**
-     *  No Remark 
-     */
-    export class PlatformAbpUserAntiForgeryConfigDto {
-        
-         
-            
-            tokenCookieName?: string;
-         
-            
-            tokenHeaderName?: string;
-        
-        
-    }
- 
-    /**
-     *  No Remark 
-     */
-    export class PlatformAbpUserSecurityConfigDto {
-        
-         
-            
-            antiForgery?: PlatformAbpUserAntiForgeryConfigDto;
-        
-        
-    }
- 
-    /**
-     * 用户配置-数据传输对象
-     */
-    export class PlatformUserConfigurationDto {
-        
-         
-            /* 会话信息 */ 
-            session?: PlatformUserSessionDto;
-         
-            /* 本地化设置 */ 
-            localization?: PlatformAbpUserLocalizationConfigDto;
-         
-            /* 授权设置 */ 
-            auth?: PlatformUserAuthConfigDto;
-         
-            /* 导航设置 */ 
-            nav?: PlatformAbpUserNavConfigDto;
-         
-            /* 用户设置数据 */ 
-            setting?: PlatformAbpUserSettingConfigDto;
-         
-            /* 时钟设置 */ 
-            clock?: PlatformAbpUserClockConfigDto;
-         
-            /* 时区设置 */ 
-            timing?: PlatformAbpUserTimingConfigDto;
-         
-            /* 安全设置 */ 
-            security?: PlatformAbpUserSecurityConfigDto;
-        
-        
-    }
- 
-    /**
-     * 设置信息
-     */
     export class PlatformSettingDto {
+        [key:string]: any;
         
          
-            /* 名称 */ 
-            name?: string;
+            
+            name: string;
          
-            /* 值 */ 
-            value?: string;
-        
-        
-    }
- 
-    /**
-     *  No Remark 
-     */
-    export class PlatformTfsWebhookMessageDto {
-        
-         
-            /* 文本消息 */ 
-            text?: string;
-         
-            /* markdown消息 */ 
-            markdown?: string;
+            
+            value: string;
         
         
     }
@@ -2017,13 +2658,30 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PlatformTfsWebhookInput {
+        [key:string]: any;
         
          
             
-            message?: PlatformTfsWebhookMessageDto;
+            message: PlatformTfsWebhookMessageDto;
          
             
-            detailedMessage?: PlatformTfsWebhookMessageDto;
+            detailedMessage: PlatformTfsWebhookMessageDto;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class PlatformTfsWebhookMessageDto {
+        [key:string]: any;
+        
+         
+            
+            text?: string;
+         
+            
+            markdown?: string;
         
         
     }
@@ -2032,6 +2690,7 @@ Can contain more than one field separated by comma (,). */
      *  No Remark 
      */
     export class PlatformNameValueDto {
+        [key:string]: any;
         
          
             

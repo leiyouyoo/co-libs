@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBCurrencyDto,PUBPagedResultDto,PUBCurrencyCheckDto,PUBChangeCurrencyStateInput,PUBGetAllForUiPickerInput,PUBCurrencyUiPickerDto, } from './pub.types';
+import { PUBCurrencyDto,PUBPagedResultDto1,PUBCurrencyCheckDto,PUBChangeCurrencyStateInput,PUBGetAllForUiPickerInput,PUBCurrencyUiPickerDto } from './pub.types';
 
-@BaseUrl('/pub/Currency')
+@BaseUrl('/PUB/Currency')
 @Injectable({ providedIn: 'root' })
 export class PUBCurrencyService extends BaseApi {
   constructor(injector: Injector) {
@@ -16,7 +16,7 @@ export class PUBCurrencyService extends BaseApi {
      * 获取币种明细
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -31,12 +31,12 @@ export class PUBCurrencyService extends BaseApi {
      * 获取币种列表
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
         _req: {code?:string,name?:string,regionId?:string,isValid?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PUBPagedResultDto<PUBCurrencyDto>> {
+    ): Observable<PUBPagedResultDto1<PUBCurrencyDto>> {
         return null as any
     }
 
@@ -46,7 +46,7 @@ export class PUBCurrencyService extends BaseApi {
      * 校验重复性数据
      */
 
-    @POST('check')
+    @POST('Check')
     check(
         @Payload
         _req:PUBCurrencyCheckDto
@@ -61,7 +61,7 @@ export class PUBCurrencyService extends BaseApi {
      * 新建或更新币种
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PUBCurrencyDto
@@ -76,7 +76,7 @@ export class PUBCurrencyService extends BaseApi {
      * 创建币种
      */
 
-    @POST('create')
+    @POST('Create')
     create(
         @Payload
         _req:PUBCurrencyDto
@@ -91,7 +91,7 @@ export class PUBCurrencyService extends BaseApi {
      * 更新币种
      */
 
-    @PUT('update')
+    @PUT('Update')
     update(
         @Payload
         _req:PUBCurrencyDto
@@ -106,7 +106,7 @@ export class PUBCurrencyService extends BaseApi {
      * 修改币种状态
      */
 
-    @POST('changeCurrencyState')
+    @POST('ChangeCurrencyState')
     changeCurrencyState(
         @Payload
         _req:PUBChangeCurrencyStateInput
@@ -121,7 +121,7 @@ export class PUBCurrencyService extends BaseApi {
      * 删除币种
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 
@@ -136,12 +136,12 @@ export class PUBCurrencyService extends BaseApi {
      * 获取币种列表
      */
 
-    @POST('getAllForUiPicker')
+    @POST('GetAllForUiPicker')
     getAllForUiPicker(
         @Payload
         _req:PUBGetAllForUiPickerInput
 
-    ): Observable<PUBPagedResultDto<PUBCurrencyUiPickerDto>> {
+    ): Observable<PUBPagedResultDto1<PUBCurrencyUiPickerDto>> {
         return null as any
     }
 
@@ -151,7 +151,7 @@ export class PUBCurrencyService extends BaseApi {
      * 获取所有币种的汇率
      */
 
-    @GET('getExchangeList')
+    @GET('GetExchangeList')
     getExchangeList(
         @Payload
         _req: {toCode?:string} 

@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PlatformJobDto,PlatformPagedResultDto,PlatformEntityDto,PlatformCheckedRepeatForJobInput, } from './platform.types';
+import { PlatformPagedResultDto1,PlatformJobDto,PlatformEntityDto1,PlatformCheckedRepeatForJobInput } from './platform.types';
 
-@BaseUrl('/platform/Job')
+@BaseUrl('/Platform/Job')
 @Injectable({ providedIn: 'root' })
 export class PlatformJobService extends BaseApi {
   constructor(injector: Injector) {
@@ -13,25 +13,25 @@ export class PlatformJobService extends BaseApi {
   
     /**
      * @param url /Platform/Job/GetAll
-     * 返回职务集合(包含作废的数据)
+     * 暂无备注
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
         _req: {id?:string,jobTypeId?:string,searchText?:string,isValid?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PlatformPagedResultDto<PlatformJobDto>> {
+    ): Observable<PlatformPagedResultDto1<PlatformJobDto>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/Job/Get
-     * 获取职务详情
+     * 暂无备注
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -43,10 +43,10 @@ export class PlatformJobService extends BaseApi {
 
     /**
      * @param url /Platform/Job/Create
-     * 创建职务
+     * 暂无备注
      */
 
-    @POST('create')
+    @POST('Create')
     create(
         @Payload
         _req:PlatformJobDto
@@ -58,10 +58,10 @@ export class PlatformJobService extends BaseApi {
 
     /**
      * @param url /Platform/Job/Update
-     * 更新职务
+     * 暂无备注
      */
 
-    @PUT('update')
+    @PUT('Update')
     update(
         @Payload
         _req:PlatformJobDto
@@ -73,10 +73,10 @@ export class PlatformJobService extends BaseApi {
 
     /**
      * @param url /Platform/Job/CreateOrUpdate
-     * 创建或更新职务
+     * 暂无备注
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PlatformJobDto
@@ -88,10 +88,10 @@ export class PlatformJobService extends BaseApi {
 
     /**
      * @param url /Platform/Job/Delete
-     * 删除职务
+     * 暂无备注
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 
@@ -103,13 +103,13 @@ export class PlatformJobService extends BaseApi {
 
     /**
      * @param url /Platform/Job/CheckIsBindPosition
-     * 校验当前职务是否绑定职位
+     * 暂无备注
      */
 
-    @POST('checkIsBindPosition')
+    @POST('CheckIsBindPosition')
     checkIsBindPosition(
         @Payload
-        _req:PlatformEntityDto<any>
+        _req:PlatformEntityDto1<any>
 
     ): Observable<any> {
         return null as any
@@ -118,13 +118,13 @@ export class PlatformJobService extends BaseApi {
 
     /**
      * @param url /Platform/Job/Recover
-     * 恢复职务
+     * 暂无备注
      */
 
-    @POST('recover')
+    @POST('Recover')
     recover(
         @Payload
-        _req:PlatformEntityDto<any>
+        _req:PlatformEntityDto1<any>
 
     ): Observable<any> {
         return null as any
@@ -133,13 +133,13 @@ export class PlatformJobService extends BaseApi {
 
     /**
      * @param url /Platform/Job/Cancel
-     * 作废职务
+     * 暂无备注
      */
 
-    @POST('cancel')
+    @POST('Cancel')
     cancel(
         @Payload
-        _req:PlatformEntityDto<any>
+        _req:PlatformEntityDto1<any>
 
     ): Observable<any> {
         return null as any
@@ -148,10 +148,10 @@ export class PlatformJobService extends BaseApi {
 
     /**
      * @param url /Platform/Job/CheckedRepeat
-     * 校验重复(职务验证英文名称,本地名称)
+     * 暂无备注
      */
 
-    @POST('checkedRepeat')
+    @POST('CheckedRepeat')
     checkedRepeat(
         @Payload
         _req:PlatformCheckedRepeatForJobInput

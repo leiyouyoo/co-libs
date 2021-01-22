@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PlatformNameValueDto,PlatformListResultDto, } from './platform.types';
+import { PlatformListResultDto1,PlatformNameValueDto } from './platform.types';
 
-@BaseUrl('/platform/Timing')
+@BaseUrl('/Platform/Timing')
 @Injectable({ providedIn: 'root' })
 export class PlatformTimingService extends BaseApi {
   constructor(injector: Injector) {
@@ -13,15 +13,15 @@ export class PlatformTimingService extends BaseApi {
   
     /**
      * @param url /Platform/Timing/GetTimezones
-     * 
+     * 暂无备注
      */
 
-    @GET('getTimezones')
+    @GET('GetTimezones')
     getTimezones(
         @Payload
         _req: {defaultTimezoneScope?:number} 
 
-    ): Observable<PlatformListResultDto<PlatformNameValueDto>> {
+    ): Observable<PlatformListResultDto1<PlatformNameValueDto>> {
         return null as any
     }
 

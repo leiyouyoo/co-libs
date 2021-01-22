@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBVoyageDto,PUBPagedResultDto,PUBVoyageCheckInputDto,PUBGetAllVoyageForUiPickerInput,PUBVoyageUiPickerDto, } from './pub.types';
+import { PUBVoyageDto,PUBPagedResultDto1,PUBVoyageCheckInputDto,PUBGetAllVoyageForUiPickerInput,PUBVoyageUiPickerDto } from './pub.types';
 
-@BaseUrl('/pub/Voyage')
+@BaseUrl('/PUB/Voyage')
 @Injectable({ providedIn: 'root' })
 export class PUBVoyageService extends BaseApi {
   constructor(injector: Injector) {
@@ -16,7 +16,7 @@ export class PUBVoyageService extends BaseApi {
      * 获取航次详情
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -31,12 +31,12 @@ export class PUBVoyageService extends BaseApi {
      * 分页获取航次列表
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
         _req: {isValid?:boolean,vesselId?:string,no?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PUBPagedResultDto<PUBVoyageDto>> {
+    ): Observable<PUBPagedResultDto1<PUBVoyageDto>> {
         return null as any
     }
 
@@ -46,7 +46,7 @@ export class PUBVoyageService extends BaseApi {
      * 航次重复校验
      */
 
-    @POST('check')
+    @POST('Check')
     check(
         @Payload
         _req:PUBVoyageCheckInputDto
@@ -61,7 +61,7 @@ export class PUBVoyageService extends BaseApi {
      * 创建航次
      */
 
-    @POST('create')
+    @POST('Create')
     create(
         @Payload
         _req:PUBVoyageDto
@@ -76,7 +76,7 @@ export class PUBVoyageService extends BaseApi {
      * 编辑航次
      */
 
-    @PUT('update')
+    @PUT('Update')
     update(
         @Payload
         _req:PUBVoyageDto
@@ -91,7 +91,7 @@ export class PUBVoyageService extends BaseApi {
      * 删除航次
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 
@@ -106,22 +106,22 @@ export class PUBVoyageService extends BaseApi {
      * 提供给UI航次选择器的服务接口
      */
 
-    @POST('getAllForUiPicker')
+    @POST('GetAllForUiPicker')
     getAllForUiPicker(
         @Payload
         _req:PUBGetAllVoyageForUiPickerInput
 
-    ): Observable<PUBPagedResultDto<PUBVoyageUiPickerDto>> {
+    ): Observable<PUBPagedResultDto1<PUBVoyageUiPickerDto>> {
         return null as any
     }
 
 
     /**
      * @param url /PUB/Voyage/CreateOrUpdate
-     * 
+     * 暂无备注
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PUBVoyageDto

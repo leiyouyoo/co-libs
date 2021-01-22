@@ -4,9 +4,10 @@
 </div>
 <nz-spin [nzSpinning]="loading" style="width: 100%;">
   <ngx-widget-grid #ngxWidgetGrid [columns]="4" [highlightNextPosition]="false"
-                   [showGrid]="editable" (widgetPositionChange)="onWidgetChange($event)" style="width: 100%;height: 100%;">
+
+                   [showGrid]="editable" (widgetPositionChange)="onWidgetChange($event)" style="height: 100%;">
     <ngx-widget *ngFor="let item of widgets;index as index" [(position)]="item.rect"
-                [movable]="editable" [resizable]="true">
+                [movable]="editable" [resizable]="editable">
       <div class="widget-content-container">
         <div *ngIf="!item.index;else widgetTpl" style="height:100%;width:100%; padding:10px; background-color: rgb(140, 198, 0);">
         </div>

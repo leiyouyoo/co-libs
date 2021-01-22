@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PlatformUserConfigurationDto, } from './platform.types';
+import { PlatformUserConfigurationDto } from './platform.types';
 
-@BaseUrl('/platform/Session')
+@BaseUrl('/Platform/Session')
 @Injectable({ providedIn: 'root' })
 export class PlatformSessionService extends BaseApi {
   constructor(injector: Injector) {
@@ -13,10 +13,10 @@ export class PlatformSessionService extends BaseApi {
   
     /**
      * @param url /Platform/Session/GetCurrentUserConfiguration
-     * 获取当前用户配置信息
+     * 暂无备注
      */
 
-    @GET('getCurrentUserConfiguration')
+    @GET('GetCurrentUserConfiguration')
     getCurrentUserConfiguration(
         @Payload
         _req: {client?:string} 

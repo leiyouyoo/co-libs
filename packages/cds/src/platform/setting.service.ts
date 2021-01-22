@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PlatformSettingDto, } from './platform.types';
+import { PlatformSettingDto } from './platform.types';
 
-@BaseUrl('/platform/Setting')
+@BaseUrl('/Platform/Setting')
 @Injectable({ providedIn: 'root' })
 export class PlatformSettingService extends BaseApi {
   constructor(injector: Injector) {
@@ -13,10 +13,10 @@ export class PlatformSettingService extends BaseApi {
   
     /**
      * @param url /Platform/Setting/GetCurrentUserSetting
-     * 获取用户指定键设置信息
+     * 暂无备注
      */
 
-    @GET('getCurrentUserSetting')
+    @GET('GetCurrentUserSetting')
     getCurrentUserSetting(
         @Payload
         _req: {key?:string} 
@@ -28,10 +28,10 @@ export class PlatformSettingService extends BaseApi {
 
     /**
      * @param url /Platform/Setting/SetCurrentUserSetting
-     * 设置信息
+     * 暂无备注
      */
 
-    @POST('setCurrentUserSetting')
+    @POST('SetCurrentUserSetting')
     setCurrentUserSetting(
         @Payload
         _req:PlatformSettingDto
@@ -43,10 +43,10 @@ export class PlatformSettingService extends BaseApi {
 
     /**
      * @param url /Platform/Setting/GetCurrentUserSettings
-     * 获取当前用户设置
+     * 暂无备注
      */
 
-    @GET('getCurrentUserSettings')
+    @GET('GetCurrentUserSettings')
     getCurrentUserSettings(
         @Payload
         _req: {} 

@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBCostItemDto,PUBPagedResultDto,PUBCostItemCheckDto,PUBListResultDto,PUBCostItemFlatDto, } from './pub.types';
+import { PUBCostItemDto,PUBPagedResultDto1,PUBCostItemCheckDto,PUBListResultDto1,PUBCostItemFlatDto } from './pub.types';
 
-@BaseUrl('/pub/CostItem')
+@BaseUrl('/PUB/CostItem')
 @Injectable({ providedIn: 'root' })
 export class PUBCostItemService extends BaseApi {
   constructor(injector: Injector) {
@@ -16,7 +16,7 @@ export class PUBCostItemService extends BaseApi {
      * 获取费用代码明细
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -31,12 +31,12 @@ export class PUBCostItemService extends BaseApi {
      * 获取费用代码列表
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
         _req: {code?:string,name?:string,property?:boolean,isValid?:boolean,parentId?:string} 
 
-    ): Observable<PUBPagedResultDto<PUBCostItemDto>> {
+    ): Observable<PUBPagedResultDto1<PUBCostItemDto>> {
         return null as any
     }
 
@@ -46,7 +46,7 @@ export class PUBCostItemService extends BaseApi {
      * 校验重复性数据
      */
 
-    @POST('check')
+    @POST('Check')
     check(
         @Payload
         _req:PUBCostItemCheckDto
@@ -61,7 +61,7 @@ export class PUBCostItemService extends BaseApi {
      * 创建或更新费用代码
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PUBCostItemDto
@@ -76,7 +76,7 @@ export class PUBCostItemService extends BaseApi {
      * 创建费用代码
      */
 
-    @POST('create')
+    @POST('Create')
     create(
         @Payload
         _req:PUBCostItemDto
@@ -91,7 +91,7 @@ export class PUBCostItemService extends BaseApi {
      * 更新地区
      */
 
-    @PUT('update')
+    @PUT('Update')
     update(
         @Payload
         _req:PUBCostItemDto
@@ -106,7 +106,7 @@ export class PUBCostItemService extends BaseApi {
      * 删除地区
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 
@@ -121,12 +121,12 @@ export class PUBCostItemService extends BaseApi {
      * 获取树
      */
 
-    @GET('getTree')
+    @GET('GetTree')
     getTree(
         @Payload
         _req: {parentId?:string} 
 
-    ): Observable<PUBListResultDto<PUBCostItemDto>> {
+    ): Observable<PUBListResultDto1<PUBCostItemDto>> {
         return null as any
     }
 
@@ -136,12 +136,12 @@ export class PUBCostItemService extends BaseApi {
      * 获取最顶级的集合
      */
 
-    @GET('getRootTree')
+    @GET('GetRootTree')
     getRootTree(
         @Payload
         _req: {} 
 
-    ): Observable<PUBListResultDto<PUBCostItemFlatDto>> {
+    ): Observable<PUBListResultDto1<PUBCostItemFlatDto>> {
         return null as any
     }
 
@@ -151,12 +151,12 @@ export class PUBCostItemService extends BaseApi {
      * 根据父级Id获取扁平子集
      */
 
-    @GET('getChildren')
+    @GET('GetChildren')
     getChildren(
         @Payload
         _req: {parentId?:string} 
 
-    ): Observable<PUBListResultDto<PUBCostItemFlatDto>> {
+    ): Observable<PUBListResultDto1<PUBCostItemFlatDto>> {
         return null as any
     }
 

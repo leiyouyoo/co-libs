@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PlatformOrganizationUnitDto,PlatformListResultDto,PlatformUserInfo,PlatformPagedResultDto,PlatformIMContactGroupDto,PlatformContactUserWithPinyinDto,PlatformSetRemarkAndDescInput,PlatformContactUserDto,PlatformOrganizationUnitUserDto,PlatformMoveOrganizationUnitInput,PlatformEntityDto, } from './platform.types';
+import { PlatformListResultDto1,PlatformOrganizationUnitDto,PlatformPagedResultDto1,PlatformUserInfo,PlatformIMContactGroupDto,PlatformContactUserWithPinyinDto,PlatformSetRemarkAndDescInput,PlatformContactUserDto,PlatformOrganizationUnitUserDto,PlatformMoveOrganizationUnitInput,PlatformEntityDto1 } from './platform.types';
 
-@BaseUrl('/platform/OrganizationUnit')
+@BaseUrl('/Platform/OrganizationUnit')
 @Injectable({ providedIn: 'root' })
 export class PlatformOrganizationUnitService extends BaseApi {
   constructor(injector: Injector) {
@@ -13,40 +13,40 @@ export class PlatformOrganizationUnitService extends BaseApi {
   
     /**
      * @param url /Platform/OrganizationUnit/GetByUserId
-     * 获取用户所在组织机构
+     * 暂无备注
      */
 
-    @GET('getByUserId')
+    @GET('GetByUserId')
     getByUserId(
         @Payload
         _req: {userId?:number} 
 
-    ): Observable<PlatformListResultDto<PlatformOrganizationUnitDto>> {
+    ): Observable<PlatformListResultDto1<PlatformOrganizationUnitDto>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/OrganizationUnit/GetGroupOrganizationUnits
-     * 获取所有组织机构（分层级）
+     * 暂无备注
      */
 
-    @GET('getGroupOrganizationUnits')
+    @GET('GetGroupOrganizationUnits')
     getGroupOrganizationUnits(
         @Payload
         _req: {} 
 
-    ): Observable<PlatformListResultDto<PlatformOrganizationUnitDto>> {
+    ): Observable<PlatformListResultDto1<PlatformOrganizationUnitDto>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/OrganizationUnit/GetAsync
-     * 获取组织机构详情
+     * 暂无备注
      */
 
-    @GET('getAsync')
+    @GET('GetAsync')
     getAsync(
         @Payload
         _req: {id?:string} 
@@ -58,115 +58,115 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/GetUsersByOrganizationUnitId
-     * 获取组织机构下的用户
+     * 暂无备注
      */
 
-    @GET('getUsersByOrganizationUnitId')
+    @GET('GetUsersByOrganizationUnitId')
     getUsersByOrganizationUnitId(
         @Payload
         _req: {searchText?:string,organizationUnitId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PlatformPagedResultDto<PlatformUserInfo>> {
+    ): Observable<PlatformPagedResultDto1<PlatformUserInfo>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/OrganizationUnit/GetUsersByCompanyCustomerId
-     * 获取公司下的用户
+     * 暂无备注
      */
 
-    @GET('getUsersByCompanyCustomerId')
+    @GET('GetUsersByCompanyCustomerId')
     getUsersByCompanyCustomerId(
         @Payload
         _req: {userId?:number,searchText?:string,customerId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PlatformPagedResultDto<PlatformUserInfo>> {
+    ): Observable<PlatformPagedResultDto1<PlatformUserInfo>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/OrganizationUnit/GetSaleUsers
-     * 获取业务员
+     * 暂无备注
      */
 
-    @GET('getSaleUsers')
+    @GET('GetSaleUsers')
     getSaleUsers(
         @Payload
         _req: {userId?:number,searchText?:string,isOwnDepartment?:boolean,includeOrganization?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PlatformPagedResultDto<PlatformUserInfo>> {
+    ): Observable<PlatformPagedResultDto1<PlatformUserInfo>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/OrganizationUnit/GetAllUsersByOrganizationUnitId
-     * 获取组织机构下的所有用户（平台用）
+     * 暂无备注
      */
 
-    @GET('getAllUsersByOrganizationUnitId')
+    @GET('GetAllUsersByOrganizationUnitId')
     getAllUsersByOrganizationUnitId(
         @Payload
         _req: {id?:string} 
 
-    ): Observable<PlatformListResultDto<PlatformUserInfo>> {
+    ): Observable<PlatformListResultDto1<PlatformUserInfo>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/OrganizationUnit/GetCustomerServiceUsers
-     * 获取客服人员
+     * 暂无备注
      */
 
-    @GET('getCustomerServiceUsers')
+    @GET('GetCustomerServiceUsers')
     getCustomerServiceUsers(
         @Payload
         _req: {ids?:any[],searchText?:string,type?:number,organizationType?:number,isOwnDepartment?:boolean,organizationUnitId?:string,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PlatformPagedResultDto<PlatformUserInfo>> {
+    ): Observable<PlatformPagedResultDto1<PlatformUserInfo>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/OrganizationUnit/GetUsersAndOrganizationUnit
-     * 获取组织机构下的用户带上组织机构、职位信息（用于IM ）
+     * 暂无备注
      */
 
-    @GET('getUsersAndOrganizationUnit')
+    @GET('GetUsersAndOrganizationUnit')
     getUsersAndOrganizationUnit(
         @Payload
         _req: {input?:object} 
 
-    ): Observable<PlatformListResultDto<PlatformIMContactGroupDto>> {
+    ): Observable<PlatformListResultDto1<PlatformIMContactGroupDto>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/OrganizationUnit/GetMyWorkers
-     * 
+     * 暂无备注
      */
 
-    @GET('getMyWorkers')
+    @GET('GetMyWorkers')
     getMyWorkers(
         @Payload
         _req: {input?:object} 
 
-    ): Observable<PlatformListResultDto<PlatformContactUserWithPinyinDto>> {
+    ): Observable<PlatformListResultDto1<PlatformContactUserWithPinyinDto>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/OrganizationUnit/SetRemarkAndDescAsync
-     * 
+     * 暂无备注
      */
 
-    @POST('setRemarkAndDescAsync')
+    @POST('SetRemarkAndDescAsync')
     setRemarkAndDescAsync(
         @Payload
         _req:PlatformSetRemarkAndDescInput
@@ -178,10 +178,10 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/GetUserDetail
-     * 获取 用户详情带职位、组织机构
+     * 暂无备注
      */
 
-    @GET('getUserDetail')
+    @GET('GetUserDetail')
     getUserDetail(
         @Payload
         _req: {userId?:number} 
@@ -193,25 +193,25 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/GetOrganizationUnitUsers
-     * 获取组织机构下的用户
+     * 暂无备注
      */
 
-    @GET('getOrganizationUnitUsers')
+    @GET('GetOrganizationUnitUsers')
     getOrganizationUnitUsers(
         @Payload
         _req: {organizationUnitId?:string,organizationUnitName?:string} 
 
-    ): Observable<PlatformListResultDto<PlatformOrganizationUnitUserDto>> {
+    ): Observable<PlatformListResultDto1<PlatformOrganizationUnitUserDto>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/OrganizationUnit/GetPositionUserDetail
-     * 获取用户详情
+     * 暂无备注
      */
 
-    @GET('getPositionUserDetail')
+    @GET('GetPositionUserDetail')
     getPositionUserDetail(
         @Payload
         _req: {userId?:number} 
@@ -223,40 +223,40 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/GetAll
-     * 获取组织节点集合
+     * 暂无备注
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
         _req: {parentId?:string,isRecursion?:boolean,type?:number} 
 
-    ): Observable<PlatformListResultDto<PlatformOrganizationUnitDto>> {
+    ): Observable<PlatformListResultDto1<PlatformOrganizationUnitDto>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/OrganizationUnit/GetAllListAsync
-     * 获取全部组织节点集合
+     * 暂无备注
      */
 
-    @GET('getAllListAsync')
+    @GET('GetAllListAsync')
     getAllListAsync(
         @Payload
         _req: {searchText?:string} 
 
-    ): Observable<PlatformListResultDto<PlatformOrganizationUnitDto>> {
+    ): Observable<PlatformListResultDto1<PlatformOrganizationUnitDto>> {
         return null as any
     }
 
 
     /**
      * @param url /Platform/OrganizationUnit/CreateOrUpdate
-     * 保存组织项
+     * 暂无备注
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PlatformOrganizationUnitDto
@@ -268,10 +268,10 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/Move
-     * 移动组织节点
+     * 暂无备注
      */
 
-    @POST('move')
+    @POST('Move')
     move(
         @Payload
         _req:PlatformMoveOrganizationUnitInput
@@ -283,10 +283,10 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/Delete
-     * 删除组织节点
+     * 暂无备注
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 
@@ -298,13 +298,13 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/Recover
-     * 恢复组织
+     * 暂无备注
      */
 
-    @POST('recover')
+    @POST('Recover')
     recover(
         @Payload
-        _req:PlatformEntityDto<any>
+        _req:PlatformEntityDto1<any>
 
     ): Observable<any> {
         return null as any
@@ -313,13 +313,13 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/Cancel
-     * 作废组织
+     * 暂无备注
      */
 
-    @POST('cancel')
+    @POST('Cancel')
     cancel(
         @Payload
-        _req:PlatformEntityDto<any>
+        _req:PlatformEntityDto1<any>
 
     ): Observable<any> {
         return null as any
@@ -328,10 +328,10 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
     /**
      * @param url /Platform/OrganizationUnit/GetOrganizationUnitsByUserName
-     * 根据用户名称模糊获取所属组织架构
+     * 暂无备注
      */
 
-    @GET('getOrganizationUnitsByUserName')
+    @GET('GetOrganizationUnitsByUserName')
     getOrganizationUnitsByUserName(
         @Payload
         _req: {searchText?:string} 

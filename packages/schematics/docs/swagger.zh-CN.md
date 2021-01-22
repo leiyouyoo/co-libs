@@ -7,7 +7,7 @@ type: Documents
 ## 写在前面
 
 ```bash
- ng g co-cli:swagger --name fcm --url http://192.168.1.5:8002/swagger/FCM/swagger.json --path xxx --entity Settings
+ ng g co-cli:swagger --name CSP --url http://api.dev.com/swagger/CSP/swagger.json
 ```
 
 ## 命令格式
@@ -23,7 +23,6 @@ ng g co-cli:swagger --name xxx --url http://192.168.1.5:8002/swagger/xxx/swagger
 | `--name`             | 命名文件名称                                           |
 | `--url`              | 请求接口地址                                           |
 | `--path`             | 指定生成目录                                           |
-| `--entity`           |  指定生成某个实体（不填写默认生成所有）                  |
 
 ## 生成路径
 

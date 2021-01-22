@@ -23,6 +23,26 @@ interface AddWidget {
   styleUrls: ['./add-widget-panel.component.less']
 })
 export class AddWidgetPanelComponent implements OnInit {
+  get sizeList(): Size[] {
+    if (this.selectedItem.sizeList) {
+      return this.selectedItem.sizeList.map(o => {
+        o.w = 115 * o.width;
+        o.h = 118 * o.height;
+        if (o.width === 1 && o.height === 1) {
+          o.w *= 2;
+          o.h *= 2;
+        }
+
+        return o;
+      })
+    }
+    return this._defaultSizeList.map(o => {
+      o.w = 115 * o.width;
+      o.h = 118 * o.height;
+      return o;
+    })
+  }
+
   @Input() items: any[] = []
   @Input() ngxWidgetGrid: NgxWidgetGridComponent;
   @Output() addWidget = new EventEmitter<AddWidget>();
@@ -31,22 +51,17 @@ export class AddWidgetPanelComponent implements OnInit {
     return this.items?.[this.selectedIndex];
   }
 
-  sizeList: Size[] = [
+  private _defaultSizeList: Size[] = [
     { w: 460, h: 236, height: 2, width: 4, },
     { w: 460, h: 118, height: 1, width: 4, },
-    { height: 2, width: 4, },
-    { height: 2, width: 4, },
-    { height: 2, width: 4, },
-  ].map(o => {
-    o.w = 115 * o.width;
-    o.h = 118 * o.height;
-    return o;
-  });
+    { height: 2, width: 3, },
+  ]
 
   constructor(public coWidgetItemSource: CoWidgetItemSource,
               ) { }
 
   ngOnInit(): void {
+
   }
 
   onAddWidget(size: Size) {
@@ -65,5 +80,9 @@ export class AddWidgetPanelComponent implements OnInit {
       this.addWidget.emit({ rect: { ...rect, width: size.width, height: size.height } as any, index: this.selectedItem.index, })
     }
     console.log(rect);
+  }
+
+  onItemClick(index: number, e) {
+    this.selectedIndex = index
   }
 }

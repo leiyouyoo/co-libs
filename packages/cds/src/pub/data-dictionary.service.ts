@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBDataDictionaryDto,PUBPagedResultDto,PUBDataDictionaryCheckDto,PUBChangeDataDictionnaryStateInput,PUBGetAllDataDictionaryForUiPickerInput,PUBDataDictionaryUiPickerDto, } from './pub.types';
+import { PUBDataDictionaryDto,PUBPagedResultDto1,PUBDataDictionaryCheckDto,PUBChangeDataDictionnaryStateInput,PUBGetAllDataDictionaryForUiPickerInput,PUBDataDictionaryUiPickerDto } from './pub.types';
 
-@BaseUrl('/pub/DataDictionary')
+@BaseUrl('/PUB/DataDictionary')
 @Injectable({ providedIn: 'root' })
 export class PUBDataDictionaryService extends BaseApi {
   constructor(injector: Injector) {
@@ -16,7 +16,7 @@ export class PUBDataDictionaryService extends BaseApi {
      * 获取数据字典明细
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -31,12 +31,12 @@ export class PUBDataDictionaryService extends BaseApi {
      * 获取数据字典列表
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
         _req: {code?:string,name?:string,typeId?:string,typeCode?:string,isValid?:boolean,sorting?:string,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PUBPagedResultDto<PUBDataDictionaryDto>> {
+    ): Observable<PUBPagedResultDto1<PUBDataDictionaryDto>> {
         return null as any
     }
 
@@ -46,7 +46,7 @@ export class PUBDataDictionaryService extends BaseApi {
      * 校验数据字典重复性
      */
 
-    @POST('check')
+    @POST('Check')
     check(
         @Payload
         _req:PUBDataDictionaryCheckDto
@@ -61,7 +61,7 @@ export class PUBDataDictionaryService extends BaseApi {
      * 创建或更新数据字典
      */
 
-    @POST('createOrUpdate')
+    @POST('CreateOrUpdate')
     createOrUpdate(
         @Payload
         _req:PUBDataDictionaryDto
@@ -76,7 +76,7 @@ export class PUBDataDictionaryService extends BaseApi {
      * 创建数据字典
      */
 
-    @POST('create')
+    @POST('Create')
     create(
         @Payload
         _req:PUBDataDictionaryDto
@@ -91,7 +91,7 @@ export class PUBDataDictionaryService extends BaseApi {
      * 更新数据字典
      */
 
-    @PUT('update')
+    @PUT('Update')
     update(
         @Payload
         _req:PUBDataDictionaryDto
@@ -106,7 +106,7 @@ export class PUBDataDictionaryService extends BaseApi {
      * 删除数据字典
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 
@@ -121,7 +121,7 @@ export class PUBDataDictionaryService extends BaseApi {
      * 获取贸易类型类别
      */
 
-    @GET('getTradeTypes')
+    @GET('GetTradeTypes')
     getTradeTypes(
         @Payload
         _req: {} 
@@ -136,7 +136,7 @@ export class PUBDataDictionaryService extends BaseApi {
      * 根据贸易类型获取贸易条款
      */
 
-    @GET('getIncotermsByTradeType')
+    @GET('GetIncotermsByTradeType')
     getIncotermsByTradeType(
         @Payload
         _req: {tradeType?:number} 
@@ -151,7 +151,7 @@ export class PUBDataDictionaryService extends BaseApi {
      * 修改数据字典状态
      */
 
-    @POST('changeDataDictionnaryState')
+    @POST('ChangeDataDictionnaryState')
     changeDataDictionnaryState(
         @Payload
         _req:PUBChangeDataDictionnaryStateInput
@@ -166,12 +166,12 @@ export class PUBDataDictionaryService extends BaseApi {
      * 提供给UI数据字典选择器的服务接口
      */
 
-    @POST('getAllForUiPicker')
+    @POST('GetAllForUiPicker')
     getAllForUiPicker(
         @Payload
         _req:PUBGetAllDataDictionaryForUiPickerInput
 
-    ): Observable<PUBPagedResultDto<PUBDataDictionaryUiPickerDto>> {
+    ): Observable<PUBPagedResultDto1<PUBDataDictionaryUiPickerDto>> {
         return null as any
     }
 

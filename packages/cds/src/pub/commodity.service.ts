@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { PUBCommodityDto,PUBListResultDto,PUBCommodityCheckInputDto,PUBGetAllCommodityForUiPickerInput,PUBCommodityUiPickerDto,PUBPagedResultDto, } from './pub.types';
+import { PUBListResultDto1,PUBCommodityDto,PUBCommodityCheckInputDto,PUBGetAllCommodityForUiPickerInput,PUBPagedResultDto1,PUBCommodityUiPickerDto } from './pub.types';
 
-@BaseUrl('/pub/Commodity')
+@BaseUrl('/PUB/Commodity')
 @Injectable({ providedIn: 'root' })
 export class PUBCommodityService extends BaseApi {
   constructor(injector: Injector) {
@@ -16,12 +16,12 @@ export class PUBCommodityService extends BaseApi {
      * 分页获取品名顶级父类集合
      */
 
-    @GET('getAll')
+    @GET('GetAll')
     getAll(
         @Payload
         _req: {isValid?:boolean,text?:string,isRecursion?:boolean,maxResultCount?:number,skipCount?:number} 
 
-    ): Observable<PUBListResultDto<PUBCommodityDto>> {
+    ): Observable<PUBListResultDto1<PUBCommodityDto>> {
         return null as any
     }
 
@@ -31,7 +31,7 @@ export class PUBCommodityService extends BaseApi {
      * 获取品名明细
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -46,7 +46,7 @@ export class PUBCommodityService extends BaseApi {
      * 品名重复校验
      */
 
-    @POST('check')
+    @POST('Check')
     check(
         @Payload
         _req:PUBCommodityCheckInputDto
@@ -61,7 +61,7 @@ export class PUBCommodityService extends BaseApi {
      * 创建品名
      */
 
-    @POST('create')
+    @POST('Create')
     create(
         @Payload
         _req:PUBCommodityDto
@@ -76,7 +76,7 @@ export class PUBCommodityService extends BaseApi {
      * 更新品名
      */
 
-    @PUT('update')
+    @PUT('Update')
     update(
         @Payload
         _req:PUBCommodityDto
@@ -91,7 +91,7 @@ export class PUBCommodityService extends BaseApi {
      * 删除品名
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 
@@ -106,12 +106,12 @@ export class PUBCommodityService extends BaseApi {
      * 提供给UI品名选择器服务接口
      */
 
-    @POST('getAllForUiPicker')
+    @POST('GetAllForUiPicker')
     getAllForUiPicker(
         @Payload
         _req:PUBGetAllCommodityForUiPickerInput
 
-    ): Observable<PUBPagedResultDto<PUBCommodityUiPickerDto>> {
+    ): Observable<PUBPagedResultDto1<PUBCommodityUiPickerDto>> {
         return null as any
     }
 

@@ -5,7 +5,6 @@ import { NgxWidgetGridComponent } from '@co/cbc/web/ngx-widget-grid';
 @Directive({
   selector: 'ngx-widget-grid',
   host: {
-    '[style.height.px]': `(el.clientWidth / 4) * host.rows`,
   },
 })
 export class WidgetGridResizeDirective implements OnInit, DoCheck {
@@ -15,7 +14,10 @@ export class WidgetGridResizeDirective implements OnInit, DoCheck {
       // this.host.rows++;
       // this.host.rows++;
     } else {
-      this.host.rows = this.host.rows - getBottomEmptyRow(this.host);
+      const emptyRow = getBottomEmptyRow(this.host)
+      if ((this.host.rows - emptyRow) > 0) {
+        this.host.rows = this.host.rows - emptyRow;
+      }
     }
   }
   el: HTMLElement;
@@ -34,6 +36,6 @@ export class WidgetGridResizeDirective implements OnInit, DoCheck {
   }
 
   ngDoCheck() {
-    // this.renderer2.setStyle(this.el, 'height', (this.el.clientWidth / 4) * this.host.rows + 'px')
+    this.renderer2.setStyle(this.el, 'height', (this.el.clientWidth / 4) * this.host.rows + 'px')
   }
 }
