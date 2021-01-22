@@ -2,9 +2,10 @@ import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {
   CRMContactExternalService,
-  CRMCustomerExternalService, CRMLocationExternalService,
+  CRMCustomerExternalService,
+  CRMLocationExternalService,
   CRMPartnerExternalService,
-  CRMExternalLocationDto
+  CRMExternalLocationDto,
 } from '../crm';
 import { PUBPlaceService, PUBRegionService, PUBRegionDto } from '@co/cds';
 
@@ -13,7 +14,6 @@ enum ViewableType {
   MyConnections = 1,
   SpecificConnections = 2,
 }
-
 
 @Component({
   selector: 'location-form',
@@ -56,7 +56,7 @@ export class LocationFormComponent implements OnInit {
     private pubRegionService: PUBRegionService,
     private pubPlaceService: PUBPlaceService,
   ) {
-    this.pubRegionService.getAll({}).subscribe((data) => (this.regions = (data as any).items));
+    this.pubRegionService.getAll({}).subscribe(data => (this.regions = (data as any).items));
   }
 
   ngOnInit() {
@@ -111,7 +111,7 @@ export class LocationFormComponent implements OnInit {
       param.customerId = this.selectcustomerId;
     }
 
-    this.crmContactExternalService.getByCustomerOrPartner(param).subscribe((data) => (this.contacts = (data as any).items));
+    this.crmContactExternalService.getByCustomerOrPartner(param).subscribe(data => (this.contacts = (data as any).items));
   }
 
   getPartnerList() {
@@ -119,18 +119,18 @@ export class LocationFormComponent implements OnInit {
       skipCount: 0,
       maxResultCount: 1000,
     };
-    this.crmPartnerExternalService.getAll(input).subscribe((resrul) => {
+    this.crmPartnerExternalService.getAll(input).subscribe(resrul => {
       this.partnerList = resrul.items;
     });
   }
 
   getCompanies() {
-    this.crmCustomerExternalService.getCustomerAndPartner({ customerId: this.customerId! }).subscribe((data) => {
+    this.crmCustomerExternalService.getCustomerAndPartner({ customerId: this.customerId! }).subscribe(data => {
       this.customerPartnerList = data as any;
     });
   }
 
-  getRegions() { }
+  getRegions() {}
 
   checkValid(): boolean {
     this.submitButton.nativeElement.click();
@@ -160,7 +160,7 @@ export class LocationFormComponent implements OnInit {
   }
 
   regionChange(e, isEdit = false, ev?) {
-    this.pubRegionService.getAll({ parentId: e }).subscribe((data) => {
+    this.pubRegionService.getAll({ parentId: e }).subscribe(data => {
       this.states = data.items;
       this.stateRequired = data.items.length > 0;
       if (!isEdit) {
@@ -178,7 +178,7 @@ export class LocationFormComponent implements OnInit {
 
   getCityList(regionId) {
     if (!regionId) return;
-    this.pubPlaceService.getAll({ regionId, isCity: true, maxResultCount: 200 } as any).subscribe((data: any) => {
+    this.pubPlaceService.getAll({ regionId, isCity: true, maxResultCount: 999 } as any).subscribe((data: any) => {
       this.cityList = data.items;
     });
   }
