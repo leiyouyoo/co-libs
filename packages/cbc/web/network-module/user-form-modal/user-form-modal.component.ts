@@ -150,19 +150,19 @@ export class UserFormModalComponent implements OnInit {
             this.newUserSetting.show()
           }*/
           },
-          (error) => {},
+          error => {},
         );
     }
   }
 
   getRoles(isParent: boolean) {
     if (isParent) {
-      this.ssoService.getParentRoles({ parentId: this.customer.editionRoleId, type: 1 }).subscribe((data) => {
-        this.roleList = data as any;
+      this.ssoService.getParentRoles({ parentId: this.customer.editionRoleId, type: 1 }).subscribe(data => {
+        this.roleList = data.items;
       });
     } else {
-      this.ssoService.getParentOrChildrens({ parentId: this.customer.editionRoleId, type: 1 }).subscribe((data) => {
-        this.roleList = data as any;
+      this.ssoService.getParentOrChildrens({ parentId: this.customer.editionRoleId, type: 1 }).subscribe(data => {
+        this.roleList = data.items;
       });
     }
   }
