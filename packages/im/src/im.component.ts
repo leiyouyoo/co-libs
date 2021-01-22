@@ -708,7 +708,7 @@ export class ImComponent implements OnInit {
       !isForward ? (this.hideBottomShowMore = true) : (this.hideTopShowMore = true);
     }
     res.items.forEach(e => {
-      e.flow = e.from === this.myImId ? 'out' : 'in';
+      e.flow = e.from.toString() === this.myImId.toString() ? 'out' : 'in';
       e.anchorImgUrl = this.isC2C ? e.fromImageUrl : e.fromAccountImageUrl;
       e.type = e.msgBody[0].msgType;
       e.payload = { text: e.msgBody[0].msgContent.Text };
