@@ -29,6 +29,7 @@ export class CoEditorComponent implements OnInit, OnDestroy {
   @Input() coType: string = 'inline';
   @Input() coConfig: any = {};
   @Input() coPDFName: string;
+  @Input() coReadOnly = false;
   @Output() coChange = new EventEmitter<any>();
 
   constructor(private cdr: ChangeDetectorRef) {}
@@ -53,6 +54,7 @@ export class CoEditorComponent implements OnInit, OnDestroy {
       title: 'CITYOCEAN EDITOR',
       extraPlugins: 'print,exportpdf',
       allowedContent: true,
+      readOnly: this.coReadOnly,
       toolbar: [
         {
           name: 'various',
