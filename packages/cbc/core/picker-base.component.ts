@@ -112,7 +112,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
         return this.fetchRemoteData(condition).pipe(
           map((data: any) => {
             if (data.items) {
-              data.items = [...this.importList, data.items];
+              data.items = [...this.importList, ...data.items];
             }
             return data;
           }),
