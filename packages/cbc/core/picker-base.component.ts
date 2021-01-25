@@ -17,7 +17,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
 
   //#region  构造函数
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef) { }
 
   //#endregion
 
@@ -54,6 +54,8 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   @Input() coPageSize: number = 20;
   @Input() coFilter: any = { includeDeleted: false };
 
+  @Input() coPushOption: any = null;
+
   @Output() readonly coOpenChange = new EventEmitter<boolean>();
   @Output() readonly coBlur = new EventEmitter<void>();
   @Output() readonly coFocus = new EventEmitter<void>();
@@ -76,8 +78,8 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   skipCount = 0;
   hasLoadedByids = false;
   searchChange$: any = new BehaviorSubject({});
-  onChange: OnChangeType = () => {};
-  onTouched: OnTouchedType = () => {};
+  onChange: OnChangeType = () => { };
+  onTouched: OnTouchedType = () => { };
   coFilterOption = () => true;
 
   //#endregion
@@ -85,6 +87,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   //#region 组件生命周期钩子
 
   ngOnInit() {
+    this.coPushOption && this.optionList.push({ value: this.coPushOption?.value, text: this.coPushOption?.text })
     const optionList$: Observable<string[]> = this.searchChange$.asObservable().pipe(
       filter(
         (condition: any) =>
