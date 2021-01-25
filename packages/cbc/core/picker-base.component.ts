@@ -54,7 +54,6 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   @Input() coPageSize: number = 20;
   @Input() coFilter: any = { includeDeleted: false };
 
-  @Input() coPushOption: any = null;
 
   @Output() readonly coOpenChange = new EventEmitter<boolean>();
   @Output() readonly coBlur = new EventEmitter<void>();
@@ -87,7 +86,6 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   //#region 组件生命周期钩子
 
   ngOnInit() {
-    this.coPushOption && this.optionList.push({ value: this.coPushOption?.value, text: this.coPushOption?.text })
     const optionList$: Observable<string[]> = this.searchChange$.asObservable().pipe(
       filter(
         (condition: any) =>
