@@ -37,7 +37,7 @@ export class CustomerPickerComponent extends PickerComponentBase {
   //#endregion
 
   fetchRemoteData(_condition: any): Observable<any> {
-    _condition.sorting = "code";
+    _condition.sorting = 'code';
     _condition.maxResultCount = 20;
     return this.customerService.getAllBySearch(_condition);
   }

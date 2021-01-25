@@ -5,7 +5,7 @@ import * as _ from 'lodash';
 
 import { InputBoolean, NzSafeAny, NzSelectComponent, NzSelectModeType, NzSelectSizeType, OnChangeType, OnTouchedType } from 'ng-zorro-antd';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, filter, switchMap, takeUntil } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, filter, map, switchMap, takeUntil } from 'rxjs/operators';
 
 import { DropdownColumn, DropdownMode, LoadMode } from './index';
 
@@ -53,6 +53,11 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   @Input() coDebounceTime: number = 200;
   @Input() coPageSize: number = 20;
   @Input() coFilter: any = { includeDeleted: false };
+  @Input() set coImportList(arr: any) {
+    if (arr) {
+      this.ngOnInit();
+    }
+  }
 
   @Output() readonly coOpenChange = new EventEmitter<boolean>();
   @Output() readonly coBlur = new EventEmitter<void>();
@@ -103,7 +108,14 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
           ...this.coFilter,
         };
         // return this.customerService.getAllBySearch(condition);
-        return this.fetchRemoteData(condition);
+        return this.fetchRemoteData(condition).pipe(
+          map((data: any) => {
+            if (data.items) {
+              data.items = [...this.coImportList, data.items];
+            }
+            return data;
+          }),
+        );
       }),
       takeUntil(this.destroy$),
     );
