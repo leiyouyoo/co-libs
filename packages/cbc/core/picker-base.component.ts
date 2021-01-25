@@ -14,10 +14,10 @@ import { DropdownColumn, DropdownMode, LoadMode } from './index';
  */
 export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDestroy {
   //#endregion
-
+  importList = [];
   //#region  构造函数
 
-  constructor(private cdr: ChangeDetectorRef) { }
+  constructor(private cdr: ChangeDetectorRef) {}
 
   //#endregion
 
@@ -55,10 +55,10 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   @Input() coFilter: any = { includeDeleted: false };
   @Input() set coImportList(arr: any) {
     if (arr) {
+      this.importList = arr;
       this.ngOnInit();
     }
   }
-
 
   @Output() readonly coOpenChange = new EventEmitter<boolean>();
   @Output() readonly coBlur = new EventEmitter<void>();
@@ -82,8 +82,8 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   skipCount = 0;
   hasLoadedByids = false;
   searchChange$: any = new BehaviorSubject({});
-  onChange: OnChangeType = () => { };
-  onTouched: OnTouchedType = () => { };
+  onChange: OnChangeType = () => {};
+  onTouched: OnTouchedType = () => {};
   coFilterOption = () => true;
 
   //#endregion
@@ -112,7 +112,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
         return this.fetchRemoteData(condition).pipe(
           map((data: any) => {
             if (data.items) {
-              data.items = [...this.coImportList, data.items];
+              data.items = [...this.importList, data.items];
             }
             return data;
           }),
