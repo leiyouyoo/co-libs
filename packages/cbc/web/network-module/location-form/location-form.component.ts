@@ -160,7 +160,7 @@ export class LocationFormComponent implements OnInit {
   }
 
   regionChange(e, isEdit = false, ev?) {
-    this.pubRegionService.getAll({ parentId: e }).subscribe(data => {
+    this.pubRegionService.getAll({ parentId: e }).subscribe((data: any) => {
       this.states = data.items;
       this.stateRequired = data.items.length > 0;
       if (!isEdit) {

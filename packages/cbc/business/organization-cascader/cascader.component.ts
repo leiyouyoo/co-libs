@@ -1,5 +1,6 @@
 import {
-  ChangeDetectionStrategy, ChangeDetectorRef,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   forwardRef,
@@ -43,11 +44,9 @@ export class CoCascaderComponent implements OnInit, ControlValueAccessor {
   coOptionList: NzCascaderOption[] | null = null;
   value: any[] | null = null;
   cascaderValue: any[] | null = null;
-  valueList:any[] =[];
+  valueList: any[] = [];
 
-  constructor(private organizationUnitService: PlatformOrganizationUnitService,
-              private cdr: ChangeDetectorRef,
-              ) {} // private organizationUnitService: OrganizationUnitService
+  constructor(private organizationUnitService: PlatformOrganizationUnitService, private cdr: ChangeDetectorRef) {} // private organizationUnitService: OrganizationUnitService
 
   ngOnInit(): void {
     //console.log(this.values);
@@ -65,60 +64,59 @@ export class CoCascaderComponent implements OnInit, ControlValueAccessor {
 
   getData(reqID?) {
     const req: any = reqID ? { ParentId: reqID } : {};
-    this.organizationUnitService.getGroupOrganizationUnits(req).subscribe(res => {
+    this.organizationUnitService.getGroupOrganizationUnits(req).subscribe((res: any) => {
       // console.log(res);
       const option: any = [];
       res.items.forEach(data => {
         option.push(this.getChildData(data));
       });
-      this.coOptionList =  option;
+      this.coOptionList = option;
 
       this.bindCascaderValue();
       //console.log(this.valueList);
-
     });
   }
 
-  getChildData(data , parentId?) {
+  getChildData(data, parentId?) {
     const newList: any = {};
     newList.value = data.id;
     newList.label = data.displayNameLocalization;
-    parentId ? newList.parentId = parentId : "";
+    parentId ? (newList.parentId = parentId) : '';
     if (data.childrenDto?.length) {
       newList.children = [];
       data.childrenDto.forEach(dto => {
-        newList.children.push(this.getChildData(dto , newList.value ));
+        newList.children.push(this.getChildData(dto, newList.value));
       });
-    }else {
+    } else {
       newList.isLeaf = true;
     }
     return newList;
   }
   //如果有传入的value值 需要重新更改option 初始化
-  getAllParentID ( option , childrenID ) {
-    option.forEach( item =>{
-      if( item.value == childrenID){
+  getAllParentID(option, childrenID) {
+    option.forEach(item => {
+      if (item.value == childrenID) {
         this.valueList.push(item.value);
         //如果有父级  需要传入完整的option
-        if( item.parentId ){
-          this.getAllParentID( this.coOptionList , item.parentId);
+        if (item.parentId) {
+          this.getAllParentID(this.coOptionList, item.parentId);
         }
-      }else{
+      } else {
         if (item.children && item.children.length > 0) {
           this.getAllParentID(item.children, childrenID);
         }
       }
-    })
+    });
   }
 
   //#region ngModel实现
 
   bindCascaderValue() {
-    if( this.value ){
-      this.getAllParentID( this.coOptionList , this.value );
+    if (this.value) {
+      this.getAllParentID(this.coOptionList, this.value);
       this.cascaderValue = this.valueList.reverse();
     } else {
-      this.cascaderValue = []
+      this.cascaderValue = [];
     }
   }
 
