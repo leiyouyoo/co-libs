@@ -42,6 +42,21 @@ export class PlatformOrganizationUnitService extends BaseApi {
 
 
     /**
+     * @param url /Platform/OrganizationUnit/GetByCustomerIdAsync
+     * 暂无备注
+     */
+
+    @GET('GetByCustomerIdAsync')
+    getByCustomerIdAsync(
+        @Payload
+        _req: {id?:string} 
+
+    ): Observable<PlatformOrganizationUnitDto> {
+        return null as any
+    }
+
+
+    /**
      * @param url /Platform/OrganizationUnit/GetAsync
      * 暂无备注
      */

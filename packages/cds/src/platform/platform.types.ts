@@ -34,10 +34,10 @@
         
          
             
-            totalCount: number;
+            totalCount?: number;
          
             
-            items: T[];
+            items?: T[];
         
         
     }
@@ -96,16 +96,16 @@
         
          
             
-            id: number;
+            id?: number;
          
             
-            name: string;
+            name?: string;
          
             
-            displayName: string;
+            displayName?: string;
          
             
-            isAssigned: boolean;
+            isAssigned?: boolean;
         
         
     }
@@ -118,10 +118,10 @@
         
          
             
-            organizationUnitId: string;
+            organizationUnitId?: string;
          
             
-            organizationUnitFullName: string;
+            organizationUnitFullName?: string;
         
         
     }
@@ -153,28 +153,28 @@
         
          
             
-            id: string;
+            id?: string;
          
             
-            groupId: string;
+            groupId?: string;
          
             
-            name: string;
+            name?: string;
          
             
-            value: string;
+            value?: string;
          
             
-            isEnabled: boolean;
+            isEnabled?: boolean;
          
             
-            numberStep: number;
+            numberStep?: number;
          
             
-            resetDateFormat: string;
+            resetDateFormat?: string;
          
             
-            description: string;
+            description?: string;
         
         
     }
@@ -320,7 +320,7 @@
         
          
             
-            items: T[];
+            items?: T[];
         
         
     }
@@ -401,10 +401,10 @@
         
          
             
-            changedPropertiesSnapshots: object;
+            changedPropertiesSnapshots?: object;
          
             
-            propertyChangesStackTree: object;
+            propertyChangesStackTree?: object;
         
         
     }
@@ -627,10 +627,10 @@
         
          
             
-            tenantName: string;
+            tenantName?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -643,10 +643,10 @@
         
          
             
-            functionPermissionIds: any[];
+            functionPermissionIds?: any[];
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -659,10 +659,10 @@
         
          
             
-            tenantIds: any[];
+            tenantIds?: any[];
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -675,10 +675,10 @@
         
          
             
-            tenantIds: any[];
+            tenantIds?: any[];
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -750,49 +750,49 @@
         
          
             
-            feedbackType: number;
+            feedbackType?: number;
          
             
-            title: string;
+            title?: string;
          
             
-            content: string;
+            content?: string;
          
             
-            feedbackUser: number;
+            feedbackUser?: number;
          
             
-            feedbackSource: string;
+            feedbackSource?: string;
          
             
-            feedbackTime: string;
+            feedbackTime?: string;
          
             
-            handleTime: string;
+            handleTime?: string;
          
             
-            handleUser: number;
+            handleUser?: number;
          
             
-            handleRemark: string;
+            handleRemark?: string;
          
             
-            navigationUrl: string;
+            navigationUrl?: string;
          
             
-            isHandle: boolean;
+            isHandle?: boolean;
          
             
-            upFileList: PlatformUploadFileDto[];
+            upFileList?: PlatformUploadFileDto[];
          
             
-            userName: string;
+            userName?: string;
          
             
-            fileNo: string;
+            fileNo?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -805,46 +805,46 @@
         
          
             
-            title: string;
+            title?: string;
          
             
-            feedbackTypeId: number;
+            feedbackTypeId?: number;
          
             
-            feedbackSource: string;
+            feedbackSource?: string;
          
             
-            userId: number;
+            userId?: number;
          
             
-            startDate: string;
+            startDate?: string;
          
             
-            endDate: string;
+            endDate?: string;
          
             
-            isHandle: boolean;
+            isHandle?: boolean;
          
             
-            ids: any[];
+            ids?: any[];
          
             
-            keyName: string;
+            keyName?: string;
          
             
-            searchText: string;
+            searchText?: string;
          
             
-            includeDeleted: boolean;
+            includeDeleted?: boolean;
          
             
-            sorting: string;
+            sorting?: string;
          
             
-            maxResultCount: number;
+            maxResultCount?: number;
          
             
-            skipCount: number;
+            skipCount?: number;
         
         
     }
@@ -857,16 +857,16 @@
         
          
             
-            feedbackSource: string;
+            feedbackSource?: string;
          
             
-            feedType: string;
+            feedType?: string;
          
             
-            sourceGroupToTypeNumber: number;
+            sourceGroupToTypeNumber?: number;
          
             
-            handleNum: number;
+            handleNum?: number;
         
         
     }
@@ -879,34 +879,34 @@
         
          
             
-            startDate: string;
+            startDate?: string;
          
             
-            endDate: string;
+            endDate?: string;
          
             
-            activeUsersNumber: number;
+            activeUsersNumber?: number;
          
             
-            feedbackSource: string;
+            feedbackSource?: string;
          
             
-            feedType: string;
+            feedType?: string;
          
             
-            isHandle: boolean;
+            isHandle?: boolean;
          
             
-            handleNum: number;
+            handleNum?: number;
          
             
-            noHandleNum: number;
+            noHandleNum?: number;
          
             
-            number: number;
+            number?: number;
          
             
-            sourceGroupToTypeNumber: number;
+            sourceGroupToTypeNumber?: number;
         
         
     }
@@ -962,7 +962,7 @@
         
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -975,13 +975,13 @@
         
          
             
-            name: string;
+            name?: string;
          
             
-            nameLocalization: string;
+            nameLocalization?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -1074,10 +1074,10 @@
         
          
             
-            id: string;
+            id?: string;
          
             
-            parentId: string;
+            parentId?: string;
         
         
     }
@@ -1090,7 +1090,7 @@
         
          
             
-            menuIds: any[];
+            menuIds?: any[];
         
         
     }
@@ -1113,10 +1113,10 @@
         
          
             
-            isActive: boolean;
+            isActive?: boolean;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -1156,13 +1156,13 @@
         
          
             
-            unreadCount: number;
+            unreadCount?: number;
          
             
-            totalCount: number;
+            totalCount?: number;
          
             
-            items: PlatformUserNotification[];
+            items?: PlatformUserNotification[];
         
         
     }
@@ -1262,16 +1262,16 @@
         
          
             
-            tenantId: number;
+            tenantId?: number;
          
             
-            userId: number;
+            userId?: number;
          
             
-            receiveNotifications: boolean;
+            receiveNotifications?: boolean;
          
             
-            notifications: PlatformNotificationSubscriptionWithDisplayNameDto[];
+            notifications?: PlatformNotificationSubscriptionWithDisplayNameDto[];
         
         
     }
@@ -1307,16 +1307,16 @@
         
          
             
-            tenantId: number;
+            tenantId?: number;
          
             
-            userId: number;
+            userId?: number;
          
             
-            receiveNotifications: boolean;
+            receiveNotifications?: boolean;
          
             
-            notifications: PlatformNotificationSubscriptionDto[];
+            notifications?: PlatformNotificationSubscriptionDto[];
         
         
     }
@@ -1345,10 +1345,10 @@
         
          
             
-            targetUsers: PlatformUserIdentifier[];
+            targetUsers?: PlatformUserIdentifier[];
          
             
-            message: string;
+            message?: string;
          
             /* 
 0 = Info
@@ -1356,7 +1356,7 @@
 2 = Warn
 3 = Error
 4 = Fatal */ 
-            severity: number;
+            severity?: number;
         
         
     }
@@ -1395,49 +1395,49 @@
         
          
             
-            userId: number;
+            userId?: number;
          
             
-            profilePictureId: string;
+            profilePictureId?: string;
          
             
-            name: string;
+            name?: string;
          
             
-            surname: string;
+            surname?: string;
          
             
-            cName: string;
+            cName?: string;
          
             
-            phoneNumber: string;
+            phoneNumber?: string;
          
             
-            email: string;
+            email?: string;
          
             
-            isActive: boolean;
+            isActive?: boolean;
          
             
-            position: string;
+            position?: string;
          
             
-            fullOrganizationUnit: string;
+            fullOrganizationUnit?: string;
          
             
-            organizationUnitLevelCode: string;
+            organizationUnitLevelCode?: string;
          
             
-            customerId: string;
+            customerId?: string;
          
             
-            companyName: string;
+            companyName?: string;
          
             
-            remark: string;
+            remark?: string;
          
             
-            description: string;
+            description?: string;
         
         
     }
@@ -1508,13 +1508,13 @@
         
          
             
-            myWorkerUserId: number;
+            myWorkerUserId?: number;
          
             
-            remark: string;
+            remark?: string;
          
             
-            description: string;
+            description?: string;
         
         
     }
@@ -1570,10 +1570,10 @@
         
          
             
-            id: string;
+            id?: string;
          
             
-            parentId: string;
+            parentId?: string;
         
         
     }
@@ -1586,10 +1586,10 @@
         
          
             
-            parentId: string;
+            parentId?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -1602,10 +1602,10 @@
         
          
             
-            userId: number;
+            userId?: number;
          
             
-            permissionIds: any[];
+            permissionIds?: any[];
         
         
     }
@@ -1618,10 +1618,10 @@
         
          
             
-            userId: number;
+            userId?: number;
          
             
-            permissionIds: any[];
+            permissionIds?: any[];
         
         
     }
@@ -1634,10 +1634,10 @@
         
          
             
-            roleId: number;
+            roleId?: number;
          
             
-            permissionIds: any[];
+            permissionIds?: any[];
         
         
     }
@@ -1650,10 +1650,10 @@
         
          
             
-            roleId: number;
+            roleId?: number;
          
             
-            permissionIds: any[];
+            permissionIds?: any[];
         
         
     }
@@ -1751,10 +1751,10 @@
         
          
             
-            userId: number;
+            userId?: number;
          
             
-            permissions: PlatformDataPermissionItem[];
+            permissions?: PlatformDataPermissionItem[];
         
         
     }
@@ -1767,10 +1767,10 @@
         
          
             
-            userId: number;
+            userId?: number;
          
             
-            permissionIds: any[];
+            permissionIds?: any[];
         
         
     }
@@ -1783,10 +1783,10 @@
         
          
             
-            roleId: number;
+            roleId?: number;
          
             
-            permissions: PlatformDataPermissionItem[];
+            permissions?: PlatformDataPermissionItem[];
         
         
     }
@@ -1799,10 +1799,10 @@
         
          
             
-            roleId: number;
+            roleId?: number;
          
             
-            permissionIds: any[];
+            permissionIds?: any[];
         
         
     }
@@ -1815,10 +1815,10 @@
         
          
             
-            tenantId: number;
+            tenantId?: number;
          
             
-            permissionIds: any[];
+            permissionIds?: any[];
         
         
     }
@@ -1892,13 +1892,13 @@
         
          
             
-            desc: string;
+            desc?: string;
          
             
-            localizationDesc: string;
+            localizationDesc?: string;
          
             
-            fullOrganizationUnit: string;
+            fullOrganizationUnit?: string;
         
         
     }
@@ -1952,10 +1952,10 @@
         
          
             
-            result: boolean;
+            result?: boolean;
          
             
-            messages: any[];
+            messages?: any[];
         
         
     }
@@ -1996,13 +1996,13 @@
         
          
             
-            userIds: any[];
+            userIds?: any[];
          
             
-            positionId: string;
+            positionId?: string;
          
             
-            isDefault: boolean;
+            isDefault?: boolean;
         
         
     }
@@ -2015,10 +2015,10 @@
         
          
             
-            userId: number;
+            userId?: number;
          
             
-            positionIds: any[];
+            positionIds?: any[];
         
         
     }
@@ -2031,10 +2031,10 @@
         
          
             
-            userId: number;
+            userId?: number;
          
             
-            positionId: string;
+            positionId?: string;
         
         
     }
@@ -2047,28 +2047,28 @@
         
          
             
-            userId: number;
+            userId?: number;
          
             
-            positionId: string;
+            positionId?: string;
          
             
-            positionName: string;
+            positionName?: string;
          
             
-            jobName: string;
+            jobName?: string;
          
             
-            jobId: string;
+            jobId?: string;
          
             
-            organizationUnitId: string;
+            organizationUnitId?: string;
          
             
-            organizationUnitName: string;
+            organizationUnitName?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -2081,13 +2081,13 @@
         
          
             
-            userId: number;
+            userId?: number;
          
             
-            positionId: string;
+            positionId?: string;
          
             
-            isDefault: boolean;
+            isDefault?: boolean;
         
         
     }
@@ -2116,28 +2116,28 @@
         
          
             
-            session: PlatformUserSessionDto;
+            session?: PlatformUserSessionDto;
          
             
-            localization: PlatformAbpUserLocalizationConfigDto;
+            localization?: PlatformAbpUserLocalizationConfigDto;
          
             
-            auth: PlatformUserAuthConfigDto;
+            auth?: PlatformUserAuthConfigDto;
          
             
-            nav: PlatformAbpUserNavConfigDto;
+            nav?: PlatformAbpUserNavConfigDto;
          
             
-            setting: PlatformAbpUserSettingConfigDto;
+            setting?: PlatformAbpUserSettingConfigDto;
          
             
-            clock: PlatformAbpUserClockConfigDto;
+            clock?: PlatformAbpUserClockConfigDto;
          
             
-            timing: PlatformAbpUserTimingConfigDto;
+            timing?: PlatformAbpUserTimingConfigDto;
          
             
-            security: PlatformAbpUserSecurityConfigDto;
+            security?: PlatformAbpUserSecurityConfigDto;
         
         
     }
@@ -2435,10 +2435,10 @@
         
          
             
-            name: string;
+            name?: string;
          
             
-            type: string;
+            type?: string;
         
         
     }
@@ -2451,16 +2451,16 @@
         
          
             
-            datas: any[];
+            datas?: any[];
          
             
-            permissionId: string;
+            permissionId?: string;
          
             
-            permissionName: string;
+            permissionName?: string;
          
             
-            isGranted: boolean;
+            isGranted?: boolean;
         
         
     }
@@ -2513,16 +2513,16 @@
         
          
             
-            name: string;
+            name?: string;
          
             
-            displayName: string;
+            displayName?: string;
          
             
-            customData: object;
+            customData?: object;
          
             
-            items: PlatformUserMenuItem[];
+            items?: PlatformUserMenuItem[];
         
         
     }
@@ -2567,19 +2567,19 @@
         
          
             
-            positionName: string;
+            positionName?: string;
          
             
-            jobName: string;
+            jobName?: string;
          
             
-            organizationUnitName: string;
+            organizationUnitName?: string;
          
             
-            organizationUnitId: string;
+            organizationUnitId?: string;
          
             
-            isDefault: boolean;
+            isDefault?: boolean;
         
         
     }
@@ -2592,13 +2592,13 @@
         
          
             
-            name: string;
+            name?: string;
          
             
-            version: string;
+            version?: string;
          
             
-            releaseDate: string;
+            releaseDate?: string;
         
         
     }
@@ -2646,10 +2646,10 @@
         
          
             
-            name: string;
+            name?: string;
          
             
-            value: string;
+            value?: string;
         
         
     }
@@ -2662,10 +2662,10 @@
         
          
             
-            message: PlatformTfsWebhookMessageDto;
+            message?: PlatformTfsWebhookMessageDto;
          
             
-            detailedMessage: PlatformTfsWebhookMessageDto;
+            detailedMessage?: PlatformTfsWebhookMessageDto;
         
         
     }

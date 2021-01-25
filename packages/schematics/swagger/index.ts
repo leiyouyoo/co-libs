@@ -246,7 +246,7 @@ function saveEntity(definitions) {
   exportAllTypeEntity = [];
 
   for (const definition in definitions) {
-    if (definition === 'CO.PUB.Application.Solutions.Dto.SolutionCurrencyDto') {
+    if (definition.includes('PUBGetAllPlaceForUiPickerInput')) {
       debugger;
     }
     let typeEntity: any = {};
@@ -317,7 +317,7 @@ function saveEntity(definitions) {
         properItem.type = fileName + name;
       }
 
-      if (entity?.required && !entity.required.some(e => e === proper) && !proper.includes('?')) {
+      if (checkRequired(entity, proper)) {
         let data = properties[proper];
         delete properties[proper];
         properties[proper + '?'] = data;
@@ -331,6 +331,19 @@ function saveEntity(definitions) {
       exportAllTypeEntity.push(typeEntity);
     }
   }
+}
+
+function checkRequired(entity, proper) {
+  let res = false;
+  if (entity && !entity.required && !proper.includes('?')) {
+    res = true;
+  }
+
+  if (entity && entity.required && !entity.required.some(e => e === proper) && !proper.includes('?')) {
+    res = true;
+  }
+
+  return res;
 }
 
 function setEntityName(ref, res = false, showAny = false) {

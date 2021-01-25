@@ -38,7 +38,7 @@
         
          
             
-            items: T[];
+            items?: T[];
         
         
     }
@@ -51,10 +51,10 @@
         
          
             /* 名称 */ 
-            name: string;
+            name?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -67,28 +67,28 @@
         
          
             /* 是否包含无效数据 */ 
-            includeInvalid: boolean;
+            includeInvalid?: boolean;
          
             
-            ids: any[];
+            ids?: any[];
          
             
-            keyName: string;
+            keyName?: string;
          
             
-            searchText: string;
+            searchText?: string;
          
             
-            includeDeleted: boolean;
+            includeDeleted?: boolean;
          
             
-            sorting: string;
+            sorting?: string;
          
             
-            maxResultCount: number;
+            maxResultCount?: number;
          
             
-            skipCount: number;
+            skipCount?: number;
         
         
     }
@@ -129,10 +129,10 @@
         
          
             
-            totalCount: number;
+            totalCount?: number;
          
             
-            items: T[];
+            items?: T[];
         
         
     }
@@ -145,7 +145,7 @@
         
          
             /* 是否含税 */ 
-            isTaxIncluded: boolean;
+            isTaxIncluded?: boolean;
          
             /* 主要运输方式
 0 = NotSet
@@ -155,28 +155,28 @@
 4 = MultiModal
 5 = Express
 6 = Truck */ 
-            transportationMode: number;
+            transportationMode?: number;
          
             
-            ids: any[];
+            ids?: any[];
          
             
-            keyName: string;
+            keyName?: string;
          
             
-            searchText: string;
+            searchText?: string;
          
             
-            includeDeleted: boolean;
+            includeDeleted?: boolean;
          
             
-            sorting: string;
+            sorting?: string;
          
             
-            maxResultCount: number;
+            maxResultCount?: number;
          
             
-            skipCount: number;
+            skipCount?: number;
         
         
     }
@@ -234,29 +234,29 @@
         
          
             /* 本地化 */ 
-            localizationText: string;
+            localizationText?: string;
          
             /* 运输模式
 0 = Unknown
 1 = Ocean
 2 = Air */ 
-            freightMethodType: number;
+            freightMethodType?: number;
          
             /* 渠道名称 */ 
-            channelGroupStr: string;
+            channelGroupStr?: string;
          
             /* 运输方式ID */ 
-            fbaFreightMethodId: string;
+            fbaFreightMethodId?: string;
          
             /* 是否含税 */ 
-            isTaxIncluded: boolean;
+            isTaxIncluded?: boolean;
          
             /* 渠道公司ID
 1、美森快船;2、海派;3、海卡;4、南航直飞;5、香港飞;6、北京飞;7、韩国飞 */ 
-            channelId: string;
+            channelId?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -269,35 +269,35 @@
         
          
             /* 创建人 */ 
-            creatorUserName: string;
+            creatorUserName?: string;
          
             /* 本地化 */ 
-            localizationText: string;
+            localizationText?: string;
          
             /* 运输模式
 0 = Unknown
 1 = Ocean
 2 = Air */ 
-            freightMethodType: number;
+            freightMethodType?: number;
          
             /* 渠道名称 */ 
-            channelGroupStr: string;
+            channelGroupStr?: string;
          
             /* 运输方式ID */ 
-            fbaFreightMethodId: string;
+            fbaFreightMethodId?: string;
          
             /* 运输方式 */ 
-            fbaFreightMethodValue: string;
+            fbaFreightMethodValue?: string;
          
             /* 是否含税 */ 
-            isTaxIncluded: boolean;
+            isTaxIncluded?: boolean;
          
             /* 渠道公司ID
 1、美森快船;2、海派;3、海卡;4、南航直飞;5、香港飞;6、北京飞;7、韩国飞 */ 
-            channelId: string;
+            channelId?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -310,10 +310,10 @@
         
          
             /* 名称 */ 
-            channelGroupStr: string;
+            channelGroupStr?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -326,28 +326,28 @@
         
          
             /* 费用组Id */ 
-            groupId: string;
+            groupId?: string;
          
             /* 费用代码 */ 
-            code: string;
+            code?: string;
          
             /* 费用名称 */ 
-            name: string;
+            name?: string;
          
             /* 是否佣金 */ 
-            isCommission: boolean;
+            isCommission?: boolean;
          
             /* 是否有效 */ 
-            isValid: boolean;
+            isValid?: boolean;
          
             /* 是特殊费用（特殊费用名称：profit\cuf，新增提示：是否加到baseport rates? 。
 默认加到base,可以勾选不添加到基本港费用。）
 0 = OtherCharging
 1 = ManagerCharging */ 
-            type: number;
+            type?: number;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -376,31 +376,31 @@
         
          
             /* 分组Id */ 
-            groupId: string;
+            groupId?: string;
          
             /* 是否包含无效数据 */ 
-            includeInvalid: boolean;
+            includeInvalid?: boolean;
          
             
-            ids: any[];
+            ids?: any[];
          
             
-            keyName: string;
+            keyName?: string;
          
             
-            searchText: string;
+            searchText?: string;
          
             
-            includeDeleted: boolean;
+            includeDeleted?: boolean;
          
             
-            sorting: string;
+            sorting?: string;
          
             
-            maxResultCount: number;
+            maxResultCount?: number;
          
             
-            skipCount: number;
+            skipCount?: number;
         
         
     }
@@ -509,31 +509,31 @@
         
          
             /* 是否包含子级 */ 
-            includeChildren: boolean;
+            includeChildren?: boolean;
          
             /* 是否包含无效数据 */ 
-            includeInvalid: boolean;
+            includeInvalid?: boolean;
          
             
-            ids: any[];
+            ids?: any[];
          
             
-            keyName: string;
+            keyName?: string;
          
             
-            searchText: string;
+            searchText?: string;
          
             
-            includeDeleted: boolean;
+            includeDeleted?: boolean;
          
             
-            sorting: string;
+            sorting?: string;
          
             
-            maxResultCount: number;
+            maxResultCount?: number;
          
             
-            skipCount: number;
+            skipCount?: number;
         
         
     }
@@ -583,28 +583,28 @@
         
          
             /* 显示名称 */ 
-            showName: string;
+            showName?: string;
          
             
-            companyName: string;
+            companyName?: string;
          
             
-            companyId: string;
+            companyId?: string;
          
             /* 银行名称 */ 
-            bankName: string;
+            bankName?: string;
          
             /* 银行账户 */ 
-            bankAccountNo: string;
+            bankAccountNo?: string;
          
             /* 账户Id */ 
-            acocuntNoId: string;
+            acocuntNoId?: string;
          
             /* 银行ID */ 
-            bankId: string;
+            bankId?: string;
          
             /* 币种 */ 
-            currency: string;
+            currency?: string;
         
         
     }
@@ -617,25 +617,25 @@
         
          
             
-            name: string;
+            name?: string;
          
             
-            displayName: string;
+            displayName?: string;
          
             
-            fullName: string;
+            fullName?: string;
          
             
-            localizationText: string;
+            localizationText?: string;
          
             
-            tenantId: number;
+            tenantId?: number;
          
             
-            isValid: boolean;
+            isValid?: boolean;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -648,25 +648,25 @@
         
          
             
-            accountNo: string;
+            accountNo?: string;
          
             
-            showName: string;
+            showName?: string;
          
             
-            companyName: string;
+            companyName?: string;
          
             
-            companyId: string;
+            companyId?: string;
          
             /* 银行名称 */ 
-            bankName: string;
+            bankName?: string;
          
             /* 银行ID */ 
-            bankId: string;
+            bankId?: string;
          
             /* 币种 */ 
-            currency: string;
+            currency?: string;
         
         
     }
@@ -822,44 +822,44 @@
         
          
             /* 主键 */ 
-            id: string;
+            id?: string;
          
             /* 公司Id */ 
-            companyId: string;
+            companyId?: string;
          
             /* Required
 客户ID */ 
-            customerId: string;
+            customerId?: string;
          
             /* 财务解决方案Id */ 
-            solutionId: string;
+            solutionId?: string;
          
             /* Required, Max length = 10
 本位币 */ 
-            standardCurrency: string;
+            standardCurrency?: string;
          
             /* Required, Max length = 10
 默认币种 */ 
-            defaultCurrency: string;
+            defaultCurrency?: string;
          
             /* 签发地ID */ 
-            issuePlaceId: string;
+            issuePlaceId?: string;
          
             /* Max length = 10
 公司缩写代码 */ 
-            shortCode: string;
+            shortCode?: string;
          
             
-            glCodes: PUBGLCodeModel[];
+            glCodes?: PUBGLCodeModel[];
          
             
-            solutionGlConfigs: PUBSolutionGLConfigModel[];
+            solutionGlConfigs?: PUBSolutionGLConfigModel[];
          
             
-            solutionCurrencies: PUBSolutionCurrencyModel[];
+            solutionCurrencies?: PUBSolutionCurrencyModel[];
          
             
-            configureBankAccounts: PUBConfigureBankAccountModel[];
+            configureBankAccounts?: PUBConfigureBankAccountModel[];
         
         
     }
@@ -875,13 +875,13 @@
 0 = Default
 1 = Invoice
 2 = ARAP */ 
-            type: number;
+            type?: number;
          
             
-            dates: any[];
+            dates?: any[];
          
             
-            date: string;
+            date?: string;
         
         
     }
@@ -895,38 +895,38 @@
          
             /* Identity, Indexed, Required
 主键 */ 
-            id: string;
+            id?: string;
          
             /* Required
 类型
 0 = Default
 1 = Invoice
 2 = ARAP */ 
-            type: number;
+            type?: number;
          
             /* Required, Max length = 10
 源币种 */ 
-            sourceCurrency: string;
+            sourceCurrency?: string;
          
             /* Required, Max length = 10
 目标币种 */ 
-            targetCurrency: string;
+            targetCurrency?: string;
          
             /* Required
 有效期-从 */ 
-            fromDate: string;
+            fromDate?: string;
          
             /* Required
 有效期-到 */ 
-            toDate: string;
+            toDate?: string;
          
             /* Required
 汇率 */ 
-            rate: number;
+            rate?: number;
          
             /* Required
 是否有效 */ 
-            isValid: boolean;
+            isValid?: boolean;
         
         
     }
@@ -939,31 +939,31 @@
         
          
             /* 银行名 */ 
-            bankName: string;
+            bankName?: string;
          
             /* 币种 */ 
-            currency: string;
+            currency?: string;
          
             /* 公司ID */ 
-            companyId: string;
+            companyId?: string;
          
             /* 是否支持银企直连 */ 
-            isBankDirect: boolean;
+            isBankDirect?: boolean;
          
             /* 招商银行账户 */ 
-            cmbBankAccountNo: string;
+            cmbBankAccountNo?: string;
          
             /* 银行账户Id */ 
-            cmbAccountId: string;
+            cmbAccountId?: string;
          
             /* 账户名称 */ 
-            cmbBankAccountName: string;
+            cmbBankAccountName?: string;
          
             /* 一网通账户ID */ 
-            cmbNetComUserAccount: string;
+            cmbNetComUserAccount?: string;
          
             /* CMB银企直连户口号 */ 
-            cmbDirectActnbr: string;
+            cmbDirectActnbr?: string;
         
         
     }
@@ -976,10 +976,10 @@
         
          
             /* 公司ID */ 
-            companyId: string;
+            companyId?: string;
          
             /* 银行账户ID */ 
-            bankAccountId: string;
+            bankAccountId?: string;
         
         
     }
@@ -992,13 +992,13 @@
         
          
             
-            companyId: string;
+            companyId?: string;
          
             
-            bankAccountId: string;
+            bankAccountId?: string;
          
             
-            cmbDirectActnbr: string;
+            cmbDirectActnbr?: string;
         
         
     }
@@ -1011,16 +1011,16 @@
         
          
             
-            companyId: string;
+            companyId?: string;
          
             
-            currency: string;
+            currency?: string;
          
             
-            type: number;
+            type?: number;
          
             
-            isReceivable: boolean;
+            isReceivable?: boolean;
         
         
     }
@@ -1850,57 +1850,57 @@
         
          
             
-            groupId: string;
+            groupId?: string;
          
             
-            group: PUBChargingGroup;
+            group?: PUBChargingGroup;
          
             
-            code: string;
+            code?: string;
          
             
-            name: string;
+            name?: string;
          
             
-            isCommission: boolean;
+            isCommission?: boolean;
          
             
-            mergerId: string;
+            mergerId?: string;
          
             
-            isValid: boolean;
+            isValid?: boolean;
          
             /* 
 0 = OtherCharging
 1 = ManagerCharging */ 
-            type: number;
+            type?: number;
          
             
-            localizationText: string;
+            localizationText?: string;
          
             
-            id: string;
+            id?: string;
          
             
-            creationTime: string;
+            creationTime?: string;
          
             
-            creatorUserId: number;
+            creatorUserId?: number;
          
             
-            lastModificationTime: string;
+            lastModificationTime?: string;
          
             
-            lastModifierUserId: number;
+            lastModifierUserId?: number;
          
             
-            deletionTime: string;
+            deletionTime?: string;
          
             
-            deleterUserId: number;
+            deleterUserId?: number;
          
             
-            isDeleted: boolean;
+            isDeleted?: boolean;
         
         
     }
@@ -1913,13 +1913,13 @@
         
          
             
-            id: string;
+            id?: string;
          
             
-            accountNo: string;
+            accountNo?: string;
          
             
-            currency: string;
+            currency?: string;
         
         
     }
@@ -1932,34 +1932,34 @@
         
          
             /* 公司Id */ 
-            companyId: string;
+            companyId?: string;
          
             /* 公司名称 */ 
-            companyName: string;
+            companyName?: string;
          
             /* 银行ID */ 
-            bankId: string;
+            bankId?: string;
          
             /* 银行名称 */ 
-            bankName: string;
+            bankName?: string;
          
             /* 账户Id */ 
-            bankAccountId: string;
+            bankAccountId?: string;
          
             /* 银行账户 */ 
-            bankAccountNo: string;
+            bankAccountNo?: string;
          
             /* 币种 */ 
-            currency: string;
+            currency?: string;
          
             /* 会计科目Id */ 
-            glId: string;
+            glId?: string;
          
             /* 客户Id */ 
-            customerId: string;
+            customerId?: string;
          
             /* 显示名称 */ 
-            showName: string;
+            showName?: string;
         
         
     }
@@ -2077,31 +2077,31 @@
         
          
             /* 箱型代码 */ 
-            code: string;
+            code?: string;
          
             /* 是否包含无效数据 */ 
-            includeInvalid: boolean;
+            includeInvalid?: boolean;
          
             
-            ids: any[];
+            ids?: any[];
          
             
-            keyName: string;
+            keyName?: string;
          
             
-            searchText: string;
+            searchText?: string;
          
             
-            includeDeleted: boolean;
+            includeDeleted?: boolean;
          
             
-            sorting: string;
+            sorting?: string;
          
             
-            maxResultCount: number;
+            maxResultCount?: number;
          
             
-            skipCount: number;
+            skipCount?: number;
         
         
     }
@@ -2414,13 +2414,13 @@
         
          
             
-            fromCurrencyId: string;
+            fromCurrencyId?: string;
          
             
-            toCurrencyId: string;
+            toCurrencyId?: string;
          
             
-            exchangeRate: number;
+            exchangeRate?: number;
         
         
     }
@@ -2508,34 +2508,34 @@
         
          
             /* 是否包含无效数据 */ 
-            includeInvalid: boolean;
+            includeInvalid?: boolean;
          
             /* 类型Id */ 
-            typeIds: any[];
+            typeIds?: any[];
          
             /* 类型代码 */ 
-            typeCodes: any[];
+            typeCodes?: any[];
          
             
-            ids: any[];
+            ids?: any[];
          
             
-            keyName: string;
+            keyName?: string;
          
             
-            searchText: string;
+            searchText?: string;
          
             
-            includeDeleted: boolean;
+            includeDeleted?: boolean;
          
             
-            sorting: string;
+            sorting?: string;
          
             
-            maxResultCount: number;
+            maxResultCount?: number;
          
             
-            skipCount: number;
+            skipCount?: number;
         
         
     }
@@ -2712,7 +2712,7 @@
         
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -2725,16 +2725,16 @@
         
          
             /* 创建人 */ 
-            creatorUserName: string;
+            creatorUserName?: string;
          
             /* 本地化 */ 
-            localizationText: string;
+            localizationText?: string;
          
             /* 运输方式 */ 
-            value: string;
+            value?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -2747,10 +2747,10 @@
         
          
             /* 运输方式 */ 
-            value: string;
+            value?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -2816,31 +2816,31 @@
         
          
             /* 是否包含无效数据 */ 
-            includeInvalid: boolean;
+            includeInvalid?: boolean;
          
             /* 航空公司 Id */ 
-            airlineIds: any[];
+            airlineIds?: any[];
          
             
-            ids: any[];
+            ids?: any[];
          
             
-            keyName: string;
+            keyName?: string;
          
             
-            searchText: string;
+            searchText?: string;
          
             
-            includeDeleted: boolean;
+            includeDeleted?: boolean;
          
             
-            sorting: string;
+            sorting?: string;
          
             
-            maxResultCount: number;
+            maxResultCount?: number;
          
             
-            skipCount: number;
+            skipCount?: number;
         
         
     }
@@ -3149,43 +3149,43 @@
         
          
             /* 城市id */ 
-            placeId: string;
+            placeId?: string;
          
             /* 地点名称 */ 
-            name: string;
+            name?: string;
          
             /* 地区Id */ 
-            regionIds: any[];
+            regionIds?: any[];
          
             /* 是否海运 */ 
-            isOcean: boolean;
+            isOcean?: boolean;
          
             /* 是否空运 */ 
-            isAir: boolean;
+            isAir?: boolean;
          
             /* 是海运港或空运港 */ 
-            isAirOrOcean: boolean;
+            isAirOrOcean?: boolean;
          
             /* 其它 */ 
-            isOther: boolean;
+            isOther?: boolean;
          
             /* 是否为城市 */ 
-            isCity: boolean;
+            isCity?: boolean;
          
             /* 是否有效 */ 
-            isValid: boolean;
+            isValid?: boolean;
          
             /* 是否分页 */ 
-            isPaged: boolean;
+            isPaged?: boolean;
          
             
-            sorting: string;
+            sorting?: string;
          
             
-            maxResultCount: number;
+            maxResultCount?: number;
          
             
-            skipCount: number;
+            skipCount?: number;
         
         
     }
@@ -3289,7 +3289,7 @@
         
          
             
-            address_components: PUBPlaceMapTerm[];
+            address_components?: PUBPlaceMapTerm[];
         
         
     }
@@ -3302,49 +3302,49 @@
         
          
             
-            countryId: string;
+            countryId?: string;
          
             
-            countryName: string;
+            countryName?: string;
          
             
-            countryLocalizationText: string;
+            countryLocalizationText?: string;
          
             
-            provinceId: string;
+            provinceId?: string;
          
             
-            provinceName: string;
+            provinceName?: string;
          
             
-            provinceLocalizationText: string;
+            provinceLocalizationText?: string;
          
             
-            cityId: string;
+            cityId?: string;
          
             
-            cityName: string;
+            cityName?: string;
          
             
-            cityLocalizationText: string;
+            cityLocalizationText?: string;
          
             
-            countyId: string;
+            countyId?: string;
          
             
-            countyName: string;
+            countyName?: string;
          
             
-            countyLocalizationText: string;
+            countyLocalizationText?: string;
          
             
-            streetId: string;
+            streetId?: string;
          
             
-            streetName: string;
+            streetName?: string;
          
             
-            streetLocalizationText: string;
+            streetLocalizationText?: string;
         
         
     }
@@ -3462,13 +3462,13 @@
         
          
             /* 港口 */ 
-            places: PUBPlaceModel[];
+            places?: PUBPlaceModel[];
          
             /* 区域 */ 
-            regions: PUBRegionWithLevelUiPickerDto[];
+            regions?: PUBRegionWithLevelUiPickerDto[];
          
             /* 片区 */ 
-            areas: PUBAreaDto[];
+            areas?: PUBAreaDto[];
         
         
     }
@@ -3481,16 +3481,16 @@
         
          
             /* 城市Id */ 
-            cityId: string;
+            cityId?: string;
          
             /* 谷歌地图place_id */ 
-            placeId: string;
+            placeId?: string;
          
             /* 谷歌地点明细 */ 
-            placeName: string;
+            placeName?: string;
          
             /* 是否返回Data，如果为false，则Data为null */ 
-            returnData: boolean;
+            returnData?: boolean;
         
         
     }
@@ -3503,10 +3503,10 @@
         
          
             /* 是否有值 */ 
-            hasData: boolean;
+            hasData?: boolean;
          
             /* 港口数据 */ 
-            data: PUBPlaceDto[];
+            data?: PUBPlaceDto[];
         
         
     }
@@ -3519,52 +3519,52 @@
         
          
             /* 地区Id */ 
-            regionIds: any[];
+            regionIds?: any[];
          
             /* 城市Id */ 
-            cityIds: any[];
+            cityIds?: any[];
          
             /* 是否海运 */ 
-            isOcean: boolean;
+            isOcean?: boolean;
          
             /* 是否空运 */ 
-            isAir: boolean;
+            isAir?: boolean;
          
             /* 是海运港或空运港 */ 
-            isAirOrOcean: boolean;
+            isAirOrOcean?: boolean;
          
             /* 其它 */ 
-            isOther: boolean;
+            isOther?: boolean;
          
             /* 是否为城市 */ 
-            isCity: boolean;
+            isCity?: boolean;
          
             /* 是否有效 */ 
-            isValid: boolean;
+            isValid?: boolean;
          
             /* 是否分页 */ 
-            isPaged: boolean;
+            isPaged?: boolean;
          
             
-            ids: any[];
+            ids?: any[];
          
             
-            keyName: string;
+            keyName?: string;
          
             
-            searchText: string;
+            searchText?: string;
          
             
-            includeDeleted: boolean;
+            includeDeleted?: boolean;
          
             
-            sorting: string;
+            sorting?: string;
          
             
-            maxResultCount: number;
+            maxResultCount?: number;
          
             
-            skipCount: number;
+            skipCount?: number;
         
         
     }
@@ -3663,10 +3663,10 @@
         
          
             /* 片区id */ 
-            areaIds: any[];
+            areaIds?: any[];
          
             /* 是否递归取所有下级 */ 
-            recursive: boolean;
+            recursive?: boolean;
         
         
     }
@@ -3679,16 +3679,16 @@
         
          
             /* 上级Id */ 
-            parentId: string;
+            parentId?: string;
          
             /* 代码 */ 
-            code: string;
+            code?: string;
          
             /* 名称 */ 
-            name: string;
+            name?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -3701,31 +3701,31 @@
         
          
             /* 是否包含无效数据 */ 
-            includeInvalid: boolean;
+            includeInvalid?: boolean;
          
             /* 是否包含子对象数据 */ 
-            includeChildren: boolean;
+            includeChildren?: boolean;
          
             
-            ids: any[];
+            ids?: any[];
          
             
-            keyName: string;
+            keyName?: string;
          
             
-            searchText: string;
+            searchText?: string;
          
             
-            includeDeleted: boolean;
+            includeDeleted?: boolean;
          
             
-            sorting: string;
+            sorting?: string;
          
             
-            maxResultCount: number;
+            maxResultCount?: number;
          
             
-            skipCount: number;
+            skipCount?: number;
         
         
     }
@@ -3775,37 +3775,37 @@
         
          
             /* 是否包含无效数据 */ 
-            includeInvalid: boolean;
+            includeInvalid?: boolean;
          
             /* 是否包含子对象数据 */ 
-            includeChildren: boolean;
+            includeChildren?: boolean;
          
             /* 国家Id */ 
-            countryIds: any[];
+            countryIds?: any[];
          
             /* 地区Id */ 
-            areaIds: any[];
+            areaIds?: any[];
          
             
-            ids: any[];
+            ids?: any[];
          
             
-            keyName: string;
+            keyName?: string;
          
             
-            searchText: string;
+            searchText?: string;
          
             
-            includeDeleted: boolean;
+            includeDeleted?: boolean;
          
             
-            sorting: string;
+            sorting?: string;
          
             
-            maxResultCount: number;
+            maxResultCount?: number;
          
             
-            skipCount: number;
+            skipCount?: number;
         
         
     }
@@ -3855,34 +3855,34 @@
         
          
             
-            oceanBookingsId: string;
+            oceanBookingsId?: string;
          
             
-            oceanBookingNo: string;
+            oceanBookingNo?: string;
          
             
-            vesselName: string;
+            vesselName?: string;
          
             
-            voyageNo: string;
+            voyageNo?: string;
          
             
-            carrierCode: string;
+            carrierCode?: string;
          
             
-            eta: string;
+            eta?: string;
          
             
-            etd: string;
+            etd?: string;
          
             /* 装货 */ 
-            polCode: string;
+            polCode?: string;
          
             /* 卸货 */ 
-            podCode: string;
+            podCode?: string;
          
             
-            receiveEmail: string;
+            receiveEmail?: string;
         
         
     }
@@ -3984,16 +3984,16 @@
         
          
             /* 船名 */ 
-            vesselName: string;
+            vesselName?: string;
          
             /* 航次号 */ 
-            voyageNo: string;
+            voyageNo?: string;
          
             /* 离港日 */ 
-            etd: string;
+            etd?: string;
          
             /* 到港日 */ 
-            eta: string;
+            eta?: string;
         
         
     }
@@ -4118,76 +4118,76 @@
         
          
             /* 船名 */ 
-            vesselName: string;
+            vesselName?: string;
          
             /* 船次 */ 
-            voyageNo: string;
+            voyageNo?: string;
          
             /* IMO */ 
-            imo: string;
+            imo?: string;
          
             /* 原点Code */ 
-            originUnCode: string;
+            originUnCode?: string;
          
             /* 起始港 名称 本地化 */ 
-            originNameLocalization: string;
+            originNameLocalization?: string;
          
             /* 始发位置城市名称 */ 
-            originCityName: string;
+            originCityName?: string;
          
             /* 始发位置省份 */ 
-            originSubdivision: string;
+            originSubdivision?: string;
          
             /* 始发位置国家 */ 
-            originCountry: string;
+            originCountry?: string;
          
             /* 始发码头名称 */ 
-            originTerminal: string;
+            originTerminal?: string;
          
             /* 出发日期 */ 
-            departureDate: string;
+            departureDate?: string;
          
             /* 终点Code */ 
-            destinationUnCode: string;
+            destinationUnCode?: string;
          
             /* 目的地港 名称 本地化 */ 
-            destinationNameLocalization: string;
+            destinationNameLocalization?: string;
          
             /* 目的地位置的城市名称 */ 
-            destinationCityName: string;
+            destinationCityName?: string;
          
             /* 目的地位置的省/自治区名称 */ 
-            destinationSubdivision: string;
+            destinationSubdivision?: string;
          
             /* 目的地港所在国家 */ 
-            destinationCountry: string;
+            destinationCountry?: string;
          
             /* 目的地港口码头名称 */ 
-            destinationTerminal: string;
+            destinationTerminal?: string;
          
             /* 到达日期 */ 
-            arrivalDate: string;
+            arrivalDate?: string;
          
             /* 航程 */ 
-            transitTime: number;
+            transitTime?: number;
          
             /* 航次类型 Mainline 主干线  Branchline转运支线 */ 
-            conveyanceType: string;
+            conveyanceType?: string;
          
             /* 转运顺序 如果是有转运，则从初始港开始 */ 
-            transportSeq: number;
+            transportSeq?: number;
          
             /* 航线编号，作为api中一条航线，以及支线的记录 */ 
-            scheduleNumber: string;
+            scheduleNumber?: string;
          
             /* 转运运输工具名称 */ 
-            transportName: string;
+            transportName?: string;
          
             /* 转运运输方式 */ 
-            transportType: string;
+            transportType?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -4323,31 +4323,31 @@
         
          
             /* 是否包含子级 */ 
-            includeChildren: boolean;
+            includeChildren?: boolean;
          
             /* 是否包含无效数据 */ 
-            includeInvalid: boolean;
+            includeInvalid?: boolean;
          
             
-            ids: any[];
+            ids?: any[];
          
             
-            keyName: string;
+            keyName?: string;
          
             
-            searchText: string;
+            searchText?: string;
          
             
-            includeDeleted: boolean;
+            includeDeleted?: boolean;
          
             
-            sorting: string;
+            sorting?: string;
          
             
-            maxResultCount: number;
+            maxResultCount?: number;
          
             
-            skipCount: number;
+            skipCount?: number;
         
         
     }
@@ -4397,7 +4397,7 @@
         
          
             /* 港口集合 */ 
-            portIds: any[];
+            portIds?: any[];
         
         
     }
@@ -4410,22 +4410,22 @@
         
          
             
-            name: string;
+            name?: string;
          
             
-            code: string;
+            code?: string;
          
             
-            isValid: boolean;
+            isValid?: boolean;
          
             
-            localizationText: string;
+            localizationText?: string;
          
             
-            localizationName: string;
+            localizationName?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -4599,13 +4599,13 @@
         
          
             /* 起始地 */ 
-            originalId: string;
+            originalId?: string;
          
             /* 目的地 */ 
-            destinationId: string;
+            destinationId?: string;
          
             
-            id: string;
+            id?: string;
         
         
     }
@@ -4634,28 +4634,28 @@
         
          
             /* 是否包含无效数据 */ 
-            includeInvalid: boolean;
+            includeInvalid?: boolean;
          
             
-            ids: any[];
+            ids?: any[];
          
             
-            keyName: string;
+            keyName?: string;
          
             
-            searchText: string;
+            searchText?: string;
          
             
-            includeDeleted: boolean;
+            includeDeleted?: boolean;
          
             
-            sorting: string;
+            sorting?: string;
          
             
-            maxResultCount: number;
+            maxResultCount?: number;
          
             
-            skipCount: number;
+            skipCount?: number;
         
         
     }
@@ -4774,31 +4774,31 @@
         
          
             /* 是否包含无效数据 */ 
-            includeInvalid: boolean;
+            includeInvalid?: boolean;
          
             /* 船东 Id */ 
-            carrierIds: any[];
+            carrierIds?: any[];
          
             
-            ids: any[];
+            ids?: any[];
          
             
-            keyName: string;
+            keyName?: string;
          
             
-            searchText: string;
+            searchText?: string;
          
             
-            includeDeleted: boolean;
+            includeDeleted?: boolean;
          
             
-            sorting: string;
+            sorting?: string;
          
             
-            maxResultCount: number;
+            maxResultCount?: number;
          
             
-            skipCount: number;
+            skipCount?: number;
         
         
     }
@@ -4870,10 +4870,10 @@
         
          
             
-            shipTracePoints: PUBShipTracePointDto[];
+            shipTracePoints?: PUBShipTracePointDto[];
          
             /* 当前坐标点 */ 
-            currentPosition: PUBVesselInfosDto;
+            currentPosition?: PUBVesselInfosDto;
         
         
     }
@@ -4998,31 +4998,31 @@
         
          
             /* 是否包含无效数据 */ 
-            includeInvalid: boolean;
+            includeInvalid?: boolean;
          
             /* 船名 Id */ 
-            vesselIds: any[];
+            vesselIds?: any[];
          
             
-            ids: any[];
+            ids?: any[];
          
             
-            keyName: string;
+            keyName?: string;
          
             
-            searchText: string;
+            searchText?: string;
          
             
-            includeDeleted: boolean;
+            includeDeleted?: boolean;
          
             
-            sorting: string;
+            sorting?: string;
          
             
-            maxResultCount: number;
+            maxResultCount?: number;
          
             
-            skipCount: number;
+            skipCount?: number;
         
         
     }
