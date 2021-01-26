@@ -1,18 +1,20 @@
-import { Directive, ElementRef, Input, NgZone, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { STComponent } from './st.component';
-import { fromEvent, interval, merge } from 'rxjs';
-import { debounceTime, startWith } from 'rxjs/operators';
+import { STChange } from './st.interfaces';
+import { fromEvent, interval, merge, Subject } from 'rxjs';
+import { debounceTime, startWith, takeUntil } from 'rxjs/operators';
 
 @Directive({
   selector: 'co-st[loadOnScroll]',
 })
-export class LoadOnScrollDirective implements OnInit {
+export class LoadOnScrollDirective implements OnInit, OnDestroy {
   @Input() distance = 80;
   status: 'unset' | 'trying' | 'set' = 'unset';
   lastScroll = {
     scrollTop: 0,
     scrollLeft: 0,
   }
+  private destroy$ = new Subject();
 
   constructor(private st: STComponent,
               private el: ElementRef,
@@ -22,6 +24,21 @@ export class LoadOnScrollDirective implements OnInit {
 
   ngOnInit() {
     this.setListener();
+    this.setStLoadListener();
+  }
+
+  setStLoadListener() {
+    this.st.change.pipe(takeUntil(this.destroy$)).subscribe((event: STChange) => {
+      if (event.type === 'loaded' && !event.loaded?.length) {
+        this.resetListener()
+      }
+    })
+  }
+
+  resetListener() {
+    if (this.status !== 'set') return;
+    this.status = 'unset';
+    this.setListener()
   }
 
   setListener() {
@@ -53,5 +70,10 @@ export class LoadOnScrollDirective implements OnInit {
           this.status = 'set';
         });
     });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }
