@@ -1,6 +1,9 @@
-<div class="d-flex justify-content-end">
-  <button nz-button nzType="default" *ngIf="!editable" (click)="setEditable(true)"><i nz-icon nzType="edit"></i>Edit</button>
-  <button nz-button nzType="default" *ngIf="editable" (click)="setEditable(false)">Done</button>
+`<div class="d-flex" style="position: relative;height: 32px;">
+  <div style="position: absolute;top: 0;">
+    <button nz-button nzType="default" *ngIf="!editable" (click)="setEditable(true)"><i nz-icon nzType="edit"></i>Edit</button>
+    <button nz-button nzType="default" *ngIf="editable" (click)="setEditable(false)">Done</button>
+    <button nz-button nzType="default" *ngIf="editable" (click)="removeAll()">Remove all</button>
+  </div>
 </div>
 <nz-spin [nzSpinning]="loading" style="width: 100%;">
   <ngx-widget-grid #ngxWidgetGrid [columns]="4" [highlightNextPosition]="false"
@@ -11,7 +14,8 @@
       <div class="widget-content-container">
         <div *ngIf="!item.index;else widgetTpl" style="height:100%;width:100%; padding:10px; background-color: rgb(140, 198, 0);">
         </div>
-        <button *ngIf="editable" nz-button nzType="primary" class="delete-icon-button" nzDanger (click)="onDelete(item, index)"><i nz-icon nzType="delete"></i></button>
+<!--        <button *ngIf="editable" nz-button nzType="primary" class="delete-icon-button" nzDanger (click)="onDelete(item, index)"><i nz-icon nzType="delete"></i></button>-->
+        <button *ngIf="editable" (click)="onDelete(item, index)" aria-label="Close" class="ant-modal-close delete-icon-button" style=""><span class="ant-modal-close-x"><i nz-icon [nzType]="'close'" class="ant-modal-close-icon"></i></span></button>
         <ng-template #widgetTpl>
           <ng-template [ngTemplateOutlet]="coWidgetItemSource.getItem(item.index)"></ng-template>
         </ng-template>
