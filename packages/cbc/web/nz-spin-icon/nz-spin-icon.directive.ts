@@ -1,6 +1,6 @@
 import { ComponentFactoryResolver, Directive, Host, Injector, OnInit } from '@angular/core';
 import { NzSpinComponent } from 'ng-zorro-antd';
-import { CoSpinTemplateComponent } from '@co/cbc/web/nz-spin-icon/co-spin-template.component';
+import { CoSpinTemplateComponent } from './co-spin-template.component';
 
 @Directive({
   selector: 'nz-spin'
