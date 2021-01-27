@@ -3,7 +3,7 @@ import { NzSpinComponent } from 'ng-zorro-antd';
 import { CoSpinTemplateComponent } from './co-spin-template.component';
 
 @Directive({
-  selector: 'nz-spin'
+  selector: 'nz-spinxxxxxx'
 })
 export class NzSpinIconDirective implements OnInit {
 
