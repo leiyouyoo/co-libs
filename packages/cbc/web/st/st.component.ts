@@ -1042,7 +1042,7 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
   getFilterOptions(column: STColumn, index: number, input?: string): any[] {
     /*  */
     if (column?.filter?.optionList) {
-      return column.filter.optionList.map(o => ({ ...o, label: this.i18nSrv.fanyi(o.label), }));
+      return (column.filter.optionList as { label: string; value: any }[]).map(o => ({ ...o, label: this.i18nSrv.fanyi(o.label), }));
     }
     const arr = Array.from(
       new Set(this._data.map(o => o._values[index].text))
