@@ -359,17 +359,16 @@ export class SSOUserService extends BaseApi {
    *
    */
   @POST('setValid')
-  setValid(@Payload _req: { isValid: boolean, id: number }): Observable<any> {
+  setValid(@Payload _req: { isValid: boolean; id: number }): Observable<any> {
     return null as any;
   }
-
 
   /**
    * @param url /SSO/User/SetRoles
    *
    */
   @POST('setRoles')
-  setRoles(@Payload _req: { assignedRoleNames: string[], id: number }): Observable<any> {
+  setRoles(@Payload _req: { assignedRoleNames: string[]; id: number }): Observable<any> {
     return null as any;
   }
 
@@ -381,10 +380,23 @@ export class SSOUserService extends BaseApi {
   @GET('getDetail')
   getDetail(
     @Payload
-      _req: {
+    _req: {
       userId?: number;
     },
   ): Observable<SsoCreateOrUpdateUserOutput> {
+    return null as any;
+  }
+
+  /**
+   * @param url /SSO/User/GetUsersWithFAMExamine
+   *
+   */
+
+  @GET('getUsersWithFAMExamine')
+  getUsersWithFAMExamine(
+    @Payload
+    _req: {},
+  ): Observable<any> {
     return null as any;
   }
 }
