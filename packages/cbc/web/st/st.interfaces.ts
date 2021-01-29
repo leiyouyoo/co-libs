@@ -583,7 +583,7 @@ export interface STColumnFilter {
   /**
    * 过滤器选项，select, autocomplete
    */
-  optionList?: { label: string; value: any }[];
+  optionList?: { label: string; value: any }[] | Promise<{ label: string; value: any }[]>;
 }
 
 export interface STColumnFilterMenu {

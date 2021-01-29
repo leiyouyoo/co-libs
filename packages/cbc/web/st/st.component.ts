@@ -618,7 +618,7 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
     // recalculate no
     this._columns
       .filter(w => w.type === 'no')
-      .forEach(c => this._data.forEach((i, idx) => (i._values[c.__point] = { _text: this.dataSource.getNoIndex(i, c, idx), org: idx })));
+      .forEach(c => this._data.forEach((i, idx) => (i._values[c.__point] = { _text: this.dataSource.getNoIndex(i, c, idx, (this.pi - 1) * this.ps), org: idx })));
 
     return this.cd();
   }
@@ -1042,7 +1042,7 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
   getFilterOptions(column: STColumn, index: number, input?: string): any[] {
     /*  */
     if (column?.filter?.optionList) {
-      return column.filter.optionList.map(o => ({ ...o, label: this.i18nSrv.fanyi(o.label), }));
+      return (column.filter.optionList as { label: string; value: any }[]).map(o => ({ ...o, label: this.i18nSrv.fanyi(o.label), }));
     }
     const arr = Array.from(
       new Set(this._data.map(o => o._values[index].text))
@@ -1064,7 +1064,7 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
   }
 
   optimizeData(): void {
-    this._data = this.dataSource.optimizeData({ columns: this._columns, result: this._data, rowClassName: this.rowClassName });
+    this._data = this.dataSource.optimizeData({ columns: this._columns, result: this._data, rowClassName: this.rowClassName, pi: this.pi, ps: this.ps });
   }
 
   addNewRow() {

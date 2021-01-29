@@ -5,4 +5,5 @@ export * from '@co/cbc/web/nz-select-cell-title';
 export * from '@co/cbc/web/network-module';
 export * from '@co/cbc/web/widget-grid';
 export * from '@co/cbc/web/ngx-widget-grid';
+export * from '@co/cbc/web/nz-spin-icon';
 export * from './web.module';

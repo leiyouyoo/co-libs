@@ -165,7 +165,7 @@ export class STDataSource {
       data$ = data$.pipe(map(result => res.process!(result, rawData)));
     }
 
-    data$ = data$.pipe(map(result => this.optimizeData({ result, columns, rowClassName: options.rowClassName })));
+    data$ = data$.pipe(map(result => this.optimizeData({ result, columns, rowClassName: options.rowClassName, pi, ps })));
     data$ = data$.pipe(
       map(result => {
         if (!options.checkOnLoad) {
@@ -200,7 +200,7 @@ export class STDataSource {
     );
   }
 
-  private get(item: STData, col: STColumn, idx: number): STColumnViewValue {
+  private get(item: STData, col: STColumn, idx: number, skipCount: number): STColumnViewValue {
     if (col.format) {
       const formatRes = col.format(item, col, idx) || '';
       if (formatRes && ~formatRes.indexOf('</')) {
@@ -215,7 +215,7 @@ export class STDataSource {
     let color: string | undefined;
     switch (col.type) {
       case 'no':
-        text = this.getNoIndex(item, col, idx);
+        text = this.getNoIndex(item, col, idx, skipCount);
         break;
       case 'img':
         text = value ? `<img src="${value}" class="img">` : '';
@@ -310,10 +310,10 @@ export class STDataSource {
     return this.http.request(method, url, reqOptions);
   }
 
-  optimizeData(options: { columns: STColumn[]; result: STData[]; rowClassName?: STRowClassName }): STData[] {
-    const { result, columns, rowClassName } = options;
+  optimizeData(options: { columns: STColumn[]; result: STData[]; rowClassName?: STRowClassName, pi: number, ps: number }): STData[] {
+    const { result, columns, rowClassName, pi, ps } = options;
     for (let i = 0, len = result.length; i < len; i++) {
-      result[i]._values = columns.map(c => this.get(result[i], c, i));
+      result[i]._values = columns.map(c => this.get(result[i], c, i, (pi - 1) * ps));
       if (rowClassName) {
         result[i]._rowClassName = rowClassName(result[i], i);
       }
@@ -321,8 +321,8 @@ export class STDataSource {
     return result;
   }
 
-  getNoIndex(item: STData, col: STColumn, idx: number): number {
-    return typeof col.noIndex === 'function' ? col.noIndex(item, col, idx) : col.noIndex! + idx;
+  getNoIndex(item: STData, col: STColumn, idx: number, skipCount: number): number {
+    return typeof col.noIndex === 'function' ? col.noIndex(item, col, idx) : col.noIndex! + idx + (skipCount || 0);
   }
 
   // #region sort

@@ -10,6 +10,7 @@ const i18n = {
     'Recover': '恢复',
     'Loading': '加载中',
     'Reset': '重置',
+    'More': '更多'
   },
   'en-US':{
     'stSetting': 'Settings',

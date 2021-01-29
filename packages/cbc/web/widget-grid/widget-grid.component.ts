@@ -46,6 +46,9 @@ export class WidgetGridComponent implements OnInit {
   }
 
   onAddWidget(e) {
+    if (this.widgets.find(widget => widget.index === e.index)) {
+      return;
+    }
     this.widgets.push(e)
   }
 
@@ -60,6 +63,10 @@ export class WidgetGridComponent implements OnInit {
     } else {
       this.save();
     }
+  }
+
+  removeAll() {
+    this.widgets = []
   }
 
   save() {

@@ -232,6 +232,12 @@ export class STColumnSource {
       ...item.filter,
     };
     item.filter?.menus?.forEach(o => o.originColumn = { ...item, filter: void 0, });
+    if (item.filter?.optionList instanceof Promise) {
+      item.filter.optionList.then(list => {
+        item.filter!.optionList = list;
+      });
+      item.filter!.optionList = [];
+    }
 
     let res: STColumnFilter | null = item.filter;
     res.type = res.type || 'default';

@@ -1,0 +1,8 @@
+{
+  "ngPackage": {
+    "lib": {
+      "flatModuleFile": "coNzSpin",
+      "entryFile": "public_api.ts"
+    }
+  }
+}
