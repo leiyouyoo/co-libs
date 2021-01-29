@@ -52,13 +52,13 @@ export class CoEditorComponent implements OnInit, OnDestroy {
   initData() {
     CKEDITOR[this.coType](this.id, {
       title: 'CITYOCEAN EDITOR',
-      extraPlugins: 'print,exportpdf',
+      extraPlugins: 'exportpdf',
       allowedContent: true,
       readOnly: this.coReadOnly,
       toolbar: [
         {
           name: 'various',
-          items: ['ExportPdf', '-', 'Print', 'Undo', 'Redo'],
+          items: ['ExportPdf', '-', 'Undo', 'Redo'],
         },
         {
           name: 'basicstyles',
@@ -119,8 +119,16 @@ export class CoEditorComponent implements OnInit, OnDestroy {
     CKEDITOR.instances[this.id].document.getBody().getText();
   }
 
-  print() {
-    CKEDITOR.instances[this.id].execCommand('print');
+  print(bodyHtml) {
+    const WindowPrt: any = window.open('', '', 'left=0,top=0,width=900,height=900,toolbar=0,scrollbars=0,status=0');
+    WindowPrt.document.write(bodyHtml);
+    // 生成并打印iFrame
+    setTimeout(() => {
+      WindowPrt.document.close();
+      WindowPrt.focus();
+      WindowPrt.print();
+      WindowPrt.close();
+    }, 500);
   }
 
   download() {
