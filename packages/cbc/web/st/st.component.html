@@ -218,6 +218,8 @@
               (ngModelChange)="_filterConfirm(i.column)"
               nzShowSearch
               [nzOptions]="getFilterOptions(i.column, index)"
+              [nzMode]="i.column.filter?.multiple ? 'multiple' : 'default'"
+              [nzMaxTagCount]="1"
               nzAllowClear
               nzSize="small"
             ></nz-select>
