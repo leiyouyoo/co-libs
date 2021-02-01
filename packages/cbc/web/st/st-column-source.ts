@@ -256,9 +256,10 @@ export class STColumnSource {
       return null;
     }
 
-    if (typeof res.multiple === 'undefined') {
-      res.multiple = true;
-    }
+    // default single
+    // if (typeof res.multiple === 'undefined') {
+    //   res.multiple = true;
+    // }
 
     res.confirmText = res.confirmText || this.cog.filterConfirmText;
     res.clearText = res.clearText || this.cog.filterClearText;
