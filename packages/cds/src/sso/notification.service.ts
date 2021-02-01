@@ -1,25 +1,30 @@
 import { Injectable, Injector } from '@angular/core';
-import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 import { Observable } from 'rxjs';
-import { SsoWorkWechatNotificationInput } from './sso.types';
+import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
+import { v1#/definitions/WorkWechatNotificationInput, } from './sso.types';
 
-@BaseUrl('/sso/Notification')
+@BaseUrl('/SSO/Notification')
 @Injectable({ providedIn: 'root' })
-export class SSONotificationService extends BaseApi {
+export class v1NotificationService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
 
-  /**
-   * @param url /SSO/Notification/SendWorkWechatMessage
-   * 发送企业微信信息
-   */
+  
+    /**
+     * @param url /SSO/Notification/SendWorkWechatMessage
+     * 发送企业微信信息
+     */
 
-  @POST('sendWorkWechatMessage')
-  sendWorkWechatMessage(
-    @Payload
-    _req: SsoWorkWechatNotificationInput,
-  ): Observable<any> {
-    return null as any;
+    @POST('sendWorkWechatMessage')
+    sendWorkWechatMessage(
+        @Payload
+        _req:v1#/definitions/WorkWechatNotificationInput
+
+    ): Observable<any> {
+        return null as any
+    }
+
+
+
   }
-}
