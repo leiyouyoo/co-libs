@@ -246,7 +246,7 @@ function saveEntity(definitions) {
   exportAllTypeEntity = [];
 
   for (const definition in definitions) {
-    if (definition.includes('PUBGetAllPlaceForUiPickerInput')) {
+    if (definition.includes('CO.Rates.Domain.SearchManager.Models.ContainerPrice')) {
       debugger;
     }
     let typeEntity: any = {};
@@ -320,7 +320,18 @@ function saveEntity(definitions) {
       if (checkRequired(entity, proper)) {
         let data = properties[proper];
         delete properties[proper];
-        properties[proper + '?'] = data;
+
+        if (isNumber(proper.substr(0, 1))) {
+          properties["'" + proper + "'" + '?'] = data;
+        } else {
+          properties[proper + '?'] = data;
+        }
+      } else {
+        if (isNumber(proper.substr(0, 1))) {
+          let data = properties[proper];
+          delete properties[proper];
+          properties["'" + proper + "'"] = data;
+        }
       }
     }
 
@@ -393,6 +404,16 @@ function setEntityName(ref, res = false, showAny = false) {
   }
 }
 
+function isNumber(val) {
+  var regPos = /^\d+(\.\d+)?$/; //非负浮点数
+  var regNeg = /^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$/; //负浮点数
+  if (regPos.test(val) || regNeg.test(val)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 function bindEntity(ref, addFileTypes = false, isT = false) {
   let entityName = setEntityName(ref);
   let refList = [];
@@ -440,7 +461,11 @@ function bindEntity(ref, addFileTypes = false, isT = false) {
       // 处理非必填
       if (!parmDetail.required) {
         if (parmDetail.name) {
-          parmDetail.name += '?';
+          if (isNumber(parmDetail.name.substr(0, 1))) {
+            parmDetail.name = "'" + parmDetail.name + "'" + '?';
+          } else {
+            parmDetail.name += '?';
+          }
         }
       }
 
@@ -448,7 +473,11 @@ function bindEntity(ref, addFileTypes = false, isT = false) {
       if (!key.includes('?') && !required?.some(e => e === key)) {
         const keyValue = entity.properties[key];
         delete entity.properties[key];
-        entity.properties[key + '?'] = keyValue;
+        if (isNumber(key.substr(0, 1))) {
+          entity.properties["'" + key + "'" + '?'] = keyValue;
+        } else {
+          entity.properties[key + '?'] = keyValue;
+        }
       }
 
       if (ref) {
@@ -465,7 +494,7 @@ function bindEntity(ref, addFileTypes = false, isT = false) {
     entity.name += '<T>';
   }
 
-  if (!exportAllTypeEntity.some(e => e.name === entityName) && addFileTypes) {
+  if (!exportAllTypeEntity.some(e => e.name === entityName || e.name === entity.name) && addFileTypes) {
     exportAllTypeEntity.push(entity);
   }
 
