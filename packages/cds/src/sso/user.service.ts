@@ -395,7 +395,11 @@ export class SSOUserService extends BaseApi {
   @GET('getUsersWithFAMExamine')
   getUsersWithFAMExamine(
     @Payload
-    _req: {},
+    _req: {
+      maxResultCount?: number;
+      skipCount?: number;
+      sorting?: string;
+    },
   ): Observable<any> {
     return null as any;
   }
