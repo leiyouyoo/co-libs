@@ -6,7 +6,4 @@ export * from './role.service';
 export * from './tenant.service';
 export * from './user.service';
 export * from './user-login.service';
-
-
-export * from './SSO.types';
-
+export * from './sso.types';
