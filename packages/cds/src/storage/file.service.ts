@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { StorageUploadResultDto,StorageGetFileInfoDto,StorageGetFileInfosInput,StorageListResultDto,StorageChunkUploadResultDto, } from './storage.types';
+import { StorageUploadResultDto,StorageGetFileInfoDto,StorageGetFileInfosInput,StorageListResultDto1,StorageChunkUploadResultDto } from './storage.types';
 
-@BaseUrl('/storage/File')
+@BaseUrl('/Storage/File')
 @Injectable({ providedIn: 'root' })
 export class StorageFileService extends BaseApi {
   constructor(injector: Injector) {
@@ -13,10 +13,10 @@ export class StorageFileService extends BaseApi {
   
     /**
      * @param url /Storage/File/Upload
-     * 上传文件
+     * 暂无备注
      */
 
-    @FORM('upload')
+    @FORM('Upload')
     upload(
         @Payload
         _req: {file?:File,fileName?:string} 
@@ -31,7 +31,7 @@ export class StorageFileService extends BaseApi {
      * 获取文件详情
      */
 
-    @GET('getFileInfo')
+    @GET('GetFileInfo')
     getFileInfo(
         @Payload
         _req: {id?:string} 
@@ -46,22 +46,22 @@ export class StorageFileService extends BaseApi {
      * 批量获取文件详情
      */
 
-    @POST('getFileInfos')
+    @POST('GetFileInfos')
     getFileInfos(
         @Payload
         _req:StorageGetFileInfosInput
 
-    ): Observable<StorageListResultDto<StorageGetFileInfoDto>> {
+    ): Observable<StorageListResultDto1<StorageGetFileInfoDto>> {
         return null as any
     }
 
 
     /**
      * @param url /Storage/File/ChunkUpload
-     * 分片上传
+     * 暂无备注
      */
 
-    @FORM('chunkUpload')
+    @FORM('ChunkUpload')
     chunkUpload(
         @Payload
         _req: {lastModified?:string,totalChunk?:number,chunkIndex?:number,file?:File,fileName?:string} 
@@ -76,7 +76,7 @@ export class StorageFileService extends BaseApi {
      * 下载文件/获取图片
      */
 
-    @GET('getDownLoadFile')
+    @GET('GetDownLoadFile')
     getDownLoadFile(
         @Payload
         _req: {fileId:string,handler:string,modifier?:string} 
@@ -91,7 +91,7 @@ export class StorageFileService extends BaseApi {
      * 获取Pdf文件
      */
 
-    @GET('getPdf')
+    @GET('GetPdf')
     getPdf(
         @Payload
         _req: {fileId:string} 
@@ -106,7 +106,7 @@ export class StorageFileService extends BaseApi {
      * 删除物理文件
      */
 
-    @DELETE('delete')
+    @DELETE('Delete')
     delete(
         @Payload
         _req: {id?:string} 
@@ -121,7 +121,7 @@ export class StorageFileService extends BaseApi {
      * 批量删除
      */
 
-    @POST('bulkDelete')
+    @POST('BulkDelete')
     bulkDelete(
         @Payload
         _req: {} 

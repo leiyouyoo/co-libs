@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 import {  } from './storage.types';
 
-@BaseUrl('/storage/FcmPurchaseOrder')
+@BaseUrl('/Storage/FcmPurchaseOrder')
 @Injectable({ providedIn: 'root' })
 export class StorageFcmPurchaseOrderService extends BaseApi {
   constructor(injector: Injector) {
@@ -16,7 +16,7 @@ export class StorageFcmPurchaseOrderService extends BaseApi {
      * 获取导出模板
      */
 
-    @GET('getTemplateDownload')
+    @GET('GetTemplateDownload')
     getTemplateDownload(
         @Payload
         _req: {} 
@@ -28,10 +28,10 @@ export class StorageFcmPurchaseOrderService extends BaseApi {
 
     /**
      * @param url /Storage/FcmPurchaseOrder/ParsePurchaseOrderExcel
-     * 解析excel内容
+     * 暂无备注
      */
 
-    @FORM('parsePurchaseOrderExcel')
+    @FORM('ParsePurchaseOrderExcel')
     parsePurchaseOrderExcel(
         @Payload
         _req: {shipmentId:string,file:File} 

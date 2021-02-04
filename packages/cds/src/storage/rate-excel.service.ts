@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 import {  } from './storage.types';
 
-@BaseUrl('/storage/RateExcel')
+@BaseUrl('/Storage/RateExcel')
 @Injectable({ providedIn: 'root' })
 export class StorageRateExcelService extends BaseApi {
   constructor(injector: Injector) {
@@ -13,10 +13,10 @@ export class StorageRateExcelService extends BaseApi {
   
     /**
      * @param url /Storage/RateExcel/ImportExcelToRate
-     * baseport arbitrary 导入
+     * 暂无备注
      */
 
-    @FORM('importExcelToRate')
+    @FORM('ImportExcelToRate')
     importExcelToRate(
         @Payload
         _req: {oceanId?:string,file:File,type?:number} 
@@ -28,10 +28,10 @@ export class StorageRateExcelService extends BaseApi {
 
     /**
      * @param url /Storage/RateExcel/ImportExcelToTruck
-     * 拖车导入
+     * 暂无备注
      */
 
-    @FORM('importExcelToTruck')
+    @FORM('ImportExcelToTruck')
     importExcelToTruck(
         @Payload
         _req: {oceanId?:string,file:File,type?:number} 
@@ -46,7 +46,7 @@ export class StorageRateExcelService extends BaseApi {
      * 基本港模板下载
      */
 
-    @GET('getTemplateDownloadBasePort')
+    @GET('GetTemplateDownloadBasePort')
     getTemplateDownloadBasePort(
         @Payload
         _req: {} 
@@ -61,7 +61,7 @@ export class StorageRateExcelService extends BaseApi {
      * 驳船模板下载
      */
 
-    @GET('getTemplateDownloadArbitrary')
+    @GET('GetTemplateDownloadArbitrary')
     getTemplateDownloadArbitrary(
         @Payload
         _req: {} 
@@ -76,7 +76,7 @@ export class StorageRateExcelService extends BaseApi {
      * 拖车模板下载
      */
 
-    @GET('getTemplateDownloadTruck')
+    @GET('GetTemplateDownloadTruck')
     getTemplateDownloadTruck(
         @Payload
         _req: {} 

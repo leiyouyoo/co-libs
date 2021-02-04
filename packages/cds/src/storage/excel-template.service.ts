@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 import {  } from './storage.types';
 
-@BaseUrl('/storage/ExcelTemplate')
+@BaseUrl('/Storage/ExcelTemplate')
 @Injectable({ providedIn: 'root' })
 export class StorageExcelTemplateService extends BaseApi {
   constructor(injector: Injector) {
@@ -16,7 +16,7 @@ export class StorageExcelTemplateService extends BaseApi {
      * 根据模板名称获取excel模板
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {name?:string} 
@@ -28,10 +28,10 @@ export class StorageExcelTemplateService extends BaseApi {
 
     /**
      * @param url /Storage/ExcelTemplate/GetTemplate
-     * 
+     * 暂无备注
      */
 
-    @GET('getTemplate')
+    @GET('GetTemplate')
     getTemplate(
         @Payload
         _req: {name?:string} 
