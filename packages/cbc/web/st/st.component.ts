@@ -526,7 +526,7 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
     if (!(enforce == null ? this.page.toTop : enforce)) return;
     const el = this.el.nativeElement as HTMLElement;
     if (this.scroll) {
-      el.querySelector('.ant-table-body')!.scrollTo(0, 0);
+      el.querySelector('.ant-table-body')?.scrollTo(0, 0);
       return;
     }
     el.scrollIntoView();
