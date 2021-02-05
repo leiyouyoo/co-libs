@@ -4,7 +4,8 @@ import {
   AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
-  Component, ContentChildren,
+  Component,
+  ContentChildren,
   ElementRef,
   EventEmitter,
   Inject,
@@ -12,7 +13,8 @@ import {
   OnChanges,
   OnDestroy,
   Optional,
-  Output, QueryList,
+  Output,
+  QueryList,
   SimpleChange,
   SimpleChanges,
   TemplateRef,
@@ -31,10 +33,7 @@ import {
   YNPipe,
   UserCustomConfigService,
 } from '@co/common';
-import {
-  CoI18NService,
-  CO_I18N_TOKEN, debounce,
-} from '@co/core';
+import { CoI18NService, CO_I18N_TOKEN, debounce } from '@co/core';
 import { CoConfigService, CoSTConfig, deepCopy, deepMergeKey, InputBoolean, InputNumber, toBoolean } from '@co/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzTableComponent, NzTableData } from 'ng-zorro-antd/table';
@@ -51,7 +50,8 @@ import {
   STColumn,
   STColumnButton,
   STColumnFilterMenu,
-  STColumnSelection, STColumnSetting,
+  STColumnSelection,
+  STColumnSetting,
   STData,
   STError,
   STExportOptions,
@@ -122,19 +122,16 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
   }
   @ContentChildren(STComponent) set expandSTList(value: QueryList<STComponent>) {
     this.expandSTChangeList$.forEach(o => o.unsubscribe());
-    this.expandSTChangeList$ =
-      value.toArray().map((o, i) => {
-        return o.change
-          .pipe(takeUntil(this.unsubscribe$))
-          .subscribe(event => {
-            switch (event.type) {
-              case 'checkbox':
-                this._checkSelection(this._data[i], !!event.checkbox?.length, -1);
-                break;
-              default:
-            }
-          });
+    this.expandSTChangeList$ = value.toArray().map((o, i) => {
+      return o.change.pipe(takeUntil(this.unsubscribe$)).subscribe(event => {
+        switch (event.type) {
+          case 'checkbox':
+            this._checkSelection(this._data[i], !!event.checkbox?.length, -1);
+            break;
+          default:
+        }
       });
+    });
     this._expandSTList = value;
   }
 
@@ -223,12 +220,12 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
   get showFilters(): boolean {
     return this._showFilters;
   }
-  _originColumns: STColumn[] = []
-  _sortedColumns: STColumn[] = []
+  _originColumns: STColumn[] = [];
+  _sortedColumns: STColumn[] = [];
   @Input() set columns(val: STColumn[]) {
     this._originColumns = val;
     this._sortedColumns = val;
-  };
+  }
   get columns(): STColumn[] {
     return this._sortedColumns;
   }
@@ -431,9 +428,9 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
 
   async loadPageData(
     option: {
-      appendData: boolean,
-      singleLoading: boolean,
-    } = {} as any
+      appendData: boolean;
+      singleLoading: boolean;
+    } = {} as any,
   ): Promise<this> {
     const { appendData, singleLoading } = option;
     if (singleLoading && this._loading) return this;
@@ -618,7 +615,11 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
     // recalculate no
     this._columns
       .filter(w => w.type === 'no')
-      .forEach(c => this._data.forEach((i, idx) => (i._values[c.__point] = { _text: this.dataSource.getNoIndex(i, c, idx, (this.pi - 1) * this.ps), org: idx })));
+      .forEach(c =>
+        this._data.forEach(
+          (i, idx) => (i._values[c.__point] = { _text: this.dataSource.getNoIndex(i, c, idx, (this.pi - 1) * this.ps), org: idx }),
+        ),
+      );
 
     return this.cd();
   }
@@ -778,13 +779,15 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
 
   getCheckedList(): STData[] {
     const res = this._data.filter(w => !w.disabled && w.checked === true);
-    const expandSelected = this.expandSTList?.toArray().map(o => o.getCheckedList()).filter(o => !!o.length);
+    const expandSelected = this.expandSTList
+      ?.toArray()
+      .map(o => o.getCheckedList())
+      .filter(o => !!o.length);
 
-    return res.map((o, i) => (
-      {
-        ...o,
-        expandSelectedList: expandSelected?.[i]
-      }));
+    return res.map((o, i) => ({
+      ...o,
+      expandSelectedList: expandSelected?.[i],
+    }));
   }
 
   // #endregion
@@ -854,30 +857,26 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
         delay$.unsubscribe();
         _.set(record, recordDelayPath, void 0);
       } else {
-        const newDelay$ = timer(3e3)
-          .subscribe(() => {
-            _.set(record, recordDelayPath, void 0);
-            this.btnCallback(record, btn);
-            this.cd();
-          })
+        const newDelay$ = timer(3e3).subscribe(() => {
+          _.set(record, recordDelayPath, void 0);
+          this.btnCallback(record, btn);
+          this.cd();
+        });
         _.set(record, recordDelayPath, newDelay$);
       }
       return;
     } else if (btn.type === 'edit') {
-
     } else if (btn.type === 'save') {
       const model = generateModel(record);
       if (record._new) {
         /* new one */
-
       } else {
         /* edit exist */
-
       }
     } else if (btn.type === 'cancel') {
       if (record._new) {
         /* new one */
-        const _index = this._data.findIndex(o => o === record)
+        const _index = this._data.findIndex(o => o === record);
         this._data.splice(_index, 1);
         this.optimizeData();
       } else {
@@ -885,7 +884,7 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
         record._editing = false;
         record?._values?.forEach(o => {
           o.value = deepCopy(o.org);
-        })
+        });
       }
     }
     this.btnCallback(record, btn);
@@ -962,7 +961,7 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
     if (isRoot && filteredBtns?.length > 3) {
       nestedBtns = (() => {
         const [firstBtn, secondBtn, ...lastBtns] = filteredBtns;
-        const retBtns: STColumnButton[] = []
+        const retBtns: STColumnButton[] = [];
         if (firstBtn) retBtns.push(firstBtn);
         if (secondBtn) retBtns.push(secondBtn);
         if (lastBtns?.length) retBtns.push({ children: lastBtns });
@@ -978,7 +977,7 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
   /* not production ready */
   btnTrackByFn(index: number, item: STColumnButton) {
     if (item.children?.length) {
-      return item.children[0]
+      return item.children[0];
     } else {
       return item;
     }
@@ -1032,7 +1031,7 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
   }
 
   private refreshColumns(): this {
-    const res = this.columnSource.process(this.columns, { defaultWidth: this.columnDefaultWidth, });
+    const res = this.columnSource.process(this.columns, { defaultWidth: this.columnDefaultWidth });
     this._columns = res.columns;
     this._headers = res.headers;
     this._filterRow = res.filterRow;
@@ -1042,18 +1041,16 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
   getFilterOptions(column: STColumn, index: number, input?: string): any[] {
     /*  */
     if (column?.filter?.optionList) {
-      return (column.filter.optionList as { label: string; value: any }[]).map(o => ({ ...o, label: this.i18nSrv.fanyi(o.label), }));
+      return (column.filter.optionList as { label: string; value: any }[]).map(o => ({ ...o, label: this.i18nSrv.fanyi(o.label) }));
     }
-    const arr = Array.from(
-      new Set(this._data.map(o => o._values[index].text))
-    );
+    const arr = Array.from(new Set(this._data.map(o => o._values[index].text)));
     let result: any[];
-    switch (column.filter !.type) {
+    switch (column.filter!.type) {
       case 'autocomplete':
         result = arr.filter(o => {
           const str = o + '';
           return input ? str.includes(input) : true;
-        })
+        });
         break;
       case 'select':
       default:
@@ -1064,22 +1061,28 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
   }
 
   optimizeData(): void {
-    this._data = this.dataSource.optimizeData({ columns: this._columns, result: this._data, rowClassName: this.rowClassName, pi: this.pi, ps: this.ps });
+    this._data = this.dataSource.optimizeData({
+      columns: this._columns,
+      result: this._data,
+      rowClassName: this.rowClassName,
+      pi: this.pi,
+      ps: this.ps,
+    });
   }
 
   addNewRow() {
-    this._data.unshift({ _editing: true, _new: true, _values: [] })
-    this.optimizeData()
+    this._data.unshift({ _editing: true, _new: true, _values: [] });
+    this.optimizeData();
     this.cdr.markForCheck();
   }
 
   /**
    *
    */
-  showLoading(type?: 'nz-table' | 'load-on-scroll', ): boolean {
+  showLoading(type?: 'nz-table' | 'load-on-scroll'): boolean {
     switch (type) {
       case 'nz-table':
-        return this.loadOnScroll ? (this.pi === 1 && this._loading) : this._loading;
+        return this.loadOnScroll ? this.pi === 1 && this._loading : this._loading;
       case 'load-on-scroll':
         return this.loadOnScroll && this.pi !== 1 && this._loading;
       default:
@@ -1102,11 +1105,7 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
       const settingColumns = this.userCustomConfigService.getByPath([this.columnSettingName, 'columns']);
       if (!settingColumns?.length) return;
       const columns = this._originColumns;
-      const result = mergeSorted(
-        columns,
-        settingColumns,
-        'index'
-      ).map(o => {
+      const result = mergeSorted(columns, settingColumns, 'index').map(o => {
         const index = columns.findIndex(p => {
           return p === o;
         });
@@ -1129,7 +1128,7 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
     let x = this._sortedColumns.find(o => o.title === col._oriColumn!.title && o.index === col._oriColumn!.index);
     if (!x) {
       this._sortedColumns?.some(o => {
-        x = o.children?.find(child => child.title === col._oriColumn!.title && child.index === col._oriColumn!.index)
+        x = o.children?.find(child => child.title === col._oriColumn!.title && child.index === col._oriColumn!.index);
         return !!x;
       });
     }
@@ -1147,7 +1146,7 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
     this._filterRow?.forEach(filter => {
       filter?.column?.filter?.menus?.forEach(m => {
         m.value = null;
-      })
+      });
     });
     this.loadPageData();
   }
@@ -1157,12 +1156,11 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
     return text?.replace(/<[^>]+>/g, '');
   }
 
-  ngAfterContentInit() {
-  }
+  ngAfterContentInit() {}
 
   ngAfterViewInit() {
     this.columnSource.restoreAllRender(this._columns);
-    this.cd()
+    this.cd();
   }
 
   ngOnChanges(changes: { [P in keyof this]?: SimpleChange } & SimpleChanges): void {
@@ -1186,6 +1184,5 @@ export class STComponent implements AfterContentInit, AfterViewInit, OnChanges, 
     unsubscribe$.complete();
   }
 
-  ngDoCheck() {
-  }
+  ngDoCheck() {}
 }
