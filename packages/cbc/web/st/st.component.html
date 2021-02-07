@@ -220,6 +220,7 @@
               [nzOptions]="getFilterOptions(i.column, index)"
               [nzMode]="i.column.filter?.multiple ? 'multiple' : 'default'"
               [nzMaxTagCount]="1"
+              [nzDropdownClassName]="size === 'small' ? 'st-pane-small' : ''"
               nzAllowClear
               nzSize="small"
             ></nz-select>
