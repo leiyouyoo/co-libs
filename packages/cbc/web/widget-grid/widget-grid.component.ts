@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, Input, NgZone, OnInit, ViewChild } from '@angular/core';
 import { CoWidgetItemSource } from './widget-item.directive';
-import { NgxWidgetGridComponent } from '@co/cbc/web/ngx-widget-grid';
+import { NgxWidgetGridComponent, Rectangle } from '@co/cbc/web/ngx-widget-grid';
 import { PlatformSettingService } from '@co/cds';
 import { J } from '@angular/cdk/keycodes';
 import { finalize } from 'rxjs/operators';
@@ -53,7 +53,26 @@ export class WidgetGridComponent implements OnInit {
   }
 
   onDelete(item, index: number) {
-    this.widgets.splice(index, 1)
+    this.widgets.splice(index, 1);
+    setTimeout(() => {
+      const obstructions = this.ngxWidgetGrid.gridRenderer.obstructions;
+      if (!obstructions.some(o => !!o)) return;
+      const columns = this.ngxWidgetGrid.columns;
+      const rows = this.ngxWidgetGrid.rows;
+      for (let i = 0; i < rows; i++) {
+        let hasWidget = false;
+        for (let j = 0; j < columns; j++) {
+          hasWidget = hasWidget || !!obstructions[i * columns + j];
+        }
+        if (!hasWidget) {
+          this.ngxWidgetGrid.widgetComponents.forEach(widget => {
+            if (widget.position.top <= i + 1) return;
+            widget.position = new Rectangle({ ...widget.position, top: widget.position.top -1, });
+            this.ngxWidgetGrid.updateWidget(widget, false);
+          })
+        }
+      }
+    })
   }
 
   setEditable(val: boolean) {

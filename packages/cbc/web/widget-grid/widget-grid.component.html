@@ -1,4 +1,4 @@
-<div class="d-flex" style="position: relative;height: 32px;">
+<div class="d-flex" style="position: sticky;height: 32px;top: 0;z-index: 100;">
   <div style="position: absolute;top: 0;">
     <button nz-button nzType="default" *ngIf="!editable" (click)="setEditable(true)"><i nz-icon nzType="edit"></i>Edit</button>
     <button nz-button nzType="default" *ngIf="editable" (click)="setEditable(false)">Done</button>
