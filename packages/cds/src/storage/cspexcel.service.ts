@@ -1,25 +1,25 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { StorageFileDto,StorageBatchDownloadClearanceInvoiceDto,StorageImportResultDto,StorageProductExportInput,StorageOrderExportInput,StorageBillExportInput,StorageObject,StorageExportPackingListInput, } from './storage.types';
+import { StorageFileDto,StorageBatchDownloadClearanceInvoiceDto,StorageImportResultDto,StorageProductExportInput,StorageOrderExportInput,StorageBillExportInput,StorageImportResultDto1,StorageExportPackingListInput } from './storage.types';
 
-@BaseUrl('/storage/CSPExcel')
+@BaseUrl('/Storage/CSPExcel')
 @Injectable({ providedIn: 'root' })
 export class StorageCSPExcelService extends BaseApi {
   constructor(injector: Injector) {
     super(injector);
   }
 
-
+  
     /**
      * @param url /Storage/CSPExcel/AnalysisExcel
-     * CSP清关发票解析
+     * 暂无备注
      */
 
-    @FORM('analysisExcel')
+    @FORM('AnalysisExcel')
     analysisExcel(
         @Payload
-        _req: {file:File,headers:any[],apiParameterName?:string,isBackgroundJob?:boolean,apiTypes?:number,url:string}
+        _req: {file:File,headers:any[],apiParameterName?:string,isBackgroundJob?:boolean,apiTypes?:number,url:string} 
 
     ): Observable<any> {
         return null as any
@@ -28,13 +28,13 @@ export class StorageCSPExcelService extends BaseApi {
 
     /**
      * @param url /Storage/CSPExcel/CusClearanceInvoiceExportExcelAsync
-     * CSP清关发票导出excel
+     * 暂无备注
      */
 
-    @FORM('cusClearanceInvoiceExportExcelAsync')
+    @FORM('CusClearanceInvoiceExportExcelAsync')
     cusClearanceInvoiceExportExcelAsync(
         @Payload
-        _req: {sheetName?:string,templateName?:string,headers?:any[],apiTypes?:number,url:string,parametersJsonStr?:string,isBackgroundJob?:boolean}
+        _req: {sheetName?:string,templateName?:string,headers?:any[],apiTypes?:number,url:string,parametersJsonStr?:string,isBackgroundJob?:boolean} 
 
     ): Observable<StorageFileDto> {
         return null as any
@@ -47,7 +47,7 @@ export class StorageCSPExcelService extends BaseApi {
 Id 要调整成bookingId
      */
 
-    @POST('batchClearanceInvoiceExportExcelAsync')
+    @POST('BatchClearanceInvoiceExportExcelAsync')
     batchClearanceInvoiceExportExcelAsync(
         @Payload
         _req:StorageBatchDownloadClearanceInvoiceDto
@@ -59,15 +59,15 @@ Id 要调整成bookingId
 
     /**
      * @param url /Storage/CSPExcel/ProductImport
-     * 导入产品
+     * 暂无备注
      */
 
-    @FORM('productImport')
+    @FORM('ProductImport')
     productImport(
         @Payload
-        _req: {file?:File}
+        _req: {file?:File} 
 
-    ): Observable<any> {
+    ): Observable<StorageImportResultDto> {
         return null as any
     }
 
@@ -77,7 +77,7 @@ Id 要调整成bookingId
      * 产品导出
      */
 
-    @POST('productExport')
+    @POST('ProductExport')
     productExport(
         @Payload
         _req:StorageProductExportInput
@@ -89,15 +89,15 @@ Id 要调整成bookingId
 
     /**
      * @param url /Storage/CSPExcel/OrderImport
-     * 采购订单导入
+     * 暂无备注
      */
 
-    @FORM('orderImport')
+    @FORM('OrderImport')
     orderImport(
         @Payload
-        _req: {file?:File}
+        _req: {file?:File} 
 
-    ): Observable<any> {
+    ): Observable<StorageImportResultDto> {
         return null as any
     }
 
@@ -107,7 +107,7 @@ Id 要调整成bookingId
      * 采购订单导出
      */
 
-    @POST('orderExport')
+    @POST('OrderExport')
     orderExport(
         @Payload
         _req:StorageOrderExportInput
@@ -122,7 +122,7 @@ Id 要调整成bookingId
      * 账单导出
      */
 
-    @POST('billExport')
+    @POST('BillExport')
     billExport(
         @Payload
         _req:StorageBillExportInput
@@ -134,15 +134,15 @@ Id 要调整成bookingId
 
     /**
      * @param url /Storage/CSPExcel/ImportPackingList
-     * 导入装箱单
+     * 暂无备注
      */
 
-    @FORM('importPackingList')
+    @FORM('ImportPackingList')
     importPackingList(
         @Payload
-        _req: {businessId?:string,isSave?:boolean,file?:File}
+        _req: {businessId?:string,isSave?:boolean,file?:File} 
 
-    ): Observable<StorageImportResultDto<StorageObject>> {
+    ): Observable<StorageImportResultDto1<any>> {
         return null as any
     }
 
@@ -152,7 +152,7 @@ Id 要调整成bookingId
      * 导出装箱单
      */
 
-    @POST('exportPackingList')
+    @POST('ExportPackingList')
     exportPackingList(
         @Payload
         _req:StorageExportPackingListInput

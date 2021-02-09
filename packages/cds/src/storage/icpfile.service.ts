@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { StorageICPUploadFileInput,StorageUploadResultDto,StorageICPBatchDownloadInput,StorageICPBatchDownloadResult,StorageListResultDto, } from './storage.types';
+import { StorageICPUploadFileInput,StorageUploadResultDto,StorageICPBatchDownloadInput,StorageListResultDto1,StorageICPBatchDownloadResult } from './storage.types';
 
-@BaseUrl('/storage/ICPFile')
+@BaseUrl('/Storage/ICPFile')
 @Injectable({ providedIn: 'root' })
 export class StorageICPFileService extends BaseApi {
   constructor(injector: Injector) {
@@ -16,7 +16,7 @@ export class StorageICPFileService extends BaseApi {
      * 文件上传
      */
 
-    @POST('upload')
+    @POST('Upload')
     upload(
         @Payload
         _req:StorageICPUploadFileInput
@@ -31,12 +31,12 @@ export class StorageICPFileService extends BaseApi {
      * 批量下载
      */
 
-    @POST('batchDownload')
+    @POST('BatchDownload')
     batchDownload(
         @Payload
         _req:StorageICPBatchDownloadInput
 
-    ): Observable<StorageListResultDto<StorageICPBatchDownloadResult>> {
+    ): Observable<StorageListResultDto1<StorageICPBatchDownloadResult>> {
         return null as any
     }
 

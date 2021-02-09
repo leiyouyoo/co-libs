@@ -3,6 +3,7 @@
      *  No Remark 
      */
     export class StorageChangeAttachmentTypeInput {
+        [key:string]: any;
         
          
             /* 附件类型
@@ -51,7 +52,13 @@
 44 = WarehouseRecipt
 45 = TaxBill
 46 = SignReceipt
-47 = BookingNote */ 
+47 = BookingNote
+48 = SalesContract
+49 = ContainerLoadPlan
+50 = SOShippingOrder
+51 = MA_N
+51 = MA_N
+51 = MA_N */ 
             attachmentType?: number;
          
             
@@ -64,6 +71,7 @@
      *  No Remark 
      */
     export class StorageGetAllAttachmentListInput {
+        [key:string]: any;
         
          
             /* 业务Id集合 */ 
@@ -115,7 +123,13 @@
 44 = WarehouseRecipt
 45 = TaxBill
 46 = SignReceipt
-47 = BookingNote */ 
+47 = BookingNote
+48 = SalesContract
+49 = ContainerLoadPlan
+50 = SOShippingOrder
+51 = MA_N
+51 = MA_N
+51 = MA_N */ 
             attachmentType?: number;
          
             /* 是否过滤认证 */ 
@@ -123,6 +137,14 @@
          
             /* 附件角色 */ 
             roles?: any[];
+         
+            /* 附件环节
+0 = NotSet
+1 = Export
+2 = Import
+3 = PostDelivery
+4 = CRM */ 
+            permissionType?: number;
         
         
     }
@@ -131,6 +153,7 @@
      * 用于附件列表显示的 Dto
      */
     export class StorageAttachmentListDto {
+        [key:string]: any;
         
          
             /* 上传人 */ 
@@ -145,22 +168,28 @@
             /* 附件类型字面值 */ 
             typeString?: string;
          
-            /* 是否公开 */ 
+            
+            isDeleteSamTypeOthers?: boolean;
+         
+            
             isPublic?: boolean;
          
-            /* CO.Storage.Domain.Attachments.Enums.AttachmentRoles[] 允许删除附件的角色，必需存在于 CO.Storage.Application.Attachments.Dto.AttachmentDto.CanViewRoles，（CreatorUser 始终有权限删除） */ 
+            
             canDeleteRoles?: any[];
          
-            /* CO.Storage.Domain.Attachments.Enums.AttachmentRoles[] 允许查看附件的角色，仅当 CO.Storage.Application.Attachments.Dto.AttachmentDto.IsPublic 为 false 时有效（CreatorUser 始终有权限查看） */ 
+            
             canViewRoles?: any[];
          
-            /* Id */ 
+            
+            canViewInternalPermissions?: any[];
+         
+            
             id?: string;
          
-            /* 业务id（如是booking，则传booking的id） */ 
+            
             businessId?: string;
          
-            /* 业务类型
+            /* 
 0 = Quote
 1 = Booking
 2 = Shipment
@@ -170,7 +199,7 @@
 6 = Invoice */ 
             businessType?: number;
          
-            /* 附件类型
+            /* 
 0 = Other
 1 = OSO
 2 = TRK
@@ -216,16 +245,22 @@
 44 = WarehouseRecipt
 45 = TaxBill
 46 = SignReceipt
-47 = BookingNote */ 
+47 = BookingNote
+48 = SalesContract
+49 = ContainerLoadPlan
+50 = SOShippingOrder
+51 = MA_N
+51 = MA_N
+51 = MA_N */ 
             attachmentType?: number;
          
-            /* 文件id(上传到文件服务器后返回) */ 
+            
             fileId?: string;
          
-            /* 文件名称(上传到文件服务器后返回) */ 
+            
             fileName?: string;
          
-            /* 文件扩展名(上传到文件服务器后返回) */ 
+            
             extensionName?: string;
         
         
@@ -234,19 +269,21 @@
     /**
      *  No Remark 
      */
-    export class StorageListResultDto<T> {
+    export class StorageListResultDto1<T> {
+        [key:string]: any;
         
          
             
-            items: any;
+            items?: T[];
         
         
     }
  
     /**
-     * 主键类型默认为整形的数据传输对象基类
+     *  No Remark 
      */
     export class StorageCoEntityDto {
+        [key:string]: any;
         
          
             
@@ -256,27 +293,34 @@
     }
  
     /**
-     * 附件基本信息 Dto
+     *  No Remark 
      */
     export class StorageAttachmentDto {
+        [key:string]: any;
         
          
-            /* 是否公开 */ 
+            
+            isDeleteSamTypeOthers?: boolean;
+         
+            
             isPublic?: boolean;
          
-            /* CO.Storage.Domain.Attachments.Enums.AttachmentRoles[] 允许删除附件的角色，必需存在于 CO.Storage.Application.Attachments.Dto.AttachmentDto.CanViewRoles，（CreatorUser 始终有权限删除） */ 
+            
             canDeleteRoles?: any[];
          
-            /* CO.Storage.Domain.Attachments.Enums.AttachmentRoles[] 允许查看附件的角色，仅当 CO.Storage.Application.Attachments.Dto.AttachmentDto.IsPublic 为 false 时有效（CreatorUser 始终有权限查看） */ 
+            
             canViewRoles?: any[];
          
-            /* Id */ 
+            
+            canViewInternalPermissions?: any[];
+         
+            
             id?: string;
          
-            /* 业务id（如是booking，则传booking的id） */ 
+            
             businessId?: string;
          
-            /* 业务类型
+            /* 
 0 = Quote
 1 = Booking
 2 = Shipment
@@ -286,7 +330,7 @@
 6 = Invoice */ 
             businessType?: number;
          
-            /* 附件类型
+            /* 
 0 = Other
 1 = OSO
 2 = TRK
@@ -332,29 +376,132 @@
 44 = WarehouseRecipt
 45 = TaxBill
 46 = SignReceipt
-47 = BookingNote */ 
+47 = BookingNote
+48 = SalesContract
+49 = ContainerLoadPlan
+50 = SOShippingOrder
+51 = MA_N
+51 = MA_N
+51 = MA_N */ 
             attachmentType?: number;
          
-            /* 文件id(上传到文件服务器后返回) */ 
+            
             fileId?: string;
          
-            /* 文件名称(上传到文件服务器后返回) */ 
+            
             fileName?: string;
          
-            /* 文件扩展名(上传到文件服务器后返回) */ 
+            
             extensionName?: string;
         
         
     }
  
     /**
-     * 用于批量创建附件的 Dto
+     *  No Remark 
      */
-    export class StorageBatchCreateAttachmentInput {
+    export class StorageAttachmentTypePermissionDto {
+        [key:string]: any;
         
          
-            /* Gets or sets the items. */ 
-            items?: any[];
+            /* 
+0 = Other
+1 = OSO
+2 = TRK
+3 = CF
+4 = SI
+5 = ARR
+6 = MBL
+7 = HBL
+8 = SID
+9 = ISF
+11 = AR
+12 = AP
+13 = DC
+14 = ASO
+15 = BKG
+16 = LGTLX
+17 = LGPKG
+18 = LGDC
+19 = LGPBL
+20 = LGABL
+21 = LGMBL
+22 = LGPKG1
+23 = LGDC1
+24 = LGABL1
+25 = LGMBL1
+26 = LGTLX1
+27 = AMS
+28 = AN
+29 = SIMBL
+30 = SIHBL
+31 = AN_C
+32 = NRAS
+33 = QuotedPrice
+34 = POD
+35 = AC
+36 = BR
+37 = WFF
+38 = CI
+39 = PL
+40 = PO
+41 = DM
+43 = SideMarks
+44 = WarehouseRecipt
+45 = TaxBill
+46 = SignReceipt
+47 = BookingNote
+48 = SalesContract
+49 = ContainerLoadPlan
+50 = SOShippingOrder
+51 = MA_N
+51 = MA_N
+51 = MA_N */ 
+            attachmentType?: number;
+         
+            
+            isPublic?: boolean;
+         
+            
+            canViewRoles?: any[];
+         
+            
+            canViewInternalPermissions?: any[];
+         
+            
+            businessSteps?: any[];
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class StorageBatchCreateAttachmentInput {
+        [key:string]: any;
+        
+         
+            
+            items?: StorageAttachmentDto[];
+        
+        
+    }
+ 
+    /**
+     * excel列头
+     */
+    export class StorageExcelHeader {
+        [key:string]: any;
+        
+         
+            /* 属性名称，大小写要求一致 */ 
+            propertyName?: string;
+         
+            /* 显示在excel里的名称 */ 
+            displayName?: string;
+         
+            /* 列头排序，按从小到大升序asc(如果是导入，顺序必须按excel列头顺序一致) */ 
+            order?: number;
         
         
     }
@@ -363,6 +510,7 @@
      *  No Remark 
      */
     export class StorageFileDto {
+        [key:string]: any;
         
          
             
@@ -390,6 +538,7 @@
      *  No Remark 
      */
     export class StorageBatchDownloadClearanceInvoiceDto {
+        [key:string]: any;
         
          
             
@@ -399,34 +548,72 @@
     }
  
     /**
-     * 导入结果
+     *  No Remark 
      */
-    export class StorageImportResultDto<T> {
+    export class StorageDataRowErrorInfo {
+        [key:string]: any;
         
          
-            /* Data */ 
-            data: any;
+            
+            rowIndex?: number;
+         
+            
+            fieldErrors?: object;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class StorageTemplateErrorInfo {
+        [key:string]: any;
+        
+         
+            /* 
+1 = Warning
+2 = Error */ 
+            errorLevel?: number;
+         
+            
+            columnName?: string;
+         
+            
+            requireColumnName?: string;
+         
+            
+            message?: string;
+        
+        
+    }
+ 
+    /**
+     * 导入结果
+     */
+    export class StorageImportResultDto {
+        [key:string]: any;
+        
          
             /* 验证错误 */ 
-            rowErrors: any;
+            rowErrors?: StorageDataRowErrorInfo[];
          
             /* 模板错误 */ 
-            templateErrors: any;
+            templateErrors?: StorageTemplateErrorInfo[];
          
             /* 其它消息信息 */ 
-            message: any;
+            message?: string;
          
             /* 行数据总条数 */ 
-            totalRowCount: any;
+            totalRowCount?: number;
          
             /* 行数据验证错误条数 */ 
-            errorRowCount: any;
+            errorRowCount?: number;
          
             /* 导入异常信息 */ 
-            exception: any;
+            exception?: object;
          
             /* 是否存在导入错误 */ 
-            hasError: any;
+            hasError?: boolean;
         
         
     }
@@ -435,6 +622,7 @@
      * 产品导出
      */
     export class StorageProductExportInput {
+        [key:string]: any;
         
          
             /* 国家Id */ 
@@ -453,6 +641,7 @@
      * 采购订单导出
      */
     export class StorageOrderExportInput {
+        [key:string]: any;
         
          
             /* 采购订单Id集合 */ 
@@ -465,6 +654,7 @@
      * 账单导出
      */
     export class StorageBillExportInput {
+        [key:string]: any;
         
          
             /* 是否英文 */ 
@@ -477,9 +667,36 @@
     }
  
     /**
-     *  No Remark 
+     * 导入结果
      */
-    export class StorageObject {
+    export class StorageImportResultDto1<T> {
+        [key:string]: any;
+        
+         
+            /* Data */ 
+            data?: object;
+         
+            /* 验证错误 */ 
+            rowErrors?: T[];
+         
+            /* 模板错误 */ 
+            templateErrors?: T[];
+         
+            /* 其它消息信息 */ 
+            message?: string;
+         
+            /* 行数据总条数 */ 
+            totalRowCount?: number;
+         
+            /* 行数据验证错误条数 */ 
+            errorRowCount?: number;
+         
+            /* 导入异常信息 */ 
+            exception?: object;
+         
+            /* 是否存在导入错误 */ 
+            hasError?: boolean;
+        
         
     }
  
@@ -487,6 +704,7 @@
      *  No Remark 
      */
     export class StorageExportPackingListInput {
+        [key:string]: any;
         
          
             /* CSP BookingId 集合 */ 
@@ -496,9 +714,38 @@
     }
  
     /**
+     *  No Remark 
+     */
+    export class StorageEsPageQueryInput {
+        [key:string]: any;
+        
+         
+            
+            searchText?: string;
+         
+            
+            orderBy?: object;
+         
+            
+            dynamicQuery?: object;
+         
+            
+            incluedFields?: any[];
+         
+            
+            maxResultCount?: number;
+         
+            
+            skipCount?: number;
+        
+        
+    }
+ 
+    /**
      * 预报单查询模型
      */
     export class StoragePreShipmentExportInput {
+        [key:string]: any;
         
          
             /* 是否是CSP的客户创建的 */ 
@@ -566,13 +813,13 @@
             /* 是否导出 */ 
             isExport?: boolean;
          
-            /* 排序 */ 
+            
             sorting?: string;
          
-            /* 页大小 */ 
+            
             maxResultCount?: number;
          
-            /* 跳过指定条数 */ 
+            
             skipCount?: number;
         
         
@@ -582,6 +829,7 @@
      *  No Remark 
      */
     export class StorageGetShipmentListInput {
+        [key:string]: any;
         
          
             /* 搜索关键字 */ 
@@ -605,13 +853,13 @@
             /* 是否导出 */ 
             isExport?: boolean;
          
-            /* 排序 */ 
+            
             sorting?: string;
          
-            /* 页大小 */ 
+            
             maxResultCount?: number;
          
-            /* 跳过指定条数 */ 
+            
             skipCount?: number;
         
         
@@ -621,6 +869,7 @@
      *  No Remark 
      */
     export class StorageGetDeliveryInfoListInput {
+        [key:string]: any;
         
          
             /* 搜索关键字 */ 
@@ -641,13 +890,13 @@
             /* 是否导出 */ 
             isExport?: boolean;
          
-            /* 排序 */ 
+            
             sorting?: string;
          
-            /* 页大小 */ 
+            
             maxResultCount?: number;
          
-            /* 跳过指定条数 */ 
+            
             skipCount?: number;
         
         
@@ -656,20 +905,21 @@
     /**
      *  No Remark 
      */
-    export class StorageImportDataRowDto<T> {
+    export class StorageImportDataRowDto1<T> {
+        [key:string]: any;
         
          
             
-            items: any;
+            items?: any[];
          
             
-            totalRowCount: any;
+            totalRowCount?: number;
          
             
-            errorRowCount: any;
+            errorRowCount?: number;
          
             
-            exception: any;
+            exception?: object;
         
         
     }
@@ -678,6 +928,7 @@
      *  No Remark 
      */
     export class StorageExportShippingOrdersInput {
+        [key:string]: any;
         
          
             
@@ -690,6 +941,7 @@
      *  No Remark 
      */
     export class StorageExportContainersInput {
+        [key:string]: any;
         
          
             
@@ -701,7 +953,72 @@
     /**
      *  No Remark 
      */
+    export class StoragePurchaseOrderDto {
+        [key:string]: any;
+        
+         
+            /* PO单号 */ 
+            purchaseOrderNo?: string;
+         
+            /* 品名 */ 
+            productName?: string;
+         
+            /* 产品的 HSCode */ 
+            hsCode?: string;
+         
+            /* 产品SKU */ 
+            productSku?: string;
+         
+            /* 产品制造商零件编号 */ 
+            productMpn?: string;
+         
+            /* 主业务id */ 
+            shipmentId?: string;
+         
+            /* 装运的产品总数 */ 
+            totalQuantity?: StorageQuantityDto;
+         
+            /* 装运的产品包装总数 */ 
+            totalPackage?: StorageQuantityDto;
+         
+            /* 装运的产品总重量（毛重） */ 
+            totalWeight?: StorageQuantityDto;
+         
+            /* 装运的产品总净重 */ 
+            totalNetWeight?: StorageQuantityDto;
+         
+            /* 装运的产品总体积 */ 
+            totalVolume?: StorageQuantityDto;
+         
+            /* 合并后的主业务Id ，默认使用当前业务Id */ 
+            mergerId?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
+    export class StorageQuantityDto {
+        [key:string]: any;
+        
+         
+            /* 值 */ 
+            value?: number;
+         
+            /* 指定此数量的计量单位。
+对于重量，单位为 kg（千克）或 lbs（磅），
+对于体积，单位为 cbm（立方米）或 cbf（立方英尺） */ 
+            unit?: string;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
     export class StorageUploadResultDto {
+        [key:string]: any;
         
          
             /* 文件访问ID */ 
@@ -723,6 +1040,7 @@
      *  No Remark 
      */
     export class StorageGetFileInfoDto {
+        [key:string]: any;
         
          
             /* 文件访问ID */ 
@@ -747,6 +1065,7 @@
      *  No Remark 
      */
     export class StorageGetFileInfosInput {
+        [key:string]: any;
         
          
             
@@ -759,6 +1078,7 @@
      *  No Remark 
      */
     export class StorageChunkUploadResultDto {
+        [key:string]: any;
         
          
             /* 是否合并成功 */ 
@@ -785,7 +1105,42 @@
     /**
      *  No Remark 
      */
+    export class StorageOrderImportForIcpDto {
+        [key:string]: any;
+        
+         
+            
+            orderNumber: string;
+         
+            
+            productName: string;
+         
+            
+            units: number;
+         
+            
+            weight: number;
+         
+            
+            volume: number;
+         
+            
+            sku?: string;
+         
+            
+            mpn?: string;
+         
+            
+            cartons?: number;
+        
+        
+    }
+ 
+    /**
+     *  No Remark 
+     */
     export class StorageICPUploadFileInput {
+        [key:string]: any;
         
          
             
@@ -801,6 +1156,7 @@
      * 提供给ICP下载
      */
     export class StorageICPBatchDownloadInput {
+        [key:string]: any;
         
          
             /* 文件Ids */ 
@@ -813,6 +1169,7 @@
      * 提供给ICP批量下载返回内容
      */
     export class StorageICPBatchDownloadResult {
+        [key:string]: any;
         
          
             /* 文件Id */ 

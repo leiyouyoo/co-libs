@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
 import {  } from './storage.types';
 
-@BaseUrl('/storage/ICPExcel')
+@BaseUrl('/Storage/ICPExcel')
 @Injectable({ providedIn: 'root' })
 export class StorageICPExcelService extends BaseApi {
   constructor(injector: Injector) {
@@ -13,10 +13,10 @@ export class StorageICPExcelService extends BaseApi {
   
     /**
      * @param url /Storage/ICPExcel/OrderImport
-     * 提供给ICP导入在线解析，返回数据列表
+     * 暂无备注
      */
 
-    @FORM('orderImport')
+    @FORM('OrderImport')
     orderImport(
         @Payload
         _req: {file?:File} 

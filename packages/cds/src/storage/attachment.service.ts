@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { StorageChangeAttachmentTypeInput,StorageGetAllAttachmentListInput,StorageAttachmentListDto,StorageListResultDto,StorageCoEntityDto,StorageAttachmentDto,StorageBatchCreateAttachmentInput, } from './storage.types';
+import { StorageChangeAttachmentTypeInput,StorageGetAllAttachmentListInput,StorageListResultDto1,StorageAttachmentListDto,StorageCoEntityDto,StorageAttachmentDto,StorageAttachmentTypePermissionDto,StorageBatchCreateAttachmentInput } from './storage.types';
 
-@BaseUrl('/storage/Attachment')
+@BaseUrl('/Storage/Attachment')
 @Injectable({ providedIn: 'root' })
 export class StorageAttachmentService extends BaseApi {
   constructor(injector: Injector) {
@@ -16,7 +16,7 @@ export class StorageAttachmentService extends BaseApi {
      * 修改文件类型
      */
 
-    @POST('changeType')
+    @POST('ChangeType')
     changeType(
         @Payload
         _req:StorageChangeAttachmentTypeInput
@@ -31,12 +31,12 @@ export class StorageAttachmentService extends BaseApi {
      * 根据业务id集合获取附件列表.(弃用，跟业务耦合的，得根据具体业务提供获取业务附件的接口)
      */
 
-    @POST('getAllList')
+    @POST('GetAllList')
     getAllList(
         @Payload
         _req:StorageGetAllAttachmentListInput
 
-    ): Observable<StorageListResultDto<StorageAttachmentListDto>> {
+    ): Observable<StorageListResultDto1<StorageAttachmentListDto>> {
         return null as any
     }
 
@@ -46,7 +46,7 @@ export class StorageAttachmentService extends BaseApi {
      * 删除附件
      */
 
-    @POST('delete')
+    @POST('Delete')
     delete(
         @Payload
         _req:StorageCoEntityDto
@@ -61,7 +61,7 @@ export class StorageAttachmentService extends BaseApi {
      * 批量删除附件
      */
 
-    @POST('batchDelete')
+    @POST('BatchDelete')
     batchDelete(
         @Payload
         _req: {} 
@@ -76,7 +76,7 @@ export class StorageAttachmentService extends BaseApi {
      * 获取附件信息
      */
 
-    @GET('get')
+    @GET('Get')
     get(
         @Payload
         _req: {id?:string} 
@@ -91,7 +91,7 @@ export class StorageAttachmentService extends BaseApi {
      * 根据文件 Id 获取附件信息
      */
 
-    @GET('getByFileId')
+    @GET('GetByFileId')
     getByFileId(
         @Payload
         _req: {id?:string} 
@@ -106,12 +106,27 @@ export class StorageAttachmentService extends BaseApi {
      * 根据文件 Id 获取附件信息
      */
 
-    @POST('getListByFileIds')
+    @POST('GetListByFileIds')
     getListByFileIds(
         @Payload
         _req: {} 
 
-    ): Observable<StorageListResultDto<StorageAttachmentListDto>> {
+    ): Observable<StorageListResultDto1<StorageAttachmentListDto>> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Storage/Attachment/GetDefaultPermission
+     * 获取所有附件类型权限
+     */
+
+    @GET('GetDefaultPermission')
+    getDefaultPermission(
+        @Payload
+        _req: {} 
+
+    ): Observable<StorageListResultDto1<StorageAttachmentTypePermissionDto>> {
         return null as any
     }
 
@@ -121,12 +136,12 @@ export class StorageAttachmentService extends BaseApi {
      * 批量创建附件
      */
 
-    @POST('batchCreate')
+    @POST('BatchCreate')
     batchCreate(
         @Payload
         _req:StorageBatchCreateAttachmentInput
 
-    ): Observable<StorageListResultDto<StorageAttachmentDto>> {
+    ): Observable<StorageListResultDto1<StorageAttachmentDto>> {
         return null as any
     }
 

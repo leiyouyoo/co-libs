@@ -392,7 +392,7 @@ export class SSOUserService extends BaseApi {
    *
    */
 
-  @GET('getUsersWithFAMExamine')
+  @POST('getUsersWithFAMExamine')
   getUsersWithFAMExamine(
     @Payload
     _req: {
