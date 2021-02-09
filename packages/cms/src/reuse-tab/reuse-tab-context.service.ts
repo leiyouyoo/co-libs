@@ -26,19 +26,19 @@ export class ReuseTabContextService {
   open(context: ReuseContextEvent) {
     this.remove();
     const { event, item, customContextMenu } = context;
-    const fakeElement = new ElementRef({
-      getBoundingClientRect: (): ClientRect => ({
-        bottom: event.clientY,
-        height: 0,
-        left: event.clientX,
-        right: event.clientX,
-        top: event.clientY,
-        width: 0,
-      }),
-    });
+    // const fakeElement = new ElementRef({
+    //   getBoundingClientRect: (): ClientRect => ({
+    //     bottom: event.clientY,
+    //     height: 0,
+    //     left: event.clientX,
+    //     right: event.clientX,
+    //     top: event.clientY,
+    //     width: 0,
+    //   }),
+    // });
+    const fakeElement = this.parents(event.srcElement,'ant-tabs-tab');
     const positions = [
-      new ConnectionPositionPair({ originX: 'start', originY: 'bottom' }, { overlayX: 'start', overlayY: 'top' }),
-      new ConnectionPositionPair({ originX: 'start', originY: 'top' }, { overlayX: 'start', overlayY: 'bottom' }),
+      new ConnectionPositionPair({ originX: 'end', originY: 'bottom' }, { overlayX: 'end', overlayY: 'top' }),
     ];
     const positionStrategy = this.overlay.position().flexibleConnectedTo(fakeElement).withPositions(positions);
     this.ref = this.overlay.create({
@@ -61,5 +61,15 @@ export class ReuseTabContextService {
       }),
     );
     comp.onDestroy(() => sub$.unsubscribe());
+  }
+
+  parents(element:any, className:string){
+    let parentElem=element.parentElement;
+
+    while(parentElem && parentElem.className.split(" ").indexOf(className)<0){
+      parentElem=parentElem.parentElement;
+    }
+
+    return parentElem;
   }
 }

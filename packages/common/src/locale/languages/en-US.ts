@@ -13,9 +13,9 @@ export default {
     clearText: 'Clear',
   },
   reuseTab: {
-    close: 'Close tab',
-    closeOther: 'Close other tabs',
-    closeRight: 'Close tabs to right',
+    close: 'Close',
+    closeOther: 'Close',
+    closeRight: 'Close Right',
     refresh: 'Refresh',
   },
   tagSelect: {

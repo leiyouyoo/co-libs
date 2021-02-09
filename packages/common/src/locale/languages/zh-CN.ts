@@ -13,9 +13,9 @@ export default {
     clearText: '清空',
   },
   reuseTab: {
-    close: '关闭标签',
-    closeOther: '关闭其它标签',
-    closeRight: '关闭右侧标签',
+    close: '关闭',
+    closeOther: '关闭其它',
+    closeRight: '关闭右侧',
     refresh: '刷新',
   },
   tagSelect: {
