@@ -30,14 +30,16 @@ export class ACLService {
 
   /** 获取所有数据 */
   get data() {
-    const defaultData=window.planet?.portalApplication?.data?.aclService?.data;
+    const acls= window.localStorage.getItem('co_acls');
+    const defaultData=acls?JSON.parse(acls.toLowerCase()):null;
+   
     return {
       full: this.full,
-      roles: this.roles || defaultData?.roles,
-      positions: this.positions || defaultData?.positions,
-      jobs: this.jobs || defaultData?.jobs,
-      organizationUnits: this.organizationUnits || defaultData?.organizationUnits,
-      abilities: this.abilities || defaultData?.abilities,
+      roles: !_.isEmpty(this.roles) ? this.roles: defaultData?.roles ,
+      positions: !_.isEmpty(this.positions) ? this.positions: defaultData?.positions ,
+      jobs: !_.isEmpty(this.jobs) ? this.jobs: defaultData?.jobs ,
+      organizationUnits: !_.isEmpty(this.organizationUnits) ? this.organizationUnits: defaultData?.organizationUnits ,
+      abilities: !_.isEmpty(this.abilities) ? this.abilities: defaultData?.abilities ,
     };
   }
 
@@ -315,37 +317,37 @@ export class ACLService {
     } else {
       if (t.roles && t.roles.length > 0) {
         if (t.mode === 'allOf') {
-          result = result && t.roles.every(v => this.roles.includes(v));
+          result = result && t.roles.every(v => this.data.roles.includes(v.toLowerCase()));
         } else {
-          result = t.roles.some(v => this.roles.includes(v));
+          result = t.roles.some(v => this.data.roles.includes(v.toLowerCase()));
         }
       }
       if (t.jobs && t.jobs.length > 0) {
         if (t.mode === 'allOf') {
-          result = result && t.jobs.every(v => this.jobs.includes(v));
+          result = result && t.jobs.every(v => this.data.jobs.includes(v.toLowerCase()));
         } else {
-          result = t.jobs.some(v => this.jobs.includes(v));
+          result = t.jobs.some(v => this.data.jobs.includes(v.toLowerCase()));
         }
       }
       if (t.organizationUnits && t.organizationUnits.length > 0) {
         if (t.mode === 'allOf') {
-          result = result && t.organizationUnits.every(v => this.organizationUnits.some(o => o.includes(v)));
+          result = result && t.organizationUnits.every(v => this.data.organizationUnits.some(o => o.includes(v.toLowerCase())));
         } else {
-          result = t.organizationUnits.some(v => this.organizationUnits.some(o => o.includes(v)));
+          result = t.organizationUnits.some(v => this.data.organizationUnits.some(o => o.includes(v.toLowerCase())));
         }
       }
       if (t.positions && t.positions.length > 0) {
         if (t.mode === 'allOf') {
-          result = result && t.positions.every(v => this.positions.some(o => o.includes(v)));
+          result = result && t.positions.every(v => this.data.positions.some(o => o.includes(v.toLowerCase())));
         } else {
-          result = t.positions.some(v => this.positions.some(o => o.includes(v)));
+          result = t.positions.some(v => this.data.positions.some(o => o.includes(v.toLowerCase())));
         }
       }
       if (t.abilities && t.abilities.length > 0) {
         if (t.mode === 'allOf') {
-          result = result && (t.abilities as any[]).every(v => this.abilities.includes(v));
+          result = result && (t.abilities as any[]).every(v => this.data.abilities.includes(v.toLowerCase()));
         } else {
-          result = (t.abilities as any[]).some(v => this.abilities.includes(v));
+          result = (t.abilities as any[]).some(v => this.data.abilities.includes(v.toLowerCase()));
         }
       }
     }
