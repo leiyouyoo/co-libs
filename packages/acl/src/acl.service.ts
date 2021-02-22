@@ -5,6 +5,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { ACL_DEFAULT_CONFIG } from './acl.config';
 import { ACLCanType, ACLType } from './acl.type';
 
+declare const window: any;
+
 /**
  * ACL 控制服务
  *
@@ -28,13 +30,14 @@ export class ACLService {
 
   /** 获取所有数据 */
   get data() {
+    const defaultData=window.planet?.portalApplication?.data?.aclService?.data;
     return {
       full: this.full,
-      roles: this.roles,
-      positions: this.positions,
-      jobs: this.jobs,
-      organizationUnits: this.organizationUnits,
-      abilities: this.abilities,
+      roles: this.roles || defaultData.roles,
+      positions: this.positions || defaultData.positions,
+      jobs: this.jobs || defaultData.jobs,
+      organizationUnits: this.organizationUnits || defaultData.organizationUnits,
+      abilities: this.abilities || defaultData.abilities,
     };
   }
 

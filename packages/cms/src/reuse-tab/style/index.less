@@ -85,14 +85,14 @@
       right: 0;
       z-index: 0;
       display: block;
-      width: 16px;
-      height: 16px;
+      width: 8px;
+      height: 8px;
       margin-top: -4px;
       background: #fff;
-      border-color: #0000 #fff #fff #0000;
-      border-style: solid;
-      border-width: 4.24264069px;
-      box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.07);
+      // border-color: #fff;
+      // border-style: solid;
+      // border-width: 4.24264069px;
+      // box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.07);
       transform: translateX(-50%) rotate(45deg);
     }
   }
@@ -102,8 +102,9 @@
     background-color: transparent;
   }
 
-  .ant-menu-item:hover{
+  .ant-menu-item:not(.ant-menu-item-disabled):hover{
     color: #1890ff !important;
     background-color: #F0F0F0;
+    cursor: pointer;
   }
 }
