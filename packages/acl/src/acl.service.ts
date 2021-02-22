@@ -33,11 +33,11 @@ export class ACLService {
     const defaultData=window.planet?.portalApplication?.data?.aclService?.data;
     return {
       full: this.full,
-      roles: this.roles || defaultData.roles,
-      positions: this.positions || defaultData.positions,
-      jobs: this.jobs || defaultData.jobs,
-      organizationUnits: this.organizationUnits || defaultData.organizationUnits,
-      abilities: this.abilities || defaultData.abilities,
+      roles: this.roles || defaultData?.roles,
+      positions: this.positions || defaultData?.positions,
+      jobs: this.jobs || defaultData?.jobs,
+      organizationUnits: this.organizationUnits || defaultData?.organizationUnits,
+      abilities: this.abilities || defaultData?.abilities,
     };
   }
 
