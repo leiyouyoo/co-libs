@@ -17,7 +17,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 
 import { CoCascaderOptionComponent } from './co-cascader-li.component';
-import { CoCascaderComponent } from './co-cascader.component';
+import { CascaderComponent } from './co-cascader.component';
 import { CoOverlayModule } from './overlay';
 
 @NgModule({
@@ -31,9 +31,9 @@ import { CoOverlayModule } from './overlay';
     NzIconModule,
     NzInputModule,
     NzNoAnimationModule,
-    CoOverlayModule
+    CoOverlayModule,
   ],
-  declarations: [CoCascaderComponent, CoCascaderOptionComponent],
-  exports: [CoCascaderComponent]
+  declarations: [CascaderComponent, CoCascaderOptionComponent],
+  exports: [CascaderComponent],
 })
 export class CoCascaderModule {}

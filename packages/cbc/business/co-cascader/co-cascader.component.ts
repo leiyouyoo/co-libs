@@ -103,8 +103,7 @@ const defaultDisplayRender = (labels: string[]) => labels.join(' / ');
         >
           <ng-container *ngIf="!isLabelRenderTemplate; else labelTemplate">{{ labelRenderText }}</ng-container>
           <ng-template #labelTemplate>
-            <ng-template [ngTemplateOutlet]="nzLabelRender"
-                         [ngTemplateOutletContext]="labelRenderContext"></ng-template>
+            <ng-template [ngTemplateOutlet]="nzLabelRender" [ngTemplateOutletContext]="labelRenderContext"></ng-template>
           </ng-template>
         </span>
       </div>
@@ -145,26 +144,15 @@ const defaultDisplayRender = (labels: string[]) => labels.join(' / ');
         <ng-template #hasOptionsTemplate>
           <div style="display: inline-flex;flex-direction: column;" *ngFor="let options of coCascaderService.columns; let i = index">
             <nz-input-group [nzSuffix]="suffixIconSearch">
-              <input
-                #input
-                nz-input
-                [nzSize]="nzSize"
-                ngModel
-                (change)="$event.stopPropagation()"
-              />
+              <input #input nz-input [nzSize]="nzSize" ngModel (change)="$event.stopPropagation()" />
             </nz-input-group>
             <ng-template #suffixIconSearch>
               <i nz-icon nzType="search"></i>
             </ng-template>
-            <ul
-              class="ant-cascader-menu"
-              [ngClass]="menuColumnCls"
-              [style.height]="dropdownHeightStyle"
-              [style.width]="dropdownWidthStyle"
-            >
+            <ul class="ant-cascader-menu" [ngClass]="menuColumnCls" [style.height]="dropdownHeightStyle" [style.width]="dropdownWidthStyle">
               <li
                 co-cascader-option
-                *ngFor="let option of searchLabel(input.value,options)"
+                *ngFor="let option of searchLabel(input.value, options)"
                 [columnIndex]="i"
                 [nzLabelProperty]="nzLabelProperty"
                 [optionTemplate]="nzOptionRender"
@@ -177,7 +165,6 @@ const defaultDisplayRender = (labels: string[]) => labels.join(' / ');
               ></li>
             </ul>
           </div>
-
         </ng-template>
       </div>
     </ng-template>
@@ -186,7 +173,7 @@ const defaultDisplayRender = (labels: string[]) => labels.join(' / ');
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CoCascaderComponent),
+      useExisting: forwardRef(() => CascaderComponent),
       multi: true,
     },
     CoCascaderService,
@@ -201,7 +188,7 @@ const defaultDisplayRender = (labels: string[]) => labels.join(' / ');
     '[class.ant-cascader-focused]': 'isFocused',
   },
 })
-export class CoCascaderComponent implements CoCascaderComponentAsSource, OnInit, OnDestroy, ControlValueAccessor {
+export class CascaderComponent implements CoCascaderComponentAsSource, OnInit, OnDestroy, ControlValueAccessor {
   static ngAcceptInputType_nzShowInput: BooleanInput;
   static ngAcceptInputType_nzShowArrow: BooleanInput;
   static ngAcceptInputType_nzAllowClear: BooleanInput;
@@ -757,7 +744,11 @@ export class CoCascaderComponent implements CoCascaderComponentAsSource, OnInit,
 
   searchLabel(value, option) {
     return option.filter(e => {
-      return e?.nameLocalization?.toLowerCase()?.includes(value?.toLowerCase()) || e?.name?.toLowerCase()?.includes(value?.toLowerCase()) || e?.code?.toLowerCase()?.includes(value?.toLowerCase());
+      return (
+        e?.nameLocalization?.toLowerCase()?.includes(value?.toLowerCase()) ||
+        e?.name?.toLowerCase()?.includes(value?.toLowerCase()) ||
+        e?.code?.toLowerCase()?.includes(value?.toLowerCase())
+      );
     });
   }
 }
