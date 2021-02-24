@@ -252,6 +252,10 @@ export class STDataSource {
         break;
     }
     if (text == null) text = '';
+    if (text === '' && col.type !== 'action') {
+      // placeholder
+      text = `<span style="color: rgba(0,0,0,.5);">— —</span>`
+    }
     if (text && col.indexI18n && this.i18nSrv) {
       text = this.i18nSrv.fanyi(text);
     }
