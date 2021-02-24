@@ -27,7 +27,6 @@ import * as _ from 'lodash';
   encapsulation: ViewEncapsulation.None,
 })
 export class PortPickerComponent extends PickerComponentBase {
-  @Input() portReq: any;
   //#region  构造函数
 
   constructor(cdr: ChangeDetectorRef, private portService: PUBPlaceService) {
@@ -40,57 +39,10 @@ export class PortPickerComponent extends PickerComponentBase {
   //#endregion
 
   fetchRemoteData(_condition: any): Observable<any> {
-    if (this.portReq) {
       return this.portService.getAllForUiPicker(_condition);
-    } else {
-      return [] as any;
-    }
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes) {
-    }
-    if (this.portReq) {
-      this.fetchRemoteData(this.portReq).subscribe((response: any) => {
-        const valueList: any[] = [];
-        if (response && response.items.length > 0) {
-          response.items.forEach(v => {
-            valueList.push(v.id);
-          });
-        }
-        this.value = valueList;
-
-        let originalOptions: Array<{ value: string; text: string }> = [];
-        if (this.loadingMode === 'more') {
-          originalOptions = [...this.optionList];
-        }
-
-        const newOptions: any[] = [];
-        response.items.forEach((item: any) => {
-          newOptions.push(item);
-        });
-
-        this.optionList = this.sortByDownList(_.unionBy(originalOptions, newOptions, this.coLabelMember));
-
-        this.isLoading = false;
-
-        if (this.loadingMode === 'more') {
-          this.skipCount += this.coPageSize;
-
-          if (response.total <= this.coPageSize) {
-            this.hasMore = false;
-          }
-        }
-
-        this.getCdrTo();
-      });
-    } else {
-      this.value = [];
-
-      this.optionList = [];
-
-      this.isLoading = false;
-    }
   }
 
   // writeValue(modelValue: NzSafeAny | NzSafeAny[]): void {
