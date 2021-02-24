@@ -2,7 +2,7 @@
   "ngPackage": {
     "lib": {
       "flatModuleFile": "coCascader",
-      "entryFile": "public_api.ts",
+      "entryFile": "public-api.ts",
       "umdModuleIds": {
         "@co/core": "co.core"
       }
