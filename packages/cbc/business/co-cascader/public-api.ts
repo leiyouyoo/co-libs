@@ -9,4 +9,5 @@ export * from './co-cascader.component';
 export * from './co-cascader.module';
 export * from './co-cascader.service';
 export * from './co-cascader-li.component';
-export * from './overlay';
+export * from './overlay/co-connected-overlay';
+export * from './overlay/overlay-position';
