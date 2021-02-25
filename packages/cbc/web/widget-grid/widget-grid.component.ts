@@ -56,6 +56,7 @@ export class WidgetGridComponent implements OnInit {
     this.widgets.splice(index, 1);
     setTimeout(() => {
       const obstructions = this.ngxWidgetGrid.gridRenderer.obstructions;
+      // all empty, return
       if (!obstructions.some(o => !!o)) return;
       const columns = this.ngxWidgetGrid.columns;
       const rows = this.ngxWidgetGrid.rows;

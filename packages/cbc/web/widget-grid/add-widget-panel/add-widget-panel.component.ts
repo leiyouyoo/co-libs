@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CoWidgetItemSource } from '../widget-item.directive';
 import { getBottomEmptyRow } from '../utils';
-import { NgxWidgetGridComponent } from '@co/cbc/web/ngx-widget-grid';
+import { NgxWidgetGridComponent, Rectangle } from '@co/cbc/web/ngx-widget-grid';
 
 interface Size {
   w?: number, h?: number, height: number, width: number,
@@ -66,6 +66,40 @@ export class AddWidgetPanelComponent implements OnInit {
 
   onAddWidget(size: Size) {
     const rect = this.ngxWidgetGrid.getNextPosition()
+    const obstructions = this.ngxWidgetGrid.gridRenderer.obstructions;
+
+    const column = this.ngxWidgetGrid.columns;
+    const columnPos = ((): any => {
+      for (let i = 0; i < column; i++) {
+        let hasSpace = true;
+        for (let j = 0; j < size.width; j++) {
+          for (let k = 0; k < size.height; k++) {
+            hasSpace = obstructions[i + j + k * column] === null;
+            if (!hasSpace) {
+              break;
+            }
+          }
+          if (!hasSpace) {
+            break;
+          }
+        }
+        if (hasSpace) return i;
+      }
+    })();
+    if (typeof columnPos === 'number') {
+      // has space
+      this.addWidget.emit({ rect: { top: 1, left: columnPos + 1, width: size.width, height: size.height } as any, index: this.selectedItem.index, })
+    } else {
+      // no left space
+      this.ngxWidgetGrid.widgetComponents.forEach(widget => {
+        widget.position = new Rectangle({ ...widget.position, top: widget.position.top + size.height, });
+        this.ngxWidgetGrid.updateWidget(widget, false);
+      })
+      this.addWidget.emit({ rect: { top: 1, left: 1, width: size.width, height: size.height } as any, index: this.selectedItem.index, })
+    }
+
+
+    return;
 
     if ((rect?.width || 0) < size.width || (rect?.height || 0) < size.height) {
       /* last space not fill needs */
