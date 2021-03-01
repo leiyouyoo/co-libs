@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi, BaseUrl, DELETE, FORM, GET, Payload, POST, PUT } from '@co/common';
-import { StorageChangeAttachmentTypeInput,StorageGetAllAttachmentListInput,StorageListResultDto1,StorageAttachmentListDto,StorageCoEntityDto,StorageAttachmentDto,StorageAttachmentTypePermissionDto,StorageBatchCreateAttachmentInput } from './storage.types';
+import { StorageChangeAttachmentTypeInput,StorageGetAllAttachmentListInput,StorageListResultDto1,StorageAttachmentListDto,StorageCoEntityDto,StorageAttachmentDto,StorageAttachmentEditDto,StorageAttachmentTypePermissionDto,StorageBatchCreateAttachmentInput } from './storage.types';
 
 @BaseUrl('/Storage/Attachment')
 @Injectable({ providedIn: 'root' })
@@ -112,6 +112,21 @@ export class StorageAttachmentService extends BaseApi {
         _req: {} 
 
     ): Observable<StorageListResultDto1<StorageAttachmentListDto>> {
+        return null as any
+    }
+
+
+    /**
+     * @param url /Storage/Attachment/UpdateAttachment
+     * 编辑
+     */
+
+    @PUT('UpdateAttachment')
+    updateAttachment(
+        @Payload
+        _req:StorageAttachmentEditDto
+
+    ): Observable<any> {
         return null as any
     }
 

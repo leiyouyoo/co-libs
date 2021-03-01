@@ -32,7 +32,6 @@
 23 = LGDC1
 24 = LGABL1
 25 = LGMBL1
-26 = LGTLX1
 27 = AMS
 28 = AN
 29 = SIMBL
@@ -56,9 +55,9 @@
 48 = SalesContract
 49 = ContainerLoadPlan
 50 = SOShippingOrder
-51 = MA_N
-51 = MA_N
-51 = MA_N */ 
+51 = InWarehouseNotice
+52 = MA_N
+53 = D_O */ 
             attachmentType?: number;
          
             
@@ -103,7 +102,6 @@
 23 = LGDC1
 24 = LGABL1
 25 = LGMBL1
-26 = LGTLX1
 27 = AMS
 28 = AN
 29 = SIMBL
@@ -127,9 +125,9 @@
 48 = SalesContract
 49 = ContainerLoadPlan
 50 = SOShippingOrder
-51 = MA_N
-51 = MA_N
-51 = MA_N */ 
+51 = InWarehouseNotice
+52 = MA_N
+53 = D_O */ 
             attachmentType?: number;
          
             /* 是否过滤认证 */ 
@@ -138,35 +136,46 @@
             /* 附件角色 */ 
             roles?: any[];
          
-            /* 附件环节
-0 = NotSet
-1 = Export
-2 = Import
-3 = PostDelivery
-4 = CRM */ 
-            permissionType?: number;
+            /* 业务环节
+0 = NoSet
+1 = CSPCreateBooking
+2 = CRMCreateBooking
+3 = FCMCreateBooking
+4 = CSPBookingDetail
+5 = CRMBookingDetail
+6 = FCMBookingDetail
+7 = CSPExportBusiness
+8 = CRMExportBusiness
+9 = FCMExportBusiness
+11 = FCMCreateImportOrder
+13 = FCMImportOrderDetail
+14 = FCMImportBusiness */ 
+            businessStep?: number;
         
         
     }
  
     /**
-     * 用于附件列表显示的 Dto
+     *  No Remark 
      */
     export class StorageAttachmentListDto {
         [key:string]: any;
         
          
-            /* 上传人 */ 
+            
             uploadBy?: string;
          
-            /* 上传时间 */ 
+            
             creationTime?: string;
          
-            /* 上传人Id */ 
+            
             creatorUserId?: number;
          
-            /* 附件类型字面值 */ 
+            
             typeString?: string;
+         
+            
+            canEdit?: boolean;
          
             
             isDeleteSamTypeOthers?: boolean;
@@ -225,7 +234,6 @@
 23 = LGDC1
 24 = LGABL1
 25 = LGMBL1
-26 = LGTLX1
 27 = AMS
 28 = AN
 29 = SIMBL
@@ -249,10 +257,13 @@
 48 = SalesContract
 49 = ContainerLoadPlan
 50 = SOShippingOrder
-51 = MA_N
-51 = MA_N
-51 = MA_N */ 
+51 = InWarehouseNotice
+52 = MA_N
+53 = D_O */ 
             attachmentType?: number;
+         
+            
+            attachmentTypeName?: string;
          
             
             fileId?: string;
@@ -356,7 +367,6 @@
 23 = LGDC1
 24 = LGABL1
 25 = LGMBL1
-26 = LGTLX1
 27 = AMS
 28 = AN
 29 = SIMBL
@@ -380,10 +390,13 @@
 48 = SalesContract
 49 = ContainerLoadPlan
 50 = SOShippingOrder
-51 = MA_N
-51 = MA_N
-51 = MA_N */ 
+51 = InWarehouseNotice
+52 = MA_N
+53 = D_O */ 
             attachmentType?: number;
+         
+            
+            attachmentTypeName?: string;
          
             
             fileId?: string;
@@ -393,6 +406,82 @@
          
             
             extensionName?: string;
+        
+        
+    }
+ 
+    /**
+     * 编辑附件dto
+     */
+    export class StorageAttachmentEditDto {
+        [key:string]: any;
+        
+         
+            /* 是否公开 */ 
+            isPublic?: boolean;
+         
+            /* 附件类型
+0 = Other
+1 = OSO
+2 = TRK
+3 = CF
+4 = SI
+5 = ARR
+6 = MBL
+7 = HBL
+8 = SID
+9 = ISF
+11 = AR
+12 = AP
+13 = DC
+14 = ASO
+15 = BKG
+16 = LGTLX
+17 = LGPKG
+18 = LGDC
+19 = LGPBL
+20 = LGABL
+21 = LGMBL
+22 = LGPKG1
+23 = LGDC1
+24 = LGABL1
+25 = LGMBL1
+27 = AMS
+28 = AN
+29 = SIMBL
+30 = SIHBL
+31 = AN_C
+32 = NRAS
+33 = QuotedPrice
+34 = POD
+35 = AC
+36 = BR
+37 = WFF
+38 = CI
+39 = PL
+40 = PO
+41 = DM
+43 = SideMarks
+44 = WarehouseRecipt
+45 = TaxBill
+46 = SignReceipt
+47 = BookingNote
+48 = SalesContract
+49 = ContainerLoadPlan
+50 = SOShippingOrder
+51 = InWarehouseNotice
+52 = MA_N
+53 = D_O */ 
+            attachmentType?: number;
+         
+            /* CO.Storage.Domain.Attachments.Enums.AttachmentRoles[] 允许查看附件的角色，仅当 CO.Storage.Application.Attachments.Dto.AttachmentEditDto.IsPublic 为 false 时有效（CreatorUser 始终有权限查看） */ 
+            canViewRoles?: any[];
+         
+            /* CO.Storage.Domain.Common.InternalPermissionType[] 允许查看附件的环节，仅当 CO.Storage.Application.Attachments.Dto.AttachmentEditDto.IsPublic 为 false 时有效（CreatorUser 始终有权限查看） */ 
+            canViewInternalPermissions?: any[];
+         
+            
+            id?: string;
         
         
     }
@@ -430,7 +519,6 @@
 23 = LGDC1
 24 = LGABL1
 25 = LGMBL1
-26 = LGTLX1
 27 = AMS
 28 = AN
 29 = SIMBL
@@ -454,10 +542,13 @@
 48 = SalesContract
 49 = ContainerLoadPlan
 50 = SOShippingOrder
-51 = MA_N
-51 = MA_N
-51 = MA_N */ 
+51 = InWarehouseNotice
+52 = MA_N
+53 = D_O */ 
             attachmentType?: number;
+         
+            
+            attachmentTypeName?: string;
          
             
             isPublic?: boolean;
