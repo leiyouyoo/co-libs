@@ -116,7 +116,7 @@ export class CoEditorComponent implements OnInit, OnDestroy {
   }
 
   getText() {
-    CKEDITOR.instances[this.id].document.getBody().getText();
+    return CKEDITOR.instances[this.id].document.getBody().getText();
   }
 
   print(bodyHtml) {
