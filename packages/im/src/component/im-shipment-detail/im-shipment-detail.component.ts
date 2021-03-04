@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit, ViewChild, ElementRef, OnChanges } from '@angular/core';
 import { FreightMethodType, ShipmentService, ShipmentStatusEnum, ShipmentDetail } from '../../bussiness/shipment/shipment-library.module';
-import { ImShipmentService } from '@co/im/src/component/im-shipment-detail/shipment.service';
+import { ImShipmentService } from './shipment.service';
 import { Router } from '@angular/router';
 
 interface LineItem {
