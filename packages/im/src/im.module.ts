@@ -58,7 +58,7 @@ const service = [ImBroadcastService, ImService, FileManageService];
 @NgModule({
   declarations: [...components, ...directive, ...pipe],
   providers: [...service],
-  imports: [CoCommonModule, CommonModule, TranslateModule, NgZorroAntdModule, FormsModule, NgxMoveableModule, RouterModule.forChild([])],
+  imports: [CoCommonModule, CommonModule, TranslateModule, NgZorroAntdModule, FormsModule, NgxMoveableModule, ],
   exports: [...components, ...directive, ...pipe],
 })
 export class CoImModule {}
