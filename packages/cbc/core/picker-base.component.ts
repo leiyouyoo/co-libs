@@ -65,7 +65,7 @@ export class PickerComponentBase implements ControlValueAccessor, OnInit, OnDest
   @Output() readonly coFocus = new EventEmitter<void>();
   @Output() readonly coOptionChange = new EventEmitter<any>();
 
-  @ViewChild(NzSelectComponent, { static: true }) private nzSelectComponent!: NzSelectComponent;
+  @ViewChild(NzSelectComponent, { static: true }) public nzSelectComponent!: NzSelectComponent;
 
   //#endregion
 
