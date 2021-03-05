@@ -54,20 +54,24 @@
       ></i>
     </h5>
     <ng-container *ngIf="baseShow">
-      <p *ngIf="bookingDetail.cargoReadyDate">
+      <p>
         <i nz-icon [nzIconfont]="'icon-date'" class="iconfont icon-date"></i>
         <span>{{ 'Cargo Ready Date' | translate }}：{{ getTime(bookingDetail.cargoReadyDate) }}</span>
       </p>
 
-      <p class="quantity-weight-volume" *ngIf="bookingDetail.containerCountsStr">
+      <p class="quantity-weight-volume">
         <i nz-icon [nzIconfont]="'icon-Container'" class="iconfont icon-Container"></i>
-        <strong>{{ bookingDetail.containerCountsStr }}</strong>
+        <strong>{{ bookingDetail.containerCountsStr || '-' }}</strong>
       </p>
       <p *ngIf="bookingDetail?.quantity || bookingDetail?.weight || bookingDetail?.volume" class="quantity-wrap">
         <i nz-icon [nzIconfont]="'icon-volume'" class="iconfont icon-volume"></i>
         <strong>{{ bookingDetail?.quantity?.value }}{{ bookingDetail?.quantity?.unit }}</strong>
         <strong>{{ bookingDetail?.weight?.value }}{{ bookingDetail?.weight?.unit }}</strong>
         <strong>{{ bookingDetail?.volume?.value }}{{ bookingDetail?.volume?.unit }}</strong>
+      </p>
+      <p>
+        <i nz-icon [nzIconfont]="'icon-cargo'" class="iconfont" style="font-size: 20px;height: 15px;width: 15px;transform: translateX(-3px) translateY(-2px);"></i>
+        <span>{{ 'Commodity' | translate }}: {{ bookingDetail?.commodity || '-' }}</span>
       </p>
     </ng-container>
     <h5 *ngIf="bookingDetail?.specialInstructions || bookingDetail?.specialGoodsTypesJson || bookingDetail?.description">

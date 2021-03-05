@@ -179,7 +179,7 @@ export class ImBookingDetailComponent implements OnInit, OnChanges {
   }
   getTime(time) {
     if (!time) {
-      return '';
+      return '-';
     }
     return moment(time).format('MMM D YYYY');
   }
