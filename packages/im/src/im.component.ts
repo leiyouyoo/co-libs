@@ -348,9 +348,10 @@ export class ImComponent implements OnInit {
           ];
         }
         if (data?.type === 'TIMGroupTipElem') {
-          await self.imTemplateService.getUser(data?.payload?.operatorID).subscribe((r: any) => {
-            data.operatorName = r.user.name;
-          });
+          data?.payload?.operatorID != 'admin' &&
+            (await self.imTemplateService.getUser(data?.payload?.operatorID).subscribe((r: any) => {
+              data.operatorName = r.user.name;
+            }));
         }
         if (self.selectedItem && data.conversationID === self.selectedItem.conversationID) {
           setMessageRead(data.conversationID);
