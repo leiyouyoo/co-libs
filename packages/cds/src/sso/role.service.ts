@@ -22,6 +22,7 @@ export class SSORoleService extends BaseApi {
       isValid?: boolean;
       searchText?: string;
       permission?: string;
+      isInside?: string;
     },
   ): Observable<any> {
     return null as any;
