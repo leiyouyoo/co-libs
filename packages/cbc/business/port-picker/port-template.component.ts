@@ -10,10 +10,8 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
           <i nz-icon [nzIconfont]="'icon-vessel'" *ngIf="item.isOcean == true"></i>
           <i nz-icon [nzIconfont]="'icon-airplane'" *ngIf="item.isAir == true"></i>
         </div>
-        <div class="port-code">
-          <span>{{ 'CODE' }}:</span>
-          {{ item.code }}
-        </div>
+        <div class="port-code"><span class="port-code-UN">UN:</span>
+          {{ item.code }}</div>
         <div class="port-region">{{ item.regionName }}</div>
       </div>
     </ng-template>
