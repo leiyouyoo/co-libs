@@ -37,6 +37,8 @@ import { PortTemplateComponent } from './port-template.component';
   encapsulation: ViewEncapsulation.None,
 })
 export class PortPickerComponent extends PickerComponentBase {
+  @Input() isOcean = true;
+  @Input() isAir = null;
   //#region  构造函数
 
   constructor(cdr: ChangeDetectorRef, private portService: PUBPlaceService,
@@ -62,6 +64,8 @@ export class PortPickerComponent extends PickerComponentBase {
 
   fetchRemoteData(_condition: any): Observable<any> {
     _condition.id = _condition.ids;
+    _condition.isOcean = this.isOcean;
+      _condition.isAir = this.isAir;
       return this.portService.getAll(_condition);
   }
 
