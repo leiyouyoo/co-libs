@@ -108,7 +108,7 @@ export class ImComponent implements OnInit {
   hideBottomShowMore: boolean; // 聊天窗底部显示更多按钮
   hideTopShowMore: boolean; // 聊天窗顶部显示更多按钮
   showCustomerservice = false; // 控制快捷入口按钮
-  customerserviceId = null; // 快捷入口业务id
+  customerserviceId: string | null = null; // 快捷入口业务id
   customerserviceType: string; // 快捷入口业务类型
   iconListSeleted: { class: string; type: string }[] = [];
   iconListUnselected: { class: string; type: string }[] = [];
@@ -231,7 +231,7 @@ export class ImComponent implements OnInit {
     }
   }
   // 对比url，用于显示快捷入口
-  compareUrl(url?) {
+  compareUrl(url?: string) {
     this.customerserviceId = null;
     this.showCustomerservice = false;
     if (!url) {
@@ -250,7 +250,7 @@ export class ImComponent implements OnInit {
       this.customerserviceId = url.split('quotes/Quoteil/')[1]?.substr(0, 36);
       this.customerserviceType = 'Quote';
     } else if (url.indexOf('/shipments/detail/') !== -1) {
-      this.customerserviceId = url.split('/shipments/detail/')[1]?.substr(0, 36);
+      this.customerserviceId = new URLSearchParams(`?` + url.split(`?`)[1])?.get('id');
       this.customerserviceType = 'Shipment';
     } else {
       return;
