@@ -87,7 +87,9 @@ export class CoAuthService {
         ...options,
       };
 
-      this._httpClient.post(url, obj, null, { headers: { 'Do-not-show-error': 'true' } }).subscribe(
+      let parame = Object.keys(obj).map(k => `${encodeURIComponent(k)}=${encodeURIComponent(obj[k])}`).join('&');
+
+      this._httpClient.post(url, parame, null, { headers: { 'Do-not-show-error': 'true', 'Content-Type': 'application/x-www-form-urlencoded' } }).subscribe(
         (res: any) => {
           // 存储token
           this.saveToken(res);
