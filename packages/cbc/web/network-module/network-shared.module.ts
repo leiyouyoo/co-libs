@@ -10,14 +10,8 @@ import { SearchMapComponent } from './search-map/search-map.component';
 import { CoCommonModule } from '@co/common';
 import { CoNzSelectExtraModule } from '@co/cbc/web/nz-select-extra';
 
-
 @NgModule({
-  declarations: [
-    LocationFormComponent,
-    LocationFormModalComponent,
-    UserFormModalComponent,
-    SearchMapComponent,
-  ],
+  declarations: [LocationFormComponent, LocationFormModalComponent, UserFormModalComponent, SearchMapComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -26,12 +20,8 @@ import { CoNzSelectExtraModule } from '@co/cbc/web/nz-select-extra';
     TranslateModule,
     ReactiveFormsModule,
     CoCommonModule,
-    CoNzSelectExtraModule
+    CoNzSelectExtraModule,
   ],
-  exports: [
-    LocationFormComponent,
-    LocationFormModalComponent,
-    UserFormModalComponent,
-  ],
+  exports: [LocationFormComponent, LocationFormModalComponent, UserFormModalComponent, SearchMapComponent],
 })
-export class NetworkSharedModule { }
+export class NetworkSharedModule {}

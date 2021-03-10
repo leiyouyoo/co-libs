@@ -856,7 +856,7 @@ export class ImComponent implements OnInit {
         );
         return true;
       }
-      if (e.userProfile && e.userProfile.nick.toLowerCase().includes(searchKey)) {
+      if (e.userProfile && e.userProfile?.nick.toLowerCase().includes(searchKey)) {
         e.userProfile.nick = this.sanitizer.bypassSecurityTrustHtml(
           e.userProfile.nick.replace(
             subStrForSearch(e.userProfile.nick),

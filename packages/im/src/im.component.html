@@ -83,7 +83,7 @@
                     "
                     alt=""
                   />
-                  <span>{{ chatMessage.nickName || chatMessage.fromNickName || chatMessage.nick || userProfile.nick }}</span>
+                  <span>{{ chatMessage?.nickName || chatMessage?.fromNickName || chatMessage?.nick || userProfile?.nick }}</span>
                 </div>
                 <div [ngClass]="{ myItems: chatMessage.flow === 'out', otherItems: chatMessage.flow === 'in' }">
                   <span *ngIf="chatMessage?.type === 'TIMCustomElem'" [innerHTML]="chatMessage.msgBody[0].msgContent.Ext | imTranslate | async"></span>
@@ -177,10 +177,7 @@
             *ngIf="selectedItem?.bussinessType === 'quote'"
             [id]="formatBussinessId()"
           ></lib-im-quote-detail>
-          <lib-im-shipment-detail
-            [id]="formatBussinessId()"
-            *ngIf="selectedItem?.bussinessType === 'shipment'"
-          ></lib-im-shipment-detail>
+          <lib-im-shipment-detail [id]="formatBussinessId()" *ngIf="selectedItem?.bussinessType === 'shipment'"></lib-im-shipment-detail>
         </ng-container>
 
         <ng-container *ngSwitchCase="'info'">
@@ -237,7 +234,7 @@
                   <span>{{ 'Group members' | translate }}：</span>
                   <div (dblclick)="chatWithPercon(item)" *ngFor="let item of membersList" class="personList">
                     <img [src]="item?.avatar ? formatImAvatarUrl(item?.avatar) : 'assets/images/im/avatar-2.png'" />
-                    <span>{{ item.nick ? item.nick : item.userID }}</span>
+                    <span>{{ item?.nick ? item?.nick : item.userID }}</span>
                   </div>
                   <div class="add-member" (click)="showAddMemberContent = true">
                     <i nz-icon [nzIconfont]="'icon-add-fill'" class="iconfont icon-add-fill"></i>
@@ -313,7 +310,7 @@
                     <span
                       class="name"
                       [innerHtml]="
-                        item.bussinessType === 'C2C' ? (item.userProfile.nick ? item.userProfile.nick : item.userProfile.name) : item.groupProfile.name
+                        item.bussinessType === 'C2C' ? (item.userProfile?.nick ? item.userProfile?.nick : item.userProfile?.name) : item.groupProfile.name
                       "
                     ></span>
                     <span [innerHtml]="item?.lastMessage?.messageForShow"></span>
@@ -370,7 +367,7 @@
                 >
                   <span class="name">
                     <ng-container *ngIf="!item.isRemindMessage; else elseTemplate">
-                      {{ item.bussinessType === 'C2C' ? (item.userProfile.nick ? item.userProfile.nick : item.userProfile.name) : item.groupProfile.name }}
+                      {{ item.bussinessType === 'C2C' ? (item.userProfile?.nick ? item.userProfile?.nick : item.userProfile?.name) : item.groupProfile?.name }}
                     </ng-container>
                     <ng-template #elseTemplate>
                       {{ item.title }}
