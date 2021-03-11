@@ -1,0 +1,580 @@
+<div class="shipment-step-status">
+  <ng-container *ngIf="nzCurrent === 0 && shipment?.receiptPlace">
+    <div class="shipment-step-word" *ngIf="(shipment?.receiptPlace)">
+      <span class="shipment-step__label">{{ "Seller 's Location" | translate }}</span>
+      <span>【</span>
+      <span class="shipment-step-location">
+        <span *ngFor="let addr of [shipment.receiptPlace]">
+          {{ addr?.displayFullName }}
+        </span>
+      </span>
+      <span>】</span>
+    </div>
+    <div *ngIf="shipment.cargoReadyDate" class="shipment-step-date">
+      <span>{{ 'Cargo Ready Date' | translate }}</span>
+      <span>
+        {{ (shipment.cargoReadyDate) | date: 'yyyy-MM-dd' }}
+      </span>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="nzCurrent === 1">
+    <div class="shipment-step-word">
+      <span class="shipment-step__label">{{ 'POL' | translate }}</span>
+      <span>【</span>
+      <span class="shipment-step-location">
+        {{ shipment?.originPort?.displayFullName }}
+      </span>
+      <span>】</span>
+    </div>
+    <div class="shipment-step-date">
+      <p
+        *ngIf="
+          shipment?.fullReturnedDate || shipment?.cyCutOffDate
+        "
+      >
+        <span><ng-template [ngTemplateOutlet]="originPortArrivalText"></ng-template></span>
+        <span>
+          {{
+          shipment?.fullReturnedDate || shipment?.cyCutOffDate
+              | date: 'yyyy-MM-dd'
+          }}
+        </span>
+      </p>
+      <p
+        *ngIf="shipment?.actualDepartureDate || shipment?.estimatedDepartureDate"
+      >
+        <span><ng-template [ngTemplateOutlet]="originPortDepartureText"></ng-template></span>
+        <span>
+          {{
+          shipment?.actualDepartureDate || shipment?.estimatedDepartureDate
+              | date: 'yyyy-MM-dd'
+          }}
+        </span>
+      </p>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="nzCurrent === 2">
+    <div class="shipment-step-word">
+      <span class="shipment-step__label">{{ 'POD' | translate }}</span>
+      <span>【</span>
+      <span class="shipment-step-location">
+        {{ shipment.destinationPort?.displayFullName }}
+      </span>
+      <span>】</span>
+    </div>
+    <div class="shipment-step-date">
+      <p
+        *ngIf="
+          shipment?.actualArrivalDate ||
+            shipment?.estimatedArrivalDate
+        "
+      >
+        <span><ng-template [ngTemplateOutlet]="destPortArrivalText"></ng-template></span>
+        <span>
+          {{
+          shipment?.actualArrivalDate ||
+          shipment?.estimatedArrivalDate | date: 'yyyy-MM-dd'
+          }}
+        </span>
+      </p>
+      <p
+        *ngIf="
+          shipment?.actualArrivalDate ||
+              shipment?.estimatedArrivalDate
+        "
+      >
+        <span><ng-template [ngTemplateOutlet]="destPortDepartureText"></ng-template></span>
+        <span>
+          {{
+          shipment?.actualArrivalDate ||
+          shipment?.estimatedArrivalDate | date: 'yyyy-MM-dd'
+          }}
+        </span>
+      </p>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="nzCurrent === 3 && shipment?.deliveryPlace">
+    <div class="shipment-step-word" *ngIf="shipment?.deliveryPlace">
+      <span class="shipment-step__label">{{ 'POD' | translate }}</span>
+      <span>【</span>
+      <span class="shipment-step-location">
+        <span *ngFor="let addr of [shipment?.deliveryPlace]">
+          {{ addr.displayFullName }}
+        </span>
+      </span>
+      <span>】</span>
+    </div>
+    <div
+      *ngIf="
+        shipment?.availableForPickupDate ||
+            shipment?.estimatedAvailableForPickupDate
+      "
+      class="shipment-step-date"
+    >
+      <span><ng-template [ngTemplateOutlet]="destDeliveryText"></ng-template></span>
+      <span *ngIf="shipment?.expectDeliveryType">
+        {{
+        shipment?.expectDeliveryType | date: 'yyyy-MM-dd'
+        }}
+      </span>
+    </div>
+  </ng-container>
+  <ng-template [ngTemplateOutlet]="exceptionMessage"></ng-template>
+</div>
+<section class="step-content">
+  <nz-steps [nzStatus]="statusHighlight ? 'process' : 'wait'" nzDirection="vertical">
+    <nz-step
+      [ngClass]="{
+        active_color: nzCurrent === 0,
+        active_sign: nzCurrent > 0,
+        isNotActive: !shipment?.agreement?.startsWith('door'),
+        'error-node': exceptionEvent && exceptionEvent.happenNode === 1
+      }"
+      [nzDescription]="description1Template"
+      [nzIcon]="nzCurrent === 0 ? iconTemplateNow : iconTemplateIcon"
+    ></nz-step>
+    <nz-step
+      [ngClass]="{ active_color: nzCurrent === 1, active_sign: nzCurrent > 1, 'error-node': exceptionEvent && exceptionEvent.happenNode === 2 }"
+      [nzDescription]="description2Template"
+      [nzIcon]="nzCurrent === 1 ? iconTemplateNow : iconTemplateIcon"
+    ></nz-step>
+    <nz-step
+      [ngClass]="{ active_color: nzCurrent === 2, active_sign: nzCurrent > 2, 'error-node': exceptionEvent && exceptionEvent.happenNode === 3 }"
+      [nzDescription]="description3Template"
+      [nzIcon]="nzCurrent === 2 ? iconTemplateNow : iconTemplateIcon"
+    ></nz-step>
+    <nz-step
+      [nzDescription]="description4Template"
+      [ngClass]="{ active_color: nzCurrent === 3, active_sign: nzCurrent == 3, 'error-node': exceptionEvent && exceptionEvent.happenNode === 4 }"
+      [nzIcon]="nzCurrent === 3 ? iconTemplateNow : iconTemplateIcon"
+    ></nz-step>
+    <ng-template #description1Template>
+      <div *ngIf="shipment?.receiptPlace" class="no-location">
+        {{ "Seller 's Location" | translate }}
+      </div>
+      <div class="company-name">
+        <!-- <i class="iconfont icon-kehugongsi"></i> -->
+        <!-- {{ getCompanyName('shipperDtos') }} -->
+        <div class="shipment-step-word" *ngIf="shipment?.receiptPlace">
+          <span class="shipment-step__label">{{ "Seller 's Location" | translate }}</span>
+          <span>【</span>
+          <span class="shipment-step-location">
+            <span *ngFor="let addr of [shipment?.receiptPlace]">
+              {{ addr?.displayFullName }}
+            </span>
+          </span>
+          <span>】</span>
+        </div>
+        <div class="shipment-step-word" *ngIf="shipment?.shipperCustomer?.displayName">
+          {{ shipment?.shipperCustomer?.displayName }}
+        </div>
+        <!--<div class="shipment-step-date" [ngClass]="{ active_color: true }">
+          <nz-collapse [nzBordered]="false" nzExpandIconPosition="right">
+            <nz-collapse-panel [nzExpandedIcon]="expandedIcon" #destDeliveryActive>
+              <ng-container *ngIf="isShowExpired">
+                <div class="detail-container" *ngFor="let item of shipment?.routeDetails?.shipperDtos">
+                  <div>{{ item.customerName }}</div>
+                  <div *ngFor="let addr of item?.originAddresses">
+                    {{ [addr.streetAddress, addr.city, addr.province, addr.country] | arrayJoin }}
+                  </div>
+                  <div>
+                    <div class="key">{{ 'Container' | translate }}#:</div>
+                    <div>{{ item.containerNos }}</div>
+                  </div>
+                  <div *ngIf="item.cargoReadyDate">
+                    <div class="title est-time key">{{ 'Cargo Ready Date' | translate }}:</div>
+                    <div class="content">
+                      {{ item.cargoReadyDate | date: 'yyyy-MM-dd' }}
+                    </div>
+                  </div>
+                  <div>
+                    <span class="color-primary">{{ item.containerPickedUpCount || 0 }}</span
+                    >/{{ item.containerTotalCount }} {{ 'Picked Up' | translate }}
+                  </div>
+                </div>
+              </ng-container>
+              <ng-template #expandedIcon let-active>
+                <div
+                  style="display: flex;    justify-content: space-between;
+                padding-right: 8px;"
+                >
+                  <span class="shipment-step-dateInfo" [ngClass]="{ active_color: true }">
+                    <span>{{ 'Cargo Ready Date' | translate }}:</span>
+                    <span *ngIf="shipment?.routeDetails?.shipperDtos.length">
+                      {{ shipment.routeDetails.shipperDtos[0]?.cargoReadyDate | date: 'yyyy-MM-dd' }}
+                    </span>
+                  </span>
+                  <span class="shipment-step-detail" *ngIf="isShowExpired">
+                    {{ 'Detail' | translate }}
+                  </span>
+                </div>
+                <i
+                  *ngIf="isShowExpired"
+                  nz-icon
+                  nzType="caret-right"
+                  class="ant-collapse-arrow"
+                  [nzRotate]="destDeliveryActive.nzActive ? 90 : -90"
+                ></i>
+              </ng-template>
+            </nz-collapse-panel>
+          </nz-collapse>
+        </div>-->
+      </div>
+      <ng-template [ngTemplateOutlet]="exceptionMessage" [ngTemplateOutletContext]="{ happenNode: 1 }"></ng-template>
+    </ng-template>
+    <ng-template #description2Template>
+      <div class="port-name">
+        <div class="shipment-step-word">
+          <span class="shipment-step__label">{{ 'POL' | translate }}</span>
+          <span>【</span>
+          <span class="shipment-step-location">
+            {{ shipment.originPort.displayFullName }}
+          </span>
+          <span>】</span>
+        </div>
+        <div class="shipment-step-date">
+          <nz-collapse [nzBordered]="false" nzExpandIconPosition="right">
+            <nz-collapse-panel [nzExpandedIcon]="expandedoriginportIcon" #originportActive>
+              <div *ngIf="isShowExpired" class="detail-container">
+                <div>{{ 'Port' | translate }} {{ shipment?.originPort.code }}</div>
+                <div
+                  *ngIf="
+                    shipment?.fullReturnedDate || shipment?.cyCutOffDate
+                  "
+                >
+                  <div class="key"><ng-template [ngTemplateOutlet]="originPortArrivalText"></ng-template></div>
+                  <div>
+                    {{
+                    shipment?.fullReturnedDate || shipment?.cyCutOffDate | date: 'yyyy-MM-dd'
+                    }}
+                  </div>
+                </div>
+                <div
+                  *ngIf="
+                    shipment?.actualDepartureDate || shipment?.estimatedDepartureDate
+                  "
+                >
+                  <div class="key"><ng-template [ngTemplateOutlet]="originPortDepartureText"></ng-template></div>
+                  <div>
+                    {{
+                    shipment?.actualDepartureDate || shipment?.estimatedDepartureDate | date: 'yyyy-MM-dd'
+                    }}
+                  </div>
+                </div>
+                <div>
+                  <div class="key">{{ 'Carrier' | translate }}:</div>
+                  <div>{{ shipment.vesselName }}</div>
+                </div>
+                <!--<div>
+                  <span class="color-primary">{{ shipment.routeDetails.originPortDeliveredCount }}</span
+                  >/{{ shipment.routeDetails.containerCount }} {{ 'Delivered' | translate }}
+                </div>-->
+              </div>
+              <ng-template #expandedoriginportIcon let-active>
+                <div
+                  style="display: flex;    justify-content: space-between;
+                padding-right: 8px;"
+                >
+                  <span class="shipment-step-dateInfo">
+                    <span
+                      *ngIf="
+                         shipment?.fullReturnedDate || shipment?.cyCutOffDate
+                      "
+                    >
+                      <span class="key"><ng-template [ngTemplateOutlet]="originPortArrivalText"></ng-template></span>
+                      <span>
+                        {{
+                        shipment?.fullReturnedDate || shipment?.cyCutOffDate | date: 'yyyy-MM-dd'
+                        }}
+                      </span>
+                    </span>
+                    <span
+                      *ngIf="
+                        shipment?.actualDepartureDate || shipment?.estimatedDepartureDate
+                      "
+                    >
+                      <span class="key"><ng-template [ngTemplateOutlet]="originPortDepartureText"></ng-template></span>
+                      <span>
+                        {{
+                        shipment?.actualDepartureDate || shipment?.estimatedDepartureDate | date: 'yyyy-MM-dd'
+                        }}
+                      </span>
+                    </span>
+                  </span>
+                  <span class="shipment-step-detail" *ngIf="isShowExpired">
+                    {{ 'Detail' | translate }}
+                  </span>
+                </div>
+                <i
+                  *ngIf="isShowExpired"
+                  nz-icon
+                  nzType="caret-right"
+                  class="ant-collapse-arrow"
+                  [nzRotate]="originportActive.nzActive ? 90 : -90"
+                ></i>
+              </ng-template>
+            </nz-collapse-panel>
+          </nz-collapse>
+        </div>
+        <ng-template [ngTemplateOutlet]="exceptionMessage" [ngTemplateOutletContext]="{ happenNode: 2 }"></ng-template>
+      </div>
+    </ng-template>
+    <ng-template #description3Template>
+      <div class="port-name">
+        <div class="shipment-step-word">
+          <span class="shipment-step__label">{{ 'POD' | translate }}</span>
+          <span>【</span>
+          <span class="shipment-step-location">
+            {{ shipment.destinationPort.displayFullName }}
+          </span>
+          <span>】</span>
+        </div>
+
+        <div class="shipment-step-date">
+          <nz-collapse [nzBordered]="false" nzExpandIconPosition="right">
+            <nz-collapse-panel [nzExpandedIcon]="expandeddesinationportIcon" #dinationportActive>
+              <div *ngIf="isShowExpired" class="detail-container">
+                <div>{{ 'Port' | translate }} {{ shipment?.originPort.code }}</div>
+                <div
+                  *ngIf="
+                    shipment?.actualArrivalDate ||
+            shipment?.estimatedArrivalDate
+                  "
+                >
+                  <div class="key"><ng-template [ngTemplateOutlet]="destPortArrivalText"></ng-template></div>
+                  <div>
+                    {{
+                    shipment?.actualArrivalDate ||
+                    shipment?.estimatedArrivalDate | date: 'yyyy-MM-dd'
+                    }}
+                  </div>
+                </div>
+                <div
+                  *ngIf="
+                    shipment?.availableForPickupDate ||
+            shipment?.estimatedAvailableForPickupDate
+                  "
+                >
+                  <div class="key"><ng-template [ngTemplateOutlet]="destPortDepartureText"></ng-template></div>
+                  <div>
+                    {{
+                    shipment?.availableForPickupDate ||
+                    shipment?.estimatedAvailableForPickupDate | date: 'yyyy-MM-dd'
+                    }}
+                  </div>
+                </div>
+              <!--  <div>
+                  <div class="key">{{ 'Trucker' | translate }}:</div>
+                  <div>{{ shipment.routeDetails.truckCustomerName }}</div>
+                </div>
+                <div>
+                  <span class="color-primary">{{ shipment.routeDetails.destinationPortPickedUpCount }}</span
+                  >/{{ shipment.routeDetails.containerCount }} {{ 'Picked up' | translate }}
+                </div>-->
+              </div>
+              <ng-template #expandeddesinationportIcon let-active>
+                <div
+                  style="display: flex;    justify-content: space-between;
+                padding-right: 8px;"
+                >
+                  <span class="shipment-step-dateInfo">
+                    <span
+                      *ngIf="
+                        shipment?.actualArrivalDate ||
+                    shipment?.estimatedArrivalDate
+                      "
+                    >
+                      <span class="key"><ng-template [ngTemplateOutlet]="destPortArrivalText"></ng-template></span>
+                      <span>
+                        {{
+                        shipment?.actualArrivalDate ||
+                        shipment?.estimatedArrivalDate | date: 'yyyy-MM-dd'
+                        }}
+                      </span>
+                    </span>
+                    <span
+                      *ngIf="
+                        shipment?.availableForPickupDate ||
+                    shipment?.estimatedAvailableForPickupDate
+                      "
+                    >
+                      <span class="key"><ng-template [ngTemplateOutlet]="destPortDepartureText"></ng-template></span>
+                      <span>
+                        {{
+                        shipment?.availableForPickupDate ||
+                        shipment?.estimatedAvailableForPickupDate | date: 'yyyy-MM-dd'
+                        }}
+                      </span>
+                    </span>
+                  </span>
+                  <span class="shipment-step-detail" *ngIf="isShowExpired">
+                    {{ 'Detail' | translate }}
+                  </span>
+                </div>
+                <i
+                  *ngIf="isShowExpired"
+                  nz-icon
+                  nzType="caret-right"
+                  class="ant-collapse-arrow"
+                  [nzRotate]="dinationportActive.nzActive ? 90 : -90"
+                ></i>
+              </ng-template>
+            </nz-collapse-panel>
+          </nz-collapse>
+        </div>
+        <ng-template [ngTemplateOutlet]="exceptionMessage" [ngTemplateOutletContext]="{ happenNode: 3 }"></ng-template>
+
+      </div>
+    </ng-template>
+    <ng-template #description4Template>
+      <div *ngIf="shipment?.deliveryPlace" class="no-location">
+        {{ 'Final Destination' | translate }}
+      </div>
+      <div class="company-name">
+        <div
+          class="shipment-step-word"
+          *ngIf="(shipment?.deliveryPlace)"
+        >
+          <span class="shipment-step__label">{{ 'POD' | translate }}</span>
+          <span>【</span>
+          <span class="shipment-step-location">
+            <span *ngFor="let addr of [shipment?.deliveryPlace]">
+              {{ addr.displayFullName }}
+            </span>
+          </span>
+          <span>】</span>
+        </div>
+        <div
+          class="shipment-step-word"
+          *ngIf="shipment?.consigneeCustomer?.displayName"
+        >
+          {{ shipment?.consigneeCustomer?.displayName }}
+        </div>
+        <!--<div class="shipment-step-date">
+          <nz-collapse [nzBordered]="false" nzExpandIconPosition="right">
+            <nz-collapse-panel [nzExpandedIcon]="expandeddesinationaddressIcon" #destAddressActive>
+              <ng-container *ngIf="isShowExpired">
+                <div class="detail-container" *ngFor="let item of shipment?.routeDetails?.consigneeDtos">
+                  <div>{{ item.customerName }}</div>
+                  <div *ngFor="let addr of item?.destinationAddresses">
+                    {{ [addr.streetAddress, addr.city, addr.province, addr.country] | arrayJoin }}
+                  </div>
+                  <div>
+                    <div class="key">{{ 'Container' | translate }}#:</div>
+                    <div>{{ item.containerNos }}</div>
+                  </div>
+                  <div *ngIf="item?.actualTruckDeliveryDate || item?.estTruckDeliveryDate">
+                    <div class="title est-time key">
+                      <ng-template [ngTemplateOutlet]="destDeliveryText"></ng-template>
+                    </div>
+                    <div class="content">
+                      {{ item?.actualTruckDeliveryDate || item?.estTruckDeliveryDate | date: 'yyyy-MM-dd' }}
+                    </div>
+                  </div>
+                  <div>
+                    <span class="color-primary">{{ item.containerDeliveredCount || 0 }}</span
+                    >/{{ item.containerTotalCount }} {{ 'Delivered' | translate }}
+                  </div>
+                </div>
+              </ng-container>
+            </nz-collapse-panel>
+            <ng-template #expandeddesinationaddressIcon let-active>
+              <div
+                style="display: flex;    justify-content: space-between;
+              padding-right: 8px;"
+              >
+                <span class="shipment-step-dateInfo">
+                  <span><ng-template [ngTemplateOutlet]="destDeliveryText"></ng-template>:</span>
+                  <span *ngIf="shipment?.routeDetails?.consigneeDtos.length">
+                    {{
+                      shipment.routeDetails.consigneeDtos[0]?.actualTruckDeliveryDate ||
+                        shipment.routeDetails.consigneeDtos[0]?.estTruckDeliveryDate | date: 'yyyy-MM-dd'
+                    }}
+                  </span>
+                </span>
+                <span class="shipment-step-detail" *ngIf="isShowExpired">
+                  {{ 'Detail' | translate }}
+                </span>
+              </div>
+              <i
+                *ngIf="isShowExpired"
+                nz-icon
+                nzType="caret-right"
+                class="ant-collapse-arrow"
+                [nzRotate]="destAddressActive.nzActive ? 90 : -90"
+              ></i>
+            </ng-template>
+          </nz-collapse>
+        </div>-->
+        <ng-template [ngTemplateOutlet]="exceptionMessage" [ngTemplateOutletContext]="{ happenNode: 4 }"></ng-template>
+      </div>
+      <!-- <div class="company-name">
+        <i class="iconfont icon-kehugongsi"></i>
+        {{ getCompanyName('consigneeDtos') }}
+      </div>
+      <nz-collapse [nzBordered]="false">
+        <nz-collapse-panel [nzHeader]="'Detail' | translate">
+          <div class="detail-container" *ngFor="let item of shipment?.routeDetails?.consigneeDtos">
+            <div>{{ item.customerName }}</div>
+            <div *ngFor="let addr of item.destinationAddresses">
+              {{ [addr.streetAddress, addr.city, addr.province, addr.country] | arrayJoin }}
+            </div>
+            <div>
+              <div class="key">{{ 'Container' | translate }}#:</div>
+              <div>{{ item.containerNos }}</div>
+            </div>
+            <div *ngIf="item.actualTruckDeliveryDate || item.estTruckDeliveryDate">
+              <div class="title est-time key">
+                <ng-template [ngTemplateOutlet]="destDeliveryText"></ng-template>
+              </div>
+              <div class="content">
+                {{ item.actualTruckDeliveryDate || item.estTruckDeliveryDate | date: 'yyyy-MM-dd' }}
+              </div>
+            </div>
+            <div>
+              <span class="color-primary">{{ item.containerDeliveredCount || 0 }}</span
+              >/{{ item.containerTotalCount }} {{ 'Delivered' | translate }}
+            </div>
+          </div>
+        </nz-collapse-panel>
+      </nz-collapse> -->
+    </ng-template>
+  </nz-steps>
+</section>
+
+<ng-template #cargoReadyDateText>
+  Cargo Ready Date:
+</ng-template>
+<ng-template #originPortArrivalText>
+  {{ (!shipment?.fullReturnedDate ? 'Est.Arrival' : 'Arrived') | translate }}:
+</ng-template>
+<ng-template #originPortDepartureText>
+  {{ (!shipment?.actualDepartureDate ? 'Est.Departure' : 'Departed') | translate }}:
+</ng-template>
+<ng-template #destPortArrivalText>
+  {{ (!shipment?.actualArrivalDate ? 'Est.Arrival' : 'Arrived') | translate }}:
+</ng-template>
+<ng-template #destPortDepartureText>
+  {{ (!shipment?.availableForPickupDate ? 'Est.Pick-Up' : 'Picked Up in Full') | translate }}:
+</ng-template>
+<ng-template #destDeliveryText>
+  {{ (shipment.status < ShipmentStatusEnum.DestinationStopOff ? 'Est.Delivery' : 'Delivery in Full') | translate }}:
+</ng-template>
+
+<!-- exception message -->
+<ng-template #exceptionMessage let-happenNode="happenNode">
+  <div *ngIf="exceptionEvent && (happenNode ? happenNode === exceptionEvent.happenNode : exceptionEvent)" style="color: #fc5a5a;">
+    {{ 'Error event' | translate }}: {{ exceptionEvent.subject }}
+  </div>
+</ng-template>
+
+<!-- 图标template -->
+<ng-template #iconTemplateNow>
+  <div class="shipment-step-now">
+    Now
+  </div>
+  <!-- <i class="iconfont icon-gongchang-yuan font30"></i> -->
+</ng-template>
+<ng-template #iconTemplateIcon>
+  <i class="iconfont icon-gouxuan font12"></i>
+</ng-template>

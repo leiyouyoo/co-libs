@@ -1,14 +1,47 @@
-<section class="overflow-wrap">
-  <h4>Booking Details</h4>
-  <section class="request-wrap">
-    <div *ngFor="let process of requestProcess" [ngClass]="{ 'not-check-bg': !process.checked, 'check-bg': process.checked }">
-      <i nz-icon [nzIconfont]="'icon-yiwancheng'" class="iconfont icon-yiwancheng"></i>
-      <div class="process-content-wrap">
-        <span class="status">{{ (process.checked ? 'Completed' : 'To be completed') | translate }}</span>
-        <span class="">{{ process.name | translate }}</span>
+<nz-spin [nzSpinning]="!bookingDetail"></nz-spin>
+<section class="overflow-wrap" *ngIf="bookingDetail">
+  <div style="padding: 12px;display:flex;justify-content:space-between;">
+    <div style="font-size: 14px;">{{ 'Booking Information' | translate }}</div>
+    <div><a (click)="goDetail()">{{ 'View detail' | translate }}</a> </div>
+  </div>
+  <div class="basic-info" style="margin: 0 12px;">
+    <div class="basic-info__content">
+      <div>
+        <div>{{ 'Order status' | translate }}</div>
+        <div>{{ BookingOrderStatus[bookingDetail.status] | translate }}</div>
+      </div>
+      <div>
+        <div>{{ 'Shipment No.' | translate }}</div>
+        <div>{{ bookingDetail.shipmentNo }}</div>
+      </div>
+      <div>
+        <div>{{ 'Business No.' | translate }}</div>
+        <div>{{ bookingDetail.serviceNo }}</div>
+      </div>
+      <div>
+        <div>{{ 'Channel' | translate }}</div>
+        <div>{{ bookingDetail.channel }}</div>
+      </div>
+      <div class="basic-info__divider"></div>
+      <div>
+        <div>{{ 'Quote status' | translate }}</div>
+        <div>{{ QuoteStatus[bookingDetail.quoteStatus] | translate }}</div>
+      </div>
+      <div>
+        <div>{{ 'Latest quote' | translate }}</div>
+        <div>{{ bookingDetail.quoteReplyNo }}</div>
+      </div>
+      <div class="basic-info__divider"></div>
+      <div>
+        <div>{{ 'Booking status' | translate }}</div>
+        <div>{{ SoStatus[bookingDetail.soStatus] | translate }}</div>
+      </div>
+      <div>
+        <div>{{ 'S/O No.' | translate }}</div>
+        <div>{{ bookingDetail.shippingOrderNo }}</div>
       </div>
     </div>
-  </section>
+  </div>
   <section class="content-wrap detail-wrap">
     <h5>
       {{ 'Cargo' | translate }}
@@ -21,23 +54,27 @@
       ></i>
     </h5>
     <ng-container *ngIf="baseShow">
-      <p *ngIf="bookingDetail.cargoReadyDate">
+      <p>
         <i nz-icon [nzIconfont]="'icon-date'" class="iconfont icon-date"></i>
         <span>{{ 'Cargo Ready Date' | translate }}：{{ getTime(bookingDetail.cargoReadyDate) }}</span>
       </p>
 
-      <p class="quantity-weight-volume" *ngIf="getContainerType(bookingDetail)">
+      <p class="quantity-weight-volume">
         <i nz-icon [nzIconfont]="'icon-Container'" class="iconfont icon-Container"></i>
-        <strong>{{ getContainerType(bookingDetail) }}</strong>
+        <strong>{{ bookingDetail.containerCountsStr || '-' }}</strong>
       </p>
       <p *ngIf="bookingDetail?.quantity || bookingDetail?.weight || bookingDetail?.volume" class="quantity-wrap">
         <i nz-icon [nzIconfont]="'icon-volume'" class="iconfont icon-volume"></i>
-        <strong>{{ bookingDetail?.quantity }}{{ bookingDetail?.quantityUnitString }}</strong>
-        <strong>{{ bookingDetail?.weight }}{{ bookingDetail?.weightUnitString }}</strong>
-        <strong>{{ bookingDetail?.volume }}{{ bookingDetail?.volumeUnitString }}</strong>
+        <strong>{{ bookingDetail?.quantity?.value }}{{ bookingDetail?.quantity?.unit }}</strong>
+        <strong>{{ bookingDetail?.weight?.value }}{{ bookingDetail?.weight?.unit }}</strong>
+        <strong>{{ bookingDetail?.volume?.value }}{{ bookingDetail?.volume?.unit }}</strong>
+      </p>
+      <p>
+        <i nz-icon [nzIconfont]="'icon-cargo'" class="iconfont" style="font-size: 20px;height: 15px;width: 15px;transform: translateX(-3px) translateY(-2px);"></i>
+        <span>{{ 'Commodity' | translate }}: {{ bookingDetail?.commodity || '-' }}</span>
       </p>
     </ng-container>
-    <h5 *ngIf="bookingDetail?.specialInstructions || bookingDetail?.containsSpecialGoodsTypes || bookingDetail?.description">
+    <h5 *ngIf="bookingDetail?.specialInstructions || bookingDetail?.specialGoodsTypesJson || bookingDetail?.description">
       {{ 'Specifics' | translate }}
       <i
         nz-icon
@@ -56,8 +93,8 @@
       <p *ngIf="bookingDetail?.specialInstructions">
         <span class="description-instructions">{{ bookingDetail?.specialInstructions }}</span>
       </p>
-      <div *ngIf="bookingDetail?.containsSpecialGoodsTypes" class="specialGoodsName">
-        <label nz-checkbox nzDisabled *ngFor="let item of bookingDetail?.containsSpecialGoodsTypesArr" [ngModel]="true">{{
+      <div *ngIf="bookingDetail?.specialGoodsTypesJson" class="specialGoodsName">
+        <label nz-checkbox nzDisabled *ngFor="let item of bookingDetail?.specialGoodsTypesArr" [ngModel]="true">{{
           item.Name
         }}</label>
       </div>

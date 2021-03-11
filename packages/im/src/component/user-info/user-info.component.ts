@@ -19,7 +19,7 @@ export class UserInfoComponent implements OnInit, OnChanges {
 
   ngOnInit() {}
   ngOnChanges(changes: import('@angular/core').SimpleChanges): void {
-    this.imTemplateService.getUser(this.userInfo.userProfile.userID).subscribe((r: any) => {
+    this.userInfo?.userProfile?.userID !='admin' && this.imTemplateService.getUser(this.userInfo.userProfile.userID).subscribe((r: any) => {
       if (r) {
         this.userDetail = r.user;
         if (r.user) {

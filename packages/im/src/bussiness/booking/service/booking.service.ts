@@ -210,4 +210,8 @@ export class ImBookingLibraryService {
   getMyCustomerAndPartners() {
     return this.httpService.get('CRM/Customer/GetMyCustomerAndPartners');
   }
+
+  getIMBookingDetail(id: string) {
+    return this.httpService.get('/FCM/BookingOrder/GetIMBookingDetail', { id });
+  }
 }

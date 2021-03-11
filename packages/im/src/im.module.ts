@@ -30,6 +30,8 @@ import { CustomerLifeCyclePipe } from './service/pipe/customer-life-cycle.pipe';
 import { IMArrayJoinPipe } from './service/pipe/im-array-join.pipe';
 import { ImTranslatePipe } from './service/pipe/im-translate.pipe';
 import { FileManageService } from './util/file-manage/service/file-manage.service';
+import { ShipmentStepComponent } from './component/im-shipment-detail/shipment-step/shipment-step.component';
+import { RouterModule } from '@angular/router';
 
 const components = [
   ImagePreviewerComponent,
@@ -48,6 +50,7 @@ const components = [
   ScheduleMessageComponent,
   ImFileListsComponent,
   ImageCropperComponent,
+  ShipmentStepComponent,
 ];
 const directive = [ImDebounceInputDirective];
 const pipe = [CustomerLifeCyclePipe, IMArrayJoinPipe, ImTranslatePipe];
@@ -55,7 +58,7 @@ const service = [ImBroadcastService, ImService, FileManageService];
 @NgModule({
   declarations: [...components, ...directive, ...pipe],
   providers: [...service],
-  imports: [CoCommonModule, CommonModule, TranslateModule, NgZorroAntdModule, FormsModule, NgxMoveableModule],
+  imports: [CoCommonModule, CommonModule, TranslateModule, NgZorroAntdModule, FormsModule, NgxMoveableModule, ],
   exports: [...components, ...directive, ...pipe],
 })
 export class CoImModule {}
