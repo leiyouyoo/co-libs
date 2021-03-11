@@ -14,7 +14,7 @@ registerLocaleData(localeZh);
 import { RoutesModule } from './routes/routes.module';
 import { SharedModule } from './shared/shared.module';
 
-import { CoBusinessComponentsModule } from '@co/cbc';
+import { CoBusinessComponentsModule, CoMobileBusinessComponentsModule } from '@co/cbc';
 import { CoCommonModule, ResponseInterceptor, UserCustomConfigService } from '@co/common';
 import { CO_I18N_TOKEN } from '@co/core';
 import { I18NService } from './core/i18n/service';
@@ -43,6 +43,7 @@ export function StartupServiceFactory(startupService: StartupService) {
   imports: [
     BrowserModule,
     CoBusinessComponentsModule,
+    CoMobileBusinessComponentsModule,
     BrowserAnimationsModule,
     HttpClientModule,
     GlobalConfigModule.forRoot(),
@@ -66,13 +67,13 @@ export function StartupServiceFactory(startupService: StartupService) {
     SimplemdeModule.forRoot({
       delay: 300,
     }),
-    CoCommonModule.forRoot( { environment: { SERVER_URL: 'http://192.168.1.5:8000', LOGIN_URL: '' } } )
+    CoCommonModule.forRoot({ environment: { SERVER_URL: 'http://api.test.com', LOGIN_URL: '' } }),
   ],
   providers: [
     [
       { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true },
       { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true },
-      ],
+    ],
     { provide: CO_I18N_TOKEN, useClass: I18NService, multi: false },
     StartupService,
     {

@@ -42,7 +42,6 @@ module: import { PortPickerModule } from '@co/cbc';
 
 | 名称 | 说明 | 默认值 |
 | --- | --- |  --- |
-| `[portReq]` | 传入数据入参json | { isOcean: boolean,  regionIds :[], isPaged:  boolean , maxResultCount: number , } |
 
 
 ## 方法

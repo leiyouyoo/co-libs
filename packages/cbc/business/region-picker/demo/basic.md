@@ -32,7 +32,6 @@ import { Component } from '@angular/core';
         <div style="width:50%;display: inline-block;vertical-align: top;">
            <h4>港口</h4> 
            <co-port-picker style="width:200px" 
-            [portReq] = "portReq"
             [coMode]="mode" 
             [coMaxMultipleCount]="maxMultipleCount">
            </co-port-picker>
@@ -51,19 +50,8 @@ export class RegionPickerBasicComponent {
       Recursive : true,
     };
     //入参
-    portReq = {
-     IsOcean: true,
-     RegionIds :[],
-     isPaged:  false ,
-     MaxResultCount: 1 ,
-    };
     regionChange( ev ){
-        this.portReq = {
-         IsOcean: true,
-         RegionIds :ev,
-         isPaged:  false ,
-         MaxResultCount: 1 ,
-        };
+
     } 
 
 }

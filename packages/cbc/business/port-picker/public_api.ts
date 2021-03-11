@@ -1,2 +1,2 @@
-export { PortPickerComponent } from './port-picker.component';
-export { PortPickerModule } from './port-picker.module';
+export * from './port-picker.component';
+export * from './port-picker.module';

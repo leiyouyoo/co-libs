@@ -1,0 +1,62 @@
+<ng-select
+  #ngSelectComponent
+  [addTag]="coAddTag"
+  [addTagText]="coAddTagText"
+  [appearance]="coAppearance"
+  [appendTo]="coAppendTo"
+  [bindValue]="coBindValue"
+  [bindLabel]="coBindLabel"
+  [closeOnSelect]="coCloseOnSelect"
+  [clearAllText]="coClearAllText"
+  [clearable]="coClearable"
+  [clearOnBackspace]="coClearOnBackspace"
+  [dropdownPosition]="coDropdownPosition"
+  [groupBy]="coGroupBy"
+  [groupValue]="coGroupValue"
+  [selectableGroup]="coSelectableGroup"
+  [selectableGroupAsModel]="coSelectableGroupAsModel"
+  [loading]="coLoading"
+  [loadingText]="coLoadingText"
+  labelForId="coLabelForId"
+  [markFirst]="coMarkFirst"
+  maxSelectedItems="coMaxSelectedItems"
+  [multiple]="coMultiple"
+  [notFoundText]="coNotFoundText"
+  [placeholder]="coPlaceholder"
+  [searchable]="coSearchable"
+  [readonly]="coReadonly"
+  [searchFn]="coSearchFn"
+  [searchWhileComposing]="coSearchWhileComposing"
+  [trackByFn]="coTrackByFn"
+  [editableSearchTerm]="coEditableSearchTerm"
+  [selectOnTab]="coSelectOnTab"
+  [openOnEnter]="coOpenOnEnter"
+  [minTermLength]="coMinTermLength"
+  [typeToSearchText]="coTypeToSearchText"
+  [virtualScroll]="coVirtualScroll"
+  [inputAttrs]="coInputAttrs"
+  [tabIndex]="coTabIndex"
+  [(ngModel)]="value"
+  (add)="onAdd($event)"
+  (blur)="onBlur($event)"
+  (change)="onChanged($event)"
+  (close)="onClose($event)"
+  (clear)="onClear($event)"
+  (focus)="onFocus($event)"
+  (search)="onSearch($event)"
+  (open)="onOpen($event)"
+  (remove)="onRemove($event)"
+  (scroll)="onScroll($event)"
+>
+  <div>
+    <ng-option *ngFor="let item of optionList" [value]="item[coValueMember]">
+      <ng-template
+        [ngTemplateOutlet]="coItemRender"
+        [ngTemplateOutletContext]="{ $implicit: item }"
+        *ngIf="items?.length > 0 && coItemRender; else ngTemplate"
+      ></ng-template>
+
+      <ng-template #ngTemplate>{{ item[coLabelMember] }}</ng-template>
+    </ng-option>
+  </div>
+</ng-select>

@@ -1,6 +1,6 @@
 {
   "name": "co-libs",
-  "version": "1.1.14",
+  "version": "1.1.15",
   "description": "co-libs 是一组用于前端开发的公共模块集合",
   "keywords": [
     "co-libs",
@@ -28,7 +28,7 @@
     "build:libs:chart": "bash scripts/ci/build-libs.sh -n chart",
     "build:libs:cbc": "bash scripts/ci/build-libs.sh -n cbc",
     "build:libs:map": "bash scripts/ci/build-libs.sh -n map",
-    "build:libs:cbc:debug": "bash scripts/ci/build-libs.sh  -n cbc -t D:\\workspace\\Frontend\\co-portal\\ -debug",
+    "build:libs:cbc:debug": "bash scripts/ci/build-libs.sh  -n cbc -t c:\\Users\\Peln\\Desktop\\Neusoft\\CRM-APP\\ -debug",
     "build:libs:acl:debug": "bash scripts/ci/build-libs.sh  -n acl -t D:\\workspace\\Frontend\\co-portal\\ -debug",
     "build:libs:common:debug": "bash scripts/ci/build-libs.sh  -n common -t D:\\workspace\\Frontend\\co-portal\\ -debug",
     "build:libs:cms": "bash scripts/ci/build-libs.sh -n cms",
@@ -76,6 +76,7 @@
     "@angular/router": "~9.1.9",
     "@antv/data-set": "^0.11.4",
     "@antv/g2": "^4.0.8",
+    "@ng-select/ng-select": "^4.0.4",
     "@ng-util/monaco-editor": "^9.1.1",
     "@ngx-translate/core": "^12.1.2",
     "@ngx-translate/http-loader": "^4.0.0",

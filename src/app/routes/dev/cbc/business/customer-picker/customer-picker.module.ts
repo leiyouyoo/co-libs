@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CustomerPickerMobileComponent } from './customer-picker-mobile.component';
 import { SharedModule } from '../../../../../shared/shared.module';
 
 import { CustomerPickerBasicComponent } from './customer-picker-basic.component';
@@ -13,6 +14,7 @@ import { CustomerPickerSizeComponent } from './customer-picker-size.component';
 import { CustomerPickerTagsComponent } from './customer-picker-tags.component';
 
 const COMPONENTS = [
+  CustomerPickerMobileComponent,
   CustomerPickerBasicComponent,
   CustomerPickerDropdownPositionComponent,
   CustomerPickerEventsComponent,
@@ -22,7 +24,7 @@ const COMPONENTS = [
   CustomerPickerMultipleComponent,
   CustomerPickerSizeComponent,
   CustomerPickerDropdownTableComponent,
-  CustomerPickerTagsComponent
+  CustomerPickerTagsComponent,
 ];
 
 const routes: Routes = [
@@ -31,6 +33,7 @@ const routes: Routes = [
     redirectTo: 'basic',
     pathMatch: 'full',
   },
+  { path: 'mobile', component: CustomerPickerMobileComponent },
   { path: 'basic', component: CustomerPickerBasicComponent },
   { path: 'dropdownposition', component: CustomerPickerDropdownPositionComponent },
   { path: 'dropdowntable', component: CustomerPickerDropdownTableComponent },
@@ -46,4 +49,4 @@ const routes: Routes = [
   imports: [SharedModule, RouterModule.forChild(routes)],
   declarations: COMPONENTS,
 })
-export class CustomerPickerDemoModule { }
+export class CustomerPickerDemoModule {}

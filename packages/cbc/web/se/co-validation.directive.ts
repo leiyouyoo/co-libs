@@ -1,5 +1,6 @@
 import {
-  AfterViewInit, ChangeDetectorRef,
+  AfterViewInit,
+  ChangeDetectorRef,
   Component,
   ComponentFactoryResolver,
   ContentChild,
@@ -19,7 +20,7 @@ import { NzNoAnimationDirective, NzPopoverDirective } from 'ng-zorro-antd';
 import { TranslateService } from '@ngx-translate/core';
 import { distinctUntilChanged, filter, takeUntil } from 'rxjs/operators';
 
-const _coValidationPrefix = `co-validation`
+const _coValidationPrefix = `co-validation`;
 
 interface ErrorInfo {
   required?: string;
@@ -31,7 +32,7 @@ interface ErrorInfo {
   template: `
     <ng-content></ng-content>
     <ng-template #templateRef>
-      <div class="${_coValidationPrefix}-red" *ngFor="let o of getDisplayErrors()">{{o.message | translate}}</div>
+      <div class="${_coValidationPrefix}-red" *ngFor="let o of getDisplayErrors()">{{ o.message | translate }}</div>
     </ng-template>
   `,
   styles: [
@@ -39,7 +40,7 @@ interface ErrorInfo {
       .${_coValidationPrefix}-red {
         color: red;
       }
-    `
+    `,
   ],
   host: {
     // [`[class.${_coValidationPrefix}--invalid]`]: 'hasDisplayErrors',
@@ -49,21 +50,22 @@ interface ErrorInfo {
 })
 export class CoValidationDirective extends NzPopoverDirective implements OnInit, AfterViewInit {
   private _specificContent;
-  get specificContent() {
-    return this._specificContent ?? (this.hasDisplayErrors ? this.errorTemplateRef : null);
-  }
-  set specificContent(value) {
-    this._specificContent = value;
-  }
+  // @ts-ignore
+  // get specificContent() {
+  //   return this._specificContent ?? (this.hasDisplayErrors ? this.errorTemplateRef : null);
+  // }
+  // set specificContent(value) {
+  //   this._specificContent = value;
+  // }
   @ContentChild(NgModel) ngModel: NgModel;
-  @ContentChild(NgModel, { read: ElementRef, }) ngModelElementRef: ElementRef<HTMLElement>;
+  @ContentChild(NgModel, { read: ElementRef }) ngModelElementRef: ElementRef<HTMLElement>;
   @ContentChild(FormControlName) formControlName: FormControlName;
-  @ContentChild(FormControlName, { read: ElementRef, }) formControlNameElementRef: ElementRef<HTMLElement>;
+  @ContentChild(FormControlName, { read: ElementRef }) formControlNameElementRef: ElementRef<HTMLElement>;
   @ViewChild('templateRef') errorTemplateRef: TemplateRef<any>;
   @Input() error: { [key: string]: string };
   @Input() coLabel: string;
 
-  specificPlacement = 'bottomLeft'
+  specificPlacement = 'bottomLeft';
 
   constructor(
     elementRef: ElementRef,
@@ -77,8 +79,7 @@ export class CoValidationDirective extends NzPopoverDirective implements OnInit,
     super(elementRef, hostView, resolver, renderer, noAnimation);
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   get ngControl(): NgControl {
     return this.ngModel ?? this.formControlName;
@@ -88,25 +89,24 @@ export class CoValidationDirective extends NzPopoverDirective implements OnInit,
     return this.ngModelElementRef.nativeElement ?? this.formControlNameElementRef.nativeElement;
   }
 
-
-  getErrors(): { type: string, message: string }[] {
+  getErrors(): { type: string; message: string }[] {
     const errors = this.ngControl.errors;
-    if (!errors ) return [];
+    if (!errors) return [];
 
     return Object.keys(errors)
       .map(type => {
-        const data = { type, message: this.error?.[type], };
+        const data = { type, message: this.error?.[type] };
         switch (data.type) {
           case 'required':
             if (this.coLabel) {
-              data.message = `${this.coLabel} is required`
+              data.message = `${this.coLabel} is required`;
             }
             break;
           default:
         }
         return data;
       })
-    .filter(o => o.message);
+      .filter(o => o.message);
   }
 
   getDisplayErrors() {
@@ -121,19 +121,17 @@ export class CoValidationDirective extends NzPopoverDirective implements OnInit,
     // console.log(this.ngModelElementRef);
     // console.log(this.formControlName);
     // console.log(this.formControlNameElementRef);
-    this.ngControl.statusChanges!
-      .pipe(
+    this.ngControl
+      .statusChanges!.pipe(
         filter(o => o === 'INVALID' || this.hasDisplayErrors),
         // distinctUntilChanged(),
         takeUntil(this.destroy$),
       )
-      .subscribe((e) => {
-        this.updateChangedProperties(['nzContent'])
+      .subscribe(e => {
+        this.updateChangedProperties(['nzContent']);
       });
     this.specificOrigin = this.ngModelElementRef ?? this.formControlNameElementRef;
-    this.nzOverlayStyle = { color: 'red' }
+    this.nzOverlayStyle = { color: 'red' };
     super.ngAfterViewInit();
   }
-
-
 }

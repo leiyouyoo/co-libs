@@ -23,7 +23,13 @@ import { ReuseTabModule } from '@co/cms';
 import { CoImModule } from '@co/im';
 import { CoMapModule } from '@co/map';
 
-import { CbcWebComponentsModule, CoBasicCompoentsModule, CoBusinessComponentsModule, CoLayoutComponentsModule } from '@co/cbc';
+import {
+  CbcWebComponentsModule,
+  CoBasicCompoentsModule,
+  CoBusinessComponentsModule,
+  CoLayoutComponentsModule,
+  CoMobileBusinessComponentsModule,
+} from '@co/cbc';
 import { CdsModule } from '@co/cds';
 
 export const SHARED_DELON_MODULES = [
@@ -54,6 +60,7 @@ export const SHARED_DELON_MODULES = [
   CoBasicCompoentsModule,
   CbcWebComponentsModule,
   CoBusinessComponentsModule,
+  CoMobileBusinessComponentsModule,
   CdsModule,
   CoLayoutComponentsModule,
 ];

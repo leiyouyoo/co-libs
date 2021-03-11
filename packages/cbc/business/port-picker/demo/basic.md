@@ -18,7 +18,6 @@ import { Component } from '@angular/core';
   <div>
     <co-port-picker 
       style="width:200px" 
-      [portReq] = "portReq"
       [(ngModel)]="selectedValue" 
       [coMode]="mode" 
       [coMaxMultipleCount]="maxMultipleCount"
@@ -32,13 +31,6 @@ export class PortPickerBasicComponent {
     selectedValue:any;
     mode = 'multiple';
     maxMultipleCount = 1;
-    //入参
-    portReq = {
-     IsOcean: true,
-     RegionIds :["db6af263-0305-4c78-9ebf-015ba3507b50"],
-     isPaged:  false ,
-     MaxResultCount: 1 ,
-    };
 }
 
 ```

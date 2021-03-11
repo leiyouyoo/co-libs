@@ -23,7 +23,7 @@
     <i nz-icon [nzIconfont]="'icon-quote1'" class="iconfont icon-quote1"></i>
     <h4>{{ quotesDetail?.quoteNo }}</h4>
   </div>
-  <div *ngIf="quotesDetail?.quoteReplys.length">
+  <div *ngIf="quotesDetail?.quoteReplys?.length">
     <label>{{ 'Expires' | translate }}：</label>
     <span
       >{{ getTime((quotesDetail?.quoteReplys)[0]?.validStartDate, 'MMM,D,YYYY') }}-{{
@@ -31,12 +31,12 @@
       }}</span
     >
   </div>
-  <div *ngIf="(quotesDetail?.quoteReplys)[0]?.creationTime">
+  <div *ngIf="quotesDetail?.quoteReplys && $any(quotesDetail.quoteReplys)[0].creationTime">
     <label>{{ 'Quote Time' | translate }}：</label>
-    <span>{{ getTime((quotesDetail?.quoteReplys)[0]?.creationTime) }} Current</span>
+    <span>{{ getTime(quotesDetail.quoteReplys[0].creationTime) }} Current</span>
   </div>
 
-  <section *ngIf="quotesDetail?.quoteReplys.length" class="content-wrap">
+  <section *ngIf="quotesDetail?.quoteReplys?.length" class="content-wrap">
     <div class="charge-group">
       <div class="freight-wrap">
         <p>
@@ -203,10 +203,7 @@
         ></i>
       </h5>
       <ng-container
-        *ngIf="
-          controlSpecialGoodsOpen &&
-          (getContainsSpecialGoodsTypes().length || quotesDetail?.description || quotesDetail?.specialInstructions)
-        "
+        *ngIf="controlSpecialGoodsOpen && (getContainsSpecialGoodsTypes().length || quotesDetail?.description || quotesDetail?.specialInstructions)"
       >
         <div class="special">
           <ng-container *ngIf="quotesDetail?.description">
@@ -218,9 +215,7 @@
             <span>{{ quotesDetail?.specialInstructions }}</span>
           </ng-container>
           <div *ngIf="quotesDetail?.containsSpecialGoodsTypes" class="specialGoodsName">
-            <label nz-checkbox nzDisabled *ngFor="let item of quotesDetail?.containsSpecialGoodsTypesArr" [ngModel]="true">{{
-              item.Name
-            }}</label>
+            <label nz-checkbox nzDisabled *ngFor="let item of quotesDetail?.containsSpecialGoodsTypesArr" [ngModel]="true">{{ item.Name }}</label>
           </div>
         </div>
       </ng-container>
