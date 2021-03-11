@@ -1,2 +1,2 @@
-export { CustomerPickerMobileComponent } from './customer-picker-mobile.component';
-export { CustomerPickerMobileModule } from './customer-picker-mobile.module';
+export * from './customer-picker-mobile.component';
+export * from './customer-picker-mobile.module';
