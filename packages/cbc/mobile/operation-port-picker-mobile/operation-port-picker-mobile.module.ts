@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { ProtPickerMobileComponent } from './port-picker-mobile.component';
+import { OperationProtPickerMobileComponent } from './operation-port-picker-mobile.component';
 
-const COMPONENTS = [ProtPickerMobileComponent];
+const COMPONENTS = [OperationProtPickerMobileComponent];
 
 /**
  * 业务员选取器模块
@@ -14,4 +14,4 @@ const COMPONENTS = [ProtPickerMobileComponent];
   declarations: [...COMPONENTS],
   exports: [...COMPONENTS],
 })
-export class PortPickerModule {}
+export class OperationPortPickerModule {}

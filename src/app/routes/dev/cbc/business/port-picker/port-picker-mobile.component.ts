@@ -15,10 +15,14 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
         </div>
       </section>
     </ng-template>
-    <co-port-picker-mobile style="width: 200px" [coItemRender]="itemTemplate" [(ngModel)]="selectedValue"></co-port-picker-mobile>
+    <co-operation-port-picker-mobile
+      style="width: 200px"
+      [coItemRender]="itemTemplate"
+      [(ngModel)]="selectedValue"
+    ></co-operation-port-picker-mobile>
 
     <div>普通模板:</div>
-    <co-port-picker-mobile style="width: 200px" [(ngModel)]="selectedValue"></co-port-picker-mobile>
+    <co-operation-port-picker-mobile style="width: 200px" [(ngModel)]="selectedValue"></co-operation-port-picker-mobile>
   `,
 })
 export class PortPickerMobileComponent implements OnInit {

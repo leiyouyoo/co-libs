@@ -8,14 +8,14 @@ import { PlatformCompanyConfigureService } from '@co/cds';
  * 选择器控件
  */
 @Component({
-  selector: 'co-port-picker-mobile',
-  exportAs: 'coPortPickerMobile',
+  selector: 'co-operation-port-picker-mobile',
+  exportAs: 'coOperationPortPickerMobile',
   templateUrl: '../templates/picker-template-mobile.component.html',
   host: { '[class.co-picker]': 'true' },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => ProtPickerMobileComponent),
+      useExisting: forwardRef(() => OperationProtPickerMobileComponent),
       multi: true,
     },
   ],
@@ -23,7 +23,7 @@ import { PlatformCompanyConfigureService } from '@co/cds';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class ProtPickerMobileComponent extends PickerMobileComponentBase {
+export class OperationProtPickerMobileComponent extends PickerMobileComponentBase {
   constructor(cdr: ChangeDetectorRef, private platformCompanyConfigureService: PlatformCompanyConfigureService) {
     super(cdr);
     this.coLabelMember = 'companyName';

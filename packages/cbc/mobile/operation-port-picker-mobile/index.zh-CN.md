@@ -1,13 +1,13 @@
 ---
 type: Mobile
-title: port-picker-mobile
+title: operation-port-picker-mobile
 order: 8
-subtitle: 港口移动端选择器
+subtitle: 操作口岸移动端选择器
 cols: 2
 module: import { CustomerPickerMobileModule } from '@co/cbc';
 ---
 
-港口移动端选择器
+操作口岸移动端选择器
 
 ## API
 

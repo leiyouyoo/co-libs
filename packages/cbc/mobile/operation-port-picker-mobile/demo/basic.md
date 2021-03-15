@@ -16,21 +16,21 @@ import { FormBuilder } from '@angular/forms';
   selector: 'app-demo',
   template: `
   <div>
-    <co-port-picker-mobile 
+    <co-operation-port-picker-mobile 
       style="width:200px" 
       [(ngModel)]="selectedValue" 
       (coChanged)="nowSearch($event)"
     >
-    </co-port-picker-mobile>
+    </co-operation-port-picker-mobile>
   </div>
 
     <div [formGroup]="validateForm">
-    <co-port-picker-mobile 
+    <co-operation-port-picker-mobile 
       style="width:200px" 
       formControlName="countryId"
       (coChanged)="nowSearch($event)"
     >
-    </co-port-picker-mobile>
+    </co-operation-port-picker-mobile>
   </div>
   `
 })
