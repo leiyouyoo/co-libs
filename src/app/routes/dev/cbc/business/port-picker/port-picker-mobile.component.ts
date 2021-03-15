@@ -23,7 +23,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class PortPickerMobileComponent implements OnInit {
   validateForm!: FormGroup;
-  selectedValue = '';
+  selectedValue = '80ef556c-69a4-e911-b0c1-f71612d60fdf';
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {

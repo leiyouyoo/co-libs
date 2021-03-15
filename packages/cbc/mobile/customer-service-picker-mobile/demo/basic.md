@@ -26,7 +26,7 @@ import { FormBuilder } from '@angular/forms';
   `
 })
 export class CustomerPickerMobileComponent {
-  selectedValue:string ="0b7b33a4-ef8d-417d-b9cf-a878c56444db";
+  selectedValue:string =1018;
   validateForm:any;
 
 
@@ -35,9 +35,7 @@ export class CustomerPickerMobileComponent {
   ){}
 
   ngOnInit() {
-   this.validateForm = this.fb.group({
-     countryId:['0b7b33a4-ef8d-417d-b9cf-a878c56444db']
-   })
+
   }
 
   nowSearch(data){

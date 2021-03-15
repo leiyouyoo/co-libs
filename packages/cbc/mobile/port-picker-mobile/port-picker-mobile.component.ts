@@ -26,7 +26,7 @@ import { PlatformCompanyConfigureService } from '@co/cds';
 export class ProtPickerMobileComponent extends PickerMobileComponentBase {
   constructor(cdr: ChangeDetectorRef, private platformCompanyConfigureService: PlatformCompanyConfigureService) {
     super(cdr);
-    this.coLabelMember = 'name';
+    this.coLabelMember = 'companyName';
   }
   //#region  override
 
