@@ -36,6 +36,7 @@ export class PortPickerMobileComponent extends PickerMobileComponentBase {
     _condition.sorting = 'code';
     _condition.maxResultCount = 20;
     _condition.isOcean = true;
+    _condition.id = _condition.ids;
     return this.placeService.getAll(_condition);
   }
 
