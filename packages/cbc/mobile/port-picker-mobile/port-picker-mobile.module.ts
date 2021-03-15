@@ -14,4 +14,4 @@ const COMPONENTS = [ProtPickerMobileComponent];
   declarations: [...COMPONENTS],
   exports: [...COMPONENTS],
 })
-export class CustomerPickerMobileModule {}
+export class PortPickerModule {}
