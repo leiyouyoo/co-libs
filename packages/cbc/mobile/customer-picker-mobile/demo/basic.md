@@ -35,7 +35,7 @@ import { FormBuilder } from '@angular/forms';
   `
 })
 export class CustomerPickerMobileComponent {
-  selectedValue:string ="0b7b33a4-ef8d-417d-b9cf-a878c56444db";
+  selectedValue:any ="0b7b33a4-ef8d-417d-b9cf-a878c56444db";
   validateForm:any;
 
 

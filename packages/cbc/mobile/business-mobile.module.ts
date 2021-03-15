@@ -3,12 +3,14 @@ import { CdsModule } from '@co/cds';
 import { CustomerPickerMobileModule } from '@co/cbc/mobile/customer-picker-mobile';
 import { CustomerServicePickerMobileModule } from './customer-service-picker-mobile';
 import { OperationPortPickerModule } from './operation-port-picker-mobile';
+import { PortPickerModule } from './port-picker-mobile';
 
 const EXPORT_MODULES: any[] = [
   CustomerPickerMobileModule,
   CustomerServicePickerMobileModule,
   CustomerPickerMobileModule,
   OperationPortPickerModule,
+  PortPickerModule,
 ];
 const IMPORT_MODULES: any[] = [CdsModule];
 

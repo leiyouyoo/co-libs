@@ -18,6 +18,10 @@ const routes: Routes = [
       },
       {
         path: 'port-picker',
+        loadChildren: () => import('./cbc/business/operation-port-picker/port-picker.module').then(m => m.OperationPortPickerDemoModule),
+      },
+      {
+        path: 'port',
         loadChildren: () => import('./cbc/business/port-picker/port-picker.module').then(m => m.PortPickerDemoModule),
       },
       {

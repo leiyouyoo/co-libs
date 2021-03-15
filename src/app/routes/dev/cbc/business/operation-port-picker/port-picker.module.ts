@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SharedModule } from '../../../../../shared/shared.module';
 
-import { PickerMobileComponent } from './port-picker-mobile.component';
+import { OperationPortPickerMobileComponent } from './operation-port-picker-mobile.component';
 
-const COMPONENTS = [PickerMobileComponent];
+const COMPONENTS = [OperationPortPickerMobileComponent];
 
 const routes: Routes = [
   {
@@ -12,11 +12,11 @@ const routes: Routes = [
     redirectTo: 'basic',
     pathMatch: 'full',
   },
-  { path: 'port', component: PickerMobileComponent },
+  { path: 'operation-port', component: OperationPortPickerMobileComponent },
 ];
 
 @NgModule({
   imports: [SharedModule, RouterModule.forChild(routes)],
   declarations: COMPONENTS,
 })
-export class PortPickerDemoModule {}
+export class OperationPortPickerDemoModule {}

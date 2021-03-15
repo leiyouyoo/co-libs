@@ -15,23 +15,22 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
         </div>
       </section>
     </ng-template>
-    <co-port-picker-mobile style="width: 200px" [coItemRender]="itemTemplate" [(ngModel)]="selectedValue"></co-port-picker-mobile>
+    <co-operation-port-picker-mobile
+      style="width: 200px"
+      [coItemRender]="itemTemplate"
+      [(ngModel)]="selectedValue"
+    ></co-operation-port-picker-mobile>
 
     <div>普通模板:</div>
-    <div [formGroup]="validateForm">
-      <co-port-picker-mobile style="width: 200px" formControlName="countryId"></co-port-picker-mobile>
-    </div>
+    <co-operation-port-picker-mobile style="width: 200px" [(ngModel)]="selectedValue"></co-operation-port-picker-mobile>
   `,
 })
-export class PickerMobileComponent implements OnInit {
+export class OperationPortPickerMobileComponent implements OnInit {
   validateForm!: FormGroup;
-  selectedValue = '34c86b6a-b53f-45a2-a0c0-5f5b001298a3';
-
+  selectedValue = '80ef556c-69a4-e911-b0c1-f71612d60fdf';
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.validateForm = this.fb.group({
-      countryId: '7dedbb31-57e0-4593-84e4-38be9e513d18',
-    });
+    this.validateForm = this.fb.group({});
   }
 }
