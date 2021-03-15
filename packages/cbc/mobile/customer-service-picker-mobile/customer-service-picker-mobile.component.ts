@@ -2,20 +2,20 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, Inpu
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { PickerMobileComponentBase } from '@co/cbc/mobile/core';
-import { CustomerService } from '@co/cds';
+import { PlatformOrganizationUnitService } from '@co/cds';
 
 /**
  * 选择器控件
  */
 @Component({
-  selector: 'co-customer-picker-mobile',
-  exportAs: 'coCustomerPickerMobile',
+  selector: 'co-customer-service-picker-mobile',
+  exportAs: 'coCustomerServicePickerMobile',
   templateUrl: '../templates/picker-template-mobile.component.html',
   host: { '[class.co-picker]': 'true' },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CustomerPickerMobileComponent),
+      useExisting: forwardRef(() => CustomerServicePickerMobileComponent),
       multi: true,
     },
   ],
@@ -23,8 +23,8 @@ import { CustomerService } from '@co/cds';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class CustomerPickerMobileComponent extends PickerMobileComponentBase {
-  constructor(cdr: ChangeDetectorRef, private customerService: CustomerService) {
+export class CustomerServicePickerMobileComponent extends PickerMobileComponentBase {
+  constructor(cdr: ChangeDetectorRef, private platformOrganizationUnitService: PlatformOrganizationUnitService) {
     super(cdr);
     this.coLabelMember = 'name';
   }
@@ -33,9 +33,7 @@ export class CustomerPickerMobileComponent extends PickerMobileComponentBase {
   //#endregion
 
   fetchRemoteData(_condition: any): Observable<any> {
-    _condition.sorting = 'code';
-    _condition.maxResultCount = 20;
-    return this.customerService.getAllBySearch(_condition);
+    return this.platformOrganizationUnitService.getCustomerServiceUsers(_condition);
   }
 
   ngOnChanges(changes: SimpleChanges) {}

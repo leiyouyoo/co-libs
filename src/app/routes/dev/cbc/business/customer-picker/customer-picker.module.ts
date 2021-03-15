@@ -12,6 +12,7 @@ import { CustomerPickerMethodsComponent } from './customer-picker-methods.compon
 import { CustomerPickerMultipleComponent } from './customer-picker-multiple.component';
 import { CustomerPickerSizeComponent } from './customer-picker-size.component';
 import { CustomerPickerTagsComponent } from './customer-picker-tags.component';
+import { CustomerServicePickerMobileComponent } from './customer-serve-picker-mobile.component';
 
 const COMPONENTS = [
   CustomerPickerMobileComponent,
@@ -24,6 +25,7 @@ const COMPONENTS = [
   CustomerPickerMultipleComponent,
   CustomerPickerSizeComponent,
   CustomerPickerDropdownTableComponent,
+  CustomerServicePickerMobileComponent,
   CustomerPickerTagsComponent,
 ];
 
@@ -33,7 +35,8 @@ const routes: Routes = [
     redirectTo: 'basic',
     pathMatch: 'full',
   },
-  { path: 'mobile', component: CustomerPickerMobileComponent },
+  { path: 'customer-service-mobile', component: CustomerServicePickerMobileComponent },
+  { path: 'customer-mobile', component: CustomerPickerMobileComponent },
   { path: 'basic', component: CustomerPickerBasicComponent },
   { path: 'dropdownposition', component: CustomerPickerDropdownPositionComponent },
   { path: 'dropdowntable', component: CustomerPickerDropdownTableComponent },

@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CdsModule } from '@co/cds';
 import { CustomerPickerMobileModule } from '@co/cbc/mobile/customer-picker-mobile';
+import { CustomerServicePickerMobileModule } from './customer-service-picker-mobile';
 
-const EXPORT_MODULES: any[] = [CustomerPickerMobileModule];
+const EXPORT_MODULES: any[] = [CustomerPickerMobileModule, CustomerServicePickerMobileModule, CustomerPickerMobileModule];
 const IMPORT_MODULES: any[] = [CdsModule];
 
 /**

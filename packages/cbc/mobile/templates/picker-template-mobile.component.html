@@ -49,12 +49,9 @@
   (scroll)="onScroll($event)"
 >
   <div>
+    No Result
     <ng-option *ngFor="let item of optionList" [value]="item[coValueMember]">
-      <ng-template
-        [ngTemplateOutlet]="coItemRender"
-        [ngTemplateOutletContext]="{ $implicit: item }"
-        *ngIf="items?.length > 0 && coItemRender; else ngTemplate"
-      ></ng-template>
+      <ng-template [ngTemplateOutlet]="coItemRender" [ngTemplateOutletContext]="{ $implicit: item }" *ngIf="coItemRender; else ngTemplate"></ng-template>
 
       <ng-template #ngTemplate>{{ item[coLabelMember] }}</ng-template>
     </ng-option>

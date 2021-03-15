@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-demo',
   template: `
+    <div>自定义模板:</div>
     <ng-template #itemTemplate let-item>
       <section>
         <div>
@@ -14,21 +15,15 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
         </div>
       </section>
     </ng-template>
-    <co-customer-picker-mobile style="width: 200px" [items]="portsPOL" [(ngModel)]="selectedValue"></co-customer-picker-mobile>
+    <co-customer-picker-mobile style="width: 200px" [coItemRender]="itemTemplate" [(ngModel)]="selectedValue"></co-customer-picker-mobile>
+
+    <div>普通模板:</div>
+    <co-customer-picker-mobile style="width: 200px" [(ngModel)]="selectedValue"></co-customer-picker-mobile>
   `,
 })
 export class CustomerPickerMobileComponent implements OnInit {
   validateForm!: FormGroup;
-  portsPOL = [
-    {
-      name: 'qqq',
-      tel: '222',
-    },
-    {
-      name: 'zzz',
-      tel: '333',
-    },
-  ];
+  selectedValue = '';
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {

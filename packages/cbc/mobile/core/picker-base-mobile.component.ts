@@ -48,7 +48,7 @@ export class PickerMobileComponentBase implements ControlValueAccessor, OnInit, 
   @Input() coBindValue: string;
   @Input() coMarkFirst = true;
   @Input() coPlaceholder: string;
-  @Input() coNotFoundText: string;
+  @Input() coNotFoundText: string = 'No Data';
   @Input() coTypeToSearchText: string;
   @Input() coAddTagText: string;
   @Input() coLoadingText: string;
@@ -336,8 +336,6 @@ export class PickerMobileComponentBase implements ControlValueAccessor, OnInit, 
       ids: covertModelToList(value, this.coMode),
     });
   }
-
-  private _setItems(items: any[]) {}
 
   onLoadMore(): void {
     if (this.hasMore) {
