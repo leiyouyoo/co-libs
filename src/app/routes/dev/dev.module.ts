@@ -17,6 +17,10 @@ const routes: Routes = [
         loadChildren: () => import('./cbc/basic/date-picker/date-picker.module').then(m => m.DatePickerDemoModule),
       },
       {
+        path: 'port-picker',
+        loadChildren: () => import('./cbc/business/port-picker/port-picker.module').then(m => m.PortPickerDemoModule),
+      },
+      {
         path: 'ellipsis',
         loadChildren: () => import('./cbc/basic/ellipsis/ellipsis.module').then(m => m.EllipsisDemoModule),
       },
