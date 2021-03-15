@@ -65,6 +65,10 @@ module.exports = {
           'zh-CN': '业务',
           'en-US': 'Business',
         },
+        {
+          'zh-CN': '移动端',
+          'en-US': 'Mobile',
+        }
       ],
       extraRouteMeta: [],
       module: '@co/cbc',
