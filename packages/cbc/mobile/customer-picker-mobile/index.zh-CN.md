@@ -1,10 +1,10 @@
 ---
 type: Mobile
-title: carrier-picker-mobile
+title: customer-picker-mobile
 order: 8
-subtitle: 承运人移动端选择器
+subtitle: 客户移动端选择器
 cols: 2
-module: import { CarrierPickerMobileModule } from '@co/cbc';
+module: import { CustomerPickerMobileModule } from '@co/cbc';
 ---
 
 承运人选择器。
