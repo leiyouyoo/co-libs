@@ -3,7 +3,7 @@ import { CdsModule } from '@co/cds';
 import { CustomerPickerMobileModule } from '@co/cbc/mobile/customer-picker-mobile';
 import { CustomerServicePickerMobileModule } from './customer-service-picker-mobile';
 import { OperationPortPickerModule } from './operation-port-picker-mobile';
-import { PortPickerModule } from './port-picker-mobile';
+import { PortPickerMobileModule } from './port-picker-mobile';
 import { CommodityPickerMobileModule } from './commodity-picker-mobile';
 
 const EXPORT_MODULES: any[] = [
@@ -12,7 +12,7 @@ const EXPORT_MODULES: any[] = [
   CustomerPickerMobileModule,
   CommodityPickerMobileModule,
   OperationPortPickerModule,
-  PortPickerModule,
+  PortPickerMobileModule,
 ];
 const IMPORT_MODULES: any[] = [CdsModule];
 
