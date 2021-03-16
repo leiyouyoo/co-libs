@@ -25,7 +25,7 @@ import { FormBuilder } from '@angular/forms';
   </div>
   `
 })
-export class CustomerPickerMobileComponent {
+export class CustomerServicePickerMobileComponent {
   selectedValue:any =1018;
   validateForm:any;
 
