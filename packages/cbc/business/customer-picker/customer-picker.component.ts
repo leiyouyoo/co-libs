@@ -32,6 +32,7 @@ export class CustomerPickerComponent extends PickerComponentBase {
     super(cdr);
 
     this.coLabelMember = 'name';
+    this.coDebounceInputCharCount = 1;
   }
 
   //#endregion
