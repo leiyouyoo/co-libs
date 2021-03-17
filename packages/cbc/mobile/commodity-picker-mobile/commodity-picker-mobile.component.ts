@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, Inpu
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { PickerMobileComponentBase } from '@co/cbc/mobile/core';
-import { CustomerService, PUBCommodityService } from '@co/cds';
+import { PUBCommodityService } from '@co/cds';
 
 /**
  * 选择器控件
@@ -36,6 +36,4 @@ export class CommodityPickerMobileComponent extends PickerMobileComponentBase {
     _condition.maxResultCount = 20;
     return this.commodityService.getAllForUiPicker(_condition);
   }
-
-  ngOnChanges(changes: SimpleChanges) {}
 }

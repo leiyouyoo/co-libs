@@ -15,8 +15,6 @@ import { ControlValueAccessor } from '@angular/forms';
 import { NgSelectComponent } from '@ng-select/ng-select';
 
 import * as _ from 'lodash';
-
-import { NzSafeAny, NzSelectComponent, OnChangeType, OnTouchedType } from 'ng-zorro-antd';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, finalize, map, switchMap, takeUntil } from 'rxjs/operators';
 /**
@@ -36,10 +34,6 @@ export class PickerMobileComponentBase implements ControlValueAccessor, OnInit, 
   //#endregion
 
   //#region 公共方法
-
-  get isSearching() {
-    return this.nzSelectComponent.nzShowSearch;
-  }
   //#region 输入输出参数
   @ViewChild('ngSelectComponent') ngSelectComponent: NgSelectComponent;
   @Input() template: any;
@@ -75,7 +69,7 @@ export class PickerMobileComponentBase implements ControlValueAccessor, OnInit, 
   @Input() coTabIndex: number;
   @Input() coReadonly = false;
   @Input() coSearchWhileComposing = true;
-  @Input() coItemRender: TemplateRef<NzSafeAny> | null = null;
+  @Input() coItemRender: any = null;
   @Input() coMinTermLength = 0;
   @Input() coEditableSearchTerm = false;
   @Input() keyDownFn = (_: KeyboardEvent) => true;
@@ -119,7 +113,6 @@ export class PickerMobileComponentBase implements ControlValueAccessor, OnInit, 
   @Output() readonly coScroll = new EventEmitter<any>();
   @Output() readonly coOptionChange = new EventEmitter<any>();
   @Output() readonly coOpenChange = new EventEmitter<boolean>();
-  @ViewChild(NzSelectComponent, { static: true }) private nzSelectComponent!: NzSelectComponent;
 
   //#endregion
 
@@ -135,8 +128,6 @@ export class PickerMobileComponentBase implements ControlValueAccessor, OnInit, 
   hasLoadedByids = false;
   loadingMode = 'more';
   searchChange$: any = new BehaviorSubject({});
-  onChange: OnChangeType = () => {};
-  onTouched: OnTouchedType = () => {};
 
   private _items: any = [];
   private _itemsAreUsed: boolean;
@@ -242,30 +233,13 @@ export class PickerMobileComponentBase implements ControlValueAccessor, OnInit, 
     }
   }
 
-  registerOnChange(fn: OnChangeType): void {
-    this.onChange = fn;
-  }
+  registerOnChange(fn: any): void {}
 
-  registerOnTouched(fn: OnTouchedType): void {
-    this.onTouched = fn;
-  }
-
-  focus(): void {
-    this.nzSelectComponent.focus();
-  }
-
-  blur(): void {
-    this.nzSelectComponent.blur();
-  }
+  registerOnTouched(fn: any): void {}
 
   clear(): void {
     this.value = null;
-    this.nzSelectComponent.clearInput();
   }
-  // onModelChange():void{
-  //   this.nzSelectComponent.;
-
-  // }
 
   //#endregion
 
@@ -321,7 +295,7 @@ export class PickerMobileComponentBase implements ControlValueAccessor, OnInit, 
     this.loadingMode = 'loadByIds';
     this.skipCount = 0;
 
-    const covertModelToList = (model: NzSafeAny[] | NzSafeAny, mode: any): NzSafeAny[] => {
+    const covertModelToList = (model: any, mode: any): any[] => {
       if (model === null || model === undefined) {
         return [];
       } else if (mode === 'default') {

@@ -1,2 +1,2 @@
-export * from './commodity-picker-mobile.component';
-export * from './commodity-picker-mobile.module';
+export { CommodityPickerMobileComponent } from './commodity-picker-mobile.component';
+export { CommodityPickerMobileModule } from './commodity-picker-mobile.module';
