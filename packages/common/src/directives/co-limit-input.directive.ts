@@ -46,14 +46,14 @@ export class CoLimitInputDirective {
   }
 
   @HostListener('change') onChange() {
-    this.control?.control?.setValue(this.el.nativeElement.value);
+    this.control.control.setValue(this.el.nativeElement.value);
   }
 
   /**
    * 应对输入被格式化导致不接发change事件的问题。所以这里在blur的时候也进行重新赋值
    */
   @HostListener('blur', ['$event']) onBlur($event) {
-    this.control?.control?.setValue(this.el.nativeElement.value);
+    this.control.control.setValue(this.el.nativeElement.value);
   }
 
   /**
@@ -92,10 +92,10 @@ export class CoLimitInputDirective {
         regexp = /[^\d|\w]/gi;
         break;
       case 'float':
-        this.replace = /[^\d|\.]/gi;
+        regexp = /[^\d|\.]/gi;
         break;
       case 'notChinese':
-        this.replace = /[\u4E00-\u9FA5]/g;
+        regexp = /[\u4E00-\u9FA5]/g;
         break;
     }
     return regexp;
