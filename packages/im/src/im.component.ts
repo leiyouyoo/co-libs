@@ -16,6 +16,7 @@ import { ImService } from './service/im.service';
 import {
   addGroupNumber,
   createFileMessage,
+  createGroup,
   createImageMessage,
   createTextMessage,
   getConversationList,
@@ -179,10 +180,31 @@ export class ImComponent implements OnInit {
   }
   ngOnInit() {
     this.globalEventDispatcher.register('chatWithIM').subscribe((res: any) => {
-      this.customerserviceType = res.customerserviceType;
-      this.customerserviceId = res.customerserviceId;
-      this.onCustomerservice(res);
+      if(res.isCreateGroup){
+        createGroup({
+          type: 'private',
+          name: res.name,
+          memberList: res.memberList, // 如果填写了 memberList，则必须填写 userID
+        }).then((res) => {
+            const groupInfo = res.data.group;
+            const params = {
+              conversationID: groupInfo.groupID,
+              C2C: false,
+              id: groupInfo.groupID,
+              groupName: groupInfo.name
+            };
+            this.onCustomerservice(params,groupInfo.groupID);
+          })
+          .catch((err) => {
+            this.nzMessageService.error(err);
+          });
+      }else{
+        this.customerserviceType = res.customerserviceType;
+        this.customerserviceId = res.customerserviceId;
+        this.onCustomerservice(res);
+      }
     });
+
     this.handleImConversation();
     this.compareUrl();
   }
@@ -202,12 +224,12 @@ export class ImComponent implements OnInit {
     return false;
   }
   // 快捷入口点击事件
-  onCustomerservice(info) {
+  onCustomerservice(info,conversationId=null) {
     if (this.checkAnonymous()) {
       return;
     }
     this.isVisible = true;
-    const arr = this.checkConversationList(null, info?.isC2C);
+    const arr = this.checkConversationList(conversationId, info?.isC2C);
     if (arr.length) {
       this.showChat(arr[0], true);
     } else if (!info?.isC2C) {
@@ -258,17 +280,17 @@ export class ImComponent implements OnInit {
     this.showCustomerservice = true;
   }
   // 判断当前会话是否包含在内
-  checkConversationList(conversation?, isC2C = false) {
-    let conversationId: string;
-    if (conversation) {
-      conversationId = conversation;
+  checkConversationList(conversationId?, isC2C = false) {
+    let id: string;
+    if (conversationId) {
+      id = conversationId;
     } else if (!isC2C) {
-      conversationId = `GROUP${this.customerserviceType}${this.customerserviceId}`;
+      id = `GROUP${this.customerserviceType}${this.customerserviceId}`;
     } else {
-      conversationId = `C2C${this.customerserviceId}`;
+      id = `C2C${this.customerserviceId}`;
     }
     return this.conversationsList.filter((e: any) => {
-      return e.conversationID === conversationId;
+      return e.conversationID === id;
     });
   }
   closeImLayout($event?) {

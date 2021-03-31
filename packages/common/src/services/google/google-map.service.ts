@@ -45,14 +45,13 @@ interface NetworkLocation {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GoogleMapService {
-  apiPrefix = CoConfigManager.getValue('serverUrl') ||
-    `https://api.cityocean.com:20001`;
+  apiPrefix = CoConfigManager.getValue('serverUrl') || `https://api.cityocean.com`;
   googleKey = 'AIzaSyAEdT5BA0MmANhrmcnR4QrXu08gLtgvhqI';
   // private amapHttp: any;
-  constructor(private amapHttp: PureHttpService) { }
+  constructor(private amapHttp: PureHttpService) {}
 
   //地图搜索地址
   autocomplete(input: any, language = 'en', options = {}): Observable<any> {
@@ -67,32 +66,36 @@ export class GoogleMapService {
   }
 
   getPlaceDetail(placeId: string, options = {}) {
-    const url = `${this.apiPrefix}/place/maps/api/place/details/json`
+    const url = `${this.apiPrefix}/place/maps/api/place/details/json`;
     const params = {
       key: this.googleKey,
       place_id: placeId,
       ...options,
-    }
+    };
     return this.amapHttp.get(url, params);
   }
 
   googleGeo(address): Observable<GeoResult> {
     // const url = `https://maps.googleapis.com/maps/api/js/GeocodeService.Search?4ssichuan2&7sUS&9szh-CN&callback=_xdc_._s18ps3&key=AIzaSyDIJ9XX2ZvRKCJcFRrl-lRanEtFUow4piM&token=28858`
-    const url = `${this.apiPrefix}/geo/maps/api/geocode/json?address=${address}&key=${this.googleKey}`
+    const url = `${this.apiPrefix}/geo/maps/api/geocode/json?address=${address}&key=${this.googleKey}`;
 
     return new Observable<GeoResult>(ob => {
-      this.amapHttp.get(url)
+      this.amapHttp
+        .get(url)
         // @ts-ignore
-        .subscribe((data: { status: string, results: GeoResult[] }) => {
-          if (data.status === 'OK') {
-            ob.next(data.results[0])
-            ob.complete()
-          } else {
-            ob.error('Empty Geo');
-          }
-        }, error => {
-          ob.error(error);
-        })
+        .subscribe(
+          (data: { status: string; results: GeoResult[] }) => {
+            if (data.status === 'OK') {
+              ob.next(data.results[0]);
+              ob.complete();
+            } else {
+              ob.error('Empty Geo');
+            }
+          },
+          error => {
+            ob.error(error);
+          },
+        );
     });
   }
 }

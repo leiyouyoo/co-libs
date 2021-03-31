@@ -512,5 +512,9 @@ export function addGroupNumber(params: { groupID: string; userIDList: Array<stri
 
 function initInternalVariable() {
   tim = null;
-  return loginSubject = new ReplaySubject<TIM>(1);
+  return (loginSubject = new ReplaySubject<TIM>(1));
+}
+
+export function timType() {
+  return tim;
 }
