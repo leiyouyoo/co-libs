@@ -180,25 +180,26 @@ export class ImComponent implements OnInit {
   }
   ngOnInit() {
     this.globalEventDispatcher.register('chatWithIM').subscribe((res: any) => {
-      if(res.isCreateGroup){
+      if (res.isCreateGroup) {
         createGroup({
           type: 'private',
           name: res.name,
           memberList: res.memberList, // 如果填写了 memberList，则必须填写 userID
-        }).then((res) => {
+        })
+          .then(res => {
             const groupInfo = res.data.group;
             const params = {
               conversationID: groupInfo.groupID,
               C2C: false,
               id: groupInfo.groupID,
-              groupName: groupInfo.name
+              groupName: groupInfo.name,
             };
-            this.onCustomerservice(params,groupInfo.groupID);
+            this.onCustomerservice(params, groupInfo.groupID);
           })
-          .catch((err) => {
+          .catch(err => {
             this.nzMessageService.error(err);
           });
-      }else{
+      } else {
         this.customerserviceType = res.customerserviceType;
         this.customerserviceId = res.customerserviceId;
         this.onCustomerservice(res);
@@ -224,7 +225,7 @@ export class ImComponent implements OnInit {
     return false;
   }
   // 快捷入口点击事件
-  onCustomerservice(info,conversationId=null) {
+  onCustomerservice(info, conversationId = null) {
     if (this.checkAnonymous()) {
       return;
     }
@@ -234,7 +235,7 @@ export class ImComponent implements OnInit {
       this.showChat(arr[0], true);
     } else if (!info?.isC2C) {
       const item = {
-        bussinessType: this.customerserviceType.toLowerCase(),
+        bussinessType: this.customerserviceType?.toLowerCase(),
         type: 'GROUP',
         disbandGroupFlage: true,
         groupProfile: {

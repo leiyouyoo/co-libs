@@ -84,7 +84,7 @@ export class GoogleMapService {
         .get(url)
         // @ts-ignore
         .subscribe(
-          (data: { status: string; results: GeoResult[] }) => {
+          (data: any) => {
             if (data.status === 'OK') {
               ob.next(data.results[0]);
               ob.complete();

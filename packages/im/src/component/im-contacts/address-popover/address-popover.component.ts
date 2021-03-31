@@ -22,7 +22,7 @@ export class AddressPopoverComponent implements OnInit {
   /**
    * 是否为通讯录点击的
    */
-  chatWithPercon(personInfo) {
+  chatWithPerson(personInfo) {
     this.contactsDbClick.emit({ ...personInfo });
   }
   formatImAvatarUrl(fileId) {

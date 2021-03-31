@@ -232,7 +232,7 @@
                 </div>
                 <div class="item group-members-item">
                   <span>{{ 'Group members' | translate }}：</span>
-                  <div (dblclick)="chatWithPercon(item)" *ngFor="let item of membersList" class="personList">
+                  <div (dblclick)="chatWithPerson(item)" *ngFor="let item of membersList" class="personList">
                     <img [src]="item?.avatar ? formatImAvatarUrl(item?.avatar) : 'assets/images/im/avatar-2.png'" />
                     <span>{{ item?.nick ? item?.nick : item.userID }}</span>
                   </div>
@@ -291,7 +291,7 @@
             <section class="globel-wrap">
               <div *ngIf="globelPersonList.length" data-im-input-show class="search-person-list">
                 <label data-im-input-show for="">联系人</label>
-                <div (click)="chatWithPercon(item, true)" data-im-input-show *ngFor="let item of globelPersonList">
+                <div (click)="chatWithPerson(item, true)" data-im-input-show *ngFor="let item of globelPersonList">
                   <img data-im-input-show [src]="item.profilePictureId ? formatImAvatarUrl(item.profilePictureId) : 'assets/images/im/avatar-2.png'" alt="" />
                   <p data-im-input-show>
                     <span data-im-input-show class="name"

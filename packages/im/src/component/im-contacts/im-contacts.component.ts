@@ -189,7 +189,7 @@ export class ImContactsComponent implements OnInit {
   /**
    *  是否为通讯录点击的
    */
-  chatWithPercon(personInfo) {
+  chatWithPerson(personInfo) {
     this.imContactsClick.emit({ ...personInfo });
   }
   calculateTotalChecked(): Array<any> {

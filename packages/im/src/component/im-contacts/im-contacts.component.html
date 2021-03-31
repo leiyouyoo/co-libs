@@ -80,18 +80,14 @@
     <ng-template #resultTemplate let-item="result">
       <img
         data-im-input-show
-        (dblclick)="chatWithPercon(item)"
+        (dblclick)="chatWithPerson(item)"
         [src]="item.profilePictureId ? formatImAvatarUrl(item.profilePictureId) : 'assets/images/im/avatar-2.png'"
         alt=""
       />
       {{ item.name }}{{ item.surname }}
       <ng-container *ngIf="item.cName"> ({{ item.cName }}) </ng-container>
     </ng-template>
-    <nz-radio-group
-      *ngIf="!fromAddMember || (fromAddMember && !searchContactText)"
-      (ngModelChange)="onRadioChange($event)"
-      [(ngModel)]="currentRadio"
-    >
+    <nz-radio-group *ngIf="!fromAddMember || (fromAddMember && !searchContactText)" (ngModelChange)="onRadioChange($event)" [(ngModel)]="currentRadio">
       <label *ngFor="let radio of radioList" nz-radio-button [nzValue]="radio.value">{{ radio.name }}</label>
     </nz-radio-group>
   </div>
@@ -116,7 +112,7 @@
                 <lib-address-popover
                   [currentRadio]="currentRadio"
                   [fromType]="fromType"
-                  (contactsDbClick)="chatWithPercon($event)"
+                  (contactsDbClick)="chatWithPerson($event)"
                   [contact]="contact"
                 ></lib-address-popover>
 
@@ -127,12 +123,7 @@
                   </p>
                   <p [title]="contact.positionName" *ngIf="contact.positionName">{{ contact.positionName }}</p>
                 </div>
-                <label
-                  *ngIf="fromAddMember && contact.userId && contact.isActive"
-                  class="my-checkbox"
-                  nz-checkbox
-                  [(ngModel)]="contact.checked"
-                ></label>
+                <label *ngIf="fromAddMember && contact.userId && contact.isActive" class="my-checkbox" nz-checkbox [(ngModel)]="contact.checked"></label>
                 <span class="member-not-actice" *ngIf="fromAddMember && (!contact.userId || !contact.isActive)">未激活</span>
                 <span
                   [ngStyle]="{ color: contact.isActive ? '#007AFF' : 'rgba(0,0,0,0.65)' }"
@@ -150,7 +141,7 @@
           <lib-address-popover
             [currentRadio]="currentRadio"
             [fromType]="fromType"
-            (contactsDbClick)="chatWithPercon($event)"
+            (contactsDbClick)="chatWithPerson($event)"
             [contact]="contact"
           ></lib-address-popover>
 
@@ -161,19 +152,11 @@
             </p>
             <p [title]="contact.position" *ngIf="contact.position">{{ contact.position }}</p>
           </div>
-          <label
-            *ngIf="fromAddMember && contact.userId && contact.isActive"
-            class="my-checkbox"
-            nz-checkbox
-            [(ngModel)]="contact.checked"
-          ></label>
+          <label *ngIf="fromAddMember && contact.userId && contact.isActive" class="my-checkbox" nz-checkbox [(ngModel)]="contact.checked"></label>
           <span class="member-not-actice" *ngIf="fromAddMember && (!contact.userId || !contact.isActive)">未激活</span>
-          <span
-            [ngStyle]="{ color: contact.isActive ? '#007AFF' : '#3F3F3F' }"
-            class="isActive-style"
-            *ngIf="contact.userId && !fromAddMember"
-            >{{ contact.isActive && contact.userId ? '已激活' : '已邀请' }}</span
-          >
+          <span [ngStyle]="{ color: contact.isActive ? '#007AFF' : '#3F3F3F' }" class="isActive-style" *ngIf="contact.userId && !fromAddMember">{{
+            contact.isActive && contact.userId ? '已激活' : '已邀请'
+          }}</span>
         </div>
       </ng-container>
       <ng-container *ngIf="(currentRadio === 'company' && fromType != 'csp') || (currentRadio != 'service' && currentRadio != 'company')">
@@ -206,7 +189,7 @@
               <lib-address-popover
                 [currentRadio]="currentRadio"
                 [fromType]="fromType"
-                (contactsDbClick)="chatWithPercon($event)"
+                (contactsDbClick)="chatWithPerson($event)"
                 [contact]="contact"
               ></lib-address-popover>
               <div class="contact-group-wrap">
@@ -216,19 +199,11 @@
                 </p>
                 <p [title]="contact.position" *ngIf="contact.position">{{ contact.position }}</p>
               </div>
-              <label
-                *ngIf="fromAddMember && contact.userId && contact.isActive"
-                class="my-checkbox"
-                nz-checkbox
-                [(ngModel)]="contact.checked"
-              ></label>
+              <label *ngIf="fromAddMember && contact.userId && contact.isActive" class="my-checkbox" nz-checkbox [(ngModel)]="contact.checked"></label>
               <span class="member-not-actice" *ngIf="fromAddMember && (!contact.userId || !contact.isActive)">未激活</span>
-              <span
-                [ngStyle]="{ color: contact.isActive ? '#007AFF' : '#3F3F3F' }"
-                class="isActive-style"
-                *ngIf="contact.userId && !fromAddMember"
-                >{{ contact.isActive && contact.userId ? '已激活' : '已邀请' }}</span
-              >
+              <span [ngStyle]="{ color: contact.isActive ? '#007AFF' : '#3F3F3F' }" class="isActive-style" *ngIf="contact.userId && !fromAddMember">{{
+                contact.isActive && contact.userId ? '已激活' : '已邀请'
+              }}</span>
             </div>
           </ng-container>
         </div>
